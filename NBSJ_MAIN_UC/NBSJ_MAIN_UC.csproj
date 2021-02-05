@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B6437234-D8FA-4C70-86AA-99948A850B20}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>NBSJ_MAIN_UC</RootNamespace>
+    <AssemblyName>NBSJ_MAIN_UC</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accessibility" />
+    <Reference Include="DevExpress.Data.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.2\Components\Bin\Framework\DevExpress.XtraEditors.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\DevExpress 16.2\Components\Bin\Framework\DevExpress.XtraGrid.v16.2.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics">
+      <HintPath>DLL\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>DLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="SqlSugar">
+      <HintPath>DLL\SqlSugar.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ADODB.cs" />
+    <Compile Include="Base\Index\AbstractBottle.cs" />
+    <Compile Include="Base\Index\AbstractPipeLine.cs" />
+    <Compile Include="Base\Index\FormDaoTui.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Base\Index\FormDaoTui.Designer.cs">
+      <DependentUpon>FormDaoTui.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\BlendingUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\BlendingUC.Designer.cs">
+      <DependentUpon>BlendingUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\BottleAllUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\BottleAllUC.Designer.cs">
+      <DependentUpon>BottleAllUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\BottleAllUC2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\BottleAllUC2.Designer.cs">
+      <DependentUpon>BottleAllUC2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\BottleUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\BottleUC.Designer.cs">
+      <DependentUpon>BottleUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\BuLiaoAndLiaoCaoUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\BuLiaoAndLiaoCaoUC.Designer.cs">
+      <DependentUpon>BuLiaoAndLiaoCaoUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\BuLiaoQiUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\BuLiaoQiUC.Designer.cs">
+      <DependentUpon>BuLiaoQiUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\FanUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\FanUC.Designer.cs">
+      <DependentUpon>FanUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\GearUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\GearUC.Designer.cs">
+      <DependentUpon>GearUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\HostConveyerUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\HostConveyerUC.Designer.cs">
+      <DependentUpon>HostConveyerUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\HslConveyerRollers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\HslConveyerRollers.Designer.cs">
+      <DependentUpon>HslConveyerRollers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\HuanLengJiUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\HuanLengJiUC.Designer.cs">
+      <DependentUpon>HuanLengJiUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\HunHeLiaoCaoYuanGunUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\HunHeLiaoCaoYuanGunUC.Designer.cs">
+      <DependentUpon>HunHeLiaoCaoYuanGunUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\PipeLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\PipeLine.Designer.cs">
+      <DependentUpon>PipeLine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\PipeLine_Right.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\PipeLine_Right.Designer.cs">
+      <DependentUpon>PipeLine_Right.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\PipeLine_Text.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\PipeLine_Text.Designer.cs">
+      <DependentUpon>PipeLine_Text.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\PipeLine_Two.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\PipeLine_Two.Designer.cs">
+      <DependentUpon>PipeLine_Two.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\PuDiLiaoCaoUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\PuDiLiaoCaoUC.Designer.cs">
+      <DependentUpon>PuDiLiaoCaoUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\RemoveDustUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\RemoveDustUC.Designer.cs">
+      <DependentUpon>RemoveDustUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\ShaiZiUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\ShaiZiUC.Designer.cs">
+      <DependentUpon>ShaiZiUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\TempFlowUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\TempFlowUC.Designer.cs">
+      <DependentUpon>TempFlowUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\Index\UserControlMain.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\UserControlMain.Designer.cs">
+      <DependentUpon>UserControlMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogHelper.cs" />
+    <Compile Include="MainUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainUserControl.designer.cs">
+      <DependentUpon>MainUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Class1.cs" />
+    <Compile Include="Model\CONFIG_GRIDVIEWCOLS.cs" />
+    <Compile Include="Model\ItemClass.cs" />
+    <Compile Include="Model\MC_MICAL_GUIDE_SAMPLE.cs" />
+    <Compile Include="Model\MC_MICAL_PAR.cs" />
+    <Compile Include="Model\MC_MICAL_RESULT.cs" />
+    <Compile Include="Model\C_PLC_3S.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Base\Index\FormDaoTui.resx">
+      <DependentUpon>FormDaoTui.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\Index\PipeLine_Text.resx">
+      <DependentUpon>PipeLine_Text.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\Index\PipeLine_Two.resx">
+      <DependentUpon>PipeLine_Two.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Base\Index\ShaiZiUC.resx">
+      <DependentUpon>ShaiZiUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainUserControl.resx">
+      <DependentUpon>MainUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Base\Index\images\传送带电机.png" />
+    <Content Include="Base\Index\images\传送带电机2.png" />
+    <Content Include="Base\Index\images\布料器1.png" />
+    <Content Include="Base\Index\images\布料器和料槽.png" />
+    <Content Include="Base\Index\images\板式给矿机.png" />
+    <Content Include="Base\Index\images\板式给矿机2.png" />
+    <Content Include="Base\Index\images\板式给矿机入口.png" />
+    <Content Include="Base\Index\images\混匀机.png" />
+    <Content Include="Base\Index\images\混匀机2.png" />
+    <Content Include="Base\Index\images\混匀机停止.png" />
+    <Content Include="Base\Index\images\混匀机器停止.png" />
+    <Content Include="Base\Index\images\混合料槽和圆辊.png" />
+    <Content Include="Base\Index\images\烟筒.gif" />
+    <Content Include="Base\Index\images\烟筒.png" />
+    <Content Include="Base\Index\images\环冷机1.png" />
+    <Content Include="Base\Index\images\皮带点.png" />
+    <Content Include="Base\Index\images\筛子关.png" />
+    <Content Include="Base\Index\images\筛子开.png" />
+    <Content Include="Base\Index\images\脱硫脱硝桶.png" />
+    <Content Include="Base\Index\images\铺底料槽.png" />
+    <Content Include="Base\Index\images\除尘.png" />
+    <Content Include="Base\Index\images\除尘1.png" />
+    <Content Include="Base\Index\images\除尘10.png" />
+    <Content Include="Base\Index\images\除尘11.png" />
+    <Content Include="Base\Index\images\除尘12.png" />
+    <Content Include="Base\Index\images\除尘20.png" />
+    <Content Include="Base\Index\images\除尘21.png" />
+    <Content Include="Base\Index\images\除尘22.png" />
+    <Content Include="Base\Index\images\风机关.png" />
+    <Content Include="Base\Index\images\风机开.png" />
+    <Content Include="Base\Index\images\风机开2.png" />
+    <Content Include="Base\Index\images\齿轮.gif" />
+    <Content Include="Base\Index\images\齿轮.png" />
+    <Content Include="Base\Index\images\齿轮正向.gif" />
+    <Content Include="mainUC.png" />
+    <Content Include="Resources\flicker.gif" />
+    <Content Include="Resources\Gray.jpg" />
+    <Content Include="Resources\Green.jpg" />
+    <Content Include="Resources\green.png" />
+    <Content Include="Resources\Logo.png" />
+    <Content Include="Resources\red.gif" />
+    <Content Include="Resources\Red.jpg" />
+    <Content Include="Resources\yellow.jpg" />
+    <Content Include="Resources\传送带电机.png" />
+    <Content Include="Resources\传送带电机2.png" />
+    <Content Include="Resources\余热发电.png" />
+    <Content Include="Resources\布料器和料槽.png" />
+    <Content Include="Resources\未标题-1.png" />
+    <Content Include="Resources\未标题-red.png" />
+    <Content Include="Resources\板式给矿机.png" />
+    <Content Include="Resources\板式给矿机2.png" />
+    <Content Include="Resources\板式给矿机入口.png" />
+    <Content Include="Resources\混匀机.png" />
+    <Content Include="Resources\混匀机2.png" />
+    <Content Include="Resources\混匀机停止.png" />
+    <Content Include="Resources\混匀机器停止.png" />
+    <Content Include="Resources\烟筒.png" />
+    <Content Include="Resources\环冷机1.png" />
+    <Content Include="Resources\环冷机烟筒.png" />
+    <Content Include="Resources\皮带点.png" />
+    <Content Include="Resources\筛子关.png" />
+    <Content Include="Resources\筛子开.png" />
+    <Content Include="Resources\脱硫脱硝桶.png" />
+    <Content Include="Resources\除尘.png" />
+    <Content Include="Resources\除尘1.png" />
+    <Content Include="Resources\除尘10.png" />
+    <Content Include="Resources\除尘11.png" />
+    <Content Include="Resources\除尘12.png" />
+    <Content Include="Resources\除尘20.png" />
+    <Content Include="Resources\除尘21.png" />
+    <Content Include="Resources\除尘22.png" />
+    <Content Include="Resources\风机关.png" />
+    <Content Include="Resources\风机开.png" />
+    <Content Include="Resources\风机开2.png" />
+    <Content Include="Resources\高炉.bmp" />
+    <Content Include="Resources\齿轮.gif" />
+    <Content Include="Resources\齿轮.png" />
+    <Content Include="Resources\齿轮正向.gif" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,6 @@
+
+2021/1/7 13:28:16.748     ERROR  Combox_1_date方法失败System.ArgumentException: 无法绑定到新的值成员。
+参数名: value
+   在 System.Windows.Forms.ListControl.set_ValueMember(String value)
+   在 LY_SINTER.PAGE.Analysis.Raw_analysis.Combox_1_date() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Analysis\Raw_analysis.cs:行号 84
+

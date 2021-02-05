@@ -1,0 +1,649 @@
+
+2021/1/8 8:08:53.422     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:09:14.780     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:09:26.119     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:09:32.851     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:09:34.449     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:09:43.275     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:09:53.418     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:10:14.792     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:10:26.119     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:10:32.855     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:10:34.450     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:10:43.275     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:10:53.419     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:11:14.791     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:11:26.120     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:11:32.856     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:11:34.450     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:11:43.277     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:11:53.419     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:12:14.807     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:12:26.120     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:12:32.854     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:12:34.452     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:12:43.276     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:12:53.419     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:13:14.807     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:13:26.136     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:13:32.857     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:13:34.452     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:13:43.277     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:13:53.420     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:14:14.807     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:14:26.136     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:14:32.856     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:14:34.462     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:14:43.292     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:14:53.431     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:15:14.809     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:15:26.138     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:15:32.871     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:15:34.464     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:15:43.293     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:15:53.432     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:16:14.809     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:16:26.150     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:16:32.872     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:16:34.465     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:16:43.298     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:16:53.432     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:17:14.821     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:17:26.151     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:17:32.883     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:17:34.466     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:17:43.292     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:17:53.433     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:18:14.822     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:18:26.152     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:18:32.885     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:18:34.464     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:18:43.292     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:18:53.432     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:19:14.823     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:19:26.153     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:19:32.886     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:19:34.465     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:19:43.294     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:19:53.435     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:20:14.823     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:20:26.168     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:20:32.888     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:20:34.468     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:20:43.307     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:20:53.434     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:21:14.824     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:21:26.168     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:21:32.888     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:21:34.466     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:21:43.309     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:21:53.448     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:22:14.826     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:22:26.168     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:22:32.902     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:22:34.467     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:22:43.309     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:22:53.450     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:23:14.825     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:23:26.169     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:23:32.901     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:23:34.467     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:23:43.310     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:23:53.462     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:24:14.840     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:24:26.170     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:24:32.902     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:24:34.476     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:24:43.319     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:24:53.462     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:25:14.840     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:25:26.171     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:25:32.902     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:25:34.487     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:25:43.320     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:25:53.462     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:26:14.840     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:26:26.185     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:26:32.903     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:26:34.493     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:26:43.337     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:26:53.463     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:27:14.841     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:27:26.186     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:27:32.915     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:27:34.493     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:27:43.338     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:27:53.464     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:28:14.852     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:28:26.194     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:28:32.917     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:28:34.492     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:28:43.346     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:28:53.479     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:29:14.867     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:29:26.207     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:29:32.916     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:29:34.495     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:29:43.352     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:29:53.481     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:30:14.869     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:30:26.217     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:30:32.931     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:30:34.494     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:30:43.365     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:30:53.494     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:31:14.879     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:31:26.230     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:31:32.934     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:31:34.497     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:31:43.371     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:31:53.509     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:32:14.893     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:32:26.231     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:32:32.931     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:32:34.512     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:32:43.371     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:32:53.508     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:33:14.901     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:33:26.243     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:33:32.934     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:33:34.511     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:33:43.383     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:33:53.508     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:34:14.904     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:34:26.245     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:34:32.936     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:34:34.524     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:34:43.383     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:34:53.510     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:35:14.917     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:35:26.245     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:35:32.938     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:35:34.525     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:35:43.387     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:35:53.510     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:36:14.931     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:36:26.247     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:36:32.941     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:36:34.526     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:36:43.388     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:36:53.511     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:37:14.940     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:37:26.260     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:37:32.948     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:37:34.526     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:37:43.389     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:37:53.526     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:38:14.947     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:38:26.260     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:38:32.947     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:38:34.528     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:38:43.399     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:38:53.526     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:39:14.948     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:39:26.260     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:39:32.949     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:39:34.529     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:39:43.399     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:39:53.527     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:40:14.949     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:40:26.261     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:40:32.948     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:40:34.541     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:40:43.401     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:40:53.528     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:41:14.949     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:41:26.261     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:41:32.947     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:41:34.542     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:41:43.400     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:41:53.528     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:42:14.965     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:42:26.262     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:42:33.9     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:42:34.551     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:42:43.414     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:42:53.543     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:43:14.966     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:43:26.274     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:43:32.964     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:43:34.562     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:43:43.404     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:43:53.556     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:44:14.971     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:44:26.275     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:44:32.963     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:44:34.563     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+
+2021/1/8 8:44:43.404     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.1\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1955
+

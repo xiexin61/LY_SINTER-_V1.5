@@ -1,0 +1,4 @@
+
+2021/1/31 14:27:46.175     ERROR  数据查询失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.Custom.Alarm.data() 位置 D:\20210131\LY_SINTER _V1.4\LY_SINTER\Custom\Alarm.cs:行号 52
+

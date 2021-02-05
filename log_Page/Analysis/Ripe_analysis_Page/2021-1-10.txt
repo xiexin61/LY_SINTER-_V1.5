@@ -1,0 +1,16 @@
+
+2021/1/10 13:35:01.907     ERROR  Time_Now方法失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Analysis.Ripe_analysis.Time_Now() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Analysis\Ripe_analysis.cs:行号 100
+
+2021/1/10 13:39:23.426     ERROR  Time_Now方法失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Analysis.Ripe_analysis.Time_Now() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Analysis\Ripe_analysis.cs:行号 100
+
+2021/1/10 13:40:46.146     ERROR  Time_Now方法失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Analysis.Ripe_analysis.Time_Now() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Analysis\Ripe_analysis.cs:行号 100
+
+2021/1/10 13:40:58.543     ERROR  Time_Now方法失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Analysis.Ripe_analysis.Time_Now() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Analysis\Ripe_analysis.cs:行号 100
+
+2021/1/10 18:49:08.83     ERROR  Time_Now方法失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Analysis.Ripe_analysis.Time_Now() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Analysis\Ripe_analysis.cs:行号 100
+

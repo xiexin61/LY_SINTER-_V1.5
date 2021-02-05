@@ -1,0 +1,954 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{14499B9F-B4C0-4299-B67B-17A67922A49A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LY_SINTER</RootNamespace>
+    <AssemblyName>LY_SINTER</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>32_LOGO.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.SpellChecker.v16.2.Core, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraSpellChecker.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.WinForms, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\LiveCharts.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="LRpc, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\LRpc.dll</HintPath>
+    </Reference>
+    <Reference Include="LWebBrowser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\LWebBrowser.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.DocumentObjectModel-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\MigraDoc.DocumentObjectModel-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\MigraDoc.Rendering-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\MigraDoc.RtfRendering-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\NBSJ_PICAL\dll\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot, Version=2.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Core.2.0.0\lib\net45\OxyPlot.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Pdf, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c167629db8cf8ad9, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Pdf.2.0.0\lib\net452\OxyPlot.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.WindowsForms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=245eacd6b5d2d338, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.WindowsForms.2.0.0\lib\net45\OxyPlot.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="OxyPlot.Wpf, Version=2.0.0.0, Culture=neutral, PublicKeyToken=75e952ba404cdbb0, processorArchitecture=MSIL">
+      <HintPath>..\packages\OxyPlot.Wpf.2.0.0\lib\net45\OxyPlot.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\PdfSharp-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\PdfSharp.Charting-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="SqlSugar, Version=5.0.0.12, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SqlSugar.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WF, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WF.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Custom\Alarm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom\Alarm.Designer.cs">
+      <DependentUpon>Alarm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Custom\DateTimeChoser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Custom\DateTimeChoser.designer.cs">
+      <DependentUpon>DateTimeChoser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Custom\RowMergeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Custom\RowMergeView.designer.cs">
+      <DependentUpon>RowMergeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Main.Designer.cs">
+      <DependentUpon>Form_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ANALYSIS_MODEL.cs" />
+    <Compile Include="Model\Course_MODEL.cs" />
+    <Compile Include="Model\GetIpAddress.cs" />
+    <Compile Include="Model\Ingredient_Model.cs" />
+    <Compile Include="Model\Message_Logging.cs" />
+    <Compile Include="Model\MIX_PAGE_MODEL.cs" />
+    <Compile Include="Model\Parameter_Model.cs" />
+    <Compile Include="Model\Quality_Model.cs" />
+    <Compile Include="Model\User_Level.cs" />
+    <Compile Include="PAGE\Analysis\gaoluruluyuanliao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Analysis\gaoluruluyuanliao.designer.cs">
+      <DependentUpon>gaoluruluyuanliao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Analysis\Production_state.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Analysis\Production_state.Designer.cs">
+      <DependentUpon>Production_state.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Analysis\Raw_analysis.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Analysis\Raw_analysis.Designer.cs">
+      <DependentUpon>Raw_analysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Analysis\Ripe_analysis.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Analysis\Ripe_analysis.Designer.cs">
+      <DependentUpon>Ripe_analysis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Analysis\shaojieqitayuanliaojcxn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Analysis\shaojieqitayuanliaojcxn.designer.cs">
+      <DependentUpon>shaojieqitayuanliaojcxn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Analysis\shengchanyuanliaoxiaohao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Analysis\shengchanyuanliaoxiaohao.designer.cs">
+      <DependentUpon>shengchanyuanliaoxiaohao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Analysis\shengchanzuzhi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Analysis\shengchanzuzhi.designer.cs">
+      <DependentUpon>shengchanzuzhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Analysis\tiekuangfenjichuxingneng.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Analysis\tiekuangfenjichuxingneng.designer.cs">
+      <DependentUpon>tiekuangfenjichuxingneng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Analysis\youhuapeikuangjisuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Analysis\youhuapeikuangjisuan.designer.cs">
+      <DependentUpon>youhuapeikuangjisuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Course\Add_Water.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Course\Add_Water.Designer.cs">
+      <DependentUpon>Add_Water.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Course\Bed_Permeability.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Course\Bed_Permeability.Designer.cs">
+      <DependentUpon>Bed_Permeability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Course\BTP.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Course\BTP.Designer.cs">
+      <DependentUpon>BTP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Course\Deviation_guide.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Course\Deviation_guide.Designer.cs">
+      <DependentUpon>Deviation_guide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\HIS\Model_records.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\HIS\Model_records.Designer.cs">
+      <DependentUpon>Model_records.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\HIS\shishiquxianchaxun.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\HIS\shishiquxianchaxun.designer.cs">
+      <DependentUpon>shishiquxianchaxun.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\HIS\shishi_liangchengsheding.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PAGE\HIS\shishi_liangchengsheding.designer.cs">
+      <DependentUpon>shishi_liangchengsheding.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Ore\gaoluruluyuanliao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Ore\gaoluruluyuanliao.designer.cs">
+      <DependentUpon>gaoluruluyuanliao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Ore\shaojieqitayuanliaojcxn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Ore\shaojieqitayuanliaojcxn.designer.cs">
+      <DependentUpon>shaojieqitayuanliaojcxn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Ore\youhuapeikuangjisuan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Ore\youhuapeikuangjisuan.designer.cs">
+      <DependentUpon>youhuapeikuangjisuan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Parameter\Class_Plan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Parameter\Class_Plan.Designer.cs">
+      <DependentUpon>Class_Plan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Parameter\Ingredient.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Parameter\Ingredient.Designer.cs">
+      <DependentUpon>Ingredient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Parameter\production_Records.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Parameter\production_Records.Designer.cs">
+      <DependentUpon>production_Records.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Quality\Balance_Mine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Quality\Balance_Mine.Designer.cs">
+      <DependentUpon>Balance_Mine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Quality\Mine_Forecast.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Quality\Mine_Forecast.Designer.cs">
+      <DependentUpon>Mine_Forecast.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Quality\Quality_automatic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Quality\Quality_automatic.Designer.cs">
+      <DependentUpon>Quality_automatic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_FKFXN_csxg2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_FKFXN_csxg2.Designer.cs">
+      <DependentUpon>Frm_FKFXN_csxg2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_GLRL_update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_GLRL_update.Designer.cs">
+      <DependentUpon>Frm_GLRL_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_JHPK_insert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_JHPK_insert.Designer.cs">
+      <DependentUpon>Frm_JHPK_insert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_JHPK_update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_JHPK_update.Designer.cs">
+      <DependentUpon>Frm_JHPK_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Production_state_Class.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Production_state_Class.Designer.cs">
+      <DependentUpon>Frm_Production_state_Class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Production_state_Heap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Production_state_Heap.Designer.cs">
+      <DependentUpon>Frm_Production_state_Heap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Production_state_Mon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Production_state_Mon.Designer.cs">
+      <DependentUpon>Frm_Production_state_Mon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Production_state_Parameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Production_state_Parameter.Designer.cs">
+      <DependentUpon>Frm_Production_state_Parameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_QTYL_update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_QTYL_update.Designer.cs">
+      <DependentUpon>Frm_QTYL_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Ripe_analysis_CLASS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Ripe_analysis_CLASS.Designer.cs">
+      <DependentUpon>Frm_Ripe_analysis_CLASS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Ripe_analysis_HEAP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Ripe_analysis_HEAP.Designer.cs">
+      <DependentUpon>Frm_Ripe_analysis_HEAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Ripe_analysis_Mon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Ripe_analysis_Mon.Designer.cs">
+      <DependentUpon>Frm_Ripe_analysis_Mon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Ripe_analysis_PAR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_Ripe_analysis_PAR.designer.cs">
+      <DependentUpon>Frm_Ripe_analysis_PAR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Ore\tiekuangfenjichuxingneng.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Ore\tiekuangfenjichuxingneng.designer.cs">
+      <DependentUpon>tiekuangfenjichuxingneng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_SSZZ_clsjcx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_SSZZ_clsjcx.Designer.cs">
+      <DependentUpon>Frm_SSZZ_clsjcx.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_SSZZ_yjhcl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_SSZZ_yjhcl.Designer.cs">
+      <DependentUpon>Frm_SSZZ_yjhcl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_TKFXN_CSXG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_TKFXN_CSXG.Designer.cs">
+      <DependentUpon>Frm_TKFXN_CSXG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_TKFXN_update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_TKFXN_update.Designer.cs">
+      <DependentUpon>Frm_TKFXN_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Add_Water_adjustment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Add_Water_adjustment.Designer.cs">
+      <DependentUpon>Frm_Add_Water_adjustment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Add_Water_PAR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Add_Water_PAR.Designer.cs">
+      <DependentUpon>Frm_Add_Water_PAR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Bed_Permeability_Adjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Bed_Permeability_Adjust.Designer.cs">
+      <DependentUpon>Frm_Bed_Permeability_Adjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Bed_Permeability_PAR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Bed_Permeability_PAR.Designer.cs">
+      <DependentUpon>Frm_Bed_Permeability_PAR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_BTP_Adjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_BTP_Adjust.Designer.cs">
+      <DependentUpon>Frm_BTP_Adjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_BTP_Guide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_BTP_Guide.Designer.cs">
+      <DependentUpon>Frm_BTP_Guide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_BTP_Par.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_BTP_Par.Designer.cs">
+      <DependentUpon>Frm_BTP_Par.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Deviation_guide_Adjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Deviation_guide_Adjust.Designer.cs">
+      <DependentUpon>Frm_Deviation_guide_Adjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Deviation_guide_PAR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Course\Frm_Deviation_guide_PAR.Designer.cs">
+      <DependentUpon>Frm_Deviation_guide_PAR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Ore\Frm_FKFXN_csxg2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Ore\Frm_FKFXN_csxg2.designer.cs">
+      <DependentUpon>Frm_FKFXN_csxg2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Ore\Frm_GLRL_update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Ore\Frm_GLRL_update.designer.cs">
+      <DependentUpon>Frm_GLRL_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Ore\Frm_JHPK_insert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Ore\Frm_JHPK_insert.designer.cs">
+      <DependentUpon>Frm_JHPK_insert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Ore\Frm_QTYL_update.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Ore\Frm_QTYL_update.designer.cs">
+      <DependentUpon>Frm_QTYL_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Ore\Frm_TKFXN_CSXG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Ore\Frm_TKFXN_CSXG.designer.cs">
+      <DependentUpon>Frm_TKFXN_CSXG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Parameter\Frm_production_Records_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Parameter\Frm_production_Records_1.Designer.cs">
+      <DependentUpon>Frm_production_Records_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Parameter\Frm_production_Records_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Parameter\Frm_production_Records_2.Designer.cs">
+      <DependentUpon>Frm_production_Records_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Parameter\Frm_production_Records_3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Parameter\Frm_production_Records_3.Designer.cs">
+      <DependentUpon>Frm_production_Records_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Parameter\Frm_production_Records_4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Parameter\Frm_production_Records_4.Designer.cs">
+      <DependentUpon>Frm_production_Records_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Parameter\Ingredient_auto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Parameter\Ingredient_auto.Designer.cs">
+      <DependentUpon>Ingredient_auto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Parameter\Ingredient_Protect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Parameter\Ingredient_Protect.Designer.cs">
+      <DependentUpon>Ingredient_Protect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Parameter\Ingredient_supplement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Parameter\Ingredient_supplement.Designer.cs">
+      <DependentUpon>Ingredient_supplement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Parameter\Untreated_popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Parameter\Untreated_popup.Designer.cs">
+      <DependentUpon>Untreated_popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Quality\MIX_Intelligent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Quality\MIX_Intelligent.Designer.cs">
+      <DependentUpon>MIX_Intelligent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Parameter\Button_untreated.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Parameter\Button_untreated.Designer.cs">
+      <DependentUpon>Button_untreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Parameter\Ingredient_Popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Parameter\Ingredient_Popup.Designer.cs">
+      <DependentUpon>Ingredient_Popup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Parameter\protect_add.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Parameter\protect_add.Designer.cs">
+      <DependentUpon>protect_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Parameter\protect_del.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Parameter\protect_del.Designer.cs">
+      <DependentUpon>protect_del.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_Automatic_Adjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_Automatic_Adjust.Designer.cs">
+      <DependentUpon>Frm_Automatic_Adjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_Automatic_PAR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_Automatic_PAR.Designer.cs">
+      <DependentUpon>Frm_Automatic_PAR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_Balance_Mine_Adjust.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_Balance_Mine_Adjust.Designer.cs">
+      <DependentUpon>Frm_Balance_Mine_Adjust.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_Balance_Mine_Par.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_Balance_Mine_Par.Designer.cs">
+      <DependentUpon>Frm_Balance_Mine_Par.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_MIX_Element.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_MIX_Element.Designer.cs">
+      <DependentUpon>Frm_MIX_Element.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_MIX_Ingredient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_MIX_Ingredient.Designer.cs">
+      <DependentUpon>Frm_MIX_Ingredient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_MIX_Parameter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_MIX_Parameter.Designer.cs">
+      <DependentUpon>Frm_MIX_Parameter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_MIX_SRMCAL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_MIX_SRMCAL.Designer.cs">
+      <DependentUpon>Frm_MIX_SRMCAL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_PB_MESSAGE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Quality\Frm_PB_MESSAGE.Designer.cs">
+      <DependentUpon>Frm_PB_MESSAGE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Register.Designer.cs">
+      <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Custom\Alarm.resx">
+      <DependentUpon>Alarm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Custom\RowMergeView.resx">
+      <DependentUpon>RowMergeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Main.resx">
+      <DependentUpon>Form_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Analysis\gaoluruluyuanliao.resx">
+      <DependentUpon>gaoluruluyuanliao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Analysis\Production_state.resx">
+      <DependentUpon>Production_state.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Analysis\Raw_analysis.resx">
+      <DependentUpon>Raw_analysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Analysis\Ripe_analysis.resx">
+      <DependentUpon>Ripe_analysis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Analysis\shaojieqitayuanliaojcxn.resx">
+      <DependentUpon>shaojieqitayuanliaojcxn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Analysis\shengchanyuanliaoxiaohao.resx">
+      <DependentUpon>shengchanyuanliaoxiaohao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Analysis\shengchanzuzhi.resx">
+      <DependentUpon>shengchanzuzhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Analysis\tiekuangfenjichuxingneng.resx">
+      <DependentUpon>tiekuangfenjichuxingneng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Analysis\youhuapeikuangjisuan.resx">
+      <DependentUpon>youhuapeikuangjisuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Course\Add_Water.resx">
+      <DependentUpon>Add_Water.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Course\Bed_Permeability.resx">
+      <DependentUpon>Bed_Permeability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Course\BTP.resx">
+      <DependentUpon>BTP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Course\Deviation_guide.resx">
+      <DependentUpon>Deviation_guide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\HIS\Model_records.resx">
+      <DependentUpon>Model_records.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\HIS\shishiquxianchaxun.resx">
+      <DependentUpon>shishiquxianchaxun.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\HIS\shishi_liangchengsheding.resx">
+      <DependentUpon>shishi_liangchengsheding.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Ore\gaoluruluyuanliao.resx">
+      <DependentUpon>gaoluruluyuanliao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Ore\shaojieqitayuanliaojcxn.resx">
+      <DependentUpon>shaojieqitayuanliaojcxn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Ore\youhuapeikuangjisuan.resx">
+      <DependentUpon>youhuapeikuangjisuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Parameter\Class_Plan.resx">
+      <DependentUpon>Class_Plan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Parameter\Ingredient.resx">
+      <DependentUpon>Ingredient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Parameter\production_Records.resx">
+      <DependentUpon>production_Records.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Quality\Balance_Mine.resx">
+      <DependentUpon>Balance_Mine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Quality\Mine_Forecast.resx">
+      <DependentUpon>Mine_Forecast.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Quality\Quality_automatic.resx">
+      <DependentUpon>Quality_automatic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_FKFXN_csxg2.resx">
+      <DependentUpon>Frm_FKFXN_csxg2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_GLRL_update.resx">
+      <DependentUpon>Frm_GLRL_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_JHPK_insert.resx">
+      <DependentUpon>Frm_JHPK_insert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_JHPK_update.resx">
+      <DependentUpon>Frm_JHPK_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_Production_state_Class.resx">
+      <DependentUpon>Frm_Production_state_Class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_Production_state_Heap.resx">
+      <DependentUpon>Frm_Production_state_Heap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_Production_state_Mon.resx">
+      <DependentUpon>Frm_Production_state_Mon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_Production_state_Parameter.resx">
+      <DependentUpon>Frm_Production_state_Parameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_QTYL_update.resx">
+      <DependentUpon>Frm_QTYL_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_Ripe_analysis_CLASS.resx">
+      <DependentUpon>Frm_Ripe_analysis_CLASS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_Ripe_analysis_HEAP.resx">
+      <DependentUpon>Frm_Ripe_analysis_HEAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_Ripe_analysis_Mon.resx">
+      <DependentUpon>Frm_Ripe_analysis_Mon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_Ripe_analysis_PAR.resx">
+      <DependentUpon>Frm_Ripe_analysis_PAR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Ore\tiekuangfenjichuxingneng.resx">
+      <DependentUpon>tiekuangfenjichuxingneng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_SSZZ_clsjcx.resx">
+      <DependentUpon>Frm_SSZZ_clsjcx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_SSZZ_yjhcl.resx">
+      <DependentUpon>Frm_SSZZ_yjhcl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_TKFXN_CSXG.resx">
+      <DependentUpon>Frm_TKFXN_CSXG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_TKFXN_update.resx">
+      <DependentUpon>Frm_TKFXN_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Course\Frm_Add_Water_adjustment.resx">
+      <DependentUpon>Frm_Add_Water_adjustment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Course\Frm_Add_Water_PAR.resx">
+      <DependentUpon>Frm_Add_Water_PAR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Course\Frm_Bed_Permeability_Adjust.resx">
+      <DependentUpon>Frm_Bed_Permeability_Adjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Course\Frm_Bed_Permeability_PAR.resx">
+      <DependentUpon>Frm_Bed_Permeability_PAR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Course\Frm_BTP_Adjust.resx">
+      <DependentUpon>Frm_BTP_Adjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Course\Frm_BTP_Guide.resx">
+      <DependentUpon>Frm_BTP_Guide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Course\Frm_BTP_Par.resx">
+      <DependentUpon>Frm_BTP_Par.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Course\Frm_Deviation_guide_Adjust.resx">
+      <DependentUpon>Frm_Deviation_guide_Adjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Course\Frm_Deviation_guide_PAR.resx">
+      <DependentUpon>Frm_Deviation_guide_PAR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Ore\Frm_FKFXN_csxg2.resx">
+      <DependentUpon>Frm_FKFXN_csxg2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Ore\Frm_GLRL_update.resx">
+      <DependentUpon>Frm_GLRL_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Ore\Frm_JHPK_insert.resx">
+      <DependentUpon>Frm_JHPK_insert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Ore\Frm_QTYL_update.resx">
+      <DependentUpon>Frm_QTYL_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Ore\Frm_TKFXN_CSXG.resx">
+      <DependentUpon>Frm_TKFXN_CSXG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Parameter\Frm_production_Records_1.resx">
+      <DependentUpon>Frm_production_Records_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Parameter\Frm_production_Records_2.resx">
+      <DependentUpon>Frm_production_Records_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Parameter\Frm_production_Records_3.resx">
+      <DependentUpon>Frm_production_Records_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Parameter\Frm_production_Records_4.resx">
+      <DependentUpon>Frm_production_Records_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Parameter\Ingredient_auto.resx">
+      <DependentUpon>Ingredient_auto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Parameter\Ingredient_Protect.resx">
+      <DependentUpon>Ingredient_Protect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Parameter\Ingredient_supplement.resx">
+      <DependentUpon>Ingredient_supplement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Parameter\Untreated_popup.resx">
+      <DependentUpon>Untreated_popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Quality\MIX_Intelligent.resx">
+      <DependentUpon>MIX_Intelligent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Parameter\Button_untreated.resx">
+      <DependentUpon>Button_untreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Parameter\Ingredient_Popup.resx">
+      <DependentUpon>Ingredient_Popup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Parameter\protect_add.resx">
+      <DependentUpon>protect_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Parameter\protect_del.resx">
+      <DependentUpon>protect_del.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Quality\Frm_Automatic_Adjust.resx">
+      <DependentUpon>Frm_Automatic_Adjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Quality\Frm_Automatic_PAR.resx">
+      <DependentUpon>Frm_Automatic_PAR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Quality\Frm_Balance_Mine_Adjust.resx">
+      <DependentUpon>Frm_Balance_Mine_Adjust.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Quality\Frm_Balance_Mine_Par.resx">
+      <DependentUpon>Frm_Balance_Mine_Par.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Quality\Frm_MIX_Element.resx">
+      <DependentUpon>Frm_MIX_Element.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Quality\Frm_MIX_Ingredient.resx">
+      <DependentUpon>Frm_MIX_Ingredient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Quality\Frm_MIX_Parameter.resx">
+      <DependentUpon>Frm_MIX_Parameter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Quality\Frm_MIX_SRMCAL.resx">
+      <DependentUpon>Frm_MIX_SRMCAL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Quality\Frm_PB_MESSAGE.resx">
+      <DependentUpon>Frm_PB_MESSAGE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Register.resx">
+      <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataBase\DataBase.csproj">
+      <Project>{2a6084ae-6b60-482a-89c9-15732b9e11cf}</Project>
+      <Name>DataBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogHander\vLog.csproj">
+      <Project>{75815df9-1b69-4131-9256-2ce9bf372b76}</Project>
+      <Name>vLog</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MIXHMICAL\MIXHMICAL.csproj">
+      <Project>{6b1f1198-a49f-44eb-bfbf-1b4a21592752}</Project>
+      <Name>MIXHMICAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NBSJ_MAIN_UC\NBSJ_MAIN_UC.csproj">
+      <Project>{b6437234-d8fa-4c70-86aa-99948a850b20}</Project>
+      <Name>NBSJ_MAIN_UC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NBSJ_PICAL\NBSJ_PICAL.csproj">
+      <Project>{e85d97d6-8d84-44a5-93ec-8f56afefd7e4}</Project>
+      <Name>NBSJ_PICAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="32_LOGO.ico" />
+    <Content Include="Read_me.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,4 @@
+
+2021/1/17 15:09:12.416     ERROR  数据查询失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.Custom.Alarm.data() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.3\LY_SINTER\Custom\Alarm.cs:行号 52
+

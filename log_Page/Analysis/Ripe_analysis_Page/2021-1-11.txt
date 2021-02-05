@@ -1,0 +1,4 @@
+
+2021/1/11 9:44:20.148     ERROR  Time_Now方法失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Analysis.Ripe_analysis.Time_Now()
+

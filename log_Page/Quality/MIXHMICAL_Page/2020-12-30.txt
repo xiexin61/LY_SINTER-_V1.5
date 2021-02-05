@@ -1,0 +1,4 @@
+
+2020/12/30 8:38:35.730     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\LY_SINTER\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1869
+

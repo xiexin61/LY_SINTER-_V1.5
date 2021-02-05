@@ -1,0 +1,152 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace NBSJ_PICAL
+{
+   public class C_MFI_PLC_1MIN
+    {
+
+        public DateTime TIMESTAMP { get; set; }
+        public int M_PLC_1M_B_B_SIGNAL { get; set; }
+        public float M_PLC_1M_B_W { get; set; }
+        public float M_PLC_1M_B_B_SPEED { get; set; }
+        public float M_PLC_1M_B_WATER_PV { get; set; }
+        public int M_PLC_1M_MIX_SIGNAL { get; set; }
+        public float M_PLC_1M_MIX_SPEED { get; set; }
+        public int M_PLC_1M_WATER_BUTTON { get; set; }
+        public float M_PLC_1M_WATER_SP { get; set; }
+        public float M_PLC_1M_FT_SP { get; set; }
+        public float M_PLC_1M_FT_PV { get; set; }
+        public float M_PLC_1M_FT_CAL { get; set; }
+        public float M_PLC_1M_VAL_B_SP { get; set; }
+        public float M_PLC_1M_VAL_B_PV { get; set; }
+        public float M_PLC_1M_VAL_L_SP { get; set; }
+        public float M_PLC_1M_VAL_L_PV { get; set; }
+        public float M_PLC_1M_PT { get; set; }
+        public float M_PLC_1M_TE { get; set; }
+        public float M_PLC_1M_A_WATER_PV { get; set; }
+        public int M_PLC_1M_A_B_SIGNAL { get; set; }
+        public float M_PLC_1M_A_B_SPEED { get; set; }
+        public float M_PLC_1M_A_W { get; set; }
+        public int M_PLC_1M_COUNTER { get; set; }
+        public int M_PLC_2M_MIX_SIGNAL { get; set; }
+        public float M_PLC_2M_MIX_SPEED { get; set; }
+        public float M_PLC_2M_WATER_SP { get; set; }
+        public float M_PLC_2M_FT_SP { get; set; }
+        public float M_PLC_2M_FT_PV { get; set; }
+        public float M_PLC_2M_VAL_SP { get; set; }
+        public float M_PLC_2M_VAL_PV { get; set; }
+        public float M_PLC_2M_PT { get; set; }
+        public float M_PLC_2M_TE { get; set; }
+        public float M_PLC_2M_A_WATER_PV { get; set; }
+        public int M_PLC_2M_A_B_SIGNAL { get; set; }
+        public float M_PLC_2M_A_B_SPEED { get; set; }
+        public float M_PLC_2M_A_W { get; set; }
+        public float M_PLC_FUEL_WATER_PV_1 { get; set; }
+        public float M_PLC_FUEL_WATER_PV_2 { get; set; }
+        public float M_PLC_DUST_FT_PV { get; set; }
+        public float M_PLC_LIME_FT_PV { get; set; }
+        public int F_PLC_IN_SK_SIGNAL { get; set; }
+        public float F_PLC_IN_SK_SPEED { get; set; }
+        public float F_PLC_SHUTTLE_RATE { get; set; }
+        public int F_PLC_SHUTTLE_S_SIGNAL { get; set; }
+        public int F_PLC_LEVEL_BUTTON { get; set; }
+        public float F_PLC_BLEND_LEVEL { get; set; }
+        public float F_PLC_BLEND_TAR_LEVEL { get; set; }
+        public float F_PLC_BLEND_TE { get; set; }
+        public float F_PLC_STEAM_AVG { get; set; }
+        public int F_PLC_STICK_SIGNAL { get; set; }
+        public float F_PLC_STICK_SP { get; set; }
+        public float F_PLC_STICK_PV { get; set; }
+        public float F_PLC_STICK_SP_OUT { get; set; }
+        public int F_PLC_SIN_SIGNAL { get; set; }
+        public float F_PLC_SIN_SPEED_SP { get; set; }
+        public float F_PLC_SIN_SPEED_PV { get; set; }
+        public float F_PLC_SIN_SPEED_SP_OUT { get; set; }
+        public float F_PLC_N_STICK_A_SP { get; set; }
+        public float F_PLC_N_STICK_A_PV { get; set; }
+        public int F_PLC_N_STICK_A_SIGNAL { get; set; }
+        public float F_PLC_BED_MATERAL_W { get; set; }
+        public float F_PLC_BED_MATERAL_TH { get; set; }
+        public float F_PLC_BIG_SG_O_SP { get; set; }
+        public float F_PLC_BIG_SG_O_PV { get; set; }
+        public float F_PLC_SMALL_SG_O_SP_1 { get; set; }
+        public float F_PLC_SMALL_SG_O_SP_2 { get; set; }
+        public float F_PLC_SMALL_SG_O_SP_3 { get; set; }
+        public float F_PLC_SMALL_SG_O_SP_4 { get; set; }
+        public float F_PLC_SMALL_SG_O_SP_5 { get; set; }
+        public float F_PLC_SMALL_SG_O_SP_6 { get; set; }
+        public float F_PLC_SMALL_SG_O_PV_1 { get; set; }
+        public float F_PLC_SMALL_SG_O_PV_2 { get; set; }
+        public float F_PLC_SMALL_SG_O_PV_3 { get; set; }
+        public float F_PLC_SMALL_SG_O_PV_4 { get; set; }
+        public float F_PLC_SMALL_SG_O_PV_5 { get; set; }
+        public float F_PLC_SMALL_SG_O_PV_6 { get; set; }
+        public float F_PLC_SMALL_SG_TH_SP_1 { get; set; }
+        public float F_PLC_SMALL_SG_TH_SP_2 { get; set; }
+        public float F_PLC_SMALL_SG_TH_SP_3 { get; set; }
+        public float F_PLC_SMALL_SG_TH_SP_4 { get; set; }
+        public float F_PLC_SMALL_SG_TH_SP_5 { get; set; }
+        public float F_PLC_SMALL_SG_TH_SP_6 { get; set; }
+        public float F_PLC_SMALL_SG_TH_PV_1 { get; set; }
+        public float F_PLC_SMALL_SG_TH_PV_2 { get; set; }
+        public float F_PLC_SMALL_SG_TH_PV_3 { get; set; }
+        public float F_PLC_SMALL_SG_TH_PV_4 { get; set; }
+        public float F_PLC_SMALL_SG_TH_PV_5 { get; set; }
+        public float F_PLC_SMALL_SG_TH_PV_6 { get; set; }
+        public int F_PLC_CLOTH_BUTTON { get; set; }
+        public int F_PLC_SMALL_SG_AUTO_1 { get; set; }
+        public int F_PLC_SMALL_SG_AUTO_2 { get; set; }
+        public int F_PLC_SMALL_SG_AUTO_3 { get; set; }
+        public int F_PLC_SMALL_SG_AUTO_4 { get; set; }
+        public int F_PLC_SMALL_SG_AUTO_5 { get; set; }
+        public int F_PLC_SMALL_SG_AUTO_6 { get; set; }
+        public float F_PLC_THICK_PV { get; set; }
+        public float F_PLC_THICK_SP { get; set; }
+        public float F_PLC_SMALL_SG_TH_A_1 { get; set; }
+        public float F_PLC_SMALL_SG_TH_A_2 { get; set; }
+        public float F_PLC_SMALL_SG_TH_A_3 { get; set; }
+        public float F_PLC_SMALL_SG_TH_A_4 { get; set; }
+        public float F_PLC_SMALL_SG_TH_A_5 { get; set; }
+        public float F_PLC_SMALL_SG_TH_A_6 { get; set; }
+        public float I_PLC_AIM_TE { get; set; }
+        public float I_PLC_AIM_AFR { get; set; }
+        public float I_PLC_IS_AIR_PT { get; set; }
+        public float I_PLC_IS_GAS_PT { get; set; }
+        public float I_PLC_IS_AIR_FT { get; set; }
+        public float I_PLC_IS_GAS_FT { get; set; }
+        public float I_PLC_IG_HE_PT { get; set; }
+        public float I_PLC_IG_AIR_TE { get; set; }
+        public float I_PLC_IG_AIR_PT { get; set; }
+        public float I_PLC_IG_GAS_PT { get; set; }
+        public float I_PLC_IG_GAS_SP { get; set; }
+        public float I_PLC_IG_AIR_SP { get; set; }
+        public float I_PLC_IG_GAS_PV { get; set; }
+        public float I_PLC_IG_AIR_PV { get; set; }
+        public float I_PLC_IG_GAS_ZT_SP { get; set; }
+        public float I_PLC_IG_AIR_ZT_SP { get; set; }
+        public float I_PLC_IG_GAS_ZT_PV { get; set; }
+        public float I_PLC_IG_AIR_ZT_PV { get; set; }
+        public float I_PLC_IG_01_TE { get; set; }
+        public float I_PLC_IG_02_TE { get; set; }
+        public float I_PLC_IG_03_TE { get; set; }
+        public float I_PLC_HP_HE_PT { get; set; }
+        public float I_PLC_HP_GAS_PT { get; set; }
+        public float I_PLC_HP_AIR_PT { get; set; }
+        public float I_PLC_HP_GAS_SP { get; set; }
+        public float I_PLC_HP_AIR_SP { get; set; }
+        public float I_PLC_HP_GAS_PV { get; set; }
+        public float I_PLC_HP_AIR_PV { get; set; }
+        public float I_PLC_HP_GAS_ZT_SP { get; set; }
+        public float I_PLC_HP_AIR_ZT_SP { get; set; }
+        public float I_PLC_HP_GAS_ZT_PV { get; set; }
+        public float I_PLC_HP_AIR_ZT_PV { get; set; }
+        public float I_PLC_HP_01_TE { get; set; }
+        public float I_PLC_HP_02_TE { get; set; }
+        public float F_PLC_THICK_AIM { get; set; }
+
+    }
+}

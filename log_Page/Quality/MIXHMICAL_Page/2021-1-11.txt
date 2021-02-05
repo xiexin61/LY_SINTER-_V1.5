@@ -1,0 +1,25 @@
+
+2021/1/11 0:00:27.615     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1962
+
+2021/1/11 0:01:27.626     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1962
+
+2021/1/11 0:02:27.626     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1962
+
+2021/1/11 0:03:27.641     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1962
+
+2021/1/11 0:04:27.641     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1962
+
+2021/1/11 0:05:27.642     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1962
+
+2021/1/11 0:06:27.643     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1962
+
+2021/1/11 0:07:27.643     ERROR  ***********_Timer2_Tick()方法周期查询返矿调整配比弹出框失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.PAGE.Quality.MIX_Intelligent._Timer2_Tick() 位置 G:\陵源钢铁\代码\LY_SINTER _V1.2\LY_SINTER\PAGE\Quality\MIX_Intelligent.cs:行号 1962
+
