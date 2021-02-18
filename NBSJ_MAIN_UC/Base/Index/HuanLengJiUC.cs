@@ -137,6 +137,10 @@ namespace UserControlIndex
             矩形4 = new Rectangle((int)(this.Width * 0.8f), y3, 60, 30);
             graphics.DrawString("出口:" + ckTemp + "℃", Font, shuziColor, 矩形4, sf);//"出口温度"
             ////Rectangle 矩形5 = new Rectangle((int)(this.Width * 0.85f), y3 + (int)(h3 * 0.4f), (int)(this.Width * fontWidth), 30);
+            Rectangle 矩形51 = new Rectangle((int)(this.Width * 0.82f-40), this.Height - 32, 60, 30);
+            //graphics.DrawString("t", Font, shuziColor, 矩形51, sf);
+            graphics.DrawString(gLJ_LW + "t", Font, shuziColor, 矩形51, sf);
+
             Rectangle 矩形5 = new Rectangle((int)(this.Width * 0.82f), this.Height - 32, 60, 30);
             ////graphics.DrawString("设定机速", Font, shuziColor, 矩形5, sf);
             //graphics.DrawString(bsgkj_Set_SPEED + "Hz", Font, shuziColor, 矩形5, sf);
@@ -272,6 +276,19 @@ namespace UserControlIndex
         string hlj_Read_SPEED = "";
         string bsgkj_Set_SPEED = "";
         string bsgkj_Read_SPEED = "";
+        string gLJ_LW = "";
+        [Browsable(true), Description("给料机料位。"), DefaultValue(typeof(string), "给料机料位"), Category("Appearance")]
+        public string GLJ_LW
+        {
+            get
+            {
+                return this.gLJ_LW;
+            }
+            set
+            {
+                this.gLJ_LW = value;
+            }
+        }
         [Browsable(true), Description("环冷机设定机速。"), DefaultValue(typeof(string), "环冷机设定机速值"), Category("Appearance")]
         public string Hlj_Set_SPEED
         {

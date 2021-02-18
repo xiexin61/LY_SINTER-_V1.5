@@ -19,11 +19,32 @@ namespace LY_SINTER.PAGE.Analysis
         public tiekuangfenjichuxingneng()
         {
             InitializeComponent();
+            dateTimePicker_value();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
             this.rowMergeView1.AddSpanHeader(4, 8, "粒度组成%");
             getNewTime();
             getName();
+        }
+        /// <summary>
+        /// 开始时间&结束时间赋值
+        /// </summary>
+        public void dateTimePicker_value()
+        {
+            try
+            {
+                //结束时间
+                DateTime time_end = DateTime.Now;
+                //开始时间
+                DateTime time_begin = time_end.AddMonths(-1);
+
+                textBox_begin.Text = time_begin.ToString();
+                textBox_end.Text = time_end.ToString();
+            }
+            catch (Exception ee)
+            {
+
+            }
         }
         //获取物料名信息
         public void getName()

@@ -46,6 +46,7 @@ namespace LY_SINTER.PAGE.Analysis
             GetNewTime();
             llpizhong();
             pizhong();
+            dateTimePicker_value();
             //默认显示一个月数据
             DateTime d1 = DateTime.Now.AddMonths(-1);
             DateTime d2 = DateTime.Now;
@@ -65,6 +66,26 @@ namespace LY_SINTER.PAGE.Analysis
             Check_text();
             //MongoQMtimer1_Elapsed();
             //windowformRefresh();
+        }
+        /// <summary>
+        /// 开始时间&结束时间赋值
+        /// </summary>
+        public void dateTimePicker_value()
+        {
+            try
+            {
+                //结束时间
+                DateTime time_end = DateTime.Now;
+                //开始时间
+                DateTime time_begin = time_end.AddMonths(-1);
+
+                textBox_begin.Text = time_begin.ToString();
+                textBox_end.Text = time_end.ToString();
+            }
+            catch (Exception ee)
+            {
+
+            }
         }
         public void UC_Load()
         {
@@ -100,7 +121,7 @@ namespace LY_SINTER.PAGE.Analysis
         {
             this.bottleAllUC1.Dock = System.Windows.Forms.DockStyle.Fill;
             //料仓
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 10; i++)
             {
                 bottleAllUC1.BottomItems.Add(new BottleItem { BottleType = BottleType.BottleSingle });
                 bottleAllUC1.BottomItems[i].BottleObj.Value = (i + 1) * 10;
@@ -1030,6 +1051,7 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 form_display.Activate();
             }
+            sszzjh();
         }
         //产量数据查询按钮
         private void simpleButton5_click(object sender, EventArgs e)

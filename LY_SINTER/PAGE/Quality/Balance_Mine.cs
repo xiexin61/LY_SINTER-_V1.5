@@ -352,6 +352,9 @@ namespace LY_SINTER.PAGE.Quality
                         _myPlotModel_His.Series.Add(series4_His);
                     }
                     curve_his.Model = _myPlotModel_His;
+                    var PlotController = new OxyPlot.PlotController();
+                    PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
+                    curve_his.Controller = PlotController;
 
                 }
 
@@ -701,7 +704,7 @@ namespace LY_SINTER.PAGE.Quality
                         StrokeThickness = 1,
                         MarkerSize = 3,
                         MarkerStroke = OxyColors.Red,
-                        MarkerType = MarkerType.None,
+                        MarkerType = MarkerType.Circle,
                         YAxisKey = "A",
                         ItemsSource = Line1,
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}  总出料量:{4}t",
@@ -757,6 +760,9 @@ namespace LY_SINTER.PAGE.Quality
                         _myPlotModel.Series.Add(series2);
                     }
                     plotView1.Model = _myPlotModel;
+                    var PlotController = new OxyPlot.PlotController();
+                    PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
+                    plotView1.Controller = PlotController;
                 }
                 else
                 {

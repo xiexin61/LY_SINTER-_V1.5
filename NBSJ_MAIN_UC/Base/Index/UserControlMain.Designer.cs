@@ -195,6 +195,7 @@
             this.huanLengJiUC1.CkTemp = "";
             this.huanLengJiUC1.Hlj_Read_SPEED = "";
             this.huanLengJiUC1.Hlj_Set_SPEED = "";
+            this.huanLengJiUC1.GLJ_LW = "";
             this.huanLengJiUC1.Location = new System.Drawing.Point(606, 524);
             this.huanLengJiUC1.Name = "huanLengJiUC1";
             this.huanLengJiUC1.RkTemp = "";

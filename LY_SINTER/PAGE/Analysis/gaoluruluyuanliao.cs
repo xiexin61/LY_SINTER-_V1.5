@@ -19,9 +19,30 @@ namespace LY_SINTER.PAGE.Analysis
         public gaoluruluyuanliao()
         {
             InitializeComponent();
+            dateTimePicker_value();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
             combox();
+        }
+        /// <summary>
+        /// 开始时间&结束时间赋值
+        /// </summary>
+        public void dateTimePicker_value()
+        {
+            try
+            {
+                //结束时间
+                DateTime time_end = DateTime.Now;
+                //开始时间
+                DateTime time_begin = time_end.AddMonths(-1);
+
+                textBox_begin.Text = time_begin.ToString();
+                textBox_end.Text = time_end.ToString();
+            }
+            catch (Exception ee)
+            {
+
+            }
         }
         public void table1GetData(DateTime start, DateTime end)
         {

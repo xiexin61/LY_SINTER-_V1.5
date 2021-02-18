@@ -114,8 +114,8 @@ namespace LY_SINTER.PAGE.Analysis
             this.bottleAllUC1.MinimumSize = new System.Drawing.Size(10, 10);
             this.bottleAllUC1.Name = "bottleAllUC1";
             this.bottleAllUC1.Size = new System.Drawing.Size(1453, 147);
-            this.bottleAllUC1.T_TOTAL_PV_W_3S = "13";
-            this.bottleAllUC1.T_TOTAL_SP_W_3S = "12";
+            this.bottleAllUC1.T_TOTAL_PV_W_3S = "0";
+            this.bottleAllUC1.T_TOTAL_SP_W_3S = "0";
             this.bottleAllUC1.TabIndex = 9;
             // 
             // label67

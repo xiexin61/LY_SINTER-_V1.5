@@ -612,6 +612,9 @@ namespace LY_SINTER.PAGE.Analysis
                     _valueAxis1.IsAxisVisible = true;
                     _myPlotModel.Series.Add(series1);
                     plotView1.Model = _myPlotModel;
+                    var PlotController = new OxyPlot.PlotController();
+                    PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
+                    plotView1.Controller = PlotController;
                 }
             }
             catch (Exception ee)
