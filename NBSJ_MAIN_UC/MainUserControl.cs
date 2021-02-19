@@ -605,7 +605,7 @@ namespace NBSJ_MAIN_UC
             xStart = this.Width * edgeWidthK * 3;
             yStart = yStart + tempFlowUC1.Height - hunHeLiaoCaoYuanGunUC1.Height - buLiaoQiUC1.Height;
             xStart = this.Width * edgeWidthK * 2;
-            this.picYantong.Location = new System.Drawing.Point((int)xStart, (int)(yStart + 5));
+            this.picYantong.Location = new System.Drawing.Point((int)xStart, (int)(yStart + 40));
 
             //传送带
             xStart = this.Width * 0.07f;

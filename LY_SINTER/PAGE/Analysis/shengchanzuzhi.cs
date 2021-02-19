@@ -1146,5 +1146,10 @@ namespace LY_SINTER.PAGE.Analysis
         {
           
         }
+
+        private void tableLayoutPanel38_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

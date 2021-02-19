@@ -39,7 +39,7 @@ namespace LY_SINTER.PAGE.Analysis
                 "C_S,C_P,C_LOT,C_H2O,C_AS,C_PB,C_ZN,C_CU,C_K2O,C_NA2O from MC_ORECAL_MAT_ANA_RECORD where BATCH_NUM = "+ name + "";
             DataTable table = dBSQL.GetCommand(sql1);
             d1.DataSource = table;
-            string sql2 = "select  ROW_NUMBER() over(order by TIMESTAMP) as RowNum,MAT_NAME,MAT_BILL_DRY,MAT_W_DRY,ORE_MAT_BILL_DRY,P_H2O,MAT_BILL_WET,MAT_W_WET,ORE_MAT_BILL_WET,UNIT_PRICE,UNIT_CON_PRICE from MC_ORECAL_ORE_PROJECT_RESULT where BATCH_NUM = " + name + ";";
+            string sql2 = "select  ROW_NUMBER() over(order by TIMESTAMP) as RowNum,MAT_NAME,MAT_BILL_DRY,MAT_W_DRY,ORE_MAT_BILL_DRY,P_H2O,MAT_BILL_WET,MAT_W_WET,ORE_MAT_BILL_WET,UNIT_PRICE,UNIT_CON_PRICE,MAT_WET_ACT from MC_ORECAL_ORE_PROJECT_RESULT where BATCH_NUM = " + name + ";";
             DataTable table2 = dBSQL.GetCommand(sql2);
             d2.DataSource = table2;
             string sql3 = "select top(1) C_TFE_UPPER,C_TFE_LOWER,C_FEO_UPPER,C_FEO_LOWER,C_CAO_UPPER,C_CAO_LOWER,C_SIO2_UPPER,C_SIO2_LOWER,C_AL2O3_UPPER,C_AL2O3_LOWER,C_MGO_UPPER,C_MGO_LOWER," +
@@ -95,8 +95,8 @@ namespace LY_SINTER.PAGE.Analysis
             d4.Rows[1].Cells["NUM"].Value = "本批";
             string sql5 = "select top(1) SINTER_PRICE,TOTAL_MAT_WET from MC_ORECAL_SIN_ANA_RESULT  where BATCH_NUM = " + name + "";
             DataTable table5 = dBSQL.GetCommand(sql5);
-            textBox.Text = table5.Rows[0]["TOTAL_MAT_WET"].ToString();
-            textBox1.Text = table5.Rows[0]["SINTER_PRICE"].ToString();
+            //textBox.Text = table5.Rows[0]["TOTAL_MAT_WET"].ToString();
+            //textBox1.Text = table5.Rows[0]["SINTER_PRICE"].ToString();
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
