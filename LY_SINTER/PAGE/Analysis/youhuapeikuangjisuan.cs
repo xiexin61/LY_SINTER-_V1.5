@@ -93,10 +93,10 @@ namespace LY_SINTER.PAGE.Analysis
             d4.DataSource = table4;
             d4.Rows[0].Cells["NUM"].Value = "上批";
             d4.Rows[1].Cells["NUM"].Value = "本批";
-            string sql5 = "select top(1) SINTER_PRICE,TOTAL_MAT_WET from MC_ORECAL_SIN_ANA_RESULT  where BATCH_NUM = " + name + "";
+            string sql5 = "select top(1) EXP_SINTER_OUTPUT,TOTAL_MAT_WET from MC_ORECAL_SIN_ANA_RESULT  where BATCH_NUM = " + name + "";
             DataTable table5 = dBSQL.GetCommand(sql5);
             //textBox.Text = table5.Rows[0]["TOTAL_MAT_WET"].ToString();
-            //textBox1.Text = table5.Rows[0]["SINTER_PRICE"].ToString();
+            label11.Text = table5.Rows[0]["EXP_SINTER_OUTPUT"].ToString();
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
