@@ -35,7 +35,6 @@ namespace LY_SINTER.PAGE.Analysis
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel38 = new System.Windows.Forms.TableLayoutPanel();
-            this.bottleAllUC1 = new UserControlIndex.BottleAllUC();
             this.label67 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
@@ -79,6 +78,7 @@ namespace LY_SINTER.PAGE.Analysis
             this.textBox_begin = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.bottleAllUC1 = new UserControlIndex.BottleAllUC();
             this.tableLayoutPanel38.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
@@ -95,28 +95,18 @@ namespace LY_SINTER.PAGE.Analysis
             this.tableLayoutPanel38.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel38.ColumnCount = 1;
             this.tableLayoutPanel38.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel38.Controls.Add(this.bottleAllUC1, 0, 1);
             this.tableLayoutPanel38.Controls.Add(this.label67, 0, 0);
+            this.tableLayoutPanel38.Controls.Add(this.bottleAllUC1, 0, 1);
             this.tableLayoutPanel38.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel38.Location = new System.Drawing.Point(3, 55);
             this.tableLayoutPanel38.Name = "tableLayoutPanel38";
             this.tableLayoutPanel38.RowCount = 2;
             this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel38.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel38.Size = new System.Drawing.Size(1461, 183);
             this.tableLayoutPanel38.TabIndex = 8;
-            // 
-            // bottleAllUC1
-            // 
-            this.bottleAllUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bottleAllUC1.Location = new System.Drawing.Point(4, 32);
-            this.bottleAllUC1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
-            this.bottleAllUC1.MinimumSize = new System.Drawing.Size(10, 10);
-            this.bottleAllUC1.Name = "bottleAllUC1";
-            this.bottleAllUC1.Size = new System.Drawing.Size(1453, 147);
-            this.bottleAllUC1.T_TOTAL_PV_W_3S = "0";
-            this.bottleAllUC1.T_TOTAL_SP_W_3S = "0";
-            this.bottleAllUC1.TabIndex = 9;
+            this.tableLayoutPanel38.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel38_Paint);
             // 
             // label67
             // 
@@ -160,7 +150,7 @@ namespace LY_SINTER.PAGE.Analysis
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.81817F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.18183F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.label8, 3, 0);
             this.tableLayoutPanel6.Controls.Add(this.label7, 4, 0);
@@ -668,6 +658,17 @@ namespace LY_SINTER.PAGE.Analysis
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1467, 837);
             this.tableLayoutPanel3.TabIndex = 6;
             // 
+            // bottleAllUC1
+            // 
+            this.bottleAllUC1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.bottleAllUC1.Location = new System.Drawing.Point(4, 25);
+            this.bottleAllUC1.MinimumSize = new System.Drawing.Size(10, 10);
+            this.bottleAllUC1.Name = "bottleAllUC1";
+            this.bottleAllUC1.Size = new System.Drawing.Size(290, 154);
+            this.bottleAllUC1.T_TOTAL_PV_W_3S = "0";
+            this.bottleAllUC1.T_TOTAL_SP_W_3S = "0";
+            this.bottleAllUC1.TabIndex = 2;
+            // 
             // shengchanzuzhi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -724,7 +725,6 @@ namespace LY_SINTER.PAGE.Analysis
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private RowMergeView rowMergeView1;
-        private BottleAllUC bottleAllUC1;
         private System.Windows.Forms.DataGridViewTextBoxColumn time;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column21;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column22;
@@ -741,5 +741,6 @@ namespace LY_SINTER.PAGE.Analysis
         private System.Windows.Forms.DataGridViewTextBoxColumn Column32;
         private System.Windows.Forms.DataGridViewTextBoxColumn 夜班合计;
         private System.Windows.Forms.DataGridViewTextBoxColumn 合计;
+        private BottleAllUC bottleAllUC1;
     }
 }

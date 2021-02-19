@@ -121,7 +121,7 @@ namespace LY_SINTER.PAGE.Analysis
         {
             this.bottleAllUC1.Dock = System.Windows.Forms.DockStyle.Fill;
             //料仓
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 10; i++)
             {
                 bottleAllUC1.BottomItems.Add(new BottleItem { BottleType = BottleType.BottleSingle });
                 bottleAllUC1.BottomItems[i].BottleObj.Value = (i + 1) * 10;
@@ -1145,6 +1145,11 @@ namespace LY_SINTER.PAGE.Analysis
         public void Timer_stop()
         {
           
+        }
+
+        private void tableLayoutPanel38_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

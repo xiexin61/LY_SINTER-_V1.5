@@ -169,10 +169,10 @@ namespace LY_SINTER.Popover.Analysis
                     "where L2_CODE = " + WLBM + " and TIMESTAMP <= '" + time2 + "' and TIMESTAMP >='" + time1 + "' order by TIMESTAMP desc";
                 DataTable dataTable = dBSQL.GetCommand(sql);
                 dataGridView1.DataSource = dataTable;
-                string sql1 = "select  MAT_NAME,MAT_CLASS,UNIT_PRICE,BILL_UPPER,BILL_LOWER,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S,C_P,C_LOT,C_H2O,C_AS,C_PB,C_ZN,C_CU,C_K2O," +
+                /*string sql1 = "select  MAT_NAME,MAT_CLASS,UNIT_PRICE,BILL_UPPER,BILL_LOWER,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S,C_P,C_LOT,C_H2O,C_AS,C_PB,C_ZN,C_CU,C_K2O," +
                     "C_NA2O from MC_ORECAL_MAT_ANA_RECORD where MAT_NAME = '" + name + "' and TIMESTAMP <= '" + time2 + "' and TIMESTAMP >='" + time1 + "' order by TIMESTAMP desc";
                 DataTable dataTable1 = dBSQL.GetCommand(sql1);
-                dataGridView3.DataSource = dataTable1;
+                dataGridView3.DataSource = dataTable1;*/
 
             }
             catch (Exception ee)
@@ -186,6 +186,63 @@ namespace LY_SINTER.Popover.Analysis
         {
 
             string sql = "";
+
+        }
+        //计算成分按钮，更新dataGridView3数据
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            string name = comboBox2.Text;
+            string sql_name = "select L2_CODE,MAT_DESC from M_MATERIAL_COOD where MAT_DESC = '" + name + "'";
+            DataTable dataTable_name = dBSQL.GetCommand(sql_name);
+            int WLBM = int.Parse(dataTable_name.Rows[0]["L2_CODE"].ToString());
+            if (textBox2.Text != null)
+            {
+                double price = Convert.ToDouble(textBox2.Text);
+            }
+            //double price = Convert.ToDouble(textBox2.Text);
+            double ratioUp = Convert.ToDouble(textBox3.Text);
+            double ratioDown = Convert.ToDouble(textBox1.Text);
+            int weight= Convert.ToInt32(textBox4.Text);
+            string sql = "select  TOP(" + weight + ") ORE_CLASS,UNIT_PRICE" +
+                         "AVG(isnull(C_TFE,0)) AS C_TFE ," +
+                         "AVG(isnull(C_FEO,0)) AS C_FEO," +
+                         "AVG(isnull(C_CAO,0)) AS C_CAO," +
+                         "AVG(isnull(C_SIO2,0)) AS C_SIO2," +
+                         "AVG(isnull(C_AL2O3,0)) AS C_AL2O3 ," +
+                         "AVG(isnull(C_MGO,0)) AS C_MGO," +
+                         "AVG(isnull(C_S,0)) AS C_S," +
+                         "AVG(isnull(C_P,0)) AS C_P," +
+                         "AVG(isnull(C_C,0)) AS C_C," +
+                         "AVG(isnull(C_MN,0)) AS C_MN," +
+                         //  "AVG(isnull(C_LOT,0)) AS C_LOT," +
+                         "AVG(isnull(C_R,0)) AS C_R ," +
+                         // "AVG(isnull(C_H2O,0)) AS C_H2O," +
+                         "AVG(isnull(C_ASH,0)) AS C_ASH," +
+                         "AVG(isnull(C_VOLATILES,0)) AS C_VOLATILES," +
+                         "AVG(isnull(C_TIO2,0)) AS C_TIO2," +
+                         "AVG(isnull(C_K2O,0)) AS C_K2O," +
+                         "AVG(isnull(C_NA2O,0)) AS C_NA2O," +
+                         "AVG(isnull(C_PBO,0)) AS C_PBO," +
+                         "AVG(isnull(C_ZNO,0)) AS C_ZNO," +
+                         "AVG(isnull(C_F,0)) AS C_F," +
+                         "AVG(isnull(C_AS,0)) AS C_AS," +
+                         "AVG(isnull(C_CU,0)) AS C_CU," +
+                         "AVG(isnull(C_PB,0)) AS C_PB," +
+                         "AVG(isnull(C_ZN,0)) AS C_ZN ," +
+                         "AVG(isnull(C_K,0)) AS C_K," +
+                         "AVG(isnull(C_NA,0)) AS C_NA," +
+                         "AVG(isnull(C_CR,0)) AS C_CR," +
+                         "AVG(isnull(C_NI,0)) AS C_NI," +
+                         "AVG(isnull(C_MNO,0)) AS C_MNO" +
+                         " FROM M_ORE_MATERIAL_ANALYSIS where L2_CODE = " + WLBM + "  group by TIMESTAMP order by TIMESTAMP desc";
+            DataTable dataTable = dBSQL.GetCommand(sql);
+            /*DataGridViewRow row = new DataGridViewRow();
+            dataGridView3.Rows.Add(row);
+            dataGridView3.Rows[0].Cells["MAT_NAME"].Value = dataTable_name.Rows[0]["MAT_DESC"].ToString();
+            dataGridView3.Rows[0].Cells["BILL_UPPER"].Value = ratioUp;
+            dataGridView3.Rows[0].Cells["BILL_LOWER"].Value = ratioDown;*/
+
+            dataGridView3.DataSource = dataTable;
 
         }
     }

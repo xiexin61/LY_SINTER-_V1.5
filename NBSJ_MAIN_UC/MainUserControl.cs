@@ -419,7 +419,7 @@ namespace NBSJ_MAIN_UC
             this.bottleAllUC1.Dock = System.Windows.Forms.DockStyle.None;
             //料仓
             
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < 10; i++)
             {
                 bottleAllUC1.BottomItems.Add(new BottleItem { BottleType = BottleType.BottleSingle });
                 bottleAllUC1.BottomItems[i].BottleObj.Value = (i+1) * 10;
@@ -574,7 +574,7 @@ namespace NBSJ_MAIN_UC
             buLiaoQiUC1.Width = (int)(this.Width * 0.065f);
             buLiaoQiUC1.Height = (int)(this.Height * 0.05f);
             xStart = this.Width * 0.196f;// - buLiaoQiUC1.Width / 2;
-            yStart = yStart + panel1.Height;
+            yStart = yStart + panel1.Height-30;
             this.buLiaoQiUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
 
             //混合料槽和圆棍
@@ -605,7 +605,7 @@ namespace NBSJ_MAIN_UC
             xStart = this.Width * edgeWidthK * 3;
             yStart = yStart + tempFlowUC1.Height - hunHeLiaoCaoYuanGunUC1.Height - buLiaoQiUC1.Height;
             xStart = this.Width * edgeWidthK * 2;
-            this.picYantong.Location = new System.Drawing.Point((int)xStart, (int)(yStart + 5));
+            this.picYantong.Location = new System.Drawing.Point((int)xStart, (int)(yStart + 40));
 
             //传送带
             xStart = this.Width * 0.07f;
@@ -664,7 +664,7 @@ namespace NBSJ_MAIN_UC
            
             this.rbtnQuYangDian1.Location = new System.Drawing.Point((int)(xStart - 35), (int)(yStart + shaiZiUC1.Height * 0.6f));
             //环冷机
-            huanLengJiUC1.Width = (int)(this.Width * 0.29f);
+            huanLengJiUC1.Width = (int)(this.Width * 0.27f);
             huanLengJiUC1.Height = (int)(this.Height * 0.19f);
             xStart = shaiZiUC1.Location.X + shaiZiUC1.Width + this.Width * 0.18f;
             yStart = removeDustUC1.Location.Y + removeDustUC1.Height;
@@ -739,7 +739,7 @@ namespace NBSJ_MAIN_UC
             graphics.DrawString("余热发电", Font, Brushes.Black, new Rectangle((int)(huanLengJiUC1.Location.X - 38), (int)(huanLengJiUC1.Location.Y + 40), 30, 30), this.sf);
 
             //LS1-1皮带
-            var point3t3 = new Point((int)(huanLengJiUC1.Location.X - 50), (int)(huanLengJiUC1.Location.Y + huanLengJiUC1.Height + 35));
+            var point3t3 = new Point((int)(huanLengJiUC1.Location.X - 50), (int)(huanLengJiUC1.Location.Y + huanLengJiUC1.Height + 25));
             this.pipeLine16.Location = point3t3;
             this.pipeLine16.Size = new System.Drawing.Size((int)(huanLengJiUC1.Width * 0.46f), 15);
 
@@ -749,11 +749,11 @@ namespace NBSJ_MAIN_UC
             this.pipeLine11.Size = new System.Drawing.Size((int)(this.Width * 0.25f + this.shaiZiUC1.Width / 2), 15);
 */
             //成品皮带
-            this.pipeLine12.Location = new System.Drawing.Point(10, (int)(this.shaiZiUC1.Height+10 + shaiZiUC1.Location.Y + 50));
+            this.pipeLine12.Location = new System.Drawing.Point(10, (int)(this.shaiZiUC1.Height+10 + shaiZiUC1.Location.Y + 45));
             this.pipeLine12.Size = new System.Drawing.Size((int)(this.Width * 0.5f), 15);
 
 
-            labSJK1.Location = new System.Drawing.Point(10 + this.pipeLine12.Width / 3, (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y+40));
+            labSJK1.Location = new System.Drawing.Point(10 + this.pipeLine12.Width / 3, (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y+35));
 
             //右下筛子开始的箭头
             xStart = shaiZiUC1.Location.X + shaiZiUC1.Width;
@@ -769,7 +769,7 @@ namespace NBSJ_MAIN_UC
 
             point1 = point2;
             //point2 = new Point((int)(xStart + this.Width * 0.06), (int)(this.Height * 0.98));
-            point2 = new Point((int)(xStart + this.Width * 0.06), (int)((int)(huanLengJiUC1.Location.Y + huanLengJiUC1.Height + 5) + 15 * 1.5f));
+            point2 = new Point((int)(xStart + this.Width * 0.06), (int)((int)(huanLengJiUC1.Location.Y + huanLengJiUC1.Height + 5) + 25 * 1.5f));
             graphics.DrawLine(pen, point1, point2);
 
             point1 = new Point(point2.X, point2.Y + 5);
@@ -1028,15 +1028,15 @@ namespace NBSJ_MAIN_UC
 
             bottleAllUC1.BottomItems[9].BottleObj.HeadTag = Getwlbm_Code(10);
             bottleAllUC1.BottomItems[9].BottleObj.BottleTag = modelT_PLC_3S.T_W_10_3S.ToString("f2");
-         bottleAllUC1.BottomItems[9].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_10_3S) / GetByShangXian_Code(10) * 100;//500 * 100;
+            bottleAllUC1.BottomItems[9].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_10_3S) / GetByShangXian_Code(10) * 100;//500 * 100;
             bottleAllUC1.BottomItems[9].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_10_3S.ToString();
             bottleAllUC1.BottomItems[9].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_10_3S.ToString();
             bottleAllUC1.BottomItems[9].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_10_3S == 1 ? Brushes.Green : Brushes.DimGray;
          
 
-           bottleAllUC1.BottomItems[10].BottleObj.HeadTag = Getwlbm_Code(11);
+            bottleAllUC1.BottomItems[10].BottleObj.HeadTag = Getwlbm_Code(11);
             bottleAllUC1.BottomItems[10].BottleObj.BottleTag = modelT_PLC_3S.T_W_11_3S.ToString("f2");
-           bottleAllUC1.BottomItems[10].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_11_3S) / GetByShangXian_Code(11) * 100;//500 * 100;
+            bottleAllUC1.BottomItems[10].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_11_3S) / GetByShangXian_Code(11) * 100;//500 * 100;
             bottleAllUC1.BottomItems[10].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_11_3S.ToString();
             bottleAllUC1.BottomItems[10].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_11_3S.ToString();
             bottleAllUC1.BottomItems[10].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_11_3S == 1 ? Brushes.Green : Brushes.DimGray;
@@ -1746,6 +1746,11 @@ namespace NBSJ_MAIN_UC
         }
 
         private void huanLengJiUC1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buLiaoQiUC1_Load(object sender, EventArgs e)
         {
 
         }

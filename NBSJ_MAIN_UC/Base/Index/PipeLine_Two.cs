@@ -63,18 +63,29 @@ namespace UserControlIndex
 
             Graphics graphics = e.Graphics;
 
-            this.pipeLine1.Width = this.Width / 3;
+            /*this.pipeLine1.Width = this.Width / 3;
             this.pipeLine1.Location = new System.Drawing.Point(this.Width /4 * 3, (int)(this.Height / 4f));
 
             this.pipeLine2.Width = this.Width / 3;
             this.pipeLine2.Location = new System.Drawing.Point(this.Width / 4 * 2 , (int)(this.Height / 4f *2));
             this.pipeLine3.Width = this.Width /3;
-            this.pipeLine3.Location = new System.Drawing.Point(this.Width /4 * 1, (int)(this.Height / 4f *3));
+            this.pipeLine3.Location = new System.Drawing.Point(this.Width /4 * 1, (int)(this.Height / 4f *3));*/
+            this.pipeLine1.Width = (this.Width-50) / 3;
+            this.pipeLine1.Height = 15;
+            this.pipeLine1.Location = new System.Drawing.Point(pipeLine3.Width * 2 + 50, (int)(this.Height / 2.5f - 30));
+
+            this.pipeLine2.Width = (this.Width-50) / 3;
+            this.pipeLine2.Height = 15;
+            this.pipeLine2.Location = new System.Drawing.Point(pipeLine3.Width + 50, (int)(this.Height / 2.5f - 15));
+
+            this.pipeLine3.Width = (this.Width-50) / 3;
+            this.pipeLine3.Height = 15;
+            this.pipeLine3.Location = new System.Drawing.Point(50, (int)(this.Height / 2.5f));
 
             /*this.pipeLine4.Width = this.Width/4;
             this.pipeLine4.Location = new System.Drawing.Point(this.Width /5 , (int)(this.Height / 5f *4));*/
 
-            graphics.DrawString("水分:" + shuifen + "%", Font, Brushes.Black, new Rectangle(this.Width / 3*2, (int)(this.Height /4-30 ), this.pipeLine1.Width, 30), this.sf);
+            graphics.DrawString("水分:" + shuifen + "%", Font, Brushes.Black, new Rectangle(this.Width / 3*2, (int)(this.Height /4-34 ), this.pipeLine1.Width, 30), this.sf);
             
         }
 

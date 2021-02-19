@@ -221,6 +221,7 @@
             this.buLiaoQiUC1.Name = "buLiaoQiUC1";
             this.buLiaoQiUC1.Size = new System.Drawing.Size(83, 48);
             this.buLiaoQiUC1.TabIndex = 140;
+            this.buLiaoQiUC1.Load += new System.EventHandler(this.buLiaoQiUC1_Load);
             // 
             // hunHeLiaoCaoYuanGunUC1
             // 
@@ -248,6 +249,7 @@
             this.huanLengJiUC1.BsGkj_Read_SPEED = "";
             this.huanLengJiUC1.BsGkj_Set_SPEED = "";
             this.huanLengJiUC1.CkTemp = "";
+            this.huanLengJiUC1.GLJ_LW = "";
             this.huanLengJiUC1.Hlj_Read_SPEED = "";
             this.huanLengJiUC1.Hlj_Set_SPEED = "";
             this.huanLengJiUC1.GLJ_LW = "";
