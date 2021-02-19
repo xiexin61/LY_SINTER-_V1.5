@@ -115,19 +115,19 @@ namespace LY_SINTER.Model
                 _data.Columns.Add("Values");
 
                 DataRow row_now = _data.NewRow();
-                row_now["Name"] = "1#烧结机";
+                row_now["Name"] = "3#烧结机";
                 row_now["Values"] = 1;
                 _data.Rows.Add(row_now);
 
-                DataRow row_now_1 = _data.NewRow();
-                row_now_1["Name"] = "2#烧结机";
-                row_now_1["Values"] = 2;
-                _data.Rows.Add(row_now_1);
+                //DataRow row_now_1 = _data.NewRow();
+                //row_now_1["Name"] = "2#烧结机";
+                //row_now_1["Values"] = 2;
+                //_data.Rows.Add(row_now_1);
 
-                DataRow row_now_2 = _data.NewRow();
-                row_now_2["Name"] = "全部";
-                row_now_2["Values"] = 3;
-                _data.Rows.Add(row_now_2);
+                //DataRow row_now_2 = _data.NewRow();
+                //row_now_2["Name"] = "全部";
+                //row_now_2["Values"] = 3;
+                //_data.Rows.Add(row_now_2);
 
                 return _data;
 

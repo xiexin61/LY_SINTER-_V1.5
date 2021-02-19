@@ -81,8 +81,8 @@ namespace LY_SINTER.PAGE.Course
 
 
 
-          //  this.d1.AddSpanHeader(3, 16, "透气性影响参数");
-          //  this.d1.AddSpanHeader(19, 13, "相关性系数");
+          this.d1.AddSpanHeader(3, 16, "透气性影响参数");
+          // this.d1.AddSpanHeader(19, 13, "相关性系数");
             //相关性曲线控件背景颜色
             chart_xgx.LChart.BackColor = Color.White;
 
@@ -178,15 +178,23 @@ namespace LY_SINTER.PAGE.Course
         /// </summary>
         public void curve_initial1()
         {
-            #region 透气性相关曲线
-            //   this.chart_qs_ss.LChart.Zoom = LiveCharts.ZoomingOptions.None;
-            chart_xgx_zxt = chart_xgx.MakeCol(0, 0, "chart_xgx_zxt");
-            chart_xgx.LChart.Series.Add(chart_xgx_zxt);
-            chart_xgx.LPageSize = 13;
-            //    chart_xgx.LBindDataC<string, double>("chart_xgx_zxt", parameter_x, parameter_y,System.Windows.Media.Brushes.Green,"","",1,-1,1,2);
-            chart_xgx.LBindDataC<string, double>("chart_xgx_zxt", parameter_x, parameter_y, System.Windows.Media.Brushes.Green);
-            this.chart_xgx.LChart.AxisX[0].Separator = new Separator() { Step = 1 };//x轴数据全部展示
-            #endregion
+            try
+            {
+                #region 透气性相关曲线
+                //   this.chart_qs_ss.LChart.Zoom = LiveCharts.ZoomingOptions.None;
+                chart_xgx_zxt = chart_xgx.MakeCol(0, 0, "chart_xgx_zxt");
+                chart_xgx.LChart.Series.Add(chart_xgx_zxt);
+                chart_xgx.LPageSize = 13;
+                //    chart_xgx.LBindDataC<string, double>("chart_xgx_zxt", parameter_x, parameter_y,System.Windows.Media.Brushes.Green,"","",1,-1,1,2);
+                chart_xgx.LBindDataC<string, double>("chart_xgx_zxt", parameter_x, parameter_y, System.Windows.Media.Brushes.Green);
+                this.chart_xgx.LChart.AxisX[0].Separator = new Separator() { Step = 1 };//x轴数据全部展示
+                #endregion
+            }
+            catch
+            {
+
+            }
+           
         }
         /// <summary>
         /// 历史查询按钮
@@ -650,6 +658,9 @@ namespace LY_SINTER.PAGE.Course
                         _myPlotModel.Series.Add(series1);
             
                     curve_his.Model = _myPlotModel;
+                    var PlotController = new OxyPlot.PlotController();
+                    PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
+                    curve_his.Controller = PlotController;
                 }
 
             }

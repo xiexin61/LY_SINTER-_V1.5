@@ -131,10 +131,8 @@
             this.label42 = new System.Windows.Forms.Label();
             this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel22 = new System.Windows.Forms.TableLayoutPanel();
-            this.verticalProgressBar1 = new LY_SINTER.PAGE.Quality.VerticalProgressBar();
             this.tableLayoutPanel21 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel23 = new System.Windows.Forms.TableLayoutPanel();
-            this.verticalProgressBar2 = new LY_SINTER.PAGE.Quality.VerticalProgressBar();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
@@ -163,6 +161,8 @@
             this.check_rlpb = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.curve_his = new OxyPlot.WindowsForms.PlotView();
+            this.verticalProgressBar1 = new LY_SINTER.PAGE.Quality.VerticalProgressBar();
+            this.verticalProgressBar2 = new LY_SINTER.PAGE.Quality.VerticalProgressBar();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -1691,14 +1691,6 @@
             this.tableLayoutPanel22.Size = new System.Drawing.Size(130, 90);
             this.tableLayoutPanel22.TabIndex = 0;
             // 
-            // verticalProgressBar1
-            // 
-            this.verticalProgressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.verticalProgressBar1.Location = new System.Drawing.Point(51, 3);
-            this.verticalProgressBar1.Name = "verticalProgressBar1";
-            this.verticalProgressBar1.Size = new System.Drawing.Size(26, 84);
-            this.verticalProgressBar1.TabIndex = 0;
-            // 
             // tableLayoutPanel21
             // 
             this.tableLayoutPanel21.BackColor = System.Drawing.Color.Transparent;
@@ -1729,14 +1721,6 @@
             this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel23.Size = new System.Drawing.Size(130, 91);
             this.tableLayoutPanel23.TabIndex = 0;
-            // 
-            // verticalProgressBar2
-            // 
-            this.verticalProgressBar2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.verticalProgressBar2.Location = new System.Drawing.Point(51, 3);
-            this.verticalProgressBar2.Name = "verticalProgressBar2";
-            this.verticalProgressBar2.Size = new System.Drawing.Size(26, 85);
-            this.verticalProgressBar2.TabIndex = 0;
             // 
             // tableLayoutPanel18
             // 
@@ -2131,6 +2115,22 @@
             this.curve_his.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
             this.curve_his.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
             this.curve_his.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
+            // verticalProgressBar1
+            // 
+            this.verticalProgressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.verticalProgressBar1.Location = new System.Drawing.Point(51, 3);
+            this.verticalProgressBar1.Name = "verticalProgressBar1";
+            this.verticalProgressBar1.Size = new System.Drawing.Size(26, 84);
+            this.verticalProgressBar1.TabIndex = 0;
+            // 
+            // verticalProgressBar2
+            // 
+            this.verticalProgressBar2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.verticalProgressBar2.Location = new System.Drawing.Point(51, 3);
+            this.verticalProgressBar2.Name = "verticalProgressBar2";
+            this.verticalProgressBar2.Size = new System.Drawing.Size(26, 85);
+            this.verticalProgressBar2.TabIndex = 0;
             // 
             // Balance_Mine
             // 

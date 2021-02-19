@@ -11,6 +11,7 @@ using LY_SINTER.Popover.Analysis;
 using LY_SINTER.Custom;
 using OxyPlot;
 using OxyPlot.Axes;
+using OxyPlot.Series;
 
 namespace LY_SINTER.PAGE.Analysis
 {
@@ -28,7 +29,14 @@ namespace LY_SINTER.PAGE.Analysis
         /// values item1：数据 item2：时间
         /// </summary>
         Dictionary<string, List<Tuple<double, DateTime>>> _Dic_curve = new Dictionary<string, List<Tuple<double, DateTime>>>();
-            #endregion
+        #endregion
+        #region 柱形图声明
+        DateTime time_Begin = DateTime.Now.AddMonths(-1);//开始时间
+        DateTime time_End = DateTime.Now;//结束时间
+        string[] _Bar_1 = { "R±0.05%", "R±0.08%", "FeO±1%", "MgO±0.15%" };               //烧结矿成分稳定率曲线
+        string[] _Bar_2 = { "σTFe", "σFeO", "σCaO", "σSiO2", "σMgO", "σR", "σAl2O3" };//标准偏差曲线
+        #endregion
+
         ANALYSIS_MODEL aNALYSIS_MODEL = new ANALYSIS_MODEL();
         public vLog _vLog { get; set; }
         DBSQL _dBSQL = new DBSQL(ConstParameters.strCon);
@@ -109,6 +117,7 @@ namespace LY_SINTER.PAGE.Analysis
 "K",
 "V205"
  };
+       
         public Ripe_analysis()
         {
             InitializeComponent();
@@ -123,6 +132,8 @@ namespace LY_SINTER.PAGE.Analysis
             data_show(comboBox1.Text.ToString(),textBox_begin.Text.ToString(),textBox_end.Text.ToString());//表单查询
             comboBox_values();//成分下拉框赋值
             Curve_text(comboBox2.Text.ToString());//曲线绑定数据源
+            Curve_Bar();//烧结矿成分稳定率柱形图
+            Curve_Bar_1();//标准偏差柱形图
         }
         /// <summary>
         /// 最新调整时间
@@ -156,7 +167,7 @@ namespace LY_SINTER.PAGE.Analysis
             this.comboBox1.DataSource = _data;
             this.comboBox1.DisplayMember = "Name";
             this.comboBox1.ValueMember = "Values";
-            this.comboBox1.SelectedIndex = 2;
+            this.comboBox1.SelectedIndex = 0;
 
         }
 
@@ -235,14 +246,18 @@ namespace LY_SINTER.PAGE.Analysis
         {
             try
             {
-                var _sql = "select  (CASE WHEN DL_FLAG = '1' THEN '1#烧结机' WHEN DL_FLAG = '2' THEN '2#烧结机'  end) AS DL_FLAG,MAT_NAME,MIXEDTIME,SAMPLETIME,REOPTTIME,BATCH_NUM,HEAP_NUM,SAMPLE_TEST_NUM,SHIFT_FLAG,C_TFE as TFE,C_FEO as FEO,C_CAO as CAO,C_SIO2 as SIO2,C_AL2O3 as AL2O3,C_MGO as MGO,C_S as S,C_P2O5 as P2O5,C_R as R,C_K2O as K2O,C_NA2O as NA2O,C_PB as PB,C_ZN as ZN,C_MNO as MNO,C_TIO2 as TIO2,C_AS as 'AS',C_CU as CU,C_K as K,C_V2O5 as V2O5,C_AL2O3_SIO2,C_MGO_AL2O3,C_TOTAL,C_TI,RI,RDI_0_5,RDI_3_15,RDI_6_3,SCRENING,GRIT_5,GRIT_5_10,GRIT_10_16,GRIT_16_25,GRIT_25_40,GRIT_40,PATCL_AV,GRIT_10,GRIT_10_40,FLAG_R_005,FLAG_R_008,FLAG_FEO_06,FLAG_FEO_1,FLAG_MGO_015,FLAG_GRIT_10,FLAG_TOL_CON,R_AIM,FeO_AIM,MgO_AIM,GRIT_10_AIM,TOL_CON_AIM,TIMESTAMP from MC_NUMCAL_INTERFACE_6";
+                var _sql = "select  (CASE WHEN DL_FLAG = '1' THEN '1#烧结机' WHEN DL_FLAG = '2' THEN '2#烧结机' WHEN DL_FLAG = '3' THEN '3#烧结机' else '未知' end) AS DL_FLAG,MAT_NAME,MIXEDTIME,SAMPLETIME,REOPTTIME,BATCH_NUM,HEAP_NUM,SAMPLE_TEST_NUM,SHIFT_FLAG,C_TFE as TFE,C_FEO as FEO,C_CAO as CAO,C_SIO2 as SIO2,C_AL2O3 as AL2O3,C_MGO as MGO,C_S as S,C_P2O5 as P2O5,C_R as R,C_K2O as K2O,C_NA2O as NA2O,C_PB as PB,C_ZN as ZN,C_MNO as MNO,C_TIO2 as TIO2,C_AS as 'AS',C_CU as CU,C_K as K,C_V2O5 as V2O5,C_AL2O3_SIO2,C_MGO_AL2O3,C_TOTAL,C_TI,RI,RDI_0_5,RDI_3_15,RDI_6_3,SCRENING,GRIT_5,GRIT_5_10,GRIT_10_16,GRIT_16_25,GRIT_25_40,GRIT_40,PATCL_AV,GRIT_10,GRIT_10_40,FLAG_R_005,FLAG_R_008,FLAG_FEO_06,FLAG_FEO_1,FLAG_MGO_015,FLAG_GRIT_10,FLAG_TOL_CON,R_AIM,FeO_AIM,MgO_AIM,GRIT_10_AIM,TOL_CON_AIM,TIMESTAMP from MC_NUMCAL_INTERFACE_6";
                 if (_name == "1#烧结机")
                 {
                     _sql += " where DL_FLAG = 1 and TIMESTAMP >= '" + _time_begin + "' and TIMESTAMP <= '" + _time_end + "' order by TIMESTAMP asc";
                 }
-                else if(_name == "2#烧结机")
+                else if (_name == "2#烧结机")
                 {
                     _sql += " where DL_FLAG = 2 and TIMESTAMP >= '" + _time_begin + "' and TIMESTAMP <= '" + _time_end + "' order by TIMESTAMP asc";
+                }
+                else if (_name == "3#烧结机")
+                {
+                    _sql += " where DL_FLAG = 3 and TIMESTAMP >= '" + _time_begin + "' and TIMESTAMP <= '" + _time_end + "' order by TIMESTAMP asc";
                 }
                 else
                 {
@@ -606,6 +621,9 @@ namespace LY_SINTER.PAGE.Analysis
                     _valueAxis1.IsAxisVisible = true;
                     _myPlotModel.Series.Add(series1);
                     plotView1.Model = _myPlotModel;
+                    var PlotController = new OxyPlot.PlotController();
+                    PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
+                    plotView1.Controller = PlotController;
                 }
             }
             catch(Exception ee)
@@ -613,7 +631,119 @@ namespace LY_SINTER.PAGE.Analysis
                 _vLog.writelog("Curve_text方法" + ee.ToString() ,-1);
             }
         }
+        /// <summary>
+        /// 烧结矿稳定率柱形图
+        /// </summary>
+        public void Curve_Bar()
+        {
+            try
+            {
+                PlotModel _myPlotModel = new PlotModel();
+                //X轴定义
+                CategoryAxis _categoryAxis = new CategoryAxis()
+                {
+                    MajorTickSize = 0,
+                    IsZoomEnabled = false,
+                    Position = AxisPosition.Bottom,
+                };
+                for (int i = 0; i < _Bar_1.Count(); i++)
+                {
+                    _categoryAxis.Labels.Add(_Bar_1[i]);     //添加x坐标
+                }
+                _myPlotModel.Axes.Add(_categoryAxis);
+                //Y轴定义
+                LinearAxis _valueAxis = new LinearAxis()
+                {
+                    MinorTickSize = 0,
+                    Key = "y",
+                };
+                _myPlotModel.Axes.Add(_valueAxis);
+                var _ColumnSeries = new ColumnSeries();
+                List<double> _Value_Bar_1 = new List<double>();
+                var _sql = "select count(TIMESTAMP) as _Count, sum(FLAG_R_005) as FLAG_R_005,sum(FLAG_R_008) as FLAG_R_008,sum(FLAG_FEO_1) as FLAG_FEO_1,sum(FLAG_MGO_015) as FLAG_MGO_015 from MC_NUMCAL_INTERFACE_6 where DL_FLAG=1 and TIMESTAMP between '" + time_Begin + "' and '" + time_End + "'";
+                DataTable _data = _dBSQL.GetCommand(_sql);
+                if (_data.Rows.Count > 0 && _data != null)
+                {
+                    for (int x = 1; x< _data.Columns.Count; x++)
+                    {
+                        _Value_Bar_1.Add(Math.Round(double.Parse(_data.Rows[0][x].ToString() == "" ? "0": _data.Rows[0][x].ToString()) / double.Parse(_data.Rows[0][0].ToString()) * 100, 2));
+                    }
+                }
+                for (int i = 0; i < _Value_Bar_1.Count; i++)
+                {
+                    _ColumnSeries.Items.Add(new ColumnItem() { Value = _Value_Bar_1[i] });
+                }
+                _myPlotModel.Series.Add(_ColumnSeries);
+                plotView2.Model = _myPlotModel;
+            }
+            catch (Exception ee)
+            {
+                _vLog.writelog("Curve_Bar方法调用失败" +ee.ToString(), -1);
+            }
+           
 
+        }
+        public void Curve_Bar_1()
+        {
+            try
+            {
+                PlotModel _myPlotModel = new PlotModel();
+                //X轴定义
+                CategoryAxis _categoryAxis = new CategoryAxis()
+                {
+                    MajorTickSize = 0,
+                    IsZoomEnabled = false,
+                    Position = AxisPosition.Bottom,
+                };
+                for (int i = 0; i < _Bar_2.Count(); i++)
+                {
+                    _categoryAxis.Labels.Add(_Bar_2[i]);     //添加x坐标
+                }
+                _myPlotModel.Axes.Add(_categoryAxis);
+                //Y轴定义
+                LinearAxis _valueAxis = new LinearAxis()
+                {
+                    MinorTickSize = 0,
+                    Key = "y",
+                };
+                _myPlotModel.Axes.Add(_valueAxis);
+                var _ColumnSeries = new ColumnSeries();
+                List<double> _Value_Bar_1 = new List<double>();
+               
+                if (this.dataGridView1.Rows.Count > 5)
+                {
+                   // string[] _Bar_2 = { "σTFe", "σFeO", "σCaO", "σSiO2", "σMgO", "σR", "σAl2O3" };//标准偏差曲线
+                    
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column9"].Value.ToString())));//TFe
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column10"].Value.ToString())));//FeO
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column11"].Value.ToString())));//CaO
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column12"].Value.ToString())));//SiO2
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column14"].Value.ToString())));//MgO
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column17"].Value.ToString())));//R
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column13"].Value.ToString())));//Al2O3
+                }
+                else
+                {
+                    _Value_Bar_1.Add(0);
+                    _Value_Bar_1.Add(0);
+                    _Value_Bar_1.Add(0);
+                    _Value_Bar_1.Add(0);
+                    _Value_Bar_1.Add(0);
+                    _Value_Bar_1.Add(0);
+                    _Value_Bar_1.Add(0);
+                }
+                for (int i = 0; i < _Value_Bar_1.Count; i++)
+                {
+                    _ColumnSeries.Items.Add(new ColumnItem() { Value = _Value_Bar_1[i] });
+                }
+                _myPlotModel.Series.Add(_ColumnSeries);
+                plotView3.Model = _myPlotModel;
+            }
+            catch(Exception ee)
+            {
+                _vLog.writelog("Curve_Bar_1方法失败" + ee.ToString(), -1);
+            }
+        }
         private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
         {
             Curve_text(comboBox2.Text.ToString());

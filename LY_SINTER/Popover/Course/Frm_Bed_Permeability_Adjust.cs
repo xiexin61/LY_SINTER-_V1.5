@@ -2,6 +2,9 @@
 using LiveCharts.Wpf;
 using LY_SINTER.Custom;
 using NBSJ_PICAL;
+using OxyPlot;
+using OxyPlot.Axes;
+using OxyPlot.Series;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,14 +20,10 @@ namespace LY_SINTER.Popover.Course
 {
     public partial class Frm_Bed_Permeability_Adjust : Form
     {
+        NBSJ_PICAL.Console_lidu console_Lidu = new Console_lidu();
         public vLog _vLog { get; set; }
-        /// <summary>
-        /// 曲线控件添加标志位
-        /// </summary>
-        bool flag_curve = true;
         public static bool isopen = false;
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
-        ColumnSeries chart_zxt_lxjs { get; set; }
         /// <summary>
         /// 柱形图数据x
         /// </summary>
@@ -42,7 +41,7 @@ namespace LY_SINTER.Popover.Course
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
             //设置控件背景颜色
-            this.chart_lxjs.LChart.BackColor = Color.White;
+           
             curve();
         }
         /// <summary>
@@ -65,19 +64,14 @@ namespace LY_SINTER.Popover.Course
         /// <param name="e"></param>
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-          
             try
             {
-                string time_begin = textBox_begin.Text.ToString();
-                string time_end = textBox_end.Text.ToString();
-                 NBSJ_PICAL.Console_lidu console_Lidu = new Console_lidu();
                 double[] _result = new double[13];
-                string sql = "select count(TIMESTAMP) as count from M_PICAL_BREATH_RESULT where TIMESTAMP >= '" + time_begin + "' and TIMESTAMP <= '" + time_end + "' ";
+                string sql = "select count(TIMESTAMP) as count from M_PICAL_BREATH_RESULT where TIMESTAMP >= '" + textBox_begin.Text.ToString() + "' and TIMESTAMP <= '" + textBox_end.Text.ToString() + "' ";
                 DataTable dataTable = dBSQL.GetCommand(sql);
                 if (dataTable.Rows.Count > 0 && dataTable != null)
                 {
                     int count = int.Parse(dataTable.Rows[0]["count"].ToString());
-                    // _result = console_Lidu.BEISHAO_JICHUSHUJU(count);
                     if (count < 14)
                     {
                         MessageBox.Show("参加计算的数据不足，请重新选择时间");
@@ -85,101 +79,112 @@ namespace LY_SINTER.Popover.Course
                     }
                     else
                     {
-                        chart_lxjs.LChart.Series.Clear();
-                        chart_lxjs.LChart.AxisX.Clear();
-                        chart_lxjs.LChart.AxisY.Clear();
-
-                        chart_zxt_lxjs = chart_lxjs.MakeCol(0, 0, "chart_zxt_lxjs");
-                        chart_lxjs.LChart.Series.Add(chart_zxt_lxjs);
-
-                        list_name.Clear();
-                        list_data.Clear();
+                        List<string> _A = new List<string>();
+                        List<Double> _B = new List<double>();
                         _result = console_Lidu.BEISHAO_JICHUSHUJU(count);
-
                         #region 判断勾选状态
                         if (checkBox1.Checked == true)
                         {
-                            list_name.Add(checkBox1.Text.ToString());
-                            list_data.Add(Math.Round(_result[0], 2));
+                            _A.Add(checkBox1.Text.ToString());
+                            _B.Add( Math.Round(_result[0], 2) );
                         }
                         if (checkBox2.Checked == true)
                         {
-                            list_name.Add(checkBox2.Text.ToString());
-                            list_data.Add(Math.Round(_result[1], 2));
+                            _A.Add(checkBox2.Text.ToString());
+                            _B.Add(Math.Round(_result[1], 2));
                         }
                         if (checkBox3.Checked == true)
                         {
-                            list_name.Add(checkBox3.Text.ToString());
-                            list_data.Add(Math.Round(_result[2], 2));
+                            _A.Add(checkBox3.Text.ToString());
+                            _B.Add(Math.Round(_result[2], 2));
                         }
                         if (checkBox4.Checked == true)
                         {
-                            list_name.Add(checkBox4.Text.ToString());
-                            list_data.Add(Math.Round(_result[3], 2));
+                            _A.Add(checkBox4.Text.ToString());
+                            _B.Add(Math.Round(_result[3], 2));
                         }
                         if (checkBox5.Checked == true)
                         {
-                            list_name.Add(checkBox5.Text.ToString());
-                            list_data.Add(Math.Round(_result[4], 2));
+                            _A.Add(checkBox5.Text.ToString());
+                            _B.Add(Math.Round(_result[4], 2));
                         }
                         if (checkBox6.Checked == true)
                         {
-                            list_name.Add(checkBox6.Text.ToString());
-                            list_data.Add(Math.Round(_result[5], 2));
+                            _A.Add(checkBox6.Text.ToString());
+                            _B.Add(Math.Round(_result[5], 2));
                         }
                         if (checkBox7.Checked == true)
                         {
-                            list_name.Add(checkBox7.Text.ToString());
-                            list_data.Add(Math.Round(_result[6], 2));
+                            _A.Add(checkBox7.Text.ToString());
+                            _B.Add(Math.Round(_result[6], 2));
                         }
                         if (checkBox8.Checked == true)
                         {
-                            list_name.Add(checkBox8.Text.ToString());
-                            list_data.Add(Math.Round(_result[7], 2));
+                            _A.Add(checkBox8.Text.ToString());
+                            _B.Add(Math.Round(_result[7], 2));
                         }
                         if (checkBox9.Checked == true)
                         {
-                            list_name.Add(checkBox9.Text.ToString());
-                            list_data.Add(Math.Round(_result[8], 2));
+                            _A.Add(checkBox9.Text.ToString());
+                            _B.Add(Math.Round(_result[8], 2));
                         }
                         if (checkBox10.Checked == true)
                         {
-                            list_name.Add(checkBox10.Text.ToString());
-                            list_data.Add(Math.Round(_result[9], 2));
+                            _A.Add(checkBox10.Text.ToString());
+                            _B.Add(Math.Round(_result[9], 2));
                         }
                         if (checkBox11.Checked == true)
                         {
-                            list_name.Add(checkBox11.Text.ToString());
-                            list_data.Add(Math.Round(_result[10], 2));
+                            _A.Add(checkBox11.Text.ToString());
+                            _B.Add(Math.Round(_result[10], 2));
                         }
                         if (checkBox12.Checked == true)
                         {
-                            list_name.Add(checkBox12.Text.ToString());
-                            list_data.Add(Math.Round(_result[11], 2));
-                            if (checkBox13.Checked == true)
-                            {
-                                list_name.Add(checkBox13.Text.ToString());
-                                list_data.Add(Math.Round(_result[12], 2));
-                            }
+                            _A.Add(checkBox12.Text.ToString());
+                            _B.Add(Math.Round(_result[11], 2));
                         }
+                        if (checkBox13.Checked == true)
+                        {
+                            _A.Add(checkBox13.Text.ToString());
+                            _B.Add(Math.Round(_result[12], 2));
+                        }
+
                         #endregion
+
+                        PlotModel _myPlotModel = new PlotModel();
+                        //X轴定义
+                        CategoryAxis _categoryAxis = new CategoryAxis()
+                        {
+                            MajorTickSize = 0,
+                            IsZoomEnabled = false,
+                            Position = AxisPosition.Bottom,
+                        };
+                        for (int i = 0; i < _A.Count(); i++)
+                        {
+                            _categoryAxis.Labels.Add(_A[i]);     //添加x坐标
+                        }
+                        _myPlotModel.Axes.Add(_categoryAxis);
+                        //Y轴定义
+                        LinearAxis _valueAxis = new LinearAxis()
+                        {
+                            MinorTickSize = 0,
+                            Key = "y",
+                        };
+                        _myPlotModel.Axes.Add(_valueAxis);
+                        var _ColumnSeries = new OxyPlot.Series.ColumnSeries();
+                        for (int i = 0; i < _B.Count; i++)
+                        {
+                            _ColumnSeries.Items.Add(new ColumnItem() { Value = _B[i] });
+                        }
+                        _myPlotModel.Series.Add(_ColumnSeries);
+                        curve_his.Model = _myPlotModel;
+
+
                         if (list_name.Count < 1)
                         {
                             MessageBox.Show("请选择需要计算的数据");
                             return;
                         }
-                        else
-                        {
-                            //查询需要计算参与的数据个数
-                            int count_zxt = list_name.Count;
-                            chart_lxjs.LPageSize = count_zxt;
-                            chart_lxjs.LBindDataC<string, double>("chart_zxt_lxjs", list_name, list_data, System.Windows.Media.Brushes.Green);
-                            this.chart_lxjs.LChart.AxisX[0].Separator = new Separator() { Step = 1 };//x轴数据全部展示
-
-
-
-                        }
-
                     }
                 }
                 else
@@ -247,13 +252,6 @@ namespace LY_SINTER.Popover.Course
         /// </summary>
         public void curve()
         {
-            //for (int col = 0; col < list_name.Count; col++)
-            //{
-            //    list_data.Add(1);
-            //}
-
-            //     chart_lxjs.LPageSize = 13;
-            //  chart_lxjs.LBindDataC<string, double>("chart_zxt_lxjs", list_name, list_data, System.Windows.Media.Brushes.Green, "", "", 2);
         }
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {

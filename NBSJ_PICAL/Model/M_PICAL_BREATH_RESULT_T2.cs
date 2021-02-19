@@ -13,7 +13,8 @@ namespace NBSJ_PICAL
         public double PICAL_B01_ZT_PV { get; set; }
         public double PICAL_W { get; set; }
         public double PICAL_P { get; set; }
-    public double PICAL_H { get; set; }
+        public double PICAL_H { get; set; }
+        public double PICAL_Q { get; set; }
 
     }
 }

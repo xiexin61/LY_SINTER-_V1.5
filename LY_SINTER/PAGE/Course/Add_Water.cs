@@ -865,6 +865,9 @@ namespace LY_SINTER.PAGE.Course
                         _myPlotModel.Series.Add(series6);
                     }
                     curve_his.Model = _myPlotModel;
+                    var PlotController = new OxyPlot.PlotController();
+                    PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
+                    curve_his.Controller = PlotController;
                 }
 
             }

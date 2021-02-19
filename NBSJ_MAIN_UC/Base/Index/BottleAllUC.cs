@@ -138,10 +138,10 @@ namespace UserControlIndex
             graphics.DrawString("实际t/h", Font, Brushes.Black, new Rectangle(3, Height - 15, 60, 15), this.sf);
 
             this.pipeLine3.Width = Width - 75;
-            this.pipeLine3.Location = new System.Drawing.Point(70, Height - 45);
+            this.pipeLine3.Location = new System.Drawing.Point(75, Height - 45);
             this.pipeLine4.Height = 100;
             //this.pipeLine4.Location = new System.Drawing.Point(Width - this.pipeLine4.Width-125, Height - this.pipeLine4.Height + 1);
-            this.pipeLine4.Location = new System.Drawing.Point(this.pipeLine3.Location.X+ this.pipeLine3.Width-10, this.pipeLine3.Location.Y+18);
+            this.pipeLine4.Location = new System.Drawing.Point(this.pipeLine3.Location.X+ this.pipeLine3.Width-15, this.pipeLine3.Location.Y+15);
 
             //this.pipeLine4.Height = 52;
             base.OnPaint(e);

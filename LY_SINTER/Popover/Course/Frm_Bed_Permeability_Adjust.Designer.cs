@@ -30,9 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Bed_Permeability_Adjust));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.curve_his = new OxyPlot.WindowsForms.PlotView();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.textBox_begin = new System.Windows.Forms.TextBox();
             this.textBox_end = new System.Windows.Forms.TextBox();
@@ -50,8 +52,6 @@
             this.checkBox11 = new System.Windows.Forms.CheckBox();
             this.checkBox12 = new System.Windows.Forms.CheckBox();
             this.checkBox13 = new System.Windows.Forms.CheckBox();
-            this.chart_lxjs = new WF.LChartPlus();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -62,9 +62,9 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.PowderBlue;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.curve_his, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.chart_lxjs, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -74,6 +74,20 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 82.49027F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(942, 529);
             this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // curve_his
+            // 
+            this.curve_his.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.curve_his.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.curve_his.Location = new System.Drawing.Point(3, 94);
+            this.curve_his.Name = "curve_his";
+            this.curve_his.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.curve_his.Size = new System.Drawing.Size(936, 432);
+            this.curve_his.TabIndex = 23;
+            this.curve_his.Text = "plotView5";
+            this.curve_his.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.curve_his.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.curve_his.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
             // 
             // tableLayoutPanel2
             // 
@@ -121,6 +135,21 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "结束时间";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton2.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.simpleButton2.Appearance.Options.UseFont = true;
+            this.simpleButton2.Appearance.Options.UseForeColor = true;
+            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
+            this.simpleButton2.Location = new System.Drawing.Point(393, 3);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(79, 22);
+            this.simpleButton2.TabIndex = 3;
+            this.simpleButton2.Text = "计算";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
             // 
@@ -258,6 +287,8 @@
             // 
             this.checkBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Location = new System.Drawing.Point(30, 4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(72, 16);
@@ -331,35 +362,6 @@
             this.checkBox13.Text = "1#风箱负压";
             this.checkBox13.UseVisualStyleBackColor = true;
             // 
-            // chart_lxjs
-            // 
-            this.chart_lxjs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart_lxjs.IsPage = false;
-            this.chart_lxjs.LActDatas = null;
-            this.chart_lxjs.LCurPage = 1;
-            this.chart_lxjs.Location = new System.Drawing.Point(2, 93);
-            this.chart_lxjs.LPageNum = 0;
-            this.chart_lxjs.LPageSize = 10;
-            this.chart_lxjs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chart_lxjs.Name = "chart_lxjs";
-            this.chart_lxjs.Size = new System.Drawing.Size(938, 434);
-            this.chart_lxjs.TabIndex = 2;
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton2.Appearance.ForeColor = System.Drawing.Color.Red;
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Appearance.Options.UseForeColor = true;
-            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(393, 3);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(79, 22);
-            this.simpleButton2.TabIndex = 3;
-            this.simpleButton2.Text = "计算";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
-            // 
             // Frm_Bed_Permeability_Adjust
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -402,6 +404,6 @@
         private System.Windows.Forms.CheckBox checkBox11;
         private System.Windows.Forms.CheckBox checkBox12;
         private System.Windows.Forms.CheckBox checkBox13;
-        private WF.LChartPlus chart_lxjs;
+        private OxyPlot.WindowsForms.PlotView curve_his;
     }
 }

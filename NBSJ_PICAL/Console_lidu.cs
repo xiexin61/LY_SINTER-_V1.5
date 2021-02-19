@@ -6,9 +6,8 @@ using System.Text;
 using SqlSugar;
 using System.Reflection;
 using System.Data;
-using System.Timers;
+using System.Threading;
 using MathNet.Numerics.Statistics;
-
 
 namespace NBSJ_PICAL
 {
@@ -21,45 +20,67 @@ namespace NBSJ_PICAL
         public double JPU;
         public double[] Cor_Result;
         public static double[,] RELEVANCE_SZ_l;
-
+        
+        System.Timers.Timer timer;
 
         public static SqlSugarClient GetInstance()
         {
-            SqlSugarClient db = new SqlSugarClient(new ConnectionConfig() { ConnectionString = Config.ConnectionString, DbType = SqlSugar.DbType.SqlServer, IsAutoCloseConnection = true });
+            SqlSugarClient db = new SqlSugarClient(new ConnectionConfig() { ConnectionString = ADODB.ConnectionString, DbType = SqlSugar.DbType.SqlServer, IsAutoCloseConnection = true });
             return db;
         }
-       
-        public  void RunTask(DateTime currentTime)
+        private void OnTimer_OneSec(object source, System.Timers.ElapsedEventArgs e)
         {
-            _M_PICAL_PAR = GET_M_PICAL_PAR();
+            RunTask(DateTime.Now);
+        }
 
+        private void OnTimer_Cycle()
+        {
+            while (true)
+            {
+                try
+                {
+
+
+                    RunTask(DateTime.Now);
+                }
+                catch (Exception ee)
+                {
+                     LogHelper.LogWhite("调用OnTimer_Cycle失败" + ee.Message);
+                }
+                //间隔5min 一个小时计算一次
+                Thread.Sleep(1000);
+            }
+        }
+            public  void RunTask(DateTime currentTime)
+        {
+            
             string log = "";
             try
             {  if(LastDateTime2.AddMinutes(_M_PICAL_PAR.PAR_T2) < DateTime.Now)
                 {
-                    //_M_PICAL_PAR = GET_M_PICAL_PAR();
+                    LogHelper.LogInfo("JPU计算开始，周期"+ _M_PICAL_PAR.PAR_T2+"min");
+                    _M_PICAL_PAR = GET_M_PICAL_PAR();
+
                     LastDateTime2 = DateTime.Now;
                     JPU = JPU_CAL(_M_PICAL_PAR, currentTime);
+                    
+                    LogHelper.LogInfo("JPU计算完成");
                 }
                 if ((LastDateTime3.AddMinutes(_M_PICAL_PAR.PAR_T1) < DateTime.Now))
                 {
+                    LogHelper.LogInfo("PICAL相关性计算开始，周期"+ _M_PICAL_PAR.PAR_T1+"min");
+                    _M_PICAL_PAR = GET_M_PICAL_PAR();
                     LastDateTime3 = DateTime.Now;
                     SET_SAVE(JPU, _M_PICAL_PAR, currentTime);
                     int M_ROW = _M_PICAL_PAR.PAR_NUMBER_ROW;
 
                     Cor_Result=BEISHAO_JICHUSHUJU(M_ROW);
                     SetResultValues();
-                    if (Set_MD_PHY_PARTICLE_INFO_IN())
-                    {
-                        log = "更新标志完成";
-                    }
-                    else
-                    {
-                        log = "更新标志失败";
-                    }
-                    Log.WriteLine(log, "透气性的计算程序");
+                    
+                    LogHelper.LogInfo("PICAL相关性计算完成");
+                    LogHelper.LogDEL();
                 }
-                Log.WriteLine(log, "透气性的计算程序");
+               
             }
             catch (Exception ee)
             {
@@ -80,20 +101,19 @@ namespace NBSJ_PICAL
         {
 
             M_PICAL_PAR item = null;
-            string strSQL = "select max(timestamp) from M_PICAL_PAR ";
-            DateTime strtimestamp = db_sugar.Ado.GetDateTime(strSQL);
-            item = db_sugar.Queryable<M_PICAL_PAR>().ToList().Where(s => s.TIMESTAMP == strtimestamp).FirstOrDefault();
+            string strSQL = "select top(1) * from M_PICAL_PAR ";
+           item = db_sugar.SqlQueryable<M_PICAL_PAR>(strSQL).ToList().FirstOrDefault();
             return item;
         }
 
-        
+       
 
         /// <summary>
         /// 读取二混粒度数据
         /// </summary>
         /// <param name="iDataBase"></param>
         /// <returns></returns>
-        public MD_PHY_PARTICLE_INFO_IN GET_MD_PHY_PARTICLE_INFO_IN(M_PICAL_PAR M_PICAL_PAR_, IDataBase iDataBase)
+        public MD_PHY_PARTICLE_INFO_IN GET_MD_PHY_PARTICLE_INFO_IN(M_PICAL_PAR M_PICAL_PAR_)
         {
             DateTime End_Times = DateTime.Now;
             DateTime StaterTimes = DateTime.Now.AddMinutes(-M_PICAL_PAR_.PAR_T2);
@@ -158,8 +178,9 @@ namespace NBSJ_PICAL
             string log = "";
             M_PICAL_BREATH_RESULT_T2 _M_PICAL_BREATH_RESULT_T2 = new M_PICAL_BREATH_RESULT_T2();
             _M_PICAL_BREATH_RESULT_T2 = Get_PICAL_B01_ZT_PV(M_PICAL_PAR_, CurTime);
-         
-            Q = M_PICAL_PAR_.PAR_RATED_Q;
+
+            //Q = M_PICAL_PAR_.PAR_RATED_Q;
+            Q =Get_Q(M_PICAL_PAR_, CurTime);
             K2 = M_PICAL_PAR_.PAR_K2;
             K1 = M_PICAL_PAR_.PAR_K1;
             double  NUM = M_PICAL_PAR_.PAR_NUM;
@@ -171,30 +192,42 @@ namespace NBSJ_PICAL
             n = M_PICAL_PAR_.PAR_N;
             fenmu = K2 * A;
             H = _M_PICAL_BREATH_RESULT_T2.PICAL_H;
-            if (A > 0 && NUM > 0&& P>0)
+            if (A > 0 && NUM > 0 && P > 0)
             {
-                JPU = K2 * (B01_ZT_PV / A) *((Q* W*(1-K1/100))/(NUM*A)) * (Math.Pow(H / (P * 1000), n));
-                //JPU = K2 * ((Q * (1 - K1)) / A) * (Math.Pow(H / (P * 1000), n));
+                //JPU = K2 * (B01_ZT_PV / 100) *((Q* W*(1-K1/100))/(NUM*A)) * (Math.Pow(H / (P * 1000), n));
+                JPU = K2 * ((Q * (1 - K1 / 100)) / A) * (Math.Pow(H / (P * 1000), n));
             }
+            _M_PICAL_BREATH_RESULT_T2.PICAL_Q = Q;
             _M_PICAL_BREATH_RESULT_T2.PICAL_JPU = JPU;
             if (Set_Admin_addT2(_M_PICAL_BREATH_RESULT_T2))
             {
-                log = "保存完成";
+                log = "M_PICAL_BREATH_RESULT_T2保存完成";
+                LogHelper.LogInfo(log);
             }
             else
             {
-                log = "保存失败";
+                log = "M_PICAL_BREATH_RESULT_T2保存失败";
+                LogHelper.LogError(log);
             }
-            Log.WriteLine(log, "_M_PICAL_BREATH_RESULT_T2的计算程序");
-
+           
             return JPU;
+        }
+
+        public double Get_Q(M_PICAL_PAR M_PICAL_PAR_, DateTime Time)
+        {
+            double Q = 0;
+            string str_sql = "select  isnull(round(avg((SIN_PLC_MA_SB_1_FLUE_FT+SIN_PLC_MA_SB_2_FLUE_FT)),3),0) as SIN_PLC_FLUE_FT from C_SIN_PLC_1MIN where timestamp>= '" + Time.AddMinutes(-M_PICAL_PAR_.PAR_T2) + "' and timestamp<'" + Time + "'";
+            Q = db_sugar.Ado.GetDouble(str_sql);
+            return Q;
         }
         public M_PICAL_BREATH_RESULT_T2 Get_PICAL_B01_ZT_PV(M_PICAL_PAR M_PICAL_PAR_, DateTime Time)
         {
             M_PICAL_BREATH_RESULT_T2 _M_PICAL_BREATH_RESULT_T2 = new M_PICAL_BREATH_RESULT_T2();
             _M_PICAL_BREATH_RESULT_T2.TIMESTAMP = Time;
             C_SIN_PLC_1MIN _C_SIN_PLC_1MIN = new C_SIN_PLC_1MIN();
-            string str_sql = "select  isnull(round(avg((SIN_PLC_B01_ZT_L_PV+SIN_PLC_B01_ZT_R_PV)/2),3),0) as SIN_PLC_B01_ZT_L_PV,isnull(round(avg((SIN_PLC_MA_FAN_1_PV+SIN_PLC_MA_FAN_2_PV)/2),3),0) as SIN_PLC_MA_FAN_1_PV,isnull(round(avg(abs(SIN_PLC_B01_PT_L+SIN_PLC_B01_PT_R)/2),3),0) as SIN_PLC_B01_PT_L  from C_SIN_PLC_1MIN where timestamp>= '" + Time.AddMinutes(-M_PICAL_PAR_.PAR_T2) +"' and timestamp<'"+Time+"'";
+            //20210218 @lt 修改数据源
+            //   string str_sql = "select  isnull(round(avg((SIN_PLC_B01_ZT_L_PV+SIN_PLC_B01_ZT_R_PV)/2),3),0) as SIN_PLC_B01_ZT_L_PV,isnull(round(avg((SIN_PLC_MA_FAN_1_PV+SIN_PLC_MA_FAN_2_PV)/2),3),0) as SIN_PLC_MA_FAN_1_PV,isnull(round(avg(abs(SIN_PLC_B01_PT_L+SIN_PLC_B01_PT_R)/2),3),0) as SIN_PLC_B01_PT_L  from C_SIN_PLC_1MIN where timestamp>= '" + Time.AddMinutes(-M_PICAL_PAR_.PAR_T2) +"' and timestamp<'"+Time+"'";
+            string str_sql = "select  isnull(round(avg((SIN_PLC_B01_ZT_L_PV+SIN_PLC_B01_ZT_R_PV)/2),3),0) as SIN_PLC_B01_ZT_L_PV,isnull(round(avg((SIN_PLC_MA_FAN_1_PV+SIN_PLC_MA_FAN_2_PV)/2),3),0) as SIN_PLC_MA_FAN_1_PV,isnull(round(avg(abs(SIN_PLC_MA_IN_1_FLUE_PT+SIN_PLC_MA_IN_2_FLUE_PI)/2),3),0) as SIN_PLC_B01_PT_L  from C_SIN_PLC_1MIN where timestamp>= '" + Time.AddMinutes(-M_PICAL_PAR_.PAR_T2) + "' and timestamp<'" + Time + "'";
 
             _C_SIN_PLC_1MIN = db_sugar.SqlQueryable<C_SIN_PLC_1MIN>(str_sql).ToList().FirstOrDefault();
             _M_PICAL_BREATH_RESULT_T2.PICAL_B01_ZT_PV = _C_SIN_PLC_1MIN.SIN_PLC_B01_ZT_L_PV;
@@ -203,7 +236,7 @@ namespace NBSJ_PICAL
                 _M_PICAL_BREATH_RESULT_T2.PICAL_W = _C_SIN_PLC_1MIN.SIN_PLC_MA_FAN_1_PV / M_PICAL_PAR_.PAR_RATED_MA_FAN;
             }
             _M_PICAL_BREATH_RESULT_T2.PICAL_P = _C_SIN_PLC_1MIN.SIN_PLC_B01_PT_L;
-            C_MFI_PLC_1MIN _C_MFI_PLC_1MIN = new C_MFI_PLC_1MIN();
+            
             string sql = "select  isnull(round(avg(F_PLC_THICK_PV),3),0) as F_PLC_THICK_PV from C_MFI_PLC_1MIN where timestamp>= '" + Time.AddMinutes(-M_PICAL_PAR_.PAR_T2) + "' and timestamp<'" + Time + "'";           
             _M_PICAL_BREATH_RESULT_T2.PICAL_H = db_sugar.Ado.GetDouble(sql);
             return _M_PICAL_BREATH_RESULT_T2;
@@ -238,18 +271,20 @@ namespace NBSJ_PICAL
             }
             catch (Exception ee)
             {
-
+                LogHelper.LogError(ee.Message);
                 throw;
             }
             if (Set_Admin_add(M_PICAL_BREATH_RESULT_))
             {
-                log = "保存完成";
+                log = "M_PICAL_BREATH_RESULT保存完成";
+                LogHelper.LogInfo(log);
             }
             else
             {
-                log = "保存失败";
+                log = "M_PICAL_BREATH_RESULT保存失败";
+                LogHelper.LogError(log);
             }
-            Log.WriteLine(log, "透气性的计算程序");
+           
 
         }
         private int GetRHDSJJTCHS(DateTime curTime)
@@ -284,7 +319,10 @@ namespace NBSJ_PICAL
             string str = "select isnull(round(avg(PICAL_JPU),3),0) from M_PICAL_BREATH_RESULT_T2 where (PICAL_JPU!=0 or PICAL_JPU!=null) and timestamp>'" + curTime .AddMinutes(-M_PICAL_PAR_.PAR_T1) + "' and timestamp<'"+ curTime + "'";
             _M_PICAL_BREATH_RESULT.PICAL_JPU = db_sugar.Ado.GetDouble(str);
 
-            String str1 = "select isnull(F_PLC_THICK_PV,0) as F_PLC_THICK_PV,isnull((I_PLC_IG_01_TE+I_PLC_IG_02_TE+I_PLC_IG_03_TE)/3,0) as I_PLC_IG_01_TE,isnull(F_PLC_SIN_SPEED_PV,0) as F_PLC_SIN_SPEED_PV  from C_MFI_PLC_1MIN where timestamp>'" + curTime.AddMinutes(-M_PICAL_PAR_.PAR_T1) + "' and timestamp<'" + curTime + "'";
+            //20210218 @lt 修改数据源 点火温度计算修改使用两个数据平均值
+            // String str1 = "select isnull(F_PLC_THICK_PV,0) as F_PLC_THICK_PV,isnull((I_PLC_IG_01_TE+I_PLC_IG_02_TE+I_PLC_IG_03_TE)/3,0) as I_PLC_IG_01_TE,isnull(F_PLC_SIN_SPEED_PV,0) as F_PLC_SIN_SPEED_PV  from C_MFI_PLC_1MIN where timestamp>'" + curTime.AddMinutes(-M_PICAL_PAR_.PAR_T1) + "' and timestamp<'" + curTime + "'";
+            String str1 = "select isnull(F_PLC_THICK_PV,0) as F_PLC_THICK_PV,isnull((I_PLC_IG_01_TE+I_PLC_IG_02_TE)/2,0) as I_PLC_IG_01_TE,isnull(F_PLC_SIN_SPEED_PV,0) as F_PLC_SIN_SPEED_PV  from C_MFI_PLC_1MIN where timestamp>'" + curTime.AddMinutes(-M_PICAL_PAR_.PAR_T1) + "' and timestamp<'" + curTime + "'";
+
             List<C_MFI_PLC_1MIN> _C_MFI_PLC_1MIN = new List<C_MFI_PLC_1MIN>();
             _C_MFI_PLC_1MIN = db_sugar.SqlQueryable<C_MFI_PLC_1MIN>(str1).ToList();
             double[] SUM = new double[3];
@@ -333,7 +371,10 @@ namespace NBSJ_PICAL
             //    _M_PICAL_BREATH_RESULT.PICAL_BREATH_SPARE13 = _C_MFI_PLC_1MIN.F_PLC_SIN_SPEED_PV;
 
             //}
-            string str2 = "select ISNULL((SIN_PLC_MA_SB_1_FLUE_FT+SIN_PLC_MA_SB_2_FLUE_FT)/2,0) as SIN_PLC_MA_SB_1_FLUE_FT,ISNULL((SIN_PLC_MA_SB_1_FLUE_TE+SIN_PLC_MA_SB_2_FLUE_TE)/2,0) as SIN_PLC_MA_SB_1_FLUE_TE,ISNULL((SIN_PLC_B01_PT_L+SIN_PLC_B01_PT_R)/2,0) as SIN_PLC_B01_PT_L   from C_SIN_PLC_1MIN where timestamp>'" + curTime.AddMinutes(-M_PICAL_PAR_.PAR_T1) + "' and timestamp<'" + curTime + "'";
+            // string str2 = "select ISNULL((SIN_PLC_MA_SB_1_FLUE_FT+SIN_PLC_MA_SB_2_FLUE_FT)/2,0) as SIN_PLC_MA_SB_1_FLUE_FT,ISNULL((SIN_PLC_MA_SB_1_FLUE_TE+SIN_PLC_MA_SB_2_FLUE_TE)/2,0) as SIN_PLC_MA_SB_1_FLUE_TE,ISNULL((SIN_PLC_B01_PT_L+SIN_PLC_B01_PT_R)/2,0) as SIN_PLC_B01_PT_L   from C_SIN_PLC_1MIN where timestamp>'" + curTime.AddMinutes(-M_PICAL_PAR_.PAR_T1) + "' and timestamp<'" + curTime + "'";
+            //20210218 @lt主抽负压添加修改数据源
+            string str2 = "select ISNULL((SIN_PLC_MA_SB_1_FLUE_FT+SIN_PLC_MA_SB_2_FLUE_FT)/2,0) as SIN_PLC_MA_SB_1_FLUE_FT,ISNULL((SIN_PLC_MA_SB_1_FLUE_TE+SIN_PLC_MA_SB_2_FLUE_TE)/2,0) as SIN_PLC_MA_SB_1_FLUE_TE,ISNULL((SIN_PLC_MA_IN_1_FLUE_PT+SIN_PLC_MA_IN_2_FLUE_PI)/2,0) as SIN_PLC_B01_PT_L   from C_SIN_PLC_1MIN where timestamp>'" + curTime.AddMinutes(-M_PICAL_PAR_.PAR_T1) + "' and timestamp<'" + curTime + "'";
+
             List<C_SIN_PLC_1MIN> _C_SIN_PLC_1MIN = new List<C_SIN_PLC_1MIN>();
             _C_SIN_PLC_1MIN = db_sugar.SqlQueryable<C_SIN_PLC_1MIN>(str2).ToList();
             SUM = new double[3];
@@ -442,11 +483,23 @@ namespace NBSJ_PICAL
         private void Get_M_PICAL_BREATH_RESULT3(DateTime curTime, int RHDS, M_PICAL_BREATH_RESULT _M_PICAL_BREATH_RESULT)
         {
 
-            String str1 = "select isnull(MAT_L2_DQBFB_1,0) as MAT_L2_DQBFB_1,isnull(MAT_L2_DQBFB_3,0) as MAT_L2_DQBFB_3,isnull(MAT_L2_DQBFB_7,0) as MAT_L2_DQBFB_7 from M_MACAL_INTERFACE_RESULT_HIST where timestamp>'" + curTime.AddMinutes(-RHDS) + "' and timestamp<'" + curTime.AddMinutes(-_M_PICAL_PAR.PAR_T1) + "'";
+            String str1 = "select isnull(SINCAL_MAT_DRY_1,0) as MAT_L2_DQBFB_1,isnull(SINCAL_MAT_DRY_5,0) as MAT_L2_DQBFB_3,isnull(SINCAL_MAT_DRY_7,0) as MAT_L2_DQBFB_7 from MC_MIXCAL_RESULT_1MIN where timestamp>'" + curTime.AddMinutes(-RHDS) + "' and timestamp<'" + curTime.AddMinutes(-_M_PICAL_PAR.PAR_T1) + "'";
             List<M_MACAL_INTERFACE_RESULT_HIST> _result = new List<M_MACAL_INTERFACE_RESULT_HIST>();
             _result = db_sugar.SqlQueryable<M_MACAL_INTERFACE_RESULT_HIST>(str1).ToList();
             double[] SUM = new double[3];
             int[] COUNT = new int[3];
+            if (_result.Count == 0)
+            {
+                //20210218 @lt 修改数据源
+                //  str1 = "select top(1) isnull(SINCAL_BFES_ORE_BILL_DRY,0) as MAT_L2_DQBFB_1,isnull(SINCAL_FLUX_BILL_DRY,0) as MAT_L2_DQBFB_3,isnull(SINCAL_BRUN_DRY,0) as MAT_L2_DQBFB_7 from MC_MIXCAL_RESULT_1MIN  order by timestamp desc";
+                str1 = "select top(1) isnull(SINCAL_MAT_DRY_1,0) as MAT_L2_DQBFB_1,isnull(SINCAL_MAT_DRY_5,0) as MAT_L2_DQBFB_3,isnull(SINCAL_MAT_DRY_7,0) as MAT_L2_DQBFB_7 from MC_MIXCAL_RESULT_1MIN  order by timestamp desc";
+
+                M_MACAL_INTERFACE_RESULT_HIST _resultl = new M_MACAL_INTERFACE_RESULT_HIST();
+                _result = db_sugar.SqlQueryable<M_MACAL_INTERFACE_RESULT_HIST>(str1).ToList();
+                _result.Add(_resultl);
+           
+
+            }
             foreach (var item in _result)
             {
                 if (item.MAT_L2_DQBFB_1 != 0)
@@ -479,6 +532,7 @@ namespace NBSJ_PICAL
                 _M_PICAL_BREATH_RESULT.PICAL_BREATH_SRM_BILL = SUM[2] / COUNT[2];
             }
 
+            
             String str2 = "select isnull(SINCAL_SIN_PV_R,0) as SINCAL_SIN_PV_R,isnull(SINCAL_SIN_PV_MGO,0) as SINCAL_SIN_PV_MGO,isnull(SINCAL_MIX_PV_C,0) as SINCAL_MIX_PV_C from MC_MIXCAL_RESULT_1MIN where timestamp>'" + curTime.AddMinutes(-RHDS) + "' and timestamp<'" + curTime.AddMinutes(-_M_PICAL_PAR.PAR_T1) + "'";
             List<MC_MIXCAL_RESULT_1MIN> result = new List<MC_MIXCAL_RESULT_1MIN>();
             result = db_sugar.SqlQueryable<MC_MIXCAL_RESULT_1MIN>(str2).ToList();
@@ -542,6 +596,12 @@ namespace NBSJ_PICAL
              dt = db_sugar.Ado.GetDataTable(str);
             return dt;
         }
+    
+ 
+  
+     
+      
+
         public bool Set_Admin_add(M_PICAL_BREATH_RESULT model)
         {
             bool listmodel = true;
@@ -607,7 +667,7 @@ namespace NBSJ_PICAL
             return listmodel;
         }
 
-        public DataTable Get_M_PICAL_BREATH_RESULT(int a, IDataBase iDataBase)
+        public DataTable Get_M_PICAL_BREATH_RESULT(int a)
         {
             string str_sql = string.Format(@"select * from  (select  isnull(PICAL_JPU, 0),
        isnull(PICAL_Q, 0),
@@ -626,7 +686,8 @@ namespace NBSJ_PICAL
   from M_PICAL_BREATH_RESULT
  order by TIMESTAMP desc)
  where  rownum <'" + a + "'");
-            return iDataBase.GetDataTable(str_sql);
+            return db_sugar.Ado.GetDataTable(str_sql);
+           // return iDataBase.GetDataTable(str_sql);
         }
         public int Config_Sys_Value()
         {
@@ -705,14 +766,19 @@ namespace NBSJ_PICAL
             if (Set_update(M_PICAL_BREATH_RESULT_))
             {
                 string log = "更新完成";
+                
+                LogHelper.LogInfo(log + "M_PICAL_BREATH_RESULT");
             }
             else
             {
                 string log = "更新失败";
+              
+                LogHelper.LogError(log + "M_PICAL_BREATH_RESULT");
             }
-            Console.WriteLine("These folks work at {0}", "相关性计算完成!");
-        
-    }
+          
+           
+
+        }
         public double nanInfinity(double num)
         {
             if (double.IsNaN(num))
@@ -794,6 +860,7 @@ namespace NBSJ_PICAL
             }
             catch(Exception ee)
             {
+                LogHelper.LogError("更新M_PICAL_BREATH_RESULT 失败");
                 return listmodel;
             }
         }

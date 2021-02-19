@@ -46,6 +46,7 @@ namespace LY_SINTER.PAGE.Analysis
             GetNewTime();
             llpizhong();
             pizhong();
+            dateTimePicker_value();
             //默认显示一个月数据
             DateTime d1 = DateTime.Now.AddMonths(-1);
             DateTime d2 = DateTime.Now;
@@ -65,6 +66,26 @@ namespace LY_SINTER.PAGE.Analysis
             Check_text();
             //MongoQMtimer1_Elapsed();
             //windowformRefresh();
+        }
+        /// <summary>
+        /// 开始时间&结束时间赋值
+        /// </summary>
+        public void dateTimePicker_value()
+        {
+            try
+            {
+                //结束时间
+                DateTime time_end = DateTime.Now;
+                //开始时间
+                DateTime time_begin = time_end.AddMonths(-1);
+
+                textBox_begin.Text = time_begin.ToString();
+                textBox_end.Text = time_end.ToString();
+            }
+            catch (Exception ee)
+            {
+
+            }
         }
         public void UC_Load()
         {
@@ -1030,6 +1051,7 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 form_display.Activate();
             }
+            sszzjh();
         }
         //产量数据查询按钮
         private void simpleButton5_click(object sender, EventArgs e)

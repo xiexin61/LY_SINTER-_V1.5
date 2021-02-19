@@ -35,13 +35,9 @@
             this.rbtnQuYangDian = new System.Windows.Forms.RadioButton();
             this.labQuyangTime = new System.Windows.Forms.Label();
             this.btnHuanXinLiao = new System.Windows.Forms.Button();
-            //this.labZ2_3 = new System.Windows.Forms.Label();
-            //this.labSF_3 = new System.Windows.Forms.Label();
             this.labSF_2 = new System.Windows.Forms.Label();
             this.labZ1_1 = new System.Windows.Forms.Label();
             this.labS_2 = new System.Windows.Forms.Label();
-            //this.labZ1_2 = new System.Windows.Forms.Label();
-            //this.labZ2_2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pipeLine_Two1 = new UserControlIndex.PipeLine_Two();
             this.blendingUC2 = new UserControlIndex.BlendingUC();
@@ -70,9 +66,10 @@
             this.labSJK1.AutoSize = true;
             this.labSJK1.Location = new System.Drawing.Point(27, 342);
             this.labSJK1.Name = "labSJK1";
-            this.labSJK1.Size = new System.Drawing.Size(80, 12);
+            this.labSJK1.Size = new System.Drawing.Size(53, 12);
             this.labSJK1.TabIndex = 144;
             this.labSJK1.Text = "成品皮带";
+            this.labSJK1.Click += new System.EventHandler(this.labSJK1_Click);
             // 
             // labPuDiLiaoCaoFlow
             // 
@@ -115,20 +112,6 @@
             this.btnHuanXinLiao.UseVisualStyleBackColor = true;
             this.btnHuanXinLiao.Click += new System.EventHandler(this.btnHuanXinLiao_Click);
             // 
-            // labZ2_3
-            // 
-            /*this.labZ2_3.Location = new System.Drawing.Point(0, 0);
-            this.labZ2_3.Name = "labZ2_3";
-            this.labZ2_3.Size = new System.Drawing.Size(100, 23);
-            this.labZ2_3.TabIndex = 150;*/
-            // 
-            // labSF_3
-            // 
-            /*this.labSF_3.Location = new System.Drawing.Point(0, 0);
-            this.labSF_3.Name = "labSF_3";
-            this.labSF_3.Size = new System.Drawing.Size(100, 23);
-            this.labSF_3.TabIndex = 151;*/
-            // 
             // labSF_2
             // 
             this.labSF_2.AutoSize = true;
@@ -153,20 +136,6 @@
             this.labS_2.Name = "labS_2";
             this.labS_2.Size = new System.Drawing.Size(100, 23);
             this.labS_2.TabIndex = 152;
-            // 
-            // labZ1_2
-            // 
-            /*this.labZ1_2.Location = new System.Drawing.Point(0, 0);
-            this.labZ1_2.Name = "labZ1_2";
-            this.labZ1_2.Size = new System.Drawing.Size(100, 23);
-            this.labZ1_2.TabIndex = 153;*/
-            // 
-            // labZ2_2
-            // 
-            /*this.labZ2_2.Location = new System.Drawing.Point(0, 0);
-            this.labZ2_2.Name = "labZ2_2";
-            this.labZ2_2.Size = new System.Drawing.Size(100, 23);
-            this.labZ2_2.TabIndex = 154;*/
             // 
             // panel1
             // 
@@ -271,6 +240,7 @@
             this.puDiLiaoCaoUC1.Name = "puDiLiaoCaoUC1";
             this.puDiLiaoCaoUC1.Size = new System.Drawing.Size(82, 57);
             this.puDiLiaoCaoUC1.TabIndex = 138;
+            this.puDiLiaoCaoUC1.Load += new System.EventHandler(this.puDiLiaoCaoUC1_Load);
             // 
             // huanLengJiUC1
             // 
@@ -280,11 +250,13 @@
             this.huanLengJiUC1.CkTemp = "";
             this.huanLengJiUC1.Hlj_Read_SPEED = "";
             this.huanLengJiUC1.Hlj_Set_SPEED = "";
+            this.huanLengJiUC1.GLJ_LW = "";
             this.huanLengJiUC1.Location = new System.Drawing.Point(507, 456);
             this.huanLengJiUC1.Name = "huanLengJiUC1";
             this.huanLengJiUC1.RkTemp = "";
             this.huanLengJiUC1.Size = new System.Drawing.Size(470, 183);
             this.huanLengJiUC1.TabIndex = 127;
+            this.huanLengJiUC1.Load += new System.EventHandler(this.huanLengJiUC1_Load);
             // 
             // shaiZiUC1
             // 
@@ -339,8 +311,8 @@
             this.bottleAllUC1.MinimumSize = new System.Drawing.Size(10, 10);
             this.bottleAllUC1.Name = "bottleAllUC1";
             this.bottleAllUC1.Size = new System.Drawing.Size(1920, 69);
-            this.bottleAllUC1.T_TOTAL_PV_W_3S = "13";
-            this.bottleAllUC1.T_TOTAL_SP_W_3S = "12";
+            this.bottleAllUC1.T_TOTAL_PV_W_3S = "0";
+            this.bottleAllUC1.T_TOTAL_SP_W_3S = "0";
             this.bottleAllUC1.TabIndex = 8;
             // 
             // bottleAllUC21
@@ -397,13 +369,9 @@
             this.Controls.Add(this.puDiLiaoCaoUC1);
             this.Controls.Add(this.labQuyangTime);
             this.Controls.Add(this.btnHuanXinLiao);
-            //this.Controls.Add(this.labZ2_3);
-            //this.Controls.Add(this.labSF_3);
             this.Controls.Add(this.labSF_2);
             this.Controls.Add(this.labZ1_1);
             this.Controls.Add(this.labS_2);
-            //this.Controls.Add(this.labZ1_2);
-            //this.Controls.Add(this.labZ2_2);
             this.Controls.Add(this.huanLengJiUC1);
             this.Controls.Add(this.shaiZiUC1);
             this.Controls.Add(this.removeDustUC1);

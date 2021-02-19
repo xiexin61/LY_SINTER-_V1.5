@@ -61,8 +61,8 @@ namespace LY_SINTER.Popover.Analysis
             dateTimePicker_value();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
-            DATA_TEXT(1, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
-            DATA_TEXT(2, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
+          //  DATA_TEXT(1, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
+            DATA_TEXT(3, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
         }
         /// <summary>
         /// 开始时间&结束时间赋值
@@ -91,7 +91,7 @@ namespace LY_SINTER.Popover.Analysis
         {
             try
             {
-                if (_flag == 1)
+                if (_flag == 3)
                 {
                     DataTable _data = new DataTable();
                     for(int x = 0; x < _Getdate_name.Count(); x++)
@@ -252,8 +252,8 @@ namespace LY_SINTER.Popover.Analysis
         /// <param name="e"></param>
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            DATA_TEXT(1, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
-            DATA_TEXT(2, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
+            DATA_TEXT(3, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
+          //  DATA_TEXT(2, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
         }
         /// <summary>
         /// 实时按钮
@@ -263,8 +263,8 @@ namespace LY_SINTER.Popover.Analysis
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             dateTimePicker_value();
-            DATA_TEXT(1, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
-            DATA_TEXT(2, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
+            DATA_TEXT(3, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
+           // DATA_TEXT(2, comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//填充数据
         }
     }
 }

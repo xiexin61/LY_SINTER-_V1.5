@@ -1719,7 +1719,7 @@ namespace LY_SINTER.PAGE.Quality
                     " M_MATERIAL_BINS c ," +
                     "M_MATERIAL_COOD d ," +
                     "CFG_MAT_L2_LJJS_INTERFACE e " +
-                    "where a.MAT_L2_CH = b.MAT_L2_CH and  c.L2_CODE  = d.L2_CODE and c.BIN_NUM_SHOW = b.MAT_L2_CH and a.MAT_L2_CH = e.MAT_CH ORDER BY A.MAT_L2_XLK ASC";
+                    "where   a.MAT_L2_CH = b.MAT_L2_CH and  c.L2_CODE  = d.L2_CODE and c.BIN_NUM_SHOW = b.MAT_L2_CH and a.MAT_L2_CH = e.MAT_CH ORDER BY A.MAT_L2_XLK ASC";
                 DataTable dataTable = _dBSQL.GetCommand(sql);
                 if (dataTable.Rows.Count >= 0)
                 {

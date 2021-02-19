@@ -492,7 +492,7 @@ namespace LY_SINTER
                 }
                 else if (str == "返矿平衡控制模型")
                 {
-
+                    
                     TabPage tpg = new TabPage(str);
                     Balance_Mine _shaojiezhongdian = new Balance_Mine();
                     tpg.Controls.Add(_shaojiezhongdian);

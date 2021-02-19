@@ -26,9 +26,9 @@ namespace LY_SINTER.Popover.Analysis
             dateTimePicker_value();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
-            Class_text(1, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
-            Class_text(2, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
             Class_text(3, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
+         //   Class_text(2, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
+          //  Class_text(3, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
             Time_now();
         }
         /// <summary>
@@ -63,6 +63,10 @@ namespace LY_SINTER.Popover.Analysis
                 {
                     _NAME_CLASS = "2#烧结机";
                 }
+                else if(_flag == 3)
+                {
+                    _NAME_CLASS = "3#烧结机";
+                }
                 else
                 {
                     _NAME_CLASS = "1、2#烧结机平均";
@@ -76,9 +80,13 @@ namespace LY_SINTER.Popover.Analysis
                     {
                         this.dataGridView1.DataSource = _table;
                     }
-                    else if (_flag == 2)
+                    if (_flag == 2)
                     {
                         this.dataGridView2.DataSource = _table;
+                    }
+                    else  if (_flag == 3)
+                    {
+                        this.dataGridView1.DataSource = _table;
                     }
                     else
                     {
@@ -95,17 +103,17 @@ namespace LY_SINTER.Popover.Analysis
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            Class_text(1, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
-            Class_text(2, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
             Class_text(3, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
+           // Class_text(2, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
+         //   Class_text(3, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
         }
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
             dateTimePicker_value();
-            Class_text(1, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
-            Class_text(2, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
             Class_text(3, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
+         //   Class_text(2, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
+          //  Class_text(3, textBox_begin.Text.ToString(), textBox_end.Text.ToString());
         }
 
         /// <summary>

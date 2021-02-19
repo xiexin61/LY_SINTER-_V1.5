@@ -23,13 +23,34 @@ namespace LY_SINTER.PAGE.Analysis
         {
             InitializeComponent();
             GetNewTime();
+            dateTimePicker_value();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
-            DateTime d1 = DateTime.Now.AddDays(-7);
+            DateTime d1 = DateTime.Now.AddDays(-20);
             DateTime d2 = DateTime.Now;
             getData(d1, d2);
             dkdhfx(d1, d2);
             gtrhfx(d1, d2);
+        }
+        /// <summary>
+        /// 开始时间&结束时间赋值
+        /// </summary>
+        public void dateTimePicker_value()
+        {
+            try
+            {
+                //结束时间
+                DateTime time_end = DateTime.Now;
+                //开始时间
+                DateTime time_begin = time_end.AddMonths(-1);
+
+                textBox_begin.Text = time_begin.ToString();
+                textBox_end.Text = time_end.ToString();
+            }
+            catch (Exception ee)
+            {
+                
+            }
         }
         string sql = "", row = "", sql1 = "", qx = "";
         public void GetNewTime()

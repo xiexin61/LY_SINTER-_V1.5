@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using LiveCharts.Wpf;
 using OxyPlot.Axes;
 using OxyPlot;
+using OxyPlot.Series;
 using DataBase;
 using LY_SINTER.Custom;
 using VLog;
@@ -24,15 +25,9 @@ namespace LY_SINTER.PAGE.Course
         public System.Timers.Timer _Timer1 { get; set; }
 
         //实时曲线
-        List<double> ysdlh = new List<double>();
         List<string> xvalDt = new List<string> { "1#闸门", "2#闸门", "3#闸门", "4#闸门", "5#闸门", "6#闸门", "平均料厚" };//{ 1, 2, 3, 4, 5, 6, 7 };
-        List<double> ysjlh = new List<double>();
-        List<double> yjyyzxzs = new List<double>();
         List<string> xvalDt1 = new List<string> { "1#闸门", "2#闸门", "3#闸门", "4#闸门", "5#闸门", "6#闸门" };
-        List<double> yytlh = new List<double>();
         //实时曲线前12H数据
-        //时间
-        List<string> xvalDt_12h_1 = new List<string>();
         //设定料厚
         List<double> ydata_12h_1 = new List<double>();
         //实际料厚
@@ -82,10 +77,10 @@ namespace LY_SINTER.PAGE.Course
         string[] curve_name = { "A_1", "A_2", "A_3", "A_4", "A_5", "A_6", "A_7", "A_8" };
 
 
-        ColumnSeries lcheckBox9 { get; set; }
-        ColumnSeries lcheckBox10 { get; set; }
-        ColumnSeries lcheckBox11 { get; set; }
-        ColumnSeries lcheckBox12 { get; set; }
+        LiveCharts.Wpf.ColumnSeries lcheckBox9 { get; set; }
+        LiveCharts.Wpf.ColumnSeries lcheckBox10 { get; set; }
+        LiveCharts.Wpf.ColumnSeries lcheckBox11 { get; set; }
+        LiveCharts.Wpf.ColumnSeries lcheckBox12 { get; set; }
 
         DBSQL dBSQL = new DBSQL(DataBase.ConstParameters.strCon);
         public Deviation_guide()
@@ -96,20 +91,12 @@ namespace LY_SINTER.PAGE.Course
             dateTimePicker_value();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
-            //曲线控件背景颜色
-            lChartPlus6.LChart.BackColor = Color.White;
-            lChartPlus7.LChart.BackColor = Color.White;
-            lChartPlus8.LChart.BackColor = Color.White;
-            lcheckBox9 = lChartPlus6.MakeCol(0, 0, "checkBox9");
-            lcheckBox10 = lChartPlus6.MakeCol(0, 0, "checkBox10");
-            lcheckBox11 = lChartPlus7.MakeCol(0, 0, "checkBox11");
-            lcheckBox12 = lChartPlus8.MakeCol(0, 0, "checkBox12");
 
 
             quxiandingyi();//实时曲线定义
-            ss();//实时曲线赋值
-                 //  ls12h();//历史中实时曲线初始化赋值12H
-                 //jingtaiquxiandingyi();//历史中的静态曲线定义
+            Curve_Bar_1();//布料厚度
+            Curve_Bar_2();//均匀一致性指数
+            Curve_Bar_3();//应调厚度
             dataGridView1_CellContentClick();//dataGridView不显示行标题列
             time();
             xzmxx();
@@ -135,7 +122,10 @@ namespace LY_SINTER.PAGE.Course
                 time();
                 xzmxx();
                 shuju();
-                ss();//实时曲线赋值
+              
+                Curve_Bar_1();//布料厚度
+                Curve_Bar_2();//均匀一致性指数
+                Curve_Bar_3();//应调厚度
                 min1();//1min历史中实时曲线放一个数
             }
         }
@@ -143,25 +133,6 @@ namespace LY_SINTER.PAGE.Course
         private void quxiandingyi()
         {
 
-            lChartPlus6.Dock = DockStyle.Fill;
-            lChartPlus7.Dock = DockStyle.Fill;
-            lChartPlus8.Dock = DockStyle.Fill;
-
-            lChartPlus6.LChart.Series.Add(lcheckBox9);
-            lChartPlus6.LChart.Series.Add(lcheckBox10);
-            lChartPlus7.LChart.Series.Add(lcheckBox11);
-            lChartPlus8.LChart.Series.Add(lcheckBox12);
-            lChartPlus6.LBindDataC<string, double>("checkBox9", xvalDt, ysdlh, System.Windows.Media.Brushes.Green, " ", " ", 2);//散点是S，X轴名，Y轴名，全部写2
-            lChartPlus6.LBindDataC<string, double>("checkBox10", xvalDt, ysjlh, System.Windows.Media.Brushes.Purple, " ", " ", 2);
-            lChartPlus7.LBindDataC<string, double>("checkBox11", xvalDt1, yjyyzxzs, System.Windows.Media.Brushes.Green, " ", " ", 2);
-            lChartPlus8.LBindDataC<string, double>("checkBox12", xvalDt1, yytlh, System.Windows.Media.Brushes.Green, " ", " ", 2);
-            this.lChartPlus6.LChart.AxisX[0].Separator = new Separator() { Step = 1 };//x轴数据全部展示
-            this.lChartPlus7.LChart.AxisX[0].Separator = new Separator() { Step = 1 };//x轴数据全部展示
-            this.lChartPlus8.LChart.AxisX[0].Separator = new Separator() { Step = 1 };//x轴数据全部展示
-            lcheckBox9.Title = "设定厚度(mm)";
-            lcheckBox10.Title = "实际厚度(mm)";
-            lcheckBox11.Title = "均匀一致性指数";
-            lcheckBox12.Title = "应调厚度(mm)";
 
         }
         //1min历史中实时曲线放一个数
@@ -269,100 +240,190 @@ namespace LY_SINTER.PAGE.Course
             catch
             { }
         }
-        //实时曲线赋值
-        private void ss()
+        /// <summary>
+        /// 布料厚度柱形图
+        /// </summary>
+        public void Curve_Bar_1()
         {
             try
             {
-                ysdlh.Clear();
-                ysjlh.Clear();
-                yjyyzxzs.Clear();
-                yytlh.Clear();
-                double a = 0;
-                double b = 0;
+                PlotModel _myPlotModel_1 = new PlotModel();
+                //X轴定义
+                CategoryAxis _categoryAxis_1 = new CategoryAxis()
+                {
+                    MajorTickSize = 0,
+                    IsZoomEnabled = false,
+                    Position = AxisPosition.Bottom,
+                };
+                for (int i = 0; i < xvalDt.Count(); i++)
+                {
+                    _categoryAxis_1.Labels.Add(xvalDt[i]);     //添加x坐标
+                }
+                _myPlotModel_1.Axes.Add(_categoryAxis_1);
+                //Y轴定义
+                LinearAxis _valueAxis = new LinearAxis()
+                {
+                    MinorTickSize = 0,
+                    Key = "y",
+                };
+                _myPlotModel_1.Axes.Add(_valueAxis);
+                //设定厚度
+                var _ColumnSeries = new OxyPlot.Series.ColumnSeries();
+                List<double> _Value_Bar_1 = new List<double>();
+                string sql6 = "select top 1 ISNULL(F_PLC_SMALL_SG_TH_SP_1,0),ISNULL(F_PLC_SMALL_SG_TH_SP_2,0),ISNULL(F_PLC_SMALL_SG_TH_SP_3,0),ISNULL(F_PLC_SMALL_SG_TH_SP_4,0),ISNULL(F_PLC_SMALL_SG_TH_SP_5,0),ISNULL(F_PLC_SMALL_SG_TH_SP_6,0), (F_PLC_SMALL_SG_TH_SP_1 + F_PLC_SMALL_SG_TH_SP_2 + F_PLC_SMALL_SG_TH_SP_3 + F_PLC_SMALL_SG_TH_SP_4 + F_PLC_SMALL_SG_TH_SP_5 + F_PLC_SMALL_SG_TH_SP_6)/6 as _AVG from C_MFI_PLC_1MIN order by TIMESTAMP desc";
+                DataTable _data = dBSQL.GetCommand(sql6);
+                if (_data.Rows.Count > 0 && _data != null)
+                {
+                    for (int x = 0; x < _data.Columns.Count; x++)
+                    {
+                        _Value_Bar_1.Add(Math.Round(double.Parse(_data.Rows[0][x].ToString() == "" ? "0" : _data.Rows[0][x].ToString()), 2));
+                    }
+                }
+                else
+                {
+                    for (int x = 0; x < _data.Columns.Count; x++)
+                    {
+                        _Value_Bar_1.Add(0);
+                    }
+                }
+                for (int i = 0; i < _Value_Bar_1.Count; i++)
+                {
+                    _ColumnSeries.Items.Add(new ColumnItem() { Value = _Value_Bar_1[i] });
+                }
+                _myPlotModel_1.Series.Add(_ColumnSeries);
 
-                //取设定料厚
-                string sql4 = "select top 1 ISNULL(F_PLC_SMALL_SG_TH_SP_1,0),ISNULL(F_PLC_SMALL_SG_TH_SP_2,0),ISNULL(F_PLC_SMALL_SG_TH_SP_3,0),ISNULL(F_PLC_SMALL_SG_TH_SP_4,0),ISNULL(F_PLC_SMALL_SG_TH_SP_5,0),ISNULL(F_PLC_SMALL_SG_TH_SP_6,0) from C_MFI_PLC_1MIN order by TIMESTAMP desc";
-                DataTable dataTable4 = dBSQL.GetCommand(sql4);
-                if (dataTable4.Rows.Count > 0)
+                //实际厚度
+                var _ColumnSeries_1 = new OxyPlot.Series.ColumnSeries();
+                List<double> _Value_Bar_2 = new List<double>();
+                string sql6_1 = "select top 1 ISNULL(F_PLC_SMALL_SG_TH_PV_1,0),ISNULL(F_PLC_SMALL_SG_TH_PV_2,0),ISNULL(F_PLC_SMALL_SG_TH_PV_3,0),ISNULL(F_PLC_SMALL_SG_TH_PV_4,0),ISNULL(F_PLC_SMALL_SG_TH_PV_5,0),ISNULL(F_PLC_SMALL_SG_TH_PV_6,0) ,(F_PLC_SMALL_SG_TH_PV_1 + F_PLC_SMALL_SG_TH_PV_2 + F_PLC_SMALL_SG_TH_PV_3 + F_PLC_SMALL_SG_TH_PV_4 + F_PLC_SMALL_SG_TH_PV_5 + F_PLC_SMALL_SG_TH_PV_6)/6 as _AVG from C_MFI_PLC_1MIN order by TIMESTAMP desc";
+                DataTable _data_1 = dBSQL.GetCommand(sql6_1);
+                if (_data_1.Rows.Count > 0 && _data_1 != null)
                 {
-                    for (int i = 0; i < 6; i++)
+                    for (int x = 0; x < _data.Columns.Count; x++)
                     {
-                        double sdlh = double.Parse(dataTable4.Rows[0][i].ToString());
-                        ysdlh.Add(sdlh);
-                        a += double.Parse(dataTable4.Rows[0][i].ToString());
+                        _Value_Bar_2.Add(Math.Round(double.Parse(_data_1.Rows[0][x].ToString() == "" ? "0" : _data_1.Rows[0][x].ToString()), 2));
                     }
-                    double avgsdlh = a / 6;
-                    ysdlh.Add(avgsdlh);
-                    lChartPlus6.LBindDataC<string, double>("checkBox9", xvalDt, ysdlh, System.Windows.Media.Brushes.Green, " ", " ", 2);
                 }
                 else
                 {
-                    ysdlh.Add(0);
-                    lChartPlus6.LBindDataC<string, double>("checkBox9", xvalDt, ysdlh, System.Windows.Media.Brushes.Green, " ", " ", 2);
-                }
-                //取实际料厚
-                string sql5 = "select top 1 ISNULL(F_PLC_SMALL_SG_TH_PV_1,0),ISNULL(F_PLC_SMALL_SG_TH_PV_2,0),ISNULL(F_PLC_SMALL_SG_TH_PV_3,0),ISNULL(F_PLC_SMALL_SG_TH_PV_4,0),ISNULL(F_PLC_SMALL_SG_TH_PV_5,0),ISNULL(F_PLC_SMALL_SG_TH_PV_6,0) from C_MFI_PLC_1MIN order by TIMESTAMP desc";
-                DataTable dataTable5 = dBSQL.GetCommand(sql5);
-                if (dataTable5.Rows.Count > 0)
-                {
-                    for (int i = 0; i < 6; i++)
+                    for (int x = 0; x < _data_1.Columns.Count; x++)
                     {
-                        double sjlh = double.Parse(dataTable5.Rows[0][i].ToString());
-                        ysjlh.Add(sjlh);
-                        b += double.Parse(dataTable5.Rows[0][i].ToString());
+                        _Value_Bar_2.Add(0);
                     }
-                    double avgsjlh = b / 6;
-                    ysjlh.Add(avgsjlh);
-                    lChartPlus6.LBindDataC<string, double>("checkBox10", xvalDt1, ysjlh, System.Windows.Media.Brushes.CornflowerBlue, " ", " ", 2);
                 }
-                else
+                for (int i = 0; i < _Value_Bar_1.Count; i++)
                 {
-                    ysjlh.Add(0);
-                    lChartPlus6.LBindDataC<string, double>("checkBox10", xvalDt1, ysjlh, System.Windows.Media.Brushes.CornflowerBlue, " ", " ", 2);
+                    _ColumnSeries_1.Items.Add(new ColumnItem() { Value = _Value_Bar_2[i] });
                 }
+                _myPlotModel_1.Series.Add(_ColumnSeries_1);
+                plotView1.Model = _myPlotModel_1;
+                }
+            catch (Exception ee)
+            {
 
-                //均匀一致性指数
-                string sql6 = "select top 1 ISNULL(UNCAL_E_1,0),ISNULL(UNCAL_E_2,0),ISNULL(UNCAL_E_3,0),ISNULL(UNCAL_E_4,0),ISNULL(UNCAL_E_5,0),ISNULL(UNCAL_E_6,0) from MC_UNIFORMCAL_result_1min order by TIMESTAMP desc";
-                DataTable dataTable6 = dBSQL.GetCommand(sql6);
-                if (dataTable6.Rows.Count > 0)
-                {
-                    for (int i = 0; i < 6; i++)
-                    {
-                        double jyyzxzs = double.Parse(dataTable6.Rows[0][i].ToString());
-                        yjyyzxzs.Add(jyyzxzs);
-                    }
-                    lChartPlus7.LBindDataC<string, double>("checkBox11", xvalDt1, yjyyzxzs, System.Windows.Media.Brushes.Green, " ", " ", 2);
-                }
-                else
-                {
-                    yjyyzxzs.Add(0);
-                    lChartPlus7.LBindDataC<string, double>("checkBox11", xvalDt1, yjyyzxzs, System.Windows.Media.Brushes.Green, " ", " ", 2);
-                }
-                //应调料厚
-                string sql7 = "select top 1 ISNULL(UNCAL_SG_TH_AC_1,0),ISNULL(UNCAL_SG_TH_AC_2,0),ISNULL(UNCAL_SG_TH_AC_3,0),ISNULL(UNCAL_SG_TH_AC_4,0),ISNULL(UNCAL_SG_TH_AC_5,0),ISNULL(UNCAL_SG_TH_AC_6,0) from MC_UNIFORMCAL_result order by TIMESTAMP desc";
-                DataTable dataTable7 = dBSQL.GetCommand(sql7);
-                if (dataTable7.Rows.Count > 0)
-                {
-                    for (int i = 0; i < 6; i++)
-                    {
-                        double ytlh = double.Parse(dataTable7.Rows[0][i].ToString());
-                        yytlh.Add(ytlh);
-                    }
-                    lChartPlus8.LBindDataC<string, double>("checkBox12", xvalDt1, yytlh, System.Windows.Media.Brushes.Green, " ", " ", 2);
-                }
-                else
-                {
-                    yytlh.Add(0);
-                    lChartPlus8.LBindDataC<string, double>("checkBox12", xvalDt1, yytlh, System.Windows.Media.Brushes.Green, " ", " ", 2);
-                }
-                lcheckBox9.Title = "设定厚度(mm)";
-                lcheckBox10.Title = "实际厚度(mm)";
-                lcheckBox11.Title = "均匀一致性指数";
-                lcheckBox12.Title = "应调厚度(mm)";
             }
-            catch
-            { }
+        }
+        /// <summary>
+        /// 均匀一致性指数
+        /// </summary>
+        public void Curve_Bar_2()
+        {
+            
+            PlotModel _myPlotModel = new PlotModel();
+            //X轴定义
+            CategoryAxis _categoryAxis = new CategoryAxis()
+            {
+                MajorTickSize = 0,
+                IsZoomEnabled = false,
+                Position = AxisPosition.Bottom,
+            };
+            for (int i = 0; i < xvalDt1.Count(); i++)
+            {
+                _categoryAxis.Labels.Add(xvalDt1[i]);     //添加x坐标
+            }
+            _myPlotModel.Axes.Add(_categoryAxis);
+            //Y轴定义
+            LinearAxis _valueAxis = new LinearAxis()
+            {
+                MinorTickSize = 0,
+                Key = "y",
+            };
+            _myPlotModel.Axes.Add(_valueAxis);
+            var _ColumnSeries = new OxyPlot.Series.ColumnSeries();
+            List<double> _Value_Bar_1 = new List<double>();
+            string sql6 = "select top 1 ISNULL(UNCAL_E_1,0),ISNULL(UNCAL_E_2,0),ISNULL(UNCAL_E_3,0),ISNULL(UNCAL_E_4,0),ISNULL(UNCAL_E_5,0),ISNULL(UNCAL_E_6,0) from MC_UNIFORMCAL_result_1min order by TIMESTAMP desc";
+            DataTable _data = dBSQL.GetCommand(sql6);
+            if (_data.Rows.Count > 0 && _data != null)
+            {
+                for (int x = 0; x < _data.Columns.Count; x++)
+                {
+                    _Value_Bar_1.Add(Math.Round(double.Parse(_data.Rows[0][x].ToString() == "" ? "0" : _data.Rows[0][x].ToString()), 2));
+                }
+            }
+            else
+            {
+                for (int x = 0; x < _data.Columns.Count; x++)
+                {
+                    _Value_Bar_1.Add(0);
+                }
+            }
+            for (int i = 0; i < _Value_Bar_1.Count; i++)
+            {
+                _ColumnSeries.Items.Add(new ColumnItem() { Value = _Value_Bar_1[i] });
+            }
+            _myPlotModel.Series.Add(_ColumnSeries);
+            plotView2.Model = _myPlotModel;
+           
+        }
+        /// <summary>
+        /// 应调厚度
+        /// </summary>
+        public void Curve_Bar_3()
+        {
+            PlotModel _myPlotModel = new PlotModel();
+            //X轴定义
+            CategoryAxis _categoryAxis = new CategoryAxis()
+            {
+                MajorTickSize = 0,
+                IsZoomEnabled = false,
+                Position = AxisPosition.Bottom,
+            };
+            for (int i = 0; i < xvalDt1.Count(); i++)
+            {
+                _categoryAxis.Labels.Add(xvalDt1[i]);     //添加x坐标
+            }
+            _myPlotModel.Axes.Add(_categoryAxis);
+            //Y轴定义
+            LinearAxis _valueAxis = new LinearAxis()
+            {
+                MinorTickSize = 0,
+                Key = "y",
+            };
+            _myPlotModel.Axes.Add(_valueAxis);
+            var _ColumnSeries = new OxyPlot.Series.ColumnSeries();
+            List<double> _Value_Bar_1 = new List<double>();
+            string sql6 = "select top 1 ISNULL(UNCAL_SG_TH_AC_1,0),ISNULL(UNCAL_SG_TH_AC_2,0),ISNULL(UNCAL_SG_TH_AC_3,0),ISNULL(UNCAL_SG_TH_AC_4,0),ISNULL(UNCAL_SG_TH_AC_5,0),ISNULL(UNCAL_SG_TH_AC_6,0) from MC_UNIFORMCAL_result order by TIMESTAMP desc";
+            DataTable _data = dBSQL.GetCommand(sql6);
+            if (_data.Rows.Count > 0 && _data != null)
+            {
+                for (int x = 0; x < _data.Columns.Count; x++)
+                {
+                    _Value_Bar_1.Add(Math.Round(double.Parse(_data.Rows[0][x].ToString() == "" ? "0" : _data.Rows[0][x].ToString()), 2));
+                }
+            }
+            else
+            {
+                for (int x = 0; x < _data.Columns.Count; x++)
+                {
+                    _Value_Bar_1.Add(0);
+                }
+            }
+            for (int i = 0; i < _Value_Bar_1.Count; i++)
+            {
+                _ColumnSeries.Items.Add(new ColumnItem() { Value = _Value_Bar_1[i] });
+            }
+            _myPlotModel.Series.Add(_ColumnSeries);
+            plotView3.Model = _myPlotModel;
         }
 
         //最新调整时间
@@ -1197,6 +1258,9 @@ namespace LY_SINTER.PAGE.Course
                         _myPlotModel.Series.Add(series8);
                     }
                     curve_his.Model = _myPlotModel;
+                    var PlotController = new OxyPlot.PlotController();
+                    PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
+                    curve_his.Controller = PlotController;
                 }
 
             }
@@ -1205,43 +1269,6 @@ namespace LY_SINTER.PAGE.Course
                 string mistake = "趋势曲线历史报错" + ee.ToString();
                 //  vLog.writelog(mistake, -1);
             }
-        }
-
-        //单击事件
-        private void check_event(object sender, EventArgs e)
-        {
-            try
-            {
-                //lChartPlus9.ToggleCheckBoxY(sender, e, 0);
-                //   lChartPlus22.ToggleCheckBoxY(sender, e, 0);
-            }
-            catch
-            { }
-        }
-
-        private bool changed;
-
-        private void lChartPlus7_Load(object sender, EventArgs e)
-        {
-
-        }
-        /// <summary>
-        /// 取消全选
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button4_Click(object sender, EventArgs e)
-        {
-            Check_Cancel();
-        }
-        /// <summary>
-        /// 全选
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Check_All();
         }
         public void Check_All()
         {

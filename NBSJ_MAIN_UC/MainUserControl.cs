@@ -718,7 +718,7 @@ namespace NBSJ_MAIN_UC
             pen2.CustomStartCap = aac;
             point1 = new Point((int)(xStart), (int)(yStart - this.Height * 0.1));
             point2 = new Point((int)(huanLengJiUC1.Location.X - 50), (int)(yStart - this.Height * 0.1));
-            var point3ttt = new Point((int)(huanLengJiUC1.Location.X - 50), (int)(huanLengJiUC1.Location.Y + huanLengJiUC1.Height + 10));//环冷机旁边的线
+            var point3ttt = new Point((int)(huanLengJiUC1.Location.X - 50), (int)(huanLengJiUC1.Location.Y + huanLengJiUC1.Height + 40));//环冷机旁边的线
             graphics.DrawLines(pen2, new Point[] { point1, point2, point3ttt });//ok 返矿皮带
             point1 = point2;
             point2 = point3ttt;
@@ -731,7 +731,7 @@ namespace NBSJ_MAIN_UC
             //Z4-1皮带
             var point3t2 = new Point((int)(huanLengJiUC1.Location.X + huanLengJiUC1.Width * 0.35f), (int)(huanLengJiUC1.Location.Y + huanLengJiUC1.Height + 10));
             this.pipeLine15.Location = point3t2;
-            this.pipeLine15.Size = new System.Drawing.Size((int)(huanLengJiUC1.Width * 0.7f), 15);
+            this.pipeLine15.Size = new System.Drawing.Size((int)(huanLengJiUC1.Width * 0.55f), 15);
 
      
             graphics.DrawImage(myBitmap3, (int)(huanLengJiUC1.Location.X -40), (int)(huanLengJiUC1.Location.Y+25),50,60);
@@ -739,7 +739,7 @@ namespace NBSJ_MAIN_UC
             graphics.DrawString("余热发电", Font, Brushes.Black, new Rectangle((int)(huanLengJiUC1.Location.X - 38), (int)(huanLengJiUC1.Location.Y + 40), 30, 30), this.sf);
 
             //LS1-1皮带
-            var point3t3 = new Point((int)(huanLengJiUC1.Location.X - 50), (int)(huanLengJiUC1.Location.Y + huanLengJiUC1.Height + 25));
+            var point3t3 = new Point((int)(huanLengJiUC1.Location.X - 50), (int)(huanLengJiUC1.Location.Y + huanLengJiUC1.Height + 35));
             this.pipeLine16.Location = point3t3;
             this.pipeLine16.Size = new System.Drawing.Size((int)(huanLengJiUC1.Width * 0.46f), 15);
 
@@ -749,11 +749,11 @@ namespace NBSJ_MAIN_UC
             this.pipeLine11.Size = new System.Drawing.Size((int)(this.Width * 0.25f + this.shaiZiUC1.Width / 2), 15);
 */
             //成品皮带
-            this.pipeLine12.Location = new System.Drawing.Point(10, (int)(this.shaiZiUC1.Height+10 + shaiZiUC1.Location.Y + 18));
+            this.pipeLine12.Location = new System.Drawing.Point(10, (int)(this.shaiZiUC1.Height+10 + shaiZiUC1.Location.Y + 50));
             this.pipeLine12.Size = new System.Drawing.Size((int)(this.Width * 0.5f), 15);
 
 
-            labSJK1.Location = new System.Drawing.Point(10 + this.pipeLine12.Width / 3, (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y));
+            labSJK1.Location = new System.Drawing.Point(10 + this.pipeLine12.Width / 3, (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y+40));
 
             //右下筛子开始的箭头
             xStart = shaiZiUC1.Location.X + shaiZiUC1.Width;
@@ -783,10 +783,10 @@ namespace NBSJ_MAIN_UC
             point1 = new Point((int)(this.Width - 5), point2.Y);
             point2 = new Point((int)(this.Width - 5), (int)(3));
             graphics.DrawLine(pen, point1, point2);
-
+            //最上方横线终点
             point1 = new Point((int)(this.Width - 5), (int)(5));
-            point2 = new Point((int)(this.Width * 0.8f), (int)(5));
-            point3ttt000 = new Point((int)(this.Width * 0.8f), 30);
+            point2 = new Point((int)(this.Width * 0.8f-80), (int)(5));
+            point3ttt000 = new Point((int)(this.Width * 0.8f-80), 30);
             graphics.DrawLines(pen, new Point[] { point1, point2, point3ttt000 });//Z10-1皮带终点
 
 
@@ -1241,6 +1241,8 @@ namespace NBSJ_MAIN_UC
             huanLengJiUC1.Hlj_Read_SPEED = getbottleValue(modelT_PLC_3S.T_RC_SPEED_PV_3S).ToString();
             huanLengJiUC1.BsGkj_Set_SPEED = getbottleValue(modelT_PLC_3S.T_PF_SPEED_SP_3S).ToString("f2");
             huanLengJiUC1.BsGkj_Read_SPEED = getbottleValue(modelT_PLC_3S.T_PF_SPEED_PV_3S).ToString("f2");
+            //给料机料位
+            huanLengJiUC1.GLJ_LW = getbottleValue(modelT_PLC_3S.T_PF_SPEED_PV_3S).ToString("f2");
 
             huanLengJiUC1.IsRunBsGkj = modelT_PLC_3S.T_PF_SL_3S == 1 ? true : false;
             huanLengJiUC1.SetFengJi(modelT_PLC_3S.T_RC_B_S_1_3S == 1 ? true : false, modelT_PLC_3S.T_RC_B_S_2_3S == 1 ? true : false, modelT_PLC_3S.T_RC_B_S_3_3S == 1 ? true : false, modelT_PLC_3S.T_RC_B_S_4_3S == 1 ? true : false, modelT_PLC_3S.T_RC_B_S_5_3S == 1 ? true : false);
@@ -1729,6 +1731,21 @@ namespace NBSJ_MAIN_UC
         }
 
         private void labelCCH_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labSJK1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void puDiLiaoCaoUC1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void huanLengJiUC1_Load(object sender, EventArgs e)
         {
 
         }

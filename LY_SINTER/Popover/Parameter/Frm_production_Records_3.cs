@@ -77,5 +77,10 @@ namespace LY_SINTER.Popover.Parameter
                 _vLog.writelog("Checkbox_value方法错误" + ee.ToString(), -1);
             }
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace NBSJ_PICAL
 
 
             Console_lidu _Console_lidu = new Console_lidu();
-            _Console_lidu.RunTask(DateTime.Now);
+            //_Console_lidu.RunTask(DateTime.Now);
         }
     }
 }
