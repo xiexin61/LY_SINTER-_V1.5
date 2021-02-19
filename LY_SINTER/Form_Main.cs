@@ -51,7 +51,8 @@ namespace LY_SINTER
         public vLog _vLog { get; set; }
         public static Ingredient_auto _Auto;//未处理新原料弹出框
         /// <summary>
-        /// 选项卡数量
+        /// 选项卡数量111
+        /// 
         /// </summary>
         int index;
         int grade = User_Level.Authority;
