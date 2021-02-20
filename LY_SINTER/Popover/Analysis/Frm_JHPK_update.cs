@@ -1663,9 +1663,75 @@ namespace LY_SINTER.Popover.Analysis
 
             }
         }
+        //计算成分按钮
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            //加权平均数
+            string name = comboBox2.Text;
+            string sql_name = "select L2_CODE,MAT_DESC from M_MATERIAL_COOD where MAT_DESC = '" + name + "'";
+            DataTable dataTable_name = dBSQL.GetCommand(sql_name);
+            int WLBM = int.Parse(dataTable_name.Rows[0]["L2_CODE"].ToString());
+            if (textBox2.Text != String.Empty)
+            {
+                double price = Convert.ToDouble(textBox2.Text);
+            }
+            //double price = Convert.ToDouble(textBox2.Text);
+            double ratioUp = Convert.ToDouble(textBox3.Text);
+            double ratioDown = Convert.ToDouble(textBox1.Text);
+            if (ratioUp < ratioDown)
+            {
+                MessageBox.Show("配比上限必须大于配比下限!");
+            }
+            else
+            {
+                int weight = Convert.ToInt32(textBox4.Text);
+                string sql = "select  TOP(" + weight + ") " +
+                             "AVG(isnull(C_TFE,0)) AS C_TFE ," +
+                             "AVG(isnull(C_FEO,0)) AS C_FEO," +
+                             "AVG(isnull(C_CAO,0)) AS C_CAO," +
+                             "AVG(isnull(C_SIO2,0)) AS C_SIO2," +
+                             "AVG(isnull(C_AL2O3,0)) AS C_AL2O3 ," +
+                             "AVG(isnull(C_MGO,0)) AS C_MGO," +
+                             "AVG(isnull(C_S,0)) AS C_S," +
+                             "AVG(isnull(C_P,0)) AS C_P," +
+                             "AVG(isnull(C_C,0)) AS C_C," +
+                             //"AVG(isnull(C_MN,0)) AS C_MN," +
+                             "AVG(isnull(C_LOT,0)) AS C_LOT," +
+                             "AVG(isnull(C_R,0)) AS C_R ," +
+                             "AVG(isnull(C_H2O,0)) AS C_H2O," +
+                             "AVG(isnull(C_ASH,0)) AS C_ASH," +
+                             "AVG(isnull(C_VOLATILES,0)) AS C_VOLATILES," +
+                             "AVG(isnull(C_TIO2,0)) AS C_TIO2," +
+                             "AVG(isnull(C_K2O,0)) AS C_K2O," +
+                             "AVG(isnull(C_NA2O,0)) AS C_NA2O," +
+                             //"AVG(isnull(C_PBO,0)) AS C_PBO," +
+                             //"AVG(isnull(C_ZNO,0)) AS C_ZNO," +
+                             //"AVG(isnull(C_F,0)) AS C_F," +
+                             "AVG(isnull(C_AS,0)) AS C_AS," +
+                             "AVG(isnull(C_CU,0)) AS C_CU," +
+                             "AVG(isnull(C_PB,0)) AS C_PB," +
+                             "AVG(isnull(C_ZN,0)) AS C_ZN ," +
+                             //"AVG(isnull(C_K,0)) AS C_K," +
+                             //"AVG(isnull(C_NA,0)) AS C_NA," +
+                             //"AVG(isnull(C_CR,0)) AS C_CR," +
+                             //"AVG(isnull(C_NI,0)) AS C_NI," +
+                             "AVG(isnull(C_MNO,0)) AS C_MNO" +
+                             " FROM M_ORE_MATERIAL_ANALYSIS where L2_CODE = " + WLBM + "  group by TIMESTAMP order by TIMESTAMP desc";
+                DataTable dataTable = dBSQL.GetCommand(sql);
+                dataTable.Columns.Add("MAT_NAME").SetOrdinal(0);
+                dataTable.Columns.Add("BILL_UPPER").SetOrdinal(3);
+                dataTable.Columns.Add("BILL_LOWER").SetOrdinal(4);
+                dataTable.Rows[0]["MAT_NAME"] = dataTable_name.Rows[0]["MAT_DESC"].ToString();
+                dataTable.Rows[0]["BILL_UPPER"] = ratioUp;
+                dataTable.Rows[0]["BILL_LOWER"] = ratioDown;
+                string sql2 = "select top(1) ORE_CLASS,UNIT_PRICE from M_ORE_MATERIAL_ANALYSIS where L2_CODE = " + WLBM + " order by TIMESTAMP desc";
+                DataTable dataTable2 = dBSQL.GetCommand(sql2);
+                dataTable.Columns.Add("MAT_CLASS").SetOrdinal(1);
+                dataTable.Columns.Add("UNIT_PRICE").SetOrdinal(2);
+                dataTable.Rows[0]["MAT_CLASS"] = dataTable2.Rows[0]["ORE_CLASS"].ToString();
+                dataTable.Rows[0]["UNIT_PRICE"] = dataTable2.Rows[0]["UNIT_PRICE"].ToString();
+                dataGridView3.DataSource = dataTable;
+            }
+            /*//加权平均数
             int JQPJ = int.Parse(textBox4.Text);
             //加权平均数等于1
             if (JQPJ == 1)
@@ -1704,7 +1770,7 @@ namespace LY_SINTER.Popover.Analysis
             else
             {
                 MessageBox.Show("维护状态为手动维护，原料追踪状态为禁用，加权平均数异常");
-            }
+            }*/
         }
     }
 }

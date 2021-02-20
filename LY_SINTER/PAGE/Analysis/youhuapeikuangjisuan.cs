@@ -35,11 +35,12 @@ namespace LY_SINTER.PAGE.Analysis
         public void getData()
         {
             string name = comboBox1.SelectedValue.ToString();
-            string sql1 = "select  ROW_NUMBER() over(order by TIMESTAMP) as RowNum,MAT_NAME,MAT_CLASS,UNIT_PRICE,BILL_UPPER,BILL_LOWER,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3," +
-                "C_S,C_P,C_LOT,C_H2O,C_AS,C_PB,C_ZN,C_CU,C_K2O,C_NA2O from MC_ORECAL_MAT_ANA_RECORD where BATCH_NUM = "+ name + "";
+            string sql1 = "select  ROW_NUMBER() over(order by TIMESTAMP) as RowNum,MAT_NAME,MAT_CLASS,UNIT_PRICE,BILL_UPPER,BILL_LOWER,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S," +
+                "C_P,C_C,C_LOT,C_R,C_H2O,C_ASH,C_VOLATILES,C_TIO2,C_K2O,C_NA2O,C_AS,C_CU,C_PB,C_ZN,C_MNO from MC_ORECAL_MAT_ANA_RECORD where BATCH_NUM = "+ name + "";
             DataTable table = dBSQL.GetCommand(sql1);
             d1.DataSource = table;
-            string sql2 = "select  ROW_NUMBER() over(order by TIMESTAMP) as RowNum,MAT_NAME,MAT_BILL_DRY,MAT_W_DRY,ORE_MAT_BILL_DRY,P_H2O,MAT_BILL_WET,MAT_W_WET,ORE_MAT_BILL_WET,UNIT_PRICE,UNIT_CON_PRICE,MAT_WET_ACT from MC_ORECAL_ORE_PROJECT_RESULT where BATCH_NUM = " + name + ";";
+            string sql2 = "select  ROW_NUMBER() over(order by TIMESTAMP) as RowNum,MAT_NAME,MAT_BILL_DRY,MAT_W_DRY,ORE_MAT_BILL_DRY,P_H2O,MAT_BILL_WET,MAT_W_WET,ORE_MAT_BILL_WET," +
+                "UNIT_PRICE,UNIT_CON_PRICE,MAT_WET_ACT from MC_ORECAL_ORE_PROJECT_RESULT where BATCH_NUM = " + name + ";";
             DataTable table2 = dBSQL.GetCommand(sql2);
             d2.DataSource = table2;
             string sql3 = "select top(1) C_TFE_UPPER,C_TFE_LOWER,C_FEO_UPPER,C_FEO_LOWER,C_CAO_UPPER,C_CAO_LOWER,C_SIO2_UPPER,C_SIO2_LOWER,C_AL2O3_UPPER,C_AL2O3_LOWER,C_MGO_UPPER,C_MGO_LOWER," +
@@ -115,12 +116,57 @@ namespace LY_SINTER.PAGE.Analysis
             Frm_JHPK_insert form_display = new Frm_JHPK_insert();
             if (Frm_JHPK_insert.isopen == false)
             {
+                form_display._TransfDelegate_YHPK += _TransfDelegate;
                 form_display.ShowDialog();
             }
             else
             {
+                //form_display._TransfDelegate_YHPK += _TransfDelegate;
                 form_display.Activate();
             }
+
+        }
+        /// <summary>
+        /// 弹出框关闭响应事件
+        /// 获取到弹出框传入的DataTable，更新本页面表格
+        /// </summary>
+        public void _TransfDelegate(DataTable dataTable)
+        {
+            string s = dataTable.Rows[0]["UNIT_PRICE"].ToString();
+            int sum = d1.Rows.Count;
+            DataTable newDT = new DataTable();
+            newDT = GetDgvToTable(d1);
+            object[] obj = new object[newDT.Columns.Count];
+            int rowNum = newDT.Rows.Count;
+            int a = dataTable.Columns.Count;
+            for (int i = 0; i < dataTable.Rows.Count; i++)
+            {
+                dataTable.Rows[i].ItemArray.CopyTo(obj, 0);
+                newDT.Rows.Add(obj);
+                newDT.Rows[rowNum]["RowNum"] = newDT.Rows.Count;
+            }
+            
+            d1.DataSource = newDT;
+            
+        }
+        public DataTable GetDgvToTable(DataGridView dgv)
+        {
+            DataTable dt = new DataTable();
+            for (int count = 0; count < dgv.Columns.Count; count++)
+            {
+                DataColumn dc = new DataColumn(dgv.Columns[count].Name.ToString());
+                dt.Columns.Add(dc);
+            }
+            for (int count = 0; count < dgv.Rows.Count; count++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int countsub = 0; countsub < dgv.Columns.Count; countsub++)
+                {
+                    dr[countsub] = Convert.ToString(dgv.Rows[count].Cells[countsub].Value);
+                }
+                dt.Rows.Add(dr);
+            }
+            return dt;
         }
         //修改
         private void simpleButton6_Click(object sender, EventArgs e)
