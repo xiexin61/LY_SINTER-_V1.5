@@ -39,7 +39,7 @@ namespace LY_SINTER.Popover.Analysis
             comboBox1_SelectedIndexChanged();
         }
         /// <summary>
-        /// 参数表表名1
+        /// 参数表表名
         /// </summary>
         public void DATE_NAME()
         {

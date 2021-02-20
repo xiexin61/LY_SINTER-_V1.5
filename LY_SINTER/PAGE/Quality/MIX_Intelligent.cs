@@ -19,6 +19,10 @@ namespace LY_SINTER.PAGE.Quality
 {
     public partial class MIX_Intelligent : UserControl
     {
+        /// <summary>
+        /// 下发间隔
+        /// </summary>
+        int _time = 2000;
         #region 用户输入项设定上下限制
         //R调整
         float R_TZ_MIN = 0;
@@ -185,7 +189,7 @@ namespace LY_SINTER.PAGE.Quality
         /// 特殊分仓系数对应下料口号
         /// </summary>
         List<int> _list_XLK = new List<int>() {15,16 };//烧返仓下料口
-        bool FLAG_OUT = false;//是否允许下发
+        bool FLAG_OUT = true;//是否允许下发
         #endregion
 
         #region 定时器声明
@@ -950,58 +954,60 @@ namespace LY_SINTER.PAGE.Quality
                     if (true)//判断一级是否投入
                     {
                         //正式版
-                        //string text = "一级智能配料模型投入";
-                        //_vLog.writelog(text, 0);
-                        //List<int> list_mid = mIX_PAGE._Get_Mid();//mid
-                        //                                         //准备数据
-                        //Tuple<bool, List<float>> list1 = mIX_PAGE._Get_Mid_Date();//数据
+                        string text = "一级智能配料模型投入";
+                        _vLog.writelog(text, 0);
+                        List<int> list_mid = mIX_PAGE._Get_Mid();//mid************屏蔽总料量
+                                                                
+                        Tuple<bool, List<float>> list1 = mIX_PAGE._Get_Mid_Date();//数据************屏蔽总料量
 
-                        //if (list1.Item1)
-                        //{
-                        //    LDataSet lds = new LDataSet();
-                        //    lds.Ip = ConstParameters.strCon_ID;//数据库地址
-                        //    lds.Port = ConstParameters.PORT;//端口号
-                        //    LDataUnits ldus = new LDataUnits();
-                        //    for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
-                        //    {
-                        //        ldus.Data[count] = new DataUnit();
-                        //    }
+                        if (list1.Item1)
+                        {
+                            LDataSet lds = new LDataSet();
+                            lds.Ip = ConstParameters.strCon_ID;//数据库地址
+                            lds.Port = ConstParameters.PORT;//端口号
+                            for (int count_1 = 0; count_1 < ConstParameters._COUNT_1; count_1++)//21ci 
+                            {
+                                
+                                LDataUnits ldus = new LDataUnits();
+                                for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
+                                {
+                                    ldus.Data[count] = new DataUnit();
+                                }
 
-                        //    for (int count = 0; count < ConstParameters._COUNT; count++)
-                        //    {
-                        //        lds.initData(ldus.Data[count], list_mid[count], list1.Item2[count]);
-                        //    }
-                        //    ldus.Count = ConstParameters._COUNT;
-
-
-                        //    lds.TimeOuter = 1000;
-                        //    lds.SetData(ldus);
-
-                        //    int _flag = lds.Flags;
-                        //    if (_flag == -1)//下发失败
-                        //    {
-                        //        MessageBox.Show("下发失败");
-                        //    }
-                        //    else if (_flag == -2)//重新下发
-                        //    {
-                        //        MessageBox.Show("重新下发");
-                        //    }
-                        //    else if (_flag == 1)//下发成功
-                        //    {
-                        //        label3.BackColor = Color.Red;
-                        //        string messbox = "设定下料下发成功";
-                        //        _vLog.writelog(messbox, 0);
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    string messbox = "Issue_SDXLL方法接收数据异常，请检查数据库连接";
-                        //    _vLog.writelog(messbox, -1);
-                        //}
+                                for (int count = 0; count < ConstParameters._COUNT; count++)
+                                {
+                                    lds.initData(ldus.Data[count], list_mid[count_1], list1.Item2[count_1]);
+                                }
+                                ldus.Count = ConstParameters._COUNT;
 
 
+                                lds.TimeOuter = _time;//下发间隔
+                                lds.SetData(ldus);
 
-
+                                int _flag = lds.Flags;
+                                if (_flag == -1)//下发失败
+                                {
+                                    MessageBox.Show("下发失败");
+                                }
+                                else if (_flag == -2)//重新下发
+                                {
+                                    MessageBox.Show("重新下发");
+                                }
+                                else if (_flag == 1)//下发成功
+                                {
+                                    label3.BackColor = Color.Red;
+                                    string messbox = "设定下料下发成功";
+                                  //  _vLog.writelog(messbox, 0);
+                                }
+                            }
+                           
+                        }
+                        else
+                        {
+                            string messbox = "Issue_SDXLL方法接收数据异常，请检查数据库连接";
+                            _vLog.writelog(messbox, -1);
+                        }
+                        #region 测试
                         //List<int> list_mid1 = new List<int>();
                         //list_mid1.Add(7);
                         ////准备数据
@@ -1086,125 +1092,113 @@ namespace LY_SINTER.PAGE.Quality
                         //        _vLog.writelog(messbox, 0);
                         //    }
                         //}
-                       // #endregion
+                        // #endregion
                     }
 
-                    #region 测试Soccomm
-                    if (true)//判断一级是否投入
-                    {
-                        string text = "一级智能配料模型投入";
-                        _vLog.writelog(text, 0);
-                        List<int> list_mid = mIX_PAGE._Get_Mid();//mid
-                                                                 //准备数据
-                        Tuple<bool, List<float>> list1 = mIX_PAGE._Get_Mid_Date();//数据
-                        float a = 1;
+                    //#region 测试Soccomm
+                    //if (true)//判断一级是否投入
+                    //{
+                    //    string text = "一级智能配料模型投入";
+                    //    _vLog.writelog(text, 0);
+                    //    List<int> list_mid = mIX_PAGE._Get_Mid();//mid
+                    //                                             //准备数据
+                    //    Tuple<bool, List<float>> list1 = mIX_PAGE._Get_Mid_Date();//数据
+                    //    float a = 1;
 
-                        #region 测试
-                        for (int x = 0; x < 10000; x++)
-                        {
-                            for (int y = 0; y < list1.Item2.Count; y++)
-                            {
-                                list1.Item2[y] = list1.Item2[y] + a;
-                            }
-                            if (list1.Item1)
-                            {
-                                LDataSet lds = new LDataSet();
-                                lds.Ip = ConstParameters.strCon_ID;//数据库地址
-                                lds.Port = ConstParameters.PORT;//端口号
-                                LDataUnits ldus = new LDataUnits();
-                                for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
-                                {
-                                    ldus.Data[count] = new DataUnit();
-                                }
+                    //    #region 测试
+                    //    for (int x = 0; x < 10000; x++)
+                    //    {
+                    //        for (int y = 0; y < list1.Item2.Count; y++)
+                    //        {
+                    //            list1.Item2[y] = list1.Item2[y] + a;
+                    //        }
+                    //        if (list1.Item1)
+                    //        {
+                    //            LDataSet lds = new LDataSet();
+                    //            lds.Ip = ConstParameters.strCon_ID;//数据库地址
+                    //            lds.Port = ConstParameters.PORT;//端口号
+                    //            LDataUnits ldus = new LDataUnits();
+                    //            for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
+                    //            {
+                    //                ldus.Data[count] = new DataUnit();
+                    //            }
 
-                                for (int count = 0; count < ConstParameters._COUNT; count++)
-                                {
-                                    lds.initData(ldus.Data[count], list_mid[count], list1.Item2[count]);
-                                }
-                                ldus.Count = ConstParameters._COUNT;
-
-
-                                lds.TimeOuter = 3000;
-                                lds.SetData(ldus);
-
-                                int _flag = lds.Flags;
-                                if (_flag == -1)//下发失败
-                                {
-                                    MessageBox.Show("下发失败");
-                                }
-                                else if (_flag == -2)//重新下发
-                                {
-                                    MessageBox.Show("重新下发");
-                                }
-                                else if (_flag == 1)//下发成功
-                                {
-                                    label3.BackColor = Color.Red;
-                                    string messbox = "设定下料下发成功";
-                                    _vLog.writelog(messbox, 0);
-                                }
-                            }
-                            else
-                            {
-                                string messbox = "Issue_SDXLL方法接收数据异常，请检查数据库连接";
-                                _vLog.writelog(messbox, -1);
-                            }
-                        }
-                    }
-                        #endregion
-
-                        #region
-                        #endregion
+                    //            for (int count = 0; count < ConstParameters._COUNT; count++)
+                    //            {
+                    //                lds.initData(ldus.Data[count], list_mid[count], list1.Item2[count]);
+                    //            }
+                    //            ldus.Count = ConstParameters._COUNT;
 
 
+                    //            lds.TimeOuter = 3000;
+                    //            lds.SetData(ldus);
+
+                    //            int _flag = lds.Flags;
+                    //            if (_flag == -1)//下发失败
+                    //            {
+                    //                MessageBox.Show("下发失败");
+                    //            }
+                    //            else if (_flag == -2)//重新下发
+                    //            {
+                    //                MessageBox.Show("重新下发");
+                    //            }
+                    //            else if (_flag == 1)//下发成功
+                    //            {
+                    //                label3.BackColor = Color.Red;
+                    //                string messbox = "设定下料下发成功";
+                    //                _vLog.writelog(messbox, 0);
+                    //            }
+                    //        }
+                    //        else
+                    //        {
+                    //            string messbox = "Issue_SDXLL方法接收数据异常，请检查数据库连接";
+                    //            _vLog.writelog(messbox, -1);
+                    //        }
+                    //    }
+                    //}
+                    //    #endregion
+                    //    //        if (list1.Item1)
+                    //    //    {
+                    //    //        LDataSet lds = new LDataSet();
+                    //    //        lds.Ip = ConstParameters.strCon_ID;//数据库地址
+                    //    //        lds.Port = ConstParameters.PORT;//端口号
+                    //    //        LDataUnits ldus = new LDataUnits();
+                    //    //        for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
+                    //    //        {
+                    //    //            ldus.Data[count] = new DataUnit();
+                    //    //        }
+
+                    //    //        for (int count = 0; count < ConstParameters._COUNT; count++)
+                    //    //        {
+                    //    //            lds.initData(ldus.Data[count], list_mid[count], list1.Item2[count]);
+                    //    //        }
+                    //    //        ldus.Count = ConstParameters._COUNT;
 
 
+                    //    //        lds.TimeOuter = 2000;
+                    //    //        lds.SetData(ldus);
 
-
-
-
-
-                        //        if (list1.Item1)
-                        //    {
-                        //        LDataSet lds = new LDataSet();
-                        //        lds.Ip = ConstParameters.strCon_ID;//数据库地址
-                        //        lds.Port = ConstParameters.PORT;//端口号
-                        //        LDataUnits ldus = new LDataUnits();
-                        //        for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
-                        //        {
-                        //            ldus.Data[count] = new DataUnit();
-                        //        }
-
-                        //        for (int count = 0; count < ConstParameters._COUNT; count++)
-                        //        {
-                        //            lds.initData(ldus.Data[count], list_mid[count], list1.Item2[count]);
-                        //        }
-                        //        ldus.Count = ConstParameters._COUNT;
-
-
-                        //        lds.TimeOuter = 2000;
-                        //        lds.SetData(ldus);
-
-                        //        int _flag = lds.Flags;
-                        //        if (_flag == -1)//下发失败
-                        //        {
-                        //            MessageBox.Show("下发失败");
-                        //        }
-                        //        else if (_flag == -2)//重新下发
-                        //        {
-                        //            MessageBox.Show("重新下发");
-                        //        }
-                        //        else if (_flag == 1)//下发成功
-                        //        {
-                        //            label3.BackColor = Color.Red;
-                        //            string messbox = "设定下料下发成功";
-                        //            _vLog.writelog(messbox, 0);
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        string messbox = "Issue_SDXLL方法接收数据异常，请检查数据库连接";
-                        //        _vLog.writelog(messbox, -1);
-                        //    }
+                    //    //        int _flag = lds.Flags;
+                    //    //        if (_flag == -1)//下发失败
+                    //    //        {
+                    //    //            MessageBox.Show("下发失败");
+                    //    //        }
+                    //    //        else if (_flag == -2)//重新下发
+                    //    //        {
+                    //    //            MessageBox.Show("重新下发");
+                    //    //        }
+                    //    //        else if (_flag == 1)//下发成功
+                    //    //        {
+                    //    //            label3.BackColor = Color.Red;
+                    //    //            string messbox = "设定下料下发成功";
+                    //    //            _vLog.writelog(messbox, 0);
+                    //    //        }
+                    //    //    }
+                    //    //    else
+                    //    //    {
+                    //    //        string messbox = "Issue_SDXLL方法接收数据异常，请检查数据库连接";
+                    //    //        _vLog.writelog(messbox, -1);
+                    //    //    }
 
 
 
@@ -1218,141 +1212,142 @@ namespace LY_SINTER.PAGE.Quality
 
 
 
-                        //}
-                        #endregion
+                    //    //}
+                    //    #endregion
 
 
-                        //try
-                        //{
-                        //    //判断一级开关是否为智能投入状态
-                        //    var flag_sql = "select MAT_PLC_BUTTON_3S from C_PLC_3S where TIMESTAMP = (select MAX(TIMESTAMP) from C_PLC_3S)";
-                        //    DataTable data1 = _dBSQL.GetCommand(flag_sql);
-                        //    if (data1 != null && data1.Rows.Count > 0)
-                        //    {
-                        //        int flag = int.Parse(data1.Rows[0][0].ToString() == "" ? "0" : data1.Rows[0][0].ToString());
-                        //        if (flag == 1)
-                        //        {
-                        //            string text = "一级智能配料模型投入";
-                        //            _vLog.writelog(text, 0);
-                        //            List<int> list_mid = new List<int>();
-                        //            //设定下料量、总料量sp  mid
-                        //            int a = 174;
-                        //            for (int X = 0; X < 20; X++)
-                        //            {
-                        //                list_mid.Add(a + X);
-                        //            }
-                        //            //下料比例、水分、总干料量
-                        //            int b = 1266;
-                        //            for (int X = 0; X < 39; X++)
-                        //            {
-                        //                list_mid.Add(b + X);
-                        //            }
-                        //            //准备数据
-                        //            List<float> list1 = new List<float>();
-                        //            string sql = "select  MAT_L2_GXLBL, MAT_L2_SFDQ, MAT_L2_SDXL   from CFG_MAT_L2_XLK_INTERFACE a,  CFG_MAT_L2_SJPB_INTERFACE b   where a.MAT_L2_CH = b.MAT_L2_CH  ORDER BY A.MAT_L2_XLK ASC";
-                        //            DataTable data = _dBSQL.GetCommand(sql);
-                        //            if (data != null && data.Rows.Count > 0)
-                        //            {
-                        //                //设定下料量
-                        //                for (int x = 0; x < data.Rows.Count; x++)
-                        //                {
-                        //                    list1.Add(float.Parse(data.Rows[x]["MAT_L2_SDXL"].ToString() == "" ? "0" : data.Rows[x]["MAT_L2_SDXL"].ToString()));
-                        //                }
-                        //                //总料量sp
-                        //                if (textBox_SP.Text.ToString() == "")
-                        //                {
-                        //                    list1.Add(0);
+                    //try
+                    //{
+                    //    //判断一级开关是否为智能投入状态
+                    //    var flag_sql = "select MAT_PLC_BUTTON_3S from C_PLC_3S where TIMESTAMP = (select MAX(TIMESTAMP) from C_PLC_3S)";
+                    //    DataTable data1 = _dBSQL.GetCommand(flag_sql);
+                    //    if (data1 != null && data1.Rows.Count > 0)
+                    //    {
+                    //        int flag = int.Parse(data1.Rows[0][0].ToString() == "" ? "0" : data1.Rows[0][0].ToString());
+                    //        if (flag == 1)
+                    //        {
+                    //            string text = "一级智能配料模型投入";
+                    //            _vLog.writelog(text, 0);
+                    //            List<int> list_mid = new List<int>();
+                    //            //设定下料量、总料量sp  mid
+                    //            int a = 174;
+                    //            for (int X = 0; X < 20; X++)
+                    //            {
+                    //                list_mid.Add(a + X);
+                    //            }
+                    //            //下料比例、水分、总干料量
+                    //            int b = 1266;
+                    //            for (int X = 0; X < 39; X++)
+                    //            {
+                    //                list_mid.Add(b + X);
+                    //            }
+                    //            //准备数据
+                    //            List<float> list1 = new List<float>();
+                    //            string sql = "select  MAT_L2_GXLBL, MAT_L2_SFDQ, MAT_L2_SDXL   from CFG_MAT_L2_XLK_INTERFACE a,  CFG_MAT_L2_SJPB_INTERFACE b   where a.MAT_L2_CH = b.MAT_L2_CH  ORDER BY A.MAT_L2_XLK ASC";
+                    //            DataTable data = _dBSQL.GetCommand(sql);
+                    //            if (data != null && data.Rows.Count > 0)
+                    //            {
+                    //                //设定下料量
+                    //                for (int x = 0; x < data.Rows.Count; x++)
+                    //                {
+                    //                    list1.Add(float.Parse(data.Rows[x]["MAT_L2_SDXL"].ToString() == "" ? "0" : data.Rows[x]["MAT_L2_SDXL"].ToString()));
+                    //                }
+                    //                //总料量sp
+                    //                if (textBox_SP.Text.ToString() == "")
+                    //                {
+                    //                    list1.Add(0);
 
-                        //                }
-                        //                else
-                        //                {
-                        //                    list1.Add(float.Parse(textBox_SP.Text.ToString()));
+                    //                }
+                    //                else
+                    //                {
+                    //                    list1.Add(float.Parse(textBox_SP.Text.ToString()));
 
-                        //                }
-                        //                //下料比例
-                        //                for (int x = 0; x < data.Rows.Count; x++)
-                        //                {
-                        //                    list1.Add(float.Parse(data.Rows[x]["MAT_L2_GXLBL"].ToString() == "" ? "0" : data.Rows[x]["MAT_L2_GXLBL"].ToString()));
-                        //                }
-                        //                //水分
-                        //                for (int x = 0; x < data.Rows.Count; x++)
-                        //                {
-                        //                    list1.Add(float.Parse(data.Rows[x]["MAT_L2_SFDQ"].ToString() == "" ? "0" : data.Rows[x]["MAT_L2_SFDQ"].ToString()));
-                        //                }
+                    //                }
+                    //                //下料比例
+                    //                for (int x = 0; x < data.Rows.Count; x++)
+                    //                {
+                    //                    list1.Add(float.Parse(data.Rows[x]["MAT_L2_GXLBL"].ToString() == "" ? "0" : data.Rows[x]["MAT_L2_GXLBL"].ToString()));
+                    //                }
+                    //                //水分
+                    //                for (int x = 0; x < data.Rows.Count; x++)
+                    //                {
+                    //                    list1.Add(float.Parse(data.Rows[x]["MAT_L2_SFDQ"].ToString() == "" ? "0" : data.Rows[x]["MAT_L2_SFDQ"].ToString()));
+                    //                }
 
-                        //                //总干料量
-                        //                if (textBox_ZGLL.Text.ToString() == "")
-                        //                {
-                        //                    list1.Add(0);
-                        //                }
-                        //                else
-                        //                {
-                        //                    list1.Add(float.Parse(textBox_ZGLL.Text.ToString()));
+                    //                //总干料量
+                    //                if (textBox_ZGLL.Text.ToString() == "")
+                    //                {
+                    //                    list1.Add(0);
+                    //                }
+                    //                else
+                    //                {
+                    //                    list1.Add(float.Parse(textBox_ZGLL.Text.ToString()));
 
-                        //                }
+                    //                }
 
-                        //                LDataSet lds = new LDataSet();
-                        //                lds.Ip = ConstParameters.strCon_ID;//数据库地址
-                        //                lds.Port = ConstParameters.PORT;//端口号
-                        //                LDataUnits ldus = new LDataUnits();
-                        //                for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
-                        //                {
-                        //                    ldus.Data[count] = new DataUnit();
-                        //                }
+                    //                LDataSet lds = new LDataSet();
+                    //                lds.Ip = ConstParameters.strCon_ID;//数据库地址
+                    //                lds.Port = ConstParameters.PORT;//端口号
+                    //                LDataUnits ldus = new LDataUnits();
+                    //                for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
+                    //                {
+                    //                    ldus.Data[count] = new DataUnit();
+                    //                }
 
-                        //                for (int count = 0; count < ConstParameters._COUNT; count++)
-                        //                {
-                        //                    lds.initData(ldus.Data[count], list_mid[count], list1[count]);
-                        //                }
-                        //                ldus.Count = ConstParameters._COUNT;
+                    //                for (int count = 0; count < ConstParameters._COUNT; count++)
+                    //                {
+                    //                    lds.initData(ldus.Data[count], list_mid[count], list1[count]);
+                    //                }
+                    //                ldus.Count = ConstParameters._COUNT;
 
 
-                        //                lds.TimeOuter = 2000;
-                        //                lds.SetData(ldus);
+                    //                lds.TimeOuter = 2000;
+                    //                lds.SetData(ldus);
 
-                        //                int _flag = lds.Flags;
-                        //                if (_flag == -1)//下发失败
-                        //                {
-                        //                    MessageBox.Show("下发失败");
-                        //                }
-                        //                else if (_flag == -2)//重新下发
-                        //                {
-                        //                    MessageBox.Show("重新下发");
-                        //                }
-                        //                else if (_flag == 1)//下发成功
-                        //                {
-                        //                    label3.BackColor = Color.Red;
-                        //                    string messbox = "设定下料下发成功";
-                        //                    _vLog.writelog(messbox, 0);
-                        //                }
-                        //            }
-                        //            else
-                        //            {
-                        //                string mistake = "下发功能，查询数据失败" + sql;
-                        //                _vLog.writelog(mistake, -1);
-                        //            }
+                    //                int _flag = lds.Flags;
+                    //                if (_flag == -1)//下发失败
+                    //                {
+                    //                    MessageBox.Show("下发失败");
+                    //                }
+                    //                else if (_flag == -2)//重新下发
+                    //                {
+                    //                    MessageBox.Show("重新下发");
+                    //                }
+                    //                else if (_flag == 1)//下发成功
+                    //                {
+                    //                    label3.BackColor = Color.Red;
+                    //                    string messbox = "设定下料下发成功";
+                    //                    _vLog.writelog(messbox, 0);
+                    //                }
+                    //            }
+                    //            else
+                    //            {
+                    //                string mistake = "下发功能，查询数据失败" + sql;
+                    //                _vLog.writelog(mistake, -1);
+                    //            }
 
-                        //        }
-                        //        else
-                        //        {
-                        //            string text = "一级智能配料模型退出";
-                        //            _vLog.writelog(text, 0);
-                        //        }
-                        //    }
-                        //    else
-                        //    {
-                        //        var mistake = "判断一级开关是否为智能投入状态查询失败" + flag_sql;
-                        //        _vLog.writelog(mistake, -1);
-                        //    }
-                        //    latest_time(2);
-                        //}
-                        //catch (Exception ee)
-                        //{
-                        //    string mistake = "设定下料量计算失败" + ee.ToString();
-                        //    _vLog.writelog(mistake, -1);
-                        //}
-                    }
+                    //        }
+                    //        else
+                    //        {
+                    //            string text = "一级智能配料模型退出";
+                    //            _vLog.writelog(text, 0);
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        var mistake = "判断一级开关是否为智能投入状态查询失败" + flag_sql;
+                    //        _vLog.writelog(mistake, -1);
+                    //    }
+                    //    latest_time(2);
+                    //}
+                    //catch (Exception ee)
+                    //{
+                    //    string mistake = "设定下料量计算失败" + ee.ToString();
+                    //    _vLog.writelog(mistake, -1);
+                    //}
+                    #endregion
                 }
+            }
             catch (Exception ee)
             {
                 _vLog.writelog("Issue_SDXLL方法失败" + ee.ToString(),-1);

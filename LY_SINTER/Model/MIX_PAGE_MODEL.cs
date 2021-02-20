@@ -1452,12 +1452,12 @@ namespace LY_SINTER.Model
         {
             List<int> vs = new List<int>();
             //设定下料量
-            for (int x = 1325; x < 1346; x++)
+            for (int x = 3; x < 23; x++)
             {
                 vs.Add(x);
             }
             //总料量sp 
-          //  vs.Add(1346);
+           // vs.Add(1);
             return vs;
         }
         /// <summary>
@@ -1484,7 +1484,7 @@ namespace LY_SINTER.Model
                     DataTable _table = _dBSQL.GetCommand(_sql);
                     if (_table != null & _table.Rows.Count > 0)
                     {
-                      //  vs.Add(float.Parse(_table.Rows[0][0].ToString()));
+                     // vs.Add(float.Parse(_table.Rows[0][0].ToString()));
                         return new Tuple<bool, List<float>>(true,vs);
                     }
                     else
