@@ -28,10 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(youhuapeikuangjisuan));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(youhuapeikuangjisuan));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -41,6 +61,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
@@ -63,7 +85,22 @@
             this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
@@ -74,30 +111,8 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
             this.d1 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_CLASS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UNIT_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BILL_UPPER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BILL_LOWER = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_TFE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_FEO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_SIO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_CAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_MGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_AL2O3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_S = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_P = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_LOT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_H2O = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_AS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_PB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_ZN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_CU = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_K2O = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_NA2O = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.d2 = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
@@ -114,6 +129,34 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.RowNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_NAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_CLASS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UNIT_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BILL_UPPER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BILL_LOWER = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_TFE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_FEO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_CAO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_SIO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_AL2O3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_MGO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_S = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_P = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_C = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_LOT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_R = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_H2O = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_ASH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_VOLATILES = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_TIO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_K2O = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_NA2O = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_AS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_CU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_PB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_ZN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_MNO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAT_NAME2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAT_BILL_DRY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAT_W_DRY = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -125,27 +168,16 @@
             this.UNIT_PRICE2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UNIT_CON_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAT_WET_ACT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
-            this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.d4)).BeginInit();
             this.tableLayoutPanel10.SuspendLayout();
+            this.tableLayoutPanel12.SuspendLayout();
+            this.tableLayoutPanel14.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.d1)).BeginInit();
@@ -155,10 +187,6 @@
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.d3)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel12.SuspendLayout();
-            this.tableLayoutPanel13.SuspendLayout();
-            this.tableLayoutPanel14.SuspendLayout();
-            this.tableLayoutPanel15.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -247,14 +275,14 @@
             this.d4.AllowUserToOrderColumns = true;
             this.d4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.d4.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d4.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.d4.ColumnHeadersHeight = 25;
             this.d4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.d4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -278,18 +306,18 @@
             this.d4.Location = new System.Drawing.Point(4, 25);
             this.d4.MultiSelect = false;
             this.d4.Name = "d4";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d4.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d4.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.d4.RowHeadersVisible = false;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 9F);
-            this.d4.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F);
+            this.d4.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.d4.RowTemplate.Height = 23;
             this.d4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.d4.Size = new System.Drawing.Size(1040, 91);
@@ -388,7 +416,7 @@
             // 
             this.tableLayoutPanel10.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel10.ColumnCount = 1;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 192F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 342F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel12, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel13, 0, 1);
@@ -401,6 +429,104 @@
             this.tableLayoutPanel10.Size = new System.Drawing.Size(334, 120);
             this.tableLayoutPanel10.TabIndex = 3;
             // 
+            // tableLayoutPanel12
+            // 
+            this.tableLayoutPanel12.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel12.ColumnCount = 2;
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.31579F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.68421F));
+            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel14, 0, 0);
+            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel15, 1, 0);
+            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel12.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
+            this.tableLayoutPanel12.RowCount = 1;
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(336, 60);
+            this.tableLayoutPanel12.TabIndex = 29;
+            // 
+            // tableLayoutPanel14
+            // 
+            this.tableLayoutPanel14.ColumnCount = 2;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.8022F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.1978F));
+            this.tableLayoutPanel14.Controls.Add(this.label11, 1, 1);
+            this.tableLayoutPanel14.Controls.Add(this.textBox2, 0, 1);
+            this.tableLayoutPanel14.Controls.Add(this.label2, 1, 0);
+            this.tableLayoutPanel14.Controls.Add(this.label10, 0, 0);
+            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel14.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
+            this.tableLayoutPanel14.RowCount = 2;
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(214, 52);
+            this.tableLayoutPanel14.TabIndex = 0;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(105, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(106, 26);
+            this.label11.TabIndex = 21;
+            this.label11.Text = "0";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox2.Location = new System.Drawing.Point(14, 29);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(74, 21);
+            this.textBox2.TabIndex = 20;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(105, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 26);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "预计烧结矿产量t";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(3, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(96, 26);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "计划总配成量t";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.ColumnCount = 1;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel15.Controls.Add(this.simpleButton9, 0, 1);
+            this.tableLayoutPanel15.Controls.Add(this.simpleButton8, 0, 0);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(222, 1);
+            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 2;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(109, 58);
+            this.tableLayoutPanel15.TabIndex = 1;
+            // 
             // simpleButton9
             // 
             this.simpleButton9.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -412,6 +538,117 @@
             this.simpleButton9.Size = new System.Drawing.Size(84, 23);
             this.simpleButton9.TabIndex = 28;
             this.simpleButton9.Text = "保存方案";
+            // 
+            // simpleButton8
+            // 
+            this.simpleButton8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton8.Appearance.Options.UseFont = true;
+            this.simpleButton8.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton8.Image")));
+            this.simpleButton8.Location = new System.Drawing.Point(3, 3);
+            this.simpleButton8.Name = "simpleButton8";
+            this.simpleButton8.Size = new System.Drawing.Size(83, 23);
+            this.simpleButton8.TabIndex = 27;
+            this.simpleButton8.Text = "配矿计算";
+            // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.ColumnCount = 3;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.50307F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.7546F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel13.Controls.Add(this.label15, 2, 1);
+            this.tableLayoutPanel13.Controls.Add(this.label14, 1, 1);
+            this.tableLayoutPanel13.Controls.Add(this.label12, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.label9, 2, 0);
+            this.tableLayoutPanel13.Controls.Add(this.label7, 1, 0);
+            this.tableLayoutPanel13.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(4, 71);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 2;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(336, 45);
+            this.tableLayoutPanel13.TabIndex = 30;
+            // 
+            // label15
+            // 
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(226, 22);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(107, 23);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "0";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label14
+            // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(126, 22);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(94, 23);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "0";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(3, 22);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(117, 23);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "0";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(226, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(107, 22);
+            this.label9.TabIndex = 20;
+            this.label9.Text = "其他成本 元";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(126, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(94, 22);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "原料成本 元/t";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(117, 22);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "烧结矿总成本 元/t";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel4
             // 
@@ -551,8 +788,8 @@
             this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel5.ColumnCount = 1;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.d1, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 38);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -561,6 +798,75 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1394, 294);
             this.tableLayoutPanel5.TabIndex = 1;
+            // 
+            // d1
+            // 
+            this.d1.AllowUserToAddRows = false;
+            this.d1.AllowUserToDeleteRows = false;
+            this.d1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.d1.ColumnHeadersHeight = 25;
+            this.d1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.RowNum,
+            this.MAT_NAME,
+            this.MAT_CLASS,
+            this.UNIT_PRICE,
+            this.BILL_UPPER,
+            this.BILL_LOWER,
+            this.C_TFE,
+            this.C_FEO,
+            this.C_CAO,
+            this.C_SIO2,
+            this.C_AL2O3,
+            this.C_MGO,
+            this.C_S,
+            this.C_P,
+            this.C_C,
+            this.C_LOT,
+            this.C_R,
+            this.C_H2O,
+            this.C_ASH,
+            this.C_VOLATILES,
+            this.C_TIO2,
+            this.C_K2O,
+            this.C_NA2O,
+            this.C_AS,
+            this.C_CU,
+            this.C_PB,
+            this.C_ZN,
+            this.C_MNO});
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.d1.DefaultCellStyle = dataGridViewCellStyle27;
+            this.d1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.d1.EnableHeadersVisualStyles = false;
+            this.d1.Location = new System.Drawing.Point(4, 25);
+            this.d1.Name = "d1";
+            this.d1.ReadOnly = true;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d1.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            this.d1.RowHeadersVisible = false;
+            this.d1.RowTemplate.Height = 23;
+            this.d1.Size = new System.Drawing.Size(1386, 265);
+            this.d1.TabIndex = 5;
             // 
             // label4
             // 
@@ -573,200 +879,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "配矿原料基础数据及配比约束";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // d1
-            // 
-            this.d1.AllowUserToAddRows = false;
-            this.d1.AllowUserToDeleteRows = false;
-            this.d1.AllowUserToOrderColumns = true;
-            this.d1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.d1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            this.d1.ColumnHeadersHeight = 25;
-            this.d1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.d1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.MAT_NAME,
-            this.MAT_CLASS,
-            this.UNIT_PRICE,
-            this.BILL_UPPER,
-            this.BILL_LOWER,
-            this.C_TFE,
-            this.C_FEO,
-            this.C_SIO2,
-            this.C_CAO,
-            this.C_MGO,
-            this.C_AL2O3,
-            this.C_S,
-            this.C_P,
-            this.C_LOT,
-            this.C_H2O,
-            this.C_AS,
-            this.C_PB,
-            this.C_ZN,
-            this.C_CU,
-            this.C_K2O,
-            this.C_NA2O});
-            this.d1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.d1.EnableHeadersVisualStyles = false;
-            this.d1.Location = new System.Drawing.Point(4, 25);
-            this.d1.MultiSelect = false;
-            this.d1.Name = "d1";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d1.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
-            this.d1.RowHeadersVisible = false;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("宋体", 9F);
-            this.d1.RowsDefaultCellStyle = dataGridViewCellStyle18;
-            this.d1.RowTemplate.Height = 23;
-            this.d1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.d1.Size = new System.Drawing.Size(1386, 265);
-            this.d1.TabIndex = 1;
-            // 
-            // id
-            // 
-            this.id.DataPropertyName = "RowNum";
-            this.id.HeaderText = "序号";
-            this.id.Name = "id";
-            // 
-            // MAT_NAME
-            // 
-            this.MAT_NAME.DataPropertyName = "MAT_NAME";
-            this.MAT_NAME.HeaderText = "物料名";
-            this.MAT_NAME.Name = "MAT_NAME";
-            // 
-            // MAT_CLASS
-            // 
-            this.MAT_CLASS.DataPropertyName = "MAT_CLASS";
-            this.MAT_CLASS.HeaderText = "类别";
-            this.MAT_CLASS.Name = "MAT_CLASS";
-            // 
-            // UNIT_PRICE
-            // 
-            this.UNIT_PRICE.DataPropertyName = "UNIT_PRICE";
-            this.UNIT_PRICE.HeaderText = "单价（元/吨）";
-            this.UNIT_PRICE.Name = "UNIT_PRICE";
-            // 
-            // BILL_UPPER
-            // 
-            this.BILL_UPPER.DataPropertyName = "BILL_UPPER";
-            this.BILL_UPPER.HeaderText = "配比上限";
-            this.BILL_UPPER.Name = "BILL_UPPER";
-            // 
-            // BILL_LOWER
-            // 
-            this.BILL_LOWER.DataPropertyName = "BILL_LOWER";
-            this.BILL_LOWER.HeaderText = "配比下限";
-            this.BILL_LOWER.Name = "BILL_LOWER";
-            // 
-            // C_TFE
-            // 
-            this.C_TFE.DataPropertyName = "C_TFE";
-            this.C_TFE.HeaderText = "TFe";
-            this.C_TFE.Name = "C_TFE";
-            // 
-            // C_FEO
-            // 
-            this.C_FEO.DataPropertyName = "C_FEO";
-            this.C_FEO.HeaderText = "FeO";
-            this.C_FEO.Name = "C_FEO";
-            // 
-            // C_SIO2
-            // 
-            this.C_SIO2.DataPropertyName = "C_SIO2";
-            this.C_SIO2.HeaderText = "SiO2";
-            this.C_SIO2.Name = "C_SIO2";
-            // 
-            // C_CAO
-            // 
-            this.C_CAO.DataPropertyName = "C_CAO";
-            this.C_CAO.HeaderText = "CaO";
-            this.C_CAO.Name = "C_CAO";
-            // 
-            // C_MGO
-            // 
-            this.C_MGO.DataPropertyName = "C_MGO";
-            this.C_MGO.HeaderText = "MgO";
-            this.C_MGO.Name = "C_MGO";
-            // 
-            // C_AL2O3
-            // 
-            this.C_AL2O3.DataPropertyName = "C_AL2O3";
-            this.C_AL2O3.HeaderText = "Al2O3";
-            this.C_AL2O3.Name = "C_AL2O3";
-            // 
-            // C_S
-            // 
-            this.C_S.DataPropertyName = "C_S";
-            this.C_S.HeaderText = "S";
-            this.C_S.Name = "C_S";
-            // 
-            // C_P
-            // 
-            this.C_P.DataPropertyName = "C_P";
-            this.C_P.HeaderText = "P";
-            this.C_P.Name = "C_P";
-            // 
-            // C_LOT
-            // 
-            this.C_LOT.DataPropertyName = "C_LOT";
-            this.C_LOT.HeaderText = "LOT";
-            this.C_LOT.Name = "C_LOT";
-            // 
-            // C_H2O
-            // 
-            this.C_H2O.DataPropertyName = "C_H2O";
-            this.C_H2O.HeaderText = "H2O";
-            this.C_H2O.Name = "C_H2O";
-            // 
-            // C_AS
-            // 
-            this.C_AS.DataPropertyName = "C_AS";
-            this.C_AS.HeaderText = "As";
-            this.C_AS.Name = "C_AS";
-            // 
-            // C_PB
-            // 
-            this.C_PB.DataPropertyName = "C_PB";
-            this.C_PB.HeaderText = "Pb";
-            this.C_PB.Name = "C_PB";
-            // 
-            // C_ZN
-            // 
-            this.C_ZN.DataPropertyName = "C_ZN";
-            this.C_ZN.HeaderText = "Zn";
-            this.C_ZN.Name = "C_ZN";
-            // 
-            // C_CU
-            // 
-            this.C_CU.DataPropertyName = "C_CU";
-            this.C_CU.HeaderText = "Cu";
-            this.C_CU.Name = "C_CU";
-            // 
-            // C_K2O
-            // 
-            this.C_K2O.DataPropertyName = "C_K2O";
-            this.C_K2O.HeaderText = "K2O";
-            this.C_K2O.Name = "C_K2O";
-            // 
-            // C_NA2O
-            // 
-            this.C_NA2O.DataPropertyName = "C_NA2O";
-            this.C_NA2O.HeaderText = "Na2O";
-            this.C_NA2O.Name = "C_NA2O";
             // 
             // tableLayoutPanel6
             // 
@@ -794,18 +906,18 @@
             this.d2.AllowUserToOrderColumns = true;
             this.d2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.d2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle29.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle29.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
             this.d2.ColumnHeadersHeight = 25;
             this.d2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.d2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RowNum,
+            this.id,
             this.MAT_NAME2,
             this.MAT_BILL_DRY,
             this.MAT_W_DRY,
@@ -822,18 +934,18 @@
             this.d2.Location = new System.Drawing.Point(4, 25);
             this.d2.MultiSelect = false;
             this.d2.Name = "d2";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d2.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d2.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.d2.RowHeadersVisible = false;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("宋体", 9F);
-            this.d2.RowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("宋体", 9F);
+            this.d2.RowsDefaultCellStyle = dataGridViewCellStyle31;
             this.d2.RowTemplate.Height = 23;
             this.d2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.d2.Size = new System.Drawing.Size(1089, 298);
@@ -934,14 +1046,14 @@
             this.d3.AllowUserToOrderColumns = true;
             this.d3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.d3.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
             this.d3.ColumnHeadersHeight = 25;
             this.d3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.d3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -954,18 +1066,18 @@
             this.d3.Location = new System.Drawing.Point(3, 38);
             this.d3.MultiSelect = false;
             this.d3.Name = "d3";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d3.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d3.RowHeadersDefaultCellStyle = dataGridViewCellStyle33;
             this.d3.RowHeadersVisible = false;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("宋体", 9F);
-            this.d3.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("宋体", 9F);
+            this.d3.RowsDefaultCellStyle = dataGridViewCellStyle34;
             this.d3.RowTemplate.Height = 23;
             this.d3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.d3.Size = new System.Drawing.Size(284, 257);
@@ -1022,6 +1134,317 @@
             this.RowNum.DataPropertyName = "RowNum";
             this.RowNum.HeaderText = "序号";
             this.RowNum.Name = "RowNum";
+            this.RowNum.ReadOnly = true;
+            this.RowNum.Width = 50;
+            // 
+            // MAT_NAME
+            // 
+            this.MAT_NAME.DataPropertyName = "MAT_NAME";
+            this.MAT_NAME.HeaderText = "物料名";
+            this.MAT_NAME.Name = "MAT_NAME";
+            this.MAT_NAME.ReadOnly = true;
+            // 
+            // MAT_CLASS
+            // 
+            this.MAT_CLASS.DataPropertyName = "MAT_CLASS";
+            this.MAT_CLASS.HeaderText = "类别";
+            this.MAT_CLASS.Name = "MAT_CLASS";
+            this.MAT_CLASS.ReadOnly = true;
+            this.MAT_CLASS.Width = 80;
+            // 
+            // UNIT_PRICE
+            // 
+            this.UNIT_PRICE.DataPropertyName = "UNIT_PRICE";
+            this.UNIT_PRICE.HeaderText = "单价(元/吨)";
+            this.UNIT_PRICE.Name = "UNIT_PRICE";
+            this.UNIT_PRICE.ReadOnly = true;
+            this.UNIT_PRICE.Width = 80;
+            // 
+            // BILL_UPPER
+            // 
+            this.BILL_UPPER.DataPropertyName = "BILL_UPPER";
+            this.BILL_UPPER.HeaderText = "配比上限";
+            this.BILL_UPPER.Name = "BILL_UPPER";
+            this.BILL_UPPER.ReadOnly = true;
+            this.BILL_UPPER.Width = 80;
+            // 
+            // BILL_LOWER
+            // 
+            this.BILL_LOWER.DataPropertyName = "BILL_LOWER";
+            this.BILL_LOWER.HeaderText = "配比下限";
+            this.BILL_LOWER.Name = "BILL_LOWER";
+            this.BILL_LOWER.ReadOnly = true;
+            this.BILL_LOWER.Width = 80;
+            // 
+            // C_TFE
+            // 
+            this.C_TFE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_TFE.DataPropertyName = "C_TFE";
+            dataGridViewCellStyle5.Format = "N3";
+            this.C_TFE.DefaultCellStyle = dataGridViewCellStyle5;
+            this.C_TFE.HeaderText = "TFe";
+            this.C_TFE.Name = "C_TFE";
+            this.C_TFE.ReadOnly = true;
+            this.C_TFE.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_TFE.Width = 80;
+            // 
+            // C_FEO
+            // 
+            this.C_FEO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_FEO.DataPropertyName = "C_FEO";
+            dataGridViewCellStyle6.Format = "N3";
+            this.C_FEO.DefaultCellStyle = dataGridViewCellStyle6;
+            this.C_FEO.HeaderText = "FeO";
+            this.C_FEO.Name = "C_FEO";
+            this.C_FEO.ReadOnly = true;
+            this.C_FEO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_FEO.Width = 80;
+            // 
+            // C_CAO
+            // 
+            this.C_CAO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_CAO.DataPropertyName = "C_CAO";
+            dataGridViewCellStyle7.Format = "N3";
+            this.C_CAO.DefaultCellStyle = dataGridViewCellStyle7;
+            this.C_CAO.HeaderText = "CaO";
+            this.C_CAO.Name = "C_CAO";
+            this.C_CAO.ReadOnly = true;
+            this.C_CAO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_CAO.Width = 80;
+            // 
+            // C_SIO2
+            // 
+            this.C_SIO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_SIO2.DataPropertyName = "C_SIO2";
+            dataGridViewCellStyle8.Format = "N3";
+            this.C_SIO2.DefaultCellStyle = dataGridViewCellStyle8;
+            this.C_SIO2.HeaderText = "SiO2";
+            this.C_SIO2.Name = "C_SIO2";
+            this.C_SIO2.ReadOnly = true;
+            this.C_SIO2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_SIO2.Width = 80;
+            // 
+            // C_AL2O3
+            // 
+            this.C_AL2O3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_AL2O3.DataPropertyName = "C_AL2O3";
+            dataGridViewCellStyle9.Format = "N3";
+            this.C_AL2O3.DefaultCellStyle = dataGridViewCellStyle9;
+            this.C_AL2O3.HeaderText = "Al2O3";
+            this.C_AL2O3.Name = "C_AL2O3";
+            this.C_AL2O3.ReadOnly = true;
+            this.C_AL2O3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_AL2O3.Width = 80;
+            // 
+            // C_MGO
+            // 
+            this.C_MGO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_MGO.DataPropertyName = "C_MGO";
+            dataGridViewCellStyle10.Format = "N3";
+            this.C_MGO.DefaultCellStyle = dataGridViewCellStyle10;
+            this.C_MGO.HeaderText = "MgO";
+            this.C_MGO.Name = "C_MGO";
+            this.C_MGO.ReadOnly = true;
+            this.C_MGO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_MGO.Width = 80;
+            // 
+            // C_S
+            // 
+            this.C_S.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_S.DataPropertyName = "C_S";
+            dataGridViewCellStyle11.Format = "N3";
+            this.C_S.DefaultCellStyle = dataGridViewCellStyle11;
+            this.C_S.HeaderText = "S";
+            this.C_S.Name = "C_S";
+            this.C_S.ReadOnly = true;
+            this.C_S.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_S.Width = 80;
+            // 
+            // C_P
+            // 
+            this.C_P.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_P.DataPropertyName = "C_P";
+            dataGridViewCellStyle12.Format = "N3";
+            this.C_P.DefaultCellStyle = dataGridViewCellStyle12;
+            this.C_P.HeaderText = "P";
+            this.C_P.Name = "C_P";
+            this.C_P.ReadOnly = true;
+            this.C_P.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_P.Width = 80;
+            // 
+            // C_C
+            // 
+            this.C_C.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_C.DataPropertyName = "C_C";
+            dataGridViewCellStyle13.Format = "N3";
+            this.C_C.DefaultCellStyle = dataGridViewCellStyle13;
+            this.C_C.HeaderText = "C";
+            this.C_C.Name = "C_C";
+            this.C_C.ReadOnly = true;
+            this.C_C.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_C.Width = 80;
+            // 
+            // C_LOT
+            // 
+            this.C_LOT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_LOT.DataPropertyName = "C_LOT";
+            dataGridViewCellStyle14.Format = "N4";
+            this.C_LOT.DefaultCellStyle = dataGridViewCellStyle14;
+            this.C_LOT.HeaderText = "烧损";
+            this.C_LOT.Name = "C_LOT";
+            this.C_LOT.ReadOnly = true;
+            this.C_LOT.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_LOT.Width = 80;
+            // 
+            // C_R
+            // 
+            this.C_R.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_R.DataPropertyName = "C_R";
+            dataGridViewCellStyle15.Format = "N4";
+            this.C_R.DefaultCellStyle = dataGridViewCellStyle15;
+            this.C_R.HeaderText = "碱度";
+            this.C_R.Name = "C_R";
+            this.C_R.ReadOnly = true;
+            this.C_R.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_R.Width = 80;
+            // 
+            // C_H2O
+            // 
+            this.C_H2O.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_H2O.DataPropertyName = "C_H2O";
+            dataGridViewCellStyle16.Format = "N4";
+            this.C_H2O.DefaultCellStyle = dataGridViewCellStyle16;
+            this.C_H2O.HeaderText = "H2O";
+            this.C_H2O.Name = "C_H2O";
+            this.C_H2O.ReadOnly = true;
+            this.C_H2O.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_H2O.Width = 80;
+            // 
+            // C_ASH
+            // 
+            this.C_ASH.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_ASH.DataPropertyName = "C_ASH";
+            dataGridViewCellStyle17.Format = "N4";
+            this.C_ASH.DefaultCellStyle = dataGridViewCellStyle17;
+            this.C_ASH.HeaderText = "灰分";
+            this.C_ASH.Name = "C_ASH";
+            this.C_ASH.ReadOnly = true;
+            this.C_ASH.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_ASH.Width = 80;
+            // 
+            // C_VOLATILES
+            // 
+            this.C_VOLATILES.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_VOLATILES.DataPropertyName = "C_VOLATILES";
+            dataGridViewCellStyle18.Format = "N4";
+            this.C_VOLATILES.DefaultCellStyle = dataGridViewCellStyle18;
+            this.C_VOLATILES.HeaderText = "挥发灰";
+            this.C_VOLATILES.Name = "C_VOLATILES";
+            this.C_VOLATILES.ReadOnly = true;
+            this.C_VOLATILES.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_VOLATILES.Width = 80;
+            // 
+            // C_TIO2
+            // 
+            this.C_TIO2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_TIO2.DataPropertyName = "C_TIO2";
+            dataGridViewCellStyle19.Format = "N4";
+            this.C_TIO2.DefaultCellStyle = dataGridViewCellStyle19;
+            this.C_TIO2.HeaderText = "TiO2";
+            this.C_TIO2.Name = "C_TIO2";
+            this.C_TIO2.ReadOnly = true;
+            this.C_TIO2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_TIO2.Width = 80;
+            // 
+            // C_K2O
+            // 
+            this.C_K2O.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_K2O.DataPropertyName = "C_K2O";
+            dataGridViewCellStyle20.Format = "N4";
+            this.C_K2O.DefaultCellStyle = dataGridViewCellStyle20;
+            this.C_K2O.HeaderText = "K2O";
+            this.C_K2O.Name = "C_K2O";
+            this.C_K2O.ReadOnly = true;
+            this.C_K2O.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_K2O.Width = 80;
+            // 
+            // C_NA2O
+            // 
+            this.C_NA2O.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_NA2O.DataPropertyName = "C_NA2O";
+            dataGridViewCellStyle21.Format = "N4";
+            this.C_NA2O.DefaultCellStyle = dataGridViewCellStyle21;
+            this.C_NA2O.HeaderText = "Na2O";
+            this.C_NA2O.Name = "C_NA2O";
+            this.C_NA2O.ReadOnly = true;
+            this.C_NA2O.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_NA2O.Width = 80;
+            // 
+            // C_AS
+            // 
+            this.C_AS.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_AS.DataPropertyName = "C_AS";
+            dataGridViewCellStyle22.Format = "N4";
+            this.C_AS.DefaultCellStyle = dataGridViewCellStyle22;
+            this.C_AS.HeaderText = "As";
+            this.C_AS.Name = "C_AS";
+            this.C_AS.ReadOnly = true;
+            this.C_AS.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_AS.Width = 80;
+            // 
+            // C_CU
+            // 
+            this.C_CU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_CU.DataPropertyName = "C_CU";
+            dataGridViewCellStyle23.Format = "N4";
+            this.C_CU.DefaultCellStyle = dataGridViewCellStyle23;
+            this.C_CU.HeaderText = "Cu";
+            this.C_CU.Name = "C_CU";
+            this.C_CU.ReadOnly = true;
+            this.C_CU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_CU.Width = 80;
+            // 
+            // C_PB
+            // 
+            this.C_PB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_PB.DataPropertyName = "C_PB";
+            dataGridViewCellStyle24.Format = "N4";
+            this.C_PB.DefaultCellStyle = dataGridViewCellStyle24;
+            this.C_PB.HeaderText = "Pb";
+            this.C_PB.Name = "C_PB";
+            this.C_PB.ReadOnly = true;
+            this.C_PB.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_PB.Width = 80;
+            // 
+            // C_ZN
+            // 
+            this.C_ZN.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_ZN.DataPropertyName = "C_ZN";
+            dataGridViewCellStyle25.Format = "N4";
+            this.C_ZN.DefaultCellStyle = dataGridViewCellStyle25;
+            this.C_ZN.HeaderText = "Zn";
+            this.C_ZN.Name = "C_ZN";
+            this.C_ZN.ReadOnly = true;
+            this.C_ZN.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_ZN.Width = 80;
+            // 
+            // C_MNO
+            // 
+            this.C_MNO.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.C_MNO.DataPropertyName = "C_MNO";
+            dataGridViewCellStyle26.Format = "N4";
+            this.C_MNO.DefaultCellStyle = dataGridViewCellStyle26;
+            this.C_MNO.HeaderText = "MnO";
+            this.C_MNO.Name = "C_MNO";
+            this.C_MNO.ReadOnly = true;
+            this.C_MNO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.C_MNO.Width = 80;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "RowNum";
+            this.id.HeaderText = "序号";
+            this.id.Name = "id";
             // 
             // MAT_NAME2
             // 
@@ -1088,215 +1511,6 @@
             this.MAT_WET_ACT.HeaderText = "实际配成湿料量(t)";
             this.MAT_WET_ACT.Name = "MAT_WET_ACT";
             // 
-            // simpleButton8
-            // 
-            this.simpleButton8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton8.Appearance.Options.UseFont = true;
-            this.simpleButton8.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton8.Image")));
-            this.simpleButton8.Location = new System.Drawing.Point(3, 3);
-            this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(83, 23);
-            this.simpleButton8.TabIndex = 27;
-            this.simpleButton8.Text = "配矿计算";
-            // 
-            // tableLayoutPanel12
-            // 
-            this.tableLayoutPanel12.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel12.ColumnCount = 2;
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.31579F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.68421F));
-            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel14, 0, 0);
-            this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel15, 1, 0);
-            this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel12.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel12.Name = "tableLayoutPanel12";
-            this.tableLayoutPanel12.RowCount = 1;
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(326, 60);
-            this.tableLayoutPanel12.TabIndex = 29;
-            // 
-            // tableLayoutPanel13
-            // 
-            this.tableLayoutPanel13.ColumnCount = 3;
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.50307F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 29.7546F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel13.Controls.Add(this.label15, 2, 1);
-            this.tableLayoutPanel13.Controls.Add(this.label14, 1, 1);
-            this.tableLayoutPanel13.Controls.Add(this.label12, 0, 1);
-            this.tableLayoutPanel13.Controls.Add(this.label9, 2, 0);
-            this.tableLayoutPanel13.Controls.Add(this.label7, 1, 0);
-            this.tableLayoutPanel13.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(4, 71);
-            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 2;
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(326, 45);
-            this.tableLayoutPanel13.TabIndex = 30;
-            // 
-            // tableLayoutPanel14
-            // 
-            this.tableLayoutPanel14.ColumnCount = 2;
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.8022F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 52.1978F));
-            this.tableLayoutPanel14.Controls.Add(this.label11, 1, 1);
-            this.tableLayoutPanel14.Controls.Add(this.textBox2, 0, 1);
-            this.tableLayoutPanel14.Controls.Add(this.label2, 1, 0);
-            this.tableLayoutPanel14.Controls.Add(this.label10, 0, 0);
-            this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel14.Location = new System.Drawing.Point(4, 4);
-            this.tableLayoutPanel14.Name = "tableLayoutPanel14";
-            this.tableLayoutPanel14.RowCount = 2;
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(208, 52);
-            this.tableLayoutPanel14.TabIndex = 0;
-            // 
-            // tableLayoutPanel15
-            // 
-            this.tableLayoutPanel15.ColumnCount = 1;
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel15.Controls.Add(this.simpleButton9, 0, 1);
-            this.tableLayoutPanel15.Controls.Add(this.simpleButton8, 0, 0);
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(216, 1);
-            this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
-            this.tableLayoutPanel15.RowCount = 2;
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(109, 58);
-            this.tableLayoutPanel15.TabIndex = 1;
-            // 
-            // label10
-            // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 26);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "计划总配成量t";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(102, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 26);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "预计烧结矿产量t";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 22);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "烧结矿总成本 元/t";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(122, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 22);
-            this.label7.TabIndex = 19;
-            this.label7.Text = "原料成本 元/t";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(219, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(104, 22);
-            this.label9.TabIndex = 20;
-            this.label9.Text = "其他成本 元";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(12, 29);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(74, 21);
-            this.textBox2.TabIndex = 20;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(102, 26);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(103, 26);
-            this.label11.TabIndex = 21;
-            this.label11.Text = "0";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 22);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(113, 23);
-            this.label12.TabIndex = 22;
-            this.label12.Text = "0";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label14
-            // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(122, 22);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(91, 23);
-            this.label14.TabIndex = 23;
-            this.label14.Text = "0";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(219, 22);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(104, 23);
-            this.label15.TabIndex = 24;
-            this.label15.Text = "0";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // youhuapeikuangjisuan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1311,6 +1525,12 @@
             this.tableLayoutPanel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.d4)).EndInit();
             this.tableLayoutPanel10.ResumeLayout(false);
+            this.tableLayoutPanel12.ResumeLayout(false);
+            this.tableLayoutPanel14.ResumeLayout(false);
+            this.tableLayoutPanel14.PerformLayout();
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel13.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
@@ -1325,12 +1545,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.d3)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel12.ResumeLayout(false);
-            this.tableLayoutPanel13.ResumeLayout(false);
-            this.tableLayoutPanel13.PerformLayout();
-            this.tableLayoutPanel14.ResumeLayout(false);
-            this.tableLayoutPanel14.PerformLayout();
-            this.tableLayoutPanel15.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1346,7 +1560,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView d1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
@@ -1371,28 +1584,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LOWER;
         private System.Windows.Forms.DataGridViewTextBoxColumn UPPER;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_NAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CLASS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BILL_UPPER;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BILL_LOWER;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_TFE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_FEO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_SIO2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_CAO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_MGO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_AL2O3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_S;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_P;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_LOT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_H2O;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_AS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_PB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_ZN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_CU;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_K2O;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_NA2O;
         private DevExpress.XtraEditors.SimpleButton simpleButton9;
         private System.Windows.Forms.DataGridViewTextBoxColumn NUM;
         private System.Windows.Forms.DataGridViewTextBoxColumn C_TFE4;
@@ -1409,18 +1600,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RowNum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_NAME2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_BILL_DRY;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_W_DRY;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ORE_MAT_BILL_DRY;
-        private System.Windows.Forms.DataGridViewTextBoxColumn P_H2O;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_BILL_WET;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_W_WET;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ORE_MAT_BILL_WET;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_CON_PRICE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_WET_ACT;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
@@ -1436,5 +1615,46 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridView d1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RowNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_NAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_CLASS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BILL_UPPER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BILL_LOWER;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_TFE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_FEO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_CAO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_SIO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_AL2O3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_MGO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_S;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_P;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_C;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_LOT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_R;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_H2O;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_ASH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_VOLATILES;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_TIO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_K2O;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_NA2O;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_AS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_CU;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_PB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_ZN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_MNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_NAME2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_BILL_DRY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_W_DRY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORE_MAT_BILL_DRY;
+        private System.Windows.Forms.DataGridViewTextBoxColumn P_H2O;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_BILL_WET;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_W_WET;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORE_MAT_BILL_WET;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_CON_PRICE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_WET_ACT;
     }
 }
