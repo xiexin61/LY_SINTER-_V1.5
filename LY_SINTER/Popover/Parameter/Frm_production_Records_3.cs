@@ -1,4 +1,5 @@
 ﻿using DataBase;
+using LY_SINTER.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,10 +17,18 @@ namespace LY_SINTER.Popover.Parameter
     {
         public static bool isopen = false;
         public vLog _vLog { get; set; }
+        //声明委托和事件
+        public delegate void production_Records_3();
+        //声明委托和事件
+        public event production_Records_3 _production_Records_3;
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        Parameter_Model _Model = new Parameter_Model();
         public Frm_production_Records_3()
         {
             InitializeComponent();
+            if (_vLog == null)//声明日志
+                _vLog = new vLog(".\\log_Page\\Parameter\\Frm_production_Records_3\\");
+            Checkbox_value();
         }
         /// <summary>
         /// 下拉框赋值
@@ -29,47 +38,25 @@ namespace LY_SINTER.Popover.Parameter
             try
             {
                 #region 班次
-                DataTable data_1 = new DataTable();
-                data_1.Columns.Add("NAME");
-                data_1.Columns.Add("VALUES");
-                DataRow row1_1 = data_1.NewRow();
-                row1_1["NAME"] = "夜";
-                row1_1["VALUES"] = 1;
-                data_1.Rows.Add(row1_1);
-                DataRow row1_2 = data_1.NewRow();
-                row1_2["NAME"] = "白";
-                row1_2["VALUES"] = 2;
-                data_1.Rows.Add(row1_2);
-                comboBox1.DataSource = data_1;
+             
+                comboBox1.DataSource = _Model._GetClass(1);
                 comboBox1.DisplayMember = "NAME";
                 comboBox1.ValueMember = "VALUES";
                 #endregion
 
                 #region 班别
-                DataTable data_2 = new DataTable();
-                data_2.Columns.Add("NAME");
-                data_2.Columns.Add("VALUES");
-                DataRow row2_1 = data_2.NewRow();
-                row2_1["NAME"] = "甲";
-                row2_1["VALUES"] = 1;
-                data_2.Rows.Add(row2_1);
-                DataRow row2_2 = data_2.NewRow();
-                row2_2["NAME"] = "乙";
-                row2_2["VALUES"] = 2;
-                data_2.Rows.Add(row2_2);
-                DataRow row2_3 = data_2.NewRow();
-                row2_3["NAME"] = "丙";
-                row2_3["VALUES"] = 3;
-                data_2.Rows.Add(row2_3);
-                DataRow row2_4 = data_2.NewRow();
-                row2_4["NAME"] = "丁";
-                row2_4["VALUES"] = 3;
-                data_2.Rows.Add(row2_4);
-                comboBox2.DataSource = data_2;
+        
+                comboBox2.DataSource = _Model._GetClass(2);
                 comboBox2.DisplayMember = "NAME";
                 comboBox2.ValueMember = "VALUES";
                 #endregion
 
+                Tuple<bool, string, string> _geta = _Model._Get_Class_Plan(DateTime.Now);
+                if (_geta.Item1)
+                {
+                    comboBox1.Text = _geta.Item2;
+                    comboBox2.Text = _geta.Item3;
+                }
         
             }
             catch (Exception ee)
@@ -77,10 +64,42 @@ namespace LY_SINTER.Popover.Parameter
                 _vLog.writelog("Checkbox_value方法错误" + ee.ToString(), -1);
             }
         }
+        /// <summary>
+        /// 添加数据
+        /// </summary>
+        public void _update()
+        {
+            try
+            {
+                int x = 1;
+                string sql_id = "select max(FLAG) from M_EVENT_INFOR";
+                DataTable table_1 = dBSQL.GetCommand(sql_id);
+                if (table_1.Rows.Count > 0 && table_1 != null)
+                {
+                    x = int.Parse(table_1.Rows[0][0].ToString() == "" ? "0" : table_1.Rows[0][0].ToString()) + 1;
+                }
+                var sql = "insert into M_EVENT_INFOR(TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,flag) values(getdate(),'"+ comboBox1 .Text.ToString()+ "','" + comboBox2.Text.ToString() + "','"+ textBox2 .Text.ToString()+ "',"+x+")";
+                int count = dBSQL.CommandExecuteNonQuery(sql);
+                if (count != 1)
+                {
+                    _vLog.writelog("_update方法失败" + sql,-1);
+                    MessageBox.Show("操作失败，检查数据库连接");
+                }
+                else
+                {
+                    _production_Records_3();
+                    this.Dispose();
+                }
 
+            }
+            catch(Exception ee)
+            {
+                _vLog.writelog("_update方法调用失败" + ee.ToString(), -1);
+            }
+        }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-
+            _update();
         }
     }
 }

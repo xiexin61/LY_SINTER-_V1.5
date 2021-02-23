@@ -47,8 +47,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox_begin = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.label9 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -275,18 +275,6 @@
             this.textBox_begin.TabIndex = 15;
             this.textBox_begin.ValueChanged += new System.EventHandler(this.textBox_end_ValueChanged);
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.LightBlue;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Location = new System.Drawing.Point(3, 35);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(1201, 20);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "停机原因描述";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // simpleButton1
             // 
             this.simpleButton1.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -301,6 +289,18 @@
             this.simpleButton1.TabIndex = 1;
             this.simpleButton1.Text = "保存";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.LightBlue;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Location = new System.Drawing.Point(3, 35);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(1201, 20);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "停机原因描述";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Frm_production_Records_2
             // 

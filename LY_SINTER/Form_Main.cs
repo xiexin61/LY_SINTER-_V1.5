@@ -816,7 +816,19 @@ namespace LY_SINTER
                     tabControl1.SelectedTab = tpg;
                     tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
+                else if (str == "烧结生产信息记录")
+                {
 
+                    TabPage tpg = new TabPage(str);
+                    production_Records _PAGE = new production_Records();
+                    tpg.Controls.Add(_PAGE);
+                    tabControl1.TabPages.Add(tpg);
+                    _PAGE.BorderStyle = BorderStyle.None;
+                    _PAGE.Dock = DockStyle.Fill;
+                    _PAGE.Show();
+                    tabControl1.SelectedTab = tpg;
+                    tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
+                }
                 else if (str == "通知消息录入页面")
                 {
 
@@ -1175,6 +1187,15 @@ namespace LY_SINTER
                         return true;
 
                     }
+                    else if (_tabName == "烧结生产信息记录")
+                    {
+                        production_Records _PAGE = (production_Records)p.Controls[0];
+                        _PAGE.Show();
+                        tabControl1.SelectedTab = p;
+                        _PAGE.Timer_state();
+                        return true;
+
+                    }
                     else if (_tabName == "通知消息录入页面")
                     {
 
@@ -1489,6 +1510,13 @@ namespace LY_SINTER
                     vSelected.Timer_state();
 
                 }
+                else if (_str == "烧结生产信息记录")
+                {
+                    //   Ingredient_protect ingredient_Protect = new Ingredient_protect();
+                    production_Records vSelected = (production_Records)_tabControl1.SelectedTab.Controls[0];
+                    vSelected.Timer_state();
+
+                }
                 else if (_str == "通知消息录入页面")
                 {
                     // tongzhixiaoxiyemian tongzhixiaoxiyemian = new tongzhixiaoxiyemian();
@@ -1780,6 +1808,15 @@ namespace LY_SINTER
                                 return;
 
                             }
+                            else if (_strname == "烧结生产信息记录")
+                            {
+                                //  Ingredient_protect ingredient_Protect = new Ingredient_protect();
+                                production_Records vf1 = (production_Records)p.Controls[0];
+                                vf1._Clear();
+                                this.tabControl1.Controls.Remove(p);
+                                return;
+
+                            }
                             else if (_strname == "通知消息录入页面")
                             {
                                 ////  tongzhixiaoxiyemian tongzhixiaoxiyemian = new tongzhixiaoxiyemian();
@@ -2034,6 +2071,14 @@ namespace LY_SINTER
 
 
                             }
+                            else if (_strname == "烧结生产信息记录")
+                            {
+                                //  Ingredient_protect ingredient_Protect = new Ingredient_protect();
+                                production_Records vf1 = (production_Records)p.Controls[0];
+                                vf1.Timer_stop();
+
+
+                            }
                             else if (_strname == "通知消息录入页面")
                             {
                                 ////  tongzhixiaoxiyemian tongzhixiaoxiyemian = new tongzhixiaoxiyemian();
@@ -2271,6 +2316,13 @@ namespace LY_SINTER
                         {
 
                             Ingredient_Protect _PAGE = (Ingredient_Protect)p.Controls[0];
+                            _PAGE._Clear();
+
+                        }
+                        else if (str == "烧结生产信息记录")
+                        {
+
+                            production_Records _PAGE = (production_Records)p.Controls[0];
                             _PAGE._Clear();
 
                         }

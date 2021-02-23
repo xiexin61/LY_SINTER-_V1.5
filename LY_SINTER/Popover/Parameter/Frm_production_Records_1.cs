@@ -17,9 +17,15 @@ namespace LY_SINTER.Popover.Parameter
     public partial class Frm_production_Records_1 : Form
     {
         public static bool isopen = false;
-        Parameter_Model _Model = new Parameter_Model();
+        //声明委托和事件
+        public delegate void production_Records_1();
+        //声明委托和事件
+        public event production_Records_1 _production_Records_1;
+        Parameter_Model _Model = new Parameter_Model();//页面modle
         public vLog _vLog { get; set; }
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        Tuple<bool, Dictionary<string, string>> _Rule_Big;
+        Tuple<bool, Dictionary<string, string>> _Rule_Loser;
         public Frm_production_Records_1()
         {
             InitializeComponent();
@@ -27,6 +33,9 @@ namespace LY_SINTER.Popover.Parameter
                 _vLog = new vLog(".\\log_Page\\Parameter\\Frm_production_Records_1\\");
             time_begin_end();//开始&结束时间赋值
             Checkbox_value();//下拉框赋值
+            Change_Min();//分钟间隔计算
+            _Rule_Big = _Model._GetRule(1);//原因大类对应关系规则
+           _Rule_Loser = _Model._GetRule(2);//原因大类对应关系规则
         }
         /// <summary>
         /// 开始时间-结束时间赋值
@@ -34,9 +43,19 @@ namespace LY_SINTER.Popover.Parameter
         public void time_begin_end()
         {
             DateTime time_end = DateTime.Now;
-            DateTime time_begin = time_end.AddDays(-1);
+            DateTime time_begin = time_end.AddHours(-12);
             textBox_begin.Value = time_begin;
             textBox_end.Value = time_end;
+
+            //计算时间间隔
+            DateTime time_1 = textBox_begin.Value;
+            DateTime time_2 = textBox_end.Value;
+            TimeSpan time_chang = time_end - time_begin;
+            double count = time_chang.TotalMinutes;
+            if (count > 0)
+            {
+                textBox1.Text = Math.Round(count, 2).ToString();
+            }
 
         }
         /// <summary>
@@ -47,43 +66,15 @@ namespace LY_SINTER.Popover.Parameter
             try
             {
                 #region 班次
-                DataTable data_1 = new DataTable();
-                data_1.Columns.Add("NAME");
-                data_1.Columns.Add("VALUES");
-                DataRow row1_1 = data_1.NewRow();
-                row1_1["NAME"] = "夜";
-                row1_1["VALUES"] = 1;
-                data_1.Rows.Add(row1_1);
-                DataRow row1_2 = data_1.NewRow();
-                row1_2["NAME"] = "白";
-                row1_2["VALUES"] = 2;
-                data_1.Rows.Add(row1_2);
-                comboBox1.DataSource = data_1;
+           
+                comboBox1.DataSource = _Model._GetClass(1);
                 comboBox1.DisplayMember = "NAME";
                 comboBox1.ValueMember = "VALUES";
                 #endregion
 
                 #region 班别
-                DataTable data_2 = new DataTable();
-                data_2.Columns.Add("NAME");
-                data_2.Columns.Add("VALUES");
-                DataRow row2_1 = data_2.NewRow();
-                row2_1["NAME"] = "甲";
-                row2_1["VALUES"] = 1;
-                data_2.Rows.Add(row2_1);
-                DataRow row2_2 = data_2.NewRow();
-                row2_2["NAME"] = "乙";
-                row2_2["VALUES"] = 2;
-                data_2.Rows.Add(row2_2);
-                DataRow row2_3 = data_2.NewRow();
-                row2_3["NAME"] = "丙";
-                row2_3["VALUES"] = 3;
-                data_2.Rows.Add(row2_3);
-                DataRow row2_4 = data_2.NewRow();
-                row2_4["NAME"] = "丁";
-                row2_4["VALUES"] = 3;
-                data_2.Rows.Add(row2_4);
-                comboBox2.DataSource = data_2;
+             
+                comboBox2.DataSource = _Model._GetClass(2);
                 comboBox2.DisplayMember = "NAME";
                 comboBox2.ValueMember = "VALUES";
                 #endregion
@@ -162,11 +153,13 @@ namespace LY_SINTER.Popover.Parameter
         /// <param name="e"></param>
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+            _update();
             
         }
         /// <summary>
         /// 采集记录
         /// </summary>
+        /// 
         public void _update()
         {
             int x = 1;
@@ -174,9 +167,42 @@ namespace LY_SINTER.Popover.Parameter
             DataTable table_1 = dBSQL.GetCommand(sql_id);
             if (table_1.Rows.Count > 0 && table_1 != null)
             {
-              //  x = int.Parse(table_1.Rows[0][0].ToString() == "" ? "1" : table_1.Rows[0][0].ToString() == "");
+                x = int.Parse(table_1.Rows[0][0].ToString() == "" ? "0" : table_1.Rows[0][0].ToString()) +1;
             }
-            var sql = "insert into M_SIN_RUN_STOP (TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,STOP_BEGINTIME,STOP_ENDTIME,INTERVAL_TIME,FLAG,FLAG_1,SORT_BIG,SORT_LITTLE,) values (getdate(),'"+ comboBox1.Text.ToString() + "','"+ comboBox2.Text.ToString() + "','"+ textBox2.Text.ToString()+ "','"+ textBox_begin .Value.ToString()+ "','" + textBox_end.Value.ToString() + "','"+ textBox1 .Text.ToString()+ "',2,)";
+            //获取原因大类编码
+            if (_Rule_Big.Item1)
+            {
+                if (_Rule_Loser.Item1)
+                {
+                    Tuple<bool, string, string> _Judge = _Model.Judge_Class_Time(textBox_begin.Value, textBox_end.Value);
+                    if (_Judge.Item1)
+                    {
+                        //原因大类代码
+                        string _A = _Rule_Big.Item2[comboBox3.Text.ToString()];
+                        //原因小类代码
+                        string _B = _Rule_Loser.Item2[comboBox4.Text.ToString()];
+                        var sql = "insert into M_SIN_RUN_STOP (TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,STOP_BEGINTIME,STOP_ENDTIME,INTERVAL_TIME,FLAG,FLAG_1,SORT_BIG,SORT_LITTLE) " +
+                        "values (getdate(),'" + comboBox1.Text.ToString() + "','" + comboBox2.Text.ToString() + "','" + textBox2.Text.ToString() + "','" + textBox_begin.Value.ToString() + "','" + textBox_end.Value.ToString() + "','" + textBox1.Text.ToString() + "',2," + x + ",'" + _A + "','" + _B + "')";
+                        int _count = dBSQL.CommandExecuteNonQuery(sql);
+                        _production_Records_1();
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show("操作失败，选择的开始时间及结束时间已经跨班");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("操作失败，检查原因小类数据库对应关系");
+                }
+            }
+            else
+            {
+                MessageBox.Show("操作失败，检查原因大类数据库对应关系");
+            }
+
+           
         }
         private void textBox_end_CloseUp(object sender, EventArgs e)
         {
