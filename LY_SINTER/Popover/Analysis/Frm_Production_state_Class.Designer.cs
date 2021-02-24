@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Production_state_Class));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
@@ -42,7 +45,6 @@
             this.d2 = new RowMergeView();
             this.Column49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column50 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column51 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -222,20 +224,21 @@
             // d2
             // 
             this.d2.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
+            this.d2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.d2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.d2.ColumnHeadersHeight = 30;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.d2.ColumnHeadersHeight = 40;
             this.d2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column49,
             this.Column50,
-            this.Column51,
             this.Column52,
             this.Column54,
             this.Column55,
@@ -283,6 +286,14 @@
             this.Column97,
             this.Column1,
             this.Column2});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.d2.DefaultCellStyle = dataGridViewCellStyle3;
             this.d2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.d2.EnableHeadersVisualStyles = false;
             this.d2.Location = new System.Drawing.Point(3, 38);
@@ -291,6 +302,14 @@
             this.d2.MergeColumnNames = ((System.Collections.Generic.List<string>)(resources.GetObject("d2.MergeColumnNames")));
             this.d2.Name = "d2";
             this.d2.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d2.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.d2.RowHeadersVisible = false;
             this.d2.RowTemplate.Height = 23;
             this.d2.Size = new System.Drawing.Size(880, 454);
@@ -318,17 +337,6 @@
             this.Column50.ReadOnly = true;
             this.Column50.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.Column50.Width = 70;
-            // 
-            // Column51
-            // 
-            this.Column51.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Column51.DataPropertyName = "HEAP_NUM";
-            this.Column51.Frozen = true;
-            this.Column51.HeaderText = "堆号";
-            this.Column51.Name = "Column51";
-            this.Column51.ReadOnly = true;
-            this.Column51.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Column51.Width = 80;
             // 
             // Column52
             // 
@@ -434,6 +442,7 @@
             this.Column63.Name = "Column63";
             this.Column63.ReadOnly = true;
             this.Column63.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column63.Width = 120;
             // 
             // Column64
             // 
@@ -442,6 +451,7 @@
             this.Column64.HeaderText = "料层波动次数";
             this.Column64.Name = "Column64";
             this.Column64.ReadOnly = true;
+            this.Column64.Width = 110;
             // 
             // Column65
             // 
@@ -742,6 +752,7 @@
             this.Column95.Name = "Column95";
             this.Column95.ReadOnly = true;
             this.Column95.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column95.Width = 120;
             // 
             // Column96
             // 
@@ -814,7 +825,6 @@
         private RowMergeView d2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column49;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column50;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column51;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column52;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column54;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column55;

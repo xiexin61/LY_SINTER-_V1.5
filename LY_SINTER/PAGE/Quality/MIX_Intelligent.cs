@@ -191,7 +191,10 @@ namespace LY_SINTER.PAGE.Quality
         List<int> _list_XLK = new List<int>() {15,16 };//烧返仓下料口
         bool FLAG_OUT = true;//是否允许下发
         #endregion
-
+        /// <summary>
+        /// 中控权限
+        /// </summary>
+        bool FALG_Oper;
         #region 定时器声明
         /// <summary>
         /// 初始化颜色变化定时器
@@ -249,6 +252,7 @@ namespace LY_SINTER.PAGE.Quality
             MAX_MIN_VLAUES();//上下限赋值
             Button_state(CAL_MODE);//开关状态
             PBTZ_GRTDATA(0);// 初始化加载d2数据
+            Button_Show();//权限控制
             latest_time(2);//最新下发时间
             import_R_C_MG(CAL_MODE);
             Counter_OutPut();//总干料量&理论产量赋值
@@ -942,8 +946,10 @@ namespace LY_SINTER.PAGE.Quality
         }
         /// <summary>
         /// 下发一级
+        /// Pattern = 1 直接下发设定下料量
+        /// Pattern = 2 比较现场数据后下发设定下料量
         /// </summary>
-        public void Issue_SDXLL()
+        public void Issue_SDXLL(int Pattern = 2)
         {
             try
             {
@@ -959,53 +965,110 @@ namespace LY_SINTER.PAGE.Quality
                         List<int> list_mid = mIX_PAGE._Get_Mid();//mid************屏蔽总料量
                                                                 
                         Tuple<bool, List<float>> list1 = mIX_PAGE._Get_Mid_Date();//数据************屏蔽总料量
-
+                        Tuple<bool, List<float>> list2 = mIX_PAGE._Get_Values(4);//获取现场设定下料量
                         if (list1.Item1)
                         {
-                            LDataSet lds = new LDataSet();
-                            lds.Ip = ConstParameters.strCon_ID;//数据库地址
-                            lds.Port = ConstParameters.PORT;//端口号
-                            for (int count_1 = 0; count_1 < ConstParameters._COUNT_1; count_1++)//21ci 
+                            if (Pattern == 1 )
                             {
-                                
-                                LDataUnits ldus = new LDataUnits();
-                                for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
+                                LDataSet lds = new LDataSet();
+                                lds.Ip = ConstParameters.strCon_ID;//数据库地址
+                                lds.Port = ConstParameters.PORT;//端口号
+                                for (int count_1 = 0; count_1 < ConstParameters._COUNT_1; count_1++)//21ci 
                                 {
-                                    ldus.Data[count] = new DataUnit();
-                                }
+                                    LDataUnits ldus = new LDataUnits();
+                                    for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
+                                    {
+                                        ldus.Data[count] = new DataUnit();
+                                    }
 
-                                for (int count = 0; count < ConstParameters._COUNT; count++)
-                                {
-                                    lds.initData(ldus.Data[count], list_mid[count_1], list1.Item2[count_1]);
-                                }
-                                ldus.Count = ConstParameters._COUNT;
+                                    for (int count = 0; count < ConstParameters._COUNT; count++)
+                                    {
+                                        lds.initData(ldus.Data[count], list_mid[count_1], list1.Item2[count_1]);
+                                    }
+                                    ldus.Count = ConstParameters._COUNT;
+                                    lds.TimeOuter = _time;//下发间隔
+                                    lds.SetData(ldus);
 
-
-                                lds.TimeOuter = _time;//下发间隔
-                                lds.SetData(ldus);
-
-                                int _flag = lds.Flags;
-                                if (_flag == -1)//下发失败
-                                {
-                                    MessageBox.Show("下发失败");
-                                }
-                                else if (_flag == -2)//重新下发
-                                {
-                                    MessageBox.Show("重新下发");
-                                }
-                                else if (_flag == 1)//下发成功
-                                {
-                                    label3.BackColor = Color.Red;
-                                    string messbox = "设定下料下发成功";
-                                  //  _vLog.writelog(messbox, 0);
+                                    int _flag = lds.Flags;
+                                    if (_flag == -1)//下发失败
+                                    {
+                                        MessageBox.Show("下发失败");
+                                    }
+                                    else if (_flag == -2)//重新下发
+                                    {
+                                        MessageBox.Show("重新下发");
+                                    }
+                                    else if (_flag == 1)//下发成功
+                                    {
+                                        label3.BackColor = Color.Red;
+                                        string messbox = "设定下料下发成功";
+                                        //  _vLog.writelog(messbox, 0);
+                                    }
                                 }
                             }
-                           
+                            else if(Pattern == 2)
+                            {
+                                if (list2.Item1)
+                                {
+                                        LDataSet lds = new LDataSet();
+                                    lds.TimeOuter = 3000;//设置平台响应时间（初始2s）
+                                        lds.Ip = ConstParameters.strCon_ID;//数据库地址
+                                        lds.Port = ConstParameters.PORT;//端口号
+                                        for (int count_1 = 0; count_1 < ConstParameters._COUNT_1; count_1++)//21ci 
+                                        {
+                                            if (list2.Item2[count_1] != list1.Item2[count_1])
+                                            {
+                                                LDataUnits ldus = new LDataUnits();
+                                                for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
+                                                {
+                                                    ldus.Data[count] = new DataUnit();
+                                                }
+                                                for (int count = 0; count < ConstParameters._COUNT; count++)
+                                                {
+                                                    lds.initData(ldus.Data[count], list_mid[count_1], list1.Item2[count_1]);
+                                                }
+                                                ldus.Count = ConstParameters._COUNT;
+                                                lds.TimeOuter = _time;//下发间隔
+                                                lds.SetData(ldus);
+
+                                                int _flag = lds.Flags;
+                                                if (_flag == -1)//下发失败
+                                                {
+                                                    MessageBox.Show("下发失败");
+                                                }
+                                                else if (_flag == -2)//重新下发
+                                                {
+                                                    MessageBox.Show("重新下发");
+                                                }
+                                                else if (_flag == 1)//下发成功
+                                                {
+                                                    label3.BackColor = Color.Red;
+                                                    string messbox = "设定下料下发成功";
+                                                    //  _vLog.writelog(messbox, 0);
+                                                }
+                                            }
+                                            else
+                                            {
+                                            string messbox = "设定下料量与现场下料量使用一致，未下发，"+ count_1.ToString();
+                                            _vLog.writelog(messbox, 0);
+                                        }
+                                    }
+     
+                                }
+                                else
+                                {
+                                    string messbox = "Issue_SDXLL方法调用_Get_Values接收数据异常，请检查数据库连接";
+                                    _vLog.writelog(messbox, -1);
+                                    MessageBox.Show("设定下料量下发失败", "警告");
+                                }
+                            }
+                            
                         }
                         else
                         {
-                            string messbox = "Issue_SDXLL方法接收数据异常，请检查数据库连接";
+                            string messbox = "Issue_SDXLL方法调用_Get_Mid_Date接收数据异常，请检查数据库连接";
                             _vLog.writelog(messbox, -1);
+                            MessageBox.Show("设定下料量下发失败","警告");
                         }
                         #region 测试
                         //List<int> list_mid1 = new List<int>();
@@ -3346,6 +3409,7 @@ namespace LY_SINTER.PAGE.Quality
             switch_4_open = _list_1[6];
             switch_4_close = _list_1[7];
 
+            FALG_Oper = mIX_PAGE._GetIp_Jurisdiction();//获取现场权限
         }
         /// <summary>
         /// 计算成分查询按钮
@@ -3616,5 +3680,46 @@ namespace LY_SINTER.PAGE.Quality
             this.Dispose();
             GC.SuppressFinalize(this);
         }
+        /// <summary>
+        /// 控制操作按钮是否允许操作
+        /// </summary>
+        public void Button_Show()
+        {
+            if (FALG_Oper)
+            {
+                simpleButton4.Enabled = true;
+                simpleButton5.Enabled = true;
+                simpleButton6.Enabled = true;
+                simpleButton7.Enabled = true;
+                simpleButton8.Enabled = true;
+                simpleButton9.Enabled = true;
+                simpleButton10.Enabled = true;
+                simpleButton11.Enabled = true;
+                button1.Enabled = true;
+                button2.Enabled = true;
+                Check_R.Enabled = true;
+                Check_C.Enabled = true;
+                Check_MG.Enabled = true;
+                Check_FK.Enabled = true;
+            }
+            else
+            {
+                simpleButton4.Enabled = false;
+                simpleButton5.Enabled = false;
+                simpleButton6.Enabled = false;
+                simpleButton7.Enabled = false;
+                simpleButton8.Enabled = false;
+                simpleButton9.Enabled = false;
+                simpleButton10.Enabled = false;
+                simpleButton11.Enabled = false;
+                button1.Enabled = false;
+                button2.Enabled = false;
+                Check_R.Enabled = false;
+                Check_C.Enabled = false;
+                Check_MG.Enabled = false;
+                Check_FK.Enabled = false;
+            }
+        }
+        
     }
 }

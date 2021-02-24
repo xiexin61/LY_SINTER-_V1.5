@@ -179,6 +179,7 @@ namespace LY_SINTER.PAGE.Course
         /// </summary>
         public void TIMER_Statement()
         {
+
             _Timer1 = new System.Timers.Timer(60000);//初始化颜色变化定时器响应事件
             _Timer1.Elapsed += (x, y) => { _Timer1_Tick(); };
             _Timer1.Enabled = true;

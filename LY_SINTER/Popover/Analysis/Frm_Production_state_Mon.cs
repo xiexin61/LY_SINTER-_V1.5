@@ -1,4 +1,5 @@
 ﻿using DataBase;
+using LY_SINTER.Custom;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,36 +10,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using VLog;
 
 namespace LY_SINTER.Popover.Analysis
 {
     public partial class Frm_Production_state_Mon : Form
     {
         public static bool isopen = false;
+        public vLog _vLog { get; set; }
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
         public Frm_Production_state_Mon()
         {
             InitializeComponent();
+            if (_vLog == null)
+                _vLog = new vLog(".\\log_Page\\Analysis\\Frm_Production_state_Mon\\");
             time_begin_end();
+            DateTimeChoser.AddTo(textBox_begin);
+            DateTimeChoser.AddTo(textBox_end);
             show();
             d1_col();
         }
         public void d1_col()
         {
             //添加列说明
-            this.d2.AddSpanHeader(1, 3, "配矿比例");
-            this.d2.AddSpanHeader(20, 7, "BTP温度");
-            this.d2.AddSpanHeader(27, 3, "大烟道温度");
-            this.d2.AddSpanHeader(30, 3, "BTP位置");
-            this.d2.AddSpanHeader(33, 3, "大烟道负压");
-            this.d2.AddSpanHeader(40, 3, "主排频率");
-            this.d2.AddSpanHeader(43, 3, "主排电流");
+            this.d2.AddSpanHeader(17, 7, "BTP温度");
+            this.d2.AddSpanHeader(24, 3, "大烟道温度");
+            this.d2.AddSpanHeader(27, 3, "BTP位置");
+            this.d2.AddSpanHeader(30, 3, "大烟道负压");
+            this.d2.AddSpanHeader(37, 3, "主排频率");
+            this.d2.AddSpanHeader(40, 3, "主排电流");
         }
         public void show()
         {
             string sql = "select top (20) " +
-                "TIMESTAMP,SA_PB,AUS_PB," +
-                "FINE_PB,P_CAL,HHL_W,SF_BALA_PB," +
+                "TIMESTAMP" +
+                ",P_CAL,HHL_W,SF_BALA_PB," +
                 "GF_BALA_PB,GF_BALA_W,M_Y,M_P," +
                 "MOI_1,MOI_2,WTR_Q_HOUR,PH_STP_NUM," +
                 "BED_THICK_AD_NUM,BED_THICK,M_SPEED," +
@@ -86,8 +92,8 @@ namespace LY_SINTER.Popover.Analysis
             //结束时间
             string time_end = textBox_end.Text.ToString();
             string sql_MC_NUMCAL_INTERFACE_10_MONTH = "select  " +
-                "TIMESTAMP,SA_PB,AUS_PB," +
-                "FINE_PB,P_CAL,HHL_W,SF_BALA_PB," +
+                "TIMESTAMP," +
+                "P_CAL,HHL_W,SF_BALA_PB," +
                 "GF_BALA_PB,GF_BALA_W,M_Y,M_P," +
                 "MOI_1,MOI_2,WTR_Q_HOUR,PH_STP_NUM," +
                 "BED_THICK_AD_NUM,BED_THICK,M_SPEED," +

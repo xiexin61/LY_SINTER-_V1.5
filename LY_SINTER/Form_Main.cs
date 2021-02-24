@@ -58,11 +58,16 @@ namespace LY_SINTER
         int grade = User_Level.Authority;
         string user_name = User_Level.User_name;
         DBSQL dBSQL = new DBSQL(DataBase.ConstParameters.strCon);
+        /// <summary>
+        /// 中控权限
+        /// </summary>
+        bool FALG_Oper;
         public Form_Main()
         {
             InitializeComponent();
             if (_vLog == null)
                 _vLog = new vLog(".\\log_Page\\Main\\");
+            FALG_Oper =  mIX_PAGE._GetIp_Jurisdiction();//获取现场权限
             Timer_Init();//定时器声明
             Show_INIT();//添加智能配料
             Navigation_INIT();//导航栏
@@ -102,6 +107,7 @@ namespace LY_SINTER
         /// </summary>
         private void Timer1_Tick_1()
         {
+
             Action invokeAction = new Action(Timer1_Tick_1);
             if (this.InvokeRequired)
             {
@@ -124,7 +130,8 @@ namespace LY_SINTER
             }
             else
             {
-                Start_Stop_FLAG();
+                if(FALG_Oper)
+                  Start_Stop_FLAG();
             }
         }
         /// <summary>
@@ -139,7 +146,8 @@ namespace LY_SINTER
             }
             else
             {
-                INGRED_WATER_CHANGE();
+                if (FALG_Oper)
+                    INGRED_WATER_CHANGE();
             }
         }
         /// <summary>

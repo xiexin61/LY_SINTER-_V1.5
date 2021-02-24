@@ -1463,7 +1463,7 @@ namespace LY_SINTER.Model
         /// <summary>
         /// 返回下发数据
         /// item1:是否正常
-        /// item2：数据值
+        /// item2：数据值(1-20仓+sp)
         /// </summary>
         /// <returns></returns>
         public Tuple<bool, List<float>> _Get_Mid_Date()
@@ -1572,6 +1572,95 @@ namespace LY_SINTER.Model
            
             }
         }
+        /// <summary>
+        /// 获取指定中控客户端设定IP
+        /// </summary>
+        /// <returns></returns>
+        public Tuple<bool, string>  _Get_IpAdress()
+        {
+            try
+            {
+                var sql = "select Adress_Ip from  MC_MIX_Digit";
+                DataTable _data = _dBSQL.GetCommand(sql);
+                if(_data.Rows.Count > 0 && _data != null)
+                {
+                    return new Tuple<bool, string>(true, _data.Rows[0][0].ToString());
+                }
+                else
+                {
+                    return new Tuple<bool, string>(false, "");
+                }
+            }
+            catch
+            {
+                return new Tuple<bool, string>(false, "");
+            }
+        }
+        /// <summary>
+        /// 获取下发权限
+        /// </summary>
+        /// <returns></returns>
+        public bool _GetIp_Jurisdiction()
+        {
+            GetIpAddress.GetApi getApi = new GetIpAddress.GetApi();
+            var IP_Local = getApi.GetIp_Power();//获取本机IP
+            Tuple<bool, string> Ip_Setting = _Get_IpAdress();//获取设定Ip
+            if (Ip_Setting.Item1)
+            {
+                if(IP_Local.Equals(Ip_Setting.Item2))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        /// <summary>
+        /// insert 小数位数
+        /// 返回现场实际设定下料量
+        /// item1:是否正常
+        /// item2：数据（1-20仓+sp）
+        /// </summary>
+        /// <returns></returns>
+        public Tuple<bool,List<float>>  _Get_Values( int Digit )
+        {
+            try
+            {
+                var sql = "select MAT_L2_SDXL_1,MAT_L2_SDXL_2,MAT_L2_SDXL_3,MAT_L2_SDXL_4,MAT_L2_SDXL_5,MAT_L2_SDXL_6,MAT_L2_SDXL_7,MAT_L2_SDXL_8,MAT_L2_SDXL_9,MAT_L2_SDXL_10,MAT_L2_SDXL_11,MAT_L2_SDXL_12,MAT_L2_SDXL_13,MAT_L2_SDXL_14,MAT_L2_SDXL_15,MAT_L2_SDXL_16,MAT_L2_SDXL_17,MAT_L2_SDXL_18,MAT_L2_SDXL_19,MAT_L2_SDXL_20,MAT_L2_SDXL_SP from MC_MIXCAL_Baiting where TIMESTAMP = (select max(TIMESTAMP) from MC_MIXCAL_Baiting)";
+                DataTable _table = _dBSQL.GetCommand(sql);
+                if (_table != null && _table.Rows.Count > 0 )
+                {
+                    List<float> _a = new List<float>();
+                    for (int x = 0; x < _table.Columns.Count;x++)
+                    {
+                        if (_table.Rows[0][x].ToString() != "")
+                        {
+                            _a.Add(float.Parse(_table.Rows[0][x].ToString()));
+                        }
+                        else
+                        {
+                            return new Tuple<bool, List<float>>(false, null);
+                        }
+                    }
+                    return new Tuple<bool, List<float>>(true, _a);
+                }
+                else
+                {
+                    return new Tuple<bool, List<float>>(false, null);
+                }
+            }
+            catch
+            {
+                return new Tuple<bool, List<float>>(false, null);
+            }
+        }
+
 
     }
 }

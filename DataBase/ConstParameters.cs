@@ -12,9 +12,9 @@ namespace DataBase
         //
         //数据库链接语句
      //public const string strCon = "Data Source = 10.5.130.28;Initial Catalog = LGSJ;User Id = sa;Password = Yjs88291280;";
-     // public const string strCon = "Data Source = .;Initial Catalog = LGSJ;User Id = sa;Password = Yjs88291280;";
+      public const string strCon = "Data Source = .;Initial Catalog = LGSJ;User Id = sa;Password = Yjs88291280;";
         //凌钢现场
-        public const string strCon = "Data Source = 172.168.12.36;Initial Catalog = LGSJ;User Id = sa;Password = Yjs88291280;Integrated Security=false;";
+      //  public const string strCon = "Data Source = 172.168.12.36;Initial Catalog = LGSJ;User Id = sa;Password = Yjs88291280;Integrated Security=false;";
 
       //  public const string strCon = "Data Source = 10.9.11.1\\NGSJ;Initial Catalog = NBSJ;User Id = sa;Password = Yjs88291280;Integrated Security=false;";
         //下发程序ID地址

@@ -18,6 +18,7 @@ namespace LY_SINTER.PAGE.Parameter
         public vLog _vLog { get; set; }
         public System.Timers.Timer _Timer1 { get; set; }
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        Color[] vs = { Color.Red, Color.Blue, Color.Black };
         DateTimePicker dtp_begin = new DateTimePicker();  //实例化一个DateTimePicker控件 开始时间
         /// <summary>
         /// key 序号，item1 班组 item2 修改时间 item3 开始时间 item4 结束时间 item5 白班夜班
@@ -51,6 +52,7 @@ namespace LY_SINTER.PAGE.Parameter
             d2_show();
             XLK();
             time_new();
+            Cloums_Color();
             // TIMER_MON();
             // Color_CLASS();
 
@@ -364,6 +366,7 @@ namespace LY_SINTER.PAGE.Parameter
                             d2_show();
                             time_new();
                             Color_CLASS();
+                            Cloums_Color();
                         }
                         else
                         {
@@ -521,12 +524,14 @@ namespace LY_SINTER.PAGE.Parameter
 
                     for (int rows = 0; rows < d2.Rows.Count; rows++)
                     {
+                        
                         if (ID == int.Parse(d2.Rows[rows].Cells["Column1"].Value.ToString()))
                         {
                             this.d2.Rows[rows].Cells["Column1"].Style.BackColor = Color.LightSeaGreen;
                             this.d2.Rows[rows].Cells["Column2"].Style.BackColor = Color.LightSeaGreen;
                             this.d2.Rows[rows].Cells["Column3"].Style.BackColor = Color.LightSeaGreen;
                             this.d2.Rows[rows].Cells["Column4"].Style.BackColor = Color.LightSeaGreen;
+                            this.d2.Rows[rows].Cells["Column9"].Style.BackColor = Color.LightSeaGreen;
 
                         }
                         else if (ID == int.Parse(d2.Rows[rows].Cells["Column5"].Value.ToString()))
@@ -535,6 +540,15 @@ namespace LY_SINTER.PAGE.Parameter
                             this.d2.Rows[rows].Cells["Column6"].Style.BackColor = Color.LightSeaGreen;
                             this.d2.Rows[rows].Cells["Column7"].Style.BackColor = Color.LightSeaGreen;
                             this.d2.Rows[rows].Cells["Column8"].Style.BackColor = Color.LightSeaGreen;
+                            this.d2.Rows[rows].Cells["Column10"].Style.BackColor = Color.LightSeaGreen;
+                        }
+                        else if (ID == int.Parse(d2.Rows[rows].Cells["Column11"].Value.ToString()))
+                        {
+                            this.d2.Rows[rows].Cells["Column11"].Style.BackColor = Color.LightSeaGreen;
+                            this.d2.Rows[rows].Cells["Column12"].Style.BackColor = Color.LightSeaGreen;
+                            this.d2.Rows[rows].Cells["Column13"].Style.BackColor = Color.LightSeaGreen;
+                            this.d2.Rows[rows].Cells["Column14"].Style.BackColor = Color.LightSeaGreen;
+                            this.d2.Rows[rows].Cells["Column15"].Style.BackColor = Color.LightSeaGreen;
                         }
 
                     }
@@ -573,6 +587,37 @@ namespace LY_SINTER.PAGE.Parameter
             _Timer1.Close();//释放定时器资源
             this.Dispose();//释放资源
             GC.Collect();//调用GC
+        }
+        /// <summary>
+        /// 颜色变化
+        /// </summary>
+        public void Cloums_Color()
+        {
+
+            //  this.d2.Columns[0].DefaultCellStyle.BackColor = vs[0];//背景颜色
+            this.d2.Columns[1].DefaultCellStyle.ForeColor = vs[0];//背景颜色
+            this.d2.Columns[2].DefaultCellStyle.ForeColor = vs[0];//背景颜色
+            this.d2.Columns[3].DefaultCellStyle.ForeColor = vs[0];//背景颜色
+            this.d2.Columns[4].DefaultCellStyle.ForeColor = vs[0];//背景颜色
+
+            // this.d2.Columns[5].DefaultCellStyle.BackColor = vs[1];//背景颜色
+            this.d2.Columns[6].DefaultCellStyle.ForeColor = vs[1];//背景颜色
+            this.d2.Columns[7].DefaultCellStyle.ForeColor = vs[1];//背景颜色
+            this.d2.Columns[8].DefaultCellStyle.ForeColor = vs[1];//背景颜色
+            this.d2.Columns[9].DefaultCellStyle.ForeColor = vs[1];//背景颜色
+
+            // this.d2.Columns[10].DefaultCellStyle.BackColor = vs[2];//背景颜色
+            this.d2.Columns[11].DefaultCellStyle.ForeColor = vs[2];//背景颜色
+            this.d2.Columns[12].DefaultCellStyle.ForeColor = vs[2];//背景颜色
+            this.d2.Columns[13].DefaultCellStyle.ForeColor = vs[2];//背景颜色
+            this.d2.Columns[14].DefaultCellStyle.ForeColor = vs[2];//背景颜色
+
+
+        }
+
+        private void d2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

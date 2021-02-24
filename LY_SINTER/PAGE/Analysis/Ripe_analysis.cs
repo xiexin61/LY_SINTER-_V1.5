@@ -31,8 +31,8 @@ namespace LY_SINTER.PAGE.Analysis
         Dictionary<string, List<Tuple<double, DateTime>>> _Dic_curve = new Dictionary<string, List<Tuple<double, DateTime>>>();
         #endregion
         #region 柱形图声明
-        DateTime time_Begin = DateTime.Now.AddMonths(-1);//开始时间
-        DateTime time_End = DateTime.Now;//结束时间
+        //DateTime time_Begin = DateTime.Now.AddMonths(-1);//开始时间
+        //DateTime time_End = DateTime.Now;//结束时间
         string[] _Bar_1 = { "R±0.05%", "R±0.08%", "FeO±1%", "MgO±0.15%" };               //烧结矿成分稳定率曲线
         string[] _Bar_2 = { "σTFe", "σFeO", "σCaO", "σSiO2", "σMgO", "σR", "σAl2O3" };//标准偏差曲线
         #endregion
@@ -129,7 +129,7 @@ namespace LY_SINTER.PAGE.Analysis
             DateTimeChoser.AddTo(textBox_end);
             Comboc_2_Value();//成分下拉框赋值
             Time_Now();//调整时间
-            data_show(comboBox1.Text.ToString(),textBox_begin.Text.ToString(),textBox_end.Text.ToString());//表单查询
+            data_show("3#烧结机", textBox_begin.Text.ToString(),textBox_end.Text.ToString());//表单查询
             comboBox_values();//成分下拉框赋值
             Curve_text(comboBox2.Text.ToString());//曲线绑定数据源
             Curve_Bar();//烧结矿成分稳定率柱形图
@@ -282,7 +282,7 @@ namespace LY_SINTER.PAGE.Analysis
                     row_3[0] = "最大值";
                     row_4[0] = "最小值";
                     row_5[0] = "极差";
-                    for (int x = 0; x < 9;x++)
+                    for (int x = 1; x < 9;x++)
                     {
                         row_1[_datatable_name[x]] = "-";
                         row_2[_datatable_name[x]] = "-";
@@ -295,7 +295,9 @@ namespace LY_SINTER.PAGE.Analysis
                         List<float> _list = new List<float>();
                         for (int y = 0; y < _table.Rows.Count; y++)
                         {
-                            _list.Add(float.Parse(_table.Rows[y][_datatable_name[x]].ToString() == "" ? "0" : _table.Rows[y][_datatable_name[x]].ToString()));
+                           // double xx  = double.Parse(_table.Rows[y][_datatable_name[x]].ToString());
+                            if (_table.Rows[y][_datatable_name[x]].ToString() != "" && double.Parse(_table.Rows[y][_datatable_name[x]].ToString()) != 0) 
+                                _list.Add(float.Parse(_table.Rows[y][_datatable_name[x]].ToString() == "" ? "0" : _table.Rows[y][_datatable_name[x]].ToString()));
                         }
                         row_1[_datatable_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 1,2).ToString();//平均
                         row_2[_datatable_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 2,2).ToString();//标准偏差
@@ -354,6 +356,8 @@ namespace LY_SINTER.PAGE.Analysis
         {
             data_show(comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//表单数据查询
             Curve_text(comboBox2.Text.ToString());//曲线赋值
+            Curve_Bar();//烧结矿成分稳定率柱形图
+            Curve_Bar_1();//标准偏差柱形图
         }
         /// <summary>
         /// 实时按钮
@@ -660,13 +664,13 @@ namespace LY_SINTER.PAGE.Analysis
                 _myPlotModel.Axes.Add(_valueAxis);
                 var _ColumnSeries = new ColumnSeries();
                 List<double> _Value_Bar_1 = new List<double>();
-                var _sql = "select count(TIMESTAMP) as _Count, sum(FLAG_R_005) as FLAG_R_005,sum(FLAG_R_008) as FLAG_R_008,sum(FLAG_FEO_1) as FLAG_FEO_1,sum(FLAG_MGO_015) as FLAG_MGO_015 from MC_NUMCAL_INTERFACE_6 where DL_FLAG=1 and TIMESTAMP between '" + time_Begin + "' and '" + time_End + "'";
+                var _sql = "select count(TIMESTAMP) as _Count, sum(FLAG_R_005) as FLAG_R_005,sum(FLAG_R_008) as FLAG_R_008,sum(FLAG_FEO_1) as FLAG_FEO_1,sum(FLAG_MGO_015) as FLAG_MGO_015 from MC_NUMCAL_INTERFACE_6 where DL_FLAG=3 and TIMESTAMP between '" + textBox_begin.Text.ToString() + "' and '" + textBox_end.Text.ToString() + "'";
                 DataTable _data = _dBSQL.GetCommand(_sql);
                 if (_data.Rows.Count > 0 && _data != null)
                 {
                     for (int x = 1; x< _data.Columns.Count; x++)
                     {
-                        _Value_Bar_1.Add(Math.Round(double.Parse(_data.Rows[0][x].ToString() == "" ? "0": _data.Rows[0][x].ToString()) / double.Parse(_data.Rows[0][0].ToString()) * 100, 2));
+                        _Value_Bar_1.Add(Math.Round(double.Parse(_data.Rows[0][x].ToString() ) / double.Parse(_data.Rows[0][0].ToString()) * 100, 2));
                     }
                 }
                 for (int i = 0; i < _Value_Bar_1.Count; i++)

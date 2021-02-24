@@ -44,9 +44,10 @@ namespace LY_SINTER.PAGE.Analysis
             time_begin_end();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
-            d1_col();//二级表头
+         
             SHOW_D1();//d1数据刷新
             SHOW_D2();//d2数据刷新
+            d1_col();//二级表头
         }
         /// <summary>
         /// 开始时间-结束时间赋值
@@ -932,10 +933,22 @@ namespace LY_SINTER.PAGE.Analysis
             this.Dispose();//释放资源
             GC.Collect();//调用GC
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-
+            Frm_Production_state_Mon form_display = new Frm_Production_state_Mon();
+            if (Frm_Production_state_Mon.isopen == false)
+            {
+                form_display.ShowDialog();
+            }
+            else
+            {
+                form_display.Activate();
+            }
         }
     }
 }

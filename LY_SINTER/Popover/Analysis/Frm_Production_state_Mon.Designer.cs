@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_Production_state_Mon));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -42,9 +45,6 @@
             this.textBox_begin = new System.Windows.Forms.TextBox();
             this.d2 = new RowMergeView();
             this.Column49 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column52 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column54 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column55 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -240,21 +240,20 @@
             // d2
             // 
             this.d2.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
+            this.d2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.d2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.d2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.d2.ColumnHeadersHeight = 40;
             this.d2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column49,
-            this.Column52,
-            this.Column6,
-            this.Column7,
             this.Column8,
             this.Column54,
             this.Column55,
@@ -302,6 +301,14 @@
             this.Column97,
             this.Column1,
             this.Column2});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.d2.DefaultCellStyle = dataGridViewCellStyle3;
             this.d2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.d2.EnableHeadersVisualStyles = false;
             this.d2.Location = new System.Drawing.Point(3, 38);
@@ -310,6 +317,14 @@
             this.d2.MergeColumnNames = ((System.Collections.Generic.List<string>)(resources.GetObject("d2.MergeColumnNames")));
             this.d2.Name = "d2";
             this.d2.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d2.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.d2.RowHeadersVisible = false;
             this.d2.RowTemplate.Height = 23;
             this.d2.Size = new System.Drawing.Size(1128, 458);
@@ -318,361 +333,468 @@
             // 
             // Column49
             // 
+            this.Column49.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column49.DataPropertyName = "TIMESTAMP";
             this.Column49.Frozen = true;
             this.Column49.HeaderText = "时间";
             this.Column49.Name = "Column49";
             this.Column49.ReadOnly = true;
-            // 
-            // Column52
-            // 
-            this.Column52.DataPropertyName = "SA_PB";
-            this.Column52.HeaderText = "南美洲矿";
-            this.Column52.Name = "Column52";
-            this.Column52.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "AUS_PB";
-            this.Column6.HeaderText = "澳洲矿";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "FINE_PB";
-            this.Column7.HeaderText = "精粉";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
+            this.Column49.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column49.Width = 130;
             // 
             // Column8
             // 
+            this.Column8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column8.DataPropertyName = "P_CAL";
             this.Column8.HeaderText = "理论产量";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
+            this.Column8.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column8.Width = 80;
             // 
             // Column54
             // 
+            this.Column54.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column54.DataPropertyName = "HHL_W";
             this.Column54.HeaderText = "上料量";
             this.Column54.Name = "Column54";
             this.Column54.ReadOnly = true;
+            this.Column54.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column54.Width = 70;
             // 
             // Column55
             // 
+            this.Column55.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column55.DataPropertyName = "SF_BALA_PB";
             this.Column55.HeaderText = "内返持平配比";
             this.Column55.Name = "Column55";
             this.Column55.ReadOnly = true;
+            this.Column55.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column56
             // 
+            this.Column56.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column56.DataPropertyName = "GF_BALA_PB";
             this.Column56.HeaderText = "高返持平配比";
             this.Column56.Name = "Column56";
             this.Column56.ReadOnly = true;
+            this.Column56.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column57
             // 
+            this.Column57.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column57.DataPropertyName = "GF_BALA_W";
             this.Column57.HeaderText = "高返持平量";
             this.Column57.Name = "Column57";
             this.Column57.ReadOnly = true;
+            this.Column57.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column58
             // 
+            this.Column58.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column58.DataPropertyName = "M_Y";
             this.Column58.HeaderText = "利用系数";
             this.Column58.Name = "Column58";
             this.Column58.ReadOnly = true;
+            this.Column58.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column58.Width = 80;
             // 
             // Column59
             // 
+            this.Column59.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column59.DataPropertyName = "M_P";
             this.Column59.HeaderText = "成品率";
             this.Column59.Name = "Column59";
             this.Column59.ReadOnly = true;
+            this.Column59.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column59.Width = 80;
             // 
             // Column60
             // 
+            this.Column60.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column60.DataPropertyName = "MOI_1";
             this.Column60.HeaderText = "一混后水分率";
             this.Column60.Name = "Column60";
             this.Column60.ReadOnly = true;
+            this.Column60.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column61
             // 
+            this.Column61.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column61.DataPropertyName = "MOI_2";
             this.Column61.HeaderText = "二混后水分率";
             this.Column61.Name = "Column61";
             this.Column61.ReadOnly = true;
+            this.Column61.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column62
             // 
+            this.Column62.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column62.DataPropertyName = "WTR_Q_HOUR";
             this.Column62.HeaderText = "小时加水量";
             this.Column62.Name = "Column62";
             this.Column62.ReadOnly = true;
+            this.Column62.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column62.Width = 90;
             // 
             // Column63
             // 
+            this.Column63.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column63.DataPropertyName = "PH_STP_NUM";
             this.Column63.HeaderText = "配混系统缓料次数";
             this.Column63.Name = "Column63";
             this.Column63.ReadOnly = true;
+            this.Column63.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column63.Width = 130;
             // 
             // Column64
             // 
+            this.Column64.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column64.DataPropertyName = "BED_THICK_AD_NUM";
             this.Column64.HeaderText = "料层波动次数";
             this.Column64.Name = "Column64";
             this.Column64.ReadOnly = true;
+            this.Column64.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column65
             // 
+            this.Column65.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column65.DataPropertyName = "BED_THICK";
             this.Column65.HeaderText = "料层厚度";
             this.Column65.Name = "Column65";
             this.Column65.ReadOnly = true;
+            this.Column65.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column65.Width = 80;
             // 
             // Column66
             // 
+            this.Column66.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column66.DataPropertyName = "M_SPEED";
             this.Column66.HeaderText = "烧结机机速";
             this.Column66.Name = "Column66";
             this.Column66.ReadOnly = true;
+            this.Column66.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column67
             // 
+            this.Column67.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column67.DataPropertyName = "M_C_SPEED";
             this.Column67.HeaderText = "环冷机机速";
             this.Column67.Name = "Column67";
             this.Column67.ReadOnly = true;
+            this.Column67.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column68
             // 
+            this.Column68.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column68.DataPropertyName = "IG_T";
             this.Column68.HeaderText = "点火平均温度";
             this.Column68.Name = "Column68";
             this.Column68.ReadOnly = true;
+            this.Column68.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column69
             // 
+            this.Column69.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column69.DataPropertyName = "BTP_D";
             this.Column69.HeaderText = "东";
             this.Column69.Name = "Column69";
             this.Column69.ReadOnly = true;
+            this.Column69.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column69.Width = 60;
             // 
             // Column70
             // 
+            this.Column70.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column70.DataPropertyName = "BTP_X";
             this.Column70.HeaderText = "西";
             this.Column70.Name = "Column70";
             this.Column70.ReadOnly = true;
+            this.Column70.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column70.Width = 70;
             // 
             // Column71
             // 
+            this.Column71.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column71.DataPropertyName = "BTP_AV";
             this.Column71.HeaderText = "平均";
             this.Column71.Name = "Column71";
             this.Column71.ReadOnly = true;
+            this.Column71.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column71.Width = 80;
             // 
             // Column72
             // 
+            this.Column72.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column72.DataPropertyName = "TEMP_ZONE";
             this.Column72.HeaderText = "90%区间";
             this.Column72.Name = "Column72";
             this.Column72.ReadOnly = true;
+            this.Column72.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column73
             // 
+            this.Column73.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column73.DataPropertyName = "BTP_ZONE_RATE";
             this.Column73.HeaderText = "指定控制区间占比";
             this.Column73.Name = "Column73";
             this.Column73.ReadOnly = true;
+            this.Column73.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column73.Width = 120;
             // 
             // Column74
             // 
+            this.Column74.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column74.DataPropertyName = "ZONE_RATE_300";
             this.Column74.HeaderText = "<300℃占比";
             this.Column74.Name = "Column74";
             this.Column74.ReadOnly = true;
+            this.Column74.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column75
             // 
+            this.Column75.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column75.DataPropertyName = "ZONE_RATE_450";
             this.Column75.HeaderText = ">450℃占比";
             this.Column75.Name = "Column75";
             this.Column75.ReadOnly = true;
+            this.Column75.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column76
             // 
+            this.Column76.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column76.DataPropertyName = "MA_T_D";
             this.Column76.HeaderText = "东";
             this.Column76.Name = "Column76";
             this.Column76.ReadOnly = true;
+            this.Column76.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column76.Width = 60;
             // 
             // Column77
             // 
+            this.Column77.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column77.DataPropertyName = "MA_T_X";
             this.Column77.HeaderText = "西";
             this.Column77.Name = "Column77";
             this.Column77.ReadOnly = true;
+            this.Column77.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column77.Width = 60;
             // 
             // Column78
             // 
+            this.Column78.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column78.DataPropertyName = "MA_T_AD";
             this.Column78.HeaderText = "平均";
             this.Column78.Name = "Column78";
             this.Column78.ReadOnly = true;
+            this.Column78.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column78.Width = 70;
             // 
             // Column79
             // 
+            this.Column79.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column79.DataPropertyName = "BTP_POS_D";
             this.Column79.HeaderText = "东";
             this.Column79.Name = "Column79";
             this.Column79.ReadOnly = true;
+            this.Column79.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column79.Width = 60;
             // 
             // Column80
             // 
+            this.Column80.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column80.DataPropertyName = "BTP_POS_X";
             this.Column80.HeaderText = "西";
             this.Column80.Name = "Column80";
             this.Column80.ReadOnly = true;
+            this.Column80.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column80.Width = 60;
             // 
             // Column81
             // 
+            this.Column81.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column81.DataPropertyName = "BTP_POS_AV";
             this.Column81.HeaderText = "平均";
             this.Column81.Name = "Column81";
             this.Column81.ReadOnly = true;
+            this.Column81.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column81.Width = 70;
             // 
             // Column82
             // 
+            this.Column82.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column82.DataPropertyName = "MA_P_D";
             this.Column82.HeaderText = "东";
             this.Column82.Name = "Column82";
             this.Column82.ReadOnly = true;
+            this.Column82.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column82.Width = 60;
             // 
             // Column83
             // 
+            this.Column83.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column83.DataPropertyName = "MA_P_X";
             this.Column83.HeaderText = "西";
             this.Column83.Name = "Column83";
             this.Column83.ReadOnly = true;
+            this.Column83.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column83.Width = 60;
             // 
             // Column84
             // 
+            this.Column84.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column84.DataPropertyName = "MA_P_AV";
             this.Column84.HeaderText = "平均";
             this.Column84.Name = "Column84";
             this.Column84.ReadOnly = true;
+            this.Column84.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column84.Width = 70;
             // 
             // Column85
             // 
+            this.Column85.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column85.DataPropertyName = "V_BED_SPEED";
             this.Column85.HeaderText = "垂直烧结速度";
             this.Column85.Name = "Column85";
             this.Column85.ReadOnly = true;
+            this.Column85.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column85.Width = 110;
             // 
             // Column86
             // 
+            this.Column86.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column86.DataPropertyName = "SINTER_END_T";
             this.Column86.HeaderText = "烧结机落矿温度";
             this.Column86.Name = "Column86";
             this.Column86.ReadOnly = true;
+            this.Column86.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column86.Width = 110;
             // 
             // Column87
             // 
+            this.Column87.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column87.DataPropertyName = "COLD_END_T";
             this.Column87.HeaderText = "环冷机出口温度";
             this.Column87.Name = "Column87";
             this.Column87.ReadOnly = true;
+            this.Column87.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column87.Width = 110;
             // 
             // Column88
             // 
+            this.Column88.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column88.DataPropertyName = "COLD_FAN_NUM";
             this.Column88.HeaderText = "环冷机开启台数";
             this.Column88.Name = "Column88";
             this.Column88.ReadOnly = true;
+            this.Column88.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column88.Width = 110;
             // 
             // Column89
             // 
+            this.Column89.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column89.DataPropertyName = "MA_HZ_D";
             this.Column89.HeaderText = "东";
             this.Column89.Name = "Column89";
             this.Column89.ReadOnly = true;
+            this.Column89.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column89.Width = 60;
             // 
             // Column90
             // 
+            this.Column90.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column90.DataPropertyName = "MA_HZ_X";
             this.Column90.HeaderText = "西";
             this.Column90.Name = "Column90";
             this.Column90.ReadOnly = true;
+            this.Column90.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column90.Width = 60;
             // 
             // Column91
             // 
+            this.Column91.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column91.DataPropertyName = "MA_HZ_AV";
             this.Column91.HeaderText = "平均";
             this.Column91.Name = "Column91";
             this.Column91.ReadOnly = true;
+            this.Column91.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column91.Width = 70;
             // 
             // Column92
             // 
+            this.Column92.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column92.DataPropertyName = "MA_CURT_D";
             this.Column92.HeaderText = "东";
             this.Column92.Name = "Column92";
             this.Column92.ReadOnly = true;
+            this.Column92.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column92.Width = 60;
             // 
             // Column93
             // 
+            this.Column93.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column93.DataPropertyName = "MA_CURT_X";
             this.Column93.HeaderText = "西";
             this.Column93.Name = "Column93";
             this.Column93.ReadOnly = true;
+            this.Column93.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column93.Width = 60;
             // 
             // Column94
             // 
+            this.Column94.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column94.DataPropertyName = "MA_CURT_AV";
             this.Column94.HeaderText = "平均";
             this.Column94.Name = "Column94";
             this.Column94.ReadOnly = true;
+            this.Column94.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column94.Width = 70;
             // 
             // Column95
             // 
+            this.Column95.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column95.DataPropertyName = "M_FAN_CNSP_E";
             this.Column95.HeaderText = "吨烧结矿主排电耗";
             this.Column95.Name = "Column95";
             this.Column95.ReadOnly = true;
+            this.Column95.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column95.Width = 110;
             // 
             // Column96
             // 
+            this.Column96.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column96.DataPropertyName = "FUEL_CNSP_PER";
             this.Column96.HeaderText = "燃料单耗";
             this.Column96.Name = "Column96";
             this.Column96.ReadOnly = true;
+            this.Column96.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column97
             // 
+            this.Column97.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column97.DataPropertyName = "GAS_CNSP_PER";
             this.Column97.HeaderText = "煤气单耗";
             this.Column97.Name = "Column97";
             this.Column97.ReadOnly = true;
+            this.Column97.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column1
             // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column1.DataPropertyName = "M_ST_NUM";
             this.Column1.HeaderText = "停机次数";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Column2
             // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Column2.DataPropertyName = "M_ST_TIME";
             this.Column2.HeaderText = "停机时间";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // Frm_Production_state_Mon
             // 
@@ -703,10 +825,9 @@
         private System.Windows.Forms.Label label5;
         private DevExpress.XtraEditors.SimpleButton simpleButton5;
         private RowMergeView d2;
+        private System.Windows.Forms.TextBox textBox_begin;
+        private System.Windows.Forms.TextBox textBox_end;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column49;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column52;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column54;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column55;
@@ -754,7 +875,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column97;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.TextBox textBox_begin;
-        private System.Windows.Forms.TextBox textBox_end;
     }
 }

@@ -44,11 +44,11 @@ namespace LY_SINTER.Model
                     else if(_FLAG == 2)
                     {
                         float _A_AVG = SUM_A / _A.Count;
-                        float _A_1 = 0;
+                        double _A_1 = 0;
                         int COUNT = -1;
                         for (int x = 0; x < _A.Count;x++)
                         {
-                            _A_1 += _A[x] - _A_AVG;
+                            _A_1 += Math.Pow(_A[x] - _A_AVG,2);
                             COUNT = COUNT + 1;
                         }
                         return Math.Round(Math.Sqrt(_A_1 / COUNT),_B);

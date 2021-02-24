@@ -21,7 +21,6 @@ namespace LY_SINTER.Popover.Analysis
                 "time",
 
                 "SHIFT_FLAG",
-                "HEAP_NUM",
                 "P_CAL",
                 "HHL_W",
                 "SF_BALA_PB",
@@ -88,12 +87,13 @@ namespace LY_SINTER.Popover.Analysis
         public void d2_col()
         {
             //添加列说明
-            this.d2.AddSpanHeader(19, 7, "BTP温度");
-            this.d2.AddSpanHeader(26, 3, "大烟道温度");
-            this.d2.AddSpanHeader(29, 3, "BTP位置");
-            this.d2.AddSpanHeader(32, 33, "大烟道负压");
-            this.d2.AddSpanHeader(39, 33, "主抽频率");
-            this.d2.AddSpanHeader(42, 3, "主排电流");
+           // this.d2.AddSpanHeader(0, 2, "大烟道负压");
+            this.d2.AddSpanHeader(18, 7, "BTP温度");
+            this.d2.AddSpanHeader(25, 3, "大烟道温度");
+            this.d2.AddSpanHeader(28, 3, "BTP位置");
+            this.d2.AddSpanHeader(31, 3, "大烟道负压");
+            this.d2.AddSpanHeader(38, 3, "主抽频率");
+            this.d2.AddSpanHeader(41, 3, "主排电流");
 
         }
         /// <summary>
@@ -262,7 +262,7 @@ namespace LY_SINTER.Popover.Analysis
                 //周期查询班次的结束时间
                 DateTime time_2 = time.AddHours(12).AddMinutes(-1);
                 string sql = "select " +
-                    "HEAP_NUM,SHIFT_FLAG,P_CAL,HHL_W," +
+                    "SHIFT_FLAG,P_CAL,HHL_W," +
                     "SF_BALA_PB,GF_BALA_PB,GF_BALA_W," +
                     "M_Y,M_P,MOI_1,MOI_2,WTR_Q_HOUR," +
                     "PH_STP_NUM,BED_THICK_AD_NUM,BED_THICK," +
@@ -376,7 +376,6 @@ namespace LY_SINTER.Popover.Analysis
                 "time",
 
                 "SHIFT_FLAG",
-                "HEAP_NUM",
                 "P_CAL",
                 "HHL_W",
                 "SF_BALA_PB",
@@ -424,9 +423,6 @@ namespace LY_SINTER.Popover.Analysis
                 "GAS_CNSP_PER",
                 "M_ST_NUM",
                 "M_ST_TIME",
-                "SA_PB",
-                "AUS_PB",
-                "FINE_PB",
             };
             for (int x = 0; x < col_name.Count(); x++)
             {
@@ -459,7 +455,7 @@ namespace LY_SINTER.Popover.Analysis
                 //周期查询班次的结束时间
                 DateTime time_2 = time.AddHours(12).AddMinutes(-1);
                 string sql = "select " +
-                    "HEAP_NUM,SHIFT_FLAG,P_CAL,HHL_W," +
+                    "SHIFT_FLAG,P_CAL,HHL_W," +
                     "SF_BALA_PB,GF_BALA_PB,GF_BALA_W," +
                     "M_Y,M_P,MOI_1,MOI_2,WTR_Q_HOUR," +
                     "PH_STP_NUM,BED_THICK_AD_NUM,BED_THICK," +
@@ -472,8 +468,8 @@ namespace LY_SINTER.Popover.Analysis
                     "COLD_FAN_NUM,MA_HZ_D,MA_HZ_X,MA_HZ_AV," +
                     "MA_CURT_D,MA_CURT_X,MA_CURT_AV," +
                     "M_FAN_CNSP_E,FUEL_CNSP_PER,GAS_CNSP_PER," +
-                    "M_ST_NUM,M_ST_TIME,SA_PB,AUS_PB," +
-                    "FINE_PB " +
+                    "M_ST_NUM,M_ST_TIME" +
+                    " " +
                     "from MC_NUMCAL_INTERFACE_10_CLASS " +
                     "where TIMESTAMP >= '" + time_1 + "' and TIMESTAMP <= '" + time_2 + "' order by TIMESTAMP desc";
                 DataTable table_2 = dBSQL.GetCommand(sql);
@@ -543,9 +539,6 @@ namespace LY_SINTER.Popover.Analysis
                     row_2["GAS_CNSP_PER"] = table_2.Rows[0]["GAS_CNSP_PER"].ToString();
                     row_2["M_ST_NUM"] = table_2.Rows[0]["M_ST_NUM"].ToString();
                     row_2["M_ST_TIME"] = table_2.Rows[0]["M_ST_TIME"].ToString();
-                    row_2["SA_PB"] = table_2.Rows[0]["SA_PB"].ToString();
-                    row_2["AUS_PB"] = table_2.Rows[0]["AUS_PB"].ToString();
-                    row_2["FINE_PB"] = table_2.Rows[0]["FINE_PB"].ToString();
                     data_1.Rows.Add(row_2);
                 }
 
@@ -628,7 +621,7 @@ namespace LY_SINTER.Popover.Analysis
 
         private void d2_Scroll(object sender, ScrollEventArgs e)
         {
-            d2_col();
+            d2.ReDrawHead();
         }
     }
 }
