@@ -15,6 +15,10 @@ namespace LY_SINTER.Popover.Analysis
 {
     public partial class Frm_JHPK_update : Form
     {
+        //声明委托和事件
+        public delegate void TransfDelegate_YHPK(DataTable dataTable);
+        //声明委托和事件
+        public event TransfDelegate_YHPK _TransfDelegate_YHPK;
         public vLog vLog { get; set; }
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
         public static bool isopen = false;
@@ -22,11 +26,13 @@ namespace LY_SINTER.Popover.Analysis
         /// 仓号
         /// </summary>
         public int CH = Ingredient_Model.Data;
-        public Frm_JHPK_update()
+        public Frm_JHPK_update(string MAT_NAME)
         {
+            string num = MAT_NAME;
             InitializeComponent();
             combox();
             getData();
+            category_2_2(num);
         }
         public void getData()
         {
@@ -53,17 +59,30 @@ namespace LY_SINTER.Popover.Analysis
             }
             catch (Exception ee)
             {
-                string mistake = "第二部分，显示原料表最新10条记录失败" + ee.ToString();
+                string mistake = "第一部分，显示原料表最新10条记录失败" + ee.ToString();
                 vLog.writelog(mistake, -1);
             }
             
         }
-        public void category_2_2()
+        public void category_2_2(string name)
         {
-            string name = comboBox2.SelectedValue.ToString();
+            //string name = comboBox2.SelectedValue.ToString();
+            
             string sql2 = "select  MAT_NAME,MAT_CLASS,UNIT_PRICE,BILL_UPPER,BILL_LOWER,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3," +
                 "C_S,C_P,C_LOT,C_H2O,C_AS,C_PB,C_ZN,C_CU,C_K2O,C_NA2O from MC_ORECAL_MAT_ANA_RECORD where MAT_NAME = '" + name + "'";
             DataTable table = dBSQL.GetCommand(sql2);
+            string WLMC = table.Rows[0]["MAT_NAME"].ToString();
+            string sql = "select L2_CODE from M_MATERIAL_COOD where MAT_DESC = '" + WLMC + "'";
+            DataTable table1 = dBSQL.GetCommand(sql);
+            string code = table1.Rows[0]["L2_CODE"].ToString();
+            this.comboBox2.SelectedValue = code;
+            //comboBox2.Text = table.Rows[0]["MAT_NAME"].ToString();
+            //单价
+            textBox2.Text = table.Rows[0]["UNIT_PRICE"].ToString();
+            //配比上限
+            textBox3.Text = table.Rows[0]["BILL_UPPER"].ToString();
+            //配比下限
+            textBox1.Text = table.Rows[0]["BILL_LOWER"].ToString();
             dataGridView2.DataSource = table;
         }
         public class Info { 
@@ -107,8 +126,27 @@ namespace LY_SINTER.Popover.Analysis
             //查询所有物料名称和二级编码
             string sql_3 = "select L2_CODE,MAT_DESC from M_MATERIAL_COOD where L2_CODE between " + min + " and " + max + "";
             DataTable dataTable_3 = dBSQL.GetCommand(sql_3);
+            if (dataTable_3.Rows.Count > 0 && dataTable_3 != null)
+            {
+                DataTable data_1 = new DataTable();
+                data_1.Columns.Add("NAME");
+                data_1.Columns.Add("VALUES");
+                for (int x = 0; x < dataTable_3.Rows.Count; x++)
+                {
+                    DataRow row_1 = data_1.NewRow();
+                    row_1["NAME"] = dataTable_3.Rows[x]["MAT_DESC"].ToString();
+                    row_1["VALUES"] = int.Parse(dataTable_3.Rows[x]["L2_CODE"].ToString());
+                    data_1.Rows.Add(row_1);
+                }
+                this.comboBox2.DataSource = data_1;
+                this.comboBox2.DisplayMember = "NAME";
+                this.comboBox2.ValueMember = "VALUES";
+            }
 
-            //*****原料下拉框选项赋值
+
+
+
+            /*//*****原料下拉框选项赋值
             List<Info> list = new List<Info>();
             for (int x = 0; x < dataTable_3.Rows.Count; x++)
             {
@@ -121,7 +159,7 @@ namespace LY_SINTER.Popover.Analysis
             }
             this.comboBox2.DataSource = list;
             this.comboBox2.DisplayMember = "name";
-            this.comboBox2.ValueMember = "name";
+            this.comboBox2.ValueMember = "name";*/
 
 
         }
@@ -163,6 +201,8 @@ namespace LY_SINTER.Popover.Analysis
         {
             try
             {
+                string name = comboBox2.Text;
+
                 string sql = "select UNIT_PRICE from M_ORE_MATERIAL_ANALYSIS where L2_CODE in (select L2_CODE from M_MATERIAL_COOD where MAT_DESC='" + comboBox2.Text + "')";
                 DataTable table = dBSQL.GetCommand(sql);
                 if (table.Rows.Count > 0)
@@ -205,10 +245,35 @@ namespace LY_SINTER.Popover.Analysis
             }
 
         }
-        //确认使用按钮
+        //确认使用按钮，更新主页面d1数据
         private void simpleButton3_Click_1(object sender, EventArgs e)
         {
-
+            DataTable dataTable = new DataTable();
+            dataTable = GetDgvToTable(dataGridView3);
+            dataTable.Columns.Add("RowNum").SetOrdinal(0);
+            dataTable.Columns["BILL_UPPER"].SetOrdinal(4);
+            dataTable.Columns["BILL_LOWER"].SetOrdinal(5);
+            _TransfDelegate_YHPK(dataTable);
+            this.Dispose();
+        }
+        public DataTable GetDgvToTable(DataGridView dgv)
+        {
+            DataTable dt = new DataTable();
+            for (int count = 0; count < dgv.Columns.Count; count++)
+            {
+                DataColumn dc = new DataColumn(dgv.Columns[count].Name.ToString());
+                dt.Columns.Add(dc);
+            }
+            for (int count = 0; count < dgv.Rows.Count; count++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int countsub = 0; countsub < dgv.Columns.Count; countsub++)
+                {
+                    dr[countsub] = Convert.ToString(dgv.Rows[count].Cells[countsub].Value);
+                }
+                dt.Rows.Add(dr);
+            }
+            return dt;
         }
         /// <summary>
         ///  第四部分   默认显示“第二部分”中最新一条记录成分（插入时间倒叙） 原料检化验表

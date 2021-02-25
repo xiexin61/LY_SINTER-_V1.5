@@ -19,7 +19,7 @@ namespace DataBase
       //  public const string strCon = "Data Source = 10.9.11.1\\NGSJ;Initial Catalog = NBSJ;User Id = sa;Password = Yjs88291280;Integrated Security=false;";
         //下发程序ID地址
        //public const string strCon_ID = "127.0.0.1";
-        public const string strCon_ID = "10.5.130.30";
+        public const string strCon_ID = "172.168.12.37";
         // public const string strCon_ID = "10.202.11.1";
         //端口号
        // public const int PORT = 20201;

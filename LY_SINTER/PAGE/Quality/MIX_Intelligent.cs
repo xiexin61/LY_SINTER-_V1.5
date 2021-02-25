@@ -22,7 +22,7 @@ namespace LY_SINTER.PAGE.Quality
         /// <summary>
         /// 下发间隔
         /// </summary>
-        int _time = 2000;
+        int _time = 1500;
         #region 用户输入项设定上下限制
         //R调整
         float R_TZ_MIN = 0;
@@ -963,6 +963,7 @@ namespace LY_SINTER.PAGE.Quality
                         if (list1.Item1)
                         {
                             LDataSet lds = new LDataSet();
+                            //lds.TimeOuter = 3000;//设置平台响应时间（初始2s）
                             lds.Ip = ConstParameters.strCon_ID;//数据库地址
                             lds.Port = ConstParameters.PORT;//端口号
                             for (int count_1 = 0; count_1 < ConstParameters._COUNT_1; count_1++)//21ci 
@@ -991,7 +992,7 @@ namespace LY_SINTER.PAGE.Quality
                                 }
                                 else if (_flag == -2)//重新下发
                                 {
-                                    MessageBox.Show("重新下发");
+                                    //MessageBox.Show("重新下发");
                                 }
                                 else if (_flag == 1)//下发成功
                                 {
