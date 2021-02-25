@@ -171,9 +171,12 @@ namespace LY_SINTER.PAGE.Analysis
         //修改
         private void simpleButton6_Click(object sender, EventArgs e)
         {
-            Frm_JHPK_update form_display = new Frm_JHPK_update();
+            string name = d1.CurrentRow.Cells["MAT_NAME"].Value.ToString();
+            //string name = comboBox1.SelectedValue.ToString();
+            Frm_JHPK_update form_display = new Frm_JHPK_update(name);
             if (Frm_JHPK_update.isopen == false)
             {
+                form_display._TransfDelegate_YHPK += _TransfDelegate;
                 form_display.ShowDialog();
             }
             else
