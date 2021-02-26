@@ -16,6 +16,7 @@ namespace LY_SINTER.PAGE.Analysis
     public partial class shaojieqitayuanliaojcxn : UserControl
     {
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        public static bool isopen = false;
         public shaojieqitayuanliaojcxn()
         {
             InitializeComponent();

@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(youhuapeikuangjisuan));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -63,27 +62,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(youhuapeikuangjisuan));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.d4 = new System.Windows.Forms.DataGridView();
-            this.NUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_TFE4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
@@ -92,8 +77,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
-            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -103,11 +86,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -143,18 +121,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.d2 = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_NAME2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_BILL_DRY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_W_DRY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORE_MAT_BILL_DRY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.P_H2O = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_BILL_WET = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_W_WET = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORE_MAT_BILL_WET = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UNIT_PRICE2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UNIT_CON_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_WET_ACT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -168,6 +134,40 @@
             this.UPPER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.NUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_TFE4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_NAME2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_BILL_DRY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_W_DRY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORE_MAT_BILL_DRY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.P_H2O = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_BILL_WET = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_W_WET = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORE_MAT_BILL_WET = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UNIT_PRICE2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UNIT_CON_PRICE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_WET_ACT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.simpleButton9 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton8 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -323,100 +323,11 @@
             this.d4.Size = new System.Drawing.Size(1040, 91);
             this.d4.TabIndex = 1;
             // 
-            // NUM
-            // 
-            this.NUM.HeaderText = "批次";
-            this.NUM.Name = "NUM";
-            // 
-            // C_TFE4
-            // 
-            this.C_TFE4.DataPropertyName = "C_TFE";
-            this.C_TFE4.HeaderText = "TFe";
-            this.C_TFE4.Name = "C_TFE4";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "C_FEO";
-            this.dataGridViewTextBoxColumn10.HeaderText = "FeO";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "C_SIO2";
-            this.dataGridViewTextBoxColumn11.HeaderText = "SiO2";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "C_CAO";
-            this.dataGridViewTextBoxColumn12.HeaderText = "CaO";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "C_MGO";
-            this.dataGridViewTextBoxColumn13.HeaderText = "MgO";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "C_AL2O3";
-            this.dataGridViewTextBoxColumn14.HeaderText = "Al2O3";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "C_S";
-            this.dataGridViewTextBoxColumn15.HeaderText = "S";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "C_P";
-            this.dataGridViewTextBoxColumn16.HeaderText = "P";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "C_R";
-            this.Column1.HeaderText = "R";
-            this.Column1.Name = "Column1";
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "C_AS";
-            this.dataGridViewTextBoxColumn19.HeaderText = "As";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "C_PB";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Pb";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "C_ZN";
-            this.dataGridViewTextBoxColumn21.HeaderText = "Zn";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            // 
-            // dataGridViewTextBoxColumn22
-            // 
-            this.dataGridViewTextBoxColumn22.DataPropertyName = "C_CU";
-            this.dataGridViewTextBoxColumn22.HeaderText = "Cu";
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            // 
-            // dataGridViewTextBoxColumn23
-            // 
-            this.dataGridViewTextBoxColumn23.DataPropertyName = "C_K2O";
-            this.dataGridViewTextBoxColumn23.HeaderText = "K2O";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            // 
             // tableLayoutPanel10
             // 
             this.tableLayoutPanel10.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel10.ColumnCount = 1;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 344F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 347F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel12, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel13, 0, 1);
@@ -443,7 +354,7 @@
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(338, 60);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(341, 60);
             this.tableLayoutPanel12.TabIndex = 29;
             // 
             // tableLayoutPanel14
@@ -461,7 +372,7 @@
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(216, 52);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(218, 52);
             this.tableLayoutPanel14.TabIndex = 0;
             // 
             // label11
@@ -470,9 +381,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(106, 26);
+            this.label11.Location = new System.Drawing.Point(107, 26);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 26);
+            this.label11.Size = new System.Drawing.Size(108, 26);
             this.label11.TabIndex = 21;
             this.label11.Text = "0";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -480,7 +391,7 @@
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(14, 29);
+            this.textBox2.Location = new System.Drawing.Point(15, 29);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(74, 21);
             this.textBox2.TabIndex = 20;
@@ -491,9 +402,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(106, 0);
+            this.label2.Location = new System.Drawing.Point(107, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 26);
+            this.label2.Size = new System.Drawing.Size(108, 26);
             this.label2.TabIndex = 18;
             this.label2.Text = "预计烧结矿产量t";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -506,7 +417,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 26);
+            this.label10.Size = new System.Drawing.Size(98, 26);
             this.label10.TabIndex = 17;
             this.label10.Text = "计划总配成量t";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -518,7 +429,7 @@
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel15.Controls.Add(this.simpleButton9, 0, 1);
             this.tableLayoutPanel15.Controls.Add(this.simpleButton8, 0, 0);
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(224, 1);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(226, 1);
             this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 2;
@@ -526,30 +437,6 @@
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel15.Size = new System.Drawing.Size(109, 58);
             this.tableLayoutPanel15.TabIndex = 1;
-            // 
-            // simpleButton9
-            // 
-            this.simpleButton9.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.simpleButton9.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton9.Appearance.Options.UseFont = true;
-            this.simpleButton9.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton9.Image")));
-            this.simpleButton9.Location = new System.Drawing.Point(3, 32);
-            this.simpleButton9.Name = "simpleButton9";
-            this.simpleButton9.Size = new System.Drawing.Size(84, 23);
-            this.simpleButton9.TabIndex = 28;
-            this.simpleButton9.Text = "保存方案";
-            // 
-            // simpleButton8
-            // 
-            this.simpleButton8.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton8.Appearance.Options.UseFont = true;
-            this.simpleButton8.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton8.Image")));
-            this.simpleButton8.Location = new System.Drawing.Point(3, 3);
-            this.simpleButton8.Name = "simpleButton8";
-            this.simpleButton8.Size = new System.Drawing.Size(83, 23);
-            this.simpleButton8.TabIndex = 27;
-            this.simpleButton8.Text = "配矿计算";
             // 
             // tableLayoutPanel13
             // 
@@ -569,7 +456,7 @@
             this.tableLayoutPanel13.RowCount = 2;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(338, 45);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(341, 45);
             this.tableLayoutPanel13.TabIndex = 30;
             // 
             // label15
@@ -578,9 +465,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(226, 22);
+            this.label15.Location = new System.Drawing.Point(228, 22);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(109, 23);
+            this.label15.Size = new System.Drawing.Size(110, 23);
             this.label15.TabIndex = 24;
             this.label15.Text = "0";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -591,9 +478,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(126, 22);
+            this.label14.Location = new System.Drawing.Point(127, 22);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 23);
+            this.label14.Size = new System.Drawing.Size(95, 23);
             this.label14.TabIndex = 23;
             this.label14.Text = "0";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -606,7 +493,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 22);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(117, 23);
+            this.label12.Size = new System.Drawing.Size(118, 23);
             this.label12.TabIndex = 22;
             this.label12.Text = "0";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -617,9 +504,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(226, 0);
+            this.label9.Location = new System.Drawing.Point(228, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 22);
+            this.label9.Size = new System.Drawing.Size(110, 22);
             this.label9.TabIndex = 20;
             this.label9.Text = "其他成本 元";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -630,9 +517,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(126, 0);
+            this.label7.Location = new System.Drawing.Point(127, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(94, 22);
+            this.label7.Size = new System.Drawing.Size(95, 22);
             this.label7.TabIndex = 19;
             this.label7.Text = "原料成本 元/t";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -645,7 +532,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 22);
+            this.label3.Size = new System.Drawing.Size(118, 22);
             this.label3.TabIndex = 18;
             this.label3.Text = "烧结矿总成本 元/t";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -690,75 +577,6 @@
             this.comboBox1.Size = new System.Drawing.Size(94, 20);
             this.comboBox1.TabIndex = 27;
             this.comboBox1.SelectionChangeCommitted += new System.EventHandler(this.comboBox1_SelectionChangeCommitted);
-            // 
-            // simpleButton7
-            // 
-            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton7.Appearance.Options.UseFont = true;
-            this.simpleButton7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton7.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.Image")));
-            this.simpleButton7.Location = new System.Drawing.Point(73, 3);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(64, 23);
-            this.simpleButton7.TabIndex = 21;
-            this.simpleButton7.Text = "删除";
-            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
-            // 
-            // simpleButton6
-            // 
-            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton6.Appearance.Options.UseFont = true;
-            this.simpleButton6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton6.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.Image")));
-            this.simpleButton6.Location = new System.Drawing.Point(3, 3);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(64, 23);
-            this.simpleButton6.TabIndex = 20;
-            this.simpleButton6.Text = "修改";
-            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
-            // 
-            // simpleButton5
-            // 
-            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton5.Appearance.Options.UseFont = true;
-            this.simpleButton5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton5.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.Image")));
-            this.simpleButton5.Location = new System.Drawing.Point(143, 3);
-            this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(64, 23);
-            this.simpleButton5.TabIndex = 19;
-            this.simpleButton5.Text = "添加";
-            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
-            // 
-            // simpleButton3
-            // 
-            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton3.Appearance.ForeColor = System.Drawing.Color.Black;
-            this.simpleButton3.Appearance.Options.UseFont = true;
-            this.simpleButton3.Appearance.Options.UseForeColor = true;
-            this.simpleButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(313, 3);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(64, 23);
-            this.simpleButton3.TabIndex = 10;
-            this.simpleButton3.Text = "导出";
-            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
-            // 
-            // simpleButton2
-            // 
-            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.simpleButton2.Appearance.Options.UseFont = true;
-            this.simpleButton2.Appearance.Options.UseForeColor = true;
-            this.simpleButton2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(383, 3);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(64, 23);
-            this.simpleButton2.TabIndex = 9;
-            this.simpleButton2.Text = "刷新";
-            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // simpleButton1
             // 
@@ -865,6 +683,7 @@
             this.d1.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.d1.RowHeadersVisible = false;
             this.d1.RowTemplate.Height = 23;
+            this.d1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.d1.Size = new System.Drawing.Size(1386, 265);
             this.d1.TabIndex = 5;
             // 
@@ -1262,77 +1081,6 @@
             this.d2.Size = new System.Drawing.Size(1089, 298);
             this.d2.TabIndex = 3;
             // 
-            // id
-            // 
-            this.id.DataPropertyName = "RowNum";
-            this.id.HeaderText = "序号";
-            this.id.Name = "id";
-            // 
-            // MAT_NAME2
-            // 
-            this.MAT_NAME2.DataPropertyName = "MAT_NAME";
-            this.MAT_NAME2.HeaderText = "物料名";
-            this.MAT_NAME2.Name = "MAT_NAME2";
-            // 
-            // MAT_BILL_DRY
-            // 
-            this.MAT_BILL_DRY.DataPropertyName = "MAT_BILL_DRY";
-            this.MAT_BILL_DRY.HeaderText = "干料配比(%)";
-            this.MAT_BILL_DRY.Name = "MAT_BILL_DRY";
-            // 
-            // MAT_W_DRY
-            // 
-            this.MAT_W_DRY.DataPropertyName = "MAT_W_DRY";
-            this.MAT_W_DRY.HeaderText = "干料量(Kg/t矿)";
-            this.MAT_W_DRY.Name = "MAT_W_DRY";
-            // 
-            // ORE_MAT_BILL_DRY
-            // 
-            this.ORE_MAT_BILL_DRY.DataPropertyName = "ORE_MAT_BILL_DRY";
-            this.ORE_MAT_BILL_DRY.HeaderText = "铁料干料(%)";
-            this.ORE_MAT_BILL_DRY.Name = "ORE_MAT_BILL_DRY";
-            // 
-            // P_H2O
-            // 
-            this.P_H2O.DataPropertyName = "P_H2O";
-            this.P_H2O.HeaderText = "水分(%)";
-            this.P_H2O.Name = "P_H2O";
-            // 
-            // MAT_BILL_WET
-            // 
-            this.MAT_BILL_WET.DataPropertyName = "MAT_BILL_WET";
-            this.MAT_BILL_WET.HeaderText = "湿料配比(%)";
-            this.MAT_BILL_WET.Name = "MAT_BILL_WET";
-            // 
-            // MAT_W_WET
-            // 
-            this.MAT_W_WET.DataPropertyName = "MAT_W_WET";
-            this.MAT_W_WET.HeaderText = "湿料量(Kg/t矿)";
-            this.MAT_W_WET.Name = "MAT_W_WET";
-            // 
-            // ORE_MAT_BILL_WET
-            // 
-            this.ORE_MAT_BILL_WET.DataPropertyName = "ORE_MAT_BILL_WET";
-            this.ORE_MAT_BILL_WET.HeaderText = "铁料湿料(%)";
-            this.ORE_MAT_BILL_WET.Name = "ORE_MAT_BILL_WET";
-            // 
-            // UNIT_PRICE2
-            // 
-            this.UNIT_PRICE2.DataPropertyName = "UNIT_PRICE";
-            this.UNIT_PRICE2.HeaderText = "单价(元/t)";
-            this.UNIT_PRICE2.Name = "UNIT_PRICE2";
-            // 
-            // UNIT_CON_PRICE
-            // 
-            this.UNIT_CON_PRICE.DataPropertyName = "UNIT_CON_PRICE";
-            this.UNIT_CON_PRICE.HeaderText = "单成(元/t)";
-            this.UNIT_CON_PRICE.Name = "UNIT_CON_PRICE";
-            // 
-            // MAT_WET_ACT
-            // 
-            this.MAT_WET_ACT.HeaderText = "实际配成湿料量(t)";
-            this.MAT_WET_ACT.Name = "MAT_WET_ACT";
-            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -1511,6 +1259,261 @@
             this.label1.Text = "优 化 配 矿 计 算";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // NUM
+            // 
+            this.NUM.DataPropertyName = "NUM";
+            this.NUM.HeaderText = "批次";
+            this.NUM.Name = "NUM";
+            // 
+            // C_TFE4
+            // 
+            this.C_TFE4.DataPropertyName = "C_TFE";
+            this.C_TFE4.HeaderText = "TFe";
+            this.C_TFE4.Name = "C_TFE4";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "C_FEO";
+            this.dataGridViewTextBoxColumn10.HeaderText = "FeO";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "C_SIO2";
+            this.dataGridViewTextBoxColumn11.HeaderText = "SiO2";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "C_CAO";
+            this.dataGridViewTextBoxColumn12.HeaderText = "CaO";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "C_MGO";
+            this.dataGridViewTextBoxColumn13.HeaderText = "MgO";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "C_AL2O3";
+            this.dataGridViewTextBoxColumn14.HeaderText = "Al2O3";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "C_S";
+            this.dataGridViewTextBoxColumn15.HeaderText = "S";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "C_P";
+            this.dataGridViewTextBoxColumn16.HeaderText = "P";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "C_R";
+            this.Column1.HeaderText = "R";
+            this.Column1.Name = "Column1";
+            // 
+            // dataGridViewTextBoxColumn19
+            // 
+            this.dataGridViewTextBoxColumn19.DataPropertyName = "C_AS";
+            this.dataGridViewTextBoxColumn19.HeaderText = "As";
+            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
+            // 
+            // dataGridViewTextBoxColumn20
+            // 
+            this.dataGridViewTextBoxColumn20.DataPropertyName = "C_PB";
+            this.dataGridViewTextBoxColumn20.HeaderText = "Pb";
+            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
+            // 
+            // dataGridViewTextBoxColumn21
+            // 
+            this.dataGridViewTextBoxColumn21.DataPropertyName = "C_ZN";
+            this.dataGridViewTextBoxColumn21.HeaderText = "Zn";
+            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
+            // 
+            // dataGridViewTextBoxColumn22
+            // 
+            this.dataGridViewTextBoxColumn22.DataPropertyName = "C_CU";
+            this.dataGridViewTextBoxColumn22.HeaderText = "Cu";
+            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
+            // 
+            // dataGridViewTextBoxColumn23
+            // 
+            this.dataGridViewTextBoxColumn23.DataPropertyName = "C_K2O";
+            this.dataGridViewTextBoxColumn23.HeaderText = "K2O";
+            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "RowNum";
+            this.id.HeaderText = "序号";
+            this.id.Name = "id";
+            // 
+            // MAT_NAME2
+            // 
+            this.MAT_NAME2.DataPropertyName = "MAT_NAME";
+            this.MAT_NAME2.HeaderText = "物料名";
+            this.MAT_NAME2.Name = "MAT_NAME2";
+            // 
+            // MAT_BILL_DRY
+            // 
+            this.MAT_BILL_DRY.DataPropertyName = "MAT_BILL_DRY";
+            this.MAT_BILL_DRY.HeaderText = "干料配比(%)";
+            this.MAT_BILL_DRY.Name = "MAT_BILL_DRY";
+            // 
+            // MAT_W_DRY
+            // 
+            this.MAT_W_DRY.DataPropertyName = "MAT_W_DRY";
+            this.MAT_W_DRY.HeaderText = "干料量(Kg/t矿)";
+            this.MAT_W_DRY.Name = "MAT_W_DRY";
+            // 
+            // ORE_MAT_BILL_DRY
+            // 
+            this.ORE_MAT_BILL_DRY.DataPropertyName = "ORE_MAT_BILL_DRY";
+            this.ORE_MAT_BILL_DRY.HeaderText = "铁料干料(%)";
+            this.ORE_MAT_BILL_DRY.Name = "ORE_MAT_BILL_DRY";
+            // 
+            // P_H2O
+            // 
+            this.P_H2O.DataPropertyName = "P_H2O";
+            this.P_H2O.HeaderText = "水分(%)";
+            this.P_H2O.Name = "P_H2O";
+            // 
+            // MAT_BILL_WET
+            // 
+            this.MAT_BILL_WET.DataPropertyName = "MAT_BILL_WET";
+            this.MAT_BILL_WET.HeaderText = "湿料配比(%)";
+            this.MAT_BILL_WET.Name = "MAT_BILL_WET";
+            // 
+            // MAT_W_WET
+            // 
+            this.MAT_W_WET.DataPropertyName = "MAT_W_WET";
+            this.MAT_W_WET.HeaderText = "湿料量(Kg/t矿)";
+            this.MAT_W_WET.Name = "MAT_W_WET";
+            // 
+            // ORE_MAT_BILL_WET
+            // 
+            this.ORE_MAT_BILL_WET.DataPropertyName = "ORE_MAT_BILL_WET";
+            this.ORE_MAT_BILL_WET.HeaderText = "铁料湿料(%)";
+            this.ORE_MAT_BILL_WET.Name = "ORE_MAT_BILL_WET";
+            // 
+            // UNIT_PRICE2
+            // 
+            this.UNIT_PRICE2.DataPropertyName = "UNIT_PRICE";
+            this.UNIT_PRICE2.HeaderText = "单价(元/t)";
+            this.UNIT_PRICE2.Name = "UNIT_PRICE2";
+            // 
+            // UNIT_CON_PRICE
+            // 
+            this.UNIT_CON_PRICE.DataPropertyName = "UNIT_CON_PRICE";
+            this.UNIT_CON_PRICE.HeaderText = "单成(元/t)";
+            this.UNIT_CON_PRICE.Name = "UNIT_CON_PRICE";
+            // 
+            // MAT_WET_ACT
+            // 
+            this.MAT_WET_ACT.DataPropertyName = "MAT_WET_ACT";
+            this.MAT_WET_ACT.HeaderText = "实际配成湿料量(t)";
+            this.MAT_WET_ACT.Name = "MAT_WET_ACT";
+            // 
+            // simpleButton9
+            // 
+            this.simpleButton9.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.simpleButton9.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton9.Appearance.Options.UseFont = true;
+            this.simpleButton9.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton9.Image")));
+            this.simpleButton9.Location = new System.Drawing.Point(3, 32);
+            this.simpleButton9.Name = "simpleButton9";
+            this.simpleButton9.Size = new System.Drawing.Size(84, 23);
+            this.simpleButton9.TabIndex = 28;
+            this.simpleButton9.Text = "保存方案";
+            // 
+            // simpleButton8
+            // 
+            this.simpleButton8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.simpleButton8.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton8.Appearance.Options.UseFont = true;
+            this.simpleButton8.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton8.Image")));
+            this.simpleButton8.Location = new System.Drawing.Point(3, 3);
+            this.simpleButton8.Name = "simpleButton8";
+            this.simpleButton8.Size = new System.Drawing.Size(83, 23);
+            this.simpleButton8.TabIndex = 27;
+            this.simpleButton8.Text = "配矿计算";
+            // 
+            // simpleButton7
+            // 
+            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton7.Appearance.Options.UseFont = true;
+            this.simpleButton7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.simpleButton7.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.Image")));
+            this.simpleButton7.Location = new System.Drawing.Point(73, 3);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(64, 23);
+            this.simpleButton7.TabIndex = 21;
+            this.simpleButton7.Text = "删除";
+            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
+            // 
+            // simpleButton6
+            // 
+            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton6.Appearance.Options.UseFont = true;
+            this.simpleButton6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.simpleButton6.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.Image")));
+            this.simpleButton6.Location = new System.Drawing.Point(3, 3);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(64, 23);
+            this.simpleButton6.TabIndex = 20;
+            this.simpleButton6.Text = "修改";
+            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
+            // 
+            // simpleButton5
+            // 
+            this.simpleButton5.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton5.Appearance.Options.UseFont = true;
+            this.simpleButton5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.simpleButton5.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton5.Image")));
+            this.simpleButton5.Location = new System.Drawing.Point(143, 3);
+            this.simpleButton5.Name = "simpleButton5";
+            this.simpleButton5.Size = new System.Drawing.Size(64, 23);
+            this.simpleButton5.TabIndex = 19;
+            this.simpleButton5.Text = "添加";
+            this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
+            // 
+            // simpleButton3
+            // 
+            this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton3.Appearance.ForeColor = System.Drawing.Color.Black;
+            this.simpleButton3.Appearance.Options.UseFont = true;
+            this.simpleButton3.Appearance.Options.UseForeColor = true;
+            this.simpleButton3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
+            this.simpleButton3.Location = new System.Drawing.Point(313, 3);
+            this.simpleButton3.Name = "simpleButton3";
+            this.simpleButton3.Size = new System.Drawing.Size(64, 23);
+            this.simpleButton3.TabIndex = 10;
+            this.simpleButton3.Text = "导出";
+            this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.simpleButton2.Appearance.Options.UseFont = true;
+            this.simpleButton2.Appearance.Options.UseForeColor = true;
+            this.simpleButton2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
+            this.simpleButton2.Location = new System.Drawing.Point(383, 3);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(64, 23);
+            this.simpleButton2.TabIndex = 9;
+            this.simpleButton2.Text = "刷新";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
+            // 
             // youhuapeikuangjisuan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1585,21 +1588,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UPPER;
         private System.Windows.Forms.ComboBox comboBox1;
         private DevExpress.XtraEditors.SimpleButton simpleButton9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NUM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_TFE4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
@@ -1644,6 +1632,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn C_PB;
         private System.Windows.Forms.DataGridViewTextBoxColumn C_ZN;
         private System.Windows.Forms.DataGridViewTextBoxColumn C_MNO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NUM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_TFE4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAT_NAME2;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAT_BILL_DRY;

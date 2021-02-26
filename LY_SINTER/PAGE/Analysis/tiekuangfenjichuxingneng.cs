@@ -66,7 +66,7 @@ namespace LY_SINTER.PAGE.Analysis
             if (table.Rows.Count > 0)
             {
                 string time = table.Rows[0][0].ToString();
-                this.label6.Text = "最新调整时间:" + time;
+                this.label8.Text = "最新调整时间:" + time;
             }
             
         }
@@ -257,6 +257,34 @@ namespace LY_SINTER.PAGE.Analysis
         public void Timer_stop()
         {
 
+        }
+
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            TabPage tpg = new TabPage("烧结其他原料基础性能");
+            shaojieqitayuanliaojcxn _shaojieqitayuanliaojcxn = new shaojieqitayuanliaojcxn();
+            tpg.Controls.Add(_shaojieqitayuanliaojcxn);
+            Form_Main form_Main = new Form_Main();
+            form_Main.tabControl1.TabPages.Add(tpg);
+            _shaojieqitayuanliaojcxn.BorderStyle = BorderStyle.None;
+            _shaojieqitayuanliaojcxn.Dock = DockStyle.Fill;
+            _shaojieqitayuanliaojcxn.Show();
+            form_Main.tabControl1.SelectedTab = tpg;
+            form_Main.tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
+
+            /*shaojieqitayuanliaojcxn _PAGE = new shaojieqitayuanliaojcxn();
+            
+            if (shaojieqitayuanliaojcxn.isopen == false)
+            {
+                _PAGE._Clear();
+            }
+            else
+            {               
+                _PAGE.BorderStyle = BorderStyle.None;
+                _PAGE.Dock = DockStyle.Fill;
+                _PAGE.Show();
+                //form_display.Activate();
+            }*/
         }
     }
 }

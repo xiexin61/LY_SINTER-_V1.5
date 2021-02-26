@@ -209,6 +209,12 @@
     <Compile Include="PAGE\Analysis\tiekuangfenjichuxingneng.designer.cs">
       <DependentUpon>tiekuangfenjichuxingneng.cs</DependentUpon>
     </Compile>
+    <Compile Include="PAGE\Analysis\PreLeakAgeRate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Analysis\PreLeakAgeRate.Designer.cs">
+      <DependentUpon>PreLeakAgeRate.cs</DependentUpon>
+    </Compile>
     <Compile Include="PAGE\Analysis\youhuapeikuangjisuan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -660,6 +666,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PAGE\Analysis\gaoluruluyuanliao.resx">
       <DependentUpon>gaoluruluyuanliao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Analysis\PreLeakAgeRate.resx">
+      <DependentUpon>PreLeakAgeRate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PAGE\Analysis\Production_state.resx">
       <DependentUpon>Production_state.cs</DependentUpon>

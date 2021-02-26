@@ -205,10 +205,11 @@ namespace LY_SINTER.Popover.Analysis
 
                 string sql = "select UNIT_PRICE from M_ORE_MATERIAL_ANALYSIS where L2_CODE in (select L2_CODE from M_MATERIAL_COOD where MAT_DESC='" + comboBox2.Text + "')";
                 DataTable table = dBSQL.GetCommand(sql);
-                if (table.Rows.Count > 0)
-                {
+                //if (table.Rows.Count > 0)
+                //{
                     textBox2.Text = table.Rows[0][0].ToString();
-                }
+               // }
+                
             }
             catch (Exception ee)
             {

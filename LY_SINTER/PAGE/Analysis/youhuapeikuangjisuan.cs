@@ -91,9 +91,12 @@ namespace LY_SINTER.PAGE.Analysis
             d3.Rows[12].Cells["LOWER"].Value = table3.Rows[0]["C_CU_LOWER"];
             string sql4 = "select top(2) C_TFE,C_FEO,C_CAO,C_SIO2,C_AL2O3,C_MGO,C_S,C_P,C_R,C_AS,C_CU,C_PB,C_ZN,C_K2O from MC_ORECAL_SIN_ANA_RESULT  where BATCH_NUM = " + name + "";
             DataTable table4 = dBSQL.GetCommand(sql4);
+            table4.Columns.Add("NUM");
+            table4.Rows[0]["NUM"]= "上批";
+            table4.Rows[1]["NUM"] = "本批";
             d4.DataSource = table4;
-            d4.Rows[0].Cells["NUM"].Value = "上批";
-            d4.Rows[1].Cells["NUM"].Value = "本批";
+            /*d4.Rows[0].Cells["NUM"].Value = "上批";
+            d4.Rows[1].Cells["NUM"].Value = "本批";*/
             string sql5 = "select top(1) EXP_SINTER_OUTPUT,TOTAL_MAT_WET from MC_ORECAL_SIN_ANA_RESULT  where BATCH_NUM = " + name + "";
             DataTable table5 = dBSQL.GetCommand(sql5);
             //textBox.Text = table5.Rows[0]["TOTAL_MAT_WET"].ToString();
@@ -116,7 +119,7 @@ namespace LY_SINTER.PAGE.Analysis
             Frm_JHPK_insert form_display = new Frm_JHPK_insert();
             if (Frm_JHPK_insert.isopen == false)
             {
-                form_display._TransfDelegate_YHPK += _TransfDelegate;
+                form_display._TransfDelegate_YHPK += _TransfDelegateI;
                 form_display.ShowDialog();
             }
             else
@@ -139,15 +142,41 @@ namespace LY_SINTER.PAGE.Analysis
             object[] obj = new object[newDT.Columns.Count];
             int rowNum = newDT.Rows.Count;
             int a = dataTable.Columns.Count;
+            for (int i = 0; i < newDT.Rows.Count; i++)
+            {
+                string A = newDT.Rows[i]["MAT_NAME"].ToString();
+                string B = dataTable.Rows[0]["MAT_NAME"].ToString();
+                if ( A== B)
+                {
+                    for (int j = 1; j < dataTable.Columns.Count; j++)
+                    {
+                        newDT.Rows[i][j] = dataTable.Rows[0][j].ToString();
+                    }
+                }
+            }
+            DataTable OldDT = GetDgvToTable(d1);
+
+            d1.DataSource = newDT;
+            
+        }
+        public void _TransfDelegateI(DataTable dataTable)
+        {
+            string s = dataTable.Rows[0]["UNIT_PRICE"].ToString();
+            int sum = d1.Rows.Count;
+            DataTable newDT = new DataTable();
+            newDT = GetDgvToTable(d1);
+            object[] obj = new object[newDT.Columns.Count];
+            int rowNum = newDT.Rows.Count;
+            int a = dataTable.Columns.Count;
             for (int i = 0; i < dataTable.Rows.Count; i++)
             {
                 dataTable.Rows[i].ItemArray.CopyTo(obj, 0);
                 newDT.Rows.Add(obj);
                 newDT.Rows[rowNum]["RowNum"] = newDT.Rows.Count;
             }
-            
+
             d1.DataSource = newDT;
-            
+
         }
         public DataTable GetDgvToTable(DataGridView dgv)
         {
@@ -275,7 +304,7 @@ namespace LY_SINTER.PAGE.Analysis
         //刷新
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-
+            getData();
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)

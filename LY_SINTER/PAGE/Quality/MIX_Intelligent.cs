@@ -949,7 +949,7 @@ namespace LY_SINTER.PAGE.Quality
         /// Pattern = 1 直接下发设定下料量
         /// Pattern = 2 比较现场数据后下发设定下料量
         /// </summary>
-        public void Issue_SDXLL(int Pattern = 2)
+        public void Issue_SDXLL(int Pattern = 1)
         {
             try
             {
