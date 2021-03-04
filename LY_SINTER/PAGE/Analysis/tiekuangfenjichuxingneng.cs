@@ -258,33 +258,31 @@ namespace LY_SINTER.PAGE.Analysis
         {
 
         }
-
+        //烧结其他原料基础性能按钮
         private void simpleButton6_Click(object sender, EventArgs e)
         {
-            TabPage tpg = new TabPage("烧结其他原料基础性能");
-            shaojieqitayuanliaojcxn _shaojieqitayuanliaojcxn = new shaojieqitayuanliaojcxn();
-            tpg.Controls.Add(_shaojieqitayuanliaojcxn);
-            Form_Main form_Main = new Form_Main();
-            form_Main.tabControl1.TabPages.Add(tpg);
-            _shaojieqitayuanliaojcxn.BorderStyle = BorderStyle.None;
-            _shaojieqitayuanliaojcxn.Dock = DockStyle.Fill;
-            _shaojieqitayuanliaojcxn.Show();
-            form_Main.tabControl1.SelectedTab = tpg;
-            form_Main.tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
-
-            /*shaojieqitayuanliaojcxn _PAGE = new shaojieqitayuanliaojcxn();
-            
-            if (shaojieqitayuanliaojcxn.isopen == false)
+            Frm_shaojieqitayuanliaojcxn form_display = new Frm_shaojieqitayuanliaojcxn();
+            if (Frm_shaojieqitayuanliaojcxn.isopen == false)
             {
-                _PAGE._Clear();
+                form_display.ShowDialog();
             }
             else
-            {               
-                _PAGE.BorderStyle = BorderStyle.None;
-                _PAGE.Dock = DockStyle.Fill;
-                _PAGE.Show();
-                //form_display.Activate();
-            }*/
+            {
+                form_display.Activate();
+            }
+        }
+        //高炉入炉原料基础性能按钮
+        private void simpleButton7_Click(object sender, EventArgs e)
+        {
+            Frm_gaoluruluyuanliao form_display = new Frm_gaoluruluyuanliao();
+            if (Frm_gaoluruluyuanliao.isopen == false)
+            {
+                form_display.ShowDialog();
+            }
+            else
+            {
+                form_display.Activate();
+            }
         }
     }
 }

@@ -18,8 +18,30 @@ namespace LY_SINTER.Popover.Analysis
         public Frm_SSZZ_yjhcl()
         {
             InitializeComponent();
+            dateTimePicker_value();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
+        }
+        /// <summary>
+        /// 开始时间&结束时间赋值
+        /// </summary>
+        public void dateTimePicker_value()
+        {
+            try
+            {
+                //结束时间
+                DateTime time_end = DateTime.Now;
+                //开始时间
+                DateTime time_begin = time_end.AddMonths(-1);
+
+                textBox_begin.Text = time_begin.ToString();
+                textBox_end.Text = time_end.ToString();
+                dateTimePicker1.Text= time_end.ToString();
+            }
+            catch (Exception ee)
+            {
+
+            }
         }
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
         private void simpleButton2_click(object sender, EventArgs e)
@@ -31,22 +53,38 @@ namespace LY_SINTER.Popover.Analysis
         //添加按钮
         private void simpleButton3_click(object sender, EventArgs e)
         {
-            double yjhcl1 = Convert.ToDouble(yjhcl.Text);
-            DateTime date_now = dateTimePicker1.Value;
-            string scrq = date_now.ToString("yyyyMM");
-            string sql1= "select * from MC_POPCAL_MON_PL where POPCAL_MON='"+scrq+"'";
-            DataTable table = dBSQL.GetCommand(sql1);
-            if (table.Rows.Count != 0)
+            if (yjhcl.Text == "" )  
             {
-                MessageBox.Show("该月份产量已存在");
+                MessageBox.Show("请输入月计划产量");
             }
             else
             {
-                string sql2 = "insert into MC_POPCAL_MON_PL(TIMESTAMP,POPCAL_MON,POPCAL_MON_PL,FLAG_1) values ('"+DateTime.Now+ "','" + scrq + "','" + yjhcl1 + "',2)";
-                dBSQL.CommandExecuteNonQuery(sql2);
-                MessageBox.Show("插入成功！");
-                shuju(DateTime.Now.AddDays(-1),DateTime.Now);
+                float tmp;
+                if (!float.TryParse(yjhcl.Text, out tmp))//如果转换失败（为false）时输出括号内容
+                {
+                    MessageBox.Show("请正确输入数字");
+                }
+                else
+                {
+                    double yjhcl1 = Convert.ToDouble(yjhcl.Text);
+                    DateTime date_now = dateTimePicker1.Value;
+                    string scrq = date_now.ToString("yyyyMM");
+                    string sql1 = "select * from MC_POPCAL_MON_PL where POPCAL_MON='" + scrq + "'";
+                    DataTable table = dBSQL.GetCommand(sql1);
+                    if (table.Rows.Count != 0)
+                    {
+                        MessageBox.Show("该月份产量已存在");
+                    }
+                    else
+                    {
+                        string sql2 = "insert into MC_POPCAL_MON_PL(TIMESTAMP,POPCAL_MON,POPCAL_MON_PL,FLAG_1) values ('" + DateTime.Now + "','" + scrq + "','" + yjhcl1 + "',2)";
+                        dBSQL.CommandExecuteNonQuery(sql2);
+                        MessageBox.Show("插入成功！");
+                        shuju(DateTime.Now.AddDays(-1), DateTime.Now);
+                    }
+                }
             }
+            
         }
         public void shuju(DateTime d1,DateTime d2)
         {

@@ -611,21 +611,21 @@ namespace LY_SINTER.PAGE.Analysis
                 rowMergeView1.Rows.Add(row11);
                 //计划产量
                 this.rowMergeView1.Rows[0].Cells["time"].Value = "计划产量";
-                this.rowMergeView1.Rows[0].Cells["Column21"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column22"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column23"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column24"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column25"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column26"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["白班合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column27"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column28"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column29"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column30"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column31"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column32"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["夜班合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_A_OUT_PL"]).ToString("0.00");
+                this.rowMergeView1.Rows[0].Cells["Column21"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column22"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column23"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column24"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column25"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column26"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["白班合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column27"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column28"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column29"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column30"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column31"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column32"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["夜班合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_A_OUT_PL"]).ToString("0.000");
                 //int index = this.dataGridView1.Rows.Add();
                 /*DataGridViewRow row = new DataGridViewRow();
                 rowMergeView1.Rows.Add(row);
@@ -1014,7 +1014,7 @@ namespace LY_SINTER.PAGE.Analysis
 
             plotView2.Controller = PlotController;
 
-            //绑定数据
+            //绑定数据18130085606
         }
         //实时
         private void simpleButton3_click(object sender, EventArgs e)
@@ -1051,7 +1051,7 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 form_display.Activate();
             }
-            sszzjh();
+            //sszzjh();
         }
         //产量数据查询按钮
         private void simpleButton5_click(object sender, EventArgs e)

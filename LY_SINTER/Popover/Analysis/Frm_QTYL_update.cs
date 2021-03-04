@@ -128,123 +128,123 @@ namespace LY_SINTER.Popover.Analysis
             }
             if (d1.Rows[12].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_C=" + d1.Rows[11].Cells["after"].Value + ",";
+                sql += "C_C=" + d1.Rows[12].Cells["after"].Value + ",";
             }
             if (d1.Rows[13].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_MN=" + d1.Rows[11].Cells["after"].Value + ",";
+                sql += "C_MN=" + d1.Rows[13].Cells["after"].Value + ",";
             }
             if (d1.Rows[14].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_LOT=" + d1.Rows[12].Cells["after"].Value + ",";
+                sql += "C_LOT=" + d1.Rows[14].Cells["after"].Value + ",";
             }
             if (d1.Rows[15].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_R=" + d1.Rows[11].Cells["after"].Value + ",";
+                sql += "C_R=" + d1.Rows[15].Cells["after"].Value + ",";
             }
             if (d1.Rows[16].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_H2O=" + d1.Rows[13].Cells["after"].Value + ",";
+                sql += "C_H2O=" + d1.Rows[16].Cells["after"].Value + ",";
             }
             if (d1.Rows[17].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_ASH=" + d1.Rows[13].Cells["after"].Value + ",";
+                sql += "C_ASH=" + d1.Rows[17].Cells["after"].Value + ",";
             }
             if (d1.Rows[18].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_VOLATILES=" + d1.Rows[13].Cells["after"].Value + ",";
+                sql += "C_VOLATILES=" + d1.Rows[18].Cells["after"].Value + ",";
             }
             if (d1.Rows[19].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_TIO2=" + d1.Rows[20].Cells["after"].Value + ",";
+                sql += "C_TIO2=" + d1.Rows[19].Cells["after"].Value + ",";
             }
             if (d1.Rows[20].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_K2O=" + d1.Rows[18].Cells["after"].Value + ",";
+                sql += "C_K2O=" + d1.Rows[20].Cells["after"].Value + ",";
             }
             if (d1.Rows[21].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_NA2O=" + d1.Rows[19].Cells["after"].Value + ",";
+                sql += "C_NA2O=" + d1.Rows[21].Cells["after"].Value + ",";
             }
             if (d1.Rows[22].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_PBO=" + d1.Rows[18].Cells["after"].Value + ",";
+                sql += "C_PBO=" + d1.Rows[22].Cells["after"].Value + ",";
             }
             if (d1.Rows[23].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_ZNO=" + d1.Rows[19].Cells["after"].Value + ",";
+                sql += "C_ZNO=" + d1.Rows[23].Cells["after"].Value + ",";
             }
             if (d1.Rows[24].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_F=" + d1.Rows[19].Cells["after"].Value + ",";
+                sql += "C_F=" + d1.Rows[24].Cells["after"].Value + ",";
             }
             if (d1.Rows[25].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_AS=" + d1.Rows[14].Cells["after"].Value + ",";
+                sql += "C_AS=" + d1.Rows[25].Cells["after"].Value + ",";
             }
             if (d1.Rows[26].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_CU=" + d1.Rows[19].Cells["after"].Value + ",";
+                sql += "C_CU=" + d1.Rows[26].Cells["after"].Value + ",";
             }
             if (d1.Rows[27].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_PB=" + d1.Rows[15].Cells["after"].Value + ",";
+                sql += "C_PB=" + d1.Rows[27].Cells["after"].Value + ",";
             }
             if (d1.Rows[28].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_ZN=" + d1.Rows[16].Cells["after"].Value + ",";
+                sql += "C_ZN=" + d1.Rows[28].Cells["after"].Value + ",";
             }
             if (d1.Rows[29].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_K=" + d1.Rows[17].Cells["after"].Value + ",";
+                sql += "C_K=" + d1.Rows[29].Cells["after"].Value + ",";
             }
             if (d1.Rows[30].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_NA=" + d1.Rows[15].Cells["after"].Value + ",";
+                sql += "C_NA=" + d1.Rows[30].Cells["after"].Value + ",";
             }
             if (d1.Rows[31].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_CR=" + d1.Rows[16].Cells["after"].Value + ",";
+                sql += "C_CR=" + d1.Rows[31].Cells["after"].Value + ",";
             }
             if (d1.Rows[32].Cells["after"].Value.ToString() != "")
             {
-                sql += "C_NI=" + d1.Rows[17].Cells["after"].Value + ",";
+                sql += "C_NI=" + d1.Rows[32].Cells["after"].Value + ",";
             }
             if (d1.Rows[33].Cells["after"].Value.ToString() != "")
             {
-                sql += "MNO=" + d1.Rows[17].Cells["after"].Value + ",";
+                sql += "MNO=" + d1.Rows[33].Cells["after"].Value + ",";
             }
             if (d1.Rows[34].Cells["after"].Value.ToString() != "")
             {
-                sql += "GRIT_8=" + d1.Rows[21].Cells["after"].Value + ",";
+                sql += "GRIT_8=" + d1.Rows[34].Cells["after"].Value + ",";
             }
             if (d1.Rows[35].Cells["after"].Value.ToString() != "")
             {
-                sql += "GRIT_5_8=" + d1.Rows[22].Cells["after"].Value + ",";
+                sql += "GRIT_5_8=" + d1.Rows[35].Cells["after"].Value + ",";
             }
             if (d1.Rows[36].Cells["after"].Value.ToString() != "")
             {
-                sql += "GRIT_3_5=" + d1.Rows[23].Cells["after"].Value + ",";
+                sql += "GRIT_3_5=" + d1.Rows[36].Cells["after"].Value + ",";
             }
             if (d1.Rows[37].Cells["after"].Value.ToString() != "")
             {
-                sql += "GRIT_1_3=" + d1.Rows[24].Cells["after"].Value + ",";
+                sql += "GRIT_1_3=" + d1.Rows[37].Cells["after"].Value + ",";
             }
             if (d1.Rows[38].Cells["after"].Value.ToString() != "")
             {
-                sql += "GRIT_0_1=" + d1.Rows[25].Cells["after"].Value + ",";
+                sql += "GRIT_0_1=" + d1.Rows[38].Cells["after"].Value + ",";
             }
             if (d1.Rows[39].Cells["after"].Value.ToString() != "")
             {
-                sql += "GRIT_AVG=" + d1.Rows[28].Cells["after"].Value + ",";
+                sql += "GRIT_AVG=" + d1.Rows[39].Cells["after"].Value + ",";
             }
             if (d1.Rows[40].Cells["after"].Value.ToString() != "")
             {
-                sql += "GRIT_C_03_U=" + d1.Rows[32].Cells["after"].Value + ",";
+                sql += "GRIT_C_03_U=" + d1.Rows[40].Cells["after"].Value + ",";
             }
             if (d1.Rows[41].Cells["after"].Value.ToString() != "")
             {
-                sql += "GRIT_C_03_D=" + d1.Rows[33].Cells["after"].Value + ",";
+                sql += "GRIT_C_03_D=" + d1.Rows[41].Cells["after"].Value + ",";
             }
 
             sql += "FLAG=2 where BATCH_NUM = '" + d1.Rows[0].Cells["after"].Value + "'and L2_CODE in(select L2_CODE from M_MATERIAL_COOD where MAT_DESC='" + d1.Rows[1].Cells["after"].Value + "')";
