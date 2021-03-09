@@ -702,7 +702,7 @@ namespace LY_SINTER.PAGE.Quality
                     {
                         Color = OxyColors.Red,
                         StrokeThickness = 1,
-                        MarkerSize = 3,
+                        MarkerSize = 2,
                         MarkerStroke = OxyColors.Red,
                         MarkerType = MarkerType.Circle,
                         YAxisKey = "A",
@@ -746,8 +746,8 @@ namespace LY_SINTER.PAGE.Quality
                     series2 = new OxyPlot.Series.LineSeries()
                     {
                         Color = OxyColors.Purple,
-                        StrokeThickness = 2,
-                        MarkerSize = 3,
+                        StrokeThickness = 1,
+                        MarkerSize = 2,
                         MarkerStroke = OxyColors.BlueViolet,
                         MarkerType = MarkerType.Circle,
                         YAxisKey = "B",

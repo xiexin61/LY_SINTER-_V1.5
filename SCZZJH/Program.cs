@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SCZZJH_lib
+namespace SCZZJH
 {
-    class GridViewMergeCell
+    class Program
     {
+        static void Main(string[] args)
+        {
+        }
     }
 }
