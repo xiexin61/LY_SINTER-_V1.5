@@ -22,6 +22,7 @@ using NBSJ_MAIN_UC;
 using System.Timers;
 using LY_SINTER.Custom;
 using LY_SINTER.Popover.Analysis;
+using SCZZJH;
 
 namespace LY_SINTER.PAGE.Analysis
 {
@@ -910,8 +911,9 @@ namespace LY_SINTER.PAGE.Analysis
                 MinorTickSize = 0,
                 Maximum = getnMax((int)list1.Max() + 1,(int)list1.Min() - 1),
                 Minimum = (int)list1.Min() - 1,
-                MajorStep= (int)list1.Min() - 1,
+                //MajorStep= (int)list1.Min() - 1,
             };
+            _valueAxis1_1.MajorStep = (_valueAxis1_1.Maximum - _valueAxis1_1.Minimum) / 4;
             _myPlotModel_1.Axes.Add(_valueAxis1_1);
             series1_1 = new OxyPlot.Series.LineSeries()
             {
@@ -949,9 +951,10 @@ namespace LY_SINTER.PAGE.Analysis
                 MinorTickSize = 0,
                 Maximum = getnMax((int)list2.Max() + 1,(int)list2.Min() - 1),
                 Minimum = (int)list2.Min() - 1,
-                MajorStep= (int)list2.Min() - 1,
+                //MajorStep= (int)list2.Min() - 1,
             };
-            
+            _valueAxis1_2.MajorStep = (_valueAxis1_2.Maximum - _valueAxis1_2.Minimum) / 4;
+
             _myPlotModel_1.Axes.Add(_valueAxis1_2);
             series1_2 = new OxyPlot.Series.LineSeries()
             {
@@ -989,8 +992,9 @@ namespace LY_SINTER.PAGE.Analysis
                 MinorTickSize = 0,
                 Maximum = getnMax((int)list3.Max() + 1,(int)list3.Min() - 1),
                 Minimum = (int)list3.Min() - 1,
-                MajorStep= (int)list3.Min() - 1,
+                //MajorStep= (int)list3.Min() - 1,
             };
+            _valueAxis1_3.MajorStep = (_valueAxis1_3.Maximum - _valueAxis1_3.Minimum) / 4;
             _myPlotModel_1.Axes.Add(_valueAxis1_3);
             series1_3 = new OxyPlot.Series.LineSeries()
             {
@@ -1051,6 +1055,8 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 form_display.Activate();
             }
+            His_CL his_CL = new His_CL();
+            his_CL.Plan();
             //sszzjh();
         }
         //产量数据查询按钮

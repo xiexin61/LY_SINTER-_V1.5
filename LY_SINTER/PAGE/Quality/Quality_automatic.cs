@@ -244,10 +244,10 @@ namespace LY_SINTER.PAGE.Quality
                 TextColor = OxyColors.Red,
                 FontSize = 9.0,
                 IsAxisVisible = false,
-                MajorStep = 1,
+                //MajorStep = 1,
                 MinorTickSize = 0,
             };
-
+            _valueAxis1_1.MajorStep = (_valueAxis1_1.Maximum - _valueAxis1_1.Minimum) / 4;
             _myPlotModel_1.Axes.Add(_valueAxis1_1);
 
 

@@ -18,6 +18,7 @@ using LY_SINTER.PAGE.Analysis;
 using NBSJ_MAIN_UC;
 using LY_SINTER.PAGE.Course;
 using LY_SINTER.PAGE.HIS;
+using LY_SINTER.Reports;
 
 namespace LY_SINTER
 {
@@ -868,6 +869,21 @@ namespace LY_SINTER
 
                     TabPage tpg = new TabPage(str);
                     Class_Plan _PAGE = new Class_Plan();
+                    tpg.Controls.Add(_PAGE);
+                    tabControl1.TabPages.Add(tpg);
+                    _PAGE.BorderStyle = BorderStyle.None;
+                    _PAGE.Dock = DockStyle.Fill;
+                    _PAGE.Show();
+                    tabControl1.SelectedTab = tpg;
+                    tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
+                }
+                #endregion
+                #region 报表
+                else if (str == "烧结生产报表")
+                {
+
+                    TabPage tpg = new TabPage(str);
+                    Report_product _PAGE = new Report_product();
                     tpg.Controls.Add(_PAGE);
                     tabControl1.TabPages.Add(tpg);
                     _PAGE.BorderStyle = BorderStyle.None;

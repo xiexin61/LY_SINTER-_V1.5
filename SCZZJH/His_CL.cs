@@ -11,60 +11,17 @@ using System.Threading.Tasks;
 
 namespace SCZZJH
 {
-    class His_CL
+    public class His_CL
     {
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
         public vLog vLog { get; set; }
-        public Timer Timer_1 { get; set; }
-        public Timer Timer_2 { get; set; }
+        //public Timer Timer_1 { get; set; }
+        //public Timer Timer_2 { get; set; }
         //20201219测试代码修改函数名，原函数名His_CL
         public His_CL()
         {
             if (vLog == null)
                 vLog = new vLog(".\\log\\FireRet\\");
-            //每隔PAR_OUT_T分钟计算一次
-            int PAR_DAY_START = 0, PAR_OUT_T = 0;
-            //DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
-            string sql = "select PAR_DAY_START,PAR_OUT_T from MC_POPCAL_PAR";
-            System.Data.DataTable table = dBSQL.GetCommand(sql);
-            if (table.Rows.Count > 0)
-            {
-                PAR_DAY_START = Convert.ToInt32(table.Rows[0][0]);
-                PAR_OUT_T = Convert.ToInt32(table.Rows[0][1]);
-            }
-            Timer_1 = new Timer();
-            Timer_1.Elapsed += new System.Timers.ElapsedEventHandler(Timer_1_Tick);
-            Timer_1.Interval = PAR_OUT_T* 60000;
-            Timer_1.Enabled = true;
-            Timer_2 = new Timer();
-            Timer_2.Elapsed += new System.Timers.ElapsedEventHandler(Timer_2_Tick);
-            Timer_2.Interval = 60000;
-            Timer_2.Enabled = true;
-        }
-        private void Timer_1_Tick(object sender, EventArgs e)
-        {
-            Timer_1.Stop();
-            His_CLJS();
-            Timer_1.Start();
-        }
-        private void Timer_2_Tick(object sender, EventArgs e)
-        {
-            Timer_2.Stop();
-            
-            int PAR_DAY_START = 0;
-            string sql = "select PAR_DAY_START from MC_POPCAL_PAR";
-            System.Data.DataTable table = dBSQL.GetCommand(sql);
-            if (table.Rows.Count > 0)
-            {
-                PAR_DAY_START = Convert.ToInt32(table.Rows[0][0]);
-            }
-            if (DateTime.Now.Hour== PAR_DAY_START)
-            {
-                His_CLJS();
-                LLPiZhong();
-                Plan();
-            }
-            Timer_2.Start();
         }
 
         //烧结矿计划
@@ -72,11 +29,11 @@ namespace SCZZJH
         {
             //DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
             DateTime Start = GetStartTime();
-            double Xmes = 0.0,Sum=0.0,X=0.0;
-            string date = DateTime.Now.Year.ToString() +  DateTime.Now.Month.ToString();
+            double Xmes = 0.0, Sum = 0.0, X = 0.0;
+            string date = DateTime.Now.Year.ToString() + DateTime.Now.Month.ToString("00");
             //string sql1 = "select POPCAL_MON_PL from MC_POPCAL_MON_PL where POPCAL_MON='" + 202009 + "'";
             string sql1 = "select POPCAL_MON_PL from MC_POPCAL_MON_PL where POPCAL_MON='" + date + "'";
-            DateTime Start1= new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            DateTime Start1 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
             System.Data.DataTable table1 = dBSQL.GetCommand(sql1);
             if (table1.Rows.Count > 0)
             {
@@ -109,11 +66,11 @@ namespace SCZZJH
                 X = (Xmes - Sum) / D - (DateTime.Now.Day - 1);
             }
             string his = "IF EXISTS (SELECT TIMESTAMP FROM MC_POPCAL_RESULT WHERE TIMESTAMP='" + Start + "')" +
-                "update MC_POPCAL_RESULT set POPCAL_A_OUT_PL=" + X+ ",POPCAL_D_OUT_PL=" + X/2+ ",POPCAL_N_OUT_PL=" + X/2+ " WHERE TIMESTAMP='" + Start + "'else " +
+                "update MC_POPCAL_RESULT set POPCAL_A_OUT_PL=" + X + ",POPCAL_D_OUT_PL=" + X / 2 + ",POPCAL_N_OUT_PL=" + X / 2 + " WHERE TIMESTAMP='" + Start + "'else " +
                 "insert into MC_POPCAL_RESULT(TIMESTAMP,POPCAL_A_OUT_PL,POPCAL_D_OUT_PL,POPCAL_N_OUT_PL)" +
-                " values('" + Start + "'," + X + "," + X/2 + "," + X/2 + ");";
+                " values('" + Start + "'," + X + "," + X / 2 + "," + X / 2 + ");";
             long _urs = dBSQL.CommandExecuteNonQuery(his);
-            
+
         }
         //理论批重计算，只在每晚8点计算一次
         public void LLPiZhong()
@@ -130,14 +87,15 @@ namespace SCZZJH
             }
             DateTime Start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, PAR_DAY_START, 0, 0);*/
             DateTime Start = GetStartTime();
-            double Q_BW_THR=0.0, M_P=0.0,K=0.0, Q_THR=0.0, Q_REA=0.0, R_SIN=0.0, R_LOT=0.0, R_H2O=0.0;
+            double Q_BW_THR = 0.0, M_P = 0.0, K = 0.0, Q_THR = 0.0, Q_REA = 0.0, R_SIN = 0.0, R_LOT = 0.0, R_H2O = 0.0;
             string sM_P = "select POPCAL_A_OUT_PL from MC_POPCAL_RESULT where TIMESTAMP = '" + Start + "'";
             System.Data.DataTable TM_P = dBSQL.GetCommand(sM_P);
             if (TM_P.Rows.Count > 0)
             {
                 M_P = Convert.ToDouble(TM_P.Rows[0][0]);
             }
-            string sK = "select PAR_K from MC_POPCAL_PAR where TIMESTAMP = '" + Start + "'";
+            //string sK = "select PAR_K from MC_POPCAL_PAR where TIMESTAMP = '" + Start + "'";
+            string sK = "select top(1) PAR_K from MC_POPCAL_PAR";
             System.Data.DataTable TK = dBSQL.GetCommand(sK);
             if (TK.Rows.Count > 0)
             {
@@ -153,7 +111,7 @@ namespace SCZZJH
             System.Data.DataTable TQ_REA = dBSQL.GetCommand(sQ_REA);
             if (TQ_REA.Rows.Count > 0)
             {
-                Q_REA = Convert.ToDouble(TQ_REA.Rows[0][0])/60;
+                Q_REA = Convert.ToDouble(TQ_REA.Rows[0][0]) / 60;
             }
             string sR_SIN = "select isnull(avg(MAT_L2_PBBFB_7),0) from MC_MIXCAL_BILL_INFO_RESULT where TIMESTAMP between '" + Start.AddDays(-1) + "'and '" + Start + "'";
             System.Data.DataTable TR_SIN = dBSQL.GetCommand(sR_SIN);
@@ -169,8 +127,8 @@ namespace SCZZJH
                 R_H2O = Convert.ToDouble(TR_H2O.Rows[0][1]);
             }*/
             R_LOT = 1.2; R_H2O = 1.3;
-             Q_BW_THR = K * (Q_REA / Q_THR) * ((M_P / 24) / (1 - R_SIN / 100 - R_LOT / 100 + R_H2O / 100));
-            string LLPZ = 
+            Q_BW_THR = K * (Q_REA / Q_THR) * ((M_P / 24) / (1 - R_SIN / 100 - R_LOT / 100 + R_H2O / 100));
+            string LLPZ =
             "IF EXISTS (SELECT TIMESTAMP FROM MC_POPCAL_RESULT WHERE TIMESTAMP='" + Start + "')" +
                 "update MC_POPCAL_RESULT set POPCAL_BW_THR=" + Q_BW_THR + ",POPCAL_OUT_THR=" + Q_THR + ",POPCAL_OUT_REA=" + Q_REA + ", POPCAL_SIN_RM=" + R_SIN + "" +
                 ", POPCAL_LOT=" + R_LOT + ", POPCAL_H2O=" + R_H2O + " WHERE TIMESTAMP='" + Start + "'  else " +
@@ -194,7 +152,7 @@ namespace SCZZJH
         {
             //DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
             string sql = "select PAR_DAY_START,PAR_OUT_T from MC_POPCAL_PAR";
-            int PAR_DAY_START = 0, Time = 0; 
+            int PAR_DAY_START = 0, Time = 0;
             System.Data.DataTable table = dBSQL.GetCommand(sql);
             if (table.Rows.Count > 0)
             {
@@ -220,7 +178,7 @@ namespace SCZZJH
             double QTPlan = 0.0, BBPlan = 0.0, YBPlan = 0.0;
             double QTtheory = 0.0, BBtheory = 0.0, YBtheory = 0.0;
             double QTactual = 0.0, BBactual = 0.0, YBactual = 0.0;
-            DateTime Start= GetStartTime();
+            DateTime Start = GetStartTime();
             string sQTPlan = "select TOP 1 POPCAL_A_OUT_PL from MC_POPCAL_RESULT order by TIMESTAMP desc";
             System.Data.DataTable TQTPlan = dBSQL.GetCommand(sQTPlan);
             if (TQTPlan.Rows.Count > 0)
@@ -271,9 +229,9 @@ namespace SCZZJH
             {
                 YBactual = Convert.ToDouble(Tbbsjcl.Rows[0][0]);
             }
-            
-            string his = "IF EXISTS (SELECT TIMESTAMP FROM MC_POPCAL_OUT WHERE TIMESTAMP='"+ Start + "')" +
-                "update MC_POPCAL_OUT set P_AL_OUTPUT="+QTPlan+",P_D_OUTPUT=" + BBPlan + ",P_N_OUTPUT=" + YBPlan + ",T_AL_OUTPUT=" + QTtheory + ",T_D_OUTPUT=" + BBtheory + ",T_N_OUTPUT=" + YBtheory 
+
+            string his = "IF EXISTS (SELECT TIMESTAMP FROM MC_POPCAL_OUT WHERE TIMESTAMP='" + Start + "')" +
+                "update MC_POPCAL_OUT set P_AL_OUTPUT=" + QTPlan + ",P_D_OUTPUT=" + BBPlan + ",P_N_OUTPUT=" + YBPlan + ",T_AL_OUTPUT=" + QTtheory + ",T_D_OUTPUT=" + BBtheory + ",T_N_OUTPUT=" + YBtheory
                 + ",A_AL_OUTPUT=" + QTactual + ",A_D_OUTPUT=" + BBactual + ",A_N_OUTPUT=" + YBactual + " where TIMESTAMP='" + Start + "' else " +
                 "insert into MC_POPCAL_OUT(TIMESTAMP,P_AL_OUTPUT,P_D_OUTPUT,P_N_OUTPUT,T_AL_OUTPUT,T_D_OUTPUT,T_N_OUTPUT,A_AL_OUTPUT,A_D_OUTPUT,A_N_OUTPUT)" +
                 " values('" + Start + "'," + QTPlan + "," + BBPlan + "," + YBPlan + "," + QTtheory + "," + BBtheory + "," + YBtheory + "," + QTactual + "," + BBactual + "," + YBactual + ");";

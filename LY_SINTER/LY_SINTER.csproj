@@ -104,6 +104,10 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="ReachFramework" />
+    <Reference Include="SCZZJH, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SCZZJH\bin\Debug\SCZZJH.dll</HintPath>
+    </Reference>
     <Reference Include="SqlSugar, Version=5.0.0.12, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\SqlSugar.dll</HintPath>
@@ -671,6 +675,12 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Report_product.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\Report_product.Designer.cs">
+      <DependentUpon>Report_product.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Custom\Alarm.resx">
       <DependentUpon>Alarm.cs</DependentUpon>
     </EmbeddedResource>
@@ -939,6 +949,9 @@
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Report_product.resx">
+      <DependentUpon>Report_product.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
