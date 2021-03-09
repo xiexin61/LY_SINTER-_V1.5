@@ -603,6 +603,7 @@ namespace LY_SINTER.PAGE.Analysis
         //生产组织计划表格查询
         public void sszzjh()
         {
+            rowMergeView1.Rows.Clear();
             DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
             string sql = "select top(1) TIMESTAMP,POPCAL_N_OUT_PL,POPCAL_D_OUT_PL,POPCAL_A_OUT_PL from MC_POPCAL_RESULT order by TIMESTAMP desc;";
             DataTable table = dBSQL.GetCommand(sql);
@@ -1057,6 +1058,7 @@ namespace LY_SINTER.PAGE.Analysis
             }
             His_CL his_CL = new His_CL();
             his_CL.Plan();
+            sszzjh();
             //sszzjh();
         }
         //产量数据查询按钮
