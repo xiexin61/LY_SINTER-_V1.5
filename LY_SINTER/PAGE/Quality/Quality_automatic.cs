@@ -249,10 +249,7 @@ namespace LY_SINTER.PAGE.Quality
             };
             _valueAxis1_1.MajorStep = (_valueAxis1_1.Maximum - _valueAxis1_1.Minimum) / 4;
             _myPlotModel_1.Axes.Add(_valueAxis1_1);
-
-
             //添加曲线
-
             series1_1 = new OxyPlot.Series.LineSeries()
             {
                 Color = OxyColors.Red,
@@ -270,7 +267,6 @@ namespace LY_SINTER.PAGE.Quality
                 _valueAxis1_1.IsAxisVisible = true;
                 _myPlotModel_1.Series.Add(series1_1);
             }
-
             _valueAxis2_1 = new LinearAxis()
             {
 
