@@ -141,7 +141,7 @@ namespace LY_SINTER.Popover.Analysis
                     {
                         bc.Value = "修改";
                         bc.Tag = true;
-                        return;
+                        //return;
                     }
                     if (bc.Value == "保存")
                     {
