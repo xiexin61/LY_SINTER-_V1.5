@@ -18,6 +18,7 @@ using LY_SINTER.PAGE.Analysis;
 using NBSJ_MAIN_UC;
 using LY_SINTER.PAGE.Course;
 using LY_SINTER.PAGE.HIS;
+using LY_SINTER.Reports;
 
 namespace LY_SINTER
 {
@@ -680,6 +681,19 @@ namespace LY_SINTER
                     tabControl1.SelectedTab = tpg;
                     tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
+                else if (str == "烧结漏风检测模型")
+                {
+
+                    TabPage tpg = new TabPage(str);
+                    PreLeakAgeRate _loufenglvjiance = new PreLeakAgeRate();
+                    tpg.Controls.Add(_loufenglvjiance);
+                    tabControl1.TabPages.Add(tpg);
+                    _loufenglvjiance.BorderStyle = BorderStyle.None;
+                    _loufenglvjiance.Dock = DockStyle.Fill;
+                    _loufenglvjiance.Show();
+                    tabControl1.SelectedTab = tpg;
+                    tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
+                }
                 #endregion
 
                 #region 数据分析
@@ -865,6 +879,21 @@ namespace LY_SINTER
 
                     TabPage tpg = new TabPage(str);
                     Class_Plan _PAGE = new Class_Plan();
+                    tpg.Controls.Add(_PAGE);
+                    tabControl1.TabPages.Add(tpg);
+                    _PAGE.BorderStyle = BorderStyle.None;
+                    _PAGE.Dock = DockStyle.Fill;
+                    _PAGE.Show();
+                    tabControl1.SelectedTab = tpg;
+                    tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
+                }
+                #endregion
+                #region 报表
+                else if (str == "烧结生产报表")
+                {
+
+                    TabPage tpg = new TabPage(str);
+                    Report_product _PAGE = new Report_product();
                     tpg.Controls.Add(_PAGE);
                     tabControl1.TabPages.Add(tpg);
                     _PAGE.BorderStyle = BorderStyle.None;
@@ -1088,6 +1117,16 @@ namespace LY_SINTER
                         _shaojiezhongdian.Show();
                         tabControl1.SelectedTab = p;
                         _shaojiezhongdian.Timer_state();
+                        return true;
+
+                    }
+                    else if (_tabName == "烧结漏风检测模型")
+                    {
+
+                        PreLeakAgeRate _loufenglv = (PreLeakAgeRate)p.Controls[0];
+                        _loufenglv.Show();
+                        tabControl1.SelectedTab = p;
+                        _loufenglv.Timer_state();
                         return true;
 
                     }
@@ -1455,6 +1494,12 @@ namespace LY_SINTER
                     vSelected.Timer_state();
 
                 }
+                else if (_str == "烧结漏风检测模型")
+                {
+                    PreLeakAgeRate vSelected = (PreLeakAgeRate)_tabControl1.SelectedTab.Controls[0];
+                    vSelected.Timer_state();
+
+                }
                 #endregion
 
                 #region 数据分析
@@ -1720,6 +1765,13 @@ namespace LY_SINTER
                             else if (_strname == "料层透气分析模型")
                             {
                                 Bed_Permeability vf1 = (Bed_Permeability)p.Controls[0];
+                                vf1._Clear();
+                                this.tabControl1.Controls.Remove(p);
+                                return;
+                            }
+                            else if (_strname == "烧结漏风检测模型")
+                            {
+                                PreLeakAgeRate vf1 = (PreLeakAgeRate)p.Controls[0];
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
@@ -2000,6 +2052,11 @@ namespace LY_SINTER
                                 Bed_Permeability vf1 = (Bed_Permeability)p.Controls[0];
                                 vf1.Timer_stop();
                             }
+                            else if (_strname == "烧结漏风检测模型")
+                            {
+                                PreLeakAgeRate vf1 = (PreLeakAgeRate)p.Controls[0];
+                                vf1.Timer_stop();
+                            }
                             #endregion
 
                             #region 数据分析
@@ -2259,6 +2316,12 @@ namespace LY_SINTER
                         else if (str == "料层透气分析模型")
                         {
                             Bed_Permeability _PAGE = (Bed_Permeability)p.Controls[0];
+                            _PAGE._Clear();
+
+                        }
+                        else if (str == "烧结漏风检测模型")
+                        {
+                            PreLeakAgeRate _PAGE = (PreLeakAgeRate)p.Controls[0];
                             _PAGE._Clear();
 
                         }

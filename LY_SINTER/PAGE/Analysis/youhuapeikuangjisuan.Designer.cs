@@ -69,21 +69,6 @@
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.label13 = new System.Windows.Forms.Label();
             this.d4 = new System.Windows.Forms.DataGridView();
-            this.NUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.C_TFE4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
@@ -168,6 +153,21 @@
             this.UPPER = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.NUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_TFE_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_FEO_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_SIO2_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_CAO_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_MGO_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_AL2O3_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_S_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_P_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_R_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_AS_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_PB_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_ZN_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_CU_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.C_K2O_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
@@ -287,20 +287,20 @@
             this.d4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.d4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NUM,
-            this.C_TFE4,
-            this.dataGridViewTextBoxColumn10,
-            this.dataGridViewTextBoxColumn11,
-            this.dataGridViewTextBoxColumn12,
-            this.dataGridViewTextBoxColumn13,
-            this.dataGridViewTextBoxColumn14,
-            this.dataGridViewTextBoxColumn15,
-            this.dataGridViewTextBoxColumn16,
-            this.Column1,
-            this.dataGridViewTextBoxColumn19,
-            this.dataGridViewTextBoxColumn20,
-            this.dataGridViewTextBoxColumn21,
-            this.dataGridViewTextBoxColumn22,
-            this.dataGridViewTextBoxColumn23});
+            this.C_TFE_4,
+            this.C_FEO_4,
+            this.C_SIO2_4,
+            this.C_CAO_4,
+            this.C_MGO_4,
+            this.C_AL2O3_4,
+            this.C_S_4,
+            this.C_P_4,
+            this.C_R_4,
+            this.C_AS_4,
+            this.C_PB_4,
+            this.C_ZN_4,
+            this.C_CU_4,
+            this.C_K2O_4});
             this.d4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.d4.EnableHeadersVisualStyles = false;
             this.d4.Location = new System.Drawing.Point(4, 25);
@@ -323,100 +323,11 @@
             this.d4.Size = new System.Drawing.Size(1040, 91);
             this.d4.TabIndex = 1;
             // 
-            // NUM
-            // 
-            this.NUM.HeaderText = "批次";
-            this.NUM.Name = "NUM";
-            // 
-            // C_TFE4
-            // 
-            this.C_TFE4.DataPropertyName = "C_TFE";
-            this.C_TFE4.HeaderText = "TFe";
-            this.C_TFE4.Name = "C_TFE4";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "C_FEO";
-            this.dataGridViewTextBoxColumn10.HeaderText = "FeO";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "C_SIO2";
-            this.dataGridViewTextBoxColumn11.HeaderText = "SiO2";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "C_CAO";
-            this.dataGridViewTextBoxColumn12.HeaderText = "CaO";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "C_MGO";
-            this.dataGridViewTextBoxColumn13.HeaderText = "MgO";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "C_AL2O3";
-            this.dataGridViewTextBoxColumn14.HeaderText = "Al2O3";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "C_S";
-            this.dataGridViewTextBoxColumn15.HeaderText = "S";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "C_P";
-            this.dataGridViewTextBoxColumn16.HeaderText = "P";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "C_R";
-            this.Column1.HeaderText = "R";
-            this.Column1.Name = "Column1";
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            this.dataGridViewTextBoxColumn19.DataPropertyName = "C_AS";
-            this.dataGridViewTextBoxColumn19.HeaderText = "As";
-            this.dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            this.dataGridViewTextBoxColumn20.DataPropertyName = "C_PB";
-            this.dataGridViewTextBoxColumn20.HeaderText = "Pb";
-            this.dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            // 
-            // dataGridViewTextBoxColumn21
-            // 
-            this.dataGridViewTextBoxColumn21.DataPropertyName = "C_ZN";
-            this.dataGridViewTextBoxColumn21.HeaderText = "Zn";
-            this.dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
-            // 
-            // dataGridViewTextBoxColumn22
-            // 
-            this.dataGridViewTextBoxColumn22.DataPropertyName = "C_CU";
-            this.dataGridViewTextBoxColumn22.HeaderText = "Cu";
-            this.dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
-            // 
-            // dataGridViewTextBoxColumn23
-            // 
-            this.dataGridViewTextBoxColumn23.DataPropertyName = "C_K2O";
-            this.dataGridViewTextBoxColumn23.HeaderText = "K2O";
-            this.dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
-            // 
             // tableLayoutPanel10
             // 
             this.tableLayoutPanel10.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel10.ColumnCount = 1;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 344F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 353F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel12, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel13, 0, 1);
@@ -443,7 +354,7 @@
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(338, 60);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(347, 60);
             this.tableLayoutPanel12.TabIndex = 29;
             // 
             // tableLayoutPanel14
@@ -461,7 +372,7 @@
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(216, 52);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(222, 52);
             this.tableLayoutPanel14.TabIndex = 0;
             // 
             // label11
@@ -470,9 +381,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(106, 26);
+            this.label11.Location = new System.Drawing.Point(109, 26);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(107, 26);
+            this.label11.Size = new System.Drawing.Size(110, 26);
             this.label11.TabIndex = 21;
             this.label11.Text = "0";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -480,7 +391,7 @@
             // textBox2
             // 
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox2.Location = new System.Drawing.Point(14, 29);
+            this.textBox2.Location = new System.Drawing.Point(16, 29);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(74, 21);
             this.textBox2.TabIndex = 20;
@@ -491,9 +402,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(106, 0);
+            this.label2.Location = new System.Drawing.Point(109, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(107, 26);
+            this.label2.Size = new System.Drawing.Size(110, 26);
             this.label2.TabIndex = 18;
             this.label2.Text = "预计烧结矿产量t";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -506,7 +417,7 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(3, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(97, 26);
+            this.label10.Size = new System.Drawing.Size(100, 26);
             this.label10.TabIndex = 17;
             this.label10.Text = "计划总配成量t";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -518,7 +429,7 @@
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel15.Controls.Add(this.simpleButton9, 0, 1);
             this.tableLayoutPanel15.Controls.Add(this.simpleButton8, 0, 0);
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(224, 1);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(230, 1);
             this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 2;
@@ -538,6 +449,7 @@
             this.simpleButton9.Size = new System.Drawing.Size(84, 23);
             this.simpleButton9.TabIndex = 28;
             this.simpleButton9.Text = "保存方案";
+            this.simpleButton9.Click += new System.EventHandler(this.simpleButton9_Click);
             // 
             // simpleButton8
             // 
@@ -550,6 +462,7 @@
             this.simpleButton8.Size = new System.Drawing.Size(83, 23);
             this.simpleButton8.TabIndex = 27;
             this.simpleButton8.Text = "配矿计算";
+            this.simpleButton8.Click += new System.EventHandler(this.simpleButton8_Click);
             // 
             // tableLayoutPanel13
             // 
@@ -569,7 +482,7 @@
             this.tableLayoutPanel13.RowCount = 2;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(338, 45);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(347, 45);
             this.tableLayoutPanel13.TabIndex = 30;
             // 
             // label15
@@ -578,9 +491,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(226, 22);
+            this.label15.Location = new System.Drawing.Point(233, 22);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(109, 23);
+            this.label15.Size = new System.Drawing.Size(111, 23);
             this.label15.TabIndex = 24;
             this.label15.Text = "0";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -591,9 +504,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(126, 22);
+            this.label14.Location = new System.Drawing.Point(130, 22);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(94, 23);
+            this.label14.Size = new System.Drawing.Size(97, 23);
             this.label14.TabIndex = 23;
             this.label14.Text = "0";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -606,7 +519,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 22);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(117, 23);
+            this.label12.Size = new System.Drawing.Size(121, 23);
             this.label12.TabIndex = 22;
             this.label12.Text = "0";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -617,9 +530,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(226, 0);
+            this.label9.Location = new System.Drawing.Point(233, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(109, 22);
+            this.label9.Size = new System.Drawing.Size(111, 22);
             this.label9.TabIndex = 20;
             this.label9.Text = "其他成本 元";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -630,9 +543,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(126, 0);
+            this.label7.Location = new System.Drawing.Point(130, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(94, 22);
+            this.label7.Size = new System.Drawing.Size(97, 22);
             this.label7.TabIndex = 19;
             this.label7.Text = "原料成本 元/t";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -645,7 +558,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 22);
+            this.label3.Size = new System.Drawing.Size(121, 22);
             this.label3.TabIndex = 18;
             this.label3.Text = "烧结矿总成本 元/t";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -865,6 +778,7 @@
             this.d1.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.d1.RowHeadersVisible = false;
             this.d1.RowTemplate.Height = 23;
+            this.d1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.d1.Size = new System.Drawing.Size(1386, 265);
             this.d1.TabIndex = 5;
             // 
@@ -1330,6 +1244,7 @@
             // 
             // MAT_WET_ACT
             // 
+            this.MAT_WET_ACT.DataPropertyName = "MAT_WET_ACT";
             this.MAT_WET_ACT.HeaderText = "实际配成湿料量(t)";
             this.MAT_WET_ACT.Name = "MAT_WET_ACT";
             // 
@@ -1511,6 +1426,96 @@
             this.label1.Text = "优 化 配 矿 计 算";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // NUM
+            // 
+            this.NUM.DataPropertyName = "NUM";
+            this.NUM.HeaderText = "批次";
+            this.NUM.Name = "NUM";
+            // 
+            // C_TFE_4
+            // 
+            this.C_TFE_4.DataPropertyName = "C_TFE";
+            this.C_TFE_4.HeaderText = "TFe";
+            this.C_TFE_4.Name = "C_TFE_4";
+            // 
+            // C_FEO_4
+            // 
+            this.C_FEO_4.DataPropertyName = "C_FEO";
+            this.C_FEO_4.HeaderText = "FeO";
+            this.C_FEO_4.Name = "C_FEO_4";
+            // 
+            // C_SIO2_4
+            // 
+            this.C_SIO2_4.DataPropertyName = "C_SIO2";
+            this.C_SIO2_4.HeaderText = "SiO2";
+            this.C_SIO2_4.Name = "C_SIO2_4";
+            // 
+            // C_CAO_4
+            // 
+            this.C_CAO_4.DataPropertyName = "C_CAO";
+            this.C_CAO_4.HeaderText = "CaO";
+            this.C_CAO_4.Name = "C_CAO_4";
+            // 
+            // C_MGO_4
+            // 
+            this.C_MGO_4.DataPropertyName = "C_MGO";
+            this.C_MGO_4.HeaderText = "MgO";
+            this.C_MGO_4.Name = "C_MGO_4";
+            // 
+            // C_AL2O3_4
+            // 
+            this.C_AL2O3_4.DataPropertyName = "C_AL2O3";
+            this.C_AL2O3_4.HeaderText = "Al2O3";
+            this.C_AL2O3_4.Name = "C_AL2O3_4";
+            // 
+            // C_S_4
+            // 
+            this.C_S_4.DataPropertyName = "C_S";
+            this.C_S_4.HeaderText = "S";
+            this.C_S_4.Name = "C_S_4";
+            // 
+            // C_P_4
+            // 
+            this.C_P_4.DataPropertyName = "C_P";
+            this.C_P_4.HeaderText = "P";
+            this.C_P_4.Name = "C_P_4";
+            // 
+            // C_R_4
+            // 
+            this.C_R_4.DataPropertyName = "C_R";
+            this.C_R_4.HeaderText = "R";
+            this.C_R_4.Name = "C_R_4";
+            // 
+            // C_AS_4
+            // 
+            this.C_AS_4.DataPropertyName = "C_AS";
+            this.C_AS_4.HeaderText = "As";
+            this.C_AS_4.Name = "C_AS_4";
+            // 
+            // C_PB_4
+            // 
+            this.C_PB_4.DataPropertyName = "C_PB";
+            this.C_PB_4.HeaderText = "Pb";
+            this.C_PB_4.Name = "C_PB_4";
+            // 
+            // C_ZN_4
+            // 
+            this.C_ZN_4.DataPropertyName = "C_ZN";
+            this.C_ZN_4.HeaderText = "Zn";
+            this.C_ZN_4.Name = "C_ZN_4";
+            // 
+            // C_CU_4
+            // 
+            this.C_CU_4.DataPropertyName = "C_CU";
+            this.C_CU_4.HeaderText = "Cu";
+            this.C_CU_4.Name = "C_CU_4";
+            // 
+            // C_K2O_4
+            // 
+            this.C_K2O_4.DataPropertyName = "C_K2O";
+            this.C_K2O_4.HeaderText = "K2O";
+            this.C_K2O_4.Name = "C_K2O_4";
+            // 
             // youhuapeikuangjisuan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1585,21 +1590,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UPPER;
         private System.Windows.Forms.ComboBox comboBox1;
         private DevExpress.XtraEditors.SimpleButton simpleButton9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NUM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_TFE4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn21;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn22;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn23;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel14;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
@@ -1656,5 +1646,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE2;
         private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_CON_PRICE;
         private System.Windows.Forms.DataGridViewTextBoxColumn MAT_WET_ACT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NUM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_TFE_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_FEO_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_SIO2_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_CAO_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_MGO_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_AL2O3_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_S_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_P_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_R_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_AS_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_PB_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_ZN_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_CU_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_K2O_4;
     }
 }

@@ -66,7 +66,7 @@ namespace LY_SINTER.PAGE.Analysis
             if (table.Rows.Count > 0)
             {
                 string time = table.Rows[0][0].ToString();
-                this.label6.Text = "最新调整时间:" + time;
+                this.label8.Text = "最新调整时间:" + time;
             }
             
         }
@@ -257,6 +257,32 @@ namespace LY_SINTER.PAGE.Analysis
         public void Timer_stop()
         {
 
+        }
+        //烧结其他原料基础性能按钮
+        private void simpleButton6_Click(object sender, EventArgs e)
+        {
+            Frm_shaojieqitayuanliaojcxn form_display = new Frm_shaojieqitayuanliaojcxn();
+            if (Frm_shaojieqitayuanliaojcxn.isopen == false)
+            {
+                form_display.ShowDialog();
+            }
+            else
+            {
+                form_display.Activate();
+            }
+        }
+        //高炉入炉原料基础性能按钮
+        private void simpleButton7_Click(object sender, EventArgs e)
+        {
+            Frm_gaoluruluyuanliao form_display = new Frm_gaoluruluyuanliao();
+            if (Frm_gaoluruluyuanliao.isopen == false)
+            {
+                form_display.ShowDialog();
+            }
+            else
+            {
+                form_display.Activate();
+            }
         }
     }
 }

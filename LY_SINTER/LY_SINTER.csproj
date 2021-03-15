@@ -79,6 +79,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\NBSJ_PICAL\dll\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="OrecalModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\OrecalModel.dll</HintPath>
+    </Reference>
     <Reference Include="OxyPlot, Version=2.0.0.0, Culture=neutral, PublicKeyToken=638079a8f0bd61e9, processorArchitecture=MSIL">
       <HintPath>..\packages\OxyPlot.Core.2.0.0\lib\net45\OxyPlot.dll</HintPath>
     </Reference>
@@ -100,6 +104,10 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="ReachFramework" />
+    <Reference Include="SCZZJH, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SCZZJH\bin\Debug\SCZZJH.dll</HintPath>
+    </Reference>
     <Reference Include="SqlSugar, Version=5.0.0.12, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\SqlSugar.dll</HintPath>
@@ -202,6 +210,12 @@
     </Compile>
     <Compile Include="PAGE\Analysis\shengchanzuzhi.designer.cs">
       <DependentUpon>shengchanzuzhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\Analysis\PreLeakAgeRate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Analysis\PreLeakAgeRate.Designer.cs">
+      <DependentUpon>PreLeakAgeRate.cs</DependentUpon>
     </Compile>
     <Compile Include="PAGE\Analysis\tiekuangfenjichuxingneng.cs">
       <SubType>UserControl</SubType>
@@ -323,6 +337,12 @@
     <Compile Include="Popover\Analysis\Frm_FKFXN_csxg2.Designer.cs">
       <DependentUpon>Frm_FKFXN_csxg2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popover\Analysis\Frm_gaoluruluyuanliao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_gaoluruluyuanliao.Designer.cs">
+      <DependentUpon>Frm_gaoluruluyuanliao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Popover\Analysis\Frm_GLRL_update.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -400,6 +420,12 @@
     </Compile>
     <Compile Include="PAGE\Ore\tiekuangfenjichuxingneng.designer.cs">
       <DependentUpon>tiekuangfenjichuxingneng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_shaojieqitayuanliaojcxn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popover\Analysis\Frm_shaojieqitayuanliaojcxn.Designer.cs">
+      <DependentUpon>Frm_shaojieqitayuanliaojcxn.cs</DependentUpon>
     </Compile>
     <Compile Include="Popover\Analysis\Frm_SSZZ_clsjcx.cs">
       <SubType>Form</SubType>
@@ -649,6 +675,12 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Report_product.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\Report_product.Designer.cs">
+      <DependentUpon>Report_product.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Custom\Alarm.resx">
       <DependentUpon>Alarm.cs</DependentUpon>
     </EmbeddedResource>
@@ -660,6 +692,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PAGE\Analysis\gaoluruluyuanliao.resx">
       <DependentUpon>gaoluruluyuanliao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Analysis\PreLeakAgeRate.resx">
+      <DependentUpon>PreLeakAgeRate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PAGE\Analysis\Production_state.resx">
       <DependentUpon>Production_state.cs</DependentUpon>
@@ -736,6 +771,9 @@
     <EmbeddedResource Include="Popover\Analysis\Frm_FKFXN_csxg2.resx">
       <DependentUpon>Frm_FKFXN_csxg2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_gaoluruluyuanliao.resx">
+      <DependentUpon>Frm_gaoluruluyuanliao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Popover\Analysis\Frm_GLRL_update.resx">
       <DependentUpon>Frm_GLRL_update.cs</DependentUpon>
     </EmbeddedResource>
@@ -774,6 +812,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PAGE\Ore\tiekuangfenjichuxingneng.resx">
       <DependentUpon>tiekuangfenjichuxingneng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popover\Analysis\Frm_shaojieqitayuanliaojcxn.resx">
+      <DependentUpon>Frm_shaojieqitayuanliaojcxn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popover\Analysis\Frm_SSZZ_clsjcx.resx">
       <DependentUpon>Frm_SSZZ_clsjcx.cs</DependentUpon>
@@ -908,6 +949,9 @@
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Report_product.resx">
+      <DependentUpon>Report_product.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

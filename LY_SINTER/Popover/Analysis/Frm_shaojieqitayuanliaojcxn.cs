@@ -1,23 +1,22 @@
-﻿using System;
+﻿using DataBase;
+using LY_SINTER.Custom;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DataBase;
-using LY_SINTER.Custom;
-using LY_SINTER.Popover.Analysis;
 
-namespace LY_SINTER.PAGE.Analysis
+namespace LY_SINTER.Popover.Analysis
 {
-    public partial class shaojieqitayuanliaojcxn : UserControl
+    public partial class Frm_shaojieqitayuanliaojcxn : Form
     {
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
-        //public static bool isopen = false;
-        public shaojieqitayuanliaojcxn()
+        public static bool isopen = false;
+        public Frm_shaojieqitayuanliaojcxn()
         {
             InitializeComponent();
             dateTimePicker_value();
@@ -55,8 +54,9 @@ namespace LY_SINTER.PAGE.Analysis
                 string sql = "";
                 if (comboBox1.Text == "全部")
                 {
-                    sql = "select BATCH_NUM,b.MAT_DESC,ORE_CLASS,a.PLACE_ORIGIN,a.UNIT_PRICE,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S,C_P,C_LOT,C_H2O,C_ASH,C_PBO,C_ZN," +
-                    "C_CU,C_K2O,C_NA2O,C_TIO2 from M_OTH_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE " +
+                    sql = "select BATCH_NUM, b.MAT_DESC,ORE_CLASS,a.PLACE_ORIGIN,a.UNIT_PRICE,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S,C_P,C_C,C_LOT,C_MN,C_R,C_H2O,C_ASH," +
+                        "C_VOLATILES,C_TIO2,C_K2O,C_NA2O,C_PBO,C_ZNO,C_F,C_AS,C_CU,C_PB,C_ZN,C_K,C_NA,C_CR,C_NI,C_MNO,GRIT_8,GRIT_5_8,GRIT_3_5,GRIT_1_3,GRIT_0_1,GRIT_AVG,GRIT_C_03_U,GRIT_C_03_D" +
+                    "from M_OTH_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE " +
                     "and a.TIMESTAMP between '" + start + "' and '" + end + "'";
                 }
                 else
@@ -149,7 +149,7 @@ namespace LY_SINTER.PAGE.Analysis
             catch (Exception ee)
             {
 
-            } 
+            }
         }
         public void test()
         {
@@ -271,24 +271,8 @@ namespace LY_SINTER.PAGE.Analysis
             }
             catch (Exception ee)
             {
-                
+
             }
-
-        }
-        public void Timer_state()
-        {
-
-        }
-        public void _Clear()
-        {
-            this.Dispose();
-            GC.SuppressFinalize(this);
-        }
-        /// <summary>
-        /// 定时器停用
-        /// </summary>
-        public void Timer_stop()
-        {
 
         }
     }

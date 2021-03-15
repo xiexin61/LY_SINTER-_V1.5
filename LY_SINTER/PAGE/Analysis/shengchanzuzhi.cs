@@ -22,6 +22,7 @@ using NBSJ_MAIN_UC;
 using System.Timers;
 using LY_SINTER.Custom;
 using LY_SINTER.Popover.Analysis;
+using SCZZJH;
 
 namespace LY_SINTER.PAGE.Analysis
 {
@@ -602,6 +603,7 @@ namespace LY_SINTER.PAGE.Analysis
         //生产组织计划表格查询
         public void sszzjh()
         {
+            rowMergeView1.Rows.Clear();
             DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
             string sql = "select top(1) TIMESTAMP,POPCAL_N_OUT_PL,POPCAL_D_OUT_PL,POPCAL_A_OUT_PL from MC_POPCAL_RESULT order by TIMESTAMP desc;";
             DataTable table = dBSQL.GetCommand(sql);
@@ -611,21 +613,21 @@ namespace LY_SINTER.PAGE.Analysis
                 rowMergeView1.Rows.Add(row11);
                 //计划产量
                 this.rowMergeView1.Rows[0].Cells["time"].Value = "计划产量";
-                this.rowMergeView1.Rows[0].Cells["Column21"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column22"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column23"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column24"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column25"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column26"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["白班合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column27"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column28"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column29"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column30"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column31"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["Column32"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 60).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["夜班合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]).ToString("0.00");
-                this.rowMergeView1.Rows[0].Cells["合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_A_OUT_PL"]).ToString("0.00");
+                this.rowMergeView1.Rows[0].Cells["Column21"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column22"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column23"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column24"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column25"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column26"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["白班合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column27"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column28"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column29"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column30"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column31"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["Column32"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["夜班合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]).ToString("0.000");
+                this.rowMergeView1.Rows[0].Cells["合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_A_OUT_PL"]).ToString("0.000");
                 //int index = this.dataGridView1.Rows.Add();
                 /*DataGridViewRow row = new DataGridViewRow();
                 rowMergeView1.Rows.Add(row);
@@ -910,8 +912,9 @@ namespace LY_SINTER.PAGE.Analysis
                 MinorTickSize = 0,
                 Maximum = getnMax((int)list1.Max() + 1,(int)list1.Min() - 1),
                 Minimum = (int)list1.Min() - 1,
-                MajorStep= (int)list1.Min() - 1,
+                //MajorStep= (int)list1.Min() - 1,
             };
+            _valueAxis1_1.MajorStep = (_valueAxis1_1.Maximum - _valueAxis1_1.Minimum) / 4;
             _myPlotModel_1.Axes.Add(_valueAxis1_1);
             series1_1 = new OxyPlot.Series.LineSeries()
             {
@@ -949,9 +952,10 @@ namespace LY_SINTER.PAGE.Analysis
                 MinorTickSize = 0,
                 Maximum = getnMax((int)list2.Max() + 1,(int)list2.Min() - 1),
                 Minimum = (int)list2.Min() - 1,
-                MajorStep= (int)list2.Min() - 1,
+                //MajorStep= (int)list2.Min() - 1,
             };
-            
+            _valueAxis1_2.MajorStep = (_valueAxis1_2.Maximum - _valueAxis1_2.Minimum) / 4;
+
             _myPlotModel_1.Axes.Add(_valueAxis1_2);
             series1_2 = new OxyPlot.Series.LineSeries()
             {
@@ -989,8 +993,9 @@ namespace LY_SINTER.PAGE.Analysis
                 MinorTickSize = 0,
                 Maximum = getnMax((int)list3.Max() + 1,(int)list3.Min() - 1),
                 Minimum = (int)list3.Min() - 1,
-                MajorStep= (int)list3.Min() - 1,
+                //MajorStep= (int)list3.Min() - 1,
             };
+            _valueAxis1_3.MajorStep = (_valueAxis1_3.Maximum - _valueAxis1_3.Minimum) / 4;
             _myPlotModel_1.Axes.Add(_valueAxis1_3);
             series1_3 = new OxyPlot.Series.LineSeries()
             {
@@ -1014,7 +1019,7 @@ namespace LY_SINTER.PAGE.Analysis
 
             plotView2.Controller = PlotController;
 
-            //绑定数据
+            //绑定数据18130085606
         }
         //实时
         private void simpleButton3_click(object sender, EventArgs e)
@@ -1051,7 +1056,10 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 form_display.Activate();
             }
+            His_CL his_CL = new His_CL();
+            his_CL.Plan();
             sszzjh();
+            //sszzjh();
         }
         //产量数据查询按钮
         private void simpleButton5_click(object sender, EventArgs e)

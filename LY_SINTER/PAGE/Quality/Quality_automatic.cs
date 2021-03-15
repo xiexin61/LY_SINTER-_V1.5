@@ -197,6 +197,7 @@ namespace LY_SINTER.PAGE.Quality
                 IsPanEnabled = false,
                 AxisTickToLabelDistance = 0,
                 FontSize = 9.0,
+                StringFormat = "yyyy/MM/dd HH:mm",
             };
             _myPlotModel_1.Axes.Add(_dateAxis);
 
@@ -262,15 +263,12 @@ namespace LY_SINTER.PAGE.Quality
                 TextColor = OxyColors.Red,
                 FontSize = 9.0,
                 IsAxisVisible = false,
-                MajorStep = 1,
+                //MajorStep = 1,
                 MinorTickSize = 0,
             };
-
+            _valueAxis1_1.MajorStep = (_valueAxis1_1.Maximum - _valueAxis1_1.Minimum) / 4;
             _myPlotModel_1.Axes.Add(_valueAxis1_1);
-
-
             //添加曲线
-
             series1_1 = new OxyPlot.Series.LineSeries()
             {
                 Color = OxyColors.Red,
@@ -288,7 +286,6 @@ namespace LY_SINTER.PAGE.Quality
                 _valueAxis1_1.IsAxisVisible = true;
                 _myPlotModel_1.Series.Add(series1_1);
             }
-
             _valueAxis2_1 = new LinearAxis()
             {
 
@@ -989,6 +986,7 @@ namespace LY_SINTER.PAGE.Quality
                 IsPanEnabled = false,
                 AxisTickToLabelDistance = 0,
                 FontSize = 9.0,
+                StringFormat = "yyyy/MM/dd HH:mm",
                 //Title="时间",
             };
             _myPlotModel.Axes.Add(_dateAxis);
@@ -1018,7 +1016,7 @@ namespace LY_SINTER.PAGE.Quality
                 _valueAxis1.Minimum = (int)Mun1.Min() - 1;
                 _valueAxis1.MajorStep = 1;*/
                 int max = (int)Mun1.Max() + 1;
-                int min = ((int)Mun1.Min()) > 0 ? ((int)Mun1.Min()) : 0; ;
+                int min = ((int)Mun1.Min()) > 0 ? ((int)Mun1.Min()-1) : 0; ;
                 _valueAxis1.Maximum = getMax(max, min);
                 _valueAxis1.Minimum = min;
                 if (min == 0)
@@ -1080,7 +1078,7 @@ namespace LY_SINTER.PAGE.Quality
                 _valueAxis2.Minimum = (int)Mun2.Min() - 1;
                 _valueAxis2.MajorStep = 1;*/
                 int max = (int)Mun2.Max() + 1;
-                int min = ((int)Mun2.Min()) > 0 ? ((int)Mun2.Min()) : 0; ;
+                int min = ((int)Mun2.Min()) > 0 ? ((int)Mun2.Min()-1) : 0; ;
                 _valueAxis2.Maximum = getMax(max, min);
                 _valueAxis2.Minimum = min;
                 if (min == 0)
@@ -1140,7 +1138,7 @@ namespace LY_SINTER.PAGE.Quality
                 _valueAxis3.Minimum = (int)Mun3.Min() - 1;
                 _valueAxis3.MajorStep = 1;*/
                 int max = (int)Mun3.Max() + 1;
-                int min = ((int)Mun3.Min()) > 0 ? ((int)Mun3.Min()) : 0; ;
+                int min = ((int)Mun3.Min()) > 0 ? ((int)Mun3.Min()-1) : 0; ;
                 _valueAxis3.Maximum = getMax(max, min);
                 _valueAxis3.Minimum = min;
                 if (min == 0)
@@ -1248,6 +1246,7 @@ namespace LY_SINTER.PAGE.Quality
                 IsPanEnabled = false,
                 AxisTickToLabelDistance = 0,
                 FontSize = 9.0,
+                StringFormat = "yyyy/MM/dd HH:mm",
             };
             _myPlotMode2.Axes.Add(_dateAxis);
 
@@ -1333,7 +1332,7 @@ namespace LY_SINTER.PAGE.Quality
             if (LineS5.Count != 0)
             {
                 int max = (int)Mun5.Max() + 1;
-                int min = ((int)Mun5.Min()) > 0 ? ((int)Mun5.Min()) : 0; ;
+                int min = ((int)Mun5.Min()) > 0 ? ((int)Mun5.Min()-1) : 0; ;
                 _valueAxis5.Maximum = getMax(max, min);
                 _valueAxis5.Minimum = min;
                 if (min == 0)
@@ -1392,7 +1391,7 @@ namespace LY_SINTER.PAGE.Quality
                 //_valueAxis6.Minimum = ((int)Mun6.Min() - 1) > 0 ? ((int)Mun6.Min() - 1) : 0;
                 //_valueAxis6.MajorStep = 1;
                 int max = (int)Mun6.Max() + 1;
-                int min = ((int)Mun6.Min()) > 0 ? ((int)Mun6.Min()) : 0; ;
+                int min = ((int)Mun6.Min()) > 0 ? ((int)Mun6.Min()-1) : 0; ;
                 _valueAxis6.Maximum = getMax(max, min);
                 _valueAxis6.Minimum = min;
                 if (min == 0)
@@ -1447,7 +1446,7 @@ namespace LY_SINTER.PAGE.Quality
                 //_valueAxis7.Minimum = ((int)Mun7.Min() - 1) > 0 ? ((int)Mun7.Min() - 1) : 0;
                 //_valueAxis7.MajorStep = 1;
                 int max = (int)Mun7.Max() + 1;
-                int min = ((int)Mun7.Min()) > 0 ? ((int)Mun7.Min()) : 0; ;
+                int min = ((int)Mun7.Min()) > 0 ? ((int)Mun7.Min()-1) : 0; ;
                 _valueAxis7.Maximum = getMax(max, min);
                 _valueAxis7.Minimum = min;
                 if (min == 0)
@@ -1499,6 +1498,7 @@ namespace LY_SINTER.PAGE.Quality
                 IsPanEnabled = false,
                 AxisTickToLabelDistance = 0,
                 FontSize = 9.0,
+                StringFormat = "yyyy/MM/dd HH:mm",
             };
             _myPlotMode3.Axes.Add(_dateAxis3);
             _valueAxis8 = new LinearAxis()
@@ -1529,7 +1529,7 @@ namespace LY_SINTER.PAGE.Quality
                 //_valueAxis8.Minimum = ((int)Mun8.Min() - 1) > 0 ? ((int)Mun8.Min() - 1) : 0;
                 //_valueAxis8.MajorStep = 1;
                 int max = (int)Mun8.Max() + 1;
-                int min = ((int)Mun8.Min()) > 0 ? ((int)Mun8.Min()) : 0; ;
+                int min = ((int)Mun8.Min()) > 0 ? ((int)Mun8.Min()-1) : 0; ;
                 _valueAxis8.Maximum = getMax(max, min);
                 _valueAxis8.Minimum = min;
                 if (min == 0)
@@ -1586,7 +1586,7 @@ namespace LY_SINTER.PAGE.Quality
                 _valueAxis9.Minimum = ((int)Mun9.Min() - 1) > 0 ? ((int)Mun9.Min() - 1) : 0;
                 _valueAxis9.MajorStep = 1;*/
                 int max = (int)Mun9.Max() + 1;
-                int min = ((int)Mun9.Min()) > 0 ? ((int)Mun9.Min()) : 0; ;
+                int min = ((int)Mun9.Min()) > 0 ? ((int)Mun9.Min()-1) : 0; ;
                 _valueAxis9.Maximum = getMax(max, min);
                 _valueAxis9.Minimum = min;
                 if (min == 0)
@@ -1644,7 +1644,7 @@ namespace LY_SINTER.PAGE.Quality
                 _valueAxis10.Minimum = ((int)Mun10.Min() - 1) > 0 ? ((int)Mun10.Min() - 1) : 0;
                 _valueAxis10.MajorStep = 1;*/
                 int max = (int)Mun10.Max() + 1;
-                int min = ((int)Mun10.Min()) > 0 ? ((int)Mun10.Min()) : 0; ;
+                int min = ((int)Mun10.Min()) > 0 ? ((int)Mun10.Min()-1) : 0; ;
                 _valueAxis10.Maximum = getMax(max, min);
                 _valueAxis10.Minimum = min;
                 if (min == 0)
@@ -1755,6 +1755,7 @@ namespace LY_SINTER.PAGE.Quality
                 IsPanEnabled = false,
                 AxisTickToLabelDistance = 0,
                 FontSize = 9.0,
+                StringFormat = "yyyy/MM/dd HH:mm",
             };
             _myPlotMode4.Axes.Add(_dateAxis);
 
@@ -1912,7 +1913,7 @@ namespace LY_SINTER.PAGE.Quality
                 }
                 else
                 {
-                    _valueAxis13.MajorStep = min;
+                    _valueAxis13.MajorStep = (max-min)/4;
                 }
             }
             _myPlotMode4.Axes.Add(_valueAxis13);
@@ -2732,7 +2733,23 @@ namespace LY_SINTER.PAGE.Quality
         }
         private void check_event1_5(object sender, EventArgs e)
         {
-
+            try
+            {
+                plotView5.Model = null;
+                if (checkBox1_5.Checked == true)
+                {
+                    _valueAxis5_1.IsAxisVisible = true;
+                    _myPlotModel_1.Series.Add(series5_1);
+                }
+                if (checkBox1_5.Checked == false)
+                {
+                    _valueAxis5_1.IsAxisVisible = false;
+                    _myPlotModel_1.Series.Remove(series5_1);
+                }
+                plotView5.Model = _myPlotModel_1;
+            }
+            catch
+            { }
         }
         private void check_event1_6(object sender, EventArgs e)
         {
