@@ -25,6 +25,8 @@ namespace LY_SINTER.PAGE.Course
         public vLog _vLog { get; set; }
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
         Course_MODEL course_MODEL = new Course_MODEL();
+        #region
+        #endregion
         #region 历史曲线
         private PlotModel _myPlotModel;
         private DateTimeAxis _dateAxis;//X轴
