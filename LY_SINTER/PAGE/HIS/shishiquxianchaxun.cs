@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MIXHMICAL;
-using LiveCharts.Wpf;
-using DataBase;
+﻿using DataBase;
 using OxyPlot;
 using OxyPlot.Axes;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LY_SINTER.PAGE.HIS
 {
@@ -1184,8 +1179,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max1,
-                Minimum = min1,*/
+                Maximum = max1,
+                Minimum = min1,
             };
             if (min1 == max1 && min1 == 0)
             {
@@ -1198,7 +1193,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis1.MajorStep = max1 - min1;
+                    _valueAxis1.MajorStep = (max1 - min1)/2;
                 }
             }
             _myPlotModel.Axes.Add(_valueAxis1);
@@ -1304,8 +1299,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max2,
-                Minimum = min2,*/
+                Maximum = max2,
+                Minimum = min2,
                 //StartPosition = 0.5,
             };
             if (min2 == max2 && min2 == 0)
@@ -1319,7 +1314,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis3.MajorStep = max2 - min2;
+                    _valueAxis3.MajorStep = (max2 - min2)/2;
                 }
             }
             _myPlotMode3.Axes.Add(_valueAxis3);
@@ -1441,7 +1436,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis5.MajorStep = max3 - min3 ;
+                    _valueAxis5.MajorStep = (max3 - min3)/2 ;
                 }
             }
             
@@ -1563,7 +1558,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis7.MajorStep = max4 - min4;
+                    _valueAxis7.MajorStep = (max4 - min4)/2;
                 }
             }
             _myPlotMode7.Axes.Add(_valueAxis7);
@@ -1669,8 +1664,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max5,
-                Minimum = min5,*/
+                Maximum = max5,
+                Minimum = min5,
                 //StartPosition = 0.2,
             };
             if (min5 == max5 && min5 == 0)
@@ -1740,8 +1735,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max6,
-                Minimum = min6,*/
+                Maximum = max6,
+                Minimum = min6,
                 //StartPosition = 0.2,
             };
             if (min6 == max6 && min6 == 0)
@@ -1811,8 +1806,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max7,
-                Minimum = min7,*/
+                Maximum = max7,
+                Minimum = min7,
                 //StartPosition = 0.2,
             };
             if (min7 == max7 && min7 == 0)
@@ -1882,8 +1877,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max8,
-                Minimum = min8,*/
+                Maximum = max8,
+                Minimum = min8,
                 //StartPosition = 0.2,
             };
             if (min8 == max8 && min8 == 0)
@@ -1969,7 +1964,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis13.MajorStep = max9 - min9;
+                    _valueAxis13.MajorStep = (max9 - min9)/2;
                 }
             }
             /*if (min9 == 0)
@@ -2048,7 +2043,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis14.MajorStep = max10 - min10;
+                    _valueAxis14.MajorStep = (max10 - min10)/2;
                 }
             }
             /*if (min10 == 0)
@@ -2111,8 +2106,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max11,
-                Minimum = min11,*/
+                Maximum = max11,
+                Minimum = min11,
                 //MajorStep=17,
             };
             if (min11 == max11 && min11 == 0)
@@ -2126,7 +2121,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis15.MajorStep = max11 - min11;
+                    _valueAxis15.MajorStep = (max11 - min11)/2;
                 }
             }
             /*if (min11 == 0)
@@ -2189,8 +2184,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max12,
-                Minimum = min12,*/
+                Maximum = max12,
+                Minimum = min12,
                 //MajorStep=1,
             };
             if (min12 == max12 && min12 == 0)
@@ -2276,7 +2271,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis17.MajorStep = max13 - min13;
+                    _valueAxis17.MajorStep = (max13 - min13)/2;
                 }
             }
             /*if (min13 == 0)
@@ -2357,7 +2352,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis18.MajorStep = max14 - min14;
+                    _valueAxis18.MajorStep = (max14 - min14)/2;
                 }
             }
             /*f (min14 == 0)

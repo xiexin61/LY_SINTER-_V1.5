@@ -108,7 +108,11 @@ namespace LY_SINTER.PAGE.Quality
             C_text();
             MG_text();
             TIME_NOW();
-          
+            HIS_CURVE_SS(DateTime.Now.AddHours(-_HOUR), DateTime.Now);
+            HIS_CURVE_SS2(DateTime.Now.AddHours(-_HOUR), DateTime.Now);
+            HIS_CURVE_SS4(DateTime.Now.AddHours(-_HOUR), DateTime.Now);
+            HIS_CURVE_Test(DateTime.Now.AddMonths(-1), DateTime.Now);
+
             _Timer1 = new System.Timers.Timer(60000);//初始化颜色变化定时器响应事件
             _Timer1.Elapsed += (x, y) => { Timer1_Tick_1(); };//响应事件
             _Timer1.Enabled = true;
@@ -429,7 +433,8 @@ namespace LY_SINTER.PAGE.Quality
                 TextColor = OxyColors.SlateGray,
                 FontSize = 9.0,
                 IsAxisVisible = false,
-                MajorStep = ((int)Mun5.Max() + 1) - ((int)Mun5.Min() > 0 ? (int)Mun5.Min() : 0),
+                //MajorStep = ((int)Mun5.Max() + 1) - ((int)Mun5.Min() > 0 ? (int)Mun5.Min()/2 : 0),
+                MajorStep=2,
                 MinorTickSize = 0,
             };
             _myPlotModel_1.Axes.Add(_valueAxis5_1);
@@ -1168,9 +1173,9 @@ namespace LY_SINTER.PAGE.Quality
                 _myPlotModel.Series.Add(series3);
             }
             plotView1.Model = _myPlotModel;
-            var PlotController = new OxyPlot.PlotController();
+            /*var PlotController = new OxyPlot.PlotController();
             PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
-            plotView1.Controller = PlotController;
+            plotView1.Controller = PlotController;*/
             }
             catch (Exception EE)
             {
@@ -1477,9 +1482,9 @@ namespace LY_SINTER.PAGE.Quality
                 _myPlotMode2.Series.Add(series7);
             }
             plotView2.Model = _myPlotMode2;
-            var PlotController = new OxyPlot.PlotController();
+            /*var PlotController = new OxyPlot.PlotController();
             PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
-            plotView2.Controller = PlotController;
+            plotView2.Controller = PlotController;*/
                 //mg自动控制
                 _myPlotMode3 = new PlotModel()
             {
@@ -1675,7 +1680,7 @@ namespace LY_SINTER.PAGE.Quality
                 _myPlotMode3.Series.Add(series10);
             }
             plotView3.Model = _myPlotMode3;
-            plotView3.Controller = PlotController;
+            /*plotView3.Controller = PlotController;*/
 
             }
             catch (Exception ee)
@@ -2223,10 +2228,10 @@ namespace LY_SINTER.PAGE.Quality
                 _myPlotMode4.Series.Add(series18);
             }
             plotView4.Model = _myPlotMode4;
-            var PlotController = new OxyPlot.PlotController();
+            /*var PlotController = new OxyPlot.PlotController();
             PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
 
-            plotView4.Controller = PlotController;
+            plotView4.Controller = PlotController;*/
             }
             catch (Exception ee)
             {
