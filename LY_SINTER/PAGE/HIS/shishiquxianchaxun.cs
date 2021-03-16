@@ -1,107 +1,143 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MIXHMICAL;
-using LiveCharts.Wpf;
-using DataBase;
+﻿using DataBase;
 using OxyPlot;
 using OxyPlot.Axes;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Drawing;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LY_SINTER.PAGE.HIS
 {
     public partial class shishiquxianchaxun : UserControl
     {
         //时间
-        List<string> shijian = new List<string>();
+        private List<string> shijian = new List<string>();
+
         //1#主抽频率
-        List<double> zcpl1 = new List<double>();
+        private List<double> zcpl1 = new List<double>();
+
         //2#主抽频率
-        List<double> zcpl2 = new List<double>();
+        private List<double> zcpl2 = new List<double>();
+
         //1#主抽温度
-        List<double> zcwd1 = new List<double>();
+        private List<double> zcwd1 = new List<double>();
+
         //2#主抽温度
-        List<double> zcwd2 = new List<double>();
+        private List<double> zcwd2 = new List<double>();
+
         //1#主抽负压
-        List<double> zcfy1 = new List<double>();
+        private List<double> zcfy1 = new List<double>();
+
         //2#主抽负压
-        List<double> zcfy2 = new List<double>();
+        private List<double> zcfy2 = new List<double>();
+
         //1#主抽风量
-        List<double> zcfl1 = new List<double>();
+        private List<double> zcfl1 = new List<double>();
+
         //2#主抽风量
-        List<double> zcfl2 = new List<double>();
+        private List<double> zcfl2 = new List<double>();
+
         //时间
-        List<string> shijian1 = new List<string>();
+        private List<string> shijian1 = new List<string>();
+
         //终点位置
-        List<double> zdwz = new List<double>();
+        private List<double> zdwz = new List<double>();
+
         //布料厚度
-        List<double> blhd = new List<double>();
+        private List<double> blhd = new List<double>();
+
         //点火温度
-        List<double> dhwd = new List<double>();
+        private List<double> dhwd = new List<double>();
+
         //总料量
-        List<double> zll = new List<double>();
+        private List<double> zll = new List<double>();
+
         //一混加水量
-        List<double> yhjsl = new List<double>();
+        private List<double> yhjsl = new List<double>();
+
         //二混加水量
-        List<double> ehjsl = new List<double>();
+        private List<double> ehjsl = new List<double>();
+
         //混合料仓位
-        List<double> hhlcw = new List<double>();
+        private List<double> hhlcw = new List<double>();
+
         //圆辊转速
-        List<double> ygzs = new List<double>();
+        private List<double> ygzs = new List<double>();
+
         //烧结机机速
-        List<double> sjjs = new List<double>();
+        private List<double> sjjs = new List<double>();
+
         //环冷机机速
-        List<double> hljs = new List<double>();
+        private List<double> hljs = new List<double>();
+
         //1min一个数
         //时间
-        List<string> shijian_1 = new List<string>();
+        private List<string> shijian_1 = new List<string>();
+
         //1#主抽频率
-        List<double> zcpl1_1 = new List<double>();
+        private List<double> zcpl1_1 = new List<double>();
+
         //2#主抽频率
-        List<double> zcpl2_1 = new List<double>();
+        private List<double> zcpl2_1 = new List<double>();
+
         //1#主抽温度
-        List<double> zcwd1_1 = new List<double>();
+        private List<double> zcwd1_1 = new List<double>();
+
         //2#主抽温度
-        List<double> zcwd2_1 = new List<double>();
+        private List<double> zcwd2_1 = new List<double>();
+
         //1#主抽负压
-        List<double> zcfy1_1 = new List<double>();
+        private List<double> zcfy1_1 = new List<double>();
+
         //2#主抽负压
-        List<double> zcfy2_1 = new List<double>();
+        private List<double> zcfy2_1 = new List<double>();
+
         //1#主抽风量
-        List<double> zcfl1_1 = new List<double>();
+        private List<double> zcfl1_1 = new List<double>();
+
         //2#主抽风量
-        List<double> zcfl2_1 = new List<double>();
+        private List<double> zcfl2_1 = new List<double>();
+
         //时间
-        List<string> shijian1_1 = new List<string>();
+        private List<string> shijian1_1 = new List<string>();
+
         //终点位置
-        List<double> zdwz_1 = new List<double>();
+        private List<double> zdwz_1 = new List<double>();
+
         //布料厚度
-        List<double> blhd_1 = new List<double>();
+        private List<double> blhd_1 = new List<double>();
+
         //点火温度
-        List<double> dhwd_1 = new List<double>();
+        private List<double> dhwd_1 = new List<double>();
+
         //总料量
-        List<double> zll_1 = new List<double>();
+        private List<double> zll_1 = new List<double>();
+
         //一混加水量
-        List<double> yhjsl_1 = new List<double>();
+        private List<double> yhjsl_1 = new List<double>();
+
         //二混加水量
-        List<double> ehjsl_1 = new List<double>();
+        private List<double> ehjsl_1 = new List<double>();
+
         //混合料仓位
-        List<double> hhlcw_1 = new List<double>();
+        private List<double> hhlcw_1 = new List<double>();
+
         //圆辊转速
-        List<double> ygzs_1 = new List<double>();
+        private List<double> ygzs_1 = new List<double>();
+
         //烧结机机速
-        List<double> sjjs_1 = new List<double>();
+        private List<double> sjjs_1 = new List<double>();
+
         //环冷机机速
-        List<double> hljs_1 = new List<double>();
+        private List<double> hljs_1 = new List<double>();
+
         //曲线定义
         public OxyPlot.Series.LineSeries checkBox1_1;
+
         public OxyPlot.Series.LineSeries checkBox2_1;
         public OxyPlot.Series.LineSeries checkBox3_1;
         public OxyPlot.Series.LineSeries checkBox4_1;
@@ -119,8 +155,10 @@ namespace LY_SINTER.PAGE.HIS
         public OxyPlot.Series.LineSeries checkBox16_1;
         public OxyPlot.Series.LineSeries checkBox17_1;
         public OxyPlot.Series.LineSeries checkBox18_1;
+
         //曲线视图定义
         private PlotModel _myPlotModel;
+
         private PlotModel _myPlotMode2;
         private PlotModel _myPlotMode3;
         private PlotModel _myPlotMode4;
@@ -138,8 +176,10 @@ namespace LY_SINTER.PAGE.HIS
         private PlotModel _myPlotModel6;
         private PlotModel _myPlotModel7;
         private PlotModel _myPlotModel8;
+
         //Y轴定义
         private LinearAxis _valueAxis1;//Y轴
+
         private LinearAxis _valueAxis2;//Y轴
         private LinearAxis _valueAxis3;//Y轴
         private LinearAxis _valueAxis4;//Y轴
@@ -157,8 +197,10 @@ namespace LY_SINTER.PAGE.HIS
         private LinearAxis _valueAxis16;//Y轴
         private LinearAxis _valueAxis17;//Y轴
         private LinearAxis _valueAxis18;//Y轴
+
         //X轴定义
         private DateTimeAxis _dateAxis1;//X轴
+
         private DateTimeAxis _dateAxis2;//X轴
         private DateTimeAxis _dateAxis3;//X轴
         private DateTimeAxis _dateAxis4;//X轴
@@ -176,27 +218,30 @@ namespace LY_SINTER.PAGE.HIS
         private DateTimeAxis _dateAxis16;//X轴
         private DateTimeAxis _dateAxis17;//X轴
         private DateTimeAxis _dateAxis18;//X轴
-        //绑定数据点定义
-        List<DataPoint> Line1 = new List<DataPoint>();
-        List<DataPoint> Line2 = new List<DataPoint>();
-        List<DataPoint> Line3 = new List<DataPoint>();
-        List<DataPoint> Line4 = new List<DataPoint>();
-        List<DataPoint> Line5 = new List<DataPoint>();
-        List<DataPoint> Line6 = new List<DataPoint>();
-        List<DataPoint> Line7 = new List<DataPoint>();
-        List<DataPoint> Line8 = new List<DataPoint>();
-        List<DataPoint> Line9 = new List<DataPoint>();
-        List<DataPoint> Line10 = new List<DataPoint>();
-        List<DataPoint> Line11 = new List<DataPoint>();
-        List<DataPoint> Line12 = new List<DataPoint>();
-        List<DataPoint> Line13 = new List<DataPoint>();
-        List<DataPoint> Line14 = new List<DataPoint>();
-        List<DataPoint> Line15 = new List<DataPoint>();
-        List<DataPoint> Line16 = new List<DataPoint>();
-        List<DataPoint> Line17 = new List<DataPoint>();
-        List<DataPoint> Line18 = new List<DataPoint>();
 
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        //绑定数据点定义
+        private List<DataPoint> Line1 = new List<DataPoint>();
+
+        private List<DataPoint> Line2 = new List<DataPoint>();
+        private List<DataPoint> Line3 = new List<DataPoint>();
+        private List<DataPoint> Line4 = new List<DataPoint>();
+        private List<DataPoint> Line5 = new List<DataPoint>();
+        private List<DataPoint> Line6 = new List<DataPoint>();
+        private List<DataPoint> Line7 = new List<DataPoint>();
+        private List<DataPoint> Line8 = new List<DataPoint>();
+        private List<DataPoint> Line9 = new List<DataPoint>();
+        private List<DataPoint> Line10 = new List<DataPoint>();
+        private List<DataPoint> Line11 = new List<DataPoint>();
+        private List<DataPoint> Line12 = new List<DataPoint>();
+        private List<DataPoint> Line13 = new List<DataPoint>();
+        private List<DataPoint> Line14 = new List<DataPoint>();
+        private List<DataPoint> Line15 = new List<DataPoint>();
+        private List<DataPoint> Line16 = new List<DataPoint>();
+        private List<DataPoint> Line17 = new List<DataPoint>();
+        private List<DataPoint> Line18 = new List<DataPoint>();
+
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+
         //int sjd = 4;
         public shishiquxianchaxun()
         {
@@ -238,8 +283,7 @@ namespace LY_SINTER.PAGE.HIS
                     quxian();
                     Thread.Sleep(60000);
                 }
-                
-                
+
                 /*for (int i = 1; i < 100; i++)
                 {
                     da = da.AddHours(1);
@@ -263,6 +307,7 @@ namespace LY_SINTER.PAGE.HIS
             ///shuju();
             //min1();//一分钟取一个数(前6条曲线)
         }
+
         //定时器1min刷新
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -289,9 +334,8 @@ namespace LY_SINTER.PAGE.HIS
         {
             try
             {
-
-                string sql1 = "select top 1 ISNULL(T_PLC_MA_FAN_1_SP_3S,0),ISNULL(T_PLC_MA_FAN_2_SP_3S,0),ISNULL(T_MA_SB_1_FLUE_TE_3S,0),ISNULL(T_MA_SB_2_FLUE_TE_3S,0),ISNULL(T_MA_SB_1_FLUE_PT_3S,0),ISNULL(T_MA_SB_2_FLUE_PT_3S,0),"+
-                    "ISNULL(T_MA_SB_1_FLUE_FT_3S,0),ISNULL(T_MA_SB_2_FLUE_FT_3S,0),ISNULL(C_THICK_PV_3S,0),ISNULL(T_TOTAL_SP_W_3S,0),ISNULL(T_1M_FT_SP_3S,0),ISNULL(T_2M_FLOW_SP_3S,0),ISNULL(T_BLEND_LEVEL_3S,0),"+
+                string sql1 = "select top 1 ISNULL(T_PLC_MA_FAN_1_SP_3S,0),ISNULL(T_PLC_MA_FAN_2_SP_3S,0),ISNULL(T_MA_SB_1_FLUE_TE_3S,0),ISNULL(T_MA_SB_2_FLUE_TE_3S,0),ISNULL(T_MA_SB_1_FLUE_PT_3S,0),ISNULL(T_MA_SB_2_FLUE_PT_3S,0)," +
+                    "ISNULL(T_MA_SB_1_FLUE_FT_3S,0),ISNULL(T_MA_SB_2_FLUE_FT_3S,0),ISNULL(C_THICK_PV_3S,0),ISNULL(T_TOTAL_SP_W_3S,0),ISNULL(T_1M_FT_SP_3S,0),ISNULL(T_2M_FLOW_SP_3S,0),ISNULL(T_BLEND_LEVEL_3S,0)," +
                     "ISNULL(T_STICK_SP_3S,0),ISNULL(T_SIN_MS_SP_3S,0),ISNULL(T_RC_SPEED_SP_3S,0),isnull(T_IG_01_TE_3S,0),isnull(T_IG_02_TE_3S,0),isnull(T_IG_03_TE_3S,0) from C_PLC_3S order by TIMESTAMP desc";
                 DataTable dataTable1 = dBSQL.GetCommand(sql1);
                 if (dataTable1.Rows.Count > 0)
@@ -302,16 +346,14 @@ namespace LY_SINTER.PAGE.HIS
                     //环冷机机速：改为C_CFP_PLC_1MIN表，CFP_PLC_RC_SPEED_PV字段；（曲线查询能否改为
                     var sql_1 = "select top(1) F_PLC_SIN_SPEED_PV from C_MFI_PLC_1MIN order by TIMESTAMP desc";
                     DataTable table_1 = dBSQL.GetCommand(sql_1);
-                    if (table_1.Rows.Count > 0 )
+                    if (table_1.Rows.Count > 0)
                     {
                         sjjjs = float.Parse(table_1.Rows[0][0].ToString());
-                        
                     }
                     var sql_2 = "select CFP_PLC_RC_SPEED_PV from C_CFP_PLC_1MIN order by TIMESTAMP desc";
                     DataTable table_2 = dBSQL.GetCommand(sql_2);
                     if (table_2.Rows.Count > 0)
                     {
-                      
                         hljjs = float.Parse(table_2.Rows[0][0].ToString());
                     }
                     float zcpl1 = float.Parse(dataTable1.Rows[0][0].ToString());
@@ -330,7 +372,6 @@ namespace LY_SINTER.PAGE.HIS
                     float ehjsl = float.Parse(dataTable1.Rows[0][11].ToString());
                     float hhlcw = float.Parse(dataTable1.Rows[0][12].ToString());
                     float ygzs = float.Parse(dataTable1.Rows[0][13].ToString());
-                  
 
                     this.textBox1.Text = zcpl1.ToString();
                     this.textBox2.Text = zcpl2.ToString();
@@ -383,9 +424,9 @@ namespace LY_SINTER.PAGE.HIS
                         try
                         {
                             //超过上限变红，低于下限变黄
-                            string sql4 = "select ISNULL(PAR_MA_FAN_SP_MAX,0),ISNULL(PAR_MA_FAN_SP_MIN,0),ISNULL(PAR_MA_SB_FLUE_TE_MAX,0),ISNULL(PAR_MA_SB_FLUE_TE_MIN,0),ISNULL(PAR_MA_SB_FLUE_PT_MAX,0),ISNULL(PAR_MA_SB_FLUE_PT_MIN,0),"+
-                                "ISNULL(PAR_MA_SB_FLUE_FT_MAX,0),ISNULL(PAR_MA_SB_FLUE_FT_MIN,0),ISNULL(PAR_X_BTP_MAX,0),ISNULL(PAR_X_BTP_MIN,0),ISNULL(PAR_THICK_PV_MAX,0),ISNULL(PAR_THICK_PV_MIN,0),ISNULL(PAR_IG_TE_MAX,0),"+
-                                "ISNULL(PAR_IG_TE_MIN,0),ISNULL(PAR_TOTAL_SP_W_MAX,0),ISNULL(PAR_TOTAL_SP_W_MIN,0),ISNULL(PAR_1M_FT_SP_MAX,0),ISNULL(PAR_1M_FT_SP_MIN,0),ISNULL(PAR_2M_FLOW_SP_MAX,0),ISNULL(PAR_2M_FLOW_SP_MIN,0),"+
+                            string sql4 = "select ISNULL(PAR_MA_FAN_SP_MAX,0),ISNULL(PAR_MA_FAN_SP_MIN,0),ISNULL(PAR_MA_SB_FLUE_TE_MAX,0),ISNULL(PAR_MA_SB_FLUE_TE_MIN,0),ISNULL(PAR_MA_SB_FLUE_PT_MAX,0),ISNULL(PAR_MA_SB_FLUE_PT_MIN,0)," +
+                                "ISNULL(PAR_MA_SB_FLUE_FT_MAX,0),ISNULL(PAR_MA_SB_FLUE_FT_MIN,0),ISNULL(PAR_X_BTP_MAX,0),ISNULL(PAR_X_BTP_MIN,0),ISNULL(PAR_THICK_PV_MAX,0),ISNULL(PAR_THICK_PV_MIN,0),ISNULL(PAR_IG_TE_MAX,0)," +
+                                "ISNULL(PAR_IG_TE_MIN,0),ISNULL(PAR_TOTAL_SP_W_MAX,0),ISNULL(PAR_TOTAL_SP_W_MIN,0),ISNULL(PAR_1M_FT_SP_MAX,0),ISNULL(PAR_1M_FT_SP_MIN,0),ISNULL(PAR_2M_FLOW_SP_MAX,0),ISNULL(PAR_2M_FLOW_SP_MIN,0)," +
                                 "ISNULL(PAR_BLEND_LEVEL_MAX,0),ISNULL(PAR_BLEND_LEVEL_MIN,0),ISNULL(PAR_STICK_SP_MAX,0),ISNULL(PAR_STICK_SP_MIN,0),ISNULL(PAR_SIN_MS_SP_MAX,0),ISNULL(PAR_SIN_MS_SP_MIN,0),ISNULL(PAR_RC_SPEED_SP_MAX,0),ISNULL(PAR_RC_SPEED_SP_MIN,0) from CFG_R_T_CURVE_INTERFACE_PAR";
                             DataTable dataTable4 = dBSQL.GetCommand(sql4);
                             if (dataTable4.Rows.Count > 0)
@@ -605,7 +646,6 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         catch
                         {
-
                         }
                     }
                     else
@@ -634,34 +674,36 @@ namespace LY_SINTER.PAGE.HIS
         }
 
         //准备表数据
-        double max1, min1;
-        double max2, min2;
-        double max3, min3;
-        double max4, min4;
-        double max5, min5;
-        double max6, min6;
-        double max7, min7;
-        double max8, min8;
-        double max9, min9;
-        double max10, min10;
-        double max11, min11;
-        double max12, min12;
-        double max13, min13;
-        double max14, min14;
-        List<double> Num1 = new List<double>();
-        List<double> Num2 = new List<double>();
-        List<double> Num3 = new List<double>();
-        List<double> Num4 = new List<double>();
-        List<double> Num5 = new List<double>();
-        List<double> Num6 = new List<double>();
-        List<double> Num7 = new List<double>();
-        List<double> Num8 = new List<double>();
-        List<double> Num9 = new List<double>();
-        List<double> Num10 = new List<double>();
-        List<double> Num11 = new List<double>();
-        List<double> Num12 = new List<double>();
-        List<double> Num13 = new List<double>();
-        List<double> Num14 = new List<double>();
+        private double max1, min1;
+
+        private double max2, min2;
+        private double max3, min3;
+        private double max4, min4;
+        private double max5, min5;
+        private double max6, min6;
+        private double max7, min7;
+        private double max8, min8;
+        private double max9, min9;
+        private double max10, min10;
+        private double max11, min11;
+        private double max12, min12;
+        private double max13, min13;
+        private double max14, min14;
+        private List<double> Num1 = new List<double>();
+        private List<double> Num2 = new List<double>();
+        private List<double> Num3 = new List<double>();
+        private List<double> Num4 = new List<double>();
+        private List<double> Num5 = new List<double>();
+        private List<double> Num6 = new List<double>();
+        private List<double> Num7 = new List<double>();
+        private List<double> Num8 = new List<double>();
+        private List<double> Num9 = new List<double>();
+        private List<double> Num10 = new List<double>();
+        private List<double> Num11 = new List<double>();
+        private List<double> Num12 = new List<double>();
+        private List<double> Num13 = new List<double>();
+        private List<double> Num14 = new List<double>();
+
         //int sjd = int.Parse(comboBox1.Text);
         public void shishiquxian()
         {
@@ -684,8 +726,6 @@ namespace LY_SINTER.PAGE.HIS
             Line17.Clear();
             Line18.Clear();
 
-
-            
             try
             {
                 /*string a1 =comboBox1.SelectedText.ToString();
@@ -697,14 +737,13 @@ namespace LY_SINTER.PAGE.HIS
                 {
                     if (comboBox1.InvokeRequired)
                     {
-                        Action xx =() => { sjd = int.Parse(comboBox1.Text); };
+                        Action xx = () => { sjd = int.Parse(comboBox1.Text); };
                         this.comboBox1.Invoke(xx);
                     }
                     else
                     {
                         sjd = int.Parse(comboBox1.Text);
                     }
-
                 }
                 catch (Exception e)
                 {
@@ -752,7 +791,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line2 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][2]));
                         Line2.Add(line2);
-                        
+
                         DataPoint line3 = new DataPoint();
                         if (dataTable1.Rows[a][3].ToString() != "")
                         {
@@ -768,7 +807,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line3 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][3]));
                         Line3.Add(line3);
-                        
+
                         DataPoint line4 = new DataPoint();
                         if (dataTable1.Rows[a][4].ToString() != "")
                         {
@@ -784,7 +823,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line4 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][4]));
                         Line4.Add(line4);
-                        
+
                         DataPoint line5 = new DataPoint();
                         if (dataTable1.Rows[a][5].ToString() != "")
                         {
@@ -800,7 +839,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line5 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][5]));
                         Line5.Add(line5);
-                        
+
                         DataPoint line6 = new DataPoint();
                         if (dataTable1.Rows[a][6].ToString() != "")
                         {
@@ -816,7 +855,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line6 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][6]));
                         Line6.Add(line6);
-                        
+
                         DataPoint line7 = new DataPoint();
                         if (dataTable1.Rows[a][7].ToString() != "")
                         {
@@ -832,7 +871,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line7 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][7]));
                         Line7.Add(line7);
-                        
+
                         DataPoint line8 = new DataPoint();
                         if (dataTable1.Rows[a][8].ToString() != "")
                         {
@@ -848,7 +887,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line8 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][8]));
                         Line8.Add(line8);
-                        
+
                         DataPoint line10 = new DataPoint();
                         if (dataTable1.Rows[a][9].ToString() != "")
                         {
@@ -864,7 +903,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line10 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][9]));
                         Line10.Add(line10);
-                        
+
                         DataPoint line12 = new DataPoint();
                         if (dataTable1.Rows[a][10].ToString() != "")
                         {
@@ -880,7 +919,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line12 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][10]));
                         Line12.Add(line12);
-                        
+
                         DataPoint line13 = new DataPoint();
                         if (dataTable1.Rows[a][11].ToString() != "")
                         {
@@ -896,7 +935,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line13 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][11]));
                         Line13.Add(line13);
-                        
+
                         DataPoint line14 = new DataPoint();
                         if (dataTable1.Rows[a][12].ToString() != "")
                         {
@@ -912,7 +951,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line14 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][12]));
                         Line14.Add(line14);
-                        
+
                         DataPoint line15 = new DataPoint();
                         if (dataTable1.Rows[a][13].ToString() != "")
                         {
@@ -928,7 +967,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line15 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][13]));
                         Line15.Add(line15);
-                        
+
                         max11 = (int)Num11.Max() + 1;
                         min11 = (int)Num11.Min();
                         DataPoint line16 = new DataPoint();
@@ -946,10 +985,6 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //DataPoint line16 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][14]));
                         Line16.Add(line16);
-                        
-                     
-                      
-                        
                     }
 
                     //烧结机机速
@@ -974,9 +1009,7 @@ namespace LY_SINTER.PAGE.HIS
                             }
                             //DataPoint line17 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][15]));
                             Line17.Add(line17);
-                            
                         }
-
                     }
                     //环冷机机速
                     var sql_3 = "select TIMESTAMP, CFP_PLC_RC_SPEED_PV from C_CFP_PLC_1MIN where TIMESTAMP between '" + DateTime.Now.AddHours(-sjd) + "' and '" + DateTime.Now + "' order by TIMESTAMP";
@@ -1038,9 +1071,7 @@ namespace LY_SINTER.PAGE.HIS
                         DataPoint line11 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[i]["TIMESTAMP"]), Convert.ToDouble(c));
                         Line11.Add(line11);
 
-
                         Num7.Add(c);
-
                     }
                     string sql_sj = "select TIMESTAMP,BTPCAL_OUT_TOTAL_AVG_X_BTP from MC_BTPCAL_result_1min where TIMESTAMP between '" + DateTime.Now.AddHours(-sjd) + "' and '" + DateTime.Now + "' order by TIMESTAMP";
                     DataTable dataTable_sj = dBSQL.GetCommand(sql_sj);
@@ -1068,11 +1099,10 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         max5 = (int)Num5.Max() + 1;
                         min5 = (int)Num5.Min();
-
                     }
                     max7 = (int)Num7.Max() + 1;
                     min7 = (int)Num7.Min();
-                    max1 = (Num1.Count==0)?0:(int)Num1.Max() + 1;
+                    max1 = (Num1.Count == 0) ? 0 : (int)Num1.Max() + 1;
                     min1 = (Num1.Count == 0) ? 0 : (int)Num1.Min() - 1;
                     max2 = (Num2.Count == 0) ? 0 : (int)Num2.Max() + 1;
                     min2 = (Num2.Count == 0) ? 0 : (int)Num2.Min() - 1;
@@ -1081,7 +1111,7 @@ namespace LY_SINTER.PAGE.HIS
                     max4 = (Num4.Count == 0) ? 0 : (int)Num4.Max() + 1;
                     min4 = (Num4.Count == 0) ? 0 : (int)Num4.Min() - 1;
                     max6 = (Num6.Count == 0) ? 0 : (int)Num6.Max() + 1;
-                    min6 = (Num6.Count == 0) ? 0 : (int)Num6.Min() - 1; 
+                    min6 = (Num6.Count == 0) ? 0 : (int)Num6.Min() - 1;
                     max8 = (Num8.Count == 0) ? 0 : (int)Num8.Max() + 1;
                     min8 = (Num8.Count == 0) ? 0 : (int)Num8.Min() - 1;
                     max9 = (Num9.Count == 0) ? 0 : (int)Num9.Max() + 1;
@@ -1094,8 +1124,6 @@ namespace LY_SINTER.PAGE.HIS
                     min13 = (Num13.Count == 0) ? 0 : (int)Num13.Min() - 1;
                     max14 = (Num14.Count == 0) ? 0 : (int)Num14.Max() + 1;
                     min14 = (Num14.Count == 0) ? 0 : (int)Num14.Min() - 1;
-
-                    
                 }
                 else
                 {
@@ -1119,12 +1147,11 @@ namespace LY_SINTER.PAGE.HIS
                     sjjs.Add(0);
                     hljs.Add(0);
                 }
-
-
             }
             catch
             { }
         }
+
         public static int getMax(int max, int min)
         {
             int s = 0;
@@ -1138,7 +1165,6 @@ namespace LY_SINTER.PAGE.HIS
                 {
                     s = max;
                 }
-
             }
             else
             {
@@ -1146,6 +1172,7 @@ namespace LY_SINTER.PAGE.HIS
             }
             return s;
         }
+
         //定义曲线和坐标轴
         public void quxian()
         {
@@ -1165,7 +1192,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsPanEnabled = false,
                 AxisTickToLabelDistance = 0,
                 FontSize = 5.0,
-                IsAxisVisible=false,
+                IsAxisVisible = false,
             };
             _myPlotModel.Axes.Add(_dateAxis1);
             _valueAxis1 = new LinearAxis()
@@ -1184,21 +1211,21 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max1,
-                Minimum = min1,*/
+                Maximum = max1,
+                Minimum = min1,
             };
             if (min1 == max1 && min1 == 0)
             {
             }
             else
             {
-                if(min1 == 0)
+                if (min1 == 0)
                 {
                     _valueAxis1.MajorStep = max1;
                 }
                 else
                 {
-                    _valueAxis1.MajorStep = max1 - min1;
+                    _valueAxis1.MajorStep = (max1 - min1) / 2;
                 }
             }
             _myPlotModel.Axes.Add(_valueAxis1);
@@ -1304,8 +1331,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max2,
-                Minimum = min2,*/
+                Maximum = max2,
+                Minimum = min2,
                 //StartPosition = 0.5,
             };
             if (min2 == max2 && min2 == 0)
@@ -1319,7 +1346,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis3.MajorStep = max2 - min2;
+                    _valueAxis3.MajorStep = (max2 - min2) / 2;
                 }
             }
             _myPlotMode3.Axes.Add(_valueAxis3);
@@ -1441,10 +1468,10 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis5.MajorStep = max3 - min3 ;
+                    _valueAxis5.MajorStep = (max3 - min3) / 2;
                 }
             }
-            
+
             _myPlotMode5.Axes.Add(_valueAxis5);
             checkBox5_1 = new OxyPlot.Series.LineSeries()
             {
@@ -1563,7 +1590,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis7.MajorStep = max4 - min4;
+                    _valueAxis7.MajorStep = (max4 - min4) / 2;
                 }
             }
             _myPlotMode7.Axes.Add(_valueAxis7);
@@ -1669,8 +1696,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max5,
-                Minimum = min5,*/
+                Maximum = max5,
+                Minimum = min5,
                 //StartPosition = 0.2,
             };
             if (min5 == max5 && min5 == 0)
@@ -1687,7 +1714,7 @@ namespace LY_SINTER.PAGE.HIS
                     _valueAxis9.MajorStep = (max5 - min5) / 2;
                 }
             }
-            
+
             _myPlotMode9.Axes.Add(_valueAxis9);
             checkBox9_1 = new OxyPlot.Series.LineSeries()
             {
@@ -1740,8 +1767,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max6,
-                Minimum = min6,*/
+                Maximum = max6,
+                Minimum = min6,
                 //StartPosition = 0.2,
             };
             if (min6 == max6 && min6 == 0)
@@ -1758,7 +1785,7 @@ namespace LY_SINTER.PAGE.HIS
                     _valueAxis10.MajorStep = (max6 - min6) / 2;
                 }
             }
-            
+
             _myPlotModel0.Axes.Add(_valueAxis10);
             checkBox10_1 = new OxyPlot.Series.LineSeries()
             {
@@ -1811,8 +1838,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max7,
-                Minimum = min7,*/
+                Maximum = max7,
+                Minimum = min7,
                 //StartPosition = 0.2,
             };
             if (min7 == max7 && min7 == 0)
@@ -1829,7 +1856,7 @@ namespace LY_SINTER.PAGE.HIS
                     _valueAxis11.MajorStep = (max7 - min7) / 2;
                 }
             }
-            
+
             _myPlotModel1.Axes.Add(_valueAxis11);
             checkBox11_1 = new OxyPlot.Series.LineSeries()
             {
@@ -1882,8 +1909,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max8,
-                Minimum = min8,*/
+                Maximum = max8,
+                Minimum = min8,
                 //StartPosition = 0.2,
             };
             if (min8 == max8 && min8 == 0)
@@ -1900,7 +1927,7 @@ namespace LY_SINTER.PAGE.HIS
                     _valueAxis12.MajorStep = (max8 - min8) / 2;
                 }
             }
-            
+
             _myPlotModel2.Axes.Add(_valueAxis12);
             checkBox12_1 = new OxyPlot.Series.LineSeries()
             {
@@ -1969,7 +1996,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis13.MajorStep = max9 - min9;
+                    _valueAxis13.MajorStep = (max9 - min9) / 2;
                 }
             }
             /*if (min9 == 0)
@@ -2048,7 +2075,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis14.MajorStep = max10 - min10;
+                    _valueAxis14.MajorStep = (max10 - min10) / 2;
                 }
             }
             /*if (min10 == 0)
@@ -2111,8 +2138,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max11,
-                Minimum = min11,*/
+                Maximum = max11,
+                Minimum = min11,
                 //MajorStep=17,
             };
             if (min11 == max11 && min11 == 0)
@@ -2126,7 +2153,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis15.MajorStep = max11 - min11;
+                    _valueAxis15.MajorStep = (max11 - min11) / 2;
                 }
             }
             /*if (min11 == 0)
@@ -2189,8 +2216,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max12,
-                Minimum = min12,*/
+                Maximum = max12,
+                Minimum = min12,
                 //MajorStep=1,
             };
             if (min12 == max12 && min12 == 0)
@@ -2207,7 +2234,7 @@ namespace LY_SINTER.PAGE.HIS
                     _valueAxis16.MajorStep = (max12 - min12) / 2;
                 }
             }
-            
+
             _myPlotModel6.Axes.Add(_valueAxis16);
             checkBox16_1 = new OxyPlot.Series.LineSeries()
             {
@@ -2276,7 +2303,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis17.MajorStep = max13 - min13;
+                    _valueAxis17.MajorStep = (max13 - min13) / 2;
                 }
             }
             /*if (min13 == 0)
@@ -2357,7 +2384,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis18.MajorStep = max14 - min14;
+                    _valueAxis18.MajorStep = (max14 - min14) / 2;
                 }
             }
             /*f (min14 == 0)
@@ -2384,7 +2411,6 @@ namespace LY_SINTER.PAGE.HIS
             plotView14.Model = _myPlotModel8;
         }
 
-
         //单击隐藏曲线
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
@@ -2408,6 +2434,7 @@ namespace LY_SINTER.PAGE.HIS
             catch
             { }
         }
+
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -2429,8 +2456,8 @@ namespace LY_SINTER.PAGE.HIS
             }
             catch
             { }
-
         }
+
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -2453,6 +2480,7 @@ namespace LY_SINTER.PAGE.HIS
             catch
             { }
         }
+
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -2498,6 +2526,7 @@ namespace LY_SINTER.PAGE.HIS
             catch
             { }
         }
+
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -2521,8 +2550,6 @@ namespace LY_SINTER.PAGE.HIS
             { }
         }
 
-        
-
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -2545,6 +2572,7 @@ namespace LY_SINTER.PAGE.HIS
             catch
             { }
         }
+
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -2567,6 +2595,7 @@ namespace LY_SINTER.PAGE.HIS
             catch
             { }
         }
+
         private void checkBox18_CheckedChanged(object sender, EventArgs e)
         {
             try
@@ -2730,6 +2759,7 @@ namespace LY_SINTER.PAGE.HIS
             catch
             { }
         }
+
         private void checkBox15_CheckedChanged(object sender, EventArgs e)
         {
             plotView12.Model = null;
@@ -2848,12 +2878,12 @@ namespace LY_SINTER.PAGE.HIS
             //quxianfuzhi();//曲线赋值
             //zhongdianweizhiquxian();//终点位置曲线赋值
         }
+
         /// <summary>
         /// 自动缩放
         /// </summary>
         public void tableLayoutPanel23_label()
         {
-           
             if (checkBox1.Checked == false && checkBox2.Checked == false)
             {
                 tableLayoutPanel23.RowStyles[0].Height = 0;
@@ -2894,7 +2924,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 tableLayoutPanel23.RowStyles[4].Height = 8;
             }
-            if(checkBox9.Checked == false)
+            if (checkBox9.Checked == false)
             {
                 tableLayoutPanel23.RowStyles[5].Height = 0;
             }
@@ -2966,8 +2996,8 @@ namespace LY_SINTER.PAGE.HIS
             {
                 tableLayoutPanel23.RowStyles[13].Height = 8;
             }
-
         }
+
         public void _Clear()
         {
         }
