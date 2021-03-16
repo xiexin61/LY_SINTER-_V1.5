@@ -197,6 +197,7 @@ namespace LY_SINTER.PAGE.HIS
         List<DataPoint> Line18 = new List<DataPoint>();
 
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        //int sjd = 4;
         public shishiquxianchaxun()
         {
             InitializeComponent();
@@ -220,7 +221,7 @@ namespace LY_SINTER.PAGE.HIS
             //quxiandingyi();//曲线定义
             //quxianfuzhi();//曲线赋值
             //zhongdianweizhiquxian();//终点位置曲线赋值
-            int sjd = int.Parse(comboBox1.Text);
+            //int sjd = int.Parse(comboBox1.Text);
             Task.Factory.StartNew(() =>
             {
                 /*while (true)
@@ -230,6 +231,7 @@ namespace LY_SINTER.PAGE.HIS
                     HIS_CURVE_SS4(DateTime.Now.AddHours(-12), DateTime.Now);
                     Thread.Sleep(60000);
                 }*/
+                //int sjd = int.Parse(comboBox1.Text);
                 while (true)
                 {
                     shishiquxian();
@@ -686,7 +688,28 @@ namespace LY_SINTER.PAGE.HIS
             
             try
             {
-                int sjd = int.Parse(comboBox1.Text);
+                /*string a1 =comboBox1.SelectedText.ToString();
+                string b =comboBox1.SelectedValue.ToString();
+                string c=comboBox1.SelectedText.ToString();
+                int sjd = int.Parse(comboBox1.Text.ToString());*/
+                int sjd = 0;
+                try
+                {
+                    if (comboBox1.InvokeRequired)
+                    {
+                        Action xx =() => { sjd = int.Parse(comboBox1.Text); };
+                        this.comboBox1.Invoke(xx);
+                    }
+                    else
+                    {
+                        sjd = int.Parse(comboBox1.Text);
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    var xx = e.InnerException.Message;
+                }
                 int shujugeshu = sjd * 60;
                 string sql1 = "select TIMESTAMP, T_PLC_MA_FAN_1_SP_3S,T_PLC_MA_FAN_2_SP_3S,T_MA_SB_1_FLUE_TE_3S,T_MA_SB_2_FLUE_TE_3S,T_MA_SB_1_FLUE_PT_3S,T_MA_SB_2_FLUE_PT_3S," +
                                 "T_MA_SB_1_FLUE_FT_3S,T_MA_SB_2_FLUE_FT_3S,C_THICK_PV_3S,T_TOTAL_SP_W_3S,T_1M_FT_SP_3S,T_2M_FLOW_SP_3S,T_BLEND_LEVEL_3S,T_STICK_SP_3S,T_SIN_MS_SP_3S,T_RC_SPEED_SP_3S" +
@@ -979,29 +1002,6 @@ namespace LY_SINTER.PAGE.HIS
                             Line18.Add(line18);
                         }
                     }
-                    max1 = (int)Num1.Max() + 1;
-                    min1 = (int)Num1.Min() - 1;
-                    max2 = (int)Num2.Max() + 1;
-                    min2 = (int)Num2.Min() - 1;
-                    max3 = (int)Num3.Max() + 1;
-                    min3 = (int)Num3.Min() - 1;
-                    max4 = (int)Num4.Max() + 1;
-                    min4 = (int)Num4.Min() - 1;
-                    max6 = (int)Num6.Max() + 1;
-                    min6 = (int)Num6.Min() - 1; 
-                    max8 = (int)Num8.Max() + 1;
-                    min8 = (int)Num8.Min() - 1;
-                    max9 = (int)Num9.Max() + 1;
-                    min9 = (int)Num9.Min() - 1;
-                    max10 = (int)Num10.Max() + 1;
-                    min10 = (int)Num10.Min() - 1;
-                    max12 = (int)Num12.Max() + 1;
-                    min12 = (int)Num12.Min() - 1;
-                    max13 = (int)Num13.Max() + 1;
-                    min13 = (int)Num13.Min() - 1;
-                    max14 = (int)Num14.Max() + 1;
-                    min14 = (int)Num14.Min() - 1;
-
                     string sql6 = "select TIMESTAMP,ISNULL(T_IG_01_TE_3S,0),ISNULL(T_IG_02_TE_3S,0),ISNULL(T_IG_03_TE_3S,0)" +
                                       " from C_PLC_3S where TIMESTAMP between '" + DateTime.Now.AddHours(-sjd) + "' and '" + DateTime.Now + "' order by TIMESTAMP";
                     DataTable dataTable6 = dBSQL.GetCommand(sql6);
@@ -1017,6 +1017,7 @@ namespace LY_SINTER.PAGE.HIS
                             a = a + dhwd1;
                             b = b + 1;
                         }
+
                         if (dhwd2 > 800 && dhwd2 < 1400)
                         {
                             a = a + dhwd2;
@@ -1028,15 +1029,19 @@ namespace LY_SINTER.PAGE.HIS
                             b = b + 1;
                         }
                         float c = 0;
-                        c = float.Parse((a / b).ToString());
+                        if (b != 0)
+                        {
+                            c = float.Parse((a / b).ToString());
+                        }
+                        //c = float.Parse((a / b).ToString());
                         dhwd.Add(c);
                         DataPoint line11 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[i]["TIMESTAMP"]), Convert.ToDouble(c));
                         Line11.Add(line11);
-                        Num7.Add(Convert.ToDouble(c));
-                        
+
+
+                        Num7.Add(c);
+
                     }
-                    max7 = (int)Num7.Max() + 1;
-                    min7 = (int)Num7.Min();
                     string sql_sj = "select TIMESTAMP,BTPCAL_OUT_TOTAL_AVG_X_BTP from MC_BTPCAL_result_1min where TIMESTAMP between '" + DateTime.Now.AddHours(-sjd) + "' and '" + DateTime.Now + "' order by TIMESTAMP";
                     DataTable dataTable_sj = dBSQL.GetCommand(sql_sj);
                     if (dataTable_sj.Rows.Count > 0)
@@ -1065,6 +1070,33 @@ namespace LY_SINTER.PAGE.HIS
                         min5 = (int)Num5.Min();
 
                     }
+                    max7 = (int)Num7.Max() + 1;
+                    min7 = (int)Num7.Min();
+                    max1 = (Num1.Count==0)?0:(int)Num1.Max() + 1;
+                    min1 = (Num1.Count == 0) ? 0 : (int)Num1.Min() - 1;
+                    max2 = (Num2.Count == 0) ? 0 : (int)Num2.Max() + 1;
+                    min2 = (Num2.Count == 0) ? 0 : (int)Num2.Min() - 1;
+                    max3 = (Num3.Count == 0) ? 0 : (int)Num3.Max() + 1;
+                    min3 = (Num3.Count == 0) ? 0 : (int)Num3.Min() - 1;
+                    max4 = (Num4.Count == 0) ? 0 : (int)Num4.Max() + 1;
+                    min4 = (Num4.Count == 0) ? 0 : (int)Num4.Min() - 1;
+                    max6 = (Num6.Count == 0) ? 0 : (int)Num6.Max() + 1;
+                    min6 = (Num6.Count == 0) ? 0 : (int)Num6.Min() - 1; 
+                    max8 = (Num8.Count == 0) ? 0 : (int)Num8.Max() + 1;
+                    min8 = (Num8.Count == 0) ? 0 : (int)Num8.Min() - 1;
+                    max9 = (Num9.Count == 0) ? 0 : (int)Num9.Max() + 1;
+                    min9 = (Num9.Count == 0) ? 0 : (int)Num9.Min() - 1;
+                    max10 = (Num10.Count == 0) ? 0 : (int)Num10.Max() + 1;
+                    min10 = (Num10.Count == 0) ? 0 : (int)Num10.Min() - 1;
+                    max12 = (Num12.Count == 0) ? 0 : (int)Num12.Max() + 1;
+                    min12 = (Num12.Count == 0) ? 0 : (int)Num12.Min() - 1;
+                    max13 = (Num13.Count == 0) ? 0 : (int)Num13.Max() + 1;
+                    min13 = (Num13.Count == 0) ? 0 : (int)Num13.Min() - 1;
+                    max14 = (Num14.Count == 0) ? 0 : (int)Num14.Max() + 1;
+                    min14 = (Num14.Count == 0) ? 0 : (int)Num14.Min() - 1;
+
+                    
+                }
                 else
                 {
                     string sj = DateTime.Now.ToString();
@@ -1087,10 +1119,8 @@ namespace LY_SINTER.PAGE.HIS
                     sjjs.Add(0);
                     hljs.Add(0);
                 }
-                    
-                }
 
-               
+
             }
             catch
             { }
@@ -1289,7 +1319,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis3.MajorStep = (max2 - min2) / 2;
+                    _valueAxis3.MajorStep = max2 - min2;
                 }
             }
             _myPlotMode3.Axes.Add(_valueAxis3);
@@ -1395,8 +1425,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max3,
-                Minimum = min3,*/
+                Maximum = max3,
+                Minimum = min3,
                 //StartPosition = 0.5,
             };
             //_valueAxis5.Maximum = getMax((int)max3,(int)min3);
@@ -1411,7 +1441,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis5.MajorStep = (max3 - min3) / 2;
+                    _valueAxis5.MajorStep = max3 - min3 ;
                 }
             }
             
@@ -1518,8 +1548,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max4+100,
-                Minimum = min4-100,*/
+                Maximum = max4,
+                Minimum = min4,
                 //StartPosition = 0.2,
             };
             if (min4 == max4 && min4 == 0)
@@ -1533,7 +1563,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis7.MajorStep = (max4 - min4) / 2;
+                    _valueAxis7.MajorStep = max4 - min4;
                 }
             }
             _myPlotMode7.Axes.Add(_valueAxis7);
@@ -1923,8 +1953,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max9,
-                Minimum = min9,*/
+                Maximum = max9,
+                Minimum = min9,
                 //MajorStep=10,
                 //StartPosition = 0.2,
             };
@@ -1939,7 +1969,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis13.MajorStep = (max9 - min9) / 2;
+                    _valueAxis13.MajorStep = max9 - min9;
                 }
             }
             /*if (min9 == 0)
@@ -2002,8 +2032,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                Maximum = 0.5,
-                Minimum = 0,
+                Maximum = max10,
+                Minimum = min10,
                 //MajorStep=1,
                 //StartPosition = 0.2,
             };
@@ -2018,7 +2048,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis14.MajorStep = (max10 - min10) / 2;
+                    _valueAxis14.MajorStep = max10 - min10;
                 }
             }
             /*if (min10 == 0)
@@ -2230,8 +2260,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max13,
-                Minimum = min13,*/
+                Maximum = max13,
+                Minimum = min13,
                 //MajorStep=1,
                 //StartPosition = 0.2,
             };
@@ -2246,7 +2276,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis17.MajorStep = (max13 - min13)/2;
+                    _valueAxis17.MajorStep = max13 - min13;
                 }
             }
             /*if (min13 == 0)
@@ -2311,8 +2341,8 @@ namespace LY_SINTER.PAGE.HIS
                 FontSize = 9.0,
                 IsAxisVisible = true,
                 MinorTickSize = 0,
-                /*Maximum = max14,
-                Minimum = min14,*/
+                Maximum = max14,
+                Minimum = min14,
                 //MajorStep=1,
                 //StartPosition = 0.2,
             };
@@ -2327,7 +2357,7 @@ namespace LY_SINTER.PAGE.HIS
                 }
                 else
                 {
-                    _valueAxis18.MajorStep = (max14 - min14) / 2;
+                    _valueAxis18.MajorStep = max14 - min14;
                 }
             }
             /*f (min14 == 0)
@@ -2810,6 +2840,7 @@ namespace LY_SINTER.PAGE.HIS
         //下拉框事件
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //int sj = int.Parse(comboBox1.Text);
             shishiquxian();
             quxian();
             //DateTime dt = new DateTime(2020, 10, 27, 16, 21, 0);

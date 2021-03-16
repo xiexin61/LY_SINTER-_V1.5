@@ -1171,7 +1171,7 @@ namespace NBSJ_MAIN_UC
             //hunHeLiaoCaoYuanGunUC1.SetZhuanSu = getbottleValue(modelT_PLC_3S.C_N_STICK_A_PV_3S).ToString("f2"); //getbottleValue(modelT_PLC_3S.T_STICK_SP_3S).ToString();
             hunHeLiaoCaoYuanGunUC1.ReadZhuanSu = getbottleValue(modelT_PLC_3S.T_STICK_PV_3S).ToString("f2");
             hunHeLiaoCaoYuanGunUC1.SylValue = modelT_PLC_3S.T_BLEND_LEVEL_3S;//混合料仓仓位
-            hunHeLiaoCaoYuanGunUC1.HunHeLiaoWenDu = getbottleValue(modelT_PLC_3S.F_PLC_BLEND_TE).ToString("f2");//混合料温度检测值
+            hunHeLiaoCaoYuanGunUC1.HunHeLiaoWenDu = getbottleValue(modelT_PLC_3S.F_PLC_BLEND_TE_3S).ToString("f2");//混合料温度检测值
             hunHeLiaoCaoYuanGunUC1.InvalidateNew();
 
             //铺底料槽
@@ -1181,8 +1181,8 @@ namespace NBSJ_MAIN_UC
             ////温度和流量器的值的显示
             //tempFlowUC1.TagTemp = getbottleValue(modelT_PLC_3S.T_AIM_TE_3S).ToString();
             //tempFlowUC1.FireTemp = getbottleValue((modelT_PLC_3S.T_IG_02_TE_3S+ modelT_PLC_3S.T_IG_03_TE_3S)/2).ToString();
-            tempFlowUC1.TagTemp = getbottleValue(modelT_PLC_3S.T_IG_02_TE_3S).ToString();
-            tempFlowUC1.FireTemp = getbottleValue(modelT_PLC_3S.T_IG_03_TE_3S).ToString();
+            tempFlowUC1.TagTemp = getbottleValue(modelT_PLC_3S.T_IG_01_TE_3S).ToString();
+            tempFlowUC1.FireTemp = getbottleValue(modelT_PLC_3S.T_IG_02_TE_3S).ToString();
             tempFlowUC1.CoalGasFlow = getbottleValue(modelT_PLC_3S.T_IG_GAS_PV_3S).ToString();
             tempFlowUC1.AirFlow = getbottleValue(modelT_PLC_3S.T_IG_AIR_PV_3S).ToString();
            // tempFlowUC1.T_IG_NATURAL_PV_3S = getbottleValue(modelT_PLC_3S.T_IG_NATURAL_PV_3S).ToString();

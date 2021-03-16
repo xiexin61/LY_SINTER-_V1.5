@@ -184,5 +184,6 @@ namespace NBSJ_MAIN_UC.Model
         public float? T_PF_SPEED_PV_3S { get; set; }//板式给矿机反馈转速/皮带(皮带号：***)
         public float? F_PLC_BLEND_TE { get; set; }//混合料温度
         public float? T_FP_BELT3_SL_3S { get; set; }//3#成品皮带启停信号（CP1（成-5））
+        public float? F_PLC_BLEND_TE_3S { get; set; }//混合料温度检测值
     }
 }

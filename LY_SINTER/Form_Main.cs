@@ -115,7 +115,7 @@ namespace LY_SINTER
             }
             else
             {
-                Pop_show(1);
+                //Pop_show(1);
             }
         }
         /// <summary>

@@ -142,6 +142,7 @@ namespace LY_SINTER.PAGE.Quality
                         IsPanEnabled = false,
                         AxisTickToLabelDistance = 0,
                         FontSize = 9.0,
+                        StringFormat = "yyyy/MM/dd HH:mm",
                     };
                     _myPlotModel_His.Axes.Add(_dateAxis_His);//添加x轴
                     for (int i = 0; i < data_curve_ls.Rows.Count; i++)//数据整理
@@ -646,6 +647,7 @@ namespace LY_SINTER.PAGE.Quality
                         IsPanEnabled = false,
                         AxisTickToLabelDistance = 0,
                         FontSize = 9.0,
+                        StringFormat = "yyyy/MM/dd HH:mm",
                     };
                     _myPlotModel.Axes.Add(_dateAxis);//添加x轴
                     int m1 = 1;

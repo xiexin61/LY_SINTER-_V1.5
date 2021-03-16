@@ -77,7 +77,7 @@ namespace LY_SINTER.Popover.Analysis
                     }
                     else
                     {
-                        string sql2 = "insert into MC_POPCAL_MON_PL(TIMESTAMP,POPCAL_MON,POPCAL_MON_PL,FLAG_1) values ('" + DateTime.Now + "','" + scrq + "','" + yjhcl1 + "',2)";
+                        string sql2 = "insert into MC_POPCAL_MON_PL(TIMESTAMP,POPCAL_MON,POPCAL_MON_PL,FLAG_1) values ('" + DateTime.Now + "','" + scrq + "','" + yjhcl1 + "',1)";
                         dBSQL.CommandExecuteNonQuery(sql2);
                         MessageBox.Show("插入成功！");
                         shuju(DateTime.Now.AddDays(-1), DateTime.Now);
@@ -141,7 +141,7 @@ namespace LY_SINTER.Popover.Analysis
                     {
                         bc.Value = "修改";
                         bc.Tag = true;
-                        return;
+                        //return;
                     }
                     if (bc.Value == "保存")
                     {
@@ -152,7 +152,7 @@ namespace LY_SINTER.Popover.Analysis
                         dataGridView1.Rows[e.RowIndex].Cells[1].Style.ForeColor = Color.Black;*/
                         dataGridView1.Rows[e.RowIndex].Cells[4].ReadOnly = true;
                         dataGridView1.Rows[e.RowIndex].Cells[4].Style.ForeColor = Color.Black;
-                        string sql1 = "update MC_POPCAL_MON_PL set POPCAL_MON_PL='" + cl + "',RE_TIME='" + DateTime.Now + "',FLAG_1=1 where POPCAL_MON='" + month + "'";
+                        string sql1 = "update MC_POPCAL_MON_PL set POPCAL_MON_PL='" + cl + "',RE_TIME='" + DateTime.Now + "',FLAG_1=0 where POPCAL_MON='" + month + "'";
                         dBSQL.CommandExecuteNonQuery(sql1);
                         MessageBox.Show("修改成功！");
                         //刷新数据
@@ -178,6 +178,7 @@ namespace LY_SINTER.Popover.Analysis
                         bc.Value = "保存";
                         dataGridView1.Rows[e.RowIndex].Cells[4].ReadOnly = false;
                         dataGridView1.Rows[e.RowIndex].Cells[4].Style.ForeColor = Color.Red;
+                        Validate();
                     }
                 }
             }
