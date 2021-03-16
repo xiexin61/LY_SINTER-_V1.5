@@ -25,6 +25,8 @@ namespace LY_SINTER.PAGE.Course
         public vLog _vLog { get; set; }
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
         Course_MODEL course_MODEL = new Course_MODEL();
+        #region
+        #endregion
         #region 历史曲线
         private PlotModel _myPlotModel;
         private DateTimeAxis _dateAxis;//X轴
@@ -1109,19 +1111,19 @@ namespace LY_SINTER.PAGE.Course
                         // BTP预测
                         DataPoint _point_2 = new DataPoint(DateTimeAxis.ToDouble(_Date.Item2["BTP_PREDICT"][x].Item1), Math.Round(_Date.Item2["BTP_PREDICT"][x].Item2, DIS_1));
                         Line_2.Add(_point_2);
-                        Mun2.Add(_Date.Item2["BTP_PREDICT"][x].Item2);
+                        Mun1.Add(_Date.Item2["BTP_PREDICT"][x].Item2);
                         // BRP实际
                         DataPoint _point_3 = new DataPoint(DateTimeAxis.ToDouble(_Date.Item2["BRP"][x].Item1), Math.Round(_Date.Item2["BRP"][x].Item2, DIS_1));
                         Line_3.Add(_point_3);
-                        Mun3.Add(_Date.Item2["BRP"][x].Item2);
+                        Mun1.Add(_Date.Item2["BRP"][x].Item2);
                         // BRP预测
                         DataPoint _point_4 = new DataPoint(DateTimeAxis.ToDouble(_Date.Item2["BRP_PREDICT"][x].Item1), Math.Round(_Date.Item2["BRP_PREDICT"][x].Item2, DIS_1));
                         Line_4.Add(_point_4);
-                        Mun4.Add(_Date.Item2["BRP_PREDICT"][x].Item2);
+                        Mun1.Add(_Date.Item2["BRP_PREDICT"][x].Item2);
                         // TRP实际
                         DataPoint _point_5 = new DataPoint(DateTimeAxis.ToDouble(_Date.Item2["TRP"][x].Item1), Math.Round(_Date.Item2["TRP"][x].Item2, DIS_1));
                         Line_5.Add(_point_5);
-                        Mun5.Add(_Date.Item2["TRP"][x].Item2);
+                        Mun1.Add(_Date.Item2["TRP"][x].Item2);
 
                     }
                     #endregion

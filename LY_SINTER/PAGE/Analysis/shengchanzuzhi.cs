@@ -793,7 +793,7 @@ namespace LY_SINTER.PAGE.Analysis
         private void Check_text()
         {
             DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
-            string sql = "select top(1) TIMESTAMP, P_AL_OUTPUT, T_AL_OUTPUT, A_AL_OUTPUT from MC_POPCAL_OUT order by TIMESTAMP";
+            string sql = "select top(1) TIMESTAMP, P_AL_OUTPUT, T_AL_OUTPUT, A_AL_OUTPUT from MC_POPCAL_OUT order by TIMESTAMP desc";
             DataTable table = dBSQL.GetCommand(sql);
             if (table.Rows.Count > 0)
             {

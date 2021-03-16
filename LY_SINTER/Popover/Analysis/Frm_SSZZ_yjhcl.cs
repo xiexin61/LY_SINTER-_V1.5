@@ -15,6 +15,7 @@ namespace LY_SINTER.Popover.Analysis
     public partial class Frm_SSZZ_yjhcl : Form
     {
         public static bool isopen = false;
+
         public Frm_SSZZ_yjhcl()
         {
             InitializeComponent();
@@ -22,9 +23,8 @@ namespace LY_SINTER.Popover.Analysis
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
         }
-        /// <summary>
-        /// 开始时间&结束时间赋值
-        /// </summary>
+
+        /// <summary> 开始时间&结束时间赋值 </summary>
         public void dateTimePicker_value()
         {
             try
@@ -36,24 +36,26 @@ namespace LY_SINTER.Popover.Analysis
 
                 textBox_begin.Text = time_begin.ToString();
                 textBox_end.Text = time_end.ToString();
-                dateTimePicker1.Text= time_end.ToString();
+                dateTimePicker1.Text = time_end.ToString();
             }
             catch (Exception ee)
             {
-
             }
         }
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+
         private void simpleButton2_click(object sender, EventArgs e)
         {
             DateTime d1 = Convert.ToDateTime(textBox_begin.Text);
             DateTime d2 = Convert.ToDateTime(textBox_end.Text);
-            shuju(d1,d2);
+            shuju(d1, d2);
         }
+
         //添加按钮
         private void simpleButton3_click(object sender, EventArgs e)
         {
-            if (yjhcl.Text == "" )  
+            if (yjhcl.Text == "")
             {
                 MessageBox.Show("请输入月计划产量");
             }
@@ -84,9 +86,9 @@ namespace LY_SINTER.Popover.Analysis
                     }
                 }
             }
-            
         }
-        public void shuju(DateTime d1,DateTime d2)
+
+        public void shuju(DateTime d1, DateTime d2)
         {
             DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
             string sql = "select TIMESTAMP,POPCAL_MON,POPCAL_MON_PL,RE_TIME from MC_POPCAL_MON_PL where TIMESTAMP between '" + d1 + "' and '" + d2 + "';";
@@ -130,7 +132,7 @@ namespace LY_SINTER.Popover.Analysis
                                 /*LogTable_TEXT logTable = new LogTable_TEXT();
                                 logTable.operation_log(dateTime, modelname, name, incident);*/
                             }
-                            catch (Exception ee){ }
+                            catch (Exception ee) { }
                         }
                     }
                 }
@@ -141,7 +143,7 @@ namespace LY_SINTER.Popover.Analysis
                     {
                         bc.Value = "修改";
                         bc.Tag = true;
-                        //return;
+                        //return;//Lee@20210315:不知当初为什么要判断bc.Tag
                     }
                     if (bc.Value == "保存")
                     {
@@ -159,7 +161,6 @@ namespace LY_SINTER.Popover.Analysis
                         shuju(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));
                         try
                         {
-
                             DateTime dateTime = DateTime.Now;
                             string name = "修改";
                             string incident = "用户点击修改/保存按钮";
@@ -170,10 +171,9 @@ namespace LY_SINTER.Popover.Analysis
                         }
                         catch (Exception ee)
                         {
-
                         }
                     }
-                    else if (bc.Value=="修改")
+                    else if (bc.Value == "修改")
                     {
                         bc.Value = "保存";
                         dataGridView1.Rows[e.RowIndex].Cells[4].ReadOnly = false;
@@ -183,7 +183,6 @@ namespace LY_SINTER.Popover.Analysis
             }
             catch
             {
-
             }
         }
     }

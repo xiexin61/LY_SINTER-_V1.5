@@ -769,7 +769,7 @@ namespace LY_SINTER.PAGE.Quality
             {
                 string sql_curve_his = "SELECT a.TIMESTAMP, " + CURVE_NAME_YC_FIELD + " AS YCZ," + CURVE_NAME_JC_FIELD + " AS JCZ  FROM " + CURVE_NAME_YC + " a ," + CURVE_NAME_JC + " b where convert(varchar(16),a.TIMESTAMP,121)=convert(varchar(16),b.TIMESTAMP,121) and a.TIMESTAMP between '" + _begin + "' and '" + _end + "' order by a.TIMESTAMP asc";
                 DataTable TABLE_curve_his = dBSQL.GetCommand(sql_curve_his);
-                if (TABLE_curve_his.Rows.Count > 0)
+                if (TABLE_curve_his.Rows.Count > 0 && TABLE_curve_his !=null)
                 {
                     lChartPlus100.LChart.Series.Clear();
                     lChartPlus100.LChart.AxisX.Clear();

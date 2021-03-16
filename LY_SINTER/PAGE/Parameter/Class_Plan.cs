@@ -19,7 +19,7 @@ namespace LY_SINTER.PAGE.Parameter
         public System.Timers.Timer _Timer1 { get; set; }
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
         Color[] vs = { Color.Red, Color.Blue, Color.Black };
-        DateTimePicker dtp_begin = new DateTimePicker();  //实例化一个DateTimePicker控件 开始时间
+        DateTimePicker dtp_begin = new DateTimePicker();  //实例化一个DateTimePicker控件 开始时间 
         /// <summary>
         /// key 序号，item1 班组 item2 修改时间 item3 开始时间 item4 结束时间 item5 白班夜班
         /// </summary>

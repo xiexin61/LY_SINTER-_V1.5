@@ -90,7 +90,8 @@ namespace LY_SINTER.PAGE.Quality
         string C = "C线段";
         string D = "D线段";
         #endregion
-
+        public System.Timers.Timer _Timer1 { get; set; }
+        public System.Timers.Timer _Timer2 { get; set; }
         int _HOUR = 12;//查询时间
         public vLog vLog { get; set; }
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
@@ -107,14 +108,17 @@ namespace LY_SINTER.PAGE.Quality
             C_text();
             MG_text();
             TIME_NOW();
-            HIS_CURVE_SS(DateTime.Now.AddHours(-_HOUR), DateTime.Now);
-            HIS_CURVE_SS2(DateTime.Now.AddHours(-_HOUR), DateTime.Now);
-            HIS_CURVE_SS4(DateTime.Now.AddHours(-_HOUR), DateTime.Now);
-            HIS_CURVE_Test(DateTime.Now.AddMonths(-1), DateTime.Now);
+          
             _Timer1 = new System.Timers.Timer(60000);//初始化颜色变化定时器响应事件
             _Timer1.Elapsed += (x, y) => { Timer1_Tick_1(); };//响应事件
             _Timer1.Enabled = true;
             _Timer1.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
+
+
+            _Timer2 = new System.Timers.Timer(3000);//初始化颜色变化定时器响应事件
+            _Timer2.Elapsed += (x, y) => { Timer1_Tick_1(); };//响应事件
+            _Timer2.Enabled = true;
+            _Timer2.AutoReset = false;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
         }
         private void Timer1_Tick_1()
         {
@@ -132,7 +136,21 @@ namespace LY_SINTER.PAGE.Quality
                 HIS_CURVE_SS4(DateTime.Now.AddHours(-12), DateTime.Now);
             }
         }
-        public System.Timers.Timer _Timer1 { get; set; }
+        private void Timer1_Tick_2()
+        {
+            Action invokeAction = new Action(Timer1_Tick_1);
+            if (this.InvokeRequired)
+            {
+                this.Invoke(invokeAction);
+            }
+            else
+            {
+                HIS_CURVE_SS(DateTime.Now.AddHours(-_HOUR), DateTime.Now);
+                HIS_CURVE_SS2(DateTime.Now.AddHours(-_HOUR), DateTime.Now);
+                HIS_CURVE_SS4(DateTime.Now.AddHours(-_HOUR), DateTime.Now);
+                HIS_CURVE_Test(DateTime.Now.AddMonths(-1), DateTime.Now);
+            }
+        }
         public void HIS_CURVE_Test(DateTime time_BIGIN, DateTime time_END)
         {
             try
