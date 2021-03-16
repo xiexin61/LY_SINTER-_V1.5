@@ -51,7 +51,6 @@
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.chart_GCFC = new WF.LChartPlus();
             this.lUserControl1 = new LWebBrowser.LUserControl();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -108,6 +107,7 @@
             this.checkEdit5 = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.chart_GCFC = new WF.LChartPlus();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
@@ -438,22 +438,9 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1094, 363);
             this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // chart_GCFC
-            // 
-            this.chart_GCFC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart_GCFC.IsPage = false;
-            this.chart_GCFC.LActDatas = null;
-            this.chart_GCFC.LCurPage = 1;
-            this.chart_GCFC.Location = new System.Drawing.Point(549, 3);
-            this.chart_GCFC.LPageNum = 0;
-            this.chart_GCFC.LPageSize = 10;
-            this.chart_GCFC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chart_GCFC.Name = "chart_GCFC";
-            this.chart_GCFC.Size = new System.Drawing.Size(542, 194);
-            this.chart_GCFC.TabIndex = 14;
             // 
             // lUserControl1
             // 
@@ -1266,6 +1253,20 @@
             this.label27.Text = "烧 结 终 点 预 测 模 型";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // chart_GCFC
+            // 
+            this.chart_GCFC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chart_GCFC.IsPage = false;
+            this.chart_GCFC.LActDatas = null;
+            this.chart_GCFC.LCurPage = 1;
+            this.chart_GCFC.Location = new System.Drawing.Point(549, 3);
+            this.chart_GCFC.LPageNum = 0;
+            this.chart_GCFC.LPageSize = 10;
+            this.chart_GCFC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart_GCFC.Name = "chart_GCFC";
+            this.chart_GCFC.Size = new System.Drawing.Size(542, 194);
+            this.chart_GCFC.TabIndex = 15;
+            // 
             // BTP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1353,7 +1354,6 @@
         private System.Windows.Forms.CheckBox checkEdit4;
         private System.Windows.Forms.CheckBox checkEdit5;
         private System.Windows.Forms.Label label23;
-        private WF.LChartPlus chart_GCFC;
         private System.Windows.Forms.Label TEXTBOX_TRP_MB;
         private System.Windows.Forms.Label TEXTBOX_BRP_SJ;
         private System.Windows.Forms.Label TEXTBOX_BRP_MB;
@@ -1375,5 +1375,6 @@
         private System.Windows.Forms.Label TEXTBOX_JS_PV;
         private System.Windows.Forms.Label TEXTBOX_TQXZS;
         private System.Windows.Forms.Label TEXTBOX_BRP_WD;
+        private WF.LChartPlus chart_GCFC;
     }
 }

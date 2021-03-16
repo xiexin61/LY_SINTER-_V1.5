@@ -18,6 +18,7 @@ using LY_SINTER.PAGE.Analysis;
 using NBSJ_MAIN_UC;
 using LY_SINTER.PAGE.Course;
 using LY_SINTER.PAGE.HIS;
+using LY_SINTER.Reports;
 
 namespace LY_SINTER
 {
@@ -115,7 +116,8 @@ namespace LY_SINTER
             }
             else
             {
-                //Pop_show(1);
+                //20210310更改为模式2 @lt
+                Pop_show(2);
             }
         }
         /// <summary>
@@ -292,6 +294,11 @@ namespace LY_SINTER
                             if (COUNT == 1)
                             {
                                 _vLog.writelog("三级传入" + _DEL.Rows[x]["MaterialCode"].ToString() + "编码，M_MATERIAL_COOD表对应规则删除成功", 0);
+
+                                var sql_update = " update B_MATERIAL_CODE set FLAG = 2 where MaterialCode = '"+ _DEL.Rows[x]["MaterialCode"].ToString() + "'";
+                                int _count = dBSQL.CommandExecuteNonQuery(sql_update);
+                                if(_count != 1)
+                                    _vLog.writelog("三级传入" + _DEL.Rows[x]["MaterialCode"].ToString() + "编码，B_MATERIAL_CODE标志位还原错误", -1);
                             }
                             else
                             {
@@ -306,15 +313,19 @@ namespace LY_SINTER
                     {
                         for (int x = 0; x < _UPDATE.Rows.Count; x++)
                         {
-                            var DEL = "update  M_MATERIAL_COOD  set   L3_CODE = '" + _DEL.Rows[x]["MaterialName"].ToString() + "' where MAT_DESC = '" + _DEL.Rows[x]["MaterialName"].ToString() + "'";
+                            var DEL = "update  M_MATERIAL_COOD  set   L3_CODE = '" + _UPDATE.Rows[x]["MaterialCode"].ToString() + "' where MAT_DESC = '" + _UPDATE.Rows[x]["MaterialName"].ToString() + "'";
                             int COUNT = dBSQL.CommandExecuteNonQuery(DEL);
                             if (COUNT == 1)
                             {
-                                _vLog.writelog("三级传入" + _DEL.Rows[x]["MaterialCode"].ToString() + "编码，M_MATERIAL_COOD表对应规则删除成功", 0);
+                                _vLog.writelog("三级传入" + _UPDATE.Rows[x]["MaterialCode"].ToString() + "编码，M_MATERIAL_COOD表对应规则删除成功", 0);
+                                var sql_update = " update B_MATERIAL_CODE set FLAG = 2 where MaterialCode = '" + _UPDATE.Rows[x]["MaterialCode"].ToString() + "'";
+                                int _count = dBSQL.CommandExecuteNonQuery(sql_update);
+                                if (_count != 1)
+                                    _vLog.writelog("三级传入" + _UPDATE.Rows[x]["MaterialCode"].ToString() + "编码，B_MATERIAL_CODE标志位还原错误", -1);
                             }
                             else
                             {
-                                _vLog.writelog("三级传入" + _DEL.Rows[x]["MaterialCode"].ToString() + "编码，M_MATERIAL_COOD表对应规则删除失败，已有的规则表中不存在当前品名", 0);
+                                _vLog.writelog("三级传入" + _UPDATE.Rows[x]["MaterialCode"].ToString() + "编码，M_MATERIAL_COOD表对应规则删除失败，已有的规则表中不存在当前品名", 0);
                             }
                         }
                     }
@@ -868,6 +879,21 @@ namespace LY_SINTER
 
                     TabPage tpg = new TabPage(str);
                     Class_Plan _PAGE = new Class_Plan();
+                    tpg.Controls.Add(_PAGE);
+                    tabControl1.TabPages.Add(tpg);
+                    _PAGE.BorderStyle = BorderStyle.None;
+                    _PAGE.Dock = DockStyle.Fill;
+                    _PAGE.Show();
+                    tabControl1.SelectedTab = tpg;
+                    tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
+                }
+                #endregion
+                #region 报表
+                else if (str == "烧结生产报表")
+                {
+
+                    TabPage tpg = new TabPage(str);
+                    Report_product _PAGE = new Report_product();
                     tpg.Controls.Add(_PAGE);
                     tabControl1.TabPages.Add(tpg);
                     _PAGE.BorderStyle = BorderStyle.None;

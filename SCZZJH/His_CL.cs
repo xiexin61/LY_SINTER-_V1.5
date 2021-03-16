@@ -66,7 +66,7 @@ namespace SCZZJH
                 X = (Xmes - Sum) / D - (DateTime.Now.Day - 1);
             }
             string his = "IF EXISTS (SELECT TIMESTAMP FROM MC_POPCAL_RESULT WHERE TIMESTAMP='" + Start + "')" +
-                "update MC_POPCAL_RESULT set POPCAL_A_OUT_PL=" + X + ",POPCAL_D_OUT_PL=" + X / 2 + ",POPCAL_N_OUT_PL=" + X / 2 + "  WHERE TIMESTAMP='" + Start + "'else " +
+                "update MC_POPCAL_RESULT set POPCAL_A_OUT_PL=" + X + ",POPCAL_D_OUT_PL=" + X / 2 + ",POPCAL_N_OUT_PL=" + X / 2 + " ,FLAG_1=0 WHERE TIMESTAMP='" + Start + "'else " +
                 "insert into MC_POPCAL_RESULT(TIMESTAMP,POPCAL_A_OUT_PL,POPCAL_D_OUT_PL,POPCAL_N_OUT_PL)" +
                 " values('" + Start + "'," + X + "," + X / 2 + "," + X / 2 + ");";
             long _urs = dBSQL.CommandExecuteNonQuery(his);

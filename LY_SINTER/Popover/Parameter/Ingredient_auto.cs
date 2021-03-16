@@ -19,6 +19,12 @@ namespace LY_SINTER.PAGE.Parameter
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
         public static bool isopen = false;
         public vLog _vLog { get; set; }
+        /// <summary>
+        /// 判断模式
+        /// 1：读取检化验表数据
+        /// 2：读取三级直接传送数据
+        /// </summary>
+        int flag = 2;
         public Ingredient_auto()
         {
             InitializeComponent();
@@ -30,34 +36,62 @@ namespace LY_SINTER.PAGE.Parameter
         {
             try
             {
-                var _sql = "select distinct L3_CODE from M_MATERIAL_ANALYSIS where FLAG = 1 order by L3_CODE asc";
-                DataTable _data = dBSQL.GetCommand(_sql);
-                if (_data != null && _data.Rows.Count > 0 )
+                if (flag == 1)
                 {
-                    DataTable table = new DataTable();
-                    table.Columns.Add("ID");
-                    table.Columns.Add("REOPTTIME");
-                    table.Columns.Add("L3_CODE");
-                    for (int x = 0; x < _data.Rows.Count;x++)
+                    var _sql = "select distinct L3_CODE from M_MATERIAL_ANALYSIS where FLAG = 1 order by L3_CODE asc";
+                    DataTable _data = dBSQL.GetCommand(_sql);
+                    if (_data != null && _data.Rows.Count > 0)
                     {
-                        var _sql1 = "select top (1) REOPTTIME from M_MATERIAL_ANALYSIS where L3_CODE = '" + _data.Rows[x][0].ToString() + "' order by REOPTTIME desc";
-                        DataTable table1 = dBSQL.GetCommand(_sql1);
-                        if (table1.Rows.Count > 0 && table1 != null)
+                        DataTable table = new DataTable();
+                        table.Columns.Add("ID");
+                        table.Columns.Add("REOPTTIME");
+                        table.Columns.Add("L3_CODE");
+                        for (int x = 0; x < _data.Rows.Count; x++)
                         {
-                            DataRow _row = table.NewRow();
-                            _row["ID"] = x + 1;
-                            _row["REOPTTIME"] = table1.Rows[0]["REOPTTIME"].ToString();
-                            _row["L3_CODE"] = _data.Rows[x]["L3_CODE"].ToString();
-                            table.Rows.Add(_row);
+                            var _sql1 = "select top (1) REOPTTIME from M_MATERIAL_ANALYSIS where L3_CODE = '" + _data.Rows[x][0].ToString() + "' order by REOPTTIME desc";
+                            DataTable table1 = dBSQL.GetCommand(_sql1);
+                            if (table1.Rows.Count > 0 && table1 != null)
+                            {
+                                DataRow _row = table.NewRow();
+                                _row["ID"] = x + 1;
+                                _row["REOPTTIME"] = table1.Rows[0]["REOPTTIME"].ToString();
+                                _row["L3_CODE"] = _data.Rows[x]["L3_CODE"].ToString();
+                                table.Rows.Add(_row);
+                            }
                         }
+                        dataGridView1.DataSource = table;
                     }
-                    dataGridView1.DataSource = table;
+                    else
+                    {
+                        this.Close();
+                        Form_Main._Auto = null;
+                    }
+
                 }
                 else
                 {
-                    this.Close();
-                    Form_Main._Auto = null;
+                    var _sql = "select * from B_MATERIAL_CODE where ProcessType = 'I' AND FLAG = 1";
+                    DataTable _data = dBSQL.GetCommand(_sql);
+                    if (_data != null && _data.Rows.Count > 0)
+                    {
+                        DataTable table = new DataTable();
+                        table.Columns.Add("ID");
+                        table.Columns.Add("REOPTTIME");
+                        table.Columns.Add("L3_CODE");
+                        for (int x = 0; x < _data.Rows.Count; x++)
+                        {
+                           
+                                DataRow _row = table.NewRow();
+                                _row["ID"] = x + 1;
+                                _row["REOPTTIME"] = _data.Rows[x]["MaterialCode"].ToString();
+                                _row["L3_CODE"] = _data.Rows[x]["TIMESTAMP"].ToString();
+                                table.Rows.Add(_row);
+                            
+                        }
+                        dataGridView1.DataSource = table;
+                    }
                 }
+            
               
             }
             catch(Exception ee)

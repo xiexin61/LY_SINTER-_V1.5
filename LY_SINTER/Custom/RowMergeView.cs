@@ -376,10 +376,10 @@ public partial class RowMergeView : DataGridView
     /// <param name="text">合并列后的文本</param>
     public void AddSpanHeader(int colIndex, int colCount, string text)
     {
-        if (colCount < 2)
+        /*if (colCount < 2)
         {
             throw new Exception("行宽应大于等于2，合并1列无意义。");
-        }
+        }*/
         //将这些列加入列表
         var right = colIndex + colCount - 1; //同一大标题下的最后一列的索引
         _spanRows[colIndex] = new SpanInfo(text, 1, colIndex, right); //添加标题下的最左列

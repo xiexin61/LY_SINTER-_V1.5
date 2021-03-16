@@ -161,7 +161,7 @@ namespace LY_SINTER.PAGE.Analysis
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 31.81817F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 68.18183F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Controls.Add(this.label8, 3, 0);
             this.tableLayoutPanel6.Controls.Add(this.label7, 4, 0);
@@ -179,7 +179,7 @@ namespace LY_SINTER.PAGE.Analysis
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("SimSun", 9F);
+            this.label8.Font = new System.Drawing.Font("宋体", 9F);
             this.label8.Location = new System.Drawing.Point(304, 8);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 12);
@@ -191,7 +191,7 @@ namespace LY_SINTER.PAGE.Analysis
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("SimSun", 9F);
+            this.label7.Font = new System.Drawing.Font("宋体", 9F);
             this.label7.Location = new System.Drawing.Point(454, 8);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 12);
@@ -259,7 +259,7 @@ namespace LY_SINTER.PAGE.Analysis
             this.rowMergeView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -285,7 +285,7 @@ namespace LY_SINTER.PAGE.Analysis
             this.合计});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -301,7 +301,7 @@ namespace LY_SINTER.PAGE.Analysis
             this.rowMergeView1.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -414,7 +414,7 @@ namespace LY_SINTER.PAGE.Analysis
             // 
             this.label41.AutoSize = true;
             this.label41.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label41.Font = new System.Drawing.Font("SimHei", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label41.Font = new System.Drawing.Font("黑体", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label41.Location = new System.Drawing.Point(3, 0);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(1461, 32);
@@ -460,10 +460,10 @@ namespace LY_SINTER.PAGE.Analysis
             // tableLayoutPanel21
             // 
             this.tableLayoutPanel21.ColumnCount = 7;
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178F));
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178F));
-            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 135F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 137F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 156F));
+            this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 158F));
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 173F));
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 206F));
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -488,7 +488,7 @@ namespace LY_SINTER.PAGE.Analysis
             this.checkBox1.ForeColor = System.Drawing.Color.Red;
             this.checkBox1.Location = new System.Drawing.Point(3, 3);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(160, 18);
+            this.checkBox1.Size = new System.Drawing.Size(129, 18);
             this.checkBox1.TabIndex = 0;
             this.checkBox1.Text = "计划产量(t):";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -501,9 +501,9 @@ namespace LY_SINTER.PAGE.Analysis
             this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBox2.ForeColor = System.Drawing.Color.Purple;
-            this.checkBox2.Location = new System.Drawing.Point(169, 3);
+            this.checkBox2.Location = new System.Drawing.Point(138, 3);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(172, 18);
+            this.checkBox2.Size = new System.Drawing.Size(131, 18);
             this.checkBox2.TabIndex = 1;
             this.checkBox2.Text = "理论产量(t):";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -516,9 +516,9 @@ namespace LY_SINTER.PAGE.Analysis
             this.checkBox3.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.checkBox3.ForeColor = System.Drawing.Color.Green;
-            this.checkBox3.Location = new System.Drawing.Point(347, 3);
+            this.checkBox3.Location = new System.Drawing.Point(275, 3);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(172, 18);
+            this.checkBox3.Size = new System.Drawing.Size(150, 18);
             this.checkBox3.TabIndex = 2;
             this.checkBox3.Text = "实际产量(t):";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -598,7 +598,7 @@ namespace LY_SINTER.PAGE.Analysis
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("SimSun", 9F);
+            this.label3.Font = new System.Drawing.Font("宋体", 9F);
             this.label3.Location = new System.Drawing.Point(5, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
@@ -610,7 +610,7 @@ namespace LY_SINTER.PAGE.Analysis
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("SimSun", 9F);
+            this.label4.Font = new System.Drawing.Font("宋体", 9F);
             this.label4.Location = new System.Drawing.Point(199, 8);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
@@ -638,7 +638,7 @@ namespace LY_SINTER.PAGE.Analysis
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label6.Font = new System.Drawing.Font("SimSun", 9F);
+            this.label6.Font = new System.Drawing.Font("宋体", 9F);
             this.label6.Location = new System.Drawing.Point(1387, 32);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 20);

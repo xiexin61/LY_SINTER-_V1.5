@@ -675,6 +675,12 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Report_product.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\Report_product.Designer.cs">
+      <DependentUpon>Report_product.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Custom\Alarm.resx">
       <DependentUpon>Alarm.cs</DependentUpon>
     </EmbeddedResource>
@@ -943,6 +949,9 @@
     </Compile>
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Report_product.resx">
+      <DependentUpon>Report_product.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
