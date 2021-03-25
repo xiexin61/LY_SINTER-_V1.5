@@ -86,7 +86,9 @@ namespace UserControlIndex
             this.pipeLine4.Location = new System.Drawing.Point(this.Width /5 , (int)(this.Height / 5f *4));*/
 
             graphics.DrawString("水分:" + shuifen + "%", Font, Brushes.Black, new Rectangle(this.Width / 3*2, (int)(this.Height /4-34 ), this.pipeLine1.Width, 30), this.sf);
-            
+            graphics.DrawString("Z41(混-4)称值:" + chengzhi + "t/h", Font, Brushes.Black, new Rectangle(this.Width / 3 * 2+5, (int)(this.Height / 4 ), this.pipeLine1.Width, 30), this.sf);
+            graphics.DrawString("S1(混-5)称值:" + chengzhi2 + "t/h", Font, Brushes.Black, new Rectangle(this.Width / 3 * 2 - 80, (int)(this.Height / 4-27), this.pipeLine1.Width, 30), this.sf);
+
         }
 
 
@@ -147,8 +149,9 @@ namespace UserControlIndex
             }
         }*/
         string chengzhi;
+        string chengzhi2;
         string shuifen;
-
+        //Z41混-4称值
         [Browsable(true), Description("秤值。"), DefaultValue(typeof(string), "秤值"), Category("Appearance")]
         public string ChengZhi
         {
@@ -159,6 +162,20 @@ namespace UserControlIndex
             set
             {
                 this.chengzhi = value;
+                //base.Invalidate();
+            }
+        }
+        //S1混-5称值
+        [Browsable(true), Description("秤值。"), DefaultValue(typeof(string), "秤值"), Category("Appearance")]
+        public string ChengZhi2
+        {
+            get
+            {
+                return this.chengzhi2;
+            }
+            set
+            {
+                this.chengzhi2 = value;
                 //base.Invalidate();
             }
         }

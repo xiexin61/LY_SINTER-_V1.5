@@ -20,8 +20,11 @@ namespace LY_SINTER.Popover.Analysis
         {
             InitializeComponent();
             dateTimePicker_value();
-            DateTimeChoser.AddTo(textBox_begin);
-            DateTimeChoser.AddTo(textBox_end);
+            //DateTimeChoser.AddTo(textBox_begin);
+            //DateTimeChoser.AddTo(textBox_end);
+            DateTime start = DateTime.Now.AddYears(-1);
+            DateTime end = DateTime.Now;
+            shuju(start,end);
         }
 
         /// <summary> 开始时间&结束时间赋值 </summary>
@@ -29,14 +32,19 @@ namespace LY_SINTER.Popover.Analysis
         {
             try
             {
-                //结束时间
+                textBox_begin.Text = DateTime.Now.AddYears(-1).ToString();
+                textBox_end.Text = DateTime.Now.ToString();
+                /*Validate();
+                Update();
+                Refresh();*/
+                /*//结束时间
                 DateTime time_end = DateTime.Now;
                 //开始时间
                 DateTime time_begin = time_end.AddMonths(-1);
 
                 textBox_begin.Text = time_begin.ToString();
                 textBox_end.Text = time_end.ToString();
-                dateTimePicker1.Text = time_end.ToString();
+                dateTimePicker1.Text = time_end.ToString();*/
             }
             catch (Exception ee)
             {
@@ -82,7 +90,7 @@ namespace LY_SINTER.Popover.Analysis
                         string sql2 = "insert into MC_POPCAL_MON_PL(TIMESTAMP,POPCAL_MON,POPCAL_MON_PL,FLAG_1) values ('" + DateTime.Now + "','" + scrq + "','" + yjhcl1 + "',2)";
                         dBSQL.CommandExecuteNonQuery(sql2);
                         MessageBox.Show("插入成功！");
-                        shuju(DateTime.Now.AddDays(-1), DateTime.Now);
+                        shuju(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(dateTimePicker1.Text));
                     }
                 }
             }
@@ -90,13 +98,16 @@ namespace LY_SINTER.Popover.Analysis
 
         public void shuju(DateTime d1, DateTime d2)
         {
+            string start = d1.Year.ToString() + d1.Month.ToString("00");
+            string end = d2.Year.ToString() + d2.Month.ToString("00");
             DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
-            string sql = "select TIMESTAMP,POPCAL_MON,POPCAL_MON_PL,RE_TIME from MC_POPCAL_MON_PL where TIMESTAMP between '" + d1 + "' and '" + d2 + "';";
+            string sql = "select POPCAL_MON,POPCAL_MON_PL,TIMESTAMP,RE_TIME from MC_POPCAL_MON_PL where POPCAL_MON between '" + start + "' and '" + end + "' order by POPCAL_MON desc;";
             DataTable table = dBSQL.GetCommand(sql);
             if (table.Rows.Count > 0)
             {
                 this.dataGridView1.DataSource = table;
             }
+            dataGridView1.Columns["TIMESTAMP"].DisplayIndex = 2;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -147,18 +158,18 @@ namespace LY_SINTER.Popover.Analysis
                     }
                     if (bc.Value == "保存")
                     {
-                        string month = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                        string cl = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                        string month = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                        string cl = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
                         bc.Value = "修改";
                         /*dataGridView1.Rows[e.RowIndex].Cells[1].ReadOnly = true;
                         dataGridView1.Rows[e.RowIndex].Cells[1].Style.ForeColor = Color.Black;*/
-                        dataGridView1.Rows[e.RowIndex].Cells[4].ReadOnly = true;
-                        dataGridView1.Rows[e.RowIndex].Cells[4].Style.ForeColor = Color.Black;
+                        dataGridView1.Rows[e.RowIndex].Cells[3].ReadOnly = true;
+                        dataGridView1.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Black;
                         string sql1 = "update MC_POPCAL_MON_PL set POPCAL_MON_PL='" + cl + "',RE_TIME='" + DateTime.Now + "',FLAG_1=1 where POPCAL_MON='" + month + "'";
                         dBSQL.CommandExecuteNonQuery(sql1);
                         MessageBox.Show("修改成功！");
                         //刷新数据
-                        shuju(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));
+                        shuju(Convert.ToDateTime(textBox_begin.Value), Convert.ToDateTime(textBox_end.Value));
                         try
                         {
                             DateTime dateTime = DateTime.Now;
@@ -176,8 +187,8 @@ namespace LY_SINTER.Popover.Analysis
                     else if (bc.Value == "修改")
                     {
                         bc.Value = "保存";
-                        dataGridView1.Rows[e.RowIndex].Cells[4].ReadOnly = false;
-                        dataGridView1.Rows[e.RowIndex].Cells[4].Style.ForeColor = Color.Red;
+                        dataGridView1.Rows[e.RowIndex].Cells[3].ReadOnly = false;
+                        dataGridView1.Rows[e.RowIndex].Cells[3].Style.ForeColor = Color.Red;
                     }
                 }
             }

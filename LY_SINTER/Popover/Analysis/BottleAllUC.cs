@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 
-namespace UserControlIndex
+namespace LY_SINTER.Popover.Analysis
 {
     public partial class BottleAllUC : UserControl
     {
@@ -49,7 +49,7 @@ namespace UserControlIndex
 
            
 
-            pipeLine3.PipeLineName = "1H-1皮带";
+            //pipeLine3.PipeLineName = "1H-1皮带";
         }
 
         protected override void OnLoad(EventArgs e)
@@ -61,7 +61,7 @@ namespace UserControlIndex
         /// 设置运行和停止
         /// </summary>
         /// <param name="isRun"></param>
-        public void SetIsRunStop(bool isRun)
+        /*public void SetIsRunStop(bool isRun)
         {
             if (isRun)//2.5f
             {
@@ -73,13 +73,13 @@ namespace UserControlIndex
                 pipeLine3.MoveSpeed = 0f;
                 pipeLine4.MoveSpeed = 0f;
             }
-        }
+        }*/
 
-        public void PipeLineActive(bool isPipeLineActive)
+        /*public void PipeLineActive(bool isPipeLineActive)
         {
             pipeLine3.PipeLineActive = isPipeLineActive;
             pipeLine4.PipeLineActive = isPipeLineActive;
-        }
+        }*/
 
         //private AbstractPipeLine pipeLine2;
         //private AbstractPipeLine pipeLine1;
@@ -137,11 +137,11 @@ namespace UserControlIndex
             graphics.DrawString("设定t/h", Font, Brushes.Black, new Rectangle(3, Height - 30, 60, 15), this.sf);
             graphics.DrawString("实际t/h", Font, Brushes.Black, new Rectangle(3, Height - 15, 60, 15), this.sf);
 
-            this.pipeLine3.Width = Width - 75;
+            /*this.pipeLine3.Width = Width - 75;
             this.pipeLine3.Location = new System.Drawing.Point(75, Height - 45);
             this.pipeLine4.Height = 100;
             //this.pipeLine4.Location = new System.Drawing.Point(Width - this.pipeLine4.Width-125, Height - this.pipeLine4.Height + 1);
-            this.pipeLine4.Location = new System.Drawing.Point(this.pipeLine3.Location.X+ this.pipeLine3.Width-15, this.pipeLine3.Location.Y+15);
+            this.pipeLine4.Location = new System.Drawing.Point(this.pipeLine3.Location.X+ this.pipeLine3.Width-15, this.pipeLine3.Location.Y+15);*/
 
             //this.pipeLine4.Height = 52;
             base.OnPaint(e);

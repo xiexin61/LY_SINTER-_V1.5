@@ -29,16 +29,19 @@ namespace LY_SINTER.PAGE.Analysis
     public partial class shengchanzuzhi : UserControl
     {
         private System.Timers.Timer MongoQMtimer1;//自定义一个定时器
-        SqlSugarClient db_sugar = GetInstance();
-        C_PLC_3S modelT_PLC_3S = null;
+        private SqlSugarClient db_sugar = GetInstance();
+        private C_PLC_3S modelT_PLC_3S = null;
+
         public static SqlSugarClient GetInstance()
         {
             SqlSugarClient db = new SqlSugarClient(new ConnectionConfig() { ConnectionString = DataBase.ConstParameters.strCon, DbType = SqlSugar.DbType.SqlServer, IsAutoCloseConnection = true });
             return db;
         }
-        MC_MICAL_PAR modelMC_MICAL_PAR = new MC_MICAL_PAR();
+
+        private MC_MICAL_PAR modelMC_MICAL_PAR = new MC_MICAL_PAR();
         public System.Web.UI.Timer Timer_1 { get; set; }
         public System.Web.UI.Timer Timer_2 { get; set; }
+
         public shengchanzuzhi()
         {
             InitializeComponent();
@@ -62,12 +65,14 @@ namespace LY_SINTER.PAGE.Analysis
             Timer_2.Tick += Timer_2_Tick;
             Timer_2.Interval = 300000;
             Timer_2.Enabled = true;
+
             UC_Load();
             sszzjh();
             Check_text();
             //MongoQMtimer1_Elapsed();
             //windowformRefresh();
         }
+
         /// <summary>
         /// 开始时间&结束时间赋值
         /// </summary>
@@ -85,9 +90,9 @@ namespace LY_SINTER.PAGE.Analysis
             }
             catch (Exception ee)
             {
-
             }
         }
+
         public void UC_Load()
         {
             InitControl();
@@ -96,9 +101,7 @@ namespace LY_SINTER.PAGE.Analysis
             string Temp = "";
             try
             {
-
                 modelT_PLC_3S = db_sugar.SqlQueryable<C_PLC_3S>(strSQL).ToList().FirstOrDefault();
-
             }
             catch (Exception ee)
             {
@@ -115,7 +118,6 @@ namespace LY_SINTER.PAGE.Analysis
             MongoQMtimer1.AutoReset = true;//获取该定时器自动执行
             MongoQMtimer1.Enabled = true;
             MongoQMtimer1.Start();
-
         }
 
         private void InitControl()
@@ -124,7 +126,7 @@ namespace LY_SINTER.PAGE.Analysis
             //料仓
             for (int i = 0; i < 10; i++)
             {
-                bottleAllUC1.BottomItems.Add(new BottleItem { BottleType = BottleType.BottleSingle });
+                bottleAllUC1.BottomItems.Add(new Popover.Analysis.BottleItem { BottleType = Popover.Analysis.BottleType.BottleSingle });
                 bottleAllUC1.BottomItems[i].BottleObj.Value = (i + 1) * 10;
                 bottleAllUC1.BottomItems[i].BottleObj.CangHao = i + 1;
 
@@ -137,20 +139,17 @@ namespace LY_SINTER.PAGE.Analysis
 
                     bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0xa8, 0x74, 0x56);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0xab, 0x46, 0x38), Color.FromArgb(0xab, 0x46, 0x38), Color.FromArgb(0xab, 0x46, 0x38) };//中部的填充颜色737370
-
                 }
                 else
                 {
                     bottleAllUC1.BottomItems[i].BottleObj.Lc3BackColor = Color.FromArgb(0x1d, 0x20, 0x25);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0x3b, 0x3e, 0x47);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0x1d, 0x20, 0x25), Color.FromArgb(0x1d, 0x20, 0x25), Color.FromArgb(0x1d, 0x20, 0x25) };//中部的填充颜色737370
-
                 }
-
             }
             for (int i = 10; i < 12; i++)
             {
-                bottleAllUC1.BottomItems.Add(new BottleItem { BottleType = BottleType.BottleSingle });
+                bottleAllUC1.BottomItems.Add(new Popover.Analysis.BottleItem { BottleType = Popover.Analysis.BottleType.BottleSingle });
                 bottleAllUC1.BottomItems[i].BottleObj.Value = (i + 1) * 10;
                 bottleAllUC1.BottomItems[i].BottleObj.CangHao = i + 1;
 
@@ -159,16 +158,12 @@ namespace LY_SINTER.PAGE.Analysis
                 bottleAllUC1.BottomItems[i].BottleObj.Lc3BackColor = Color.FromArgb(0x10, 0x4e, 0x8b);
                 bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0x36, 0x64, 0x8b);
                 bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b) };
-
-
-
             }
             for (int i = 12; i < 20; i++)
             {
-                bottleAllUC1.BottomItems.Add(new BottleItem { BottleType = BottleType.BottleSingle });
+                bottleAllUC1.BottomItems.Add(new Popover.Analysis.BottleItem { BottleType = Popover.Analysis.BottleType.BottleSingle });
                 bottleAllUC1.BottomItems[i].BottleObj.Value = (i + 1) * 10;
                 bottleAllUC1.BottomItems[i].BottleObj.CangHao = i + 1;
-
 
                 bottleAllUC1.BottomItems[i].BottleObj.Lc1BackColorTop = Color.FromArgb(0xb3, 0xaf, 0xaf);
                 bottleAllUC1.BottomItems[i].BottleObj.Lc2BackColors = new Color[] { Color.FromArgb(0x8c, 0x8c, 0x77), Color.FromArgb(0x8c, 0x8c, 0x77), Color.FromArgb(0x8c, 0x8c, 0x77) };//无料时的背景填充色
@@ -184,26 +179,23 @@ namespace LY_SINTER.PAGE.Analysis
                     bottleAllUC1.BottomItems[i].BottleObj.Lc3BackColor = Color.FromArgb(0x8b, 0xac, 0xa1);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0xad, 0xb9, 0xbe);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0x8b, 0xac, 0xa1), Color.FromArgb(0x8b, 0xac, 0xa1), Color.FromArgb(0x8b, 0xac, 0xa1) };//中部的填充颜色737370
-
                 }
                 else if ((i + 1) == 17 || (i + 1) == 18 || (i + 1) == 19)
                 {
                     bottleAllUC1.BottomItems[i].BottleObj.Lc3BackColor = Color.FromArgb(0x10, 0x4e, 0x8b);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0x36, 0x64, 0x8b);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b) };//中部的填充颜色737370
-
                 }
                 else
                 {
                     bottleAllUC1.BottomItems[i].BottleObj.Lc3BackColor = Color.FromArgb(0x10, 0x4e, 0x8b);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0x36, 0x64, 0x8b);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b) };//中部的填充颜色737370
-
-
                 }
             }
             InitBottleName();
         }
+
         private void InitBottleName()
         {
             if (this.bottleAllUC1.BottomItems.Count == 20)
@@ -230,15 +222,16 @@ namespace LY_SINTER.PAGE.Analysis
                 this.bottleAllUC1.BottomItems[18].BottleDesc = "生石灰";
                 this.bottleAllUC1.BottomItems[19].BottleDesc = "生石灰";
             }
-
         }
-        delegate void aaa();
-        DataTable dataTableMC_BTPCAL_result_1min = new DataTable();
-        string MICAL_BU_C_LOCAT_BTP = "";
-        string MICAL_BU_C_BTP_TE = "";
-        void MongoQMtimer1_Elapsed(object sender, ElapsedEventArgs e)
-        {
 
+        private delegate void aaa();
+
+        private DataTable dataTableMC_BTPCAL_result_1min = new DataTable();
+        private string MICAL_BU_C_LOCAT_BTP = "";
+        private string MICAL_BU_C_BTP_TE = "";
+
+        private void MongoQMtimer1_Elapsed(object sender, ElapsedEventArgs e)
+        {
             try
             {
                 string strSQL = "select top(1) *  from C_PLC_3S order by timestamp desc";
@@ -273,20 +266,17 @@ namespace LY_SINTER.PAGE.Analysis
 
                         ////允许重绘pnl
                         //SendMessage(this.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
-
                     };
                     this.Invoke(ShowInfo);
-
                 }
                 db_sugar.Dispose();
             }
             catch (Exception ex)
             {
-
             }
         }
-        
-        void windowformRefresh()
+
+        private void windowformRefresh()
         {
             //总料量SP PV
 
@@ -330,8 +320,6 @@ namespace LY_SINTER.PAGE.Analysis
             bottleAllUC1.BottomItems[0].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_1_3S.ToString();//实际下料量
             bottleAllUC1.BottomItems[0].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_1_3S == 1 ? Brushes.Green : Brushes.DimGray;//下料口启停信号
 
-
-
             bottleAllUC1.BottomItems[1].BottleObj.HeadTag = Getwlbm_Code(2);//通过仓号获取
             bottleAllUC1.BottomItems[1].BottleObj.BottleTag = modelT_PLC_3S.T_W_2_3S.ToString("f2");
             bottleAllUC1.BottomItems[1].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_2_3S) / GetByShangXian_Code(2) * 100;//1000 * 100;
@@ -374,14 +362,12 @@ namespace LY_SINTER.PAGE.Analysis
             bottleAllUC1.BottomItems[6].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_7_3S.ToString();
             bottleAllUC1.BottomItems[6].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_7_3S == 1 ? Brushes.Green : Brushes.DimGray;
 
-
             bottleAllUC1.BottomItems[7].BottleObj.HeadTag = Getwlbm_Code(8);
             bottleAllUC1.BottomItems[7].BottleObj.BottleTag = modelT_PLC_3S.T_W_8_3S.ToString("f2");
             bottleAllUC1.BottomItems[7].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_8_3S) / GetByShangXian_Code(8) * 100;//500 * 100;
             bottleAllUC1.BottomItems[7].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_8_3S.ToString();
             bottleAllUC1.BottomItems[7].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_8_3S.ToString();
             bottleAllUC1.BottomItems[7].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_8_3S == 1 ? Brushes.Green : Brushes.DimGray;
-
 
             bottleAllUC1.BottomItems[8].BottleObj.HeadTag = Getwlbm_Code(9);
             bottleAllUC1.BottomItems[8].BottleObj.BottleTag = modelT_PLC_3S.T_W_9_3S.ToString("f2");
@@ -390,7 +376,6 @@ namespace LY_SINTER.PAGE.Analysis
             bottleAllUC1.BottomItems[8].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_9_3S.ToString();
             bottleAllUC1.BottomItems[8].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_9_3S == 1 ? Brushes.Green : Brushes.DimGray;
 
-
             bottleAllUC1.BottomItems[9].BottleObj.HeadTag = Getwlbm_Code(10);
             bottleAllUC1.BottomItems[9].BottleObj.BottleTag = modelT_PLC_3S.T_W_10_3S.ToString("f2");
             bottleAllUC1.BottomItems[9].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_10_3S) / GetByShangXian_Code(10) * 100;//500 * 100;
@@ -398,14 +383,12 @@ namespace LY_SINTER.PAGE.Analysis
             bottleAllUC1.BottomItems[9].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_10_3S.ToString();
             bottleAllUC1.BottomItems[9].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_10_3S == 1 ? Brushes.Green : Brushes.DimGray;
 
-
             bottleAllUC1.BottomItems[10].BottleObj.HeadTag = Getwlbm_Code(11);
             bottleAllUC1.BottomItems[10].BottleObj.BottleTag = modelT_PLC_3S.T_W_11_3S.ToString("f2");
             bottleAllUC1.BottomItems[10].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_11_3S) / GetByShangXian_Code(11) * 100;//500 * 100;
             bottleAllUC1.BottomItems[10].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_11_3S.ToString();
             bottleAllUC1.BottomItems[10].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_11_3S.ToString();
             bottleAllUC1.BottomItems[10].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_11_3S == 1 ? Brushes.Green : Brushes.DimGray;
-
 
             bottleAllUC1.BottomItems[11].BottleObj.HeadTag = Getwlbm_Code(12);
             bottleAllUC1.BottomItems[11].BottleObj.BottleTag = modelT_PLC_3S.T_W_12_3S.ToString("f2");
@@ -416,7 +399,6 @@ namespace LY_SINTER.PAGE.Analysis
             /*bottleAllUC1.BottomItems[11].BottleObj.SetValue2 = modelT_PLC_3S.T_SP_W_14_3S.ToString();
             bottleAllUC1.BottomItems[11].BottleObj.CurrentValue2 = modelT_PLC_3S.T_ACTUAL_W_14_3S.ToString();
             bottleAllUC1.BottomItems[11].BottleObj.SetT_SL_Right = modelT_PLC_3S.T_SL_14_3S == 1 ? Brushes.Green : Brushes.DimGray;*/
-
 
             bottleAllUC1.BottomItems[12].BottleObj.HeadTag = Getwlbm_Code(13);
             bottleAllUC1.BottomItems[12].BottleObj.BottleTag = modelT_PLC_3S.T_W_13_3S.ToString("f2");
@@ -473,9 +455,12 @@ namespace LY_SINTER.PAGE.Analysis
             bottleAllUC1.BottomItems[19].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_20_3S.ToString();
             bottleAllUC1.BottomItems[19].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_20_3S.ToString();
             bottleAllUC1.BottomItems[19].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_20_3S == 1 ? Brushes.Green : Brushes.DimGray;
-
+            //this.Update();
+            //this.Validate();
+            this.Refresh();
         }
-        double getbottleValue(object obj)
+
+        private double getbottleValue(object obj)
         {
             if (obj == null)
             {
@@ -486,6 +471,7 @@ namespace LY_SINTER.PAGE.Analysis
                 return Math.Round(Convert.ToDouble(obj), 2);
             }
         }
+
         private double GetByShangXian_Code(int num)
         {
             string str = "select top(1) isnull(L2_CODE,0)  from M_MATERIAL_BINS where BIN_NUM_SHOW=" + num;
@@ -523,7 +509,6 @@ namespace LY_SINTER.PAGE.Analysis
                 }
             }
             return 1000;
-
         }
 
         private string Getwlbm_Code(int num)
@@ -540,9 +525,8 @@ namespace LY_SINTER.PAGE.Analysis
             }
 
             return num + ":" + L2_NAME;
-
-
         }
+
         private void Timer_1_Tick(object sender, EventArgs e)
         {
             DateTime d1 = DateTime.Now.AddMonths(-1);
@@ -550,19 +534,23 @@ namespace LY_SINTER.PAGE.Analysis
             quxian(d1, d2);
             pizhong();//每分钟调用一次
         }
+
         private void Timer_2_Tick(object sender, EventArgs e)
         {
             sszzjh();
+            GetNewTime();
         }
+
         //最新调整时间
         public void GetNewTime()
         {
-            DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
-            string sql = "select top(1) TIMESTAMP from MC_POPCAL_RESULT order by TIMESTAMP desc;";
-            DataTable table = dBSQL.GetCommand(sql);
-            string time = table.Rows[0][0].ToString();
-            this.label6.Text = "最新调整时间:" + time;
+            /* DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+             string sql = "select top(1) TIMESTAMP from MC_POPCAL_RESULT order by TIMESTAMP desc;";
+             DataTable table = dBSQL.GetCommand(sql);
+             string time = table.Rows[0][0].ToString();*/
+            this.label6.Text = "最新调整时间:" + DateTime.Now;
         }
+
         public void pizhong()
         {
             DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
@@ -570,9 +558,10 @@ namespace LY_SINTER.PAGE.Analysis
             DataTable SSpizhong = dBSQL.GetCommand(sql);
             if (SSpizhong.Rows.Count > 0)
             {
-                this.label8.Text = "实际批重:" + SSpizhong.Rows[0][0].ToString()+"t/h";
-            }  
+                this.label8.Text = "实际批重:" + SSpizhong.Rows[0][0].ToString() + "t/h";
+            }
         }
+
         //获取查询的时间
         public DateTime GetStartTime(int time)
         {
@@ -585,21 +574,24 @@ namespace LY_SINTER.PAGE.Analysis
             else
             {
                 Time = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, time, 0, 0);
-            }       
+            }
             return Time;
         }
+
         public DateTime GetMTime(int time)
         {
             DateTime Time = new DateTime();
             Time = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day, time, 0, 0);
             return Time;
         }
+
         public DateTime GetZTime(int time)
         {
             DateTime Time = new DateTime();
             Time = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(-1).Day, time, 0, 0);
             return Time;
         }
+
         //生产组织计划表格查询
         public void sszzjh()
         {
@@ -790,6 +782,7 @@ namespace LY_SINTER.PAGE.Analysis
             this.rowMergeView1.MergeColumnNames.Add("time");
             this.rowMergeView1.MergeColumnNames.Add("合计");*/
         }
+
         private void Check_text()
         {
             DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
@@ -802,6 +795,7 @@ namespace LY_SINTER.PAGE.Analysis
                 this.checkBox3.Text = "实际产量:" + table.Rows[0][3].ToString() + "t";
             }
         }
+
         public void llpizhong()
         {
             DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
@@ -809,9 +803,10 @@ namespace LY_SINTER.PAGE.Analysis
             DataTable LLpizhong = dBSQL.GetCommand(sql);
             if (LLpizhong.Rows.Count > 0)
             {
-                this.label7.Text = "理论批重:"+LLpizhong.Rows[0][0].ToString()+"t/h";
+                this.label7.Text = "理论批重:" + LLpizhong.Rows[0][0].ToString() + "t/h";
             }
         }
+
         public static int getnMax(int max, int min)
         {
             int s = 0;
@@ -825,7 +820,6 @@ namespace LY_SINTER.PAGE.Analysis
                 {
                     s = max;
                 }
-
             }
             else
             {
@@ -833,20 +827,23 @@ namespace LY_SINTER.PAGE.Analysis
             }
             return s;
         }
+
         //用于存放坐标点
-        List<DataPoint> Line1 = new List<DataPoint>();
-        List<DataPoint> Line2 = new List<DataPoint>();
-        List<DataPoint> Line3 = new List<DataPoint>();
-        PlotModel _myPlotModel_1;
-        LinearAxis _valueAxis1_1;
-        LinearAxis _valueAxis1_2;
-        LinearAxis _valueAxis1_3;
-        OxyPlot.Series.LineSeries series1_1;
-        OxyPlot.Series.LineSeries series1_2;
-        OxyPlot.Series.LineSeries series1_3;
-        List<double> list1 = new List<double>();
-        List<double> list2 = new List<double>();
-        List<double> list3 = new List<double>();
+        private List<DataPoint> Line1 = new List<DataPoint>();
+
+        private List<DataPoint> Line2 = new List<DataPoint>();
+        private List<DataPoint> Line3 = new List<DataPoint>();
+        private PlotModel _myPlotModel_1;
+        private LinearAxis _valueAxis1_1;
+        private LinearAxis _valueAxis1_2;
+        private LinearAxis _valueAxis1_3;
+        private OxyPlot.Series.LineSeries series1_1;
+        private OxyPlot.Series.LineSeries series1_2;
+        private OxyPlot.Series.LineSeries series1_3;
+        private List<double> list1 = new List<double>();
+        private List<double> list2 = new List<double>();
+        private List<double> list3 = new List<double>();
+
         public void quxian(DateTime time_BIGIN, DateTime time_END)
         {
             Line1.Clear();
@@ -863,7 +860,6 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 if (table.Rows[i]["P_AL_OUTPUT"] == null)
                 {
-
                 }
                 DataPoint line1 = new DataPoint(DateTimeAxis.ToDouble(table.Rows[i]["TIMESTAMP"]), Convert.ToDouble(table.Rows[i]["P_AL_OUTPUT"]));
                 Line1.Add(line1);
@@ -910,7 +906,7 @@ namespace LY_SINTER.PAGE.Analysis
                 FontSize = 9.0,
                 IsAxisVisible = false,
                 MinorTickSize = 0,
-                Maximum = getnMax((int)list1.Max() + 1,(int)list1.Min() - 1),
+                Maximum = getnMax((int)list1.Max() + 1, (int)list1.Min() - 1),
                 Minimum = (int)list1.Min() - 1,
                 //MajorStep= (int)list1.Min() - 1,
             };
@@ -926,7 +922,6 @@ namespace LY_SINTER.PAGE.Analysis
                 YAxisKey = "计划产量",
                 ItemsSource = Line1,
                 TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n计划产量:{4}",
-
             };
             if (checkBox1.Checked == true)
             {
@@ -950,7 +945,7 @@ namespace LY_SINTER.PAGE.Analysis
                 FontSize = 9.0,
                 IsAxisVisible = false,
                 MinorTickSize = 0,
-                Maximum = getnMax((int)list2.Max() + 1,(int)list2.Min() - 1),
+                Maximum = getnMax((int)list2.Max() + 1, (int)list2.Min() - 1),
                 Minimum = (int)list2.Min() - 1,
                 //MajorStep= (int)list2.Min() - 1,
             };
@@ -973,7 +968,7 @@ namespace LY_SINTER.PAGE.Analysis
                 _valueAxis1_2.IsAxisVisible = true;
                 _myPlotModel_1.Series.Add(series1_2);
             }
-            
+
             //曲线3
             _valueAxis1_3 = new LinearAxis()
             {
@@ -991,7 +986,7 @@ namespace LY_SINTER.PAGE.Analysis
                 FontSize = 9.0,
                 IsAxisVisible = false,
                 MinorTickSize = 0,
-                Maximum = getnMax((int)list3.Max() + 1,(int)list3.Min() - 1),
+                Maximum = getnMax((int)list3.Max() + 1, (int)list3.Min() - 1),
                 Minimum = (int)list3.Min() - 1,
                 //MajorStep= (int)list3.Min() - 1,
             };
@@ -1008,6 +1003,7 @@ namespace LY_SINTER.PAGE.Analysis
                 ItemsSource = Line3,
                 TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n实际产量:{4}",
             };
+
             if (checkBox3.Checked == true)
             {
                 _valueAxis1_3.IsAxisVisible = true;
@@ -1019,8 +1015,21 @@ namespace LY_SINTER.PAGE.Analysis
 
             plotView2.Controller = PlotController;
 
+            var ta = new TrackerManipulator(plotView2);
+            ta.PointsOnly = true;
+
+            var tracker = new TrackerHitResult();
+            tracker.Position = new ScreenPoint(55, 6696);
+            tracker.Series = series1_3;
+            tracker.PlotModel = plotView2.Model;
+            tracker.Series = series1_3;
+
+            var tr = new TrackBar();
+            tr.Padding = new Padding(5, 5, 5, 5);
+
             //绑定数据18130085606
         }
+
         //实时
         private void simpleButton3_click(object sender, EventArgs e)
         {
@@ -1028,22 +1037,23 @@ namespace LY_SINTER.PAGE.Analysis
             DateTime d2 = DateTime.Now;
             quxian(d1, d2);
         }
+
         //查询曲线功能
         private void simpleButton2_click(object sender, EventArgs e)
         {
-            DateTime d1= Convert.ToDateTime(textBox_begin.Text);
+            DateTime d1 = Convert.ToDateTime(textBox_begin.Text);
             DateTime d2 = Convert.ToDateTime(textBox_end.Text);
-            quxian(d1,d2);
+            quxian(d1, d2);
         }
+
         private void simpleButton1_click(object sender, EventArgs e)
         {
-
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
+
         //修改数据产量
         private void simpleButton4_click(object sender, EventArgs e)
         {
@@ -1061,10 +1071,10 @@ namespace LY_SINTER.PAGE.Analysis
             sszzjh();
             //sszzjh();
         }
+
         //产量数据查询按钮
         private void simpleButton5_click(object sender, EventArgs e)
         {
-
             Frm_SSZZ_clsjcx form_display = new Frm_SSZZ_clsjcx();
             if (Frm_SSZZ_clsjcx.isopen == false)
             {
@@ -1138,26 +1148,26 @@ namespace LY_SINTER.PAGE.Analysis
             catch
             { }
         }
+
         public void Timer_state()
         {
-
         }
+
         public void _Clear()
         {
             this.Dispose();
             GC.SuppressFinalize(this);
         }
+
         /// <summary>
         /// 定时器停用
         /// </summary>
         public void Timer_stop()
         {
-          
         }
 
         private void tableLayoutPanel38_Paint(object sender, PaintEventArgs e)
         {
-
         }
     }
 }

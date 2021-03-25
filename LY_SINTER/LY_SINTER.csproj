@@ -104,10 +104,6 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="ReachFramework" />
-    <Reference Include="SCZZJH, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SCZZJH\bin\Debug\SCZZJH.dll</HintPath>
-    </Reference>
     <Reference Include="SqlSugar, Version=5.0.0.12, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\SqlSugar.dll</HintPath>
@@ -325,6 +321,7 @@
     <Compile Include="PAGE\Quality\Quality_automatic.Designer.cs">
       <DependentUpon>Quality_automatic.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popover\Analysis\AbstractBottle.cs" />
     <Compile Include="Popover\Analysis\BottleAllUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -987,6 +984,10 @@
     <ProjectReference Include="..\NBSJ_PICAL\NBSJ_PICAL.csproj">
       <Project>{e85d97d6-8d84-44a5-93ec-8f56afefd7e4}</Project>
       <Name>NBSJ_PICAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SCZZJH\SCZZJH.csproj">
+      <Project>{9ca4dea9-d471-457b-9328-745edf4760a6}</Project>
+      <Name>SCZZJH</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

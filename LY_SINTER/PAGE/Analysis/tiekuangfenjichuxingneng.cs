@@ -274,15 +274,7 @@ namespace LY_SINTER.PAGE.Analysis
         //高炉入炉原料基础性能按钮
         private void simpleButton7_Click(object sender, EventArgs e)
         {
-            Frm_gaoluruluyuanliao form_display = new Frm_gaoluruluyuanliao();
-            if (Frm_gaoluruluyuanliao.isopen == false)
-            {
-                form_display.ShowDialog();
-            }
-            else
-            {
-                form_display.Activate();
-            }
+
         }
     }
 }

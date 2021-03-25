@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
-
 namespace DataBase
 {
- public class DBSQL
+    public class DBSQL
     {
         private string m_dbs;
 
@@ -26,6 +25,7 @@ namespace DataBase
         {
             m_dbs = connectString;
         }
+
         public string ConnectString
         {
             get { return m_dbs; }
@@ -145,7 +145,6 @@ namespace DataBase
             {
                 return result;
             }
-
         }
 
         /// <summary>

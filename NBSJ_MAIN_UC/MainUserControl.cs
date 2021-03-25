@@ -13,27 +13,27 @@ using System.Runtime.InteropServices;
 using NBSJ_MAIN_UC.Model;
 using SqlSugar;
 using System.Timers;
-
-
+using System.Diagnostics;
 
 namespace NBSJ_MAIN_UC
 {
     public partial class MainUserControl : UserControl
     {
-        private  System.Timers.Timer MongoQMtimer1;//自定义一个定时器
-        SqlSugarClient db_sugar = GetInstance();
+        private System.Timers.Timer MongoQMtimer1;//自定义一个定时器
+        private SqlSugarClient db_sugar = GetInstance();
         public int RefreshTime = 0;
+
         public static SqlSugarClient GetInstance()
         {
             SqlSugarClient db = new SqlSugarClient(new ConnectionConfig() { ConnectionString = ADODB.ConnectionString, DbType = SqlSugar.DbType.SqlServer, IsAutoCloseConnection = true });
             return db;
         }
+
         public MainUserControl()
         {
-          
             InitializeComponent();
             this.picYantong = new System.Windows.Forms.PictureBox();
-            this.picYantong.Image =global::NBSJ_MAIN_UC.Properties.Resources.烟筒1;
+            this.picYantong.Image = global::NBSJ_MAIN_UC.Properties.Resources.烟筒1;
             this.picYantong.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picYantong.Size = new System.Drawing.Size(140, 170);
             this.Controls.Add(this.picYantong);
@@ -44,9 +44,11 @@ namespace NBSJ_MAIN_UC
             this.labZ1_1.Visible = false;
             this.labSF_2.Visible = false;
             labPuDiLiaoCaoFlow.Text = "";
+
             #region 初始化的
-            /*pipeLine11 = new PipeLine();
-            this.Controls.Add(this.pipeLine11);*/
+
+            pipeLine11 = new PipeLine();
+            this.Controls.Add(this.pipeLine11);
             pipeLine12 = new PipeLine();
             this.Controls.Add(this.pipeLine12);
             /*pipeLine13 = new PipeLine();
@@ -58,26 +60,26 @@ namespace NBSJ_MAIN_UC
             pipeLine16 = new PipeLine();
             this.Controls.Add(this.pipeLine16);
 
-            //pipeLine11.PipeLineActive = true;
+            pipeLine11.PipeLineActive = true;
             pipeLine12.PipeLineActive = true;
             //pipeLine13.PipeLineActive = true;
             pipeLine14.PipeLineActive = true;
             pipeLine15.PipeLineActive = true;
             pipeLine16.PipeLineActive = true;
 
-            //pipeLine11.MoveSpeed = -2.5f;
+            pipeLine11.MoveSpeed = -2.5f;
             pipeLine12.MoveSpeed = -2.5f;
             //pipeLine13.MoveSpeed = -2.5f;
             pipeLine14.MoveSpeed = -2.5f;
             pipeLine15.MoveSpeed = -2.5f;
             pipeLine16.MoveSpeed = -2.5f;
 
-            //pipeLine11.PipeLineName = "Z5-1皮带";
-            pipeLine12.PipeLineName = "CP1(成-5)";
+            pipeLine11.PipeLineName = "Z7-1(成-3)皮带";
+            pipeLine12.PipeLineName = "CP1(成-5)皮带";
             //pipeLine13.PipeLineName = "板式给矿机";
             pipeLine14.PipeLineName = "Z61(铺-1)";
-            pipeLine15.PipeLineName = "Z51皮带";
-            pipeLine16.PipeLineName = "SLG皮带";
+            pipeLine15.PipeLineName = "Z51(成-1)皮带";
+            pipeLine16.PipeLineName = "LS2(成-2)皮带";
 
             base.SetStyle(ControlStyles.SupportsTransparentBackColor | ControlStyles.UserPaint, true);
             base.SetStyle(ControlStyles.ResizeRedraw, true);
@@ -86,21 +88,24 @@ namespace NBSJ_MAIN_UC
             //this.DoubleBuffered = true;
             this.BackColor = Color.FromArgb(0xee, 0xee, 0xe0);//cbe3f8
                                                               //
-           
+
             btnHuanXinLiao.Location = new System.Drawing.Point((int)(this.Width * 0.22f), 1);
 
-            myBitmap1 =global::NBSJ_MAIN_UC.Properties.Resources.皮带点;
-            myBitmap2 =global::NBSJ_MAIN_UC.Properties.Resources.皮带点;
+            myBitmap1 = global::NBSJ_MAIN_UC.Properties.Resources.皮带点;
+            myBitmap2 = global::NBSJ_MAIN_UC.Properties.Resources.皮带点;
             myBitmap3 = global::NBSJ_MAIN_UC.Properties.Resources.余热发电;
+
             #endregion 初始化的
+
             UC_Load();
-             db_sugar.Dispose();
-            
+            db_sugar.Dispose();
         }
-        PictureBox picYantong;
+
+        private PictureBox picYantong;
 
         [DllImport("user32")]
         private static extern int SendMessage(IntPtr hwnd, int wMsg, int wParam, IntPtr lParam);
+
         private const int WM_SETREDRAW = 0xB;
 
         //禁止pnl重绘
@@ -109,10 +114,8 @@ namespace NBSJ_MAIN_UC
         //允许重绘pnl
         //SendMessage(SelfInfo_pnlContact1.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
 
+        private MC_MICAL_PAR modelMC_MICAL_PAR = new MC_MICAL_PAR();// iDataBase.Queryable<MC_MICAL_PAR>().FirstOrDefault();
 
-
-        MC_MICAL_PAR modelMC_MICAL_PAR = new MC_MICAL_PAR();// iDataBase.Queryable<MC_MICAL_PAR>().FirstOrDefault();
-        
         /// <summary>
         ///  获取物料编码
         /// </summary>
@@ -120,8 +123,8 @@ namespace NBSJ_MAIN_UC
         /// <returns></returns>
         private string Getwlbm_Code(int num)
         {
-          string str = "select top(1) isnull(MAT_DESC,'')  from M_MATERIAL_COOD where L2_CODE=( select top(1) isnull(L2_CODE,0)  from M_MATERIAL_BINS where BIN_NUM_SHOW="+ num+")";
-          string L2_NAME = "";
+            string str = "select top(1) isnull(MAT_DESC,'')  from M_MATERIAL_COOD where L2_CODE=( select top(1) isnull(L2_CODE,0)  from M_MATERIAL_BINS where BIN_NUM_SHOW=" + num + ")";
+            string L2_NAME = "";
             try
             {
                 L2_NAME = Convert.ToString(db_sugar.Ado.GetString(str));
@@ -130,12 +133,9 @@ namespace NBSJ_MAIN_UC
             {
                 LogHelper.LogError(ee.Message);
             }
-        
-          return num + ":" + L2_NAME;
-          
-           
-        }
 
+            return num + ":" + L2_NAME;
+        }
 
         /// <summary>
         ///  获取仓位上限
@@ -179,11 +179,9 @@ namespace NBSJ_MAIN_UC
                 }
             }
             return 1000;
-
         }
 
-
-        string quyangTime = "";
+        private string quyangTime = "";
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -192,34 +190,30 @@ namespace NBSJ_MAIN_UC
             graphics.SmoothingMode = SmoothingMode.HighQuality;
             graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 
-
             RefreshFun(graphics);
             //graphics.Dispose();
             //base.OnPaint(e);
         }
 
         #region 继承
+
         /// <summary>
         ///     显示UC
         /// </summary>
-        public  void UC_Load()
+        public void UC_Load()
         {
             pipeLine_Right1.PipeLineActive(true);
             pipeLine_Right1.SetIsRunStop(false);
             pipeLine_Text1.PipeLineActive(true);
             pipeLine_Two1.PipeLineActive(true);
-           
-
 
             InitControl();
             //windowformRefresh();
-           string strSQL = "select top(1) * from C_PLC_3S order by timestamp desc";
+            string strSQL = "select top(1) * from C_PLC_3S order by timestamp desc";
             string Temp = "";
             try
-            { 
-
+            {
                 modelT_PLC_3S = db_sugar.SqlQueryable<C_PLC_3S>(strSQL).ToList().FirstOrDefault();
-
             }
             catch (Exception ee)
             {
@@ -231,9 +225,6 @@ namespace NBSJ_MAIN_UC
                 windowformRefresh();
             }
 
-
-           
-
             MongoQMtimer1 = new System.Timers.Timer();
             MongoQMtimer1.Elapsed += new ElapsedEventHandler(MongoQMtimer1_Elapsed);//1s调用一次
             MongoQMtimer1.Interval = 1 * 5000;
@@ -241,7 +232,7 @@ namespace NBSJ_MAIN_UC
             MongoQMtimer1.Enabled = true;
             MongoQMtimer1.Start();
 
-           // RefreshTime = 5;
+            // RefreshTime = 5;
             //worker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(worker_RunWorkerCompleted);
             //worker.DoWork += new DoWorkEventHandler(worker_DoWork);
 
@@ -260,14 +251,15 @@ namespace NBSJ_MAIN_UC
         /// <summary>
         ///     每次显示UC
         /// </summary>
-        public  void UC_Show()
+        public void UC_Show()
         {
-           UC_Show();
+            UC_Show();
         }
+
         /// <summary>
         ///     关闭UC
         /// </summary>
-        public  void UC_Close()
+        public void UC_Close()
         {
             //StopTimer();
             if (worker.IsBusy && !worker.CancellationPending)
@@ -275,14 +267,14 @@ namespace NBSJ_MAIN_UC
                 //System.Threading.Thread.Sleep(500);
                 worker.CancelAsync();
             }
-           // AutoDispose();
+            // AutoDispose();
             UC_Close();
         }
 
         /// <summary>
         ///     释放UC
         /// </summary>
-        public  void UC_Dispose()
+        public void UC_Dispose()
         {
             //StopTimer();
             if (worker.IsBusy && !worker.CancellationPending)
@@ -290,28 +282,30 @@ namespace NBSJ_MAIN_UC
                 //System.Threading.Thread.Sleep(500);
                 worker.CancelAsync();
             }
-           // DestroyIList(wlbmModel);
+            // DestroyIList(wlbmModel);
             UC_Dispose();
         }
 
-        DataTable dataTableMC_BTPCAL_result_1min = new DataTable();
+        private DataTable dataTableMC_BTPCAL_result_1min = new DataTable();
+
         /// <summary>
         /// BTP位置
         /// </summary>
-        string MICAL_BU_C_LOCAT_BTP = "";
+        private string MICAL_BU_C_LOCAT_BTP = "";
+
         /// <summary>
         /// BTP温度
         /// </summary>
-        string MICAL_BU_C_BTP_TE = "";
+        private string MICAL_BU_C_BTP_TE = "";
+
         /// <summary>
         /// 定时器刷新方法
         /// </summary>
-        public  void TimerElapsed()
+        public void TimerElapsed()
         {
             try
             {
-             
-                 string strSQL = "select top(1) *  from C_PLC_3S ORDER BY TIMESTAMP DESC";
+                string strSQL = "select top(1) *  from C_PLC_3S ORDER BY TIMESTAMP DESC";
                 //string Temp = iDataBase.GetString(strSQL);
                 try
                 {
@@ -323,106 +317,111 @@ namespace NBSJ_MAIN_UC
                 }
 
                 string sqlcol = "timestamp,BTPCAL_OUT_8_X_AVG_BTP,BTPCAL_OUT_8_TE_AVG_BTP,BTPCAL_QE4_8_X_AVG_BRP,BTPCAL_QE4_8_TE_AVG_BRP";
-                    string sqlstr = string.Format("select {0} from {1} where timestamp=(select max(timestamp) from {1})", sqlcol, "MC_BTPCAL_result_1min");
+                string sqlstr = string.Format("select {0} from {1} where timestamp=(select max(timestamp) from {1})", sqlcol, "MC_BTPCAL_result_1min");
                 try
                 {
                     dataTableMC_BTPCAL_result_1min = db_sugar.Ado.GetDataTable(sqlstr);
-
                 }
                 catch (Exception ee)
                 {
                     LogHelper.LogError(ee.Message);
                 }
-              if (dataTableMC_BTPCAL_result_1min != null && dataTableMC_BTPCAL_result_1min.Rows.Count > 0)
+                if (dataTableMC_BTPCAL_result_1min != null && dataTableMC_BTPCAL_result_1min.Rows.Count > 0)
+                {
+                    var row = dataTableMC_BTPCAL_result_1min.Rows[0];
+                    if (row != null)
                     {
-                        var row = dataTableMC_BTPCAL_result_1min.Rows[0];
-                        if (row != null)
+                        if (row["BTPCAL_OUT_8_X_AVG_BTP"] != null && row["BTPCAL_OUT_8_X_AVG_BTP"].ToString() != "")
                         {
-                            if (row["BTPCAL_OUT_8_X_AVG_BTP"] != null && row["BTPCAL_OUT_8_X_AVG_BTP"].ToString() != "")
-                            {
-                                MICAL_BU_C_LOCAT_BTP = row["BTPCAL_OUT_8_X_AVG_BTP"].ToString();
-                            }
-                            if (row["BTPCAL_OUT_8_TE_AVG_BTP"] != null && row["BTPCAL_OUT_8_TE_AVG_BTP"].ToString() != "")
-                            {
-                                MICAL_BU_C_BTP_TE = row["BTPCAL_OUT_8_TE_AVG_BTP"].ToString();
-                            }
+                            MICAL_BU_C_LOCAT_BTP = row["BTPCAL_OUT_8_X_AVG_BTP"].ToString();
+                        }
+                        if (row["BTPCAL_OUT_8_TE_AVG_BTP"] != null && row["BTPCAL_OUT_8_TE_AVG_BTP"].ToString() != "")
+                        {
+                            MICAL_BU_C_BTP_TE = row["BTPCAL_OUT_8_TE_AVG_BTP"].ToString();
                         }
                     }
+                }
 
+                if (modelT_PLC_3S != null)
+                {
+                    windowformRefresh();
+                }
+                db_sugar.Dispose();
 
-                    if (modelT_PLC_3S != null)
-                    {
-                        windowformRefresh();
-                    }
-                    db_sugar.Dispose();
-                
                 //mc_GUIDE_SAMPLING.START_TIME+
                 //if(mc_GUIDE_SAMPLING.START_TIME.Value.addd)
                 //InsertUpdate_MC_GUIDE_SAMPLING(false);
-
-
             }
             catch (Exception ex)
             { }
 
             TimerElapsed();
         }
+
         #endregion 继承
 
         #region 界面上的变量
-        C_PLC_3S modelT_PLC_3S = null;
 
-        Bitmap myBitmap1 = null;
-        Bitmap myBitmap2 = null;
-        Bitmap myBitmap3 = null;
+        private C_PLC_3S modelT_PLC_3S = null;
+
+        private Bitmap myBitmap1 = null;
+        private Bitmap myBitmap2 = null;
+        private Bitmap myBitmap3 = null;
         protected LinearGradientBrush brush;
         protected ColorBlend blend = new ColorBlend();
         protected StringFormat sf;
 
-        //private PipeLine pipeLine11;
+        private PipeLine pipeLine11;
         private PipeLine pipeLine12;
+
         //private PipeLine pipeLine13;
         private PipeLine pipeLine14;
+
         private PipeLine pipeLine15;
         private PipeLine pipeLine16;
-        Point point1 = new Point(0, 0);
-        Point point2 = new Point(0, 0);
+        private Point point1 = new Point(0, 0);
+        private Point point2 = new Point(0, 0);
+
         /// <summary>
         /// 烟筒
         /// </summary>
-        Bitmap myBitmapYt = null;
+        private Bitmap myBitmapYt = null;
+
         /// <summary>
         /// 脱硫脱硝桶
         /// </summary>
-        Bitmap myBitmapTlTx = null;
+        private Bitmap myBitmapTlTx = null;
 
+        private BackgroundWorker worker = new BackgroundWorker();
 
-        BackgroundWorker worker = new BackgroundWorker();
-        delegate void aaa();
+        private delegate void aaa();
+
         #endregion 界面上的变量
-
 
         #region 界面的方法
 
         /// <summary>
         /// 漏斗控件高度的比例
         /// </summary>
-        float bottle_Height_K = 0.2f;
+        private float bottle_Height_K = 0.2f;
+
         /// <summary>
         /// 边缘宽度系数
         /// </summary>
-        float edgeWidthK = 0.005f;
-        float xStart = 0;
-        float yStart = 0;
+        private float edgeWidthK = 0.005f;
+
+        private float xStart = 0;
+        private float yStart = 0;
+
         private void InitControl()
         {
             this.bottleAllUC1.Dock = System.Windows.Forms.DockStyle.None;
             //料仓
-            
+
             for (int i = 0; i < 10; i++)
             {
                 bottleAllUC1.BottomItems.Add(new BottleItem { BottleType = BottleType.BottleSingle });
-                bottleAllUC1.BottomItems[i].BottleObj.Value = (i+1) * 10;
+                bottleAllUC1.BottomItems[i].BottleObj.Value = (i + 1) * 10;
                 bottleAllUC1.BottomItems[i].BottleObj.CangHao = i + 1;
 
                 bottleAllUC1.BottomItems[i].BottleObj.Lc1BackColorTop = Color.FromArgb(0xb3, 0xaf, 0xaf);
@@ -434,16 +433,13 @@ namespace NBSJ_MAIN_UC
 
                     bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0xa8, 0x74, 0x56);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0xab, 0x46, 0x38), Color.FromArgb(0xab, 0x46, 0x38), Color.FromArgb(0xab, 0x46, 0x38) };//中部的填充颜色737370
-
                 }
                 else
                 {
                     bottleAllUC1.BottomItems[i].BottleObj.Lc3BackColor = Color.FromArgb(0x1d, 0x20, 0x25);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0x3b, 0x3e, 0x47);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0x1d, 0x20, 0x25), Color.FromArgb(0x1d, 0x20, 0x25), Color.FromArgb(0x1d, 0x20, 0x25) };//中部的填充颜色737370
-
                 }
-
             }
             for (int i = 10; i < 12; i++)
             {
@@ -456,16 +452,12 @@ namespace NBSJ_MAIN_UC
                 bottleAllUC1.BottomItems[i].BottleObj.Lc3BackColor = Color.FromArgb(0x10, 0x4e, 0x8b);
                 bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0x36, 0x64, 0x8b);
                 bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b) };
-
-
-
             }
             for (int i = 12; i < 20; i++)
             {
                 bottleAllUC1.BottomItems.Add(new BottleItem { BottleType = BottleType.BottleSingle });
                 bottleAllUC1.BottomItems[i].BottleObj.Value = (i + 1) * 10;
                 bottleAllUC1.BottomItems[i].BottleObj.CangHao = i + 1;
-
 
                 bottleAllUC1.BottomItems[i].BottleObj.Lc1BackColorTop = Color.FromArgb(0xb3, 0xaf, 0xaf);
                 bottleAllUC1.BottomItems[i].BottleObj.Lc2BackColors = new Color[] { Color.FromArgb(0x8c, 0x8c, 0x77), Color.FromArgb(0x8c, 0x8c, 0x77), Color.FromArgb(0x8c, 0x8c, 0x77) };//无料时的背景填充色
@@ -481,22 +473,18 @@ namespace NBSJ_MAIN_UC
                     bottleAllUC1.BottomItems[i].BottleObj.Lc3BackColor = Color.FromArgb(0x8b, 0xac, 0xa1);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0xad, 0xb9, 0xbe);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0x8b, 0xac, 0xa1), Color.FromArgb(0x8b, 0xac, 0xa1), Color.FromArgb(0x8b, 0xac, 0xa1) };//中部的填充颜色737370
-
                 }
                 else if ((i + 1) == 17 || (i + 1) == 18 || (i + 1) == 19)
                 {
                     bottleAllUC1.BottomItems[i].BottleObj.Lc3BackColor = Color.FromArgb(0x10, 0x4e, 0x8b);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0x36, 0x64, 0x8b);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b) };//中部的填充颜色737370
-
                 }
                 else
                 {
                     bottleAllUC1.BottomItems[i].BottleObj.Lc3BackColor = Color.FromArgb(0x10, 0x4e, 0x8b);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc4BackColorTop = Color.FromArgb(0x36, 0x64, 0x8b);
                     bottleAllUC1.BottomItems[i].BottleObj.Lc5BackColors = new Color[] { Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b), Color.FromArgb(0x10, 0x4e, 0x8b) };//中部的填充颜色737370
-
-
                 }
             }
             InitBottleName();
@@ -507,15 +495,15 @@ namespace NBSJ_MAIN_UC
 
             panel1.Dock = System.Windows.Forms.DockStyle.None;
 
-            myBitmapYt =global::NBSJ_MAIN_UC.Properties.Resources.烟筒;
+            myBitmapYt = global::NBSJ_MAIN_UC.Properties.Resources.烟筒;
             //myBitmapYt =global::NBSJ_MAIN_UC.Properties.Resources.烟筒1;
             //image烟筒 = (Image)NBSJ_MAIN_UC.Properties.Resources.烟筒1;
 
-            myBitmapTlTx =global::NBSJ_MAIN_UC.Properties.Resources.脱硫脱硝桶;
+            myBitmapTlTx = global::NBSJ_MAIN_UC.Properties.Resources.脱硫脱硝桶;
 
             RefreshFun(this.CreateGraphics());
-
         }
+
         private void InitBottleName()
         {
             if (this.bottleAllUC1.BottomItems.Count == 20)
@@ -542,8 +530,8 @@ namespace NBSJ_MAIN_UC
                 this.bottleAllUC1.BottomItems[18].BottleDesc = "生石灰";
                 this.bottleAllUC1.BottomItems[19].BottleDesc = "生石灰";
             }
-        
         }
+
         //Image image烟筒;
 
         private void RefreshFun(Graphics graphics)
@@ -560,7 +548,6 @@ namespace NBSJ_MAIN_UC
             panel1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
             panel1.Size = new System.Drawing.Size((int)(this.Width * (1 - edgeWidthK * 2)), (int)(this.Height * 0.15f));
 
-
             pipeLine_Right1.Width = (int)(this.Width * 0.12f);
             blendingUC1.Width = (int)(this.Width * 0.19f);
             pipeLine_Text1.Width = (int)(this.Width * 0.12f);
@@ -569,12 +556,11 @@ namespace NBSJ_MAIN_UC
 
             this.pipeLine_Two1.Location = new System.Drawing.Point((int)(this.Width * 0.185f), (int)(this.Height * 0.025f));
 
-
             //布料器
             buLiaoQiUC1.Width = (int)(this.Width * 0.065f);
             buLiaoQiUC1.Height = (int)(this.Height * 0.05f);
             xStart = this.Width * 0.196f;// - buLiaoQiUC1.Width / 2;
-            yStart = yStart + panel1.Height-30;
+            yStart = yStart + panel1.Height - 30;
             this.buLiaoQiUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
 
             //混合料槽和圆棍
@@ -591,15 +577,12 @@ namespace NBSJ_MAIN_UC
             yStart = yStart + hunHeLiaoCaoYuanGunUC1.Height - puDiLiaoCaoUC1.Height;
             this.puDiLiaoCaoUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
 
-         
             this.labPuDiLiaoCaoFlow.Location = new System.Drawing.Point(this.puDiLiaoCaoUC1.Location.X - 50, (int)(this.puDiLiaoCaoUC1.Location.Y + this.puDiLiaoCaoUC1.Height * 0.7f));
 
             //温度和流量器的值的显示
             xStart = xStart + puDiLiaoCaoUC1.Width + hunHeLiaoCaoYuanGunUC1.Width;
             yStart = yStart + puDiLiaoCaoUC1.Height - tempFlowUC1.Height;
             this.tempFlowUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
-
-
 
             //烟筒
             xStart = this.Width * edgeWidthK * 3;
@@ -612,8 +595,6 @@ namespace NBSJ_MAIN_UC
             yStart = yStart + buLiaoQiUC1.Height + hunHeLiaoCaoYuanGunUC1.Height;
             hostConveyerUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
             hostConveyerUC1.Size = new System.Drawing.Size((int)(this.Width * 0.8f), (int)(this.Height * 0.1f));
-
-
 
             xStart = this.Width * 0.87f;
             //右边的箭头
@@ -632,7 +613,7 @@ namespace NBSJ_MAIN_UC
             points[6] = new PointF(xStart + this.Width * 0.08f + widthJt, yStart);
             points[7] = new PointF(xStart, yStart);
             path.AddPolygon(points);
-           
+
             using (Brush brush2 = new SolidBrush(Color.FromArgb(0xcb, 0xcb, 0xcb)))
             {
                 graphics.FillPath(brush2, path);
@@ -654,14 +635,12 @@ namespace NBSJ_MAIN_UC
             yStart = removeDustUC1.Location.Y + removeDustUC1.Height - (int)(this.Height * 0.02f);
             graphics.DrawImage(myBitmapTlTx, xStart, yStart, myBitmapTlTx.Width, myBitmapTlTx.Height);
 
-
-
             shaiZiUC1.Width = (int)(this.Height * 0.18f);
             shaiZiUC1.Height = (int)(this.Height * 0.18f);
             xStart = this.Width / 2 - shaiZiUC1.Width / 2;
             yStart = removeDustUC1.Location.Y + removeDustUC1.Height - (int)(removeDustUC1.Height * 0.23f);
-            shaiZiUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
-           
+            shaiZiUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart + 20);
+
             this.rbtnQuYangDian1.Location = new System.Drawing.Point((int)(xStart - 35), (int)(yStart + shaiZiUC1.Height * 0.6f));
             //环冷机
             huanLengJiUC1.Width = (int)(this.Width * 0.27f);
@@ -669,7 +648,6 @@ namespace NBSJ_MAIN_UC
             xStart = shaiZiUC1.Location.X + shaiZiUC1.Width + this.Width * 0.18f;
             yStart = removeDustUC1.Location.Y + removeDustUC1.Height;
             huanLengJiUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
-
 
             //绘制箭头 左边的筛子的
             AdjustableArrowCap aac = new AdjustableArrowCap(5, 2);
@@ -682,12 +660,10 @@ namespace NBSJ_MAIN_UC
             this.pipeLine14.Location = new System.Drawing.Point(10, (int)(yStart) - 5);
             this.pipeLine14.Size = new System.Drawing.Size((int)(this.Width * 0.45f), 15);
 
-
-
             point1 = new Point((int)(this.Width * 0.45f), (int)(yStart));
             point2 = new Point((int)(this.Width * 0.25f), (int)(yStart));
-           // graphics.DrawLine(pen, point1, point2);
-            var point_2 = new Point((int)(this.Width * 0.45f), (int)(yStart-40));
+            // graphics.DrawLine(pen, point1, point2);
+            var point_2 = new Point((int)(this.Width * 0.45f), (int)(yStart - 40));
             graphics.DrawLines(pen, new Point[] { point2, point1, point_2 });
 
             //SF_2， Z1_1，Z2_2皮带名称位置
@@ -695,11 +671,9 @@ namespace NBSJ_MAIN_UC
             labZ1_1.Location = new System.Drawing.Point(this.Width / 8, (int)yStart - labZ1_1.Height);
             //labZ2_2.Location = new System.Drawing.Point(0, (int)yStart - labZ2_2.Height * 3);
 
-
             point1 = new Point(3, (int)(yStart));
             point2 = new Point(3, (int)(panel1.Location.Y + panel1.Height));
             graphics.DrawLine(pen, point1, point2); //铺底料烟筒左边箭头
-
 
             point1 = new Point(3, (int)(panel1.Location.Y + panel1.Height + 3));
             point2 = new Point((int)(this.Width * 0.176f - 3), (int)(panel1.Location.Y + panel1.Height + 3));
@@ -709,7 +683,6 @@ namespace NBSJ_MAIN_UC
 
             //S_2皮带位置
             labS_2.Location = new System.Drawing.Point((int)(this.Width * 0.11f / 2 - labS_2.Width / 2), (int)(panel1.Location.Y + panel1.Height - labS_2.Height));
-
 
             //右上筛子开始的箭头
             xStart = shaiZiUC1.Location.X + shaiZiUC1.Width + 3;
@@ -733,9 +706,8 @@ namespace NBSJ_MAIN_UC
             this.pipeLine15.Location = point3t2;
             this.pipeLine15.Size = new System.Drawing.Size((int)(huanLengJiUC1.Width * 0.55f), 15);
 
-     
-            graphics.DrawImage(myBitmap3, (int)(huanLengJiUC1.Location.X -40), (int)(huanLengJiUC1.Location.Y+25),50,60);
-           
+            graphics.DrawImage(myBitmap3, (int)(huanLengJiUC1.Location.X - 40), (int)(huanLengJiUC1.Location.Y + 25), 50, 60);
+
             graphics.DrawString("余热发电", Font, Brushes.Black, new Rectangle((int)(huanLengJiUC1.Location.X - 38), (int)(huanLengJiUC1.Location.Y + 40), 30, 30), this.sf);
 
             //LS1-1皮带
@@ -743,27 +715,25 @@ namespace NBSJ_MAIN_UC
             this.pipeLine16.Location = point3t3;
             this.pipeLine16.Size = new System.Drawing.Size((int)(huanLengJiUC1.Width * 0.46f), 15);
 
-
-            //成品皮带
-            /*this.pipeLine11.Location = new System.Drawing.Point((int)(this.Width * 0.25f), (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y));
+            //Z71成品皮带
+            this.pipeLine11.Location = new System.Drawing.Point((int)(this.Width * 0.25f), (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y) + 40);
             this.pipeLine11.Size = new System.Drawing.Size((int)(this.Width * 0.25f + this.shaiZiUC1.Width / 2), 15);
-*/
-            //成品皮带
-            this.pipeLine12.Location = new System.Drawing.Point(10, (int)(this.shaiZiUC1.Height+10 + shaiZiUC1.Location.Y + 45));
-            this.pipeLine12.Size = new System.Drawing.Size((int)(this.Width * 0.5f), 15);
 
+            //CP1成品皮带
+            this.pipeLine12.Location = new System.Drawing.Point(10, (int)(this.shaiZiUC1.Height + 10 + shaiZiUC1.Location.Y + 45));
+            this.pipeLine12.Size = new System.Drawing.Size((int)(this.Width * 0.25f), 15);
 
-            labSJK1.Location = new System.Drawing.Point(10 + this.pipeLine12.Width / 3, (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y+35));
+            labSJK1.Location = new System.Drawing.Point(10 + this.pipeLine12.Width / 3, (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y + 35));
 
             //右下筛子开始的箭头
             xStart = shaiZiUC1.Location.X + shaiZiUC1.Width;
 
-            point1 = new Point((int)(xStart), (int)(yStart-10));
-            point2 = new Point((int)(xStart + this.Width * 0.06), (int)(yStart-10));
+            point1 = new Point((int)(xStart), (int)(yStart - 10));
+            point2 = new Point((int)(xStart + this.Width * 0.06), (int)(yStart - 10));
             graphics.DrawLine(pen, point1, point2);//冷返皮带
 
             //graphics.DrawImage(myBitmap2, (int)(xStart), yStart - myBitmap2.Height / 2, myBitmap2.Width, myBitmap2.Height);
-            graphics.DrawString("冷返矿皮带", Font, Brushes.Black, new Rectangle((int)(xStart), (int)(yStart - myBitmap2.Height-10), 80, 15), this.sf);
+            graphics.DrawString("冷返矿皮带", Font, Brushes.Black, new Rectangle((int)(xStart), (int)(yStart - myBitmap2.Height - 10), 80, 15), this.sf);
 
             //由 Brushes.Gray改为Brushes.Black
 
@@ -785,25 +755,21 @@ namespace NBSJ_MAIN_UC
             graphics.DrawLine(pen, point1, point2);
             //最上方横线终点
             point1 = new Point((int)(this.Width - 5), (int)(5));
-            point2 = new Point((int)(this.Width * 0.8f-80), (int)(5));
-            point3ttt000 = new Point((int)(this.Width * 0.8f-80), 30);
+            point2 = new Point((int)(this.Width * 0.8f - 80), (int)(5));
+            point3ttt000 = new Point((int)(this.Width * 0.8f - 80), 30);
             graphics.DrawLines(pen, new Point[] { point1, point2, point3ttt000 });//Z10-1皮带终点
-
 
             //Z2_3皮带名称位置
             //labZ2_3.Location = new System.Drawing.Point((int)(this.Width / 8 * 7), 1);
 
-
-
             //取样点
             //由 Brushes.Gray改为Brushes.Black
             //graphics.DrawString("取样点", Font, Brushes.Black, new Rectangle(this.pipeLine11.Location.X + pipeLine11.Width / 5, this.pipeLine12.Location.Y, 60, 15), this.sf);
-            //20210130修改
-            this.rbtnQuYangDian.Location = new System.Drawing.Point(this.pipeLine12.Location.X- pipeLine12.Width / 10, this.pipeLine12.Location.Y+18);
+            //20210130修改,取样点2位置
+            this.rbtnQuYangDian.Location = new System.Drawing.Point(this.pipeLine12.Location.X - pipeLine12.Width / 10 + 50, this.pipeLine12.Location.Y + 18);
 
             if (this.pipeLine12.ChengZhi != "")
-                graphics.DrawString("称值" + this.pipeLine12.ChengZhi+"t/h", Font, Brushes.Black, new Rectangle(this.pipeLine12.Location.X + pipeLine12.Width / 3, this.pipeLine12.Location.Y, (int)(this.Width * 0.2), this.Height), sf);
-
+                graphics.DrawString("称值" + this.pipeLine12.ChengZhi + "t/h", Font, Brushes.Black, new Rectangle(this.pipeLine12.Location.X + pipeLine12.Width / 3, this.pipeLine12.Location.Y, (int)(this.Width * 0.2), this.Height), sf);
 
             //if (this.Height > (this.pipeLine12.Location.Y + this.pipeLine12.Height + 20))
             {
@@ -812,17 +778,15 @@ namespace NBSJ_MAIN_UC
                 //graphics.DrawString(quyangTime, Font, Brushes.Gray, new Rectangle(this.pipeLine11.Location.X + 15, this.Height - 25, 180, 15), this.sf);
 
                 //labQuyangTime.Location
-                labQuyangTime1.Location = new System.Drawing.Point(this.pipeLine12.Location.X + pipeLine12.Width / 2, this.pipeLine12.Location.Y - 40);
-                
-                labQuyangTime.Location = new System.Drawing.Point(this.pipeLine12.Location.X+8 , this.pipeLine12.Location.Y+22);
-                this.TextQuYangTime.Location = new System.Drawing.Point(this.pipeLine12.Location.X + pipeLine12.Width /3, this.pipeLine12.Location.Y + 20);
+                //取样1时间位置
+                labQuyangTime1.Location = new System.Drawing.Point(this.pipeLine12.Location.X + pipeLine12.Width / 2 + 400, this.pipeLine12.Location.Y - 40);
 
+                labQuyangTime.Location = new System.Drawing.Point(this.pipeLine12.Location.X + 100, this.pipeLine12.Location.Y + 22);
+                this.TextQuYangTime.Location = new System.Drawing.Point(this.pipeLine12.Location.X + pipeLine12.Width / 3, this.pipeLine12.Location.Y + 20);
             }
-             //point1 = point2;
+            //point1 = point2;
             //point2 = new Point((int)(huanLengJiUC1.Location.X + huanLengJiUC1.Width), (int)(huanLengJiUC1.Location.Y + huanLengJiUC1.Height + 10));
             //graphics.DrawLine(pen2, point1, point2);
-
-
 
             //float xxx = (float)myBitmapYt.Width * 3 / 4;
             float xxx = this.Width * edgeWidthK * 3 + (float)myBitmapYt.Width / 2;
@@ -839,7 +803,6 @@ namespace NBSJ_MAIN_UC
 
             graphics.DrawLines(pen2, new Point[] { point1, point2, point3 });
 
-
             point1 = new Point((int)(xxx + myBitmapTlTx.Width + 3), removeDustUC1.Location.Y + removeDustUC1.Height + myBitmapTlTx.Height - 6 - (int)(this.Height * 0.02f));
 
             point2 = new Point((int)(removeDustUC1.Location.X - 2), removeDustUC1.Location.Y + removeDustUC1.Height + myBitmapTlTx.Height - 6 - (int)(this.Height * 0.02f));
@@ -849,19 +812,14 @@ namespace NBSJ_MAIN_UC
 
             //shaiZiUC1.Visible = true;
             //labelCCH.Location = new System.Drawing.Point((int)(this.Width*0.9f), 8);
-
         }
 
         #endregion 界面的方法
 
-       void MongoQMtimer1_Elapsed(object sender, ElapsedEventArgs e)
+        private void MongoQMtimer1_Elapsed(object sender, ElapsedEventArgs e)
         {
-
             try
             {
-
-
-
                 string strSQL = "select top(1) *  from C_PLC_3S order by timestamp desc";
                 modelT_PLC_3S = db_sugar.SqlQueryable<C_PLC_3S>(strSQL).ToList().FirstOrDefault();
                 string sqlcol = "timestamp,BTPCAL_OUT_TOTAL_AVG_X_BTP,BTPCAL_OUT_TOTAL_AVG_TE_BTP";
@@ -883,7 +841,6 @@ namespace NBSJ_MAIN_UC
                     }
                 }
 
-              
                 if (modelT_PLC_3S != null)
                 {
                     modelMC_MICAL_PAR = db_sugar.Queryable<MC_MICAL_PAR>().ToList().FirstOrDefault();
@@ -896,10 +853,8 @@ namespace NBSJ_MAIN_UC
 
                         ////允许重绘pnl
                         //SendMessage(this.Handle, WM_SETREDRAW, 1, IntPtr.Zero);
-
                     };
                     this.Invoke(ShowInfo);
-                    
                 }
                 InsertUpdate_MC_GUIDE_SAMPLING(false);
                 Refresh_MC_GUIDE_SAMPLING_Bind_comboBox1();
@@ -907,21 +862,21 @@ namespace NBSJ_MAIN_UC
             }
             catch (Exception ex)
             {
-               
             }
         }
 
-    
-        void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
         }
 
-        DateTime dateTimeWinRef = DateTime.Now;
+        private DateTime dateTimeWinRef = DateTime.Now;
+
         /// <summary>
         /// 铺底料槽流量值
         /// </summary>
-        static double puDiLiaoCaoFlow = 0;
-        void windowformRefresh()
+        private static double puDiLiaoCaoFlow = 0;
+
+        private void windowformRefresh()
         {
             //总料量SP PV
 
@@ -935,6 +890,7 @@ namespace NBSJ_MAIN_UC
             }
 
             #region 漏斗信息 17个仓
+
             bottleAllUC1.BottomItems[0].BottleObj.CangHao = 1;
             bottleAllUC1.BottomItems[1].BottleObj.CangHao = 2;
             bottleAllUC1.BottomItems[2].BottleObj.CangHao = 3;
@@ -958,14 +914,12 @@ namespace NBSJ_MAIN_UC
             //1-8 体积：1000  9-13体积：500  14-15体积：700？？
             //获取物料编码程序
             bottleAllUC1.BottomItems[0].BottleObj.HeadTag = Getwlbm_Code(1);
-           
+
             bottleAllUC1.BottomItems[0].BottleObj.BottleTag = modelT_PLC_3S.T_W_1_3S.ToString("f2"); //1号配料仓仓位
             bottleAllUC1.BottomItems[0].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_1_3S) / GetByShangXian_Code(1) * 100;// 1000 * 100;
             bottleAllUC1.BottomItems[0].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_1_3S.ToString();//设定下料量
             bottleAllUC1.BottomItems[0].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_1_3S.ToString();//实际下料量
             bottleAllUC1.BottomItems[0].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_1_3S == 1 ? Brushes.Green : Brushes.DimGray;//下料口启停信号
-            
-
 
             bottleAllUC1.BottomItems[1].BottleObj.HeadTag = Getwlbm_Code(2);//通过仓号获取
             bottleAllUC1.BottomItems[1].BottleObj.BottleTag = modelT_PLC_3S.T_W_2_3S.ToString("f2");
@@ -974,21 +928,21 @@ namespace NBSJ_MAIN_UC
             bottleAllUC1.BottomItems[1].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_2_3S.ToString();
             bottleAllUC1.BottomItems[1].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_2_3S == 1 ? Brushes.Green : Brushes.DimGray;
 
-            bottleAllUC1.BottomItems[2].BottleObj.HeadTag = Getwlbm_Code( 3);
+            bottleAllUC1.BottomItems[2].BottleObj.HeadTag = Getwlbm_Code(3);
             bottleAllUC1.BottomItems[2].BottleObj.BottleTag = modelT_PLC_3S.T_W_3_3S.ToString("f2");
-           bottleAllUC1.BottomItems[2].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_3_3S) / GetByShangXian_Code(3) * 100;//1000 * 100;
+            bottleAllUC1.BottomItems[2].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_3_3S) / GetByShangXian_Code(3) * 100;//1000 * 100;
             bottleAllUC1.BottomItems[2].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_3_3S.ToString();
             bottleAllUC1.BottomItems[2].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_3_3S.ToString();
             bottleAllUC1.BottomItems[2].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_3_3S == 1 ? Brushes.Green : Brushes.DimGray;
 
             bottleAllUC1.BottomItems[3].BottleObj.HeadTag = Getwlbm_Code(4);
             bottleAllUC1.BottomItems[3].BottleObj.BottleTag = modelT_PLC_3S.T_W_4_3S.ToString("f2");
-           bottleAllUC1.BottomItems[3].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_4_3S) / GetByShangXian_Code(4) * 100;//1000 * 100;
+            bottleAllUC1.BottomItems[3].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_4_3S) / GetByShangXian_Code(4) * 100;//1000 * 100;
             bottleAllUC1.BottomItems[3].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_4_3S.ToString();
             bottleAllUC1.BottomItems[3].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_4_3S.ToString();
             bottleAllUC1.BottomItems[3].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_4_3S == 1 ? Brushes.Green : Brushes.DimGray;
 
-            bottleAllUC1.BottomItems[4].BottleObj.HeadTag = Getwlbm_Code( 5);
+            bottleAllUC1.BottomItems[4].BottleObj.HeadTag = Getwlbm_Code(5);
             bottleAllUC1.BottomItems[4].BottleObj.BottleTag = modelT_PLC_3S.T_W_5_3S.ToString("f2");
             bottleAllUC1.BottomItems[4].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_5_3S) / GetByShangXian_Code(5) * 100;//1000 * 100;
             bottleAllUC1.BottomItems[4].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_5_3S.ToString();
@@ -1004,27 +958,24 @@ namespace NBSJ_MAIN_UC
 
             bottleAllUC1.BottomItems[6].BottleObj.HeadTag = Getwlbm_Code(7);
             bottleAllUC1.BottomItems[6].BottleObj.BottleTag = modelT_PLC_3S.T_W_7_3S.ToString("f2");
-           bottleAllUC1.BottomItems[6].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_7_3S) / GetByShangXian_Code(7) * 100;//1000 * 100;
+            bottleAllUC1.BottomItems[6].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_7_3S) / GetByShangXian_Code(7) * 100;//1000 * 100;
             bottleAllUC1.BottomItems[6].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_7_3S.ToString();
             bottleAllUC1.BottomItems[6].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_7_3S.ToString();
             bottleAllUC1.BottomItems[6].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_7_3S == 1 ? Brushes.Green : Brushes.DimGray;
 
-
-           bottleAllUC1.BottomItems[7].BottleObj.HeadTag = Getwlbm_Code(8);
+            bottleAllUC1.BottomItems[7].BottleObj.HeadTag = Getwlbm_Code(8);
             bottleAllUC1.BottomItems[7].BottleObj.BottleTag = modelT_PLC_3S.T_W_8_3S.ToString("f2");
             bottleAllUC1.BottomItems[7].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_8_3S) / GetByShangXian_Code(8) * 100;//500 * 100;
             bottleAllUC1.BottomItems[7].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_8_3S.ToString();
             bottleAllUC1.BottomItems[7].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_8_3S.ToString();
             bottleAllUC1.BottomItems[7].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_8_3S == 1 ? Brushes.Green : Brushes.DimGray;
-       
 
             bottleAllUC1.BottomItems[8].BottleObj.HeadTag = Getwlbm_Code(9);
             bottleAllUC1.BottomItems[8].BottleObj.BottleTag = modelT_PLC_3S.T_W_9_3S.ToString("f2");
-           bottleAllUC1.BottomItems[8].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_9_3S) / GetByShangXian_Code(9) * 100;//500 * 100;
+            bottleAllUC1.BottomItems[8].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_9_3S) / GetByShangXian_Code(9) * 100;//500 * 100;
             bottleAllUC1.BottomItems[8].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_9_3S.ToString();
             bottleAllUC1.BottomItems[8].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_9_3S.ToString();
             bottleAllUC1.BottomItems[8].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_9_3S == 1 ? Brushes.Green : Brushes.DimGray;
-         
 
             bottleAllUC1.BottomItems[9].BottleObj.HeadTag = Getwlbm_Code(10);
             bottleAllUC1.BottomItems[9].BottleObj.BottleTag = modelT_PLC_3S.T_W_10_3S.ToString("f2");
@@ -1032,7 +983,6 @@ namespace NBSJ_MAIN_UC
             bottleAllUC1.BottomItems[9].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_10_3S.ToString();
             bottleAllUC1.BottomItems[9].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_10_3S.ToString();
             bottleAllUC1.BottomItems[9].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_10_3S == 1 ? Brushes.Green : Brushes.DimGray;
-         
 
             bottleAllUC1.BottomItems[10].BottleObj.HeadTag = Getwlbm_Code(11);
             bottleAllUC1.BottomItems[10].BottleObj.BottleTag = modelT_PLC_3S.T_W_11_3S.ToString("f2");
@@ -1040,7 +990,6 @@ namespace NBSJ_MAIN_UC
             bottleAllUC1.BottomItems[10].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_11_3S.ToString();
             bottleAllUC1.BottomItems[10].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_11_3S.ToString();
             bottleAllUC1.BottomItems[10].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_11_3S == 1 ? Brushes.Green : Brushes.DimGray;
-         
 
             bottleAllUC1.BottomItems[11].BottleObj.HeadTag = Getwlbm_Code(12);
             bottleAllUC1.BottomItems[11].BottleObj.BottleTag = modelT_PLC_3S.T_W_12_3S.ToString("f2");
@@ -1051,7 +1000,6 @@ namespace NBSJ_MAIN_UC
             /*bottleAllUC1.BottomItems[11].BottleObj.SetValue2 = modelT_PLC_3S.T_SP_W_14_3S.ToString();
             bottleAllUC1.BottomItems[11].BottleObj.CurrentValue2 = modelT_PLC_3S.T_ACTUAL_W_14_3S.ToString();
             bottleAllUC1.BottomItems[11].BottleObj.SetT_SL_Right = modelT_PLC_3S.T_SL_14_3S == 1 ? Brushes.Green : Brushes.DimGray;*/
-
 
             bottleAllUC1.BottomItems[12].BottleObj.HeadTag = Getwlbm_Code(13);
             bottleAllUC1.BottomItems[12].BottleObj.BottleTag = modelT_PLC_3S.T_W_13_3S.ToString("f2");
@@ -1067,14 +1015,14 @@ namespace NBSJ_MAIN_UC
             bottleAllUC1.BottomItems[13].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_14_3S.ToString();
             bottleAllUC1.BottomItems[13].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_14_3S == 1 ? Brushes.Green : Brushes.DimGray;
 
-            bottleAllUC1.BottomItems[14].BottleObj.HeadTag = Getwlbm_Code( 15);
+            bottleAllUC1.BottomItems[14].BottleObj.HeadTag = Getwlbm_Code(15);
             bottleAllUC1.BottomItems[14].BottleObj.BottleTag = modelT_PLC_3S.T_W_15_3S.ToString("f2");
             bottleAllUC1.BottomItems[14].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_15_3S) / GetByShangXian_Code(15) * 100;//500 * 100;
             bottleAllUC1.BottomItems[14].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_15_3S.ToString();
             bottleAllUC1.BottomItems[14].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_15_3S.ToString();
             bottleAllUC1.BottomItems[14].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_15_3S == 1 ? Brushes.Green : Brushes.DimGray;
 
-            bottleAllUC1.BottomItems[15].BottleObj.HeadTag = Getwlbm_Code( 16);
+            bottleAllUC1.BottomItems[15].BottleObj.HeadTag = Getwlbm_Code(16);
             bottleAllUC1.BottomItems[15].BottleObj.BottleTag = modelT_PLC_3S.T_W_16_3S.ToString("f2");
             bottleAllUC1.BottomItems[15].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_16_3S) / GetByShangXian_Code(16) * 100;//500 * 100;
             bottleAllUC1.BottomItems[15].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_16_3S.ToString();
@@ -1101,7 +1049,7 @@ namespace NBSJ_MAIN_UC
             bottleAllUC1.BottomItems[18].BottleObj.SetValue = modelT_PLC_3S.T_SP_W_19_3S.ToString();
             bottleAllUC1.BottomItems[18].BottleObj.CurrentValue = modelT_PLC_3S.T_ACTUAL_W_19_3S.ToString();
             bottleAllUC1.BottomItems[18].BottleObj.SetT_SL_Left = modelT_PLC_3S.T_SL_19_3S == 1 ? Brushes.Green : Brushes.DimGray;
-            
+
             bottleAllUC1.BottomItems[19].BottleObj.HeadTag = Getwlbm_Code(20);
             bottleAllUC1.BottomItems[19].BottleObj.BottleTag = modelT_PLC_3S.T_W_20_3S.ToString("f2");
             bottleAllUC1.BottomItems[19].BottleObj.Value = getbottleValue(modelT_PLC_3S.T_W_20_3S) / GetByShangXian_Code(20) * 100;//500 * 100;
@@ -1119,7 +1067,7 @@ namespace NBSJ_MAIN_UC
             pipeLine_Right1.ChengZhi = getbottleValue(modelT_PLC_3S.T_1M_PRE_BELT_W_1H_1_3S).ToString("f2");
 
             //一混电机设备
-            blendingUC1.IsRun = modelT_PLC_3S.T_1M_SL_3S ==1 ? true : false ;
+            blendingUC1.IsRun = modelT_PLC_3S.T_1M_SL_3S == 1 ? true : false;
             blendingUC1.ShuiFen = getbottleValue(modelT_PLC_3S.T_PLC_1M_WATER_SP_3S).ToString();//一混目标水分
             blendingUC1.ZhuanSu = getbottleValue(modelT_PLC_3S.T_1M_MIXER_RATE_3S).ToString();///转速
             blendingUC1.SetJsl = getbottleValue(modelT_PLC_3S.T_1M_FT_SP_3S).ToString();//加水设定值
@@ -1128,44 +1076,44 @@ namespace NBSJ_MAIN_UC
             blendingUC1.InvalidateNew();
 
             //一混后皮带 1H3
-            pipeLine_Text1.SetIsRunStop(modelT_PLC_3S.T_1M_NEX_BELT_B_E_Z2_1_3S == 1?true:false);//设备启停
+            pipeLine_Text1.SetIsRunStop(modelT_PLC_3S.T_1M_NEX_BELT_B_E_Z2_1_3S == 1 ? true : false);//设备启停
             pipeLine_Text1.ShuiFen = getbottleValue(modelT_PLC_3S.T_1M_NEX_WATER_AVG_3S).ToString();//一混后混合料水分检测
             pipeLine_Text1.ChengZhi = getbottleValue(modelT_PLC_3S.T_1M_NEX_BELT_W_1H2_1_3S).ToString("f2");//后皮带称值
 
             pipeLine_Text1.InvalidateNew();
-           
+
             //一混后皮带 2H1
             pipeLine_Text1.SetIsRunStop2(modelT_PLC_3S.T_1M_NEX_BELT_W_1H2_1_3S == 1 ? true : false);//设备启停
             pipeLine_Text1.ChengZhi2 = getbottleValue(modelT_PLC_3S.T_1M_NEX_BELT_W_1H2_1_3S).ToString("f2");//后皮带称值
             pipeLine_Text1.InvalidateNew();
 
             //20210130修改 2H2
-            pipeLine_Text1.SetIsRunStop3(modelT_PLC_3S.T_1M_NEX_BELT_W_1H2_1_3S == 1 ? true : false);//设备启停
+            pipeLine_Text1.SetIsRunStop3(modelT_PLC_3S.T_PLC_1M_SIGNAL_3_3S == 1 ? true : false);//设备启停
             pipeLine_Text1.ChengZhi2 = getbottleValue(modelT_PLC_3S.T_1M_NEX_BELT_W_1H2_1_3S).ToString("f2");//后皮带称值
             pipeLine_Text1.InvalidateNew();
 
             //二混电机
             blendingUC2.IsRun = modelT_PLC_3S.T_2M_SL_3S == 1 ? true : false;
-           // blendingUC2.ShuiFen = getbottleValue(modelT_PLC_3S.M_PLC_2M_WATER_SP).ToString();
+            // blendingUC2.ShuiFen = getbottleValue(modelT_PLC_3S.M_PLC_2M_WATER_SP).ToString();
             blendingUC2.ZhuanSu = getbottleValue(modelT_PLC_3S.T_2M_MIXER_RATE_3S).ToString();
             blendingUC2.SetJsl = getbottleValue(modelT_PLC_3S.T_2M_FLOW_SP_3S).ToString();
             blendingUC2.ReadJsl = getbottleValue(modelT_PLC_3S.T_2M_FLOW_PV_3S).ToString();
-            blendingUC2.ChengZhi= getbottleValue(modelT_PLC_3S.T_2M_BELT_VALUE_3S).ToString();
+            blendingUC2.ChengZhi = getbottleValue(modelT_PLC_3S.T_2M_BELT_VALUE_3S).ToString();
             blendingUC2.TitleIndex = 1;
             blendingUC2.InvalidateNew();
 
             //二混后皮带  "Z41(混-4)  S1(混-5)  SBL(梭式布料器皮带)";
             pipeLine_Two1.SetIsRunStop(modelT_PLC_3S.T_2M_NEX_BELT_1H2_2_S_3S == 1 ? true : false);
-            pipeLine_Two1.SetIsRunStop2(modelT_PLC_3S.T_2M_NEX_BELT_Z3_1_S_3S == 1 ? true : false);
-            pipeLine_Two1.SetIsRunStop3(modelT_PLC_3S.T_2M_NEX_BELT_Z15_1_S_3S == 1 ? true : false);
+            pipeLine_Two1.SetIsRunStop2(modelT_PLC_3S.M_PLC_2M_A_B_SIGNAL_2_3S == 1 ? true : false);
+            pipeLine_Two1.SetIsRunStop3(modelT_PLC_3S.T_SHUTTLE_S_S_3S == 1 ? true : false);
             //pipeLine_Two1.SetIsRunStop4(modelT_PLC_3S.T_IN_SK_S_3S == 1 ? true : false);
-
+            //Z41皮带称值
             pipeLine_Two1.ShuiFen = getbottleValue(modelT_PLC_3S.T_2M_NEX_WATER_AVG_3S).ToString();
-            pipeLine_Two1.ChengZhi = getbottleValue(modelT_PLC_3S.T_2M_BELT_VALUE_3S).ToString("f2");
+            pipeLine_Two1.ChengZhi = getbottleValue(modelT_PLC_3S.M_PLC_2M_A_B_W_3S).ToString("f2");
+            //S1混5称值
+            pipeLine_Two1.ChengZhi2 = getbottleValue(modelT_PLC_3S.M_PLC_2M_A_W_3S).ToString("f2");
+            //pipeLine_Two1.ChengZhi2 = getbottleValue(modelT_PLC_3S.T_2M_BELT_VALUE_3S).ToString("f2");
             pipeLine_Two1.InvalidateNew();
-
-       
-
 
             //混合料槽和圆棍
             //hunHeLiaoCaoYuanGunUC1.SetZhuanSu = getbottleValue(modelT_PLC_3S.C_N_STICK_A_PV_3S).ToString("f2"); //getbottleValue(modelT_PLC_3S.T_STICK_SP_3S).ToString();
@@ -1185,9 +1133,8 @@ namespace NBSJ_MAIN_UC
             tempFlowUC1.FireTemp = getbottleValue(modelT_PLC_3S.T_IG_02_TE_3S).ToString();
             tempFlowUC1.CoalGasFlow = getbottleValue(modelT_PLC_3S.T_IG_GAS_PV_3S).ToString();
             tempFlowUC1.AirFlow = getbottleValue(modelT_PLC_3S.T_IG_AIR_PV_3S).ToString();
-           // tempFlowUC1.T_IG_NATURAL_PV_3S = getbottleValue(modelT_PLC_3S.T_IG_NATURAL_PV_3S).ToString();
+            // tempFlowUC1.T_IG_NATURAL_PV_3S = getbottleValue(modelT_PLC_3S.T_IG_NATURAL_PV_3S).ToString();
             tempFlowUC1.InvalidateNew();
-
 
             ////布料器和点火炉
             //buLiaoAndLiaoCaoUC1.SetZhuanSu = getbottleValue(modelT_PLC_3S.T_STICK_SP_3S).ToString();
@@ -1214,8 +1161,7 @@ namespace NBSJ_MAIN_UC
             {
                 hostConveyerUC1.IsStop();
             }
-           hostConveyerUC1.HText = string.Format("{0}布料厚度:{1}mm;       实际机速:{2}m/min;       BTP位置:{3}m;    BTP温度:{4}℃;", "", modelT_PLC_3S.C_THICK_PV_3S, modelT_PLC_3S.T_SIN_MS_PV_3S, MICAL_BU_C_LOCAT_BTP, MICAL_BU_C_BTP_TE);
-         
+            hostConveyerUC1.HText = string.Format("{0}布料厚度:{1}mm;       实际机速:{2}m/min;       BTP位置:{3}m;    BTP温度:{4}℃;", "", modelT_PLC_3S.C_THICK_PV_3S, modelT_PLC_3S.T_SIN_MS_PV_3S, MICAL_BU_C_LOCAT_BTP, MICAL_BU_C_BTP_TE);
 
             //主抽1风机
             removeDustUC1.IsRun = modelT_PLC_3S.T_FAN_1_SL_3S == 1 ? true : false;
@@ -1242,7 +1188,7 @@ namespace NBSJ_MAIN_UC
             huanLengJiUC1.BsGkj_Set_SPEED = getbottleValue(modelT_PLC_3S.T_PF_SPEED_SP_3S).ToString("f2");
             huanLengJiUC1.BsGkj_Read_SPEED = getbottleValue(modelT_PLC_3S.T_PF_SPEED_PV_3S).ToString("f2");
             //给料机料位
-            huanLengJiUC1.GLJ_LW = getbottleValue(modelT_PLC_3S.T_PF_SPEED_PV_3S).ToString("f2");
+            huanLengJiUC1.GLJ_LW = getbottleValue(modelT_PLC_3S.T_PF_LEVEL_3S).ToString("f2");
 
             huanLengJiUC1.IsRunBsGkj = modelT_PLC_3S.T_PF_SL_3S == 1 ? true : false;
             huanLengJiUC1.SetFengJi(modelT_PLC_3S.T_RC_B_S_1_3S == 1 ? true : false, modelT_PLC_3S.T_RC_B_S_2_3S == 1 ? true : false, modelT_PLC_3S.T_RC_B_S_3_3S == 1 ? true : false, modelT_PLC_3S.T_RC_B_S_4_3S == 1 ? true : false, modelT_PLC_3S.T_RC_B_S_5_3S == 1 ? true : false);
@@ -1267,8 +1213,8 @@ namespace NBSJ_MAIN_UC
                 pipeLine15.MoveSpeed = 0f;
             }
 
-            //LSG启停信号
-            if (modelT_PLC_3S.T_PF_SL_3S == 1 ? true : false)//2.5f
+            //LSG启停信号换成LS2成-2(20210320修改)
+            if (modelT_PLC_3S.T_PLC_LS2_SIGNAL_3S == 1 ? true : false)//2.5f
             {
                 pipeLine16.MoveSpeed = -2.5f;
             }
@@ -1277,19 +1223,16 @@ namespace NBSJ_MAIN_UC
                 pipeLine16.MoveSpeed = 0f;
             }
 
-
-            //成品矿皮带启停信号（Z5-1皮带）
-            /*if (modelT_PLC_3S.T_FP_BELT1_SL_3S == 1)
+            //成品矿皮带启停信号（Z71成-3皮带）
+            if (modelT_PLC_3S.T_FP_BELT1_SL_3S == 1)
             {
                 pipeLine11.MoveSpeed = -2.5f;
-
             }
             else
             {
                 pipeLine11.MoveSpeed = 0f;
             }
-            pipeLine11.ChengZhi = getbottleValue(modelT_PLC_3S.T_PROD_DELT1_FQ_3S).ToString("f0");*/
-
+            pipeLine11.ChengZhi = getbottleValue(modelT_PLC_3S.T_PROD_DELT1_FQ_3S).ToString("f0");
 
             //3#成品皮带启停信号（CP1（成-5））
             if (modelT_PLC_3S.T_FP_BELT3_SL_3S == 1)
@@ -1311,19 +1254,16 @@ namespace NBSJ_MAIN_UC
                 pipeLine14.MoveSpeed = 0f;
             }
 
-
             //冷返矿皮带启停信号
-           /* if (modelT_PLC_3S.T_COLD_AO_SF1_SL_3S==1)
-            {
-                labSF_3.ForeColor = Color.Green;
-            }
-            else
-            {
-                labSF_3.ForeColor = Color.Black;
-            }*/
+            /* if (modelT_PLC_3S.T_COLD_AO_SF1_SL_3S==1)
+             {
+                 labSF_3.ForeColor = Color.Green;
+             }
+             else
+             {
+                 labSF_3.ForeColor = Color.Black;
+             }*/
 
-            
-            
             if (modelT_PLC_3S.T_SCREEN_SL_1_3S == 1 ? true : false)
             {
                 shaiZiUC1.IsRun = modelT_PLC_3S.T_SCREEN_SL_1_3S == 1 ? true : false;//筛一启停信号
@@ -1338,7 +1278,6 @@ namespace NBSJ_MAIN_UC
             }
             shaiZiUC1.InvalidateNew();
 
-
             //puDiLiaoCaoFlow = modelT_PLC_3S.M_BED_MATERIAL_FT;
 
             //labPuDiLiaoCaoFlow.Text = puDiLiaoCaoFlow.ToString("f1") + "t/h";
@@ -1348,24 +1287,27 @@ namespace NBSJ_MAIN_UC
             //this.Invalidate();
 
             //abSJK1.Text = string.Format("秤值:{0}t/h", modelT_PLC_3S.T_FP_BELT_FT_3S);
-            #endregion 漏斗信息
+
+            #endregion 漏斗信息 17个仓
 
             //this.labelCCH.Text = "除尘灰加水量："+ GetCCHJSL()+"t/h";
         }
+
         //修改20200726
-        double GetCCHJSL()
+        private double GetCCHJSL()
         {
             double va = 0;
             string str = "select  top(1) M_PLC_DUST_FT_PV from C_MFI_PLC_1MIN order by timestamp desc";
             va = db_sugar.Ado.GetDouble(str);
             return va;
         }
+
         /// <summary>
         /// 获取漏斗的值
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        double getbottleValue(object obj)
+        private double getbottleValue(object obj)
         {
             if (obj == null)
             {
@@ -1373,63 +1315,64 @@ namespace NBSJ_MAIN_UC
             }
             else
             {
-                return Math.Round(Convert.ToDouble(obj),2);
+                return Math.Round(Convert.ToDouble(obj), 2);
             }
         }
+
         private void btnHuanXinLiao_Click(object sender, EventArgs e)
         {
             //if (!ValidatingPrivilegeByGuidID("MAINUSERCONTROL_BTNHUANXINLIAO"))
             //{ return; }
             InsertUpdate_MC_GUIDE_SAMPLING(true);
         }
+
         private void Refresh_MC_GUIDE_SAMPLING_Bind_comboBox1()
         {
-            
-
-                string strSQL0 = "select top(1) * from MC_MICAL_GUIDE_SAMPLE order by start_time desc";
+            string strSQL0 = "select top(1) * from MC_MICAL_GUIDE_SAMPLE order by start_time desc";
             try
             {
                 mc_GUIDE_SAMPLING = db_sugar.SqlQueryable<MC_MICAL_GUIDE_SAMPLE>(strSQL0).ToList().FirstOrDefault();
-
             }
             catch (Exception ee)
             {
                 LogHelper.LogError(ee.Message);
             }
-                if (mc_GUIDE_SAMPLING == null)
-                {
-                    db_sugar.Dispose();
-                    return;
-                }
-                if (mc_GUIDE_SAMPLING.START_TIME == null || mc_GUIDE_SAMPLING.SAMPLE_TIME_1 == null || mc_GUIDE_SAMPLING.SAMPLE_TIME_0 == null)
-                {
-                    db_sugar.Dispose();
-                    return;
-                }
-                aaa ShowInfo = delegate ()
-                {
-                    //Bind_comboBox1(mc_GUIDE_SAMPLING);
-                    
-                    labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                    labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
-                    if (mc_GUIDE_SAMPLING.SAMPLE_TIME_1 <= DateTime.Now)
-                    {
-                        labQuyangTime.Text = "";
-                    }
-                    if (mc_GUIDE_SAMPLING.SAMPLE_TIME_0 <= DateTime.Now)
-                    {
-                        labQuyangTime1.Text = "";
-                    }
-                };
-                this.Invoke(ShowInfo);
+            if (mc_GUIDE_SAMPLING == null)
+            {
                 db_sugar.Dispose();
-            
+                return;
+            }
+            if (mc_GUIDE_SAMPLING.START_TIME == null || mc_GUIDE_SAMPLING.SAMPLE_TIME_1 == null || mc_GUIDE_SAMPLING.SAMPLE_TIME_0 == null)
+            {
+                db_sugar.Dispose();
+                return;
+            }
+            aaa ShowInfo = delegate ()
+            {
+                //Bind_comboBox1(mc_GUIDE_SAMPLING);
+
+                labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                if (mc_GUIDE_SAMPLING.SAMPLE_TIME_1 <= DateTime.Now)
+                {
+                    labQuyangTime.Text = "";
+                }
+                if (mc_GUIDE_SAMPLING.SAMPLE_TIME_0 <= DateTime.Now)
+                {
+                    labQuyangTime1.Text = "";
+                }
+            };
+            this.Invoke(ShowInfo);
+            db_sugar.Dispose();
         }
-        int jiaozhunQyz = 0;
+
+        private int jiaozhunQyz = 0;
+
         /// <summary>
         /// 取样点时间
         /// </summary>
-        MC_MICAL_GUIDE_SAMPLE mc_GUIDE_SAMPLING = null;
+        private MC_MICAL_GUIDE_SAMPLE mc_GUIDE_SAMPLING = null;
+
         private void InsertUpdate_MC_GUIDE_SAMPLING(bool IsInsert)
         {
             if (IsInsert)
@@ -1446,7 +1389,7 @@ namespace NBSJ_MAIN_UC
                     }
                     else
                     {
-                        //点取消的代码 
+                        //点取消的代码
                         btnHuanXinLiao.Enabled = true;
                     }
                 };
@@ -1457,11 +1400,11 @@ namespace NBSJ_MAIN_UC
                     return;
                 }
             }
-           
-                if (!IsInsert)
+
+            if (!IsInsert)
+            {
+                if (mc_GUIDE_SAMPLING == null)
                 {
-                    if (mc_GUIDE_SAMPLING == null)
-                    {
                     string strSQL0 = "select top(1) *  from MC_MICAL_GUIDE_SAMPLE order by start_time desc";
                     try
                     {
@@ -1471,125 +1414,110 @@ namespace NBSJ_MAIN_UC
                     {
                         LogHelper.LogError(ee.Message);
                     }
-
-                    }
-                    if (mc_GUIDE_SAMPLING == null)
-                    {
-                        return;
-                    }
-                    if (mc_GUIDE_SAMPLING.START_TIME == null || mc_GUIDE_SAMPLING.SAMPLE_TIME_1 == null)
-                    {
-                        return;
-                    }
                 }
+                if (mc_GUIDE_SAMPLING == null)
+                {
+                    return;
+                }
+                if (mc_GUIDE_SAMPLING.START_TIME == null || mc_GUIDE_SAMPLING.SAMPLE_TIME_1 == null)
+                {
+                    return;
+                }
+            }
 
             modelMC_MICAL_PAR = db_sugar.Queryable<MC_MICAL_PAR>().ToList().FirstOrDefault();
             if (modelMC_MICAL_PAR == null)
             {
                 return;
             }
-             float MICAL_SAM_MAT_TIME = 0;
+            float MICAL_SAM_MAT_TIME = 0;
             float MICAL_SAM_SCR_TIME = 0;
-           string strSQL = "select  avg(case when MICAL_SAM_MAT_TIME<>0 then MICAL_SAM_MAT_TIME else null end) as MICAL_SAM_MAT_TIME,  avg(case when MICAL_SAM_SCR_TIME<>0 then MICAL_SAM_SCR_TIME else null end) as MICAL_SAM_SCR_TIME  from MC_MICAL_RESULT where DATANUM =14 and timestamp>dateadd(minute,-" + modelMC_MICAL_PAR.PAR_T2+ ",getdate())";
+            string strSQL = "select  avg(case when MICAL_SAM_MAT_TIME<>0 then MICAL_SAM_MAT_TIME else null end) as MICAL_SAM_MAT_TIME,  avg(case when MICAL_SAM_SCR_TIME<>0 then MICAL_SAM_SCR_TIME else null end) as MICAL_SAM_SCR_TIME  from MC_MICAL_RESULT where DATANUM =14 and timestamp>dateadd(minute,-" + modelMC_MICAL_PAR.PAR_T2 + ",getdate())";
             try
             {
-                var dt=db_sugar.Ado.GetDataTable(strSQL);
+                var dt = db_sugar.Ado.GetDataTable(strSQL);
                 if (dt != null)
                 {
-                    float.TryParse(dt.Rows[0]["MICAL_SAM_MAT_TIME"].ToString(),out MICAL_SAM_MAT_TIME);
-                    float.TryParse(dt.Rows[0]["MICAL_SAM_SCR_TIME"].ToString(),out MICAL_SAM_SCR_TIME);
+                    float.TryParse(dt.Rows[0]["MICAL_SAM_MAT_TIME"].ToString(), out MICAL_SAM_MAT_TIME);
+                    float.TryParse(dt.Rows[0]["MICAL_SAM_SCR_TIME"].ToString(), out MICAL_SAM_SCR_TIME);
                 }
-               
             }
             catch (Exception ee)
             {
                 LogHelper.LogError(ee.Message);
             }
-          
-                  
-                 
-                    if (IsInsert)
-                    {
-                        mc_GUIDE_SAMPLING = new MC_MICAL_GUIDE_SAMPLE();
-                        mc_GUIDE_SAMPLING.START_TIME = DateTime.Now;
 
+            if (IsInsert)
+            {
+                mc_GUIDE_SAMPLING = new MC_MICAL_GUIDE_SAMPLE();
+                mc_GUIDE_SAMPLING.START_TIME = DateTime.Now;
 
-                        mc_GUIDE_SAMPLING.SAMPLE_TIME_1 = (mc_GUIDE_SAMPLING.START_TIME.Value).AddMinutes((double)MICAL_SAM_MAT_TIME);
-                        mc_GUIDE_SAMPLING.SAMPLE_TIME_0 = (mc_GUIDE_SAMPLING.START_TIME.Value).AddMinutes((double)MICAL_SAM_MAT_TIME).AddMinutes(-(double)MICAL_SAM_SCR_TIME);
+                mc_GUIDE_SAMPLING.SAMPLE_TIME_1 = (mc_GUIDE_SAMPLING.START_TIME.Value).AddMinutes((double)MICAL_SAM_MAT_TIME);
+                mc_GUIDE_SAMPLING.SAMPLE_TIME_0 = (mc_GUIDE_SAMPLING.START_TIME.Value).AddMinutes((double)MICAL_SAM_MAT_TIME).AddMinutes(-(double)MICAL_SAM_SCR_TIME);
 
+                jiaozhunQyz = 1;
+                //insert
+                string str = "insert into MC_MICAL_GUIDE_SAMPLE(START_TIME,SAMPLE_TIME_1,SAMPLE_TIME_0) values('" + mc_GUIDE_SAMPLING.START_TIME + "','" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1 + "','" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0 + "')";
 
-                    jiaozhunQyz = 1;
-                    //insert
-                     string str = "insert into MC_MICAL_GUIDE_SAMPLE(START_TIME,SAMPLE_TIME_1,SAMPLE_TIME_0) values('" + mc_GUIDE_SAMPLING.START_TIME + "','" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1 + "','" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0 + "')";
+                db_sugar.Ado.ExecuteCommand(str);
 
-                      db_sugar.Ado.ExecuteCommand(str);
+                aaa ShowInfo = delegate ()
+                {
+                    //Bind_comboBox1(mc_GUIDE_SAMPLING);
 
+                    //quyangTime = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                    //labQuyangTime.Text = quyangTime;
+                    labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                    labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                    MessageBox.Show("换新料成功.");
+                    btnHuanXinLiao.Enabled = true;
+                };
+                this.Invoke(ShowInfo);
+            }
+            else
+            {
+                aaa ShowInfo = delegate ()
+                {
+                    // Bind_comboBox1(mc_GUIDE_SAMPLING);
+                    labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                    labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                };
+                this.Invoke(ShowInfo);
 
-                        aaa ShowInfo = delegate ()
-                        {
-                            //Bind_comboBox1(mc_GUIDE_SAMPLING);
+                ////当前时间+指导采样校准周期 《= 取样时间  进行更新
+                if (DateTime.Now.AddMinutes(modelMC_MICAL_PAR.PAR_T2) <= mc_GUIDE_SAMPLING.SAMPLE_TIME_0.Value)
+                {
+                    //判断时间
+                    //当前时间+指导采样校准周期 《= 取样时间  进行更新
 
-                            //quyangTime = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                            //labQuyangTime.Text = quyangTime;
-                            labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                            labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
-                            MessageBox.Show("换新料成功.");
-                            btnHuanXinLiao.Enabled = true;
-                        };
-                        this.Invoke(ShowInfo);
+                    mc_GUIDE_SAMPLING.SAMPLE_TIME_0 = (mc_GUIDE_SAMPLING.START_TIME.Value).AddMinutes((double)MICAL_SAM_MAT_TIME).AddMinutes(-(double)MICAL_SAM_SCR_TIME);
 
-                    }
-                    else
-                    {
-                        aaa ShowInfo = delegate ()
-                        {
-                           // Bind_comboBox1(mc_GUIDE_SAMPLING);
-                            labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                            labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
-
-                        };
-                        this.Invoke(ShowInfo);
-
-                     ////当前时间+指导采样校准周期 《= 取样时间  进行更新
-                     if (DateTime.Now.AddMinutes(modelMC_MICAL_PAR.PAR_T2) <= mc_GUIDE_SAMPLING.SAMPLE_TIME_0.Value)
-                    {
-                      //判断时间
-                     //当前时间+指导采样校准周期 《= 取样时间  进行更新
-
-                      mc_GUIDE_SAMPLING.SAMPLE_TIME_0 = (mc_GUIDE_SAMPLING.START_TIME.Value).AddMinutes((double)MICAL_SAM_MAT_TIME).AddMinutes(-(double)MICAL_SAM_SCR_TIME);
-
-                     //执行更新操作
+                    //执行更新操作
                     db_sugar.Updateable<MC_MICAL_GUIDE_SAMPLE>().UpdateColumns(it => mc_GUIDE_SAMPLING.SAMPLE_TIME_0).ExecuteCommand();
-                     }
-
-
+                }
             }
 
-                if (!initQyz)
+            if (!initQyz)
+            {
+                initQyz = true;
+                aaa ShowInfo = delegate ()
                 {
-                    initQyz = true;
-                    aaa ShowInfo = delegate ()
-                    {
-                        //Bind_comboBox1(mc_GUIDE_SAMPLING);
-                        labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                        labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
-                    };
-                    this.Invoke(ShowInfo);
-                }
-            
+                    //Bind_comboBox1(mc_GUIDE_SAMPLING);
+                    labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                    labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                };
+                this.Invoke(ShowInfo);
+            }
 
-
-                db_sugar.Dispose();
-            
-
+            db_sugar.Dispose();
         }
-        bool initQyz = false;
 
+        private bool initQyz = false;
 
+        private DateTime[] ArrDateTimes = new DateTime[6];
 
-        DateTime[] ArrDateTimes = new DateTime[6];
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="model"></param>
         private void Bind_comboBox1(MC_MICAL_GUIDE_SAMPLE model)
@@ -1599,7 +1527,7 @@ namespace NBSJ_MAIN_UC
             if (model != null)
             {
                 ArrDateTimes[0] = mc_GUIDE_SAMPLING.SAMPLE_TIME_1.Value;
-               
+
                 int num = 0;
                 foreach (var item in ArrDateTimes)
                 {
@@ -1611,9 +1539,7 @@ namespace NBSJ_MAIN_UC
                 }
                 if (num < 6)
                 {
-                   
                     this.TextQuYangTime.Text = ArrDateTimes[0].ToString();
-                   
                 }
                 else
                 {
@@ -1622,12 +1548,7 @@ namespace NBSJ_MAIN_UC
                     //this.comboBox1.SelectedIndex = 0;
                 }
             }
-
-
-          
-
         }
-
 
         private void blendingUC1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
@@ -1637,7 +1558,6 @@ namespace NBSJ_MAIN_UC
                 frm.Init(1);
                 frm.ShowDialog();
             }
-
         }
 
         private void blendingUC2_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -1650,10 +1570,8 @@ namespace NBSJ_MAIN_UC
             }
         }
 
-
         private void hostConveyerUC1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            
             ////烧结机
             //using (FormDaoTui frm = new FormDaoTui())
             //{
@@ -1686,7 +1604,8 @@ namespace NBSJ_MAIN_UC
             }
         }
 
-        DateTime dtimeRbtnQyd = DateTime.Now;
+        private DateTime dtimeRbtnQyd = DateTime.Now;
+
         private void rbtnQuYangDian_Click(object sender, EventArgs e)
         {
             if (dtimeRbtnQyd.AddMilliseconds(1000) > DateTime.Now)
@@ -1698,9 +1617,10 @@ namespace NBSJ_MAIN_UC
                 }
             }
             dtimeRbtnQyd = DateTime.Now;
-
         }
-        DateTime dtimeRbtnDouble = DateTime.Now;
+
+        private DateTime dtimeRbtnDouble = DateTime.Now;
+
         private void rbtnQuYangDian_Click1(object sender, EventArgs e)
         {
             if (dtimeRbtnDouble.AddMilliseconds(1000) > DateTime.Now)
@@ -1712,16 +1632,16 @@ namespace NBSJ_MAIN_UC
                 }
             }
             dtimeRbtnDouble = DateTime.Now;
-
         }
+
         public void Timer_state()
         {
             MongoQMtimer1.Enabled = true;
         }
+
         public void Timer_stop()
         {
             MongoQMtimer1.Enabled = false;
-           
         }
 
         public void _Clear()
@@ -1732,28 +1652,22 @@ namespace NBSJ_MAIN_UC
 
         private void labelCCH_Click(object sender, EventArgs e)
         {
-
         }
 
         private void labSJK1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void puDiLiaoCaoUC1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void huanLengJiUC1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void buLiaoQiUC1_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
-

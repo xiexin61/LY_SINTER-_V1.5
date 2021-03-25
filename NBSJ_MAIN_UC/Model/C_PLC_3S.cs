@@ -185,5 +185,10 @@ namespace NBSJ_MAIN_UC.Model
         public float? F_PLC_BLEND_TE { get; set; }//混合料温度
         public float? T_FP_BELT3_SL_3S { get; set; }//3#成品皮带启停信号（CP1（成-5））
         public float? F_PLC_BLEND_TE_3S { get; set; }//混合料温度检测值
+        public float? T_PLC_1M_SIGNAL_3_3S { get; set; }//2H2（混-3启停信号）
+        public float? T_PLC_LS2_SIGNAL_3S { get; set; }//LS2启停信号
+        public float? M_PLC_2M_A_W_3S { get; set; }//S1皮带秤称值
+        public float? M_PLC_2M_A_B_SIGNAL_2_3S { get; set; }//S1启停信号
+        public float? M_PLC_2M_A_B_W_3S { get; set; }//Z41皮带秤称值
     }
 }

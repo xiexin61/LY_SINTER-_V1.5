@@ -152,6 +152,7 @@
             // 
             // pipeLine_Two1
             // 
+            this.pipeLine_Two1.ChengZhi2 = null;
             this.pipeLine_Two1.Location = new System.Drawing.Point(227, 1);
             this.pipeLine_Two1.Name = "pipeLine_Two1";
             this.pipeLine_Two1.Size = new System.Drawing.Size(112, 101);
@@ -252,7 +253,6 @@
             this.huanLengJiUC1.GLJ_LW = "";
             this.huanLengJiUC1.Hlj_Read_SPEED = "";
             this.huanLengJiUC1.Hlj_Set_SPEED = "";
-            this.huanLengJiUC1.GLJ_LW = "";
             this.huanLengJiUC1.Location = new System.Drawing.Point(507, 456);
             this.huanLengJiUC1.Name = "huanLengJiUC1";
             this.huanLengJiUC1.RkTemp = "";

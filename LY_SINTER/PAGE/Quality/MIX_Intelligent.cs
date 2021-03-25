@@ -22,225 +22,297 @@ namespace LY_SINTER.PAGE.Quality
         /// <summary>
         /// 下发间隔
         /// </summary>
-        int _time = 2000;
-        #region 用户输入项设定上下限制
-        //R调整
-        float R_TZ_MIN = 0;
-        float R_TZ_MAX = 100;
-        //目标R
-        float R_MB_MIN = 0;
-        float R_MB_MAX = 100;
-        //C调整
-        float C_TZ_MIN = 0;
-        float C_TZ_MAX = 100;
-        //目标C
-        float C_MB_MIN = 0;
-        float C_MB_MAX = 100;
-        //MG调整
-        float MG_TZ_MIN = 0;
-        float MG_TZ_MAX = 100;
-        //目标MG
-        float MG_MB_MIN = 0;
-        float MG_MB_MAX = 100;
-        //总料量sp
-        float ZLL_MIN = 0;
-        float ZLL_MAX = 1200;
-        //燃料
-        float RL_MAX = 0;
-        float RL_MIN = 0;
-        //溶剂
-        float RJ_MAX = 0;
-        float RJ_MIN = 0;
-        //白云石
-        float BYS_MAX = 0;
-        float BYS_MIN = 0;
+        private int _time = 2000;
 
-        #endregion
+        #region 用户输入项设定上下限制
+
+        //R调整
+        private float R_TZ_MIN = 0;
+
+        private float R_TZ_MAX = 100;
+
+        //目标R
+        private float R_MB_MIN = 0;
+
+        private float R_MB_MAX = 100;
+
+        //C调整
+        private float C_TZ_MIN = 0;
+
+        private float C_TZ_MAX = 100;
+
+        //目标C
+        private float C_MB_MIN = 0;
+
+        private float C_MB_MAX = 100;
+
+        //MG调整
+        private float MG_TZ_MIN = 0;
+
+        private float MG_TZ_MAX = 100;
+
+        //目标MG
+        private float MG_MB_MIN = 0;
+
+        private float MG_MB_MAX = 100;
+
+        //总料量sp
+        private float ZLL_MIN = 0;
+
+        private float ZLL_MAX = 1200;
+
+        //燃料
+        private float RL_MAX = 0;
+
+        private float RL_MIN = 0;
+
+        //溶剂
+        private float RJ_MAX = 0;
+
+        private float RJ_MIN = 0;
+
+        //白云石
+        private float BYS_MAX = 0;
+
+        private float BYS_MIN = 0;
+
+        #endregion 用户输入项设定上下限制
+
         #region 页面参数声明
+
         /// <summary>
         /// 设定下料量闪烁功能开始
         /// </summary>
-        int COLOR_BEGIN = 0;
+        private int COLOR_BEGIN = 0;
+
         /// <summary>
         /// 设定下料量闪烁功能结束
         /// </summary>
-        int COLOR_END = 30;
+        private int COLOR_END = 30;
+
         /// <summary>
         /// 人工输入配比上下限
         /// </summary>
-        Dictionary<int, float> Rule_Dic = new Dictionary<int, float>();
+        private Dictionary<int, float> Rule_Dic = new Dictionary<int, float>();
+
         /// <summary>
         /// 熔剂燃料白云石计算模型
         ///  1：计算熔剂燃料 ；2：计算熔剂燃料白云石
         /// </summary>
-        int CAL_MODE = 0;
+        private int CAL_MODE = 0;
+
         /// <summary>
         /// 开关标志r
         /// </summary>
-        int R_MODE;
+        private int R_MODE;
+
         /// <summary>
         /// 开关标志c
         /// </summary>
-        int C_MODE;
+        private int C_MODE;
+
         /// <summary>
         /// 开关标志FK
         /// </summary>
-        int FK_MODE;
+        private int FK_MODE;
+
         /// <summary>
         /// 开关标志MG
         /// </summary>
-        int MG_MODE;
+        private int MG_MODE;
+
         /// <summary>
         /// C调整值自动点击添加or减少数值
         /// </summary>
-        float C_ADD;
+        private float C_ADD;
+
         /// <summary>
         /// R调整值自动点击添加or减少数值
         /// </summary>
-        float R_ADD;
+        private float R_ADD;
+
         /// <summary>
         /// MG调整值自动点击添加or减少数值
         /// </summary>
-        float MG_ADD;
+        private float MG_ADD;
+
         /// <summary>
         /// 总料量SP调整值自动点击添加or减少数值
         /// </summary>
-        float SP_ADD;
+        private float SP_ADD;
+
         /// <summary>
         /// 设定配比小数位数
         /// </summary>
-        int Digit_1;
+        private int Digit_1;
+
         /// <summary>
         /// 设定配比%小数位数
         /// </summary>
-        int Digit_2;
+        private int Digit_2;
+
         /// <summary>
         /// 烧返分仓系数小数位数
         /// </summary>
-        int Digit_3;
+        private int Digit_3;
+
         /// <summary>
         /// 仓位小数位数
         /// </summary>
-        int Digit_4;
+        private int Digit_4;
+
         /// <summary>
         /// 实际下料量小数位数
         /// </summary>
-        int Digit_5;
+        private int Digit_5;
+
         /// <summary>
         /// 偏差小数位数
         /// </summary>
-        int Digit_6;
+        private int Digit_6;
+
         /// <summary>
         /// 设备转速小数位数
         /// </summary>
-        int Digit_7;
+        private int Digit_7;
+
         /// <summary>
         /// 湿配比小数位数
         /// </summary>
-        int Digit_8;
+        private int Digit_8;
+
         /// <summary>
         /// 累计值小数位数
         /// </summary>
-        int Digit_9;
+        private int Digit_9;
+
         /// <summary>
         /// 开关c开启
         /// </summary>
-        string switch_1_open;
+        private string switch_1_open;
+
         /// <summary>
         /// 开关c关闭
         /// </summary>
-        string switch_1_close;
+        private string switch_1_close;
+
         /// <summary>
         /// 开关r开启
         /// </summary>
-        string switch_2_open;
+        private string switch_2_open;
+
         /// <summary>
         /// 开关r关闭
         /// </summary>
-        string switch_2_close;
+        private string switch_2_close;
+
         /// <summary>
         /// 开关mg开启
         /// </summary>
-        string switch_3_open;
+        private string switch_3_open;
+
         /// <summary>
         /// 开关mg关闭
         /// </summary>
-        string switch_3_close;
+        private string switch_3_close;
+
         /// <summary>
         /// 开关返矿开启
         /// </summary>
-        string switch_4_open;
+        private string switch_4_open;
+
         /// <summary>
         /// 开关返矿关闭
         /// </summary>
-        string switch_4_close;
+        private string switch_4_close;
+
         /// <summary>
         /// D2表单数据加载响应事件
         /// </summary>
-        bool FLAG_1 = false;
+        private bool FLAG_1 = false;
 
-        #endregion
+        #endregion 页面参数声明
+
         #region 初始化触发参数声明
+
         /// <summary>
         /// 初始化勾选框是否触发
         /// </summary>
-        bool check_signal = false;
+        private bool check_signal = false;
+
         /// <summary>
         /// 特殊分仓系数对应下料口号
         /// </summary>
-        List<int> _list_XLK = new List<int>() {15,16 };//烧返仓下料口
-        bool FLAG_OUT = true;//是否允许下发
-        #endregion
+        private List<int> _list_XLK = new List<int>() { 15, 16 };//烧返仓下料口
+
+        private bool FLAG_OUT = false;//是否允许下发
+
+        #endregion 初始化触发参数声明
+
         /// <summary>
         /// 中控权限
         /// </summary>
-        bool FALG_Oper;
+        private bool FALG_Oper;
+
         #region 定时器声明
+
         /// <summary>
         /// 初始化颜色变化定时器
         /// </summary>
         public System.Timers.Timer _Timer1 { get; set; }
+
         /// <summary>
         /// 返矿弹出框
         /// </summary>
         public System.Timers.Timer _Timer2 { get; set; }
+
         /// <summary>
         /// 调整值弹出框
         /// </summary>
         public System.Timers.Timer _Timer3 { get; set; }
+
         /// <summary>
         /// 修改烧返仓分仓系数
         /// </summary>
         public System.Timers.Timer _Timer4 { get; set; }
+
         /// <summary>
         /// 周期刷新预测值数据
         /// </summary>
         public System.Timers.Timer _Timer5 { get; set; }
+
         /// <summary>
         /// 周期刷新PLC数据
         /// </summary>
         public System.Timers.Timer _Timer6 { get; set; }
+
         /// <summary>
         /// 设定下料量闪烁功能
         /// </summary>
         public System.Timers.Timer _Timer7 { get; set; }
-        #endregion
+
+        #endregion 定时器声明
 
         #region 弹出框交互标志位
+
         /// <summary>
         /// 烧返弹出框
         /// </summary>
         public static Frm_MIX_SRMCAL _Auto;
+
         /// <summary>
         /// 成分调整弹出框
         /// </summary>
         public static Frm_MIX_Ingredient _Auto_1;
-        #endregion
-        DBSQL _dBSQL = new DBSQL(DataBase.ConstParameters.strCon);//连接数据库
-        Message_Logging logTable = new Message_Logging();//主框架通用方法
-        LGSinter HMICAL = new LGSinter();//配料模型方法
-        MIX_PAGE_MODEL mIX_PAGE = new MIX_PAGE_MODEL();//配料页面方法
+
+        #endregion 弹出框交互标志位
+
+        private DBSQL _dBSQL = new DBSQL(DataBase.ConstParameters.strCon);//连接数据库
+        private Message_Logging logTable = new Message_Logging();//主框架通用方法
+        private LGSinter HMICAL = new LGSinter();//配料模型方法
+        private MIX_PAGE_MODEL mIX_PAGE = new MIX_PAGE_MODEL();//配料页面方法
         public vLog _vLog { get; set; }
+
         public MIX_Intelligent()
         {
             InitializeComponent();
@@ -270,6 +342,7 @@ namespace LY_SINTER.PAGE.Quality
             this.d2.MergeColumnNames.Add("Column17");//需要合并的列名称
             this.d2.MergeByColumnName = "Column20";//合并标志位
         }
+
         /// <summary>
         /// 列标题添加
         /// </summary>
@@ -279,6 +352,7 @@ namespace LY_SINTER.PAGE.Quality
             this.d2.AddSpanHeader(11, 2, "水分(%)");
             this.d2.AddSpanHeader(13, 4, "下料(t/h 湿)");
         }
+
         /// <summary>
         /// 开关状态
         /// </summary>
@@ -334,6 +408,7 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 判断开关颜色
         ///_flag =1 计算熔剂燃料，_flag = 2计算熔剂燃料白云石
@@ -344,9 +419,9 @@ namespace LY_SINTER.PAGE.Quality
             try
             {
                 #region C
+
                 if (C_MODE == 1)
                 {
-
                     this.Check_C.Text = switch_1_open;
                     this.Check_C.ForeColor = Color.Green;
                     check_signal = false;
@@ -360,16 +435,17 @@ namespace LY_SINTER.PAGE.Quality
                     check_signal = false;
                     this.Check_C.Checked = false;
                     check_signal = true;
-
-
                 }
                 else
                 {
                     String mistake = "Button_flag方法判断C自动开关标志位不正确";
                     _vLog.writelog(mistake, -1);
                 }
-                #endregion
+
+                #endregion C
+
                 #region r
+
                 if (R_MODE == 1)
                 {
                     this.Check_R.Text = switch_2_open;
@@ -391,8 +467,11 @@ namespace LY_SINTER.PAGE.Quality
                     String mistake = "Button_flag方法判断R自动开关标志位不正确";
                     _vLog.writelog(mistake, -1);
                 }
-                #endregion
+
+                #endregion r
+
                 #region FK
+
                 if (FK_MODE == 1)
                 {
                     this.Check_FK.Text = switch_4_open;
@@ -415,7 +494,9 @@ namespace LY_SINTER.PAGE.Quality
                     String mistake = "Button_flag方法判断返矿自动开关标志位不正确";
                     _vLog.writelog(mistake, -1);
                 }
-                #endregion
+
+                #endregion FK
+
                 //判断调整模式
                 if (_flag == 1)
                 {
@@ -435,7 +516,9 @@ namespace LY_SINTER.PAGE.Quality
                 {
                     //显示mgo=开关
                     Check_MG.Visible = true;
+
                     #region MGO
+
                     if (MG_MODE == 1)
                     {
                         this.Check_MG.Text = switch_3_open;
@@ -443,7 +526,6 @@ namespace LY_SINTER.PAGE.Quality
                         check_signal = false;
                         this.Check_MG.Checked = true;
                         check_signal = true;
-
                     }
                     else if (MG_MODE == 0)
                     {
@@ -458,7 +540,9 @@ namespace LY_SINTER.PAGE.Quality
                         String mistake = "Button_flag方法判断MG自动开关标志位不正确";
                         _vLog.writelog(mistake, -1);
                     }
-                    #endregion
+
+                    #endregion MGO
+
                     if (MG_MODE == 0 && C_MODE == 0 && R_MODE == 0)
                     {
                         this.button2.Visible = true;
@@ -468,7 +552,6 @@ namespace LY_SINTER.PAGE.Quality
                         this.button2.Visible = false;
                     }
                 }
-
             }
             catch (Exception ee)
             {
@@ -476,6 +559,7 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// R开关点击事件
         /// </summary>
@@ -549,9 +633,9 @@ namespace LY_SINTER.PAGE.Quality
                                 Button_flag(CAL_MODE);
                             }
                         }
-                     
+
                         string name = "改变R开关为" + Check_R.Text.ToString();
-                        logTable.Operation_Log( name, "智能配料页面", "智能配料模型");
+                        logTable.Operation_Log(name, "智能配料页面", "智能配料模型");
                     }
                     else
                     {
@@ -565,6 +649,7 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// C开关点击事件
         /// </summary>
@@ -653,6 +738,7 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// MG开关点击事件
         /// </summary>
@@ -741,6 +827,7 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 返矿开关点击事件
         /// </summary>
@@ -830,6 +917,7 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 配比调整按钮
         /// </summary>
@@ -839,7 +927,7 @@ namespace LY_SINTER.PAGE.Quality
         {
             button1.Enabled = false;
             BUTTON_PBTZ();
-            if(button2.Enabled == false)
+            if (button2.Enabled == false)
             {
                 BUTTON_PBQR();
                 mIX_PAGE.OVER_Storage(1, CAL_MODE);
@@ -847,15 +935,17 @@ namespace LY_SINTER.PAGE.Quality
                 string name = "人工点击配比确认按钮";
                 logTable.Operation_Log(name, "智能配料页面", "智能配料模型");
             }
-          //  COLOR_CHANE(8);
+            //  COLOR_CHANE(8);
             button1.Enabled = true;
         }
+
         /// <summary>
         /// 配比调整按钮调用事件
         /// </summary>
         public void BUTTON_PBTZ()
         {
             #region 判断输入项的有效性
+
             //C调整
             bool _f1 = logTable.JudgeOk(C_TZ_MAX, C_TZ_MIN, this.textBox_TZ_C.Text.ToString());
             if (_f1)
@@ -910,7 +1000,9 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(messbox, -1);
                 return;
             }
-            #endregion
+
+            #endregion 判断输入项的有效性
+
             bool f_1 = Mix_fcxs_differ();//判断分仓系数修改更新标志位并存库
             if (f_1)
             {
@@ -920,15 +1012,14 @@ namespace LY_SINTER.PAGE.Quality
                     bool f_3 = CptSolfuel_3();//调整值存库
                     if (f_3)
                     {
-                        bool f_4 = mIX_PAGE.CptSolfuel_1(CAL_MODE,  RJ_MAX,  RJ_MIN,  RL_MAX,  RL_MIN,  BYS_MAX,  BYS_MIN);//判断特殊成分配比
+                        bool f_4 = mIX_PAGE.CptSolfuel_1(CAL_MODE, RJ_MAX, RJ_MIN, RL_MAX, RL_MIN, BYS_MAX, BYS_MIN);//判断特殊成分配比
                         HMICAL.CalPB(1);//计算当前配比%
                         PBTZ_GRTDATA(1);//更新设定配比&设定配比%数据
                     }
                 }
             }
-           
-         
         }
+
         /// <summary>
         /// 配比确认按钮
         /// </summary>
@@ -944,6 +1035,7 @@ namespace LY_SINTER.PAGE.Quality
             logTable.Operation_Log(name, "智能配料页面", "智能配料模型");
             this.button2.Enabled = true;
         }
+
         /// <summary>
         /// 下发一级
         /// Pattern = 1 直接下发设定下料量
@@ -955,25 +1047,23 @@ namespace LY_SINTER.PAGE.Quality
             {
                 if (FLAG_OUT)
                 {
-
-
                     if (true)//判断一级是否投入
                     {
                         //正式版
                         string text = "一级智能配料模型投入";
                         _vLog.writelog(text, 0);
                         List<int> list_mid = mIX_PAGE._Get_Mid();//mid************屏蔽总料量
-                                                                
+
                         Tuple<bool, List<float>> list1 = mIX_PAGE._Get_Mid_Date();//数据************屏蔽总料量
                         Tuple<bool, List<float>> list2 = mIX_PAGE._Get_Values(4);//获取现场设定下料量
                         if (list1.Item1)
                         {
-                            if (Pattern == 1 )
+                            if (Pattern == 1)
                             {
                                 LDataSet lds = new LDataSet();
                                 lds.Ip = ConstParameters.strCon_ID;//数据库地址
                                 lds.Port = ConstParameters.PORT;//端口号
-                                for (int count_1 = 0; count_1 < ConstParameters._COUNT_1; count_1++)//21ci 
+                                for (int count_1 = 0; count_1 < ConstParameters._COUNT_1; count_1++)//21ci
                                 {
                                     LDataUnits ldus = new LDataUnits();
                                     for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
@@ -1006,54 +1096,53 @@ namespace LY_SINTER.PAGE.Quality
                                     }
                                 }
                             }
-                            else if(Pattern == 2)
+                            else if (Pattern == 2)
                             {
                                 if (list2.Item1)
                                 {
-                                        LDataSet lds = new LDataSet();
+                                    LDataSet lds = new LDataSet();
                                     lds.TimeOuter = 3000;//设置平台响应时间（初始2s）
-                                        lds.Ip = ConstParameters.strCon_ID;//数据库地址
-                                        lds.Port = ConstParameters.PORT;//端口号
-                                        for (int count_1 = 0; count_1 < ConstParameters._COUNT_1; count_1++)//21ci 
+                                    lds.Ip = ConstParameters.strCon_ID;//数据库地址
+                                    lds.Port = ConstParameters.PORT;//端口号
+                                    for (int count_1 = 0; count_1 < ConstParameters._COUNT_1; count_1++)//21ci
+                                    {
+                                        if (list2.Item2[count_1] != list1.Item2[count_1])
                                         {
-                                            if (list2.Item2[count_1] != list1.Item2[count_1])
+                                            LDataUnits ldus = new LDataUnits();
+                                            for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
                                             {
-                                                LDataUnits ldus = new LDataUnits();
-                                                for (int count = 0; count < ConstParameters._COUNT; count++)//下发个数
-                                                {
-                                                    ldus.Data[count] = new DataUnit();
-                                                }
-                                                for (int count = 0; count < ConstParameters._COUNT; count++)
-                                                {
-                                                    lds.initData(ldus.Data[count], list_mid[count_1], list1.Item2[count_1]);
-                                                }
-                                                ldus.Count = ConstParameters._COUNT;
-                                                lds.TimeOuter = _time;//下发间隔
-                                                lds.SetData(ldus);
-
-                                                int _flag = lds.Flags;
-                                                if (_flag == -1)//下发失败
-                                                {
-                                                    MessageBox.Show("下发失败");
-                                                }
-                                                else if (_flag == -2)//重新下发
-                                                {
-                                                    MessageBox.Show("重新下发");
-                                                }
-                                                else if (_flag == 1)//下发成功
-                                                {
-                                                    label3.BackColor = Color.Red;
-                                                    string messbox = "设定下料下发成功";
-                                                    //  _vLog.writelog(messbox, 0);
-                                                }
+                                                ldus.Data[count] = new DataUnit();
                                             }
-                                            else
+                                            for (int count = 0; count < ConstParameters._COUNT; count++)
                                             {
-                                            string messbox = "设定下料量与现场下料量使用一致，未下发，"+ count_1.ToString();
+                                                lds.initData(ldus.Data[count], list_mid[count_1], list1.Item2[count_1]);
+                                            }
+                                            ldus.Count = ConstParameters._COUNT;
+                                            lds.TimeOuter = _time;//下发间隔
+                                            lds.SetData(ldus);
+
+                                            int _flag = lds.Flags;
+                                            if (_flag == -1)//下发失败
+                                            {
+                                                MessageBox.Show("下发失败");
+                                            }
+                                            else if (_flag == -2)//重新下发
+                                            {
+                                                MessageBox.Show("重新下发");
+                                            }
+                                            else if (_flag == 1)//下发成功
+                                            {
+                                                label3.BackColor = Color.Red;
+                                                string messbox = "设定下料下发成功";
+                                                //  _vLog.writelog(messbox, 0);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            string messbox = "设定下料量与现场下料量使用一致，未下发，" + count_1.ToString();
                                             _vLog.writelog(messbox, 0);
                                         }
                                     }
-     
                                 }
                                 else
                                 {
@@ -1062,15 +1151,16 @@ namespace LY_SINTER.PAGE.Quality
                                     MessageBox.Show("设定下料量下发失败", "警告");
                                 }
                             }
-                            
                         }
                         else
                         {
                             string messbox = "Issue_SDXLL方法调用_Get_Mid_Date接收数据异常，请检查数据库连接";
                             _vLog.writelog(messbox, -1);
-                            MessageBox.Show("设定下料量下发失败","警告");
+                            MessageBox.Show("设定下料量下发失败", "警告");
                         }
+
                         #region 测试
+
                         //List<int> list_mid1 = new List<int>();
                         //list_mid1.Add(7);
                         ////准备数据
@@ -1090,7 +1180,6 @@ namespace LY_SINTER.PAGE.Quality
                         //    lds_1.initData(ldus1.Data[count], list_mid1[count], list11[count]);
                         //}
                         //ldus1.Count = 1;
-
 
                         //lds_1.TimeOuter = 1000;
                         //lds_1.SetData(ldus1);
@@ -1134,7 +1223,6 @@ namespace LY_SINTER.PAGE.Quality
                         //        lds_2.initData(ldus2.Data[count], list_mid2[count], list111[count]);
                         //    }
                         //    ldus2.Count = 1;
-
 
                         //    lds_2.TimeOuter = 1000;
                         //    lds_2.SetData(ldus2);
@@ -1192,7 +1280,6 @@ namespace LY_SINTER.PAGE.Quality
                     //            }
                     //            ldus.Count = ConstParameters._COUNT;
 
-
                     //            lds.TimeOuter = 3000;
                     //            lds.SetData(ldus);
 
@@ -1237,7 +1324,6 @@ namespace LY_SINTER.PAGE.Quality
                     //    //        }
                     //    //        ldus.Count = ConstParameters._COUNT;
 
-
                     //    //        lds.TimeOuter = 2000;
                     //    //        lds.SetData(ldus);
 
@@ -1263,21 +1349,8 @@ namespace LY_SINTER.PAGE.Quality
                     //    //        _vLog.writelog(messbox, -1);
                     //    //    }
 
-
-
-
-
-
-
-
-
-
-
-
-
                     //    //}
                     //    #endregion
-
 
                     //try
                     //{
@@ -1363,7 +1436,6 @@ namespace LY_SINTER.PAGE.Quality
                     //                }
                     //                ldus.Count = ConstParameters._COUNT;
 
-
                     //                lds.TimeOuter = 2000;
                     //                lds.SetData(ldus);
 
@@ -1408,17 +1480,17 @@ namespace LY_SINTER.PAGE.Quality
                     //    string mistake = "设定下料量计算失败" + ee.ToString();
                     //    _vLog.writelog(mistake, -1);
                     //}
-                    #endregion
+
+                    #endregion 测试
                 }
             }
             catch (Exception ee)
             {
-                _vLog.writelog("Issue_SDXLL方法失败" + ee.ToString(),-1);
+                _vLog.writelog("Issue_SDXLL方法失败" + ee.ToString(), -1);
                 MessageBox.Show("警告,下发一级数据失败！！！");
             }
-
-           
         }
+
         /// <summary>
         /// 配比确认按钮调用事件
         /// </summary>
@@ -1435,7 +1507,7 @@ namespace LY_SINTER.PAGE.Quality
                     return;
                 }
                 HMICAL.CalPB(2);
-                bool _f8 =  assignment_1();//设定水分总料量存库
+                bool _f8 = assignment_1();//设定水分总料量存库
                 if (_f8)
                 {
                     bool _f9 = Warehousing(_list_XLK);//分仓系数存库
@@ -1444,7 +1516,7 @@ namespace LY_SINTER.PAGE.Quality
                         bool _f10 = FeedBLCompute_1();//计算下料比例
                         if (_f10)
                         {
-                           bool _f11 =  total_holdup();//计算设定下料量
+                            bool _f11 = total_holdup();//计算设定下料量
                             if (_f11)
                             {
                                 Dictionary<int, float> _A1 = mIX_PAGE.Calculate_SPB();//湿配比计算
@@ -1468,7 +1540,6 @@ namespace LY_SINTER.PAGE.Quality
                                     _Timer7.Enabled = true;//设定下料量背景颜色变化
                                     COLOR_CHANE(1);//启停信号颜色变化
                                 }
-                                    
                             }
                         }
                     }
@@ -1480,6 +1551,7 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 上下限赋值
         /// </summary>
@@ -1490,8 +1562,8 @@ namespace LY_SINTER.PAGE.Quality
             if (_tuple.Item1)
             {
                 //R调整
-                 R_TZ_MIN = _tuple.Item2[0];
-                 R_TZ_MAX = _tuple.Item2[1];
+                R_TZ_MIN = _tuple.Item2[0];
+                R_TZ_MAX = _tuple.Item2[1];
                 //目标R
                 R_MB_MIN = _tuple.Item2[2];
                 R_MB_MAX = _tuple.Item2[3];
@@ -1523,9 +1595,10 @@ namespace LY_SINTER.PAGE.Quality
             else
             {
                 var mistake = "MAX_MIN_VLAUES()方法上下限赋值返回错误";
-                _vLog.writelog(mistake,-1);
+                _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 设定配比存库
         /// </summary>
@@ -1552,7 +1625,7 @@ namespace LY_SINTER.PAGE.Quality
                         _vLog.writelog(messbox, -1);
                     }
                     string sql_PBTZ_1 = "update CFG_MAT_L2_PBSD_INTERFACE set peibizhi = " + PB + " where  peinimingcheng = " + PBID + "";
-                    int count1= _dBSQL.CommandExecuteNonQuery(sql_PBTZ_1);
+                    int count1 = _dBSQL.CommandExecuteNonQuery(sql_PBTZ_1);
                     if (count <= 0)
                     {
                         string messbox = "点击配比调整按钮，更新CFG_MAT_L2_PBSD_INTERFACE表设定配比失败，配比ID : + '" + PBID + "'," + "配比值为'" + PB + "'";
@@ -1567,8 +1640,8 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(messbox, -1);
                 return false;
             }
-           
         }
+
         /// <summary>
         /// 判断是否人为修改分仓系数
         /// </summary>
@@ -1599,7 +1672,6 @@ namespace LY_SINTER.PAGE.Quality
                             list_1.Add(tuple1);
                             FCXS_Change.Add(PBID, list_1);
                         }
-
                     }
                     //页面存储字典
                     Dictionary<int, List<Tuple<int, double>>> FCXS_Change_YM = new Dictionary<int, List<Tuple<int, double>>>();
@@ -1618,7 +1690,6 @@ namespace LY_SINTER.PAGE.Quality
                             list_1.Add(new Tuple<int, double>(xlk, FCXS_YM));
                             FCXS_Change_YM.Add(PBID, list_1);
                         }
-
                     }
                     //分仓系数根据配比id判读是否发生变化 0未发生变化 1发生变化
                     Dictionary<int, int> FCXS_Change_1 = new Dictionary<int, int>();
@@ -1653,6 +1724,7 @@ namespace LY_SINTER.PAGE.Quality
                         else
                         {
                             #region 插入标志位
+
                             var sql_change = "update CFG_MAT_L2_XLK_INTERFACE set MAT_PB_FALG = 1 where MAT_PB_ID = " + x + "";
                             int count = _dBSQL.CommandExecuteNonQuery(sql_change);
                             string text = "配比id：" + x.ToString() + "分仓系数发生变化";
@@ -1666,8 +1738,11 @@ namespace LY_SINTER.PAGE.Quality
                                 text += "CFG_MAT_L2_XLK_INTERFACE表标志位修改失败,影响行数" + count.ToString() + "sql:" + sql_change;
                                 _vLog.writelog(text, -1);
                             }
-                            #endregion
+
+                            #endregion 插入标志位
+
                             #region 更新分仓系数
+
                             for (int x1 = 0; x1 < list_2.Count; x1++)
                             {
                                 //更新修改后的分仓系数
@@ -1684,7 +1759,8 @@ namespace LY_SINTER.PAGE.Quality
                                     _vLog.writelog(text1, -1);
                                 }
                             }
-                            #endregion
+
+                            #endregion 更新分仓系数
                         }
                     }
                     return true;
@@ -1703,12 +1779,12 @@ namespace LY_SINTER.PAGE.Quality
                 return false;
             }
         }
+
         /// <summary>
         /// 目标碱度、目标含碳、碳调整值、R调整值存库
         /// </summary>
         public bool CptSolfuel_3()
         {
-
             try
             {
                 int ID = 1;
@@ -1740,6 +1816,7 @@ namespace LY_SINTER.PAGE.Quality
                 return false;
             }
         }
+
         /// <summary>
         /// 更新数据
         /// _flag = 0 初始化加载
@@ -1756,7 +1833,7 @@ namespace LY_SINTER.PAGE.Quality
                     "a.MAT_L2_XLK," +
                     "(case when a.MAT_L2_XLKZT = 0 then '禁用' when a.MAT_L2_XLKZT = 1 then '启用' end ) as MAT_L2_XLKZT," +
                     "b.MAT_L2_CW ," +
-                    "cast(cast(b.MAT_L2_SDPB as decimal(18,"+ Digit_1 + ")) as VARCHAR(8)) as MAT_L2_SDPB," +
+                    "cast(cast(b.MAT_L2_SDPB as decimal(18," + Digit_1 + ")) as VARCHAR(8)) as MAT_L2_SDPB," +
                     "cast(b.MAT_L2_SDBFB as decimal(18," + Digit_2 + ")) as MAT_L2_SDBFB ," +
                     "cast(cast(b.MAT_L2_DQPB as decimal(18," + Digit_1 + ")) as VARCHAR(8)) as MAT_L2_DQPB," +
                     "cast(cast(b.MAT_L2_DQBFB as decimal(18," + Digit_2 + ")) as VARCHAR(8)) as MAT_L2_DQBFB," +
@@ -1786,7 +1863,7 @@ namespace LY_SINTER.PAGE.Quality
                     {
                         this.d2.DataSource = dataTable;
                     }
-                    else if(_flag == 1)
+                    else if (_flag == 1)
                     {
                         for (int X = 0; X < d2.Rows.Count; X++)
                         {
@@ -1822,9 +1899,7 @@ namespace LY_SINTER.PAGE.Quality
                             d2.Rows[X].Cells["Column14"].Value = dataTable.Rows[X]["MAT_L2_SDXL"].ToString();
                             //湿配比
                             d2.Rows[X].Cells["Column17"].Value = dataTable.Rows[X]["MAT_L2_SPB"].ToString();
-
                         }
-                            
                     }
                     FLAG_1 = true;
                 }
@@ -1833,15 +1908,14 @@ namespace LY_SINTER.PAGE.Quality
                     string mistake = "配比调整更新页面数据有误,sql:" + sql;
                     _vLog.writelog(mistake, -1);
                 }
-               
             }
             catch (Exception ee)
             {
                 string mistake = "配比调整更新页面数据有误" + ee.ToString();
                 _vLog.writelog(mistake, -1);
             }
-
         }
+
         /// <summary>
         /// 下发时间
         /// </summary>
@@ -1871,6 +1945,7 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 颜色变化设置
         /// _FLAG = 1 启停信号字体颜色变化
@@ -1913,7 +1988,7 @@ namespace LY_SINTER.PAGE.Quality
                     this.d2.Columns["Column18"].DefaultCellStyle.BackColor = Color.Cornsilk;//设备转速背景颜色
                     //输入数据
                     this.d2.Columns["Column6"].DefaultCellStyle.BackColor = Color.PaleGreen;//设定配比
-                 //   this.d2.Columns["Column6"].DefaultCellStyle.ForeColor = Color.Black;//设定配比
+                                                                                            //   this.d2.Columns["Column6"].DefaultCellStyle.ForeColor = Color.Black;//设定配比
                     this.d2.Columns["Column12"].DefaultCellStyle.BackColor = Color.PaleGreen;//设定水分
                 }
                 else if (_FLAG == 3) //设定下料量字体颜色变化
@@ -1938,25 +2013,22 @@ namespace LY_SINTER.PAGE.Quality
                     {
                         _a.Add(int.Parse(dataTable_1.Rows[x]["canghao"].ToString()));
                     }
-                        for (int xx = 0; xx < d2.Rows.Count; xx++)
+                    for (int xx = 0; xx < d2.Rows.Count; xx++)
+                    {
+                        if (_a.Contains(int.Parse(d2.Rows[xx].Cells["Column1"].Value.ToString())))
                         {
-                       
-                           
-                            if (_a.Contains(int.Parse(d2.Rows[xx].Cells["Column1"].Value.ToString()) ))
-                            {
-                                this.d2.Rows[xx].Cells["Column6"].Style.ForeColor = Color.Red;
-                                this.d2.Rows[xx].Cells["Column6"].Style.BackColor = Color.MediumAquamarine;
-                                //  this.d2.Rows[xx].Cells["Column7"].Style.BackColor = Color.Orange;
-                            }
-                            else
-                            {
-                                this.d2.Rows[xx].Cells["Column6"].Style.ForeColor = Color.Black;
-                                this.d2.Rows[xx].Cells["Column6"].Style.BackColor = Color.PaleGreen;
-                            }
-                       
+                            this.d2.Rows[xx].Cells["Column6"].Style.ForeColor = Color.Red;
+                            this.d2.Rows[xx].Cells["Column6"].Style.BackColor = Color.MediumAquamarine;
+                            //  this.d2.Rows[xx].Cells["Column7"].Style.BackColor = Color.Orange;
                         }
+                        else
+                        {
+                            this.d2.Rows[xx].Cells["Column6"].Style.ForeColor = Color.Black;
+                            this.d2.Rows[xx].Cells["Column6"].Style.BackColor = Color.PaleGreen;
+                        }
+                    }
                 }
-                else if (_FLAG == 5 )
+                else if (_FLAG == 5)
                 {
                     //设定 or 实际值 需要给特殊的字体颜色标识
                     for (int x = 0; x < 2; x++)
@@ -1978,7 +2050,7 @@ namespace LY_SINTER.PAGE.Quality
                     for (int x = 0; x < d2.Rows.Count; x++)
                     {
                         int _xlk = int.Parse(d2.Rows[x].Cells["Column3"].Value.ToString());
-                        for (int y = 0; y < _list_XLK.Count();y++)
+                        for (int y = 0; y < _list_XLK.Count(); y++)
                         {
                             if (_xlk == _list_XLK[y])
                             {
@@ -1992,16 +2064,15 @@ namespace LY_SINTER.PAGE.Quality
                     string sql_1 = "";
                     if (CAL_MODE == 1)
                     {
-                         sql_1 = " select distinct category ,canghao from CFG_MAT_L2_PBSD_INTERFACE  where category  =1 or category = 2";
+                        sql_1 = " select distinct category ,canghao from CFG_MAT_L2_PBSD_INTERFACE  where category  =1 or category = 2";
                     }
                     else if (CAL_MODE == 2)
                     {
-                         sql_1 = " select distinct category ,canghao from CFG_MAT_L2_PBSD_INTERFACE  where category  =1 or category = 2 or category = 4 ";
+                        sql_1 = " select distinct category ,canghao from CFG_MAT_L2_PBSD_INTERFACE  where category  =1 or category = 2 or category = 4 ";
                     }
                     DataTable dataTable_1 = _dBSQL.GetCommand(sql_1);
                     for (int x_1 = 0; x_1 < 5; x_1++)
                     {
-                        
                         if (x_1 % 2 == 0)
                         {
                             for (int x = 0; x < dataTable_1.Rows.Count; x++)
@@ -2013,12 +2084,11 @@ namespace LY_SINTER.PAGE.Quality
                                 {
                                     if (int.Parse(d2.Rows[xx].Cells["Column1"].Value.ToString()) == CH)
                                     {
-                                       // this.d2.Rows[xx].Cells["Column6"].Style.ForeColor = Color.Red;
-                                          this.d2.Rows[xx].Cells["Column7"].Style.BackColor = Color.Orange;
+                                        // this.d2.Rows[xx].Cells["Column6"].Style.ForeColor = Color.Red;
+                                        this.d2.Rows[xx].Cells["Column7"].Style.BackColor = Color.Orange;
                                     }
                                     else
                                     {
-
                                     }
                                 }
                             }
@@ -2034,8 +2104,8 @@ namespace LY_SINTER.PAGE.Quality
                                 {
                                     if (int.Parse(d2.Rows[xx].Cells["Column1"].Value.ToString()) == CH)
                                     {
-                                       // this.d2.Rows[xx].Cells["Column6"].Style.ForeColor = Color.Red;
-                                         this.d2.Rows[xx].Cells["Column7"].Style.BackColor = Color.White;
+                                        // this.d2.Rows[xx].Cells["Column6"].Style.ForeColor = Color.Red;
+                                        this.d2.Rows[xx].Cells["Column7"].Style.BackColor = Color.White;
                                     }
                                 }
                             }
@@ -2046,7 +2116,7 @@ namespace LY_SINTER.PAGE.Quality
                 else if (_FLAG == 9) //设定下料量字体颜色变化
                 {
                     this.d2.Columns["Column14"].DefaultCellStyle.BackColor = Color.Red;
-                    this.d2.Columns["Column14"].DefaultCellStyle.ForeColor = Color.White; 
+                    this.d2.Columns["Column14"].DefaultCellStyle.ForeColor = Color.White;
                 }
                 else if (_FLAG == 10) //设定下料量字体颜色变化
                 {
@@ -2056,14 +2126,14 @@ namespace LY_SINTER.PAGE.Quality
             }
             catch
             {
-
             }
         }
+
         /// <summary>
         /// 人工输入设定值、调整值赋值
         /// _flag 特殊成分调整模型
         /// </summary>
-        public void import_R_C_MG( int _flag)
+        public void import_R_C_MG(int _flag)
         {
             try
             {
@@ -2104,9 +2174,9 @@ namespace LY_SINTER.PAGE.Quality
             {
                 string mistake = "人工输入值赋值查询失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
-
             }
         }
+
         /// <summary>
         /// 总干料量、理论产量赋值
         /// </summary>
@@ -2128,9 +2198,10 @@ namespace LY_SINTER.PAGE.Quality
             catch (Exception ee)
             {
                 var mistake = "Counter_OutPut方法总干料量&理论产量赋值失败" + ee.ToString();
-                _vLog.writelog(mistake,-1);
+                _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 总料量sp、pv赋值
         /// </summary>
@@ -2140,18 +2211,17 @@ namespace LY_SINTER.PAGE.Quality
             {
                 string SQL_ZLL = "  SELECT TOP (1) MAT_L2_ZGLL,MAT_PLC_PV, MAT_L2_SP ,MAT_L2_LLCL  FROM CFG_MAT_L2_PLZL_INTERFACE ORDER BY TIMESTAMP DESC";
                 DataTable dataTable_ZLL = _dBSQL.GetCommand(SQL_ZLL);
-                if (dataTable_ZLL.Rows.Count > 0 && dataTable_ZLL !=null)
+                if (dataTable_ZLL.Rows.Count > 0 && dataTable_ZLL != null)
                 {
                     this.textBox_PV.Text = dataTable_ZLL.Rows[0][1].ToString();//总料量PV
-                    this.textBox_SP.Text = dataTable_ZLL.Rows[0][2].ToString();//总料量SP                                                     
+                    this.textBox_SP.Text = dataTable_ZLL.Rows[0][2].ToString();//总料量SP
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 var mistake = "INIT_SP_PV方法总料量sp、pv赋值赋值失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
             }
-            
         }
 
         /// <summary>
@@ -2244,7 +2314,7 @@ namespace LY_SINTER.PAGE.Quality
                 }
                 else
                 {
-                    string mistake = "Ingredient方法加载预测成分数据失败，无数据" ;
+                    string mistake = "Ingredient方法加载预测成分数据失败，无数据";
                     _vLog.writelog(mistake, -1);
                 }
             }
@@ -2254,6 +2324,7 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 设定水分、总料量sp、总干料量、理论产量、总料量PV存库
         /// </summary>
@@ -2261,7 +2332,7 @@ namespace LY_SINTER.PAGE.Quality
         {
             try
             {
-                for (int x = 0;x < d2.Rows.Count;x++)
+                for (int x = 0; x < d2.Rows.Count; x++)
                 {
                     //仓号
                     int _CH = int.Parse(d2.Rows[x].Cells["Column1"].Value.ToString());
@@ -2309,8 +2380,8 @@ namespace LY_SINTER.PAGE.Quality
                 _vLog.writelog(mistake, -1);
                 return false;
             }
-
         }
+
         /// <summary>
         ///  分仓系数存库
         ///  _XLK:需要更新的分仓系数对应的下料口号
@@ -2319,20 +2390,20 @@ namespace LY_SINTER.PAGE.Quality
         {
             try
             {
-                for (int x = 0; x < d2.Rows.Count;x++)
+                for (int x = 0; x < d2.Rows.Count; x++)
                 {
                     int XLK = int.Parse(d2.Rows[x].Cells["Column3"].Value.ToString());//下料口
-                    for (int y = 0; y < _XLK.Count();y++)
+                    for (int y = 0; y < _XLK.Count(); y++)
                     {
                         if (XLK == _XLK[y])
                         {
                             float FCXS = float.Parse(d2.Rows[x].Cells["Column10"].Value.ToString());
-                            string sql_17 = "update CFG_MAT_L2_XLK_INTERFACE set MAT_L2_FCXS = " + FCXS + " where MAT_L2_XLK = "+ XLK + "";
-                            int _COUNT =   _dBSQL.CommandExecuteNonQuery(sql_17);
+                            string sql_17 = "update CFG_MAT_L2_XLK_INTERFACE set MAT_L2_FCXS = " + FCXS + " where MAT_L2_XLK = " + XLK + "";
+                            int _COUNT = _dBSQL.CommandExecuteNonQuery(sql_17);
                             if (_COUNT != 1)
                             {
                                 var mistake = "Warehousing方法更新分仓系数失败，sql:" + sql_17;
-                                _vLog.writelog(mistake,-1);
+                                _vLog.writelog(mistake, -1);
                                 return false;
                             }
                         }
@@ -2340,13 +2411,14 @@ namespace LY_SINTER.PAGE.Quality
                 }
                 return true;
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 var mistake = "Warehousing方法更新分仓系数失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
                 return false;
             }
         }
+
         /// <summary>
         /// 料口比例 计算 计算出所有的数据
         /// </summary>
@@ -2376,14 +2448,14 @@ namespace LY_SINTER.PAGE.Quality
                         {
                             string messbox = "FeedBLCompute_1方法计算下料比例，配比id：" + PBID + "的下料口状态都为禁用,当前配比：" + DQPB;
                             _vLog.writelog(messbox, 0);
-                            HMICAL.FeedBLCompute(PBID, 0);  
+                            HMICAL.FeedBLCompute(PBID, 0);
                         }
                         else
                         {
                             string messbox = "FeedBLCompute_1方法计算下料比例，配比id：" + PBID + ",当前配比：" + DQPB;
                             _vLog.writelog(messbox, 0);
-                            HMICAL.FeedBLCompute(PBID, DQPB);  
-                        }                        
+                            HMICAL.FeedBLCompute(PBID, DQPB);
+                        }
                     }
                     else
                     {
@@ -2399,6 +2471,7 @@ namespace LY_SINTER.PAGE.Quality
                 return false;
             }
         }
+
         /// <summary>
         /// 设定下料量计算
         /// </summary>
@@ -2439,6 +2512,7 @@ namespace LY_SINTER.PAGE.Quality
                 return false;
             }
         }
+
         /// <summary>
         /// 定时器声明
         /// </summary>
@@ -2480,8 +2554,8 @@ namespace LY_SINTER.PAGE.Quality
             _Timer7.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
         }
 
-
         #region 定时器响应事件
+
         /// <summary>
         /// 初始化颜色变化定时器响应事件
         /// </summary>
@@ -2503,6 +2577,7 @@ namespace LY_SINTER.PAGE.Quality
                 COLOR_CHANE(7);
             }
         }
+
         /// <summary>
         /// 返矿调整配比弹出框
         /// </summary>
@@ -2518,6 +2593,7 @@ namespace LY_SINTER.PAGE.Quality
                 try
                 {
                     #region 烧返弹出框检测 修改配比
+
                     string sql_SF = "select top (1) " +
                         "isnull(SRMCAL_SL_FLAG,0) as SRMCAL_SL_FLAG," +
                         "isnull(SRMCAL_A_FLAG,0) as SRMCAL_A_FLAG," +
@@ -2525,7 +2601,7 @@ namespace LY_SINTER.PAGE.Quality
                         "from MC_SRMCAL_RESULT " +
                         "where TIMESTAMP = (select max(TIMESTAMP) from MC_SRMCAL_RESULT) order by TIMESTAMP desc";
                     DataTable dataTable_SF = _dBSQL.GetCommand(sql_SF);
-                    if (dataTable_SF.Rows.Count > 0 && dataTable_SF!=null)
+                    if (dataTable_SF.Rows.Count > 0 && dataTable_SF != null)
                     {
                         ///20200826 添加逻辑，添加判断是否人工修改标志位,龙飞
                         int x1 = int.Parse(dataTable_SF.Rows[0]["SRMCAL_SL_FLAG"].ToString());
@@ -2548,10 +2624,10 @@ namespace LY_SINTER.PAGE.Quality
                             {
                                 _Auto.Activate();
                             }
-
                         }
                     }
-                    #endregion
+
+                    #endregion 烧返弹出框检测 修改配比
                 }
                 catch (Exception ee)
                 {
@@ -2560,6 +2636,7 @@ namespace LY_SINTER.PAGE.Quality
                 }
             }
         }
+
         /// <summary>
         /// 调整值弹出框
         /// </summary>
@@ -2575,10 +2652,10 @@ namespace LY_SINTER.PAGE.Quality
                 try
                 {
                     bool _FLAG = false;//开关是否存在自动状态
-                   
+
                     if (CAL_MODE == 1)
                     {
-                        if (R_MODE == 1 || C_MODE == 1 )
+                        if (R_MODE == 1 || C_MODE == 1)
                         {
                             _FLAG = true;
                         }
@@ -2586,9 +2663,8 @@ namespace LY_SINTER.PAGE.Quality
                         {
                             return;
                         }
-
                     }
-                    else if(CAL_MODE == 2)
+                    else if (CAL_MODE == 2)
                     {
                         if (R_MODE == 1 || C_MODE == 1 || MG_MODE == 1)
                         {
@@ -2602,79 +2678,87 @@ namespace LY_SINTER.PAGE.Quality
 
                     if (_FLAG)
                     {
-                            //判断是否激活弹出框
-                            bool FLAG_c = true;
-                            bool FLAG_r = true;
-                            bool FLAG_mgo = true;
-                            string sql_MG = "select top (1) SINCAL_MG_FLAG,SINCAL_MG_RE_ADJ,TIMESTAMP  from MC_SINCAL_MG_result order by TIMESTAMP desc";
-                            DataTable dataTable_MG = _dBSQL.GetCommand(sql_MG);
-                            string sql_C = "select top (1)  SINCAL_C_FLAG,TIMESTAMP,SINCAL_C_COM_RE_ADJ from MC_SINCAL_C_result order by TIMESTAMP desc ";
-                            DataTable dataTable_C = _dBSQL.GetCommand(sql_C);
-                            string sql_R = "select top (1)  SINCAL_R_FLAG,SINCAL_R_RE_ADJ,TIMESTAMP from MC_SINCAL_R_result order by TIMESTAMP desc";
-                            DataTable dataTable_R = _dBSQL.GetCommand(sql_R);
+                        //判断是否激活弹出框
+                        bool FLAG_c = true;
+                        bool FLAG_r = true;
+                        bool FLAG_mgo = true;
+                        string sql_MG = "select top (1) SINCAL_MG_FLAG,SINCAL_MG_RE_ADJ,TIMESTAMP  from MC_SINCAL_MG_result order by TIMESTAMP desc";
+                        DataTable dataTable_MG = _dBSQL.GetCommand(sql_MG);
+                        string sql_C = "select top (1)  SINCAL_C_FLAG,TIMESTAMP,SINCAL_C_COM_RE_ADJ from MC_SINCAL_C_result order by TIMESTAMP desc ";
+                        DataTable dataTable_C = _dBSQL.GetCommand(sql_C);
+                        string sql_R = "select top (1)  SINCAL_R_FLAG,SINCAL_R_RE_ADJ,TIMESTAMP from MC_SINCAL_R_result order by TIMESTAMP desc";
+                        DataTable dataTable_R = _dBSQL.GetCommand(sql_R);
 
-                            if (dataTable_C.Rows.Count > 0 && dataTable_R.Rows.Count > 0 && dataTable_MG.Rows.Count > 0)
+                        if (dataTable_C.Rows.Count > 0 && dataTable_R.Rows.Count > 0 && dataTable_MG.Rows.Count > 0)
+                        {
+                            int flag_c = int.Parse(dataTable_C.Rows[0]["SINCAL_C_FLAG"].ToString() == "" ? "0" : dataTable_C.Rows[0]["SINCAL_C_FLAG"].ToString());
+                            int flag_r = int.Parse(dataTable_R.Rows[0]["SINCAL_R_FLAG"].ToString() == "" ? "0" : dataTable_R.Rows[0]["SINCAL_R_FLAG"].ToString());
+                            int flag_mg = int.Parse(dataTable_MG.Rows[0]["SINCAL_MG_FLAG"].ToString() == "" ? "0" : dataTable_MG.Rows[0]["SINCAL_MG_FLAG"].ToString());
+
+                            float flag_c_ADJ = float.Parse(dataTable_C.Rows[0]["SINCAL_C_COM_RE_ADJ"].ToString() == "" ? "0" : dataTable_C.Rows[0]["SINCAL_C_COM_RE_ADJ"].ToString());
+                            float flag_r_ADJ = float.Parse(dataTable_R.Rows[0]["SINCAL_R_RE_ADJ"].ToString() == "" ? "0" : dataTable_R.Rows[0]["SINCAL_R_RE_ADJ"].ToString());
+                            float flag_mg_ADJ = float.Parse(dataTable_MG.Rows[0]["SINCAL_MG_RE_ADJ"].ToString() == "" ? "0" : dataTable_MG.Rows[0]["SINCAL_MG_RE_ADJ"].ToString());
+
+                            #region C
+
+                            if (flag_c == 1)
                             {
-
-                                int flag_c = int.Parse(dataTable_C.Rows[0]["SINCAL_C_FLAG"].ToString() == "" ? "0" : dataTable_C.Rows[0]["SINCAL_C_FLAG"].ToString());
-                                int flag_r = int.Parse(dataTable_R.Rows[0]["SINCAL_R_FLAG"].ToString() == "" ? "0" : dataTable_R.Rows[0]["SINCAL_R_FLAG"].ToString());
-                                int flag_mg = int.Parse(dataTable_MG.Rows[0]["SINCAL_MG_FLAG"].ToString() == "" ? "0" : dataTable_MG.Rows[0]["SINCAL_MG_FLAG"].ToString());
-
-                                float flag_c_ADJ = float.Parse(dataTable_C.Rows[0]["SINCAL_C_COM_RE_ADJ"].ToString() == "" ? "0" : dataTable_C.Rows[0]["SINCAL_C_COM_RE_ADJ"].ToString());
-                                float flag_r_ADJ = float.Parse(dataTable_R.Rows[0]["SINCAL_R_RE_ADJ"].ToString() == "" ? "0" : dataTable_R.Rows[0]["SINCAL_R_RE_ADJ"].ToString());
-                                float flag_mg_ADJ = float.Parse(dataTable_MG.Rows[0]["SINCAL_MG_RE_ADJ"].ToString() == "" ? "0" : dataTable_MG.Rows[0]["SINCAL_MG_RE_ADJ"].ToString());
-
-                                #region C
-                                if (flag_c == 1)
+                                if (flag_c_ADJ != 0)
                                 {
-                                    if (flag_c_ADJ != 0)
-                                    {
-                                        FLAG_c = true;
-                                    }
-                                    else
-                                    {
-                                        FLAG_c = false;
-                                    }
+                                    FLAG_c = true;
                                 }
                                 else
                                 {
                                     FLAG_c = false;
                                 }
-                                #endregion
-                                #region R
-                                if (flag_r == 1)
+                            }
+                            else
+                            {
+                                FLAG_c = false;
+                            }
+
+                            #endregion C
+
+                            #region R
+
+                            if (flag_r == 1)
+                            {
+                                if (flag_r_ADJ != 0)
                                 {
-                                    if (flag_r_ADJ != 0)
-                                    {
-                                        FLAG_r = true;
-                                    }
-                                    else
-                                    {
-                                        FLAG_r = false;
-                                    }
+                                    FLAG_r = true;
                                 }
                                 else
                                 {
                                     FLAG_r = false;
                                 }
-                                #endregion
-                                #region MG
-                                if (flag_mg == 1)
+                            }
+                            else
+                            {
+                                FLAG_r = false;
+                            }
+
+                            #endregion R
+
+                            #region MG
+
+                            if (flag_mg == 1)
+                            {
+                                if (flag_mg_ADJ != 0)
                                 {
-                                    if (flag_mg_ADJ != 0)
-                                    {
-                                        FLAG_mgo = true;
-                                    }
-                                    else
-                                    {
-                                        FLAG_mgo = false;
-                                    }
+                                    FLAG_mgo = true;
                                 }
                                 else
                                 {
                                     FLAG_mgo = false;
                                 }
-                            #endregion
+                            }
+                            else
+                            {
+                                FLAG_mgo = false;
+                            }
+
+                            #endregion MG
+
                             if (CAL_MODE == 1)
                             {
                                 if (FLAG_c || FLAG_r)
@@ -2711,23 +2795,23 @@ namespace LY_SINTER.PAGE.Quality
                                     }
                                 }
                             }
-
                         }
-                            else
-                            {
-                                var mistake = "周期查询C、R、MG弹出框检测失败，结果表查询数据为空,sql_mg = " + sql_MG + "sql_c = " + sql_C + " sql_r = " + sql_R;
-                                _vLog.writelog(mistake, -1);
-                                return;
-                            }
+                        else
+                        {
+                            var mistake = "周期查询C、R、MG弹出框检测失败，结果表查询数据为空,sql_mg = " + sql_MG + "sql_c = " + sql_C + " sql_r = " + sql_R;
+                            _vLog.writelog(mistake, -1);
+                            return;
+                        }
                     }
                 }
-                catch(Exception ee)
+                catch (Exception ee)
                 {
                     var mistake = "调整值弹出框周期调用失败" + ee.ToString();
                     _vLog.writelog(mistake, -1);
                 }
             }
         }
+
         /// <summary>
         /// 调整值弹出框
         /// </summary>
@@ -2777,7 +2861,6 @@ namespace LY_SINTER.PAGE.Quality
                             }
                             else if (flag == 0)
                             {
-                              
                                 if (flag_1 == 0)//继续调整
                                 {
                                     string text = "**********烧返定时刷新分仓系数 修改分仓系数 *************************";
@@ -2800,16 +2883,16 @@ namespace LY_SINTER.PAGE.Quality
                                     int pbid = int.Parse(dataTable_sf_pbid.Rows[0][0].ToString());
 
                                     //调用配比确认按钮
-                                  bool A1 =   Mix_fcxs_differ();//判断是否修改了分仓系数
-                                    if(A1)
+                                    bool A1 = Mix_fcxs_differ();//判断是否修改了分仓系数
+                                    if (A1)
                                     {
-                                      bool A2 =   Bhouse_1_1(pbid);//更新分仓系数
+                                        bool A2 = Bhouse_1_1(pbid);//更新分仓系数
                                         if (A2)
                                         {
-                                          bool A3 = FeedBLCompute_SF(pbid);//计算下料比例
+                                            bool A3 = FeedBLCompute_SF(pbid);//计算下料比例
                                             if (A3)
                                             {
-                                              bool A4 = total_holdup();//总料量计算
+                                                bool A4 = total_holdup();//总料量计算
                                                 if (A4)
                                                 {
                                                     Dictionary<int, float> _A1 = mIX_PAGE.Calculate_SPB();//湿配比计算
@@ -2840,16 +2923,13 @@ namespace LY_SINTER.PAGE.Quality
                                                 }
                                             }
                                         }
-
-                                        
                                     }
-                                    
                                 }
                                 else if (flag_1 == 1)
                                 {
                                     string text = "**********烧返定时刷新分仓系数 修改分仓系数 *************************";
                                     _vLog.writelog(text, 0);
-                                   
+
                                     string sql_MC_SRMCAL_RESULT_DIST_T_FLAG = "update MC_SRMCAL_RESULT_DIST_T set FLAG2 = 4 where TIMESTAMP  = '" + _time + "'";
                                     int count = _dBSQL.CommandExecuteNonQuery(sql_MC_SRMCAL_RESULT_DIST_T_FLAG);
 
@@ -2861,10 +2941,9 @@ namespace LY_SINTER.PAGE.Quality
                                     {
                                         _vLog.writelog("15#仓分仓系数过低,更新MC_SRMCAL_RESULT_DIST_T表FLAG=4失败,sql=" + sql_MC_SRMCAL_RESULT_DIST_T_FLAG, -1);
                                     }
-
                                 }
                                 else if (flag_1 == 2)
-                                {  
+                                {
                                     string sql_MC_SRMCAL_RESULT_DIST_T_FLAG = "update MC_SRMCAL_RESULT_DIST_T set FLAG2 = 4 where TIMESTAMP  = '" + _time + "'";
                                     int count = _dBSQL.CommandExecuteNonQuery(sql_MC_SRMCAL_RESULT_DIST_T_FLAG);
                                     if (count >= 0)
@@ -2876,18 +2955,17 @@ namespace LY_SINTER.PAGE.Quality
                                         _vLog.writelog("16#仓分仓系数过低,更新MC_SRMCAL_RESULT_DIST_T表FLAG2=4失败,sql=" + sql_MC_SRMCAL_RESULT_DIST_T_FLAG, -1);
                                     }
                                 }
-
                             }
-
                         }
                     }
                 }
-                catch(Exception ee)
+                catch (Exception ee)
                 {
                     var mistake = "_Timer4_Tick定周期检索烧返仓分仓系数失败" + ee.ToString();
                 }
             }
         }
+
         /// <summary>
         /// 定时刷新预测值
         /// </summary>
@@ -2910,6 +2988,7 @@ namespace LY_SINTER.PAGE.Quality
                 }
             }
         }
+
         /// <summary>
         /// 定时刷新PLC数据
         /// </summary>
@@ -2932,6 +3011,7 @@ namespace LY_SINTER.PAGE.Quality
                 }
             }
         }
+
         private void _Timer7_Tick()
         {
             Action invokeAction = new Action(_Timer7_Tick);
@@ -2944,8 +3024,8 @@ namespace LY_SINTER.PAGE.Quality
                 Color_Big();//设定下料量颜色闪烁
             }
         }
-        #endregion
 
+        #endregion 定时器响应事件
 
         /// <summary>
         /// 计算烧返的下料比例
@@ -2956,8 +3036,7 @@ namespace LY_SINTER.PAGE.Quality
         {
             try
             {
-               
-                var sql_liaokou = "select MAT_L2_DQBFB from CFG_MAT_L2_SJPB_INTERFACE where MAT_PB_ID = "+ _PBID + "";
+                var sql_liaokou = "select MAT_L2_DQBFB from CFG_MAT_L2_SJPB_INTERFACE where MAT_PB_ID = " + _PBID + "";
 
                 DataTable _dataTable = _dBSQL.GetCommand(sql_liaokou);
                 if (_dataTable.Rows.Count > 0 && _dataTable != null)
@@ -2981,23 +3060,22 @@ namespace LY_SINTER.PAGE.Quality
                         _vLog.writelog(mistake, -1);
                         return false;
                     }
-                       
                 }
                 else
                 {
                     var mistake = "FeedBLCompute_SF方法失败，sql = " + sql_liaokou;
                     _vLog.writelog(mistake, -1);
                     return false;
-
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 var mistake = "FeedBLCompute_SF方法失败" + ee.ToString();
-                _vLog.writelog(mistake,-1);
+                _vLog.writelog(mistake, -1);
                 return false;
             }
         }
+
         /// <summary>
         /// 字符串格式异常响应事件
         /// </summary>
@@ -3010,8 +3088,8 @@ namespace LY_SINTER.PAGE.Quality
                 MessageBox.Show("输入数据格式错误", "警告");
             }
             catch { }
-            
         }
+
         /// <summary>
         /// 计算成分sp_pv_L3
         /// </summary>
@@ -3118,22 +3196,23 @@ namespace LY_SINTER.PAGE.Quality
         }
 
         #region 按钮调整值赋值
+
         private void simpleButton7_Click(object sender, EventArgs e)
         {
             float A = float.Parse(textBox_TZ_R.Text.ToString());
-            textBox_TZ_R.Text = Math.Round((A + R_ADD),3).ToString();
+            textBox_TZ_R.Text = Math.Round((A + R_ADD), 3).ToString();
         }
 
         private void simpleButton6_Click(object sender, EventArgs e)
         {
             float A = float.Parse(textBox_TZ_R.Text.ToString());
-            textBox_TZ_R.Text = (Math.Round(A - R_ADD, 3) ).ToString();
+            textBox_TZ_R.Text = (Math.Round(A - R_ADD, 3)).ToString();
         }
 
         private void simpleButton9_Click(object sender, EventArgs e)
         {
             float A = float.Parse(textBox_TZ_C.Text.ToString());
-            textBox_TZ_C.Text = (Math.Round(A + C_ADD, 3) ).ToString();
+            textBox_TZ_C.Text = (Math.Round(A + C_ADD, 3)).ToString();
         }
 
         private void simpleButton8_Click(object sender, EventArgs e)
@@ -3145,13 +3224,13 @@ namespace LY_SINTER.PAGE.Quality
         private void simpleButton11_Click(object sender, EventArgs e)
         {
             float A = float.Parse(textBox_TZ_MG.Text.ToString());
-            textBox_TZ_MG.Text = (Math.Round(A + MG_ADD, 3) ).ToString();
+            textBox_TZ_MG.Text = (Math.Round(A + MG_ADD, 3)).ToString();
         }
 
         private void simpleButton10_Click(object sender, EventArgs e)
         {
             float A = float.Parse(textBox_TZ_MG.Text.ToString());
-            textBox_TZ_MG.Text = (Math.Round(A - MG_ADD, 3) ).ToString();
+            textBox_TZ_MG.Text = (Math.Round(A - MG_ADD, 3)).ToString();
         }
 
         private void simpleButton4_Click(object sender, EventArgs e)
@@ -3165,7 +3244,8 @@ namespace LY_SINTER.PAGE.Quality
             float A = float.Parse(textBox_SP.Text.ToString());
             textBox_SP.Text = (A - SP_ADD).ToString();
         }
-        #endregion
+
+        #endregion 按钮调整值赋值
 
         /// <summary>
         /// plc更新页面数据
@@ -3175,7 +3255,7 @@ namespace LY_SINTER.PAGE.Quality
             try
             {
                 string SQL_PLC_3S = "  select  " +
-                    //仓位
+                   //仓位
                    "isnull(T_W_1_3S,0) as T_W_1_3S," +
                    "isnull(T_W_2_3S,0) as T_W_2_3S," +
                    "isnull(T_W_3_3S,0) as T_W_3_3S," +
@@ -3217,7 +3297,7 @@ namespace LY_SINTER.PAGE.Quality
                    "isnull(T_ACTUAL_W_18_3S,0) as T_ACTUAL_W_18_3S," +
                    "isnull(T_ACTUAL_W_19_3S,0) as T_ACTUAL_W_19_3S ," +
                    "isnull(T_ACTUAL_W_20_3S,0) as T_ACTUAL_W_19_3S ," +
-                   //皮带转速
+                    //皮带转速
                     "isnull(T_BELT_SPEED_1_3S,0) as T_BELT_SPEED_1_3S," +
                    "isnull(T_BELT_SPEED_2_3S,0) as T_BELT_SPEED_2_3S," +
                    "isnull(T_BELT_SPEED_3_3S,0) as T_BELT_SPEED_3_3S," +
@@ -3239,7 +3319,7 @@ namespace LY_SINTER.PAGE.Quality
                    "isnull(T_BELT_SPEED_19_3S,0) as T_BELT_SPEED_19_3S ," +
                     "isnull(T_BELT_SPEED_20_3S,0) as T_BELT_SPEED_20_3S ," +
 
-                    //总料量PV
+                  //总料量PV
                   "  isnull(T_TOTAL_PV_W_3S, 0) as T_TOTAL_PV_W_3S " +
                    "from C_PLC_3S " +
                    "where TIMESTAMP = (select max(TIMESTAMP) from C_PLC_3S)  ";
@@ -3248,23 +3328,23 @@ namespace LY_SINTER.PAGE.Quality
                 {
                     FLAG_1 = false;//表单响应事件标志位
                     string dateTime = DateTime.Now.ToShortTimeString().ToString();//累计值时间
-                    for (int x = 0; x < 20;x++)
+                    for (int x = 0; x < 20; x++)
                     {
-                        this.d2.Rows[x].Cells["Column5"].Value = Math.Round( float.Parse(table_3s.Rows[0][x].ToString()), Digit_4);//仓位
-                        this.d2.Rows[x].Cells["Column15"].Value = Math.Round(float.Parse(table_3s.Rows[0][x+20].ToString()), Digit_5);//实际下料量
+                        this.d2.Rows[x].Cells["Column5"].Value = Math.Round(float.Parse(table_3s.Rows[0][x].ToString()), Digit_4);//仓位
+                        this.d2.Rows[x].Cells["Column15"].Value = Math.Round(float.Parse(table_3s.Rows[0][x + 20].ToString()), Digit_5);//实际下料量
                         this.d2.Rows[x].Cells["Column18"].Value = Math.Round(float.Parse(table_3s.Rows[0][x + 20 + 20].ToString()), Digit_7);//设备转速
                         this.d2.Rows[x].Cells["Column16"].Value = Math.Round(float.Parse(this.d2.Rows[x].Cells["Column15"].Value.ToString()) - float.Parse(this.d2.Rows[x].Cells["Column14"].Value.ToString()), Digit_6);//偏差
                                                                                                                                                                                                                          //累计值
-                        
+
                         //判断每天的凌晨，累计清零
                         if (dateTime == "8:00" || dateTime == "20:00")
                         {
-                          //累计值
-                          this.d2.Rows[x].Cells["Column19"].Value = 0;                            
+                            //累计值
+                            this.d2.Rows[x].Cells["Column19"].Value = 0;
                         }
                         else
                         {
-                           this.d2.Rows[x].Cells["Column19"].Value = Math.Round(float.Parse(this.d2.Rows[x].Cells["Column19"].Value.ToString()) + float.Parse(table_3s.Rows[0][x + 20].ToString())/60, Digit_9);
+                            this.d2.Rows[x].Cells["Column19"].Value = Math.Round(float.Parse(this.d2.Rows[x].Cells["Column19"].Value.ToString()) + float.Parse(table_3s.Rows[0][x + 20].ToString()) / 60, Digit_9);
                         }
                     }
                     FLAG_1 = true;
@@ -3277,10 +3357,11 @@ namespace LY_SINTER.PAGE.Quality
             }
             catch (Exception ee)
             {
-                var mistake = "PLC_3s方法plc更新页面失败"+ee.ToString();
-                _vLog.writelog(mistake,-1);
+                var mistake = "PLC_3s方法plc更新页面失败" + ee.ToString();
+                _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 参数变化弹出框
         /// </summary>
@@ -3291,15 +3372,15 @@ namespace LY_SINTER.PAGE.Quality
             Frm_MIX_Parameter form_display = new Frm_MIX_Parameter();
             if (Frm_MIX_Parameter.isopen == false)
             {
-                form_display._TransfDelegate_PL+= Form_sender;
+                form_display._TransfDelegate_PL += Form_sender;
                 form_display.ShowDialog();
             }
             else
             {
                 form_display.Activate();
             }
-         
         }
+
         /// <summary>
         /// 参数弹出框响应事件
         /// </summary>
@@ -3315,12 +3396,13 @@ namespace LY_SINTER.PAGE.Quality
         /// </summary>
         public void TEXT_CHANGE_PAGE()
         {
-           Tuple<float, float, float, float> _tuple =   mIX_PAGE.TEXT_CHANGE();
+            Tuple<float, float, float, float> _tuple = mIX_PAGE.TEXT_CHANGE();
             R_ADD = _tuple.Item1;
             C_ADD = _tuple.Item2;
             MG_ADD = _tuple.Item3;
             SP_ADD = _tuple.Item4;
         }
+
         /// <summary>
         /// 烧返弹出框调用条件
         /// </summary>
@@ -3330,7 +3412,7 @@ namespace LY_SINTER.PAGE.Quality
         {
             try
             {
-                for (int x = 0; x < d2.Rows.Count;x++)
+                for (int x = 0; x < d2.Rows.Count; x++)
                 {
                     if (PBID == int.Parse(d2.Rows[x].Cells["Column20"].Value.ToString()))
                     {
@@ -3345,12 +3427,13 @@ namespace LY_SINTER.PAGE.Quality
                 string name = "模型自动调整烧返配比";
                 logTable.Operation_Log(name, "智能配料页面", "智能配料模型");
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 var mistake = "SF_POP方法失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 表单响应事件
         /// </summary>
@@ -3361,6 +3444,7 @@ namespace LY_SINTER.PAGE.Quality
             if (FLAG_1)
             {
                 #region 设定配比联动功能
+
                 if (e.ColumnIndex == this.d2.Columns["Column6"].Index)
                 {
                     string _PBID = this.d2.Rows[e.RowIndex].Cells["Column20"].Value.ToString();//配比id
@@ -3376,9 +3460,11 @@ namespace LY_SINTER.PAGE.Quality
                         }
                     }
                 }
-                #endregion
+
+                #endregion 设定配比联动功能
             }
         }
+
         /// <summary>
         /// 配置参数
         /// </summary>
@@ -3395,7 +3481,7 @@ namespace LY_SINTER.PAGE.Quality
             Digit_7 = _list[6];
             Digit_8 = _list[7];
             Digit_9 = _list[8];
-            List<string>_list_1 = mIX_PAGE.Switch_name();//开关名称
+            List<string> _list_1 = mIX_PAGE.Switch_name();//开关名称
 
             switch_1_open = _list_1[0];
             switch_1_close = _list_1[1];
@@ -3411,6 +3497,7 @@ namespace LY_SINTER.PAGE.Quality
 
             FALG_Oper = mIX_PAGE._GetIp_Jurisdiction();//获取现场权限
         }
+
         /// <summary>
         /// 计算成分查询按钮
         /// </summary>
@@ -3428,6 +3515,7 @@ namespace LY_SINTER.PAGE.Quality
                 form_display.Activate();
             }
         }
+
         public void C_R_MG(bool _flag, float _C, float _R, float _MG)
         {
             if (_flag)
@@ -3461,7 +3549,6 @@ namespace LY_SINTER.PAGE.Quality
                     textBox_TZ_MG.Text = _MG.ToString();
                     var text = "*****碱度配碳弹出框，用户点击确认按钮，修改mgo调整值：" + _MG;
                     _vLog.writelog(text, 0);
-                    
                 }
                 else
                 {
@@ -3474,8 +3561,6 @@ namespace LY_SINTER.PAGE.Quality
                 latest_time(2);//最新下发时间
                 string name = "目标值及调整值发生变化";
                 logTable.Operation_Log(name, "智能配料页面", "智能配料模型");
-               
-
             }
             else
             {
@@ -3484,6 +3569,7 @@ namespace LY_SINTER.PAGE.Quality
                 return;
             }
         }
+
         /// <summary>
         /// 分仓系数判断
         /// </summary>
@@ -3492,25 +3578,23 @@ namespace LY_SINTER.PAGE.Quality
         {
             try
             {
-                
                 //判断分仓系数是否修改，若修改则使用页面分仓系数，若无修改则使用MC_SRMCAL_RESULT_DIST_T表
                 var _sql = "select top(1) isnull(MAT_PB_FALG, 0) as MAT_PB_FALG from CFG_MAT_L2_XLK_INTERFACE where MAT_PB_ID = " + _PBID + " ";
                 DataTable _data = _dBSQL.GetCommand(_sql);
-                if(_data != null && _data.Rows.Count > 0)
+                if (_data != null && _data.Rows.Count > 0)
                 {
                     if (_data.Rows[0][0].ToString() != "0")//分仓系数发生了变化
                     {
                         //***更新配比id对应的分仓系数
                         for (int xx = 0; xx < d2.Rows.Count; xx++)
                         {
-
                             if (_PBID == int.Parse(d2.Rows[xx].Cells["Column20"].Value.ToString()))
                             {
                                 float FCXS = float.Parse(d2.Rows[xx].Cells["Column10"].Value.ToString());
                                 int XLK = xx + 1;
                                 string sql = "update [CFG_MAT_L2_XLK_INTERFACE] set MAT_L2_FCXS = " + FCXS + " WHERE MAT_L2_XLK =" + XLK + "";
-                               int _count =  _dBSQL.CommandExecuteNonQuery(sql);
-                                if(_count <=0)
+                                int _count = _dBSQL.CommandExecuteNonQuery(sql);
+                                if (_count <= 0)
                                     _vLog.writelog("Bhouse_1_1方法更新分仓系数失败" + sql, 0);
                             }
                         }
@@ -3518,11 +3602,9 @@ namespace LY_SINTER.PAGE.Quality
                         int count = _dBSQL.CommandExecuteNonQuery(sql11);
                         if (count <= 0)
                             _vLog.writelog("Bhouse_1_1方法烧返周期判断分仓系数发生变化，还原标志位失败，影响行数：" + count + " ****sql: " + sql11, -1);
-                        
                     }
                     else
                     {
-
                         //查询MC_SRMCAL_RESULT_DIST_T最新的一条数据的SRMCAL_S_15和SRMCAL_S_16的数据并赋值到配料页面对应的15号仓和16号仓的分仓系数中（雪刚让写死）
                         string sql_sf_1 = "select  top (1) SRMCAL_S_15,SRMCAL_S_16 from MC_SRMCAL_RESULT_DIST_T order by TIMESTAMP desc";
                         DataTable dataTable_SF_1 = _dBSQL.GetCommand(sql_sf_1);
@@ -3535,22 +3617,21 @@ namespace LY_SINTER.PAGE.Quality
                             {
                                 FLAG_1 = false;
                                 if (int.Parse(d2.Rows[x_fcxs].Cells["Column1"].Value.ToString()) == 15)
-                                    d2.Rows[x_fcxs].Cells["Column10"].Value = Math.Round( FCXS_1, Digit_3).ToString();
+                                    d2.Rows[x_fcxs].Cells["Column10"].Value = Math.Round(FCXS_1, Digit_3).ToString();
                                 if (int.Parse(d2.Rows[x_fcxs].Cells["Column1"].Value.ToString()) == 16)
                                     d2.Rows[x_fcxs].Cells["Column10"].Value = Math.Round(FCXS_2, Digit_3).ToString();
                                 FLAG_1 = true;
                             }
-                           
+
                             //更新数据库中的烧返的分仓系数
                             string sql_s15 = "update CFG_MAT_L2_XLK_INTERFACE set MAT_L2_FCXS = " + FCXS_1 + " WHERE MAT_L2_CH =" + 15 + "";
                             int _count_1 = _dBSQL.CommandExecuteNonQuery(sql_s15);
-                            if(_count_1 <= 0)
+                            if (_count_1 <= 0)
                                 _vLog.writelog("Bhouse_1_1方法更新分仓系数失败，sql: " + sql_s15, -1);
                             string sql_s16 = "update [CFG_MAT_L2_XLK_INTERFACE] set MAT_L2_FCXS = " + FCXS_2 + " WHERE MAT_L2_CH =" + 16 + "";
                             int count_2 = _dBSQL.CommandExecuteNonQuery(sql_s16);
-                            if(count_2<=0)
+                            if (count_2 <= 0)
                                 _vLog.writelog("Bhouse_1_1方法更新分仓系数失败，sql: " + sql_s16, -1);
-
                         }
                         else
                         {
@@ -3564,17 +3645,15 @@ namespace LY_SINTER.PAGE.Quality
                 {
                     return false;
                 }
-                    
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 var mistake = "Bhouse_1_1方法调用失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
                 return false;
             }
-           
-
         }
+
         /// <summary>
         /// 配比信息查询
         /// </summary>
@@ -3606,12 +3685,11 @@ namespace LY_SINTER.PAGE.Quality
                 {
                     for (int x = 0; x < d2.Rows.Count; x++)
                     {
-                        this.d2.Rows[x].Cells["Column19"].Value = _A.Item2[x+1];
+                        this.d2.Rows[x].Cells["Column19"].Value = _A.Item2[x + 1];
                     }
                 }
                 else
                 {
-
                     for (int x = 0; x < d2.Rows.Count; x++)
                     {
                         this.d2.Rows[x].Cells["Column19"].Value = 0;
@@ -3619,12 +3697,12 @@ namespace LY_SINTER.PAGE.Quality
                 }
                 FLAG_1 = true;
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
-                _vLog.writelog("Accumulated_INIT方法失败" + ee.ToString(),-1);
+                _vLog.writelog("Accumulated_INIT方法失败" + ee.ToString(), -1);
             }
-           
         }
+
         /// <summary>
         /// 设定下料量颜色闪烁
         /// </summary>
@@ -3657,7 +3735,6 @@ namespace LY_SINTER.PAGE.Quality
             }
         }
 
-
         /// <summary>
         /// 定时器启用
         /// </summary>
@@ -3665,6 +3742,7 @@ namespace LY_SINTER.PAGE.Quality
         {
             _Timer6.Enabled = true;
         }
+
         /// <summary>
         /// 定时器停用
         /// </summary>
@@ -3672,6 +3750,7 @@ namespace LY_SINTER.PAGE.Quality
         {
             _Timer6.Enabled = false;
         }
+
         /// <summary>
         /// 控件关闭
         /// </summary>
@@ -3680,6 +3759,7 @@ namespace LY_SINTER.PAGE.Quality
             this.Dispose();
             GC.SuppressFinalize(this);
         }
+
         /// <summary>
         /// 控制操作按钮是否允许操作
         /// </summary>
@@ -3720,6 +3800,5 @@ namespace LY_SINTER.PAGE.Quality
                 Check_FK.Enabled = false;
             }
         }
-        
     }
 }

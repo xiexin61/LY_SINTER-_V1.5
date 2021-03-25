@@ -90,7 +90,7 @@ namespace UserControlIndex
 
             graphics.DrawString("1H3水分:" + shuifen + "%", Font, Brushes.Black, new Rectangle(Width /5+20, (int)(Height / 2.5f - 45), Width, 20), this.sf);
            graphics.DrawString("2H1秤值:" + chengzhi + "t/h", Font, Brushes.Black, new Rectangle(20, (int)(Height / 2.5f), Width, 20), this.sf);
-            graphics.DrawString("2H2秤值:" + chengzhi2 + "t/h", Font, Brushes.Black, new Rectangle(0 - 40, (int)(Height / 2.5f + 20), Width, 20), this.sf);
+           // graphics.DrawString("2H2秤值:" + chengzhi2 + "t/h", Font, Brushes.Black, new Rectangle(0 - 40, (int)(Height / 2.5f + 20), Width, 20), this.sf);
 
             //graphics.DrawString("水分:" + shuifen + "%", Font, Brushes.Black, new Rectangle(0, (int)(Height / 2.5f-22), Width, 13), this.sf);
 

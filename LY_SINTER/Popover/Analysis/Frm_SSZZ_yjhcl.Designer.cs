@@ -28,36 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_SSZZ_yjhcl));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.TIMESTAMP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.POPCAL_MON = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.POPCAL_MON_PL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIMESTAMP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RE_TIME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBox_end = new System.Windows.Forms.DateTimePicker();
+            this.textBox_begin = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.yjhcl = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox_begin = new System.Windows.Forms.TextBox();
-            this.textBox_end = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel4.SuspendLayout();
@@ -84,71 +84,60 @@
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TIMESTAMP,
             this.POPCAL_MON,
             this.POPCAL_MON_PL,
+            this.TIMESTAMP,
             this.RE_TIME,
             this.Column6,
             this.Column7});
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(4, 40);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(986, 462);
             this.dataGridView1.TabIndex = 28;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // TIMESTAMP
-            // 
-            this.TIMESTAMP.DataPropertyName = "TIMESTAMP";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("宋体", 9F);
-            this.TIMESTAMP.DefaultCellStyle = dataGridViewCellStyle13;
-            this.TIMESTAMP.HeaderText = "添加时间";
-            this.TIMESTAMP.Name = "TIMESTAMP";
-            this.TIMESTAMP.ReadOnly = true;
-            this.TIMESTAMP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // POPCAL_MON
             // 
             this.POPCAL_MON.DataPropertyName = "POPCAL_MON";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("宋体", 9F);
-            this.POPCAL_MON.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("SimSun", 9F);
+            this.POPCAL_MON.DefaultCellStyle = dataGridViewCellStyle3;
             this.POPCAL_MON.HeaderText = "生产月份";
             this.POPCAL_MON.Name = "POPCAL_MON";
             this.POPCAL_MON.ReadOnly = true;
@@ -157,20 +146,31 @@
             // POPCAL_MON_PL
             // 
             this.POPCAL_MON_PL.DataPropertyName = "POPCAL_MON_PL";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("宋体", 9F);
-            this.POPCAL_MON_PL.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("SimSun", 9F);
+            this.POPCAL_MON_PL.DefaultCellStyle = dataGridViewCellStyle4;
             this.POPCAL_MON_PL.HeaderText = "月计划产量";
             this.POPCAL_MON_PL.Name = "POPCAL_MON_PL";
             this.POPCAL_MON_PL.ReadOnly = true;
             this.POPCAL_MON_PL.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // TIMESTAMP
+            // 
+            this.TIMESTAMP.DataPropertyName = "TIMESTAMP";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("SimSun", 9F);
+            this.TIMESTAMP.DefaultCellStyle = dataGridViewCellStyle5;
+            this.TIMESTAMP.HeaderText = "添加时间";
+            this.TIMESTAMP.Name = "TIMESTAMP";
+            this.TIMESTAMP.ReadOnly = true;
+            this.TIMESTAMP.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
             // RE_TIME
             // 
             this.RE_TIME.DataPropertyName = "RE_TIME";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("宋体", 9F);
-            this.RE_TIME.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("SimSun", 9F);
+            this.RE_TIME.DefaultCellStyle = dataGridViewCellStyle6;
             this.RE_TIME.HeaderText = "记录修改时间";
             this.RE_TIME.Name = "RE_TIME";
             this.RE_TIME.ReadOnly = true;
@@ -178,11 +178,11 @@
             // 
             // Column6
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle17.NullValue = "修改";
-            this.Column6.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("SimSun", 9F);
+            dataGridViewCellStyle7.NullValue = "修改";
+            this.Column6.DefaultCellStyle = dataGridViewCellStyle7;
             this.Column6.HeaderText = "修改/保存";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
@@ -190,10 +190,10 @@
             // 
             // Column7
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle18.NullValue = "删除";
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("SimSun", 9F);
+            dataGridViewCellStyle8.NullValue = "删除";
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle8;
             this.Column7.HeaderText = "删除";
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
@@ -202,28 +202,29 @@
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.BackColor = System.Drawing.Color.PowderBlue;
-            this.tableLayoutPanel4.ColumnCount = 11;
+            this.tableLayoutPanel4.ColumnCount = 12;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.dateTimePicker1, 7, 0);
+            this.tableLayoutPanel4.Controls.Add(this.textBox_end, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.textBox_begin, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.dateTimePicker1, 8, 0);
             this.tableLayoutPanel4.Controls.Add(this.label5, 7, 0);
-            this.tableLayoutPanel4.Controls.Add(this.yjhcl, 6, 0);
-            this.tableLayoutPanel4.Controls.Add(this.label2, 5, 0);
-            this.tableLayoutPanel4.Controls.Add(this.simpleButton3, 9, 0);
+            this.tableLayoutPanel4.Controls.Add(this.yjhcl, 7, 0);
+            this.tableLayoutPanel4.Controls.Add(this.simpleButton3, 10, 0);
             this.tableLayoutPanel4.Controls.Add(this.simpleButton2, 4, 0);
             this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.label4, 2, 0);
-            this.tableLayoutPanel4.Controls.Add(this.textBox_begin, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.textBox_end, 3, 0);
+            this.tableLayoutPanel4.Controls.Add(this.label2, 6, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(4, 4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -232,15 +233,42 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(986, 29);
             this.tableLayoutPanel4.TabIndex = 27;
             // 
+            // textBox_end
+            // 
+            this.textBox_end.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_end.CustomFormat = "yyyy-MM";
+            this.textBox_end.Font = new System.Drawing.Font("SimSun", 9F);
+            this.textBox_end.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.textBox_end.Location = new System.Drawing.Point(233, 4);
+            this.textBox_end.Name = "textBox_end";
+            this.textBox_end.ShowUpDown = true;
+            this.textBox_end.Size = new System.Drawing.Size(70, 21);
+            this.textBox_end.TabIndex = 36;
+            this.textBox_end.Value = new System.DateTime(2021, 3, 19, 0, 0, 0, 0);
+            // 
+            // textBox_begin
+            // 
+            this.textBox_begin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox_begin.CustomFormat = "yyyy-MM";
+            this.textBox_begin.Font = new System.Drawing.Font("SimSun", 9F);
+            this.textBox_begin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.textBox_begin.Location = new System.Drawing.Point(72, 4);
+            this.textBox_begin.Name = "textBox_begin";
+            this.textBox_begin.ShowUpDown = true;
+            this.textBox_begin.Size = new System.Drawing.Size(70, 21);
+            this.textBox_begin.TabIndex = 35;
+            this.textBox_begin.Value = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTimePicker1.CustomFormat = "yyyy-MM";
-            this.dateTimePicker1.Font = new System.Drawing.Font("宋体", 9F);
+            this.dateTimePicker1.Font = new System.Drawing.Font("SimSun", 9F);
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(685, 4);
+            this.dateTimePicker1.Location = new System.Drawing.Point(706, 4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(70, 21);
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(67, 21);
             this.dateTimePicker1.TabIndex = 34;
             this.dateTimePicker1.Value = new System.DateTime(2020, 6, 1, 0, 0, 0, 0);
             // 
@@ -248,8 +276,8 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("宋体", 9F);
-            this.label5.Location = new System.Drawing.Point(617, 8);
+            this.label5.Font = new System.Drawing.Font("SimSun", 9F);
+            this.label5.Location = new System.Drawing.Point(637, 8);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
             this.label5.TabIndex = 21;
@@ -259,22 +287,10 @@
             // yjhcl
             // 
             this.yjhcl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.yjhcl.Location = new System.Drawing.Point(537, 4);
+            this.yjhcl.Location = new System.Drawing.Point(557, 4);
             this.yjhcl.Name = "yjhcl";
             this.yjhcl.Size = new System.Drawing.Size(67, 21);
             this.yjhcl.TabIndex = 20;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 9F);
-            this.label2.Location = new System.Drawing.Point(465, 8);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "月计划产量";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // simpleButton3
             // 
@@ -284,7 +300,7 @@
             this.simpleButton3.Appearance.Options.UseForeColor = true;
             this.simpleButton3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(763, 3);
+            this.simpleButton3.Location = new System.Drawing.Point(783, 3);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(67, 23);
             this.simpleButton3.TabIndex = 10;
@@ -299,9 +315,9 @@
             this.simpleButton2.Appearance.Options.UseForeColor = true;
             this.simpleButton2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(391, 3);
+            this.simpleButton2.Location = new System.Drawing.Point(314, 3);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(67, 23);
+            this.simpleButton2.Size = new System.Drawing.Size(68, 23);
             this.simpleButton2.TabIndex = 9;
             this.simpleButton2.Text = "查询";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_click);
@@ -310,7 +326,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F);
+            this.label3.Font = new System.Drawing.Font("SimSun", 9F);
             this.label3.Location = new System.Drawing.Point(5, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
@@ -322,29 +338,25 @@
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("宋体", 9F);
-            this.label4.Location = new System.Drawing.Point(199, 8);
+            this.label4.Font = new System.Drawing.Font("SimSun", 9F);
+            this.label4.Location = new System.Drawing.Point(161, 8);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 6;
             this.label4.Text = "结束时间";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox_begin
+            // label2
             // 
-            this.textBox_begin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_begin.Location = new System.Drawing.Point(69, 4);
-            this.textBox_begin.Name = "textBox_begin";
-            this.textBox_begin.Size = new System.Drawing.Size(120, 21);
-            this.textBox_begin.TabIndex = 17;
-            // 
-            // textBox_end
-            // 
-            this.textBox_end.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_end.Location = new System.Drawing.Point(262, 4);
-            this.textBox_end.Name = "textBox_end";
-            this.textBox_end.Size = new System.Drawing.Size(121, 21);
-            this.textBox_end.TabIndex = 18;
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("SimSun", 9F);
+            this.label2.Location = new System.Drawing.Point(485, 8);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "月计划产量";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // Frm_SSZZ_yjhcl
             // 
@@ -371,18 +383,18 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox_begin;
-        private System.Windows.Forms.TextBox textBox_end;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox yjhcl;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIMESTAMP;
         private System.Windows.Forms.DataGridViewTextBoxColumn POPCAL_MON;
         private System.Windows.Forms.DataGridViewTextBoxColumn POPCAL_MON_PL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIMESTAMP;
         private System.Windows.Forms.DataGridViewTextBoxColumn RE_TIME;
         private System.Windows.Forms.DataGridViewButtonColumn Column6;
         private System.Windows.Forms.DataGridViewButtonColumn Column7;
+        private System.Windows.Forms.DateTimePicker textBox_end;
+        private System.Windows.Forms.DateTimePicker textBox_begin;
     }
 }

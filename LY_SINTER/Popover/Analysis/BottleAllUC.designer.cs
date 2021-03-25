@@ -1,4 +1,4 @@
-﻿namespace UserControlIndex
+﻿namespace LY_SINTER.Popover.Analysis
 {
     partial class BottleAllUC
     {
@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pipeLine3 = new UserControlIndex.PipeLine();
-            this.pipeLine4 = new UserControlIndex.PipeLine();
+            /*this.pipeLine3 = new UserControlIndex.PipeLine();
+            this.pipeLine4 = new UserControlIndex.PipeLine();*/
             this.SuspendLayout();
             // 
             // pipeLine3
             // 
-            this.pipeLine3.Location = new System.Drawing.Point(23, 30);
+            /*this.pipeLine3.Location = new System.Drawing.Point(23, 30);
             this.pipeLine3.MoveSpeed = 2.5F;
             this.pipeLine3.Name = "pipeLine3";
             this.pipeLine3.PipeTurnRight = UserControlIndex.PipeTurnDirection.Down;
@@ -48,7 +48,7 @@
             this.pipeLine4.Name = "pipeLine4";
             this.pipeLine4.PipeLineStyle = UserControlIndex.PipeLineStyle.Vertical;
             this.pipeLine4.Size = new System.Drawing.Size(15, 49);
-            this.pipeLine4.TabIndex = 1;
+            this.pipeLine4.TabIndex = 1;*/
             // 
             // BottleAllUC
             // 
@@ -64,8 +64,8 @@
 
         #endregion
 
-        private PipeLine pipeLine4;
-        private PipeLine pipeLine3;
+        /*private PipeLine pipeLine4;
+        private PipeLine pipeLine3;*/
 
 
     }

@@ -15,7 +15,7 @@ namespace NBSJ_MAIN_UC
        //public static string ConnectionString = "server=10.202.11.1\\NGSJ;uid=sa;pwd=Yjs88291280;database=NBSJ";
     // public static string ConnectionString = "server=.;uid=sa;pwd=Yjs88291280;database=LGSJ";
         //凌钢现场
-       public static string ConnectionString = "server=172.168.12.36;uid=sa;pwd=Yjs88291280;database=LGSJ";
+       public static string ConnectionString = "server=192.168.100.2;uid=sa;pwd=Yjs88291280;database=LGSJ";
          // public static string ConnectionString = "server=10.5.130.28;uid=sa;pwd=Yjs88291280;database=LGSJ";
     }
 }
