@@ -18,8 +18,8 @@ namespace LY_SINTER
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            User_Level.Authority = 4;
-            Application.Run(new Form_Main());//判断登陆成功时主进程显示主窗口
+            /*            User_Level.Authority = 4;
+                        Application.Run(new Form_Main());//判断登陆成功时主进程显示主窗口*/
 
             Register _register = new Register();
             _register.ShowDialog();//显示登陆窗体

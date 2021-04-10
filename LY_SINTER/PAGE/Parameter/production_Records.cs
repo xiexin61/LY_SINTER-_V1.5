@@ -19,10 +19,11 @@ namespace LY_SINTER.PAGE.Parameter
     public partial class production_Records : UserControl
     {
         public vLog _vLog { get; set; }
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
-        Parameter_Model _Model = new Parameter_Model();//页面modle
-        Tuple<bool, Dictionary<string, string>> _Rule_Big;
-        Tuple<bool, Dictionary<string, string>> _Rule_Loser;
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        private Parameter_Model _Model = new Parameter_Model();//页面modle
+        private Tuple<bool, Dictionary<string, string>> _Rule_Big;
+        private Tuple<bool, Dictionary<string, string>> _Rule_Loser;
+
         public production_Records()
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace LY_SINTER.PAGE.Parameter
             show_d1(1);//初始化加载烧结停机记录
             show_d2(1);//初始化事件记录
         }
+
         /// <summary>
         /// 获取原因规则
         /// </summary>
@@ -43,6 +45,7 @@ namespace LY_SINTER.PAGE.Parameter
             _Rule_Big = _Model._GetRule_1(1);//原因大类对应关系规则
             _Rule_Loser = _Model._GetRule_1(2);//原因大类对应关系规则
         }
+
         /// <summary>
         /// 开始时间-结束时间赋值
         /// </summary>
@@ -55,7 +58,6 @@ namespace LY_SINTER.PAGE.Parameter
 
             textBox_begin_1.Text = time_begin.ToString();
             textBox_end_1.Text = time_end.ToString();
-
         }
 
         /// <summary>
@@ -74,10 +76,9 @@ namespace LY_SINTER.PAGE.Parameter
             }
             catch
             {
-
             }
-           
         }
+
         /// <summary>
         /// 烧结事件选中事件
         /// </summary>
@@ -94,9 +95,9 @@ namespace LY_SINTER.PAGE.Parameter
             }
             catch
             {
-
             }
         }
+
         /// <summary>
         /// 停机记录导出按钮
         /// </summary>
@@ -118,7 +119,7 @@ namespace LY_SINTER.PAGE.Parameter
                 string columnTitle = "";
                 try
                 {
-                    //写入列标题    
+                    //写入列标题
                     for (int i = 0; i < d1.ColumnCount; i++)
                     {
                         if (i > 0)
@@ -129,7 +130,7 @@ namespace LY_SINTER.PAGE.Parameter
                     }
                     sw.WriteLine(columnTitle);
 
-                    //写入列内容    
+                    //写入列内容
                     for (int j = 0; j < d1.Rows.Count; j++)
                     {
                         string columnValue = "";
@@ -160,6 +161,7 @@ namespace LY_SINTER.PAGE.Parameter
                 }
             }
         }
+
         /// <summary>
         /// 烧结事件导出按钮
         /// </summary>
@@ -181,7 +183,7 @@ namespace LY_SINTER.PAGE.Parameter
                 string columnTitle = "";
                 try
                 {
-                    //写入列标题    
+                    //写入列标题
                     for (int i = 0; i < d2.ColumnCount; i++)
                     {
                         if (i > 0)
@@ -192,7 +194,7 @@ namespace LY_SINTER.PAGE.Parameter
                     }
                     sw.WriteLine(columnTitle);
 
-                    //写入列内容    
+                    //写入列内容
                     for (int j = 0; j < d2.Rows.Count; j++)
                     {
                         string columnValue = "";
@@ -223,6 +225,7 @@ namespace LY_SINTER.PAGE.Parameter
                 }
             }
         }
+
         /// <summary>
         /// 停机记录删除按钮
         /// </summary>
@@ -245,7 +248,7 @@ namespace LY_SINTER.PAGE.Parameter
                     {
                         var sql_del = "delete from M_SIN_RUN_STOP where FLAG_1 = " + Quality_Model.FLAG_1 + "";
                         int count = dBSQL.CommandExecuteNonQuery(sql_del);
-                        if (count == 1 )
+                        if (count == 1)
                         {
                             _vLog.writelog("simpleButton3_Click事件用户删除成功，sql:" + sql_del, 0);
                             MessageBox.Show("删除成功");
@@ -254,16 +257,16 @@ namespace LY_SINTER.PAGE.Parameter
                         else
                         {
                             MessageBox.Show("删除失败，请重新选择");
-                            _vLog.writelog("simpleButton3_Click事件用户删除失败，sql:" + sql_del,-1);
+                            _vLog.writelog("simpleButton3_Click事件用户删除失败，sql:" + sql_del, -1);
                         }
                     }
                 }
             }
             catch
             {
-
             }
         }
+
         /// <summary>
         /// 烧结事件删除按钮
         /// </summary>
@@ -302,9 +305,9 @@ namespace LY_SINTER.PAGE.Parameter
             }
             catch
             {
-
             }
         }
+
         /// <summary>
         /// 烧结停机记录查询按钮
         /// </summary>
@@ -314,6 +317,7 @@ namespace LY_SINTER.PAGE.Parameter
         {
             show_d1(2);
         }
+
         /// <summary>
         /// 烧结事件信息记录查询按钮
         /// </summary>
@@ -323,6 +327,7 @@ namespace LY_SINTER.PAGE.Parameter
         {
             show_d2(2);
         }
+
         /// <summary>
         /// 烧结停机记录添加按钮
         /// </summary>
@@ -341,6 +346,7 @@ namespace LY_SINTER.PAGE.Parameter
                 form_display.Activate();
             }
         }
+
         /// <summary>
         /// 烧结停机记录修改按钮
         /// </summary>
@@ -365,8 +371,8 @@ namespace LY_SINTER.PAGE.Parameter
                     form_display.Activate();
                 }
             }
-             
         }
+
         /// <summary>
         /// 烧结事件信息记录修改按钮
         /// </summary>
@@ -374,7 +380,6 @@ namespace LY_SINTER.PAGE.Parameter
         /// <param name="e"></param>
         private void simpleButton6_Click(object sender, EventArgs e)
         {
-
             if (Quality_Model.FLAG_2 == -1)
             {
                 MessageBox.Show("请选择需要修改的数据");
@@ -392,8 +397,8 @@ namespace LY_SINTER.PAGE.Parameter
                     form_display.Activate();
                 }
             }
-               
         }
+
         /// <summary>
         /// 烧结事件信息记录添加按钮
         /// </summary>
@@ -412,26 +417,30 @@ namespace LY_SINTER.PAGE.Parameter
                 form_display.Activate();
             }
         }
+
         public void Timer_state()
         {
-           // _Timer1.Enabled = true;
+            // _Timer1.Enabled = true;
         }
+
         /// <summary>
         /// 定时器停用
         /// </summary>
         public void Timer_stop()
         {
-         //   _Timer1.Enabled = false;
+            //   _Timer1.Enabled = false;
         }
+
         /// <summary>
         /// 控件关闭
         /// </summary>
         public void _Clear()
         {
-           // _Timer1.Close();//释放定时器资源
+            // _Timer1.Close();//释放定时器资源
             this.Dispose();//释放资源
             GC.Collect();//调用GC
         }
+
         /// <summary>
         /// 烧结停机记录数据
         /// flag = 1 初始化
@@ -446,14 +455,14 @@ namespace LY_SINTER.PAGE.Parameter
                 {
                     var sql = "select top(15) ROW_NUMBER() OVER (ORDER BY TIMESTAMP desc) AS ID,TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,STOP_BEGINTIME,STOP_ENDTIME,INTERVAL_TIME,FLAG_1,SORT_BIG,SORT_LITTLE from M_SIN_RUN_STOP order by TIMESTAMP desc";
                     DataTable data_1 = dBSQL.GetCommand(sql);
-                    if (data_1 != null && data_1.Rows.Count > 0 )
+                    if (data_1 != null && data_1.Rows.Count > 0)
                     {
-                        for(int x = 0; x < data_1.Rows.Count;x++)
+                        for (int x = 0; x < data_1.Rows.Count; x++)
                         {
                             DataRow row = data_1.Rows[x];
                             row.BeginEdit();
                             if (row["SORT_BIG"].ToString() != "")
-                               row["SORT_BIG"] = _Rule_Big.Item2[row["SORT_BIG"].ToString()];//大类
+                                row["SORT_BIG"] = _Rule_Big.Item2[row["SORT_BIG"].ToString()];//大类
                             if (row["SORT_LITTLE"].ToString() != "")
                                 row["SORT_LITTLE"] = _Rule_Loser.Item2[row["SORT_LITTLE"].ToString()];//小类
                             row.EndEdit();
@@ -461,11 +470,10 @@ namespace LY_SINTER.PAGE.Parameter
 
                         d1.DataSource = data_1;
                     }
-           
                 }
                 else
                 {
-                    var sql = "select ROW_NUMBER() OVER (ORDER BY TIMESTAMP desc) AS ID,TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,STOP_BEGINTIME,STOP_ENDTIME,INTERVAL_TIME,FLAG_1,SORT_BIG,SORT_LITTLE from M_SIN_RUN_STOP where TIMESTAMP >= '"+ textBox_begin.Text.ToString()+ "' and TIMESTAMP <= '" + textBox_end.Text.ToString() + "'  order by TIMESTAMP desc";
+                    var sql = "select ROW_NUMBER() OVER (ORDER BY TIMESTAMP desc) AS ID,TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,STOP_BEGINTIME,STOP_ENDTIME,INTERVAL_TIME,FLAG_1,SORT_BIG,SORT_LITTLE from M_SIN_RUN_STOP where TIMESTAMP >= '" + textBox_begin.Text.ToString() + "' and TIMESTAMP <= '" + textBox_end.Text.ToString() + "'  order by TIMESTAMP desc";
                     DataTable data_1 = dBSQL.GetCommand(sql);
                     if (data_1 != null && data_1.Rows.Count > 0)
                     {
@@ -484,11 +492,12 @@ namespace LY_SINTER.PAGE.Parameter
                     }
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 _vLog.writelog("show_d1方法错误" + ee.ToString(), -1);
             }
         }
+
         /// <summary>
         /// 烧结机停机记录弹出框关闭响应事件
         /// flag = 1 初始化
@@ -498,6 +507,7 @@ namespace LY_SINTER.PAGE.Parameter
         {
             show_d1(1);
         }
+
         /// <summary>
         /// 事件记录查询
         /// </summary>
@@ -514,7 +524,6 @@ namespace LY_SINTER.PAGE.Parameter
                     {
                         d2.DataSource = data_1;
                     }
-
                 }
                 else
                 {
@@ -531,6 +540,7 @@ namespace LY_SINTER.PAGE.Parameter
                 _vLog.writelog("show_d2方法错误" + ee.ToString(), -1);
             }
         }
+
         /// <summary>
         /// 信息记录弹出框关闭响应事件
         /// </summary>

@@ -16,13 +16,16 @@ namespace MIXHMICAL
 
         //   public string _connstring = @"Data Source =127.0.0.1;Initial Catalog = LGSJ;User Id = sa;Password = Yjs88291280;Integrated Security=false;";
         public string _connstring = DataBase.ConstParameters.strCon;
+
         private int[] L2Code = { 101, 102, 501, 601 };
         public vLog mixlog { get; set; }
+
         public LGSinter()
         {
             mixlog = new vLog(".\\log\\MixModel\\");
             mixlog.connstring = _connstring;
         }
+
         //检测设定配比值是否合法
         public bool CheckSetPB(int canghao)
         {
@@ -53,7 +56,6 @@ namespace MIXHMICAL
                     {
                         sql_1 += "MAT_L2_CH=" + (int)_row["MAT_L2_CH"] + " or ";
                     }
-
                 }
                 sql = sql_0 + sql_1;
                 //执行检测语句
@@ -70,7 +72,6 @@ namespace MIXHMICAL
                 }
             }
         }
-
 
         //更新设定配比
         public bool UpdateSetPB(int canghao, float pbVal)
@@ -92,12 +93,10 @@ namespace MIXHMICAL
             return true;
         }
 
-
-
         //配比%计算
 
         /// <summary>
-        /// 
+        ///
         /// 当前配比% curpb
         /// mode 配比类型
         /// 1：设定配比,计算设定%；2：当前配比，计算当前%
@@ -127,7 +126,6 @@ namespace MIXHMICAL
                     Tuple<int, float> _temp = new Tuple<int, float>(_Dic[i].Item1, _Dic[i].Item2 / PbSum * 100);
                     _Dic.Remove(i);
                     _Dic.Add(i, _temp);
-
                 }
 
                 //更新数据库表
@@ -153,7 +151,6 @@ namespace MIXHMICAL
                         return -1;
                     }
                 }
-
             }
             else if (mode == 2)
             {
@@ -196,11 +193,7 @@ namespace MIXHMICAL
                         Console.WriteLine("更新数据库表CFG_MAT_L2_SJPB_INTERFACE失败({0})", sql_0);
                         return -2;
                     }
-
                 }
-
-
-
             }
             else
             {
@@ -209,16 +202,15 @@ namespace MIXHMICAL
                 return -3;
             }
 
-
-
             return 1;
         }
+
         #region
         ////
         ////分仓系数计算
         ////
         ///// <summary>
-        ///// 
+        /////
         ///// 当前配比% curpb
         ///// 配比ID sid
         ///// 计算模式 style 1:其他；2：启停信号调整
@@ -229,7 +221,6 @@ namespace MIXHMICAL
         //    DBSQL _mdb = new DBSQL(_connstring);
 
         //    ////构造数据库查询语句,查询配比
-
 
         //    //根据配比ID，查询对应的下料口
         //    string sql = "select MAT_L2_XLKZT,MAT_L2_SIGN,MAT_L2_GXLBL,MAT_L2_CH,MAT_L2_XLK from dbo.CFG_MAT_L2_XLK_INTERFACE where MAT_PB_ID=" + sid;
@@ -242,7 +233,7 @@ namespace MIXHMICAL
         //    DataTable _dt_plc_sign = _mdb.GetCommand(sql_plc_sign);
         //    var _vdt_plc_sign = _dt_plc_sign.AsEnumerable();
         //   // int count = int.Parse(_vdt_plc_sign.LongCount().ToString());
-        //    int[] sign = new int[19] ; 
+        //    int[] sign = new int[19] ;
 
         //    for (int i = 0; i < 19; i++)
         //    {
@@ -264,10 +255,7 @@ namespace MIXHMICAL
         //            return -1;
         //        }
 
-
         //    }
-
-
 
         //    var _vdt = _dt.AsEnumerable();
         //    float Sum = 0;//每个非活动料口的下发比例之和
@@ -327,15 +315,12 @@ namespace MIXHMICAL
         //            {
         //                rsFC = 0;
         //                FCk.Add(i, new Tuple<int, int, float, int>(p3, p4, rsFC, p1));
-        //            }  
+        //            }
 
         //        }
         //    }
 
-
-
         //    //更新数据库
-
 
         //    for (int k = 0; k<_vdt.Count();k++)
         //    {
@@ -361,7 +346,6 @@ namespace MIXHMICAL
         //        //
         //    }
 
-
         //    return 0;
 
         //}
@@ -371,7 +355,7 @@ namespace MIXHMICAL
         //分仓系数计算
         //
         /// <summary>
-        /// 
+        ///
         /// 当前配比% curpb
         /// 配比ID sid
         /// 计算模式 style 1:其他；2：启停信号调整;3:按照下料量计算分仓系数
@@ -383,7 +367,6 @@ namespace MIXHMICAL
             DBSQL _mdb = new DBSQL(_connstring);
 
             ////构造数据库查询语句,查询配比
-
 
             //根据配比ID，查询对应的下料口
             string sql = "select MAT_L2_XLKZT,MAT_L2_SIGN,MAT_L2_GXLBL,MAT_L2_CH,MAT_L2_XLK from dbo.CFG_MAT_L2_XLK_INTERFACE where MAT_PB_ID=" + sid;
@@ -449,7 +432,6 @@ namespace MIXHMICAL
                         rsFC = 0;
                         FCk.Add(i, new Tuple<int, int, float, int>(p3, p4, rsFC, p1));
                     }
-
                 }
             }
             else if (style == 3)//20200203
@@ -503,7 +485,6 @@ namespace MIXHMICAL
                             Console.WriteLine("活动料口状态异常!");
                             return -1;
                         }
-
                     }
                 }
                 //每个下料口的下料量湿百分比（LCS_j）求解
@@ -583,7 +564,6 @@ namespace MIXHMICAL
                     p4 = int.Parse(_vdt.ElementAt(i)[4].ToString());
                     if (p0 == 1)//启用状态
                     {
-
                         if (xlks.Contains(p4))
                         {
                             rsFC = 0;
@@ -600,7 +580,6 @@ namespace MIXHMICAL
                 }
             }
             //更新数据库
-
 
             for (int k = 0; k < _vdt.Count(); k++)
             {
@@ -626,9 +605,7 @@ namespace MIXHMICAL
                 //
             }
 
-
             return 0;
-
         }
 
         /// <summary>
@@ -642,7 +619,6 @@ namespace MIXHMICAL
         /// </returns>
         public Tuple<bool, int, float> BMethod(int sid, float curpb)
         {
-
             //
             DBSQL _mdb = new DBSQL(_connstring);
             /*
@@ -693,8 +669,8 @@ namespace MIXHMICAL
             BILL_WET_i = curpb / (100 - sum_h2o) * 100;
 
             return new Tuple<bool, int, float>(true, sid, BILL_WET_i);
-
         }
+
         /// <summary>
         /// 计算所有湿配比%
         /// </summary>
@@ -817,13 +793,9 @@ namespace MIXHMICAL
                 {
                     rs.Add(i, new Tuple<int, float, float>(p0, diff, _diff));
                 }
-
             }
             return rs;
-
         }
-
-
 
         /// <summary>
         /// 碱度调整条件
@@ -860,7 +832,7 @@ namespace MIXHMICAL
                     mixlog.writelog("R:flag<=0", -1);
                     return new Tuple<bool, float, string, float, float, DateTime>(false, 0, "", 0, 0, DateTime.Now);
                 }
-                float vCR = float.Parse(x[0].ToString()) * float.Parse(x[3].ToString()) * float.Parse(x[4].ToString());//20200915 
+                float vCR = float.Parse(x[0].ToString()) * float.Parse(x[3].ToString()) * float.Parse(x[4].ToString());//20200915
                 if (vCR == 0)
                 {
                     mixlog.writelog("R:C_R=NULL", -1);
@@ -900,13 +872,12 @@ namespace MIXHMICAL
                     //    return new Tuple<bool, float, string, float, float, DateTime>(false, vCR, "", 0, 0, DateTime.Now);
                     //}
                     //20200528 修改
-
                 }
                 //break;
             }
             return new Tuple<bool, float, string, float, float, DateTime>(false, 0, "", 0, 0, DateTime.Now);
-
         }
+
         /// <summary>
         /// 初始化全局参数
         /// </summary>
@@ -915,8 +886,10 @@ namespace MIXHMICAL
         /// 倒推MAX
         /// 成功与否标志
         /// </returns>
-        float T_PAR_MIN_TIME = 0;
-        float T_PAR_MAX_TIME = 0;
+        private float T_PAR_MIN_TIME = 0;
+
+        private float T_PAR_MAX_TIME = 0;
+
         public Tuple<float, float, bool> initParam()
         {
             //初始化数据库
@@ -973,7 +946,7 @@ namespace MIXHMICAL
             PAR_CAO_RANGE：烧结矿CAO正常波动范围值；参数值：MC_SINCAL_C_R_PAR表，R_PAR_CAO_STD字段
             PAR_SIO2_RANGE1：烧结矿SIO2正常波动范围值；参数值：MC_SINCAL_C_R_PAR表，R_PAR_SIO2_STD_U
             PAR_SIO2_RANGE2：烧结矿SIO2正常波动范围值；参数值：MC_SINCAL_C_R_PAR表，R_PAR_SIO2_STD_D
-           
+
             K_CAO：CaO偏低调整系数；参数值：MC_SINCAL_C_R_PAR表，R_PAR_K_CAO;
             K_SIO2：SIO2偏低调整系数；参数值：MC_SINCAL_C_R_PAR表，R_PAR_K_SIO2;
             K_SIO2_CAO：SIO2偏低调整系数；参数值：MC_SINCAL_C_R_PAR表，R_PAR_K_SIO2_CAO;
@@ -1008,8 +981,6 @@ namespace MIXHMICAL
                 }
             }
 
-
-
             return new Tuple<float, float, float, float, float, int, List<float>, Tuple<bool>>(vals[0], vals[1], vals[2], vals[3], vals[4], n, Lval, new Tuple<bool>(true));
         }
 
@@ -1022,7 +993,7 @@ namespace MIXHMICAL
             //初始化数据库
             DBSQL _mdb = new DBSQL(_connstring);
             //R_AIM：目标碱度（中线值）；采集值：存储位置：MC_SINCAL_R_result 表，SINCAL_R_AIM字段；（采集位置：MC_MIXCAL_RESULT_1MIN表，SINCAL_R_A字段）
-            string sql = "select SINCAL_R_A,SINCAL_R_C from MC_MIXCAL_RESULT_1MIN order by TIMESTAMP desc";//20200604 
+            string sql = "select SINCAL_R_A,SINCAL_R_C from MC_MIXCAL_RESULT_1MIN order by TIMESTAMP desc";//20200604
             DataTable _dt = _mdb.GetCommand(sql);
             if (_dt == null)
             {
@@ -1081,7 +1052,6 @@ namespace MIXHMICAL
         //            int strRT = 0;
         //            foreach (var x in _vdt1)
         //            {
-
         //                strRT = int.Parse(x[0].ToString());
         //            }
         //            DateTime curDT1 = DateTime.Now;
@@ -1117,7 +1087,6 @@ namespace MIXHMICAL
         //                cur_PV_R = float.Parse(x[0].ToString());
         //            }
 
-
         //            return new Tuple<bool, float, float, int>(true, avg_PV_R, cur_PV_R, strRT);
 
         //        }
@@ -1148,7 +1117,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
 
             如果R_RETRODICT_TIME = 0，则令SINCAL_R_RE_TIME_FLAG =0；否则，则令SINCAL_R_RE_TIME_FLAG =1；
             */
-            //20200915 
+            //20200915
             //获取PAR_T时间字段
             string sql_0 = "select PAR_T from MC_SINCAL_C_R_PAR";
 
@@ -1174,7 +1143,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
             var _lrrt = LGetLastTime("M_SINTER_ANALYSIS");
             if (_lrrt == null)
             {
-
             }
             else
             {
@@ -1241,7 +1209,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
             string sql_3 = "select AVG(SINCAL_SIN_PV_R) from MC_MIXCAL_RESULT_1MIN where TIMESTAMP>'" + curDT3.AddMinutes(-1 * ipart * 0.2) + "' and TIMESTAMP<='" + curDT4 + "' and SINCAL_SIN_PV_R!=0 and SINCAL_SIN_PV_R is not null";//20200916 与闫龙飞确认过
             //string sql_3 = "select SINCAL_SIN_PV_R from MC_MIXCAL_RESULT_1MIN order by TIMESTAMP desc";
 
-
             DataTable _dt3 = _mdb.GetCommand(sql_3);
 
             if (_dt3 == null)
@@ -1257,10 +1224,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
             mixlog.writelog("R:碱度当前值=" + cur_PV_R, 0);
 
             return new Tuple<bool, float, float, float, int>(true, avg_PV_R, cur_PV_R, strRT, vSINCAL_R_RE_TIME_FLAG);
-
         }
-
-
 
         /// <summary>
         /// 使用于判断最近两条记录中某字段是否发生变化
@@ -1327,7 +1291,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 {
                     return false;
                 }
-
             }
         }
 
@@ -1371,6 +1334,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
 
             return -88;
         }
+
         private bool isInsertedNew(DBSQL vmdb)
         {
             // string sql = "select count(*) from MC_SINCAL_C_result where SINCAL_C_FLAG=3";
@@ -1398,7 +1362,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
         /// <returns>
         /// item1:计算结果是否有效，true：有效
         /// item2:调整值
-        /// 
+        ///
         /// </returns>
         private Tuple<bool, float> FeO_Cpt(DBSQL vmdb, string vbatchnum)
         {
@@ -1431,8 +1395,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 //float vCR = 0;// float.Parse(_vdt.ElementAt(0)[2].ToString() == "" ? "0" : _vdt.ElementAt(0)[2].ToString());
 
                 vFeObtn = _vdt.ElementAt(0)[2].ToString();
-
-
             }
             else
             {
@@ -1454,7 +1416,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
             {
                 ipart = int.Parse(x[0].ToString() == "" ? "0" : x[0].ToString());
             }
-
 
             DateTime vSampleTime = DateTime.Now;
             var _vlr = LGetLastTime("M_SINTER_ANALYSIS");
@@ -1480,7 +1441,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
             int SINCAL_C_RE_TIME_FLAG = 0;
             foreach (var x in _vdt2)
             {
-
                 strRT = float.Parse(x[0].ToString() == "" ? "0" : x[0].ToString());
             }
             //if(strRT<60)
@@ -1631,8 +1591,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                         SINcal_SPE_ADD_NOTES = 4;
                         InsertLogTable("配料模型", "碳调整", "加样FeO偏低=" + curFeOVal + "，上次检测FeO偏高=" + lastFeOVal + ",请岗位人工确认");
                     }
-
-
                 }
                 //插入数据库
 
@@ -1646,13 +1604,11 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 {
                     //Console.WriteLine("插入数据成功");//需要插入数据库
                     mixlog.writelog("烧结矿FeO 插入数据成功(加样)(" + xsql_insert + ")", 0);
-
                 }
                 else
                 {
                     //Console.WriteLine("插入数据失败");//需要插入数据库
                     mixlog.writelog("烧结矿FeO 插入数据失败(加样)(" + xsql_insert + ")", -1);
-
                 }
                 return new Tuple<bool, float>(false, 0);
                 //20200916
@@ -1682,7 +1638,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
             if (vC_RET <= 0 || vC_CUR <= 0)
             {
                 vC_FeO_ADJ = vC_DEV;
-
             }
             else
             {
@@ -1756,7 +1711,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
             //{
             //    return new Tuple<bool, float>(false, 0);
             //}
-
         }
 
         /// <summary>
@@ -1880,6 +1834,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 }
             }
         }
+
         /// <summary>
         /// 高返配比变化调整
         /// </summary>
@@ -2003,6 +1958,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 }
             }
         }
+
         /// <summary>
         /// 混合料综合烧损变化调整
         /// </summary>
@@ -2104,7 +2060,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
         /// </returns>
         private Tuple<bool, float> NoFuelC_Cpt(DBSQL vmdb)
         {
-
             //参数值
             float vPAR_NONFUEL_TH = 0;//PAR_NONFUEL_TH：非燃料含碳变化，调整配碳门槛值
             float vPAR_NONFUEL_ADJ = 0;// PAR_NONFUEL_ADJ：非燃料含碳变化1%，配碳调整量
@@ -2196,7 +2151,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 mixlog.writelog("非燃料 插入数据失败(" + sql_insert + ")", -1);
                 return new Tuple<bool, float>(false, 0);
             }
-
         }
 
         /// <summary>
@@ -2301,6 +2255,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 return new Tuple<bool, float>(false, 0);
             }
         }
+
         /// <summary>
         /// 主机参数变化调整
         /// </summary>
@@ -2354,7 +2309,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 mixlog.writelog("主机参数变化 插入数据失败", -1);
                 return new Tuple<bool, float>(false, 0);
             }
-
         }
 
         /// <summary>
@@ -2401,7 +2355,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 vC_PAR_C_HOST_T = float.Parse(_vdt0.ElementAt(0)[0].ToString() == "" ? "0" : _vdt0.ElementAt(0)[0].ToString());
                 DateTime dt0 = DateTime.Now;
                 DateTime dt1 = DateTime.Now;
-                //C_SIN_PLC_1MIN 表，(SIN_PLC_MA_SB_1_FLUE_TE + SIN_PLC_MA_SB_2_FLUE_TE)/2） 
+                //C_SIN_PLC_1MIN 表，(SIN_PLC_MA_SB_1_FLUE_TE + SIN_PLC_MA_SB_2_FLUE_TE)/2）
                 string comp = style == 1 ? " < " : " > ";
                 float vPAR_MA_TE = style == 1 ? vPAR_MA_TE3 : vPAR_MA_TE2;
                 string sql_1 = "select * from " +
@@ -2532,6 +2486,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
 
             return MainArsTurn;
         }
+
         /// <summary>
         /// C 调整判断条件
         /// </summary>
@@ -2573,7 +2528,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 }
                 else
                 {
-
                     var _vdt = _dt.AsEnumerable();
                     foreach (var x in _vdt)//只取最近一条
                     {
@@ -2622,7 +2576,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 }
 
                 _conds.Add(FeO_Turn);
-
             }
             //烧返配比变化
             {
@@ -2640,9 +2593,8 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                     mixlog.writelog("烧返配比变化满足", 0);
                 }
                 _conds.Add(hotRet);
-
             }
-            //高返配比变化 
+            //高返配比变化
             // 凌源钢铁此段屏蔽
             {
                 //触发条件：高返配比变化调用（即MC_MIXCAL_RESULT_1MIN表，SINCAL_BFES_ORE_BILL_DRY字段，前后两条记录发生变化触发）
@@ -2660,7 +2612,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 }
                 HighRet = 0;//20201201修改
                 _conds.Add(HighRet);
-
             }
             //混合料综合烧损变化
             {
@@ -2679,7 +2630,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                     mixlog.writelog("混合料综合烧损变化满足", 0);
                 }
                 _conds.Add(MixMatRet);
-
             }
             //非燃料含碳变化
             {
@@ -2697,7 +2647,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                     mixlog.writelog("非燃料含碳变化满足", 0);
                 }
                 _conds.Add(noFuelC);
-
             }
             //原料FeO变化
             {
@@ -2715,7 +2664,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                     mixlog.writelog("原料FeO变化满足", 0);
                 }
                 _conds.Add(yFeoTurn);
-
             }
             //主机参数变化
             {
@@ -2728,16 +2676,16 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                     _Count++;
                     mixlog.writelog("主机参数变化满足" + _MainArg, 0);
                 }
-
             }
             mixlog.writelog("C_Conditions==END", 0);
             return new Tuple<int, List<int>, string>(_Count, _conds, _batchnum);
         }
+
         /// <summary>
         /// 碳自动投入状态
         /// </summary>
         /// <returns>
-        /// 
+        ///
         /// true:投入自动    false:为投入自动
         /// </returns>
         public bool C_AutoState()
@@ -2761,6 +2709,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
 
             return autoFlag == 1 ? true : false;
         }
+
         /// <summary>
         /// 碳 调整
         /// </summary>
@@ -2768,9 +2717,11 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
         /// item1:true:结果正常，false:结果不正常
         /// item2: 碳调整值
         /// </returns>
-        DateTime vDt_Main = new DateTime();//20200727
-        bool v_first = true;//20200727
-        int v_turnfirst = 0;//20200727
+        private DateTime vDt_Main = new DateTime();//20200727
+
+        private bool v_first = true;//20200727
+        private int v_turnfirst = 0;//20200727
+
         public Tuple<bool, float> C_Modify()
         {
             //初始化数据库
@@ -2820,11 +2771,9 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
             float HOST_ADJ = 0;
             if (conds.Item2[0] == 1)
             {
-
                 trueLove[0] = 1;
                 var rs = FeO_Cpt(_mdb, conds.Item3);//20200727
                 C_FeO_RE_ADJ = rs.Item1 == true ? rs.Item2 : 0;
-
             }
             if (conds.Item2[1] == 2)
             {
@@ -2941,7 +2890,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                     C_dc = float.Parse(x[1].ToString() == "" ? "0" : x[1].ToString());
                     break;
                 }
-
             }
             float SINCAL_C_BEFORE_Modify = 0;
             float SINCAL_C_AFTER_Modify = 0;
@@ -2991,7 +2939,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
         /// 碱度自动投入状态
         /// </summary>
         /// <returns>
-        /// 
+        ///
         /// true:投入自动    false:为投入自动
         /// </returns>
         public bool R_AutoState()
@@ -3012,6 +2960,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
 
             return autoFlag == 1 ? true : false;
         }
+
         //加样激活
         public bool R_ADDState()
         {
@@ -3031,6 +2980,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
 
             return ADDFlag == 1 ? true : false;
         }
+
         /// <summary>
         /// 碱度调整
         /// </summary>
@@ -3043,7 +2993,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
             var rc = R_Condition();
             if (rc.Item1 == true)
             {
-
                 int R_State = R_AutoState() == true ? 1 : 0;//碱度自动是否投入 1：投入  0：退出
                 int ADD_State = R_ADDState() == true ? 1 : 0;//加样是否激活
                 mixlog.writelog("碱度调整条件满足,自动是否投入:" + R_State, 0);
@@ -3135,8 +3084,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                             SINcal_SPE_ADD_NOTES = 4;
                             InsertLogTable("配料模型", "碱度调整", "加样碱度偏低=" + curRVal + "，上次检测碱度偏高=" + lastRVal + ",请岗位人工确认");
                         }
-
-
                     }
                     //插入数据库
 
@@ -3171,7 +3118,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 if (R_RET <= 0 || R_CUR <= 0)
                 {
                     R_ADJ = R_PF;
-
                 }
                 else
                 {
@@ -3311,7 +3257,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                     mixlog.writelog("插入数据库表MC_SINCAL_R_result成功", 0);
                 }
                 return R_RE_ADJ;
-
             }
             else
             {
@@ -3319,15 +3264,13 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                 mixlog.writelog("碱度调整条件不满足", 1);
                 return -1;
             }
-
         }
-
 
         /// <summary>
         /// Mg自动投入状态
         /// </summary>
         /// <returns>
-        /// 
+        ///
         /// true:投入自动    false:为投入自动
         /// </returns>
         public bool Mg_AutoState()
@@ -3406,14 +3349,11 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
                     //    Console.WriteLine("批次号格式不正确");
                     //    return new Tuple<bool, float, string>(false, vCR, "");
                     //}
-
                 }
                 //break;
             }
             return new Tuple<bool, float, string>(false, 0, "");
-
         }
-
 
         /// <summary>
         /// 获取Mg调整计算需要的参数值
@@ -3458,7 +3398,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
             return new Tuple<float, float, float, float, float, bool>(vals[0], vals[1], vals[2], vals[3], vals[4], true);
         }
 
-
         /// <summary>
         /// Mg调整采集值
         /// </summary>
@@ -3487,8 +3426,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)（已废弃）
             }
             return new Tuple<float, float, bool>(0, 0, false);//数据表异常
         }
-
-
 
         /// <summary>
         /// Mg调整计算值
@@ -3563,7 +3500,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             }
             else
             {
-
                 vSINCAL_Mg_RE_TIME_FLAG = 1;
             }
             int _MgOoffsetTime = 15;
@@ -3703,8 +3639,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                             SINcal_SPE_ADD_NOTES = 4;
                             InsertLogTable("配料模型", "MgO调整", "加样MgO偏低=" + curMgVal + "，上次检测MgO偏高=" + lastMgVal + ",请岗位人工确认");
                         }
-
-
                     }
                     //插入数据库
 
@@ -3736,7 +3670,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                     Mg_PF = K_OUTSIDE * (Mg_AIM - Mg_TEST);
                 }
 
-                //20200603 修改 
+                //20200603 修改
                 //R_ADJ：计算碱度调整量：计算碱度调整量
                 float Mg_ADJ = 0;
 
@@ -3749,7 +3683,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                     //R_ADJ：计算碱度调整量：计算碱度调整量
                     Mg_ADJ = Mg_RET - Mg_CUR + Mg_PF;
                 }
-                //20200603 
+                //20200603
                 //R_RE_ADJ：经过有效性判断下发的碱度调整量
                 float Mg_RE_ADJ = 0;//20200320 修改
                 if (Math.Abs(Mg_ADJ) <= ADJ_MIN)
@@ -3795,7 +3729,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                     mixlog.writelog("插入数据库表MC_SINCAL_MG_result成功", 0);
                 }
                 return Mg_RE_ADJ;
-
             }
             else
             {
@@ -3803,13 +3736,13 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 mixlog.writelog("MgO调整条件不满足", -1);
                 return -1;
             }
-
         }
+
         /// <summary>
         /// 计算烧结矿设定成分
         /// </summary>
         /// <returns>
-        /// 
+        ///
         /// item1:计算结果 0：正常 其他：异常
         /// item2:预测设定成分
         /// </returns>
@@ -3820,7 +3753,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
         //            DBSQL _mdb = new DBSQL(_connstring);
         //            //  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19,  20, 21, 22, 23, 24, 25, 26, 27, 28,  29
         //            // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO,  ZnO, F, As, Cu, Pb, Zn, K,  Na, Cr, Ni, MnO  //宁钢检化验成分排序
-        //            //	                                             烧损         灰分 挥发分                            
+        //            //	                                             烧损         灰分 挥发分
 
         //            float sumTFe = 0;
         //            float sumFeO = 0;
@@ -3860,7 +3793,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
         //            List<float> sinterAly = new List<float> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };//TFe,FeO,CaO,SiO2,Al2O3,MgO,S,P,Mn,R,TiO2,K2O,Na2O,PbO,ZnO,F,As,Cu,Pb,Zn,K,Na,Cr,Ni,备用,备用,备用,备用,备用,备用
         //            float sumOther_SiO2_SP = 0;  //除混匀矿和直供料外，其他原料带入的SiO2量
         //            float sumOther_C_SP = 0;     //非燃料总含碳量
-        //            float sumFuel_C_SP = 0;      //燃料带入的总固定碳量	
+        //            float sumFuel_C_SP = 0;      //燃料带入的总固定碳量
         //            float sumOutput_SP = 0;      //设定下料量计算的理论产量(单位：t/h)
         //            float sumFuel_SP = 0;        //燃料总设定干下料量
         //            float FuelCon_SP = 0;        //设定下料量计算的理论燃耗
@@ -3991,7 +3924,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
         //                }
         //            }
 
-
         //            //END
         //            //仓号，设定下料量，水分，启停状态
         //            List<Tuple<int, float, float, int>> _sf = new List<Tuple<int, float, float, int>>();
@@ -3999,7 +3931,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
         //            {
         //                if (i == 0)//非燃料下料口
         //                {
-        //                    /*    
+        //                    /*
         //                    输入项：
 
         //                           Silo[i].flow_sp      第i下料口的设定下料量：C_MAT_PLC_1MIN表，MAT_PLC_SP_W_1 - MAT_PLC_SP_W_19字段，对应的第i个下料口的设定下料量；
@@ -4009,7 +3941,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
         //				   成分对应关系
         //                           //  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19,  20, 21, 22, 23, 24, 25, 26, 27, 28,  29
         //                           // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO,  ZnO, F, As, Cu, Pb, Zn, K,  Na, Cr, Ni, MnO  //宁钢检化验成分排序
-        //                          //	                                            烧损         灰分 挥发分      
+        //                          //	                                            烧损         灰分 挥发分
 
         //                    输出项：
         //                           sinterReport[i]      预测设定成分，保存到表MC_MIXCAL_RESULT_1MIN，对应字段(字段描述与数据库一致)
@@ -4076,12 +4008,9 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
         //                        }
         //                    }
 
-
-
         //                }
         //                else //燃料下料口
         //                {
-
         //                    //val:仓号，下料口，设定下料量，当前水分，启停状态，物料成分，二级物料编码
         //                    foreach (var x in rsl[1])
         //                    {
@@ -4228,21 +4157,18 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             DBSQL _mdb = new DBSQL(_connstring);
             //  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19,  20, 21, 22, 23, 24, 25, 26, 27, 28,  29
             // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO,  ZnO, F, As, Cu, Pb, Zn, K,  Na, Cr, Ni, MnO  //宁钢检化验成分排序
-            //	                                             烧损         灰分 挥发分                            
-
+            //	                                             烧损         灰分 挥发分
 
             ////20200809  lt    m_SP参数换成数据库数据源[MC_MIXCAL_PAR]表PAR_K_FeO字段
 
             var sql_MC_MIXCAL_PAR = "SELECT PAR_K_FeO  FROM MC_MIXCAL_PAR where  TIMESTAMP = (SELECT MAX(TIMESTAMP) from [MC_MIXCAL_PAR] )";
             DataTable data = _mdb.GetCommand(sql_MC_MIXCAL_PAR);
 
-
             var _vdts_1 = data.AsEnumerable();
             if (_vdts_1.Count() <= 0)
             {
                 Console.WriteLine("MC_MIXCAL_PAR中没有数据");
                 return new Tuple<int, List<float>>(-1, null);//20200416
-
             }
 
             float sumTFe = 0;
@@ -4283,12 +4209,12 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             List<float> sinterAly = new List<float> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };//TFe,FeO,CaO,SiO2,Al2O3,MgO,S,P,Mn,R,TiO2,K2O,Na2O,PbO,ZnO,F,As,Cu,Pb,Zn,K,Na,Cr,Ni,备用,备用,备用,备用,备用,备用
             float sumOther_SiO2_SP = 0;  //除混匀矿和直供料外，其他原料带入的SiO2量
             float sumOther_C_SP = 0;     //非燃料总含碳量
-            float sumFuel_C_SP = 0;      //燃料带入的总固定碳量	
+            float sumFuel_C_SP = 0;      //燃料带入的总固定碳量
             float sumOutput_SP = 0;      //设定下料量计算的理论产量(单位：t/h)
             float sumFuel_SP = 0;        //燃料总设定干下料量
             float FuelCon_SP = 0;        //设定下料量计算的理论燃耗
                                          //20200808
-                                         //20200808 
+                                         //20200808
                                          //  float m_SP = 3.02f;            //C与FeO对应比例系数，需要现场数据分析进行修改
                                          //20200809  换为数据库配料参数表字段
             float m_SP = float.Parse(data.Rows[0][0].ToString());            //C与FeO对应比例系数，需要现场数据分析进行修改
@@ -4350,7 +4276,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             {
                 Console.WriteLine("C_MAT_PLC_1MIN中没有数据");
                 return new Tuple<int, List<float>>(-1, null);//20200416
-
             }
             List<Tuple<float, int>> spSS = new List<Tuple<float, int>>();//index:下料口号 item1:设定下料量，item2：下料口启停信号
             foreach (var x in _vdts)
@@ -4374,7 +4299,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             {
                 Console.WriteLine("CFG_MAT_L2_XLK_INTERFACE中数据异常");
                 return new Tuple<int, List<float>>(-1, null);//20200416
-
             }
 
             Dictionary<int, List<Tuple<int, int, float, float, int, List<float>, int>>> rsl = new Dictionary<int, List<Tuple<int, int, float, float, int, List<float>, int>>>();
@@ -4403,7 +4327,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                     Tuple<int, int, float, float, int, List<float>, int> _tup = new Tuple<int, int, float, float, int, List<float>, int>(_p1, _p2, spSS[_p2 - 1].Item1, _p3, spSS[_p2 - 1].Item2, _p5, _p4);
 
                     rsl[_p0].Add(_tup);
-
                 }
                 else
                 {
@@ -4425,7 +4348,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 }
             }
 
-
             //END
             //仓号，设定下料量，水分，启停状态
             List<Tuple<int, float, float, int>> _sf = new List<Tuple<int, float, float, int>>();
@@ -4433,7 +4355,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             {
                 if (i == 0)//非燃料下料口
                 {
-                    /*    
+                    /*
                     输入项：
 
                            Silo[i].flow_sp      第i下料口的设定下料量：C_MAT_PLC_1MIN表，MAT_PLC_SP_W_1 - MAT_PLC_SP_W_19字段，对应的第i个下料口的设定下料量；
@@ -4443,7 +4365,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
 				   成分对应关系
                            //  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19,  20, 21, 22, 23, 24, 25, 26, 27, 28,  29
                            // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO,  ZnO, F, As, Cu, Pb, Zn, K,  Na, Cr, Ni, MnO  //宁钢检化验成分排序
-                          //	                                            烧损         灰分 挥发分      
+                          //	                                            烧损         灰分 挥发分
 
                     输出项：
                            sinterReport[i]      预测设定成分，保存到表MC_MIXCAL_RESULT_1MIN，对应字段(字段描述与数据库一致)
@@ -4510,13 +4432,9 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                             }
                         }
                     }
-
-
-
                 }
                 else//燃料下料口
                 {
-
                     //val:仓号，下料口，设定下料量，当前水分，启停状态，物料成分，二级物料编码
                     foreach (var x in rsl[1])
                     {
@@ -4582,9 +4500,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                             }
                         }
                     }
-
                 }
-
             }
 
             float sf_cch = 0f;//烧返和除尘灰的干料量
@@ -4660,6 +4576,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             Tuple<int, List<float>> _rets = new Tuple<int, List<float>>(-8014, new List<float>());
             return _rets; //基本数据错误,烧结矿配比产量 <= 0
         }
+
         /// <summary>
         /// 计算烧结矿实际成分
         /// </summary>
@@ -4679,20 +4596,18 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             var sql_MC_MIXCAL_PAR = "SELECT PAR_K_FeO  FROM MC_MIXCAL_PAR where  TIMESTAMP = (SELECT MAX(TIMESTAMP) from [MC_MIXCAL_PAR] )";
             DataTable data = _mdb.GetCommand(sql_MC_MIXCAL_PAR);
 
-
             var _vdts_1 = data.AsEnumerable();
             if (_vdts_1.Count() <= 0)
             {
                 Console.WriteLine("MC_MIXCAL_PAR中没有数据");
                 return new Tuple<int, List<float>>(-1, null);//20200416
-
             }
 
             //long i;
             //按公式计算各种成分
             //  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19,  20, 21, 22, 23, 24, 25, 26, 27, 28,  29
             // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO, ZnO, F,  As, Cu, Pb, Zn, K,  Na, Cr, Ni, MnO  //宁钢检化验成分排序
-            //	                                             烧损         灰分 挥发分      
+            //	                                             烧损         灰分 挥发分
             float sumTFe = 0;
             float sumFeO = 0;
             float sumCaO = 0;
@@ -4725,9 +4640,9 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             float sumNi = 0;
             float sumMnO = 0;
 
-            float sumMix_Wet_PV = 0;      //实际总料量（湿）	
+            float sumMix_Wet_PV = 0;      //实际总料量（湿）
             float sumMix_Dry_PV = 0;      //实际总料量（干）
-            float sumRemnant_PV = 0;       //实际总残存量  
+            float sumRemnant_PV = 0;       //实际总残存量
             List<float> sinterAly = new List<float> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };//TFe,FeO,CaO,SiO2,Al2O3,MgO,S,P,Mn,R,TiO2,K2O,Na2O,PbO,ZnO,F,As,Cu,Pb,Zn,K,Na,Cr,Ni,MnO,备用,备用,备用,备用,备用
             float sumOther_SiO2_PV = 0;   //除混匀矿和直供料外，其他原料带入的SiO2量
             float sumOther_C_PV = 0;      //非燃料总含碳量
@@ -4742,7 +4657,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             float m_PV = float.Parse(data.Rows[0][0].ToString());
             float sumDryBill = 0;         //当前干配比和
             float FeO_sp = 8.5f;           //FeO设定值用于理论产量计算
-            float Burn_Back_Ratio_PV = 0; //实际下料计算烧返矿百分比（干） 
+            float Burn_Back_Ratio_PV = 0; //实际下料计算烧返矿百分比（干）
             float BurnLoss_Ratio_PV = 0;  //实际下料计算综合烧损(%)
 
             //数据准备
@@ -4778,7 +4693,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             {
                 Console.WriteLine("C_MAT_PLC_1MIN中没有数据");
                 return new Tuple<int, List<float>>(-1, null);//20200416
-
             }
             List<Tuple<float, int>> spSS = new List<Tuple<float, int>>();//index:下料口号 item1:实际下料量，item2：下料口启停信号
             foreach (var x in _vdts)
@@ -4798,7 +4712,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             {
                 Console.WriteLine("CFG_MAT_L2_XLK_INTERFACE中数据异常");
                 return new Tuple<int, List<float>>(-1, null);//20200416
-
             }
             Dictionary<int, List<Tuple<int, int, float, float, int, List<float>, int>>> rsl = new Dictionary<int, List<Tuple<int, int, float, float, int, List<float>, int>>>();
 
@@ -4826,7 +4739,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                     Tuple<int, int, float, float, int, List<float>, int> _tup = new Tuple<int, int, float, float, int, List<float>, int>(_p1, _p2, spSS[_p2 - 1].Item1, _p3, spSS[_p2 - 1].Item2, _p5, _p4);
 
                     rsl[_p0].Add(_tup);
-
                 }
                 else
                 {
@@ -4848,7 +4760,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 }
             }
 
-
             //END
             //仓号，设定下料量，水分，启停状态
             List<Tuple<int, float, float, int>> _sf = new List<Tuple<int, float, float, int>>();
@@ -4857,8 +4768,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             {
                 if (i == 0)//非燃料下料口
                 {
-
-                    /*    
+                    /*
                     输入项：
 
                            Silo[i].flow_avg     第i个下料口的实际下料量：C_MAT_PLC_1MIN表，MAT_L2_SJXLMAT_PLC_PV_W_1 - MAT_PLC_PV_W_19字段，对应的第i个下料口的实际下料量；
@@ -4868,7 +4778,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                            成分对应关系
                            //  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19,  20, 21, 22, 23, 24, 25, 26, 27, 28,  29
                            // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO,  ZnO, F, As, Cu, Pb, Zn, K,  Na, Cr, Ni, MnO  //宁钢检化验成分排序
-                          //	                                            烧损         灰分 挥发分      
+                          //	                                            烧损         灰分 挥发分
 
                     输出项：
                            sinterReport[i]      预测实际成分，保存到表MC_MIXCAL_RESULT_1MIN，对应字段(字段描述与数据库一致)
@@ -4886,7 +4796,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                             {
                                 _sf_sf.Add(_sftup);
                             }
-
                         }
                         sumTFe += x.Item3 * (1 - x.Item4 / 100) * x.Item5 * x.Item6[0] / 100;
                         sumFeO += x.Item3 * (1 - x.Item4 / 100) * x.Item5 * x.Item6[1] / 100;
@@ -4930,7 +4839,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                         //去掉
                         //sumDryBill += Silo[i].bill_use * x.Item5;//?????
                     }
-
                 }
                 else//燃料下料口
                 {
@@ -4945,7 +4853,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                             {
                                 _sf_sf.Add(_sftup);
                             }
-
                         }
 
                         sumTFe += x.Item3 * (1 - x.Item4 / 100) * x.Item5 * x.Item6[0] / 100 * x.Item6[13] / 100;
@@ -4989,11 +4896,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                         //去掉
                         //sumDryBill += Silo[i].bill_use * x.Item5;//？？？？？？
                     }
-
                 }
-
-
-
             }
             //
             float sf_cch = 0f;//烧返和除尘灰的干料量
@@ -5002,12 +4905,10 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             foreach (var y in _sf)
             {
                 sf_cch += y.Item2 * (1 - y.Item3 / 100) * y.Item4;
-
             }
             foreach (var y in _sf_sf)
             {
                 sf_sf += y.Item2 * (1 - y.Item3 / 100) * y.Item4;
-
             }
             sumOutput_PV = sumRemnant_PV - sf_cch;//总残存 - 烧返和除尘灰的干料量
                                                   //sumOutput_PV = sumRemnant_PV - Silo[7].flow_avg * (1 - Silo[7].h2o_use/100) * Silo[7].use - Silo[8].flow_avg * (1 - Silo[8].h2o_use/100) * Silo[8].use - Silo[13].flow_avg * (1 - Silo[13].h2o_use/100) * Silo[13].use - Silo[14].flow_avg * (1 - Silo[14].h2o_use/100) * Silo[14].use;
@@ -5028,7 +4929,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
 
             if (sumMix_Wet_PV > 0)
             {
-
                 sinterAly[0] = sumTFe / sumRemnant_PV * 100;                        //烧结矿--PV_TFE
                 //20200808 lt 公式问题
                 //  sinterAly[1] = (m_PV * sumC / sumMix_Dry_PV * 100) / sumRemnant_PV * 100;//烧结矿--PV_FeO
@@ -5070,8 +4970,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                     _ret.Item2.Add(sinterAly[i]);//用于插入配料1Min结果表
                 }
 
-
-
                 _ret.Item2.Add(sumLOT / sumMix_Dry_PV * 100);            //混合料--实际下料量计算混合料综合烧损
                 _ret.Item2.Add(sumH2O_1 / sumMix_Wet_PV);                //混合料--采集水分计算的混合料原始水分含量
                 _ret.Item2.Add(sumH2O_2 / sumMix_Wet_PV);                //混合料--实际水分计算的混合料原始水分含量
@@ -5083,7 +4981,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 _ret.Item2.Add(sumMix_Dry_PV);                           //实际下料量计算总干料量
                 _ret.Item2.Add(sumOutput_PV / 60);                       //实际下料量计算的每分钟理论产量(单位：t/min)
                 _ret.Item2.Add(FuelCon_PV);                              //实际下料量计算的理论燃耗(干基)（单位：kg/t）
-                                                                         // _ret.Item2.Add(Burn_Back_Ratio_PV);                     //实际下料计算烧返矿百分比（干） 
+                                                                         // _ret.Item2.Add(Burn_Back_Ratio_PV);                     //实际下料计算烧返矿百分比（干）
                 _ret.Item2.Add(BurnLoss_Ratio_PV);                      //实际下料计算综合烧损(%)
 
                 return _ret;
@@ -5096,17 +4994,17 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             Tuple<int, List<float>> _rets = new Tuple<int, List<float>>(-8017, new List<float>());
             return _rets; //基本数据错误,烧结矿PV产量 <= 0
         }
+
         /// <summary>
-        /// 
+        ///
         /// 当前配比% curpb
         /// 配比ID sid
-        /// 
+        ///
         /// </summary>
         public int FeedBLCompute(int sid, float curpb)
         {
-
             DBSQL _mdb = new DBSQL(_connstring);
-            //根据配比ID，查询对应的下料口 
+            //根据配比ID，查询对应的下料口
             //下料口状态 仓号 下料口号 分仓系数 按照配比ID获取
             string sql = "select MAT_L2_XLKZT,MAT_L2_CH,MAT_L2_XLK,MAT_L2_FCXS from dbo.CFG_MAT_L2_XLK_INTERFACE where MAT_PB_ID=" + sid;
             //执行sql语句
@@ -5177,7 +5075,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 //
             }
 
-
             return 0;
         }
 
@@ -5185,11 +5082,11 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
         // 湿设定下料量计算
         //
         /// <summary>
-        /// 
+        ///
         /// 当前配比% curpb
         /// 配比ID sid
         /// 总量SP
-        /// spVal 总料量 
+        /// spVal 总料量
         /// </summary>
         public int FeedLLCompute(float spVal)
         {
@@ -5225,7 +5122,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             //仓号，下料口，下料量
             Dictionary<int, Tuple<int, int, float>> FeedXL = new Dictionary<int, Tuple<int, int, float>>();
             Dictionary<int, float> _New = new Dictionary<int, float>();
-            //配比ID  设定下料量和 
+            //配比ID  设定下料量和
             string sql_1 = "select p.MAT_PB_ID,SUM(p.MAT_L2_SDXL) as sumxl from dbo.CFG_MAT_L2_XLK_INTERFACE p  where p.MAT_L2_XLKZT=1  group by p.MAT_PB_ID  order by p.MAT_PB_ID";
             // string sql_1 = "select p.MAT_PB_ID,SUM(p.MAT_L2_SDXL) as sumxl from dbo.CFG_MAT_L2_XLK_INTERFACE p  where p.MAT_L2_SIGN=0  and p.MAT_L2_XLKZT=1  group by p.MAT_PB_ID  order by p.MAT_PB_ID";
             DataTable _dtt = _mdb.GetCommand(sql_1);
@@ -5328,7 +5225,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             //    }
             //}
 
-
             //更新数据库
             for (int i = 0; i < _vdt.Count(); i++)
             {
@@ -5342,8 +5238,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                     string logstr = " 下料量数据更新成功(sql =" + usql + ")";
 
                     Console.WriteLine("下料量数据更新成功(sql={0})", usql);
-
-
                 }
                 else
                 {
@@ -5396,8 +5290,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 }
                 //
             }
-
-
         }
 
         /// <summary>
@@ -5470,7 +5362,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
         /// <returns></returns>
         public int FeedAdd(string matName)
         {
-
             return 0;
         }
 
@@ -5564,11 +5455,9 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 }
             }
 
-
             //查询启动状态的仓、分仓系数以及配比值
             //string sql_1 = "select w.MAT_L2_CH,w.SumCol,w.SumCol*t.peibizhi as PbVal from (select k.MAT_L2_CH,SUM(k.MAT_L2_FCXS) as SumCol from dbo.CFG_MAT_L2_XLK_INTERFACE k " +
             //                "where k.MAT_L2_XLKZT = 1 group by k.MAT_L2_CH) w inner join dbo.CFG_MAT_L2_PBSD_INTERFACE t  on w.MAT_L2_CH = t.canghao where t.category=0";
-
 
             //查询仓号，分仓系数/分仓系数和  ,配比ID, where 下料口为启动状态=1 连接 配置值 配比名称 仓号 所属分类
             string sql_1 = "select *  from (((select k.MAT_L2_CH, k.MAT_L2_FCXS / w.SumCol as BL from dbo.CFG_MAT_L2_XLK_INTERFACE k "
@@ -5602,20 +5491,17 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                         float _temp = noFuel[p0] + p1;
                         noFuel.Remove(p0);
                         noFuel.Add(p0, _temp);
-
                     }
                     else
                     {
                         noFuel.Add(p0, p1);
                     }
-
                 }
             }
 
-
-
             return new Tuple<Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>>, Dictionary<int, float>>(_rs, noFuel);
         }
+
         private Tuple<Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>>, Dictionary<int, float>> houseDataCRM()
         {
             //初始化数据库
@@ -5669,7 +5555,11 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                     //if (p1 == 3)
                     //    p27 = p27 / 2;
 
+                    // Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>> trs = new Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>(p0, p1, p2, p3, p4, p5, p7s, new Tuple<int, float>(p26, p27));
+                    //20210409 item1 索引吧仓号换位配比值
+
                     Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>> trs = new Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>(p0, p1, p2, p3, p4, p5, p7s, new Tuple<int, float>(p26, p27));
+
                     if (_rs.ContainsKey(p1))
                     {
                         _rs[p1].Add(trs);
@@ -5725,16 +5615,13 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                         float _temp = noFuel[p0] + p1;
                         noFuel.Remove(p0);
                         noFuel.Add(p0, _temp);
-
                     }
                     else
                     {
                         noFuel.Add(p0, p1);
                     }
-
                 }
             }
-
 
             return new Tuple<Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>>, Dictionary<int, float>>(_rs, noFuel);
         }
@@ -5752,7 +5639,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
 
         //    float R_Aim_md = R_Aim + R_md;//目标碱度+R调整值
         //    float C_Aim_md = C_Aim + C_md;//目标含碳+C调整值
-
 
         //    float[] FuelAly = new float[20];          //燃料加权平均成分数组--包含20个成分
         //    float[] FluxAly = new float[20];          //熔剂加权平均成分数组--包含20个成分
@@ -5774,15 +5660,12 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
         //    float L_CaO = 0;            //熔剂调整仓熔剂有效CaO
         //    float L_SiO2 = 0;           //熔剂调整仓熔剂有效SiO2
 
-
         //    //  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19
         //    // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO, ZnO    //宁钢检化验成分排序
-        //    //	                                             烧损         灰分 挥发分      
-
+        //    //	                                             烧损         灰分 挥发分
 
         //    /*20191224先根据配比和仓号的对应关系，对每个料仓是否为燃料和熔剂进行标记,根据标记情况选出熔剂和燃料仓号*/
         //    var hrs = houseData();
-
 
         //    for (int i = 0; i < 20; i++)//根据选择出的熔剂和燃料仓号，求出燃料和熔剂的加权平均成分
         //    {
@@ -5891,7 +5774,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             float R_Aim_md = R_Aim + R_md;//目标碱度+R调整值
             float C_Aim_md = C_Aim + C_md;//目标含碳+C调整值
 
-
             float[] FuelAly = new float[30];          //燃料加权平均成分数组--包含30个成分
             float[] FluxAly = new float[30];          //熔剂加权平均成分数组--包含30个成分
 
@@ -5912,15 +5794,12 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             float L_CaO = 0;            //熔剂调整仓熔剂有效CaO
             float L_SiO2 = 0;           //熔剂调整仓熔剂有效SiO2
 
-
             //  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19
             // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO, ZnO    //宁钢检化验成分排序
-            //	                                             烧损         灰分 挥发分      
-
+            //	                                             烧损         灰分 挥发分
 
             /*20191224先根据配比和仓号的对应关系，对每个料仓是否为燃料和熔剂进行标记,根据标记情况选出熔剂和燃料仓号*/
             var hrs = houseData();
-
 
             for (int i = 0; i < 30; i++)//根据选择出的熔剂和燃料仓号，求出燃料和熔剂的加权平均成分
             {
@@ -5976,7 +5855,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                         break;
                     }
                 }
-
             }
 
             ////碱度调整仓原料的含碳量,工艺上不可能大于等于目标含碳量
@@ -6015,6 +5893,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 return new Tuple<int, float, float>(-8013, 0, 0);
             }
         }
+
         /// <summary>
         /// 计算溶剂、燃料、白云石的配比
         /// </summary>
@@ -6035,7 +5914,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             float R_Aim_md = R_Aim + R_md;//目标碱度+R调整值
             float C_Aim_md = C_Aim + C_md;//目标含碳+C调整值
             float Mg_Aim_md = Mg_Aim + Mg_md;//目标含碳+Mg调整值
-
 
             float[] FuelAly = new float[30];          //燃料加权平均成分数组--包含30个成分
             float[] FluxAly = new float[30];          //熔剂加权平均成分数组--包含30个成分
@@ -6081,12 +5959,12 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
 
             //  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19
             // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO, ZnO    //宁钢检化验成分排序
-            //	                                             烧损         灰分 挥发分      
+            //	                                             烧损         灰分 挥发分
 
             //20201127
             /*
              /  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19,  20, 21, 22, 23, 24, 25, 26, 27, 28,  29
-            // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO,  ZnO, F, As, Cu, Pb, Zn, K,  Na, Cr, Ni, MnO  //检化验成分排序	
+            // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO,  ZnO, F, As, Cu, Pb, Zn, K,  Na, Cr, Ni, MnO  //检化验成分排序
              */
             //20201127
 
@@ -6100,7 +5978,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             /// value:配比值
             /// </returns>
             var hrs = houseDataCRM();
-
 
             for (int i = 0; i < 30; i++)//根据选择出的熔剂和燃料仓号，求出燃料和熔剂的加权平均成分
             {
@@ -6130,29 +6007,28 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 FuelTurn = _class.FindIndex(x => x == 1) + 1;
                 DolyTurn = _class.FindIndex(x => x == 4) + 1;
 
-
-
                 for (int j = 0; j < hrs.Item1[2].Count; j++)
                 {
-
-                    if (hrs.Item1[2][j].Item1 == SolvTurn)
+                    // if (hrs.Item1[2][j].Item1 == SolvTurn)
+                    //20210409修改（考虑特殊情况。判断特殊配比是通过仓号进行判断，若出现某特殊配比在返矿下面，会出现配比id对应仓号问题，修改为按照配比id进行查询）@LT
+                    if (hrs.Item1[2][j].Rest.Item1 == SolvTurn)
                     {
                         sumFuelChild += hrs.Item1[2][j].Item7[i] * hrs.Item1[2][j].Item5 * hrs.Item1[2][j].Item6;
                         //sumFuelMother += hrs.Item1[2][j].Item5 * hrs.Item1[2][j].Item6;
                         break;
                     }
-
                 }
                 FuelAly[i] = sumFuelChild;// / sumFuelMother;
                 for (int j = 0; j < hrs.Item1[1].Count; j++)
                 {
-                    if (hrs.Item1[1][j].Item1 == FuelTurn)
+                    // if (hrs.Item1[1][j].Item1 == FuelTurn)
+                    //20210409修改（考虑特殊情况。判断特殊配比是通过仓号进行判断，若出现某特殊配比在返矿下面，会出现配比id对应仓号问题，修改为按照配比id进行查询）@LT
+                    if (hrs.Item1[1][j].Rest.Item1 == FuelTurn)
                     {
                         sumFluxChild += hrs.Item1[1][j].Item7[i] * hrs.Item1[1][j].Item5 * hrs.Item1[1][j].Item6;
                         // sumFluxMother += hrs.Item1[1][j].Item5 * hrs.Item1[1][j].Item6;
                         break;
                     }
-
                 }
                 FluxAly[i] = sumFluxChild;// / sumFluxMother;
 
@@ -6164,7 +6040,9 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 //修改类别标志位 标志位3为4（白云石）
                 for (int j = 0; j < hrs.Item1[4].Count; j++)
                 {
-                    if (hrs.Item1[4][j].Item1 == DolyTurn)
+                    //if (hrs.Item1[4][j].Item1 == DolyTurn)
+                    //20210409修改（考虑特殊情况。判断特殊配比是通过仓号进行判断，若出现某特殊配比在返矿下面，会出现配比id对应仓号问题，修改为按照配比id进行查询）@LT
+                    if (hrs.Item1[4][j].Rest.Item1 == DolyTurn)
                     {
                         sumDoloChild += hrs.Item1[4][j].Item7[i] * hrs.Item1[4][j].Item5 * hrs.Item1[4][j].Item6;
                         // sumDoloMother += hrs.Item1[4][j].Item5 * hrs.Item1[4][j].Item6;
@@ -6202,7 +6080,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                             sumRemnant += x.Value * (100 - y.Item7[10]) / 100;
                             sumC += x.Value * y.Item7[8] / 100;
                             sumMgO += x.Value * y.Item7[5] / 100;
-
                         }
                         break;
                     }
@@ -6220,10 +6097,10 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
 
                             sumCaO += x.Value * y.Item7[2] / 100 * y.Item7[13] / 100;
                             sumSiO2 += x.Value * y.Item7[3] / 100 * y.Item7[13] / 100;
-                             sumBill += x.Value;//除 石灰石X1,燃料X2 以外原料总配比数
+                            sumBill += x.Value;//除 石灰石X1,燃料X2 以外原料总配比数
 
                             //20210204
-                          // sumBill += x.Value / 2;//除 石灰石X1,燃料X2 以外原料总配比数
+                            // sumBill += x.Value / 2;//除 石灰石X1,燃料X2 以外原料总配比数
                             sumRemnant += x.Value * y.Item7[13] / 100;
                             sumC += x.Value * y.Item7[8] / 100;
                             sumMgO += x.Value * y.Item7[5] / 100 * y.Item7[13] / 100;
@@ -6232,18 +6109,16 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                         {
                             sumCaO += x.Value * y.Item7[2] / 100;
                             sumSiO2 += x.Value * y.Item7[3] / 100;
-                            sumBill += x.Value ;
+                            sumBill += x.Value;
                             //20210204
-                         // sumBill += x.Value / 2;
+                            // sumBill += x.Value / 2;
                             sumRemnant += x.Value * (100 - y.Item7[10]) / 100;
                             sumC += x.Value * y.Item7[8] / 100;
                             sumMgO += x.Value * y.Item7[5] / 100;
-
                         }
                         break;
                     }
                 }
-
             }
 
             ////碱度调整仓原料的含碳量,工艺上不可能大于等于目标含碳量
@@ -6290,7 +6165,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             Fuel_Bill = (G * F - H * E) / (G - E);
             Dolo_Bill = (H - F) / (G - E);
 
-
             if ((Flux_Bill > 0) && (Fuel_Bill > 0) && (Dolo_Bill > 0))
             {
                 return new Tuple<int, float, float, float>(0, Flux_Bill, Fuel_Bill, Dolo_Bill);
@@ -6302,7 +6176,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 return new Tuple<int, float, float, float>(-9014, 0, 0, 0);
             }
         }
-
 
         /// <summary>
         /// 新增模型数据采集
@@ -6444,13 +6317,11 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                 {
                     return new Tuple<bool, List<float>>(false, null);
                 }
-
             }
             else
             {
                 return new Tuple<bool, List<float>>(false, null);
             }
-
         }
 
         //20200914 修改逻辑
@@ -6466,13 +6337,11 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
         /// </returns>
         public Tuple<int, float, float> SamplePlus(string vStrBatch, int mode)
         {
-
             float Cur_Test = 0;//本次检测值
             float Last_Test = 0;//上次检测值
             if (vStrBatch == null || vStrBatch.Length < 10)
             {
                 return new Tuple<int, float, float>(-1, 0, 0);
-
             }
             else
             {
@@ -6514,21 +6383,14 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
                             }
                             return new Tuple<int, float, float>(1, Cur_Test, Last_Test);
                         }
-
                     }
-
                 }
                 else
                 {
                     return new Tuple<int, float, float>(0, 0, 0);
                 }
-
             }
         }
-
-
-
-
 
         /// <summary>
         /// 获取X表最近一条记录，X表时间字段默认为timestamp
@@ -6554,8 +6416,8 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             {
                 return _vdt.ElementAt(0);
             }
-
         }
+
         /// <summary>
         /// 计算时间前n条数据的某些字段的平均值
         /// </summary>
@@ -6584,7 +6446,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             return null;
         }
 
-
         /// <summary>
         /// 界面滚动消息插入
         /// </summary>
@@ -6609,9 +6470,6 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             {
                 mixlog.writelog("插入LogTable失败(" + _inssql + ")", 0);
             }
-
         }
-
     }
-
 }

@@ -69,7 +69,7 @@ namespace LY_SINTER.PAGE.Quality
         /// <summary>
         /// 烧结矿成分趋势 预测数据表使用字段
         /// </summary>
-        string CURVE_NAME_YC_FIELD = "SINCAL_SIN_SIN_PV_TFE";
+        string CURVE_NAME_YC_FIELD = "SINCAL_SIN_PV_TFE";
         /// <summary>
         /// 烧结矿成分趋势 检测数据表
         /// </summary>
@@ -215,7 +215,7 @@ namespace LY_SINTER.PAGE.Quality
                     string sql3 = "select  " +
                     "ROW_NUMBER() OVER(ORDER BY TIMESTAMP desc) AS ID," +
                     "TIMESTAMP," +
-                    "cast(SINCAL_SIN_SIN_PV_TFE as decimal(18,2)) AS TFE," +
+                    "cast(SINCAL_SIN_PV_TFE as decimal(18,2)) AS TFE," +
                     "cast(SINCAL_SIN_PV_CAO as decimal(18,2)) AS CAO," +
                     "cast(SINCAL_SIN_PV_SIO2 as decimal(18,2)) AS SIO2," +
                     "cast(SINCAL_SIN_PV_AL2O3 as decimal(18,2)) AS AL2O3," +
@@ -295,7 +295,7 @@ namespace LY_SINTER.PAGE.Quality
                     string sql3 = "select top(20) " +
                     "ROW_NUMBER() OVER(ORDER BY TIMESTAMP desc) AS ID," +
                     "TIMESTAMP," +
-                    "cast(SINCAL_SIN_SIN_PV_TFE as decimal(18,2)) AS TFE," +
+                    "cast(SINCAL_SIN_PV_TFE as decimal(18,2)) AS TFE," +
                     "cast(SINCAL_SIN_PV_CAO as decimal(18,2)) AS CAO," +
                     "cast(SINCAL_SIN_PV_SIO2 as decimal(18,2)) AS SIO2," +
                     "cast(SINCAL_SIN_PV_AL2O3 as decimal(18,2)) AS AL2O3," +
@@ -499,7 +499,7 @@ namespace LY_SINTER.PAGE.Quality
             {
                 //预测
                 CURVE_NAME_YC = "MC_MIXCAL_RESULT_1MIN";
-                CURVE_NAME_YC_FIELD = "SINCAL_SIN_SIN_PV_TFE";
+                CURVE_NAME_YC_FIELD = "SINCAL_SIN_PV_TFE";
 
             }
             else if (_FLAG_PAR == 2)
@@ -854,8 +854,8 @@ namespace LY_SINTER.PAGE.Quality
 
                     }
 
-                    lChartPlus100.LBindData<string, double>("YCZ", _List_His_TIME, _List_His_YC, System.Windows.Media.Brushes.Green, "时间", "预测值");
-                    lChartPlus100.LBindData<string, double>("JCZ", _List_His_TIME, _List_His_JC, System.Windows.Media.Brushes.Red, "时间", "检测值");
+                    lChartPlus100.LBindData<string, double>("YCZ", _List_His_TIME, _List_His_YC, System.Windows.Media.Brushes.Green, "时间", "");
+                    lChartPlus100.LBindData<string, double>("JCZ", _List_His_TIME, _List_His_JC, System.Windows.Media.Brushes.Red, "时间", " ");
 
 
                 }

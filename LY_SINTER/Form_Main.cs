@@ -24,57 +24,71 @@ namespace LY_SINTER
 {
     public partial class Form_Main : Form
     {
-        Message_Logging logTable = new Message_Logging();//主框架通用方法
-        MIX_PAGE_MODEL mIX_PAGE = new MIX_PAGE_MODEL();//配料页面方法
+        private Message_Logging logTable = new Message_Logging();//主框架通用方法
+        private MIX_PAGE_MODEL mIX_PAGE = new MIX_PAGE_MODEL();//配料页面方法
+
         /// <summary>
         /// 最大可以显示多少页面
         /// </summary>
-        int PAGE_COUNT = 3;
-        MIX_Intelligent _PAGE = new MIX_Intelligent();//配料页面
+        private int PAGE_COUNT = 3;
+
+        private MIX_Intelligent _PAGE = new MIX_Intelligent();//配料页面
+
         #region 定时器声明
+
         /// <summary>
         /// 原料未处理弹出框
         /// </summary>
         public System.Timers.Timer _Timer1 { get; set; }
+
         /// <summary>
         /// 启停信号变化
         /// </summary>
         public System.Timers.Timer _Timer2 { get; set; }
+
         /// <summary>
         /// 水分or再用成分发生变化
         /// </summary>
         public System.Timers.Timer _Timer3 { get; set; }
+
         /// <summary>
         /// 消息通知
         /// </summary>
         public System.Timers.Timer _Timer4 { get; set; }
-        #endregion
+
+        #endregion 定时器声明
+
         public vLog _vLog { get; set; }
         public static Ingredient_auto _Auto;//未处理新原料弹出框
+
         /// <summary>
         /// 选项卡数量111
-        /// 
+        ///
         /// </summary>
-        int index;
-        int grade = User_Level.Authority;
-        string user_name = User_Level.User_name;
-        DBSQL dBSQL = new DBSQL(DataBase.ConstParameters.strCon);
+        private int index;
+
+        private int grade = User_Level.Authority;
+        private string user_name = User_Level.User_name;
+        private DBSQL dBSQL = new DBSQL(DataBase.ConstParameters.strCon);
+
         /// <summary>
         /// 中控权限
         /// </summary>
-        bool FALG_Oper;
+        private bool FALG_Oper;
+
         public Form_Main()
         {
             InitializeComponent();
             if (_vLog == null)
                 _vLog = new vLog(".\\log_Page\\Main\\");
-            FALG_Oper =  mIX_PAGE._GetIp_Jurisdiction();//获取现场权限
+            FALG_Oper = mIX_PAGE._GetIp_Jurisdiction();//获取现场权限
             Timer_Init();//定时器声明
             Show_INIT();//添加智能配料
             Navigation_INIT();//导航栏
             tableLayoutPanel2.RowStyles[4].Height = 0;//底部消息通知框隐藏
             simpleButton1.Text = "|||";//底部消息通知框隐藏
         }
+
         /// <summary>
         /// 定时器声明
         /// </summary>
@@ -84,7 +98,6 @@ namespace LY_SINTER
             _Timer1.Elapsed += (x, y) => { Timer1_Tick_1(); };//响应事件
             _Timer1.Enabled = true;
             _Timer1.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
-
 
             _Timer2 = new System.Timers.Timer(5000);//初始化颜色变化定时器响应事件
             _Timer2.Elapsed += (x, y) => { Timer1_Tick_2(); };//响应事件
@@ -103,12 +116,12 @@ namespace LY_SINTER
         }
 
         #region 定时器响应事件
+
         /// <summary>
         /// 三级传入新成分弹出框
         /// </summary>
         private void Timer1_Tick_1()
         {
-
             Action invokeAction = new Action(Timer1_Tick_1);
             if (this.InvokeRequired)
             {
@@ -120,6 +133,7 @@ namespace LY_SINTER
                 Pop_show(2);
             }
         }
+
         /// <summary>
         /// 启停信号变化弹出框
         /// </summary>
@@ -132,10 +146,11 @@ namespace LY_SINTER
             }
             else
             {
-                if(FALG_Oper)
-                  Start_Stop_FLAG();
+                if (FALG_Oper)
+                    Start_Stop_FLAG();
             }
         }
+
         /// <summary>
         /// 智能配料水分或者成分发生变化
         /// </summary>
@@ -152,6 +167,7 @@ namespace LY_SINTER
                     INGRED_WATER_CHANGE();
             }
         }
+
         /// <summary>
         /// 消息通知消息
         /// </summary>
@@ -165,6 +181,7 @@ namespace LY_SINTER
             else
             {
                 #region 消息检索弹出框
+
                 string sql_MC_MESSAGE_INTERFACE = "select TIMESTAMP,MES_WEEK,MES_CONCENT,MES_PERSON from MC_MESSAGE_INTERFACE where MES_FLAG = '0'";
                 DataTable data_MC_MESSAGE_INTERFACE = dBSQL.GetCommand(sql_MC_MESSAGE_INTERFACE);
                 if (data_MC_MESSAGE_INTERFACE.Rows.Count > 0 && data_MC_MESSAGE_INTERFACE != null)
@@ -173,10 +190,13 @@ namespace LY_SINTER
                     tableLayoutPanel2.RowStyles[4].Height = 10;
                     simpleButton1.Text = "||||";
                 }
-                #endregion
+
+                #endregion 消息检索弹出框
             }
         }
-        #endregion
+
+        #endregion 定时器响应事件
+
         /// <summary>
         /// 智能配料启停状态变化判断
         /// </summary>
@@ -206,6 +226,7 @@ namespace LY_SINTER
                 _vLog.writelog("Start_Stop_FLAG方法失败" + ee.ToString(), -1);
             }
         }
+
         /// <summary>
         /// 智能配料水分或者成分发生变化
         /// </summary>
@@ -244,9 +265,7 @@ namespace LY_SINTER
             {
                 _vLog.writelog("INGRED_WATER_CHANGE方法调用失败" + ee.ToString(), -1);
             }
-
         }
-
 
         /// <summary>
         /// 周期查询原料新成分弹出框
@@ -260,6 +279,7 @@ namespace LY_SINTER
                 if (_flag == 1)
                 {
                     #region 原料保护弹出框
+
                     string sql_M_MATERIAL_ANALYSIS_FLAG = "select L3_CODE from M_MATERIAL_ANALYSIS where FLAG = 1";
                     DataTable data_M_MATERIAL_ANALYSIS_FLAG = dBSQL.GetCommand(sql_M_MATERIAL_ANALYSIS_FLAG);
                     if (data_M_MATERIAL_ANALYSIS_FLAG.Rows.Count > 0)
@@ -273,14 +293,14 @@ namespace LY_SINTER
                         {
                             _Auto.Activate();
                         }
-
                     }
-                    #endregion
+
+                    #endregion 原料保护弹出框
                 }
                 else if (_flag == 2)
                 {
                     //B_MATERIAL_CODE
-                    //ProcessType	varchar(1)	数据处理类型	（i：插入；u：更新；d：删除）	
+                    //ProcessType	varchar(1)	数据处理类型	（i：插入；u：更新；d：删除）
 
                     //删除物料规则功能
                     var sql_del = "select * from B_MATERIAL_CODE where ProcessType = 'D' AND FLAG = 1";
@@ -295,9 +315,9 @@ namespace LY_SINTER
                             {
                                 _vLog.writelog("三级传入" + _DEL.Rows[x]["MaterialCode"].ToString() + "编码，M_MATERIAL_COOD表对应规则删除成功", 0);
 
-                                var sql_update = " update B_MATERIAL_CODE set FLAG = 2 where MaterialCode = '"+ _DEL.Rows[x]["MaterialCode"].ToString() + "'";
+                                var sql_update = " update B_MATERIAL_CODE set FLAG = 2 where MaterialCode = '" + _DEL.Rows[x]["MaterialCode"].ToString() + "'";
                                 int _count = dBSQL.CommandExecuteNonQuery(sql_update);
-                                if(_count != 1)
+                                if (_count != 1)
                                     _vLog.writelog("三级传入" + _DEL.Rows[x]["MaterialCode"].ToString() + "编码，B_MATERIAL_CODE标志位还原错误", -1);
                             }
                             else
@@ -329,7 +349,6 @@ namespace LY_SINTER
                             }
                         }
                     }
-
                 }
             }
             catch (Exception ee)
@@ -337,8 +356,8 @@ namespace LY_SINTER
                 var mistake = "Pop_show方法失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
             }
-
         }
+
         /// <summary>
         /// 初始化添加智能配料&主页面
         /// </summary>
@@ -354,6 +373,7 @@ namespace LY_SINTER
             tabControl1.SelectedTab = tpg;
             tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
         }
+
         /// <summary>
         /// 导航栏
         /// </summary>
@@ -388,22 +408,18 @@ namespace LY_SINTER
                                 navBarControl1.Items.Add(nbItem1);
                                 navBarControl.ItemLinks.AddRange(new NavBarItemLink[] { new NavBarItemLink(nbItem1) });
                             }
-
-
                         }
                     }
 
                     // NavBarGroup nbGroup1 = new NavBarGroup();
-
                 }
             }
             catch (Exception ee)
             {
                 _vLog.writelog("Navigation_INIT方法失败" + ee.ToString(), -1);
             }
-
-
         }
+
         /// <summary>
         /// 导航栏点击事件
         /// </summary>
@@ -413,6 +429,7 @@ namespace LY_SINTER
         {
             Add_TabPage(e.Link.Caption);//添加页面
         }
+
         /// <summary>
         /// 添加页面
         /// </summary>
@@ -425,9 +442,8 @@ namespace LY_SINTER
             }
             else
             {
-
-
                 #region 状态监控
+
                 if (str == "料流定位监控页面")
                 {
                     TabPage tpg = new TabPage(str);
@@ -440,11 +456,9 @@ namespace LY_SINTER
                     mainUser.Show();
                     tabControl1.SelectedTab = tpg;
                     tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
-
                 }
                 else if (str == "生产实时曲线页面")
                 {
-
                     TabPage tpg = new TabPage(str);
                     shishiquxianchaxun _PAGE = new shishiquxianchaxun();
                     tpg.Controls.Add(_PAGE);
@@ -455,12 +469,26 @@ namespace LY_SINTER
                     tabControl1.SelectedTab = tpg;
                     tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
-                #endregion
+                else if (str == "料流连续监控页面")
+                {
+                    TabPage tpg = new TabPage(str);
+                    MatFlowMonitor mainUser = new MatFlowMonitor();
+
+                    tpg.Controls.Add(mainUser);
+                    tabControl1.TabPages.Add(tpg);
+                    mainUser.BorderStyle = BorderStyle.None;
+                    mainUser.Dock = DockStyle.Fill;
+                    mainUser.Show();
+                    tabControl1.SelectedTab = tpg;
+                    tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
+                }
+
+                #endregion 状态监控
 
                 #region 质量优化
+
                 else if (str == "智能配料计算模型")
                 {
-
                     //TabPage tpg = new TabPage(str);
                     //zhinengpeiliao _PAGE = new zhinengpeiliao();
                     //tpg.Controls.Add(_PAGE);
@@ -473,7 +501,6 @@ namespace LY_SINTER
                 }
                 else if (str == "质量自动控制模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Quality_automatic _shaojiezhongdian = new Quality_automatic();
                     tpg.Controls.Add(_shaojiezhongdian);
@@ -486,7 +513,6 @@ namespace LY_SINTER
                 }
                 else if (str == "结矿成分预测模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Mine_Forecast _shaojiezhongdian = new Mine_Forecast();
                     tpg.Controls.Add(_shaojiezhongdian);
@@ -499,7 +525,6 @@ namespace LY_SINTER
                 }
                 else if (str == "原料入仓追踪模型")
                 {
-
                     //TabPage tpg = new TabPage(str);
                     //yuanliaorucang1 _PAGE = new yuanliaorucang1();
                     //tpg.Controls.Add(_PAGE);
@@ -512,7 +537,6 @@ namespace LY_SINTER
                 }
                 else if (str == "返矿平衡控制模型")
                 {
-                    
                     TabPage tpg = new TabPage(str);
                     Balance_Mine _shaojiezhongdian = new Balance_Mine();
                     tpg.Controls.Add(_shaojiezhongdian);
@@ -525,7 +549,6 @@ namespace LY_SINTER
                 }
                 else if (str == "生产组织计划模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     shengchanzuzhi _PAGE = new shengchanzuzhi();
                     tpg.Controls.Add(_PAGE);
@@ -538,7 +561,6 @@ namespace LY_SINTER
                 }
                 else if (str == "生产原料消耗模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     shengchanyuanliaoxiaohao _PAGE = new shengchanyuanliaoxiaohao();
                     tpg.Controls.Add(_PAGE);
@@ -551,7 +573,6 @@ namespace LY_SINTER
                 }
                 else if (str == "铁矿粉基础性能")
                 {
-
                     TabPage tpg = new TabPage(str);
                     tiekuangfenjichuxingneng _PAGE = new tiekuangfenjichuxingneng();
                     tpg.Controls.Add(_PAGE);
@@ -564,7 +585,6 @@ namespace LY_SINTER
                 }
                 else if (str == "烧结其他原料基础性能")
                 {
-
                     TabPage tpg = new TabPage(str);
                     shaojieqitayuanliaojcxn _PAGE = new shaojieqitayuanliaojcxn();
                     tpg.Controls.Add(_PAGE);
@@ -577,7 +597,6 @@ namespace LY_SINTER
                 }
                 else if (str == "高炉入炉原料基础性能")
                 {
-
                     TabPage tpg = new TabPage(str);
                     gaoluruluyuanliao _PAGE = new gaoluruluyuanliao();
                     tpg.Controls.Add(_PAGE);
@@ -590,7 +609,6 @@ namespace LY_SINTER
                 }
                 else if (str == "优化配矿计算模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     youhuapeikuangjisuan _PAGE = new youhuapeikuangjisuan();
                     tpg.Controls.Add(_PAGE);
@@ -601,9 +619,11 @@ namespace LY_SINTER
                     tabControl1.SelectedTab = tpg;
                     tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
-                #endregion
+
+                #endregion 质量优化
 
                 #region 过程优化
+
                 else if (str == "加水优化控制模型")
                 {
                     TabPage tpg = new TabPage(str);
@@ -618,7 +638,6 @@ namespace LY_SINTER
                 }
                 else if (str == "矿槽料位控制模型")
                 {
-
                     //TabPage tpg = new TabPage(str);
                     //hunheliaokuangcaoliaowei _PAGE = new hunheliaokuangcaoliaowei();
                     //tpg.Controls.Add(_PAGE);
@@ -631,7 +650,6 @@ namespace LY_SINTER
                 }
                 else if (str == "烧结终点预测模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     BTP _shaojiezhongdian = new BTP();
                     tpg.Controls.Add(_shaojiezhongdian);
@@ -644,7 +662,6 @@ namespace LY_SINTER
                 }
                 else if (str == "终点偏差指导模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Deviation_guide _shaojiezhongdian = new Deviation_guide();
                     tpg.Controls.Add(_shaojiezhongdian);
@@ -657,7 +674,6 @@ namespace LY_SINTER
                 }
                 else if (str == "风箱自动启停模型")
                 {
-
                     //TabPage tpg = new TabPage(str);
                     //fengxiang _PAGE = new fengxiang();
                     //tpg.Controls.Add(_PAGE);
@@ -670,7 +686,6 @@ namespace LY_SINTER
                 }
                 else if (str == "料层透气分析模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Bed_Permeability _shaojiezhongdian = new Bed_Permeability();
                     tpg.Controls.Add(_shaojiezhongdian);
@@ -683,7 +698,6 @@ namespace LY_SINTER
                 }
                 else if (str == "烧结漏风检测模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     PreLeakAgeRate _loufenglvjiance = new PreLeakAgeRate();
                     tpg.Controls.Add(_loufenglvjiance);
@@ -694,12 +708,13 @@ namespace LY_SINTER
                     tabControl1.SelectedTab = tpg;
                     tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
-                #endregion
+
+                #endregion 过程优化
 
                 #region 数据分析
+
                 else if (str == "原料质量分析模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Raw_analysis _PAGE = new Raw_analysis();
                     tpg.Controls.Add(_PAGE);
@@ -712,7 +727,6 @@ namespace LY_SINTER
                 }
                 else if (str == "设备管理维护模型")
                 {
-
                     //TabPage tpg = new TabPage(str);
                     //shebeiguanliweihuyemian _PAGE = new shebeiguanliweihuyemian();
                     //tpg.Controls.Add(_PAGE);
@@ -725,7 +739,6 @@ namespace LY_SINTER
                 }
                 else if (str == "成品质量分析模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Ripe_analysis _PAGE = new Ripe_analysis();
                     tpg.Controls.Add(_PAGE);
@@ -738,7 +751,6 @@ namespace LY_SINTER
                 }
                 else if (str == "生产参数分析模型")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Production_state _PAGE = new Production_state();
                     tpg.Controls.Add(_PAGE);
@@ -750,26 +762,25 @@ namespace LY_SINTER
                     tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
 
-                #endregion
+                #endregion 数据分析
 
                 #region 历史数据
-                else if (str == "生产历史趋势曲线")
+
+                else if (str == "历史数据趋势查询")
                 {
+                    TabPage tpg = new TabPage(str);
+                    lishiqushiquxianchaxun1 _PAGE = new lishiqushiquxianchaxun1();
 
-                    //TabPage tpg = new TabPage(str);
-                    //lishiqushiquxianchaxun1 _PAGE = new lishiqushiquxianchaxun1();
-
-                    //tpg.Controls.Add(_PAGE);
-                    //tabControl1.TabPages.Add(tpg);
-                    //_PAGE.BorderStyle = BorderStyle.None;
-                    //_PAGE.Dock = DockStyle.Fill;
-                    //_PAGE.Show();
-                    //tabControl1.SelectedTab = tpg;
-                    //tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
+                    tpg.Controls.Add(_PAGE);
+                    tabControl1.TabPages.Add(tpg);
+                    _PAGE.BorderStyle = BorderStyle.None;
+                    _PAGE.Dock = DockStyle.Fill;
+                    _PAGE.Show();
+                    tabControl1.SelectedTab = tpg;
+                    tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
                 else if (str == "生产历史数据查询")
                 {
-
                     //TabPage tpg = new TabPage(str);
                     //shengchanshujuxinxichaxun _PAGE = new shengchanshujuxinxichaxun();
                     //tpg.Controls.Add(_PAGE);
@@ -782,7 +793,6 @@ namespace LY_SINTER
                 }
                 else if (str == "模型调整记录查询")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Model_records _PAGE = new Model_records();
                     tpg.Controls.Add(_PAGE);
@@ -795,7 +805,6 @@ namespace LY_SINTER
                 }
                 else if (str == "生产过程匹配追踪")
                 {
-
                     //TabPage tpg = new TabPage(str);
                     //production_CSPP _PAGE = new production_CSPP();
                     //tpg.Controls.Add(_PAGE);
@@ -808,7 +817,6 @@ namespace LY_SINTER
                 }
                 else if (str == "模型使用时间查询")
                 {
-
                     //TabPage tpg = new TabPage(str);
                     //Model_Monitoring _PAGE = new Model_Monitoring();
                     //tpg.Controls.Add(_PAGE);
@@ -819,12 +827,13 @@ namespace LY_SINTER
                     //tabControl1.SelectedTab = tpg;
                     //tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
-                #endregion
+
+                #endregion 历史数据
 
                 #region 参数维护
+
                 else if (str == "原料成分维护页面")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Ingredient _PAGE = new Ingredient();
                     tpg.Controls.Add(_PAGE);
@@ -837,7 +846,6 @@ namespace LY_SINTER
                 }
                 else if (str == "原料成分保护页面")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Ingredient_Protect _PAGE = new Ingredient_Protect();
                     tpg.Controls.Add(_PAGE);
@@ -848,9 +856,8 @@ namespace LY_SINTER
                     tabControl1.SelectedTab = tpg;
                     tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
-                else if (str == "烧结生产信息记录")
+                else if (str == "生产信息记录页面")
                 {
-
                     TabPage tpg = new TabPage(str);
                     production_Records _PAGE = new production_Records();
                     tpg.Controls.Add(_PAGE);
@@ -863,7 +870,6 @@ namespace LY_SINTER
                 }
                 else if (str == "通知消息录入页面")
                 {
-
                     //TabPage tpg = new TabPage(str);
                     //tongzhixiaoxiyemian _PAGE = new tongzhixiaoxiyemian();
                     //tpg.Controls.Add(_PAGE);
@@ -876,7 +882,6 @@ namespace LY_SINTER
                 }
                 else if (str == "排班规则维护页面")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Class_Plan _PAGE = new Class_Plan();
                     tpg.Controls.Add(_PAGE);
@@ -887,11 +892,13 @@ namespace LY_SINTER
                     tabControl1.SelectedTab = tpg;
                     tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
-                #endregion
+
+                #endregion 参数维护
+
                 #region 报表
+
                 else if (str == "烧结生产报表")
                 {
-
                     TabPage tpg = new TabPage(str);
                     Report_product _PAGE = new Report_product();
                     tpg.Controls.Add(_PAGE);
@@ -902,11 +909,23 @@ namespace LY_SINTER
                     tabControl1.SelectedTab = tpg;
                     tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
-                #endregion
+                else if (str == "脱硫脱硝日报表")
+                {
+                    TabPage tpg = new TabPage(str);
+                    Report_product _PAGE = new Report_product();
+                    tpg.Controls.Add(_PAGE);
+                    tabControl1.TabPages.Add(tpg);
+                    _PAGE.BorderStyle = BorderStyle.None;
+                    _PAGE.Dock = DockStyle.Fill;
+                    _PAGE.Show();
+                    tabControl1.SelectedTab = tpg;
+                    tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
+                }
 
-
+                #endregion 报表
             }
         }
+
         /// <summary>
         /// 判重页面
         /// </summary>
@@ -915,23 +934,20 @@ namespace LY_SINTER
         /// <returns></returns>
         public bool tabControlCheckHave(TabControl tab, string _tabName)
         {
-
             index = tabControl1.TabPages.Count;
             foreach (TabPage p in tabControl1.TabPages)
             {
                 if (_tabName.Equals(p.Text))
                 {
-
                     #region 状态监控
+
                     if (_tabName == "料流定位监控页面")
                     {
-
                         MainUserControl _mainUser = (MainUserControl)p.Controls[0];
                         _mainUser.Show();
                         tabControl1.SelectedTab = p;
                         _mainUser.Timer_state();
                         return true;
-
                     }
                     //if (_tabName == "生产实时曲线页面")
                     //{
@@ -941,43 +957,36 @@ namespace LY_SINTER
                     //    //_mainUser.Timer_state();
                     //    return true;
 
-
-                    #endregion
+                    #endregion 状态监控
 
                     #region 质量优化
+
                     if (_tabName == "智能配料计算模型")
                     {
-
                         MIX_Intelligent _MIX_Intelligent = (MIX_Intelligent)p.Controls[0];
                         _MIX_Intelligent.Show();
                         tabControl1.SelectedTab = p;
                         _MIX_Intelligent.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "质量自动控制模型")
                     {
-
                         Quality_automatic _P = (Quality_automatic)p.Controls[0];
                         _P.Show();
                         tabControl1.SelectedTab = p;
                         _P.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "结矿成分预测模型")
                     {
-
                         Mine_Forecast _P = (Mine_Forecast)p.Controls[0];
                         _P.Show();
                         tabControl1.SelectedTab = p;
                         _P.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "原料入仓追踪模型")
                     {
-
                         //yuanliaorucang1 _yuanliaorucang = (yuanliaorucang1)p.Controls[0];
 
                         //_yuanliaorucang.Show();
@@ -985,28 +994,22 @@ namespace LY_SINTER
                         //tabControl1.SelectedTab = p;
                         //_yuanliaorucang.Timer_state();
                         //return true;
-
-
                     }
                     else if (_tabName == "返矿平衡控制模型")
                     {
-
                         Balance_Mine _P = (Balance_Mine)p.Controls[0];
                         _P.Show();
                         tabControl1.SelectedTab = p;
                         _P.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "混匀矿换堆模型")
                     {
-
                         //hunyunkuanghuanduimoxing _PAGE = (hunyunkuanghuanduimoxing)p.Controls[0];
                         //_PAGE.Show();
                         //tabControl1.SelectedTab = p;
                         //_PAGE.Timer_state();
                         //return true;
-
                     }
                     else if (_tabName == "生产组织计划模型")
                     {
@@ -1015,7 +1018,6 @@ namespace LY_SINTER
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "生产原料消耗模型")
                     {
@@ -1024,7 +1026,6 @@ namespace LY_SINTER
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "铁矿粉基础性能")
                     {
@@ -1033,7 +1034,6 @@ namespace LY_SINTER
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "烧结其他原料基础性能")
                     {
@@ -1042,7 +1042,6 @@ namespace LY_SINTER
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "高炉入炉原料基础性能")
                     {
@@ -1051,7 +1050,6 @@ namespace LY_SINTER
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "优化配矿计算模型")
                     {
@@ -1062,9 +1060,10 @@ namespace LY_SINTER
                         return true;
                     }
 
-                    #endregion
+                    #endregion 质量优化
 
                     #region 过程优化
+
                     else if (_tabName == "加水优化控制模型")
                     {
                         Add_Water _P = (Add_Water)p.Controls[0];
@@ -1075,13 +1074,11 @@ namespace LY_SINTER
                     }
                     else if (_tabName == "矿槽料位控制模型")
                     {
-
                         //hunheliaokuangcaoliaowei _hunheliaokuangcaoliaowei = (hunheliaokuangcaoliaowei)p.Controls[0];
                         //_hunheliaokuangcaoliaowei.Show();
                         //tabControl1.SelectedTab = p;
                         //_hunheliaokuangcaoliaowei.Timer_state();
                         //return true;
-
                     }
                     else if (_tabName == "烧结终点预测模型")
                     {
@@ -1090,7 +1087,6 @@ namespace LY_SINTER
                         tabControl1.SelectedTab = p;
                         _shaojiezhongdian.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "终点偏差指导模型")
                     {
@@ -1099,11 +1095,9 @@ namespace LY_SINTER
                         tabControl1.SelectedTab = p;
                         _shaojiezhongdian.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "风箱自动启停模型")
                     {
-
                         //fengxiang _fengxiang = (fengxiang)p.Controls[0];
                         //_fengxiang.Show();
                         //tabControl1.SelectedTab = p;
@@ -1112,46 +1106,40 @@ namespace LY_SINTER
                     }
                     else if (_tabName == "料层透气分析模型")
                     {
-
                         Bed_Permeability _shaojiezhongdian = (Bed_Permeability)p.Controls[0];
                         _shaojiezhongdian.Show();
                         tabControl1.SelectedTab = p;
                         _shaojiezhongdian.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "烧结漏风检测模型")
                     {
-
                         PreLeakAgeRate _loufenglv = (PreLeakAgeRate)p.Controls[0];
                         _loufenglv.Show();
                         tabControl1.SelectedTab = p;
                         _loufenglv.Timer_state();
                         return true;
-
                     }
-                    #endregion
+
+                    #endregion 过程优化
 
                     #region 数据分析
+
                     else if (_tabName == "原料质量分析模型")
                     {
-
                         Raw_analysis _PAGE = (Raw_analysis)p.Controls[0];
                         _PAGE.Show();
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "设备管理维护模型")
                     {
-
                         //shebeiguanliweihuyemian _PAGE = (shebeiguanliweihuyemian)p.Controls[0];
                         //_PAGE.Show();
                         //tabControl1.SelectedTab = p;
                         //_PAGE.Timer_state();
                         //return true;
-
                     }
                     else if (_tabName == "成品质量分析模型")
                     {
@@ -1160,9 +1148,7 @@ namespace LY_SINTER
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
-
                     else if (_tabName == "生产参数分析模型")
                     {
                         Production_state _PAGE = (Production_state)p.Controls[0];
@@ -1172,32 +1158,29 @@ namespace LY_SINTER
                         return true;
                     }
 
-                    #endregion
+                    #endregion 数据分析
 
                     #region 历史数据
-                    else if (_tabName == "生产历史趋势曲线")
-                    {
 
-                        //lishiqushiquxianchaxun1 _PAGE = (lishiqushiquxianchaxun1)p.Controls[0];
-                        //_PAGE.Show();
-                        //tabControl1.SelectedTab = p;
+                    else if (_tabName == "历史数据趋势查询")
+                    {
+                        lishiqushiquxianchaxun1 _PAGE = (lishiqushiquxianchaxun1)p.Controls[0];
+                        _PAGE.Show();
+                        tabControl1.SelectedTab = p;
                     }
                     else if (_tabName == "生产历史数据查询")
                     {
-
                         //shengchanshujuxinxichaxun _PAGE = (shengchanshujuxinxichaxun)p.Controls[0];
                         //_PAGE.Show();
                         //tabControl1.SelectedTab = p;
                     }
                     else if (_tabName == "模型调整记录查询")
                     {
-
                         Model_records _PAGE = (Model_records)p.Controls[0];
                         _PAGE.Show();
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "生产过程匹配追踪")
                     {
@@ -1208,7 +1191,6 @@ namespace LY_SINTER
                         //tabControl1.SelectedTab = p;
                         //_PAGE.Timer_state();
                         //return true;
-
                     }
                     else if (_tabName == "模型使用时间查询")
                     {
@@ -1221,9 +1203,10 @@ namespace LY_SINTER
                         //return true;
                     }
 
-                    #endregion
+                    #endregion 历史数据
 
                     #region 参数维护
+
                     else if (_tabName == "原料成分维护页面")
                     {
                         // Ingredient ingredient = new Ingredient();
@@ -1233,7 +1216,6 @@ namespace LY_SINTER
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "原料成分保护页面")
                     {
@@ -1242,21 +1224,17 @@ namespace LY_SINTER
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
-                    else if (_tabName == "烧结生产信息记录")
+                    else if (_tabName == "生产信息记录页面")
                     {
                         production_Records _PAGE = (production_Records)p.Controls[0];
                         _PAGE.Show();
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
                     else if (_tabName == "通知消息录入页面")
                     {
-
-
                     }
                     else if (_tabName == "排班规则维护页面")
                     {
@@ -1265,16 +1243,27 @@ namespace LY_SINTER
                         tabControl1.SelectedTab = p;
                         _PAGE.Timer_state();
                         return true;
-
                     }
-                    #endregion
 
+                    #endregion 参数维护
+
+                    #region 报表
+
+                    else if (_tabName == "烧结生产报表")
+                    {
+                        Report_product _PAGE = (Report_product)p.Controls[0];
+                        _PAGE.Show();
+                        tabControl1.SelectedTab = p;
+                        _PAGE.Timer_state();
+                        return true;
+                    }
+
+                    #endregion 报表
                 }
             }
 
             return false;
         }
-
 
         /// <summary>
         /// 顶部消息显示条按钮
@@ -1287,15 +1276,14 @@ namespace LY_SINTER
             {
                 tableLayoutPanel2.RowStyles[0].Height = 0;
                 simpleButton3.Text = "|||";
-
             }
             else
                if (simpleButton3.Text == "|||")
             {
                 tableLayoutPanel2.RowStyles[0].Height = 10;
-
             }
         }
+
         /// <summary>
         /// 左侧显示条按钮
         /// </summary>
@@ -1306,15 +1294,14 @@ namespace LY_SINTER
             if (tableLayoutPanel3.ColumnStyles[0].Width == 0)
             {
                 tableLayoutPanel3.ColumnStyles[0].Width = 10;
-
             }
             else
             if (tableLayoutPanel3.ColumnStyles[0].Width == 10)
             {
                 tableLayoutPanel3.ColumnStyles[0].Width = 0;
-
             }
         }
+
         /// <summary>
         /// 底部显示条按钮
         /// </summary>
@@ -1336,6 +1323,7 @@ namespace LY_SINTER
                 }
             }
         }
+
         /// <summary>
         /// 选项卡发生变化，作为顶级选项卡
         /// </summary>
@@ -1351,7 +1339,9 @@ namespace LY_SINTER
             {
                 TabControl _tabControl1 = (TabControl)sender;
                 string _str = _tabControl1.SelectedTab.Text;
+
                 #region 状态监控
+
                 if (_str == "料流定位监控页面")
                 {
                     //     MainUserControl mainUser = new MainUserControl();
@@ -1360,44 +1350,38 @@ namespace LY_SINTER
                     //_mainUserControl.Timer_state();
                     MainUserControl vSelected = (MainUserControl)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
-
                 }
                 if (_str == "生产实时曲线页面")
                 {
-
                     shishiquxianchaxun _mainUserControl = (shishiquxianchaxun)_tabControl1.SelectedTab.Controls[0];
                     // _mainUserControl.Timer_state();
                 }
-                #endregion
+
+                #endregion 状态监控
 
                 #region 质量优化
+
                 else if (_str == "智能配料计算模型")
                 {
                     //   zhinengpeiliao zhinengpeiliao = new zhinengpeiliao();
                     //zhinengpeiliao vSelected = (zhinengpeiliao)_tabControl1.SelectedTab.Controls[0];
                     //vSelected.Timer_state();
-
-
                 }
                 else if (_str == "质量自动控制模型")
                 {
                     Quality_automatic vSelected = (Quality_automatic)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
                 }
                 else if (_str == "结矿成分预测模型")
                 {
                     Mine_Forecast vSelected = (Mine_Forecast)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
                 }
                 else if (_str == "原料入仓追踪模型")
                 {
                     // yuanliaorucang1 yuanliaorucang = new yuanliaorucang1();
                     //yuanliaorucang1 vSelected = (yuanliaorucang1)_tabControl1.SelectedTab.Controls[0];
                     //vSelected.Timer_state();
-
                 }
                 else if (_str == "返矿平衡控制模型")
                 {
@@ -1406,75 +1390,58 @@ namespace LY_SINTER
                     //   fankaungpinghengkongzhi fankaungpinghengkongzhi = new fankaungpinghengkongzhi();
                     //fankaungpinghengkongzhi vSelected = (fankaungpinghengkongzhi)_tabControl1.SelectedTab.Controls[0];
                     //vSelected.Timer_state();
-
                 }
                 else if (_str == "生产组织计划模型")
                 {
                     shengchanzuzhi vSelected = (shengchanzuzhi)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
-
                 }
                 else if (_str == "生产原料消耗模型")
                 {
                     shengchanyuanliaoxiaohao vSelected = (shengchanyuanliaoxiaohao)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
-
                 }
                 else if (_str == "铁矿粉基础性能")
                 {
                     tiekuangfenjichuxingneng vSelected = (tiekuangfenjichuxingneng)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
-
                 }
                 else if (_str == "烧结其他原料基础性能")
                 {
                     shaojieqitayuanliaojcxn vSelected = (shaojieqitayuanliaojcxn)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
-
                 }
                 else if (_str == "高炉入炉原料基础性能")
                 {
                     gaoluruluyuanliao vSelected = (gaoluruluyuanliao)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
-
                 }
                 else if (_str == "优化配矿计算模型")
                 {
                     youhuapeikuangjisuan vSelected = (youhuapeikuangjisuan)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
                 }
 
-                #endregion
+                #endregion 质量优化
 
                 #region 过程优化
+
                 else if (_str == "加水优化控制模型")
                 {
                     Add_Water vSelected = (Add_Water)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
-
                 }
                 else if (_str == "矿槽料位控制模型")
                 {
                     //  hunheliaokuangcaoliaowei hunheliaokuangcaoliaowei = new hunheliaokuangcaoliaowei();
                     //hunheliaokuangcaoliaowei vSelected = (hunheliaokuangcaoliaowei)_tabControl1.SelectedTab.Controls[0];
                     //vSelected.Timer_state();
-
                 }
                 else if (_str == "烧结终点预测模型")
                 {
-
                     //   shaojiezhongdian _shaojiezhongdian = (shaojiezhongdian)p.Controls[0];
                     BTP vSelected = (BTP)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
-
                 }
                 else if (_str == "终点偏差指导模型")
                 {
@@ -1486,29 +1453,26 @@ namespace LY_SINTER
                     //   fengxiang fengxiang = new fengxiang();
                     //fengxiang vSelected = (fengxiang)_tabControl1.SelectedTab.Controls[0];
                     //vSelected.Timer_state();
-
                 }
                 else if (_str == "料层透气分析模型")
                 {
                     Bed_Permeability vSelected = (Bed_Permeability)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
                 }
                 else if (_str == "烧结漏风检测模型")
                 {
                     PreLeakAgeRate vSelected = (PreLeakAgeRate)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
                 }
-                #endregion
+
+                #endregion 过程优化
 
                 #region 数据分析
+
                 else if (_str == "原料质量分析模型")
                 {
-
                     Raw_analysis vSelected = (Raw_analysis)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
                 }
                 else if (_str == "设备管理维护模型")
                 {
@@ -1520,7 +1484,6 @@ namespace LY_SINTER
                 {
                     Ripe_analysis vSelected = (Ripe_analysis)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
                 }
                 else if (_str == "生产参数分析模型")
                 {
@@ -1528,24 +1491,22 @@ namespace LY_SINTER
                     vSelected.Timer_state();
                 }
 
-                #endregion
+                #endregion 数据分析
 
                 #region 历史数据
-                else if (_str == "生产历史趋势曲线")
-                {
 
-                    //lishiqushiquxianchaxun1 vSelected = (lishiqushiquxianchaxun1)_tabControl1.SelectedTab.Controls[0];
-                    //vSelected.Timer_state();
+                else if (_str == "历史数据趋势查询")
+                {
+                    lishiqushiquxianchaxun1 vSelected = (lishiqushiquxianchaxun1)_tabControl1.SelectedTab.Controls[0];
+                    vSelected.Timer_state();
                 }
                 else if (_str == "生产历史数据查询")
                 {
-
                     //shengchanshujuxinxichaxun vSelected = (shengchanshujuxinxichaxun)_tabControl1.SelectedTab.Controls[0];
                     //vSelected.Timer_state();
                 }
                 else if (_str == "模型调整记录查询")
                 {
-
                     Model_records vSelected = (Model_records)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
                 }
@@ -1554,47 +1515,55 @@ namespace LY_SINTER
                     //   production_CSPP production_CSPP = new production_CSPP();
                     //production_CSPP vSelected = (production_CSPP)_tabControl1.SelectedTab.Controls[0];
                     //vSelected.Timer_state();
-
                 }
-                #endregion
+
+                #endregion 历史数据
 
                 #region 参数维护
+
                 else if (_str == "原料成分维护页面")
                 {
                     //Ingredient ingredient = new Ingredient();
                     Ingredient vSelected = (Ingredient)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
                 }
                 else if (_str == "原料成分保护页面")
                 {
                     //   Ingredient_protect ingredient_Protect = new Ingredient_protect();
                     Ingredient_Protect vSelected = (Ingredient_Protect)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
                 }
-                else if (_str == "烧结生产信息记录")
+                else if (_str == "生产信息记录页面")
                 {
                     //   Ingredient_protect ingredient_Protect = new Ingredient_protect();
                     production_Records vSelected = (production_Records)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
                 }
                 else if (_str == "通知消息录入页面")
                 {
                     // tongzhixiaoxiyemian tongzhixiaoxiyemian = new tongzhixiaoxiyemian();
                     //tongzhixiaoxiyemian vSelected = (tongzhixiaoxiyemian)_tabControl1.SelectedTab.Controls[0];
                     //vSelected.Timer_state();
-
                 }
                 else if (_str == "排班规则维护页面")
                 {
                     //  CLASS_RULE cLASS_RULE = new CLASS_RULE();
                     Class_Plan vSelected = (Class_Plan)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
-
                 }
-                #endregion
+
+                #endregion 参数维护
+
+                #region 报表
+
+                else if (_str == "烧结生产报表")
+                {
+                    Report_product vSelected = (Report_product)_tabControl1.SelectedTab.Controls[0];
+                    vSelected.Timer_state();
+                }
+
+                #endregion 报表
+
                 if (_tabControl1.TabPages.Count > PAGE_COUNT)
                 {
                     foreach (TabPage p in _tabControl1.TabPages)
@@ -1602,8 +1571,8 @@ namespace LY_SINTER
                         string _strname = p.Text;
                         if (!_str.Equals(_strname))
                         {
-
                             #region 状态监控
+
                             if (_strname == "料流定位监控页面")
                             {
                                 ////       MainUserControl mainUser = new MainUserControl();
@@ -1617,26 +1586,24 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
-
                             }
                             if (_strname == "生产实时曲线页面")
                             {
-
                                 shishiquxianchaxun vf1 = (shishiquxianchaxun)p.Controls[0];
                                 //  vf1.Timer_stop();
                                 this.tabControl1.Controls.Remove(p);
                             }
-                            #endregion
+
+                            #endregion 状态监控
 
                             #region 质量优化
+
                             else if (_strname == "质量自动控制模型")
                             {
                                 Quality_automatic vf1 = (Quality_automatic)p.Controls[0];
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
                             }
                             else if (_strname == "结矿成分预测模型")
                             {
@@ -1644,7 +1611,6 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
                             }
                             else if (_strname == "原料入仓追踪模型")
                             {
@@ -1652,7 +1618,6 @@ namespace LY_SINTER
                                 //yuanliaorucang1 vf1 = (yuanliaorucang1)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
                             else if (_strname == "返矿平衡控制模型")
                             {
@@ -1660,15 +1625,12 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
                             }
                             else if (_strname == "混匀矿换堆模型")
                             {
-
                                 //hunyunkuanghuanduimoxing vf1 = (hunyunkuanghuanduimoxing)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
                             else if (_strname == "生产组织计划模型")
                             {
@@ -1683,8 +1645,6 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
-
                             }
                             else if (_strname == "铁矿粉基础性能")
                             {
@@ -1692,8 +1652,6 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
-
                             }
                             else if (_strname == "烧结其他原料基础性能")
                             {
@@ -1701,8 +1659,6 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
-
                             }
                             else if (_strname == "高炉入炉原料基础性能")
                             {
@@ -1719,9 +1675,10 @@ namespace LY_SINTER
                                 return;
                             }
 
-                            #endregion
+                            #endregion 质量优化
 
                             #region 过程优化
+
                             else if (_strname == "加水优化控制模型")
                             {
                                 Add_Water vf1 = (Add_Water)p.Controls[0];
@@ -1735,17 +1692,13 @@ namespace LY_SINTER
                                 //hunheliaokuangcaoliaowei vf1 = (hunheliaokuangcaoliaowei)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
                             else if (_strname == "烧结终点预测模型")
                             {
-
-
                                 BTP vf1 = (BTP)p.Controls[0];
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
                             }
                             else if (_strname == "终点偏差指导模型")
                             {
@@ -1753,7 +1706,6 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
                             }
                             else if (_strname == "风箱自动启停模型")
                             {
@@ -1776,12 +1728,13 @@ namespace LY_SINTER
                                 this.tabControl1.Controls.Remove(p);
                                 return;
                             }
-                            #endregion
+
+                            #endregion 过程优化
 
                             #region 数据分析
+
                             else if (_strname == "原料质量分析模型")
                             {
-
                                 Raw_analysis vf1 = (Raw_analysis)p.Controls[0];
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
@@ -1794,15 +1747,12 @@ namespace LY_SINTER
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
                             }
-
                             else if (_strname == "成品质量分析模型")
                             {
                                 Ripe_analysis vf1 = (Ripe_analysis)p.Controls[0];
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
-
                             }
                             else if (_strname == "生产参数分析模型")
                             {
@@ -1810,23 +1760,20 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
                             }
 
-
-                            #endregion
+                            #endregion 数据分析
 
                             #region 历史数据
-                            else if (_strname == "生产历史趋势曲线")
-                            {
 
-                                //lishiqushiquxianchaxun1 vf1 = (lishiqushiquxianchaxun1)p.Controls[0];
-                                //vf1.Timer_stop();
-                                //this.tabControl1.Controls.Remove(p);
+                            else if (_strname == "历史数据趋势查询")
+                            {
+                                lishiqushiquxianchaxun1 vf1 = (lishiqushiquxianchaxun1)p.Controls[0];
+                                vf1.Timer_stop();
+                                this.tabControl1.Controls.Remove(p);
                             }
                             else if (_strname == "生产历史数据查询")
                             {
-
                                 //shengchanshujuxinxichaxun vf1 = (shengchanshujuxinxichaxun)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
@@ -1838,7 +1785,6 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
                             }
                             else if (_strname == "生产过程匹配追踪")
                             {
@@ -1846,7 +1792,6 @@ namespace LY_SINTER
                                 //production_CSPP vf1 = (production_CSPP)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
                             else if (_strname == "模型使用时间查询")
                             {
@@ -1854,12 +1799,12 @@ namespace LY_SINTER
                                 //Model_Monitoring vf1 = (Model_Monitoring)p.Controls[0];
 
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
 
-                            #endregion
+                            #endregion 历史数据
 
                             #region 参数维护
+
                             else if (_strname == "原料成分维护页面")
                             {
                                 //Ingredient ingredient = new Ingredient();
@@ -1867,7 +1812,6 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
                             }
                             else if (_strname == "原料成分保护页面")
                             {
@@ -1876,16 +1820,14 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
                             }
-                            else if (_strname == "烧结生产信息记录")
+                            else if (_strname == "生产信息记录页面")
                             {
                                 //  Ingredient_protect ingredient_Protect = new Ingredient_protect();
                                 production_Records vf1 = (production_Records)p.Controls[0];
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
                             }
                             else if (_strname == "通知消息录入页面")
                             {
@@ -1893,7 +1835,6 @@ namespace LY_SINTER
                                 //tongzhixiaoxiyemian vf1 = (tongzhixiaoxiyemian)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
                             else if (_strname == "排班规则维护页面")
                             {
@@ -1902,12 +1843,22 @@ namespace LY_SINTER
                                 vf1._Clear();
                                 this.tabControl1.Controls.Remove(p);
                                 return;
-
                             }
-                            #endregion
 
+                            #endregion 参数维护
+
+                            #region 报表
+
+                            else if (_strname == "烧结生产报表")
+                            {
+                                Report_product vf1 = (Report_product)p.Controls[0];
+                                vf1._Clear();
+                                this.tabControl1.Controls.Remove(p);
+                                return;
+                            }
+
+                            #endregion 报表
                         }
-
                     }
                 }
                 else
@@ -1917,8 +1868,8 @@ namespace LY_SINTER
                         string _strname = p.Text;
                         if (!_str.Equals(_strname))
                         {
-
                             #region 状态监控
+
                             if (_strname == "料流定位监控页面")
                             {
                                 ////       MainUserControl mainUser = new MainUserControl();
@@ -1930,30 +1881,27 @@ namespace LY_SINTER
                                 //   _mainUserControl.UC_Close
                                 MainUserControl vf1 = (MainUserControl)p.Controls[0];
                                 vf1.Timer_stop();
-
-
                             }
                             if (_strname == "生产实时曲线页面")
                             {
-
                                 shishiquxianchaxun vf1 = (shishiquxianchaxun)p.Controls[0];
                                 //  vf1.Timer_stop();
                                 this.tabControl1.Controls.Remove(p);
                             }
-                            #endregion
+
+                            #endregion 状态监控
 
                             #region 质量优化
+
                             else if (_strname == "质量自动控制模型")
                             {
                                 Quality_automatic vf1 = (Quality_automatic)p.Controls[0];
                                 vf1.Timer_stop();
-
                             }
                             else if (_strname == "结矿成分预测模型")
                             {
                                 Mine_Forecast vf1 = (Mine_Forecast)p.Controls[0];
                                 vf1.Timer_stop();
-
                             }
                             else if (_strname == "原料入仓追踪模型")
                             {
@@ -1961,21 +1909,17 @@ namespace LY_SINTER
                                 //yuanliaorucang1 vf1 = (yuanliaorucang1)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
                             else if (_strname == "返矿平衡控制模型")
                             {
                                 Balance_Mine vf1 = (Balance_Mine)p.Controls[0];
                                 vf1.Timer_stop();
-
                             }
                             else if (_strname == "混匀矿换堆模型")
                             {
-
                                 //hunyunkuanghuanduimoxing vf1 = (hunyunkuanghuanduimoxing)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
                             else if (_strname == "生产组织计划模型")
                             {
@@ -1996,8 +1940,6 @@ namespace LY_SINTER
                             {
                                 shaojieqitayuanliaojcxn vf1 = (shaojieqitayuanliaojcxn)p.Controls[0];
                                 vf1.Timer_stop();
-
-
                             }
                             else if (_strname == "高炉入炉原料基础性能")
                             {
@@ -2009,14 +1951,15 @@ namespace LY_SINTER
                                 youhuapeikuangjisuan vf1 = (youhuapeikuangjisuan)p.Controls[0];
                                 vf1.Timer_stop();
                             }
-                            #endregion
+
+                            #endregion 质量优化
 
                             #region 过程优化
+
                             else if (_strname == "加水优化控制模型")
                             {
                                 Add_Water vf1 = (Add_Water)p.Controls[0];
                                 vf1.Timer_stop();
-
                             }
                             else if (_strname == "矿槽料位控制模型")
                             {
@@ -2024,7 +1967,6 @@ namespace LY_SINTER
                                 //hunheliaokuangcaoliaowei vf1 = (hunheliaokuangcaoliaowei)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
                             else if (_strname == "烧结终点预测模型")
                             {
@@ -2033,7 +1975,6 @@ namespace LY_SINTER
                                 //shaojiezhongdian vf1 = (shaojiezhongdian)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
                             else if (_strname == "终点偏差指导模型")
                             {
@@ -2057,9 +1998,11 @@ namespace LY_SINTER
                                 PreLeakAgeRate vf1 = (PreLeakAgeRate)p.Controls[0];
                                 vf1.Timer_stop();
                             }
-                            #endregion
+
+                            #endregion 过程优化
 
                             #region 数据分析
+
                             else if (_strname == "原料质量分析模型")
                             {
                                 Raw_analysis vf1 = (Raw_analysis)p.Controls[0];
@@ -2072,35 +2015,29 @@ namespace LY_SINTER
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
                             }
-
                             else if (_strname == "成品质量分析模型")
                             {
                                 Ripe_analysis vf1 = (Ripe_analysis)p.Controls[0];
                                 vf1.Timer_stop();
-
-
                             }
                             else if (_strname == "生产参数分析模型")
                             {
                                 Production_state vf1 = (Production_state)p.Controls[0];
                                 vf1.Timer_stop();
-
                             }
 
-
-                            #endregion
+                            #endregion 数据分析
 
                             #region 历史数据
-                            else if (_strname == "生产历史趋势曲线")
-                            {
 
-                                //lishiqushiquxianchaxun1 vf1 = (lishiqushiquxianchaxun1)p.Controls[0];
-                                //vf1.Timer_stop();
-                                //this.tabControl1.Controls.Remove(p);
+                            else if (_strname == "历史数据趋势查询")
+                            {
+                                lishiqushiquxianchaxun1 vf1 = (lishiqushiquxianchaxun1)p.Controls[0];
+                                vf1.Timer_stop();
+                                this.tabControl1.Controls.Remove(p);
                             }
                             else if (_strname == "生产历史数据查询")
                             {
-
                                 //shengchanshujuxinxichaxun vf1 = (shengchanshujuxinxichaxun)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
@@ -2109,7 +2046,6 @@ namespace LY_SINTER
                             {
                                 Model_records vf1 = (Model_records)p.Controls[0];
                                 vf1.Timer_stop();
-
                             }
                             else if (_strname == "生产过程匹配追踪")
                             {
@@ -2117,7 +2053,6 @@ namespace LY_SINTER
                                 //production_CSPP vf1 = (production_CSPP)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
                             else if (_strname == "模型使用时间查询")
                             {
@@ -2125,34 +2060,29 @@ namespace LY_SINTER
                                 //Model_Monitoring vf1 = (Model_Monitoring)p.Controls[0];
 
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
 
-                            #endregion
+                            #endregion 历史数据
 
                             #region 参数维护
+
                             else if (_strname == "原料成分维护页面")
                             {
                                 //Ingredient ingredient = new Ingredient();
                                 Ingredient vf1 = (Ingredient)p.Controls[0];
                                 vf1.Timer_stop();
-
                             }
                             else if (_strname == "原料成分保护页面")
                             {
                                 //  Ingredient_protect ingredient_Protect = new Ingredient_protect();
                                 Ingredient_Protect vf1 = (Ingredient_Protect)p.Controls[0];
                                 vf1.Timer_stop();
-
-
                             }
-                            else if (_strname == "烧结生产信息记录")
+                            else if (_strname == "生产信息记录页面")
                             {
                                 //  Ingredient_protect ingredient_Protect = new Ingredient_protect();
                                 production_Records vf1 = (production_Records)p.Controls[0];
                                 vf1.Timer_stop();
-
-
                             }
                             else if (_strname == "通知消息录入页面")
                             {
@@ -2160,25 +2090,31 @@ namespace LY_SINTER
                                 //tongzhixiaoxiyemian vf1 = (tongzhixiaoxiyemian)p.Controls[0];
                                 //vf1.Timer_stop();
                                 //this.tabControl1.Controls.Remove(p);
-
                             }
                             else if (_strname == "排班规则维护页面")
                             {
                                 //  CLASS_RULE cLASS_RULE = new CLASS_RULE();
                                 Class_Plan vf1 = (Class_Plan)p.Controls[0];
                                 vf1.Timer_stop();
-
-
                             }
-                            #endregion
 
+                            #endregion 参数维护
+
+                            #region 报表
+
+                            else if (_strname == "烧结生产报表")
+                            {
+                                Report_product vf1 = (Report_product)p.Controls[0];
+                                vf1.Timer_stop();
+                            }
+
+                            #endregion 报表
                         }
-
                     }
                 }
-
             }
         }
+
         /// <summary>
         /// 双击关闭
         /// </summary>
@@ -2202,22 +2138,22 @@ namespace LY_SINTER
                         _tabControl1.SelectedTab.Parent = null;
 
                         #region 状态监控
+
                         if (str == "料流定位监控页面")
                         {
-
                             MainUserControl _PAGE = (MainUserControl)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         if (str == "生产实时曲线页面")
                         {
                             shishiquxianchaxun _PAGE = (shishiquxianchaxun)p.Controls[0];
                             _PAGE._Clear();
-
                         }
-                        #endregion
+
+                        #endregion 状态监控
 
                         #region 质量优化
+
                         else if (str == "质量自动控制模型")
                         {
                             Quality_automatic _PAGE = (Quality_automatic)p.Controls[0];
@@ -2227,79 +2163,68 @@ namespace LY_SINTER
                         {
                             Mine_Forecast _PAGE = (Mine_Forecast)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "原料入仓追踪模型")
                         {
                             ////     yuanliaorucang1 yuanliaorucang = new yuanliaorucang1();
                             //yuanliaorucang1 _yuanliaorucang = (yuanliaorucang1)p.Controls[0];
                             //_yuanliaorucang.Timer_stop();
-
                         }
                         else if (str == "返矿平衡控制模型")
                         {
                             Balance_Mine _PAGE = (Balance_Mine)p.Controls[0];
                             _PAGE._Clear();
-
                         }
-
                         else if (str == "生产组织计划模型")
                         {
                             shengchanzuzhi _PAGE = (shengchanzuzhi)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "生产原料消耗模型")
                         {
                             shengchanyuanliaoxiaohao _PAGE = (shengchanyuanliaoxiaohao)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "铁矿粉基础性能")
                         {
                             tiekuangfenjichuxingneng _PAGE = (tiekuangfenjichuxingneng)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "烧结其他原料基础性能")
                         {
                             shaojieqitayuanliaojcxn _PAGE = (shaojieqitayuanliaojcxn)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "高炉入炉原料基础性能")
                         {
                             gaoluruluyuanliao _PAGE = (gaoluruluyuanliao)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "优化配矿计算模型")
                         {
                             youhuapeikuangjisuan _PAGE = (youhuapeikuangjisuan)p.Controls[0];
                             _PAGE._Clear();
                         }
-                        #endregion
+
+                        #endregion 质量优化
 
                         #region 过程优化
+
                         else if (str == "加水优化控制模型")
                         {
                             Add_Water _PAGE = (Add_Water)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "矿槽料位控制模型")
                         {
                             ////hunheliaokuangcaoliaowei hunheliaokuangcaoliaowei = new hunheliaokuangcaoliaowei();
                             //hunheliaokuangcaoliaowei _shaojiezhongdian = (hunheliaokuangcaoliaowei)p.Controls[0];
                             //_shaojiezhongdian.Timer_stop();
-
                         }
                         else if (str == "烧结终点预测模型")
                         {
-
                             BTP _PAGE = (BTP)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "终点偏差指导模型")
                         {
@@ -2311,36 +2236,32 @@ namespace LY_SINTER
                             ////    fengxiang fengxiang = new fengxiang();
                             //fengxiang _fengxiang = (fengxiang)p.Controls[0];
                             //_fengxiang.Timer_stop();
-
                         }
                         else if (str == "料层透气分析模型")
                         {
                             Bed_Permeability _PAGE = (Bed_Permeability)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "烧结漏风检测模型")
                         {
                             PreLeakAgeRate _PAGE = (PreLeakAgeRate)p.Controls[0];
                             _PAGE._Clear();
-
                         }
-                        #endregion
+
+                        #endregion 过程优化
 
                         #region 数据分析
+
                         else if (str == "原料质量分析模型")
                         {
-
                             Raw_analysis _PAGE = (Raw_analysis)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "设备管理维护模型")
                         {
                             ////  shebeiguanliweihuyemian shebeiguanliweihuyemian = new shebeiguanliweihuyemian();
                             //shebeiguanliweihuyemian _PAGE = (shebeiguanliweihuyemian)p.Controls[0];
                             //_PAGE.Timer_stop();
-
                         }
                         else if (str == "成品质量分析模型")
                         {
@@ -2351,18 +2272,14 @@ namespace LY_SINTER
                         {
                             Production_state _PAGE = (Production_state)p.Controls[0];
                             _PAGE._Clear();
-
                         }
 
-
-
-                        #endregion
+                        #endregion 数据分析
 
                         #region 历史数据
-                        else if (str == "生产历史趋势曲线")
+
+                        else if (str == "历史数据趋势查询")
                         {
-
-
                         }
                         else if (str == "生产历史数据查询")
                         {
@@ -2370,57 +2287,53 @@ namespace LY_SINTER
                         }
                         else if (str == "模型调整记录查询")
                         {
-
                             Model_records _PAGE = (Model_records)p.Controls[0];
                             _PAGE._Clear();
                         }
                         else if (str == "生产过程匹配追踪")
                         {
-
-
-
                         }
 
-
-
-                        #endregion
+                        #endregion 历史数据
 
                         #region 参数维护
+
                         else if (str == "原料成分维护页面")
                         {
-
                             Ingredient _PAGE = (Ingredient)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "原料成分保护页面")
                         {
-
                             Ingredient_Protect _PAGE = (Ingredient_Protect)p.Controls[0];
                             _PAGE._Clear();
-
                         }
-                        else if (str == "烧结生产信息记录")
+                        else if (str == "生产信息记录页面")
                         {
-
                             production_Records _PAGE = (production_Records)p.Controls[0];
                             _PAGE._Clear();
-
                         }
                         else if (str == "通知消息录入页面")
                         {
-
-
                         }
                         else if (str == "排班规则维护页面")
                         {
                             //  CLASS_RULE cLASS_RULE = new CLASS_RULE();
                             Class_Plan _PAGE = (Class_Plan)p.Controls[0];
                             _PAGE._Clear();
-
                         }
-                        #endregion
 
+                        #endregion 参数维护
+
+                        #region 报表
+
+                        else if (str == "烧结生产报表")
+                        {
+                            Report_product _PAGE = (Report_product)p.Controls[0];
+                            _PAGE._Clear();
+                        }
+
+                        #endregion 报表
                     }
                 }
             }

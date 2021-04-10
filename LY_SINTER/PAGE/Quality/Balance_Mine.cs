@@ -19,42 +19,46 @@ namespace LY_SINTER.PAGE.Quality
 {
     public partial class Balance_Mine : UserControl
     {
-
         public System.Timers.Timer _Timer1 { get; set; }
 
         #region 返矿平衡变化状况曲线
+
         private PlotModel _myPlotModel;//容器
         private DateTimeAxis _dateAxis;//X轴
         private LinearAxis _valueAxis1;//Y轴
         private LinearAxis _valueAxis2;//Y轴
-        List<DataPoint> Line1 = new List<DataPoint>();//数据组
-        List<DataPoint> Line2 = new List<DataPoint>();//数据组
+        private List<DataPoint> Line1 = new List<DataPoint>();//数据组
+        private List<DataPoint> Line2 = new List<DataPoint>();//数据组
         private OxyPlot.Series.LineSeries series1;//曲线
         private OxyPlot.Series.LineSeries series2;//曲线
-        int max1 = 0, min1 = 0, max2 = 0, min2 = 0;
-        #endregion
+        private int max1 = 0, min1 = 0, max2 = 0, min2 = 0;
+
+        #endregion 返矿平衡变化状况曲线
 
         #region 趋势历史曲线
-        string[] curve_name = { "A_1", "A_2", "A_3", "A_4", "A_5", "A_6" };
+
+        private string[] curve_name = { "A_1", "A_2", "A_3", "A_4", "A_5", "A_6" };
         private PlotModel _myPlotModel_His;//容器
         private DateTimeAxis _dateAxis_His;//X轴
         private LinearAxis _valueAxis1_His;//Y轴
         private LinearAxis _valueAxis2_His;//Y轴
         private LinearAxis _valueAxis3_His;//Y轴
         private LinearAxis _valueAxis4_His;//Y轴
-        List<DataPoint> Line1_His = new List<DataPoint>();//数据组
-        List<DataPoint> Line2_His = new List<DataPoint>();//数据组
-        List<DataPoint> Line3_His = new List<DataPoint>();//数据组
-        List<DataPoint> Line4_His = new List<DataPoint>();//数据组
+        private List<DataPoint> Line1_His = new List<DataPoint>();//数据组
+        private List<DataPoint> Line2_His = new List<DataPoint>();//数据组
+        private List<DataPoint> Line3_His = new List<DataPoint>();//数据组
+        private List<DataPoint> Line4_His = new List<DataPoint>();//数据组
         private OxyPlot.Series.LineSeries series1_His;//曲线
         private OxyPlot.Series.LineSeries series2_His;//曲线
         private OxyPlot.Series.LineSeries series3_His;//曲线
         private OxyPlot.Series.LineSeries series4_His;//曲线
-        #endregion
 
-        Quality_Model _quality = new Quality_Model();
+        #endregion 趋势历史曲线
+
+        private Quality_Model _quality = new Quality_Model();
         public vLog vLog { get; set; }
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+
         public Balance_Mine()
         {
             InitializeComponent();
@@ -74,6 +78,7 @@ namespace LY_SINTER.PAGE.Quality
             PLC_XL_3S();//3S数据
             tendency_curve_HIS(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));//历史趋势曲线
         }
+
         private void Timer1_Tick_1()
         {
             Action invokeAction = new Action(Timer1_Tick_1);
@@ -100,6 +105,7 @@ namespace LY_SINTER.PAGE.Quality
         {
             tendency_curve_HIS(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));
         }
+
         /// <summary>
         /// 趋势曲线历史
         /// </summary>
@@ -107,9 +113,7 @@ namespace LY_SINTER.PAGE.Quality
         {
             try
             {
-
-                string sql_curve_Ls = "SELECT TIMESTAMP, PAR_W_AIM,PAR_C_AIM ,MAT_L2_DQ_DRY_7 ,MAT_L2_DQ_DRY_6 FROM MC_SRMCAL_PAR_CURVE_HIS WHERE  TIMESTAMP between '" + _d1 + "' and '" + _d2 + "' order by TIMESTAMP asc" ;
-
+                string sql_curve_Ls = "SELECT TIMESTAMP, PAR_W_AIM,PAR_C_AIM ,MAT_L2_DQ_DRY_7 ,MAT_L2_DQ_DRY_6 FROM MC_SRMCAL_PAR_CURVE_HIS WHERE  TIMESTAMP between '" + _d1 + "' and '" + _d2 + "' order by TIMESTAMP asc";
 
                 DataTable data_curve_ls = dBSQL.GetCommand(sql_curve_Ls);
                 if (data_curve_ls.Rows.Count > 0)
@@ -163,7 +167,6 @@ namespace LY_SINTER.PAGE.Quality
                         DataPoint line4 = new DataPoint(DateTimeAxis.ToDouble(data_curve_ls.Rows[i]["TIMESTAMP"]), Convert.ToDouble(data_curve_ls.Rows[i]["MAT_L2_DQ_DRY_6"]));
                         Line4_His.Add(line4);
                         Mun4.Add(Convert.ToDouble(data_curve_ls.Rows[i]["MAT_L2_DQ_DRY_6"]));
-
                     }
                     int x = 1;
                     if ((int)((Mun1.Max() - Mun1.Min()) / 5) > 0)
@@ -172,7 +175,6 @@ namespace LY_SINTER.PAGE.Quality
                     }
                     _valueAxis1_His = new LinearAxis()
                     {
-
                         Key = curve_name[0],
                         MajorGridlineStyle = LineStyle.None,
                         MinorGridlineStyle = LineStyle.None,
@@ -204,7 +206,6 @@ namespace LY_SINTER.PAGE.Quality
                         YAxisKey = curve_name[0],
                         ItemsSource = Line1_His,
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss} 目标仓位:{4}",
-
                     };
                     if (check_mbcw.Checked)
                     {
@@ -218,7 +219,6 @@ namespace LY_SINTER.PAGE.Quality
                     }
                     _valueAxis2_His = new LinearAxis()//声明曲线
                     {
-
                         Key = curve_name[1],
                         MajorGridlineStyle = LineStyle.None,
                         MinorGridlineStyle = LineStyle.None,
@@ -250,14 +250,13 @@ namespace LY_SINTER.PAGE.Quality
                         YAxisKey = curve_name[1],//识别符
                         ItemsSource = Line2_His,//绑定数据
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss} 综合仓位:{4}",
-
                     };
                     if (check_zhcw.Checked)
                     {
                         _valueAxis2_His.IsAxisVisible = true;
                         _myPlotModel_His.Series.Add(series2_His);
                     }
-                   
+
                     int x_2 = 1;//判断增长数据
                     if ((int)((Mun3.Max() - Mun3.Min()) / 5) > 0)
                     {
@@ -265,7 +264,6 @@ namespace LY_SINTER.PAGE.Quality
                     }
                     _valueAxis3_His = new LinearAxis()//声明曲线
                     {
-
                         Key = curve_name[2],//识别码
                         MajorGridlineStyle = LineStyle.None,
                         MinorGridlineStyle = LineStyle.None,
@@ -297,14 +295,12 @@ namespace LY_SINTER.PAGE.Quality
                         YAxisKey = curve_name[2],//识别符
                         ItemsSource = Line3_His,//绑定数据
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss} 返矿配比:{4}",
-
                     };
                     if (check_sfpb.Checked)
                     {
                         _valueAxis3_His.IsAxisVisible = true;
                         _myPlotModel_His.Series.Add(series3_His);
                     }
-                  
 
                     int x_3 = 1;//判断增长数据
                     if ((int)((Mun4.Max() - Mun4.Min()) / 5) > 0)
@@ -313,7 +309,6 @@ namespace LY_SINTER.PAGE.Quality
                     }
                     _valueAxis4_His = new LinearAxis()//声明曲线
                     {
-
                         Key = curve_name[3],//识别码
                         MajorGridlineStyle = LineStyle.None,
                         MinorGridlineStyle = LineStyle.None,
@@ -345,7 +340,6 @@ namespace LY_SINTER.PAGE.Quality
                         YAxisKey = curve_name[3],//识别符
                         ItemsSource = Line4_His,//绑定数据
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n燃料配比:{4}",
-
                     };
                     if (check_rlpb.Checked)
                     {
@@ -356,18 +350,17 @@ namespace LY_SINTER.PAGE.Quality
                     var PlotController = new OxyPlot.PlotController();
                     PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
                     curve_his.Controller = PlotController;
-
                 }
-
             }
             catch (Exception ee)
             {
                 string mistake = "tendency_curve_HIS方法错误" + ee.ToString();
                 vLog.writelog(mistake, -1);
             }
-
         }
+
         #region 历史趋势曲线勾选框响应事件
+
         /// <summary>
         /// 目标仓位
         /// </summary>
@@ -393,6 +386,7 @@ namespace LY_SINTER.PAGE.Quality
             catch
             { }
         }
+
         /// <summary>
         /// 综合仓位
         /// </summary>
@@ -418,6 +412,7 @@ namespace LY_SINTER.PAGE.Quality
             catch
             { }
         }
+
         /// <summary>
         /// 返矿配比
         /// </summary>
@@ -442,8 +437,8 @@ namespace LY_SINTER.PAGE.Quality
             }
             catch
             { }
-
         }
+
         /// <summary>
         /// 燃料配比
         /// </summary>
@@ -469,7 +464,8 @@ namespace LY_SINTER.PAGE.Quality
             catch
             { }
         }
-        #endregion
+
+        #endregion 历史趋势曲线勾选框响应事件
 
         /// <summary>
         /// 开始&结束时间赋值
@@ -485,8 +481,8 @@ namespace LY_SINTER.PAGE.Quality
             textBox_end.Text = time_end.ToString();
         }
 
-
         #region 实时曲线勾选框响应事件
+
         /// <summary>
         /// 仓位变化
         /// </summary>
@@ -512,6 +508,7 @@ namespace LY_SINTER.PAGE.Quality
             catch
             { }
         }
+
         /// <summary>
         /// 总出料量
         /// </summary>
@@ -537,7 +534,8 @@ namespace LY_SINTER.PAGE.Quality
             catch
             { }
         }
-        #endregion
+
+        #endregion 实时曲线勾选框响应事件
 
         /// <summary>
         /// 返矿变化状况 定时器 1h
@@ -657,27 +655,26 @@ namespace LY_SINTER.PAGE.Quality
                     }
                     _valueAxis1 = new LinearAxis()//添加y轴
                     {
-                      //  Key = "A",
-                      //  MajorGridlineStyle = LineStyle.None,
-                      //  MinorGridlineStyle = LineStyle.None,
-                      //  IntervalLength = 80,
-                      ////  Angle = 60,
-                      //  IsZoomEnabled = false,
-                      //  IsPanEnabled = false,
-                      //  Maximum = max1 + 2,
-                      //  Minimum = min1 - 1,
-                      //  PositionTier = 1,
-                      //  AxislineStyle = LineStyle.Solid,
-                      //  AxislineColor = OxyColors.Red,
-                      //  MinorTicklineColor = OxyColors.Red,
-                      //  TicklineColor = OxyColors.Red,
-                      //  TextColor = OxyColors.Red,
-                      //  FontSize = 9.0,
-                      //  IsAxisVisible = false,
-                      //  MajorStep = m1,
-                      //  //  MajorStep = 50,
-                      //  MinorTickSize = 0,
-
+                        //  Key = "A",
+                        //  MajorGridlineStyle = LineStyle.None,
+                        //  MinorGridlineStyle = LineStyle.None,
+                        //  IntervalLength = 80,
+                        ////  Angle = 60,
+                        //  IsZoomEnabled = false,
+                        //  IsPanEnabled = false,
+                        //  Maximum = max1 + 2,
+                        //  Minimum = min1 - 1,
+                        //  PositionTier = 1,
+                        //  AxislineStyle = LineStyle.Solid,
+                        //  AxislineColor = OxyColors.Red,
+                        //  MinorTicklineColor = OxyColors.Red,
+                        //  TicklineColor = OxyColors.Red,
+                        //  TextColor = OxyColors.Red,
+                        //  FontSize = 9.0,
+                        //  IsAxisVisible = false,
+                        //  MajorStep = m1,
+                        //  //  MajorStep = 50,
+                        //  MinorTickSize = 0,
 
                         Key = "A",
                         MajorGridlineStyle = LineStyle.None,
@@ -710,7 +707,6 @@ namespace LY_SINTER.PAGE.Quality
                         YAxisKey = "A",
                         ItemsSource = Line1,
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}  总出料量:{4}t",
-
                     };
                     if (check_zcll.Checked == true)
                     {
@@ -768,7 +764,7 @@ namespace LY_SINTER.PAGE.Quality
                 }
                 else
                 {
-                    vLog.writelog("Quality_Model模型方法_Get_Mine_Change计算错误" ,-1);
+                    vLog.writelog("Quality_Model模型方法_Get_Mine_Change计算错误", -1);
                     return;
                 }
             }
@@ -778,8 +774,6 @@ namespace LY_SINTER.PAGE.Quality
                 vLog.writelog(mistake, -1);
                 return;
             }
-
-
         }
 
         /// <summary>
@@ -803,16 +797,14 @@ namespace LY_SINTER.PAGE.Quality
                     check_mbcw.Text = "目标仓位 t: 0";
                     check_zhcw.Text = "综合仓位 t: 0";
                     check_sfpb.Text = "返矿配比: 0";
-                    check_rlpb.Text = "燃料配比: 0" ;
+                    check_rlpb.Text = "燃料配比: 0";
                 }
-
             }
             catch (Exception ee)
             {
                 string mistake = "定时刷新勾选框数据报错" + ee.ToString();
                 vLog.writelog(mistake, -1);
             }
-
         }
 
         /// <summary>
@@ -823,6 +815,7 @@ namespace LY_SINTER.PAGE.Quality
             try
             {
                 #region 参数定义
+
                 //投用状态
                 int signal_FK = 0;
                 //调用条件
@@ -859,7 +852,9 @@ namespace LY_SINTER.PAGE.Quality
                 double bin_up = 0;
                 //仓位下限
                 double bin_low = 0;
-                #endregion
+
+                #endregion 参数定义
+
                 //CFG_MAT_L2_Butsig_INTERFACE表按钮状态
                 string sql_1 = " select top (1) " +
                     "isnull(MAT_L2_but_fk,888) as MAT_L2_but_fk " +
@@ -885,9 +880,8 @@ namespace LY_SINTER.PAGE.Quality
                 DataTable dataTable_3 = dBSQL.GetCommand(sql_3);
                 DataTable dataTable_4 = dBSQL.GetCommand(sql_4);
 
-
-
                 #region MC_SRMCAL_RESULT表赋值
+
                 if (dataTable_2.Rows.Count > 0)
                 {
                     signal_condition = int.Parse(dataTable_2.Rows[0]["SRMCAL_FLAG"].ToString());
@@ -901,17 +895,20 @@ namespace LY_SINTER.PAGE.Quality
                     adjustment_new = double.Parse(dataTable_2.Rows[0]["SRMCAL_BILL_SP_NEW"].ToString());
                 }
 
+                #endregion MC_SRMCAL_RESULT表赋值
 
-                #endregion
                 #region MC_SRMCAL_RESULT_DIST_T表赋值
+
                 if (dataTable_3.Rows.Count > 0)
                 {
                     proportion_15 = double.Parse(dataTable_3.Rows[0]["SRMCAL_S_15"].ToString());
                     proportion_16 = double.Parse(dataTable_3.Rows[0]["SRMCAL_S_16"].ToString());
                 }
 
-                #endregion
+                #endregion MC_SRMCAL_RESULT_DIST_T表赋值
+
                 #region MC_SRMCAL_PAR表赋值
+
                 if (dataTable_4.Rows.Count > 0)
                 {
                     adjustment_period = double.Parse(dataTable_4.Rows[0]["PAR_BILL_T"].ToString());
@@ -922,7 +919,7 @@ namespace LY_SINTER.PAGE.Quality
                     bin_low = double.Parse(dataTable_4.Rows[0]["PAR_W_LOW"].ToString());
                 }
 
-                #endregion
+                #endregion MC_SRMCAL_PAR表赋值
 
                 // 返矿投用状态信号
                 if (dataTable_1.Rows.Count > 0)
@@ -941,17 +938,13 @@ namespace LY_SINTER.PAGE.Quality
                     {
                         label49.Text = " ";
                         string error_message = "返矿投用状态信号异常";
-
                     }
                 }
-
-
 
                 //调用条件(1：人工干预烧返配比调用；2：烧返仓数量变化调用；3：目标仓位变化调用；4：仓位超限调用；5：周期调用)
                 if (signal_condition == 1)
                 {
                     label50.Text = "人工干预烧返配比调用";
-
                 }
                 else if (signal_condition == 2)
                 {
@@ -973,7 +966,6 @@ namespace LY_SINTER.PAGE.Quality
                 {
                     label50.Text = " ";
                     string error_message = "调用条件信号异常";
-
                 }
                 //调整状态 1：模型计算完成；2：模型调整完成（界面点击确认按钮）；3：禁止模型调整（界面点击取消按钮）
                 if (signal_adjustment == 1)
@@ -1035,6 +1027,7 @@ namespace LY_SINTER.PAGE.Quality
                 vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 参数弹出框
         /// </summary>
@@ -1052,6 +1045,7 @@ namespace LY_SINTER.PAGE.Quality
                 form_display.Activate();
             }
         }
+
         /// <summary>
         /// 调整数据弹出框
         /// </summary>
@@ -1114,7 +1108,9 @@ namespace LY_SINTER.PAGE.Quality
                     label45.Text = "下料量SP:" + Math.Round(laying_15, 2) + "t/h";
                     //16#烧返仓下料量
                     label46.Text = "下料量SP:" + Math.Round(laying_16, 2) + "t/h";
+
                     #region 仓下料启停状态
+
                     if (signal_15 == 0)
                     {
                         button1.BackColor = Color.Red;
@@ -1125,10 +1121,8 @@ namespace LY_SINTER.PAGE.Quality
                     }
                     else
                     {
-
                         string error_message = "15#仓启停状态异常";
                         vLog.writelog(error_message, -1);
-
                     }
                     if (signal_16 == 0)
                     {
@@ -1142,10 +1136,12 @@ namespace LY_SINTER.PAGE.Quality
                     {
                         string error_message = "16#仓启停状态异常";
                         vLog.writelog(error_message, -1);
-
                     }
-                    #endregion
+
+                    #endregion 仓下料启停状态
+
                     #region 进度条
+
                     //查询进度条最大值
                     string sql_MIX = "select top 1 PAR_INTERFACE_MAX_W  from MC_SRMCAL_PAR order by TIMESTAMP ";
                     DataTable dataTable_MIX = dBSQL.GetCommand(sql_MIX);
@@ -1157,12 +1153,11 @@ namespace LY_SINTER.PAGE.Quality
                     SaveProgress_1(x_15);
                     //16#
 
-
                     float storehouse_x2 = storehouse_16 / storehouse_UP * 100;
                     int x_16 = (int)storehouse_x2;
                     SaveProgress_2(x_16);
 
-                    #endregion
+                    #endregion 进度条
                 }
             }
             catch (Exception ee)
@@ -1170,11 +1165,8 @@ namespace LY_SINTER.PAGE.Quality
                 string mistake = "页面刷新1min数据错误" + ee.ToString();
                 vLog.writelog(mistake, -1);
             }
-
-
-
-
         }
+
         /// <summary>
         /// 15#进度条
         /// </summary>
@@ -1194,15 +1186,14 @@ namespace LY_SINTER.PAGE.Quality
                     string mistake = "15#烧返仓实际下料量超过参数表设置下料量";
                     vLog.writelog(mistake, -1);
                 }
-
             }
             catch (Exception ee)
             {
                 string mistake = "15#进度条报错" + ee.ToString();
                 vLog.writelog(mistake, -1);
             }
-
         }
+
         /// <summary>
         /// 16#进度条
         /// </summary>
@@ -1221,14 +1212,12 @@ namespace LY_SINTER.PAGE.Quality
                     string mistake = "16#烧返仓实际下料量超过参数表设置下料量";
                     vLog.writelog(mistake, -1);
                 }
-
             }
             catch (Exception ee)
             {
                 string mistake = "16#进度条报错" + ee.ToString();
                 vLog.writelog(mistake, -1);
             }
-
         }
 
         /// <summary>
@@ -1266,9 +1255,9 @@ namespace LY_SINTER.PAGE.Quality
                 if (_data.Rows.Count > 0)
                 {
                     //15
-                    label53.Text = "分仓系数:" + _data.Rows[0][0].ToString();
+                    label53.Text = "分仓系数:" + Math.Round( double.Parse( _data.Rows[0][0].ToString()),3);
                     //16
-                    label52.Text = "分仓系数:" + _data.Rows[1][0].ToString();
+                    label52.Text = "分仓系数:" + Math.Round(double.Parse(_data.Rows[1][0].ToString()), 3);
                 }
             }
             catch (Exception ee)
@@ -1276,25 +1265,26 @@ namespace LY_SINTER.PAGE.Quality
                 string mistake = "更新实际下料量错误" + ee.ToString();
                 vLog.writelog(mistake, -1);
             }
-
-
         }
+
         public void Timer_stop()
         {
             _Timer1.Stop();
         }
+
         public void Timer_state()
         {
             _Timer1.Start();
         }
+
         public void _Clear()
         {
             _Timer1.Close();
             this.Dispose();
             GC.SuppressFinalize(this);
         }
-
     }
+
     /// <summary>
     /// 自定义控件，设置进度条的垂直显示
     /// </summary>

@@ -70,8 +70,8 @@
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.PowderBlue;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.76405F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.23595F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.92308F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.07692F));
             this.tableLayoutPanel1.Controls.Add(this.label5, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView2, 1, 2);
@@ -84,7 +84,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.924791F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 97.0752F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1116, 561);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1300, 561);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // label5
@@ -92,9 +92,9 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.LightBlue;
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(547, 35);
+            this.label5.Location = new System.Drawing.Point(729, 35);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(566, 15);
+            this.label5.Size = new System.Drawing.Size(568, 15);
             this.label5.TabIndex = 5;
             this.label5.Text = "历史数据";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -129,7 +129,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1110, 29);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1294, 29);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // simpleButton2
@@ -140,7 +140,7 @@
             this.simpleButton2.Appearance.Options.UseFont = true;
             this.simpleButton2.Appearance.Options.UseForeColor = true;
             this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
-            this.simpleButton2.Location = new System.Drawing.Point(888, 3);
+            this.simpleButton2.Location = new System.Drawing.Point(1072, 3);
             this.simpleButton2.Name = "simpleButton2";
             this.simpleButton2.Size = new System.Drawing.Size(69, 23);
             this.simpleButton2.TabIndex = 4;
@@ -153,7 +153,7 @@
             this.simpleButton3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
             this.simpleButton3.Appearance.Options.UseFont = true;
             this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(963, 3);
+            this.simpleButton3.Location = new System.Drawing.Point(1147, 3);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(69, 23);
             this.simpleButton3.TabIndex = 5;
@@ -164,7 +164,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(546, 8);
+            this.label2.Location = new System.Drawing.Point(730, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 10;
@@ -175,7 +175,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(739, 8);
+            this.label3.Location = new System.Drawing.Point(923, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(11, 12);
             this.label3.TabIndex = 11;
@@ -190,7 +190,7 @@
             this.simpleButton6.Appearance.Options.UseFont = true;
             this.simpleButton6.Appearance.Options.UseForeColor = true;
             this.simpleButton6.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.Image")));
-            this.simpleButton6.Location = new System.Drawing.Point(1038, 3);
+            this.simpleButton6.Location = new System.Drawing.Point(1222, 3);
             this.simpleButton6.Name = "simpleButton6";
             this.simpleButton6.Size = new System.Drawing.Size(69, 23);
             this.simpleButton6.TabIndex = 12;
@@ -200,7 +200,7 @@
             // textBox_end
             // 
             this.textBox_end.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_end.Location = new System.Drawing.Point(758, 4);
+            this.textBox_end.Location = new System.Drawing.Point(942, 4);
             this.textBox_end.Name = "textBox_end";
             this.textBox_end.Size = new System.Drawing.Size(124, 21);
             this.textBox_end.TabIndex = 14;
@@ -249,7 +249,7 @@
             // textBox_begin
             // 
             this.textBox_begin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_begin.Location = new System.Drawing.Point(608, 4);
+            this.textBox_begin.Location = new System.Drawing.Point(792, 4);
             this.textBox_begin.Name = "textBox_begin";
             this.textBox_begin.Size = new System.Drawing.Size(124, 21);
             this.textBox_begin.TabIndex = 13;
@@ -282,7 +282,7 @@
             this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.Location = new System.Drawing.Point(547, 53);
+            this.dataGridView2.Location = new System.Drawing.Point(729, 53);
             this.dataGridView2.Name = "dataGridView2";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -298,7 +298,7 @@
             this.dataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView2.RowTemplate.Height = 23;
             this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.dataGridView2.Size = new System.Drawing.Size(566, 505);
+            this.dataGridView2.Size = new System.Drawing.Size(568, 505);
             this.dataGridView2.TabIndex = 3;
             // 
             // dataGridView1
@@ -326,7 +326,7 @@
             this.Column5});
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F);
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -338,7 +338,7 @@
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 12F);
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F);
             dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -348,7 +348,7 @@
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(538, 505);
+            this.dataGridView1.Size = new System.Drawing.Size(720, 505);
             this.dataGridView1.TabIndex = 2;
             // 
             // Column1
@@ -391,7 +391,7 @@
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Location = new System.Drawing.Point(3, 35);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(538, 15);
+            this.label4.Size = new System.Drawing.Size(720, 15);
             this.label4.TabIndex = 4;
             this.label4.Text = "实时数据";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -400,7 +400,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1116, 561);
+            this.ClientSize = new System.Drawing.Size(1300, 561);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_MIX_Parameter";

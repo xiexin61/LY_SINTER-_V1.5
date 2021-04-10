@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using DataBase;
 using VLog;
-using System.Threading.Tasks;
-//using System.Windows.Forms
 
 namespace SCZZJH
 {
     public class His_CL
     {
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
         public vLog vLog { get; set; }
+
         //public Timer Timer_1 { get; set; }
         //public Timer Timer_2 { get; set; }
         //20201219测试代码修改函数名，原函数名His_CL
@@ -34,7 +34,7 @@ namespace SCZZJH
             //string sql1 = "select POPCAL_MON_PL from MC_POPCAL_MON_PL where POPCAL_MON='" + 202009 + "'";
             string sql1 = "select POPCAL_MON_PL from MC_POPCAL_MON_PL where POPCAL_MON='" + date + "'";
             DateTime Start1 = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-            System.Data.DataTable table1 = dBSQL.GetCommand(sql1);
+            DataTable table1 = dBSQL.GetCommand(sql1);
             if (table1.Rows.Count > 0)
             {
                 Xmes = Convert.ToDouble(table1.Rows[0]["POPCAL_MON_PL"]);
@@ -44,7 +44,6 @@ namespace SCZZJH
             {
                 X = Xmes / D;
                 //插入数据库
-
             }
             else
             {
@@ -70,8 +69,8 @@ namespace SCZZJH
                 "insert into MC_POPCAL_RESULT(TIMESTAMP,POPCAL_A_OUT_PL,POPCAL_D_OUT_PL,POPCAL_N_OUT_PL)" +
                 " values('" + Start + "'," + X + "," + X / 2 + "," + X / 2 + ");";
             long _urs = dBSQL.CommandExecuteNonQuery(his);
-
         }
+
         //理论批重计算，只在每晚8点计算一次
         public void LLPiZhong()
         {
@@ -83,7 +82,6 @@ namespace SCZZJH
             {
                 PAR_DAY_START = Convert.ToInt32(table.Rows[0][0]);
                 Time = Convert.ToInt32(table.Rows[0][1]);
-
             }
             DateTime Start = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, PAR_DAY_START, 0, 0);*/
             DateTime Start = GetStartTime();
@@ -158,7 +156,6 @@ namespace SCZZJH
             {
                 PAR_DAY_START = Convert.ToInt32(table.Rows[0][0]);
                 Time = Convert.ToInt32(table.Rows[0][1]);
-
             }
             DateTime Start = new DateTime();
             if (DateTime.Now.Hour < PAR_DAY_START)
@@ -171,6 +168,7 @@ namespace SCZZJH
             }
             return Start;
         }
+
         //历史产量计算
         public void His_CLJS()
         {

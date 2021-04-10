@@ -1013,8 +1013,16 @@ namespace LY_SINTER.PAGE.Quality
                     if (f_3)
                     {
                         bool f_4 = mIX_PAGE.CptSolfuel_1(CAL_MODE, RJ_MAX, RJ_MIN, RL_MAX, RL_MIN, BYS_MAX, BYS_MIN);//判断特殊成分配比
-                        HMICAL.CalPB(1);//计算当前配比%
-                        PBTZ_GRTDATA(1);//更新设定配比&设定配比%数据
+                        if (f_4)
+                        {
+                            HMICAL.CalPB(1);//计算当前配比%
+                            PBTZ_GRTDATA(1);//更新设定配比&设定配比%数据
+                        }
+                        else
+                        {
+                            MessageBox.Show("设定配比不满足");
+                        }
+                       
                     }
                 }
             }

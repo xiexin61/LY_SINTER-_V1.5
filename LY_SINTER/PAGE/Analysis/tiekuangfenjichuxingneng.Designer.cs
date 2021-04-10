@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tiekuangfenjichuxingneng));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tiekuangfenjichuxingneng));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -42,6 +42,7 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
+            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
@@ -52,6 +53,7 @@
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.textBox_begin = new System.Windows.Forms.TextBox();
             this.textBox_end = new System.Windows.Forms.TextBox();
+            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.d1 = new System.Windows.Forms.DataGridView();
@@ -79,9 +81,6 @@
             this.Na2O = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TiO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.simpleButton7 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton6 = new DevExpress.XtraEditors.SimpleButton();
             this.rowMergeView1 = new RowMergeView();
             this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BATCH_NUM2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -101,6 +100,7 @@
             this.DEN_T = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.POROSITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -221,6 +221,19 @@
             this.label8.Text = "最新调整时间:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // simpleButton7
+            // 
+            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton7.Appearance.Options.UseFont = true;
+            this.simpleButton7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.simpleButton7.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.Image")));
+            this.simpleButton7.Location = new System.Drawing.Point(1060, 3);
+            this.simpleButton7.Name = "simpleButton7";
+            this.simpleButton7.Size = new System.Drawing.Size(194, 23);
+            this.simpleButton7.TabIndex = 27;
+            this.simpleButton7.Text = "高炉入炉原料基础性能";
+            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
+            // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -337,6 +350,19 @@
             this.textBox_end.Size = new System.Drawing.Size(124, 21);
             this.textBox_end.TabIndex = 18;
             // 
+            // simpleButton6
+            // 
+            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.simpleButton6.Appearance.Options.UseFont = true;
+            this.simpleButton6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.simpleButton6.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.Image")));
+            this.simpleButton6.Location = new System.Drawing.Point(860, 3);
+            this.simpleButton6.Name = "simpleButton6";
+            this.simpleButton6.Size = new System.Drawing.Size(194, 23);
+            this.simpleButton6.TabIndex = 26;
+            this.simpleButton6.Text = "烧结其他原料基础性能";
+            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
+            // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
@@ -411,6 +437,7 @@
             this.d1.Location = new System.Drawing.Point(4, 25);
             this.d1.MultiSelect = false;
             this.d1.Name = "d1";
+            this.d1.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("SimSun", 9F);
@@ -433,132 +460,154 @@
             // 
             this.id.HeaderText = "序号";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
             // BATCH_NUM
             // 
             this.BATCH_NUM.DataPropertyName = "BATCH_NUM";
             this.BATCH_NUM.HeaderText = "批号";
             this.BATCH_NUM.Name = "BATCH_NUM";
+            this.BATCH_NUM.ReadOnly = true;
             // 
             // MAT_DESC
             // 
             this.MAT_DESC.DataPropertyName = "MAT_DESC";
             this.MAT_DESC.HeaderText = "物料名";
             this.MAT_DESC.Name = "MAT_DESC";
+            this.MAT_DESC.ReadOnly = true;
             // 
             // ORE_CLASS
             // 
             this.ORE_CLASS.DataPropertyName = "ORE_CLASS";
             this.ORE_CLASS.HeaderText = "类别";
             this.ORE_CLASS.Name = "ORE_CLASS";
+            this.ORE_CLASS.ReadOnly = true;
             // 
             // PLACE_ORIGIN
             // 
             this.PLACE_ORIGIN.DataPropertyName = "PLACE_ORIGIN";
             this.PLACE_ORIGIN.HeaderText = "产地";
             this.PLACE_ORIGIN.Name = "PLACE_ORIGIN";
+            this.PLACE_ORIGIN.ReadOnly = true;
             // 
             // UNIT_PRICE
             // 
             this.UNIT_PRICE.DataPropertyName = "UNIT_PRICE";
             this.UNIT_PRICE.HeaderText = "单价（元/吨）";
             this.UNIT_PRICE.Name = "UNIT_PRICE";
+            this.UNIT_PRICE.ReadOnly = true;
             // 
             // TFE
             // 
             this.TFE.DataPropertyName = "C_TFE";
             this.TFE.HeaderText = "TFe";
             this.TFE.Name = "TFE";
+            this.TFE.ReadOnly = true;
             // 
             // C_FEO
             // 
             this.C_FEO.DataPropertyName = "C_FEO";
             this.C_FEO.HeaderText = "FeO";
             this.C_FEO.Name = "C_FEO";
+            this.C_FEO.ReadOnly = true;
             // 
             // SiO2
             // 
             this.SiO2.DataPropertyName = "C_SIO2";
             this.SiO2.HeaderText = "SiO2";
             this.SiO2.Name = "SiO2";
+            this.SiO2.ReadOnly = true;
             // 
             // CaO
             // 
             this.CaO.DataPropertyName = "C_CAO";
             this.CaO.HeaderText = "CaO";
             this.CaO.Name = "CaO";
+            this.CaO.ReadOnly = true;
             // 
             // MgO
             // 
             this.MgO.DataPropertyName = "C_MGO";
             this.MgO.HeaderText = "MgO";
             this.MgO.Name = "MgO";
+            this.MgO.ReadOnly = true;
             // 
             // Al2O3
             // 
             this.Al2O3.DataPropertyName = "C_AL2O3";
             this.Al2O3.HeaderText = "Al2O3";
             this.Al2O3.Name = "Al2O3";
+            this.Al2O3.ReadOnly = true;
             // 
             // S
             // 
             this.S.DataPropertyName = "C_S";
             this.S.HeaderText = "S";
             this.S.Name = "S";
+            this.S.ReadOnly = true;
             // 
             // P
             // 
             this.P.DataPropertyName = "C_P";
             this.P.HeaderText = "P";
             this.P.Name = "P";
+            this.P.ReadOnly = true;
             // 
             // LOT
             // 
             this.LOT.DataPropertyName = "C_LOT";
             this.LOT.HeaderText = "LOT";
             this.LOT.Name = "LOT";
+            this.LOT.ReadOnly = true;
             // 
             // H2O
             // 
             this.H2O.DataPropertyName = "C_H2O";
             this.H2O.HeaderText = "H2O";
             this.H2O.Name = "H2O";
+            this.H2O.ReadOnly = true;
             // 
             // As
             // 
             this.As.DataPropertyName = "C_ASH";
             this.As.HeaderText = "As";
             this.As.Name = "As";
+            this.As.ReadOnly = true;
             // 
             // Pb
             // 
             this.Pb.DataPropertyName = "C_PBO";
             this.Pb.HeaderText = "Pb";
             this.Pb.Name = "Pb";
+            this.Pb.ReadOnly = true;
             // 
             // Zn
             // 
             this.Zn.DataPropertyName = "C_ZN";
             this.Zn.HeaderText = "Zn";
             this.Zn.Name = "Zn";
+            this.Zn.ReadOnly = true;
             // 
             // Cu
             // 
             this.Cu.DataPropertyName = "C_CU";
             this.Cu.HeaderText = "Cu";
             this.Cu.Name = "Cu";
+            this.Cu.ReadOnly = true;
             // 
             // K2O
             // 
             this.K2O.DataPropertyName = "C_K2O";
             this.K2O.HeaderText = "K2O";
             this.K2O.Name = "K2O";
+            this.K2O.ReadOnly = true;
             // 
             // Na2O
             // 
             this.Na2O.DataPropertyName = "C_NA2O";
             this.Na2O.HeaderText = "Na2O";
             this.Na2O.Name = "Na2O";
+            this.Na2O.ReadOnly = true;
             // 
             // TiO2
             // 
@@ -567,6 +616,7 @@
             this.TiO2.DefaultCellStyle = dataGridViewCellStyle2;
             this.TiO2.HeaderText = "TiO2";
             this.TiO2.Name = "TiO2";
+            this.TiO2.ReadOnly = true;
             // 
             // tableLayoutPanel6
             // 
@@ -584,44 +634,6 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(1476, 427);
             this.tableLayoutPanel6.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(4, 1);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(1468, 20);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "铁矿粉物理性能";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // simpleButton7
-            // 
-            this.simpleButton7.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton7.Appearance.Options.UseFont = true;
-            this.simpleButton7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton7.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton7.Image")));
-            this.simpleButton7.Location = new System.Drawing.Point(1032, 3);
-            this.simpleButton7.Name = "simpleButton7";
-            this.simpleButton7.Size = new System.Drawing.Size(166, 23);
-            this.simpleButton7.TabIndex = 27;
-            this.simpleButton7.Text = "高炉入炉原料基础性能";
-            this.simpleButton7.Click += new System.EventHandler(this.simpleButton7_Click);
-            // 
-            // simpleButton6
-            // 
-            this.simpleButton6.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.simpleButton6.Appearance.Options.UseFont = true;
-            this.simpleButton6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton6.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton6.Image")));
-            this.simpleButton6.Location = new System.Drawing.Point(855, 3);
-            this.simpleButton6.Name = "simpleButton6";
-            this.simpleButton6.Size = new System.Drawing.Size(173, 23);
-            this.simpleButton6.TabIndex = 26;
-            this.simpleButton6.Text = "烧结其他原料基础性能";
-            this.simpleButton6.Click += new System.EventHandler(this.simpleButton6_Click);
             // 
             // rowMergeView1
             // 
@@ -811,6 +823,18 @@
             this.Column14.HeaderText = "矿粉质量评价";
             this.Column14.Name = "Column14";
             this.Column14.ReadOnly = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Location = new System.Drawing.Point(4, 1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(1468, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "铁矿粉物理性能";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tiekuangfenjichuxingneng
             // 

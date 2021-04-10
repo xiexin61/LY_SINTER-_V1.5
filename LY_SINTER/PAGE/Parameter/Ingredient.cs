@@ -326,6 +326,7 @@ namespace LY_SINTER.PAGE.Parameter
         /// </summary>
         public void _TransfDelegate()
         {
+            time_begin_end();//开始&结束时间赋值
             Show_d1();//再用成分赋值
             SHOW_D2();//历史成分赋值
             Time_now();//最新修改时间

@@ -880,10 +880,10 @@ namespace NBSJ_MAIN_UC
         {
             //总料量SP PV
 
-            /*if (modelT_PLC_3S.T_TOTAL_SP_W_3S != 0)
+            if (modelT_PLC_3S.T_TOTAL_SP_W_3S != 0)
             {
                 bottleAllUC1.t_total_sp_w_3s = modelT_PLC_3S.T_TOTAL_SP_W_3S.Value.ToString("f0");
-            }*/
+            }
             if (modelT_PLC_3S.T_TOTAL_PV_W_3S != 0)
             {
                 bottleAllUC1.T_TOTAL_PV_W_3S = modelT_PLC_3S.T_TOTAL_PV_W_3S.Value.ToString("F2");

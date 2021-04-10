@@ -280,10 +280,10 @@ namespace LY_SINTER.PAGE.Analysis
         {
             //总料量SP PV
 
-            /*if (modelT_PLC_3S.T_TOTAL_SP_W_3S != 0)
+            if (modelT_PLC_3S.T_TOTAL_SP_W_3S != 0)
             {
                 bottleAllUC1.t_total_sp_w_3s = modelT_PLC_3S.T_TOTAL_SP_W_3S.Value.ToString("f0");
-            }*/
+            }
             if (modelT_PLC_3S.T_TOTAL_PV_W_3S != 0)
             {
                 bottleAllUC1.T_TOTAL_PV_W_3S = modelT_PLC_3S.T_TOTAL_PV_W_3S.Value.ToString("F2");
@@ -592,7 +592,9 @@ namespace LY_SINTER.PAGE.Analysis
             return Time;
         }
 
-        //生产组织计划表格查询
+        /// <summary>
+        /// 界面表格数据查询
+        /// </summary>
         public void sszzjh()
         {
             rowMergeView1.Rows.Clear();
@@ -620,15 +622,6 @@ namespace LY_SINTER.PAGE.Analysis
                 this.rowMergeView1.Rows[0].Cells["Column32"].Value = (Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]) / 6).ToString("0.000");
                 this.rowMergeView1.Rows[0].Cells["夜班合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]).ToString("0.000");
                 this.rowMergeView1.Rows[0].Cells["合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_A_OUT_PL"]).ToString("0.000");
-                //int index = this.dataGridView1.Rows.Add();
-                /*DataGridViewRow row = new DataGridViewRow();
-                rowMergeView1.Rows.Add(row);
-                //this.rowMergeView1.CurrentRow
-                this.rowMergeView1.Rows[1].Cells["time"].Value = "计划产量";
-                this.rowMergeView1.Rows[1].Cells["Column21"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_D_OUT_PL"]).ToString("0.00");
-                this.rowMergeView1.Rows[1].Cells["Column21"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_N_OUT_PL"]).ToString("0.00");
-                this.rowMergeView1.Rows[1].Cells["Column21"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_A_OUT_PL"]).ToString("0.00");
-                this.rowMergeView1.Rows[1].Cells["合计"].Value = Convert.ToDouble(table.Rows[0]["POPCAL_A_OUT_PL"]).ToString("0.00");*/
             }
             //llcl中存放的是理论产量、sj中存放的是实际产量
             List<double> llcl = new List<double>();
@@ -749,12 +742,6 @@ namespace LY_SINTER.PAGE.Analysis
             this.rowMergeView1.Rows[1].Cells["Column32"].Value = Convert.ToDouble(llcl[11]).ToString("0.00");
             this.rowMergeView1.Rows[1].Cells["夜班合计"].Value = Convert.ToDouble(llcl[6] + llcl[7] + llcl[8] + llcl[9] + llcl[10] + llcl[11]).ToString("0.00");
             this.rowMergeView1.Rows[1].Cells["合计"].Value = Convert.ToDouble(llcl[0] + llcl[1] + llcl[2] + llcl[3] + llcl[4] + llcl[5] + llcl[6] + llcl[7] + llcl[8] + llcl[9] + llcl[10] + llcl[11]).ToString("0.00");
-            /*DataGridViewRow row2 = new DataGridViewRow();
-            rowMergeView1.Rows.Add(row2);
-            this.rowMergeView1.Rows[3].Cells["time"].Value = "理论产量";
-            this.rowMergeView1.Rows[3].Cells["Column21"].Value = Convert.ToDouble(llcl[0]+ llcl[1] + llcl[2] + llcl[3] + llcl[4] + llcl[5]).ToString("0.00");
-            this.rowMergeView1.Rows[3].Cells["Column27"].Value = Convert.ToDouble(llcl[6] + llcl[7] + llcl[8] + llcl[9] + llcl[10] + llcl[11]).ToString("0.00");
-            this.rowMergeView1.Rows[3].Cells["合计"].Value = Convert.ToDouble(llcl[0] + llcl[1] + llcl[2] + llcl[3] + llcl[4] + llcl[5]+llcl[6] + llcl[7] + llcl[8] + llcl[9] + llcl[10] + llcl[11]).ToString("0.00");*/
             DataGridViewRow row3 = new DataGridViewRow();
             rowMergeView1.Rows.Add(row3);
             this.rowMergeView1.Rows[2].Cells["time"].Value = "实际产量";
@@ -773,14 +760,6 @@ namespace LY_SINTER.PAGE.Analysis
             this.rowMergeView1.Rows[2].Cells["Column32"].Value = Convert.ToDouble(sj[11]).ToString("0.00");
             this.rowMergeView1.Rows[2].Cells["夜班合计"].Value = Convert.ToDouble(sj[6] + sj[7] + sj[8] + sj[9] + sj[10] + sj[11]).ToString("0.00");
             this.rowMergeView1.Rows[2].Cells["合计"].Value = Convert.ToDouble(sj[0] + sj[1] + sj[2] + sj[3] + sj[4] + sj[5] + sj[6] + sj[7] + sj[8] + sj[9] + sj[10] + sj[11]).ToString("0.00");
-            /*DataGridViewRow row4 = new DataGridViewRow();
-            rowMergeView1.Rows.Add(row4);
-            this.rowMergeView1.Rows[5].Cells["time"].Value = "实际产量";
-            this.rowMergeView1.Rows[5].Cells["Column21"].Value = Convert.ToDouble(sj[0] + sj[1] + sj[2] + sj[3] + sj[4] + sj[5]).ToString("0.00");
-            this.rowMergeView1.Rows[5].Cells["Column27"].Value = Convert.ToDouble(sj[6] + sj[7] + sj[8] + sj[9] + sj[10] + sj[11]).ToString("0.00");
-            this.rowMergeView1.Rows[5].Cells["合计"].Value = Convert.ToDouble(sj[0] + sj[1] + sj[2] + sj[3] + sj[4] + sj[5]+ sj[6] + sj[7] + sj[8] + sj[9] + sj[10] + sj[11]).ToString("0.00");
-            this.rowMergeView1.MergeColumnNames.Add("time");
-            this.rowMergeView1.MergeColumnNames.Add("合计");*/
         }
 
         private void Check_text()
@@ -828,7 +807,8 @@ namespace LY_SINTER.PAGE.Analysis
             return s;
         }
 
-        //用于存放坐标点
+        #region
+
         private List<DataPoint> Line1 = new List<DataPoint>();
 
         private List<DataPoint> Line2 = new List<DataPoint>();
@@ -843,7 +823,13 @@ namespace LY_SINTER.PAGE.Analysis
         private List<double> list1 = new List<double>();
         private List<double> list2 = new List<double>();
         private List<double> list3 = new List<double>();
+        #endregion
 
+        /// <summary>
+        /// 界面曲线查询
+        /// </summary>
+        /// <param name="time_BIGIN">开始时间</param>
+        /// <param name="time_END">结束时间</param>
         public void quxian(DateTime time_BIGIN, DateTime time_END)
         {
             Line1.Clear();
@@ -874,6 +860,7 @@ namespace LY_SINTER.PAGE.Analysis
             //曲线准备
             _myPlotModel_1 = new PlotModel()
             {
+                PlotMargins = new OxyThickness(120, 20, 0, 20),
                 Background = OxyColors.White,
             };
             var _dateAxis = new DateTimeAxis()
@@ -908,9 +895,8 @@ namespace LY_SINTER.PAGE.Analysis
                 MinorTickSize = 0,
                 Maximum = getnMax((int)list1.Max() + 1, (int)list1.Min() - 1),
                 Minimum = (int)list1.Min() - 1,
-                //MajorStep= (int)list1.Min() - 1,
             };
-            _valueAxis1_1.MajorStep = (_valueAxis1_1.Maximum - _valueAxis1_1.Minimum) / 4;
+            _valueAxis1_1.MajorStep = (_valueAxis1_1.Maximum - _valueAxis1_1.Minimum) / 5;
             _myPlotModel_1.Axes.Add(_valueAxis1_1);
             series1_1 = new OxyPlot.Series.LineSeries()
             {
@@ -947,9 +933,8 @@ namespace LY_SINTER.PAGE.Analysis
                 MinorTickSize = 0,
                 Maximum = getnMax((int)list2.Max() + 1, (int)list2.Min() - 1),
                 Minimum = (int)list2.Min() - 1,
-                //MajorStep= (int)list2.Min() - 1,
             };
-            _valueAxis1_2.MajorStep = (_valueAxis1_2.Maximum - _valueAxis1_2.Minimum) / 4;
+            _valueAxis1_2.MajorStep = (_valueAxis1_2.Maximum - _valueAxis1_2.Minimum) / 5;
 
             _myPlotModel_1.Axes.Add(_valueAxis1_2);
             series1_2 = new OxyPlot.Series.LineSeries()
@@ -988,9 +973,8 @@ namespace LY_SINTER.PAGE.Analysis
                 MinorTickSize = 0,
                 Maximum = getnMax((int)list3.Max() + 1, (int)list3.Min() - 1),
                 Minimum = (int)list3.Min() - 1,
-                //MajorStep= (int)list3.Min() - 1,
             };
-            _valueAxis1_3.MajorStep = (_valueAxis1_3.Maximum - _valueAxis1_3.Minimum) / 4;
+            _valueAxis1_3.MajorStep = (_valueAxis1_3.Maximum - _valueAxis1_3.Minimum) / 5;
             _myPlotModel_1.Axes.Add(_valueAxis1_3);
             series1_3 = new OxyPlot.Series.LineSeries()
             {
@@ -1015,7 +999,7 @@ namespace LY_SINTER.PAGE.Analysis
 
             plotView2.Controller = PlotController;
 
-            var ta = new TrackerManipulator(plotView2);
+            /*var ta = new TrackerManipulator(plotView2);
             ta.PointsOnly = true;
 
             var tracker = new TrackerHitResult();
@@ -1025,12 +1009,10 @@ namespace LY_SINTER.PAGE.Analysis
             tracker.Series = series1_3;
 
             var tr = new TrackBar();
-            tr.Padding = new Padding(5, 5, 5, 5);
-
-            //绑定数据18130085606
+            tr.Padding = new Padding(5, 5, 5, 5);*/
         }
 
-        //实时
+        //实时按钮
         private void simpleButton3_click(object sender, EventArgs e)
         {
             DateTime d1 = DateTime.Now.AddMonths(-1);
@@ -1038,7 +1020,7 @@ namespace LY_SINTER.PAGE.Analysis
             quxian(d1, d2);
         }
 
-        //查询曲线功能
+        //查询按钮
         private void simpleButton2_click(object sender, EventArgs e)
         {
             DateTime d1 = Convert.ToDateTime(textBox_begin.Text);
@@ -1054,7 +1036,7 @@ namespace LY_SINTER.PAGE.Analysis
         {
         }
 
-        //修改数据产量
+        //修改数据产量按钮
         private void simpleButton4_click(object sender, EventArgs e)
         {
             Frm_SSZZ_yjhcl form_display = new Frm_SSZZ_yjhcl();

@@ -15,6 +15,8 @@ namespace LY_SINTER.Popover.Quality
 {
     public partial class Frm_Automatic_Adjust : Form
     {
+
+        public System.Timers.Timer _Timer1 { get; set; }
         public static bool isopen = false;
         String biaoming3 = "";
         DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
@@ -25,7 +27,26 @@ namespace LY_SINTER.Popover.Quality
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
             comboBox1_SelectedIndexChanged();
-            show(1);
+          
+            _Timer1 = new System.Timers.Timer(1000);//初始化颜色变化定时器响应事件
+            _Timer1.Elapsed += (x, y) => { _Timer1_Tick(); };
+            _Timer1.Enabled = true;
+            _Timer1.AutoReset = false;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
+        }
+        /// <summary>
+        /// 初始化颜色变化定时器响应事件
+        /// </summary>
+        private void _Timer1_Tick()
+        {
+            Action invokeAction = new Action(_Timer1_Tick);
+            if (this.InvokeRequired)
+            {
+                this.Invoke(invokeAction);
+            }
+            else
+            {
+                show(1);
+            }
         }
         /// <summary>
         /// 开始时间-结束时间赋值
