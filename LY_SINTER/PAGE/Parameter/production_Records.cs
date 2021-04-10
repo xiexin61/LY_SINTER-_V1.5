@@ -453,7 +453,7 @@ namespace LY_SINTER.PAGE.Parameter
             {
                 if (flag == 1)
                 {
-                    var sql = "select top(15) ROW_NUMBER() OVER (ORDER BY TIMESTAMP desc) AS ID,TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,STOP_BEGINTIME,STOP_ENDTIME,INTERVAL_TIME,FLAG_1,SORT_BIG,SORT_LITTLE from M_SIN_RUN_STOP order by TIMESTAMP desc";
+                    var sql = "select top(15) ROW_NUMBER() OVER (ORDER BY TIMESTAMP desc) AS ID,TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,STOP_BEGINTIME,STOP_ENDTIME,INTERVAL_TIME,FLAG_1,SORT_BIG,SORT_LITTLE, (CASE FLAG_2 WHEN 0 THEN '自动' WHEN 1 THEN '人工' else '自动' end) as FLAG_2   from M_SIN_RUN_STOP order by TIMESTAMP desc";
                     DataTable data_1 = dBSQL.GetCommand(sql);
                     if (data_1 != null && data_1.Rows.Count > 0)
                     {
@@ -473,7 +473,7 @@ namespace LY_SINTER.PAGE.Parameter
                 }
                 else
                 {
-                    var sql = "select ROW_NUMBER() OVER (ORDER BY TIMESTAMP desc) AS ID,TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,STOP_BEGINTIME,STOP_ENDTIME,INTERVAL_TIME,FLAG_1,SORT_BIG,SORT_LITTLE from M_SIN_RUN_STOP where TIMESTAMP >= '" + textBox_begin.Text.ToString() + "' and TIMESTAMP <= '" + textBox_end.Text.ToString() + "'  order by TIMESTAMP desc";
+                    var sql = "select ROW_NUMBER() OVER (ORDER BY TIMESTAMP desc) AS ID,TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,STOP_BEGINTIME,STOP_ENDTIME,INTERVAL_TIME,FLAG_1,SORT_BIG,SORT_LITTLE,(CASE FLAG_2 WHEN 0 THEN '自动' WHEN 1 THEN '人工' else '自动' end) as FLAG_2  from M_SIN_RUN_STOP where TIMESTAMP >= '" + textBox_begin.Text.ToString() + "' and TIMESTAMP <= '" + textBox_end.Text.ToString() + "'  order by TIMESTAMP desc";
                     DataTable data_1 = dBSQL.GetCommand(sql);
                     if (data_1 != null && data_1.Rows.Count > 0)
                     {

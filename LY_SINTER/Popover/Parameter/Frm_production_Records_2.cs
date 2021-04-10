@@ -61,7 +61,7 @@ namespace LY_SINTER.Popover.Parameter
                       comboBox3.Text = _Rule_Big_1.Item2[table.Rows[0]["SORT_BIG"].ToString()];
                     //原因小类
                     if (table.Rows[0]["SORT_LITTLE"].ToString() != "")
-                        comboBox4.Text = _Rule_Big_1.Item2[table.Rows[0]["SORT_LITTLE"].ToString()];
+                        comboBox4.Text = _Rule_Loser_1.Item2[table.Rows[0]["SORT_LITTLE"].ToString()];
                     //开始时间
                     textBox_begin.Value = DateTime.Parse( table.Rows[0]["STOP_BEGINTIME"].ToString());
                     //结束时间
