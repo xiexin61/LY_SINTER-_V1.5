@@ -112,7 +112,7 @@ namespace LY_SINTER.PAGE.Course
         {
             try
             {
-                string sql1 = "select top 1 TIMESTAMP FROM MC_WATERCAL_RESULT ORDER BY TIMESTAMP DESC";
+                string sql1 = "select top 1 TIMESTAMP FROM MC_WATERCAL_RESULT where WATCAL_FLAG3 = 1 ORDER BY TIMESTAMP DESC";
                 DataTable dataTable1 = dBSQL.GetCommand(sql1);
                 if (dataTable1.Rows.Count > 0)
                 {

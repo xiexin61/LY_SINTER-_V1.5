@@ -21,29 +21,38 @@ namespace LY_SINTER.PAGE.Course
     public partial class Deviation_guide : UserControl
     {
         public vLog _vLog { get; set; }
-       
+
         public System.Timers.Timer _Timer1 { get; set; }
 
         //实时曲线
-        List<string> xvalDt = new List<string> { "1#闸门", "2#闸门", "3#闸门", "4#闸门", "5#闸门", "6#闸门", "平均料厚" };//{ 1, 2, 3, 4, 5, 6, 7 };
-        List<string> xvalDt1 = new List<string> { "1#闸门", "2#闸门", "3#闸门", "4#闸门", "5#闸门", "6#闸门" };
+        private List<string> xvalDt = new List<string> { "1#闸门", "2#闸门", "3#闸门", "4#闸门", "5#闸门", "6#闸门", "平均料厚" };//{ 1, 2, 3, 4, 5, 6, 7 };
+
+        private List<string> xvalDt1 = new List<string> { "1#闸门", "2#闸门", "3#闸门", "4#闸门", "5#闸门", "6#闸门" };
+
         //实时曲线前12H数据
         //设定料厚
-        List<double> ydata_12h_1 = new List<double>();
+        private List<double> ydata_12h_1 = new List<double>();
+
         //实际料厚
-        List<double> ydata_12h_2 = new List<double>();
+        private List<double> ydata_12h_2 = new List<double>();
+
         //闸门1应调料厚
-        List<double> ydata_12h_3 = new List<double>();
+        private List<double> ydata_12h_3 = new List<double>();
+
         //闸门2应调料厚
-        List<double> ydata_12h_4 = new List<double>();
+        private List<double> ydata_12h_4 = new List<double>();
+
         //闸门3应调料厚
-        List<double> ydata_12h_5 = new List<double>();
+        private List<double> ydata_12h_5 = new List<double>();
+
         //闸门4应调料厚
-        List<double> ydata_12h_6 = new List<double>();
+        private List<double> ydata_12h_6 = new List<double>();
+
         //闸门5应调料厚
-        List<double> ydata_12h_7 = new List<double>();
+        private List<double> ydata_12h_7 = new List<double>();
+
         //闸门6应调料厚
-        List<double> ydata_12h_8 = new List<double>();
+        private List<double> ydata_12h_8 = new List<double>();
 
         private PlotModel _myPlotModel;
         private DateTimeAxis _dateAxis;//X轴
@@ -56,15 +65,14 @@ namespace LY_SINTER.PAGE.Course
         private LinearAxis _valueAxis7;//Y轴
         private LinearAxis _valueAxis8;//Y轴
 
-        List<OxyPlot.DataPoint> Line1 = new List<OxyPlot.DataPoint>();
-        List<OxyPlot.DataPoint> Line2 = new List<OxyPlot.DataPoint>();
-        List<OxyPlot.DataPoint> Line3 = new List<OxyPlot.DataPoint>();
-        List<OxyPlot.DataPoint> Line4 = new List<OxyPlot.DataPoint>();
-        List<OxyPlot.DataPoint> Line5 = new List<OxyPlot.DataPoint>();
-        List<OxyPlot.DataPoint> Line6 = new List<OxyPlot.DataPoint>();
-        List<OxyPlot.DataPoint> Line7 = new List<OxyPlot.DataPoint>();
-        List<OxyPlot.DataPoint> Line8 = new List<OxyPlot.DataPoint>();
-
+        private List<OxyPlot.DataPoint> Line1 = new List<OxyPlot.DataPoint>();
+        private List<OxyPlot.DataPoint> Line2 = new List<OxyPlot.DataPoint>();
+        private List<OxyPlot.DataPoint> Line3 = new List<OxyPlot.DataPoint>();
+        private List<OxyPlot.DataPoint> Line4 = new List<OxyPlot.DataPoint>();
+        private List<OxyPlot.DataPoint> Line5 = new List<OxyPlot.DataPoint>();
+        private List<OxyPlot.DataPoint> Line6 = new List<OxyPlot.DataPoint>();
+        private List<OxyPlot.DataPoint> Line7 = new List<OxyPlot.DataPoint>();
+        private List<OxyPlot.DataPoint> Line8 = new List<OxyPlot.DataPoint>();
 
         private OxyPlot.Series.LineSeries series1;//曲线
         private OxyPlot.Series.LineSeries series2;//曲线
@@ -74,15 +82,15 @@ namespace LY_SINTER.PAGE.Course
         private OxyPlot.Series.LineSeries series6;//曲线
         private OxyPlot.Series.LineSeries series7;//曲线
         private OxyPlot.Series.LineSeries series8;//曲线
-        string[] curve_name = { "A_1", "A_2", "A_3", "A_4", "A_5", "A_6", "A_7", "A_8" };
+        private string[] curve_name = { "A_1", "A_2", "A_3", "A_4", "A_5", "A_6", "A_7", "A_8" };
 
+        private LiveCharts.Wpf.ColumnSeries lcheckBox9 { get; set; }
+        private LiveCharts.Wpf.ColumnSeries lcheckBox10 { get; set; }
+        private LiveCharts.Wpf.ColumnSeries lcheckBox11 { get; set; }
+        private LiveCharts.Wpf.ColumnSeries lcheckBox12 { get; set; }
 
-        LiveCharts.Wpf.ColumnSeries lcheckBox9 { get; set; }
-        LiveCharts.Wpf.ColumnSeries lcheckBox10 { get; set; }
-        LiveCharts.Wpf.ColumnSeries lcheckBox11 { get; set; }
-        LiveCharts.Wpf.ColumnSeries lcheckBox12 { get; set; }
+        private DBSQL dBSQL = new DBSQL(DataBase.ConstParameters.strCon);
 
-        DBSQL dBSQL = new DBSQL(DataBase.ConstParameters.strCon);
         public Deviation_guide()
         {
             InitializeComponent();
@@ -91,7 +99,6 @@ namespace LY_SINTER.PAGE.Course
             dateTimePicker_value();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
-
 
             quxiandingyi();//实时曲线定义
             Curve_Bar_1();//布料厚度
@@ -122,19 +129,19 @@ namespace LY_SINTER.PAGE.Course
                 time();
                 xzmxx();
                 shuju();
-              
+
                 Curve_Bar_1();//布料厚度
                 Curve_Bar_2();//均匀一致性指数
                 Curve_Bar_3();//应调厚度
                 min1();//1min历史中实时曲线放一个数
             }
         }
+
         //实时曲线定义
         private void quxiandingyi()
         {
-
-
         }
+
         //1min历史中实时曲线放一个数
         private void min1()
         {
@@ -212,7 +219,7 @@ namespace LY_SINTER.PAGE.Course
                         {
                             ydata_12h_8.Add(double.NaN);
                         }
-                                }
+                    }
                     else
                     {
                         ydata_12h_1.Add(double.NaN);
@@ -223,7 +230,7 @@ namespace LY_SINTER.PAGE.Course
                         ydata_12h_6.Add(double.NaN);
                         ydata_12h_7.Add(double.NaN);
                         ydata_12h_8.Add(double.NaN);
-                              }
+                    }
                 }
                 else
                 {
@@ -240,6 +247,7 @@ namespace LY_SINTER.PAGE.Course
             catch
             { }
         }
+
         /// <summary>
         /// 布料厚度柱形图
         /// </summary>
@@ -317,18 +325,17 @@ namespace LY_SINTER.PAGE.Course
                 }
                 _myPlotModel_1.Series.Add(_ColumnSeries_1);
                 plotView1.Model = _myPlotModel_1;
-                }
+            }
             catch (Exception ee)
             {
-
             }
         }
+
         /// <summary>
         /// 均匀一致性指数
         /// </summary>
         public void Curve_Bar_2()
         {
-            
             PlotModel _myPlotModel = new PlotModel();
             //X轴定义
             CategoryAxis _categoryAxis = new CategoryAxis()
@@ -373,8 +380,8 @@ namespace LY_SINTER.PAGE.Course
             }
             _myPlotModel.Series.Add(_ColumnSeries);
             plotView2.Model = _myPlotModel;
-           
         }
+
         /// <summary>
         /// 应调厚度
         /// </summary>
@@ -444,7 +451,6 @@ namespace LY_SINTER.PAGE.Course
         //小闸门信息
         private void xzmxx()
         {
-
             DataTable table = new DataTable();
             table.Columns.Add("Name");
             table.Columns.Add("Gate_1");
@@ -456,6 +462,7 @@ namespace LY_SINTER.PAGE.Course
             table.Columns.Add("Gate_Avg");
 
             #region 设定料厚
+
             DataRow row_1 = table.NewRow();
             row_1["Name"] = "设定料厚(mm)";
             string sql1 = "select top (1) " +
@@ -479,9 +486,11 @@ namespace LY_SINTER.PAGE.Course
                 row_1[7] = Math.Round(avg_1 / 6, 2);
                 table.Rows.Add(row_1);
             }
-            #endregion
+
+            #endregion 设定料厚
 
             #region 实际料厚
+
             DataRow row_2 = table.NewRow();
             row_2["Name"] = "实际料厚(mm)";
             string sql2 = "select top (1) " +
@@ -506,9 +515,10 @@ namespace LY_SINTER.PAGE.Course
                 table.Rows.Add(row_2);
             }
 
-            #endregion
+            #endregion 实际料厚
 
             #region 应调料厚(mm)
+
             DataRow row_3 = table.NewRow();
             row_3["Name"] = "应调料厚(mm)";
             string sql3 = "select top 1 " +
@@ -532,9 +542,11 @@ namespace LY_SINTER.PAGE.Course
                 row_3[7] = Math.Round(avg_3 / 6, 2);
                 table.Rows.Add(row_3);
             }
-            #endregion
+
+            #endregion 应调料厚(mm)
 
             #region 开度设定值(%)
+
             DataRow row_4 = table.NewRow();
             row_4["Name"] = "开度设定值(%)";
             string sql4 = "select top (1) " +
@@ -558,9 +570,11 @@ namespace LY_SINTER.PAGE.Course
                 row_4[7] = Math.Round(avg_4 / 6, 2);
                 table.Rows.Add(row_4);
             }
-            #endregion
+
+            #endregion 开度设定值(%)
 
             #region 开度反馈值(%)
+
             DataRow row_5 = table.NewRow();
             row_5["Name"] = "开度反馈值(%)";
             string sql5 = " select top (1) " +
@@ -584,9 +598,11 @@ namespace LY_SINTER.PAGE.Course
                 row_5[7] = Math.Round(avg_5 / 6, 2);
                 table.Rows.Add(row_5);
             }
-            #endregion
+
+            #endregion 开度反馈值(%)
 
             #region 均匀一致指数(m)
+
             DataRow row_6 = table.NewRow();
             row_6["Name"] = "均匀一致指数";
             string sql6 = "select top (1) " +
@@ -610,9 +626,11 @@ namespace LY_SINTER.PAGE.Course
                 row_6[7] = Math.Round(avg_6 / 6, 2);
                 table.Rows.Add(row_6);
             }
-            #endregion
+
+            #endregion 均匀一致指数(m)
 
             #region 终点位置(m)
+
             DataRow row_7 = table.NewRow();
             row_7["Name"] = "终点位置(m)";
             string sql7 = "select top (1) " +
@@ -636,10 +654,10 @@ namespace LY_SINTER.PAGE.Course
                 row_7[7] = Math.Round(avg_7 / 6, 2);
                 table.Rows.Add(row_7);
             }
-            #endregion
+
+            #endregion 终点位置(m)
+
             dataGridView1.DataSource = table;
-
-
         }
 
         //数据项
@@ -745,7 +763,6 @@ namespace LY_SINTER.PAGE.Course
             dataGridView1.RowHeadersVisible = false;
         }
 
-
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Frm_Deviation_guide_PAR form_display = new Frm_Deviation_guide_PAR();
@@ -779,24 +796,20 @@ namespace LY_SINTER.PAGE.Course
             {
                 Check_All();
                 tendency_curve_HIS(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));
-             
             }
             catch (Exception ee)
             {
                 var x = ee.ToString();
             }
-
         }
 
         public void tendency_curve_HIS(DateTime _d1, DateTime _d2)
         {
-
             try
             {
-
                 string sql3 = "select b.TIMESTAMP,(ISNULL(a.F_PLC_SMALL_SG_TH_SP_1,0)+ISNULL(a.F_PLC_SMALL_SG_TH_SP_2,0)+ISNULL(a.F_PLC_SMALL_SG_TH_SP_3,0)+ISNULL(a.F_PLC_SMALL_SG_TH_SP_4,0)+ISNULL(a.F_PLC_SMALL_SG_TH_SP_5,0)+ISNULL(a.F_PLC_SMALL_SG_TH_SP_6,0))/6,(ISNULL(a.F_PLC_SMALL_SG_TH_PV_1,0)+ISNULL(a.F_PLC_SMALL_SG_TH_PV_2,0)+ISNULL(a.F_PLC_SMALL_SG_TH_PV_3,0)+ISNULL(a.F_PLC_SMALL_SG_TH_PV_4,0)+ISNULL(a.F_PLC_SMALL_SG_TH_PV_5,0)+ISNULL(a.F_PLC_SMALL_SG_TH_PV_6,0))/6,ISNULL(b.UNCAL_SG_TH_AC_1,0),ISNULL(b.UNCAL_SG_TH_AC_2,0),ISNULL(b.UNCAL_SG_TH_AC_3,0),ISNULL(b.UNCAL_SG_TH_AC_4,0),ISNULL(b.UNCAL_SG_TH_AC_5,0),ISNULL(b.UNCAL_SG_TH_AC_6,0) from C_MFI_PLC_1MIN a,MC_UNIFORMCAL_result b where convert(varchar(16),a.TIMESTAMP,121)=convert(varchar(16),b.TIMESTAMP,121) and b.TIMESTAMP between '" + _d1 + "' and '" + _d2 + "' order by b.TIMESTAMP";
                 DataTable data_curve_ls = dBSQL.GetCommand(sql3);
-                if (data_curve_ls.Rows.Count > 0)
+                if (data_curve_ls.Rows.Count > 0 && data_curve_ls != null)
                 {
                     Line1.Clear();
                     Line2.Clear();
@@ -911,14 +924,12 @@ namespace LY_SINTER.PAGE.Course
                         YAxisKey = curve_name[0],
                         ItemsSource = Line1,
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n设定料厚::{4}",
-
                     };
                     if (checkBox7.Checked == true)
                     {
                         _valueAxis1.IsAxisVisible = true;
                         _myPlotModel.Series.Add(series1);
                     }
-
 
                     int x_1 = 1;//判断增长数据
                     if ((int)((Mun2.Max() - Mun2.Min()) / 5) > 0)
@@ -960,7 +971,6 @@ namespace LY_SINTER.PAGE.Course
                         YAxisKey = curve_name[1],//识别符
                         ItemsSource = Line2,//绑定数据
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n实际料厚:{4}",
-
                     };
                     if (checkBox8.Checked == true)
                     {
@@ -1008,7 +1018,6 @@ namespace LY_SINTER.PAGE.Course
                         YAxisKey = curve_name[2],//识别符
                         ItemsSource = Line3,//绑定数据
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n闸门1应调料厚:{4}",
-
                     };
                     if (checkBox1.Checked == true)
                     {
@@ -1056,14 +1065,12 @@ namespace LY_SINTER.PAGE.Course
                         YAxisKey = curve_name[3],//识别符
                         ItemsSource = Line4,//绑定数据
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n闸门2应调料厚:{4}",
-
                     };
                     if (checkBox2.Checked == true)
                     {
                         _valueAxis4.IsAxisVisible = true;
                         _myPlotModel.Series.Add(series4);
                     }
-
 
                     int x_4 = 1;//判断增长数据
                     if ((int)((Mun5.Max() - Mun5.Min()) / 5) > 0)
@@ -1105,14 +1112,12 @@ namespace LY_SINTER.PAGE.Course
                         YAxisKey = curve_name[4],//识别符
                         ItemsSource = Line5,//绑定数据
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n闸门3应调料厚::{4}",
-
                     };
                     if (checkBox3.Checked == true)
                     {
                         _valueAxis5.IsAxisVisible = true;
                         _myPlotModel.Series.Add(series5);
                     }
-
 
                     int x_5 = 1;//判断增长数据
                     if ((int)((Mun6.Max() - Mun6.Min()) / 5) > 0)
@@ -1154,7 +1159,6 @@ namespace LY_SINTER.PAGE.Course
                         YAxisKey = curve_name[5],//识别符
                         ItemsSource = Line6,//绑定数据
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n闸门4应调料厚:{4}",
-
                     };
                     if (checkBox4.Checked == true)
                     {
@@ -1202,7 +1206,6 @@ namespace LY_SINTER.PAGE.Course
                         YAxisKey = curve_name[6],//识别符
                         ItemsSource = Line7,//绑定数据
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n闸门4应调料厚:{4}",
-
                     };
                     if (checkBox5.Checked == true)
                     {
@@ -1250,7 +1253,6 @@ namespace LY_SINTER.PAGE.Course
                         YAxisKey = curve_name[7],//识别符
                         ItemsSource = Line8,//绑定数据
                         TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n闸门5应调料厚:{4}",
-
                     };
                     if (checkBox6.Checked == true)
                     {
@@ -1262,7 +1264,6 @@ namespace LY_SINTER.PAGE.Course
                     PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
                     curve_his.Controller = PlotController;
                 }
-
             }
             catch (Exception ee)
             {
@@ -1270,6 +1271,7 @@ namespace LY_SINTER.PAGE.Course
                 //  vLog.writelog(mistake, -1);
             }
         }
+
         public void Check_All()
         {
             checkBox1.Checked = true;
@@ -1281,6 +1283,7 @@ namespace LY_SINTER.PAGE.Course
             checkBox7.Checked = true;
             checkBox8.Checked = true;
         }
+
         /// <summary>
         /// 取消全选
         /// </summary>
@@ -1294,23 +1297,25 @@ namespace LY_SINTER.PAGE.Course
             checkBox6.Checked = false;
             checkBox7.Checked = true;
             checkBox8.Checked = true;
-
         }
 
         public void Timer_state()
         {
             _Timer1.Start();
         }
+
         public void Timer_stop()
         {
             _Timer1.Stop();
         }
+
         public void _Clear()
         {
             _Timer1.Close();
             this.Dispose();
             GC.SuppressFinalize(this);
         }
+
         /// <summary>
         /// 开始时间&结束时间赋值
         /// </summary>
