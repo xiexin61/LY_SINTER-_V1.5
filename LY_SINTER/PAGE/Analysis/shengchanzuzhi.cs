@@ -73,9 +73,7 @@ namespace LY_SINTER.PAGE.Analysis
             //windowformRefresh();
         }
 
-        /// <summary>
-        /// 开始时间&结束时间赋值
-        /// </summary>
+        /// <summary> 开始时间&结束时间赋值 </summary>
         public void dateTimePicker_value()
         {
             try
@@ -907,7 +905,7 @@ namespace LY_SINTER.PAGE.Analysis
                 MarkerType = MarkerType.None,
                 YAxisKey = "计划产量",
                 ItemsSource = Line1,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n计划产量:{4}",
+                TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm}\n计划产量:{4}",
             };
             if (checkBox1.Checked == true)
             {
@@ -946,7 +944,7 @@ namespace LY_SINTER.PAGE.Analysis
                 MarkerType = MarkerType.None,
                 YAxisKey = "理论产量",
                 ItemsSource = Line2,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n理论产量:{4}",
+                TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm}\n理论产量:{4}",
             };
             if (checkBox2.Checked == true)
             {
@@ -985,7 +983,7 @@ namespace LY_SINTER.PAGE.Analysis
                 MarkerType = MarkerType.None,
                 YAxisKey = "实际产量",
                 ItemsSource = Line3,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n实际产量:{4}",
+                TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm}\n实际产量:{4}",
             };
 
             if (checkBox3.Checked == true)
@@ -1048,7 +1046,7 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 form_display.Activate();
             }
-            His_CL his_CL = new His_CL();
+            SCZZJH.His_CL his_CL = new SCZZJH.His_CL();
             his_CL.Plan();
             sszzjh();
             //sszzjh();

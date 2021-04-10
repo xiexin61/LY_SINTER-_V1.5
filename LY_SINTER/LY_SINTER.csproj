@@ -113,6 +113,10 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="ReachFramework" />
+    <Reference Include="SCZZJH, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SCZZJH\bin\Debug\SCZZJH.dll</HintPath>
+    </Reference>
     <Reference Include="SqlSugar, Version=5.0.0.12, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\SqlSugar.dll</HintPath>
@@ -1048,10 +1052,6 @@
       <Project>{e85d97d6-8d84-44a5-93ec-8f56afefd7e4}</Project>
       <Name>NBSJ_PICAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SCZZJH\SCZZJH.csproj">
-      <Project>{9ca4dea9-d471-457b-9328-745edf4760a6}</Project>
-      <Name>SCZZJH</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\green.png" />
@@ -1063,6 +1063,8 @@
     <Content Include="32_LOGO.ico" />
     <Content Include="Read_me.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

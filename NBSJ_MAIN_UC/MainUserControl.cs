@@ -87,7 +87,6 @@ namespace NBSJ_MAIN_UC
             base.SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             //this.DoubleBuffered = true;
             this.BackColor = Color.FromArgb(0xee, 0xee, 0xe0);//cbe3f8
-                                                              //
 
             btnHuanXinLiao.Location = new System.Drawing.Point((int)(this.Width * 0.22f), 1);
 
@@ -117,7 +116,7 @@ namespace NBSJ_MAIN_UC
         private MC_MICAL_PAR modelMC_MICAL_PAR = new MC_MICAL_PAR();// iDataBase.Queryable<MC_MICAL_PAR>().FirstOrDefault();
 
         /// <summary>
-        ///  获取物料编码
+        /// 获取物料编码
         /// </summary>
         /// <param name="codestr"></param>
         /// <returns></returns>
@@ -138,7 +137,7 @@ namespace NBSJ_MAIN_UC
         }
 
         /// <summary>
-        ///  获取仓位上限
+        /// 获取仓位上限
         /// </summary>
         /// <param name="codestr"></param>
         /// <returns></returns>
@@ -198,7 +197,7 @@ namespace NBSJ_MAIN_UC
         #region 继承
 
         /// <summary>
-        ///     显示UC
+        /// 显示UC
         /// </summary>
         public void UC_Load()
         {
@@ -249,7 +248,7 @@ namespace NBSJ_MAIN_UC
         }
 
         /// <summary>
-        ///     每次显示UC
+        /// 每次显示UC
         /// </summary>
         public void UC_Show()
         {
@@ -257,7 +256,7 @@ namespace NBSJ_MAIN_UC
         }
 
         /// <summary>
-        ///     关闭UC
+        /// 关闭UC
         /// </summary>
         public void UC_Close()
         {
@@ -272,7 +271,7 @@ namespace NBSJ_MAIN_UC
         }
 
         /// <summary>
-        ///     释放UC
+        /// 释放UC
         /// </summary>
         public void UC_Dispose()
         {
@@ -641,7 +640,7 @@ namespace NBSJ_MAIN_UC
             yStart = removeDustUC1.Location.Y + removeDustUC1.Height - (int)(removeDustUC1.Height * 0.23f);
             shaiZiUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart + 20);
 
-            this.rbtnQuYangDian1.Location = new System.Drawing.Point((int)(xStart - 35), (int)(yStart + shaiZiUC1.Height * 0.6f));
+            //this.rbtnQuYangDian1.Location = new System.Drawing.Point((int)(xStart - 35), (int)(yStart + shaiZiUC1.Height * 0.6f));
             //环冷机
             huanLengJiUC1.Width = (int)(this.Width * 0.27f);
             huanLengJiUC1.Height = (int)(this.Height * 0.19f);
@@ -658,13 +657,14 @@ namespace NBSJ_MAIN_UC
 
             //铺底料皮带
             this.pipeLine14.Location = new System.Drawing.Point(10, (int)(yStart) - 5);
-            this.pipeLine14.Size = new System.Drawing.Size((int)(this.Width * 0.45f), 15);
+            this.pipeLine14.Size = new System.Drawing.Size((int)(this.Width * 0.45f + 50), 15);
 
-            point1 = new Point((int)(this.Width * 0.45f), (int)(yStart));
-            point2 = new Point((int)(this.Width * 0.25f), (int)(yStart));
-            // graphics.DrawLine(pen, point1, point2);
-            var point_2 = new Point((int)(this.Width * 0.45f), (int)(yStart - 40));
-            graphics.DrawLines(pen, new Point[] { point2, point1, point_2 });
+            //Z61(铺-1)皮带右侧箭头
+            /* point1 = new Point((int)(this.Width * 0.45f), (int)(yStart));
+             point2 = new Point((int)(this.Width * 0.25f), (int)(yStart));
+             // graphics.DrawLine(pen, point1, point2);
+             var point_2 = new Point((int)(this.Width * 0.45f), (int)(yStart - 40));
+             graphics.DrawLines(pen, new Point[] { point2, point1, point_2 });*/
 
             //SF_2， Z1_1，Z2_2皮带名称位置
             labSF_2.Location = new System.Drawing.Point(this.Width / 3, (int)yStart - labSF_2.Height);
@@ -766,8 +766,8 @@ namespace NBSJ_MAIN_UC
             //由 Brushes.Gray改为Brushes.Black
             //graphics.DrawString("取样点", Font, Brushes.Black, new Rectangle(this.pipeLine11.Location.X + pipeLine11.Width / 5, this.pipeLine12.Location.Y, 60, 15), this.sf);
             //20210130修改,取样点2位置
-            this.rbtnQuYangDian.Location = new System.Drawing.Point(this.pipeLine12.Location.X - pipeLine12.Width / 10 + 50, this.pipeLine12.Location.Y + 18);
-
+            //this.rbtnQuYangDian.Location = new System.Drawing.Point(this.pipeLine12.Location.X - pipeLine12.Width / 10 + 50, this.pipeLine12.Location.Y + 18);
+            this.rbtnQuYangDian.Location = new System.Drawing.Point(this.shaiZiUC1.Location.X, this.pipeLine12.Location.Y + 18);
             if (this.pipeLine12.ChengZhi != "")
                 graphics.DrawString("称值" + this.pipeLine12.ChengZhi + "t/h", Font, Brushes.Black, new Rectangle(this.pipeLine12.Location.X + pipeLine12.Width / 3, this.pipeLine12.Location.Y, (int)(this.Width * 0.2), this.Height), sf);
 
@@ -1094,7 +1094,7 @@ namespace NBSJ_MAIN_UC
 
             //二混电机
             blendingUC2.IsRun = modelT_PLC_3S.T_2M_SL_3S == 1 ? true : false;
-            // blendingUC2.ShuiFen = getbottleValue(modelT_PLC_3S.M_PLC_2M_WATER_SP).ToString();
+            blendingUC2.ShuiFen = getbottleValue(modelT_PLC_3S.T_PLC_1M_WATER_SP_3S).ToString();
             blendingUC2.ZhuanSu = getbottleValue(modelT_PLC_3S.T_2M_MIXER_RATE_3S).ToString();
             blendingUC2.SetJsl = getbottleValue(modelT_PLC_3S.T_2M_FLOW_SP_3S).ToString();
             blendingUC2.ReadJsl = getbottleValue(modelT_PLC_3S.T_2M_FLOW_PV_3S).ToString();
@@ -1517,7 +1517,6 @@ namespace NBSJ_MAIN_UC
         private DateTime[] ArrDateTimes = new DateTime[6];
 
         /// <summary>
-        ///
         /// </summary>
         /// <param name="model"></param>
         private void Bind_comboBox1(MC_MICAL_GUIDE_SAMPLE model)
@@ -1621,7 +1620,12 @@ namespace NBSJ_MAIN_UC
 
         private DateTime dtimeRbtnDouble = DateTime.Now;
 
-        private void rbtnQuYangDian_Click1(object sender, EventArgs e)
+        /// <summary>
+        /// 取样点1点击事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        /*private void rbtnQuYangDian_Click1(object sender, EventArgs e)
         {
             if (dtimeRbtnDouble.AddMilliseconds(1000) > DateTime.Now)
             {
@@ -1632,7 +1636,7 @@ namespace NBSJ_MAIN_UC
                 }
             }
             dtimeRbtnDouble = DateTime.Now;
-        }
+        }*/
 
         public void Timer_state()
         {

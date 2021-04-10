@@ -119,10 +119,12 @@ namespace LY_SINTER.PAGE.Analysis
                 for (int r = 0; r < table.Rows.Count; r++)
                 {
                     //表头添加物料描述
-                    string KF_NAME = table.Rows[r]["MAT_DESC"].ToString() == "" ? "0" : table.Rows[r]["MAT_DESC"].ToString();
-                    if (dataGridView2.Columns.Contains(KF_NAME) == false)
+                    string KF_NAME = table.Rows[r]["MAT_DESC"].ToString() == "" ? "0" : table.Rows[r]["MAT_DESC"].ToString()+"(t)";
+                    string KF_NAME1 = table.Rows[r]["MAT_DESC"].ToString() == "" ? "0" : table.Rows[r]["MAT_DESC"].ToString();
+                    if (dataGridView2.Columns.Contains(KF_NAME1) == false)
                     {
-                        dataGridView2.Columns.Add(KF_NAME, KF_NAME);
+                        dataGridView2.Columns.Add(KF_NAME1, KF_NAME);
+                   
                         //d1.Columns.Add(KF_NAME);
                     }
                 }

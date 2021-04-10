@@ -32,10 +32,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -57,6 +57,27 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.d1 = new System.Windows.Forms.DataGridView();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.rowMergeView1 = new RowMergeView();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BATCH_NUM2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MAT_DESC2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ORE_CLASS2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GRIT_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GRIT_5_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GRIT_3_5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GRIT_1_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GRIT_05_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GRIT__025_05 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GRIT_025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GRIT_AVG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.W_CAP_05 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.W_MOL_05 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DEN_B = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DEN_T = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.POROSITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BATCH_NUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAT_DESC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -80,27 +101,6 @@
             this.K2O = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Na2O = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TiO2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.rowMergeView1 = new RowMergeView();
-            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BATCH_NUM2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MAT_DESC2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ORE_CLASS2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GRIT_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GRIT_5_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GRIT_3_5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GRIT_1_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GRIT_05_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GRIT__025_05 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GRIT_025 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GRIT_AVG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.W_CAP_05 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.W_MOL_05 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DEN_B = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DEN_T = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.POROSITY = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -165,8 +165,8 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.97F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.03F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.35028F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.64972F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1482, 743);
             this.tableLayoutPanel2.TabIndex = 0;
@@ -376,7 +376,7 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1476, 269);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1476, 307);
             this.tableLayoutPanel5.TabIndex = 5;
             // 
             // label4
@@ -452,171 +452,9 @@
             this.d1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.d1.RowTemplate.Height = 23;
             this.d1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.d1.Size = new System.Drawing.Size(1468, 240);
+            this.d1.Size = new System.Drawing.Size(1468, 278);
             this.d1.TabIndex = 1;
             this.d1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.d1_CellClick);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "序号";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            // 
-            // BATCH_NUM
-            // 
-            this.BATCH_NUM.DataPropertyName = "BATCH_NUM";
-            this.BATCH_NUM.HeaderText = "批号";
-            this.BATCH_NUM.Name = "BATCH_NUM";
-            this.BATCH_NUM.ReadOnly = true;
-            // 
-            // MAT_DESC
-            // 
-            this.MAT_DESC.DataPropertyName = "MAT_DESC";
-            this.MAT_DESC.HeaderText = "物料名";
-            this.MAT_DESC.Name = "MAT_DESC";
-            this.MAT_DESC.ReadOnly = true;
-            // 
-            // ORE_CLASS
-            // 
-            this.ORE_CLASS.DataPropertyName = "ORE_CLASS";
-            this.ORE_CLASS.HeaderText = "类别";
-            this.ORE_CLASS.Name = "ORE_CLASS";
-            this.ORE_CLASS.ReadOnly = true;
-            // 
-            // PLACE_ORIGIN
-            // 
-            this.PLACE_ORIGIN.DataPropertyName = "PLACE_ORIGIN";
-            this.PLACE_ORIGIN.HeaderText = "产地";
-            this.PLACE_ORIGIN.Name = "PLACE_ORIGIN";
-            this.PLACE_ORIGIN.ReadOnly = true;
-            // 
-            // UNIT_PRICE
-            // 
-            this.UNIT_PRICE.DataPropertyName = "UNIT_PRICE";
-            this.UNIT_PRICE.HeaderText = "单价（元/吨）";
-            this.UNIT_PRICE.Name = "UNIT_PRICE";
-            this.UNIT_PRICE.ReadOnly = true;
-            // 
-            // TFE
-            // 
-            this.TFE.DataPropertyName = "C_TFE";
-            this.TFE.HeaderText = "TFe";
-            this.TFE.Name = "TFE";
-            this.TFE.ReadOnly = true;
-            // 
-            // C_FEO
-            // 
-            this.C_FEO.DataPropertyName = "C_FEO";
-            this.C_FEO.HeaderText = "FeO";
-            this.C_FEO.Name = "C_FEO";
-            this.C_FEO.ReadOnly = true;
-            // 
-            // SiO2
-            // 
-            this.SiO2.DataPropertyName = "C_SIO2";
-            this.SiO2.HeaderText = "SiO2";
-            this.SiO2.Name = "SiO2";
-            this.SiO2.ReadOnly = true;
-            // 
-            // CaO
-            // 
-            this.CaO.DataPropertyName = "C_CAO";
-            this.CaO.HeaderText = "CaO";
-            this.CaO.Name = "CaO";
-            this.CaO.ReadOnly = true;
-            // 
-            // MgO
-            // 
-            this.MgO.DataPropertyName = "C_MGO";
-            this.MgO.HeaderText = "MgO";
-            this.MgO.Name = "MgO";
-            this.MgO.ReadOnly = true;
-            // 
-            // Al2O3
-            // 
-            this.Al2O3.DataPropertyName = "C_AL2O3";
-            this.Al2O3.HeaderText = "Al2O3";
-            this.Al2O3.Name = "Al2O3";
-            this.Al2O3.ReadOnly = true;
-            // 
-            // S
-            // 
-            this.S.DataPropertyName = "C_S";
-            this.S.HeaderText = "S";
-            this.S.Name = "S";
-            this.S.ReadOnly = true;
-            // 
-            // P
-            // 
-            this.P.DataPropertyName = "C_P";
-            this.P.HeaderText = "P";
-            this.P.Name = "P";
-            this.P.ReadOnly = true;
-            // 
-            // LOT
-            // 
-            this.LOT.DataPropertyName = "C_LOT";
-            this.LOT.HeaderText = "LOT";
-            this.LOT.Name = "LOT";
-            this.LOT.ReadOnly = true;
-            // 
-            // H2O
-            // 
-            this.H2O.DataPropertyName = "C_H2O";
-            this.H2O.HeaderText = "H2O";
-            this.H2O.Name = "H2O";
-            this.H2O.ReadOnly = true;
-            // 
-            // As
-            // 
-            this.As.DataPropertyName = "C_ASH";
-            this.As.HeaderText = "As";
-            this.As.Name = "As";
-            this.As.ReadOnly = true;
-            // 
-            // Pb
-            // 
-            this.Pb.DataPropertyName = "C_PBO";
-            this.Pb.HeaderText = "Pb";
-            this.Pb.Name = "Pb";
-            this.Pb.ReadOnly = true;
-            // 
-            // Zn
-            // 
-            this.Zn.DataPropertyName = "C_ZN";
-            this.Zn.HeaderText = "Zn";
-            this.Zn.Name = "Zn";
-            this.Zn.ReadOnly = true;
-            // 
-            // Cu
-            // 
-            this.Cu.DataPropertyName = "C_CU";
-            this.Cu.HeaderText = "Cu";
-            this.Cu.Name = "Cu";
-            this.Cu.ReadOnly = true;
-            // 
-            // K2O
-            // 
-            this.K2O.DataPropertyName = "C_K2O";
-            this.K2O.HeaderText = "K2O";
-            this.K2O.Name = "K2O";
-            this.K2O.ReadOnly = true;
-            // 
-            // Na2O
-            // 
-            this.Na2O.DataPropertyName = "C_NA2O";
-            this.Na2O.HeaderText = "Na2O";
-            this.Na2O.Name = "Na2O";
-            this.Na2O.ReadOnly = true;
-            // 
-            // TiO2
-            // 
-            this.TiO2.DataPropertyName = "C_TIO2";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TiO2.DefaultCellStyle = dataGridViewCellStyle2;
-            this.TiO2.HeaderText = "TiO2";
-            this.TiO2.Name = "TiO2";
-            this.TiO2.ReadOnly = true;
             // 
             // tableLayoutPanel6
             // 
@@ -626,13 +464,13 @@
             this.tableLayoutPanel6.Controls.Add(this.rowMergeView1, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 313);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 351);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1476, 427);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1476, 389);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
             // rowMergeView1
@@ -696,7 +534,7 @@
             this.rowMergeView1.RowHeadersVisible = false;
             this.rowMergeView1.RowTemplate.Height = 23;
             this.rowMergeView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.rowMergeView1.Size = new System.Drawing.Size(1468, 398);
+            this.rowMergeView1.Size = new System.Drawing.Size(1468, 360);
             this.rowMergeView1.TabIndex = 1;
             this.rowMergeView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rowMergeView1_CellClick);
             // 
@@ -836,6 +674,191 @@
             this.label5.Text = "铁矿粉物理性能";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // id
+            // 
+            this.id.HeaderText = "序号";
+            this.id.MinimumWidth = 40;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            // 
+            // BATCH_NUM
+            // 
+            this.BATCH_NUM.DataPropertyName = "BATCH_NUM";
+            this.BATCH_NUM.HeaderText = "批号";
+            this.BATCH_NUM.MinimumWidth = 60;
+            this.BATCH_NUM.Name = "BATCH_NUM";
+            this.BATCH_NUM.ReadOnly = true;
+            // 
+            // MAT_DESC
+            // 
+            this.MAT_DESC.DataPropertyName = "MAT_DESC";
+            this.MAT_DESC.HeaderText = "物料名";
+            this.MAT_DESC.MinimumWidth = 60;
+            this.MAT_DESC.Name = "MAT_DESC";
+            this.MAT_DESC.ReadOnly = true;
+            // 
+            // ORE_CLASS
+            // 
+            this.ORE_CLASS.DataPropertyName = "ORE_CLASS";
+            this.ORE_CLASS.HeaderText = "类别";
+            this.ORE_CLASS.MinimumWidth = 40;
+            this.ORE_CLASS.Name = "ORE_CLASS";
+            this.ORE_CLASS.ReadOnly = true;
+            // 
+            // PLACE_ORIGIN
+            // 
+            this.PLACE_ORIGIN.DataPropertyName = "PLACE_ORIGIN";
+            this.PLACE_ORIGIN.HeaderText = "产地";
+            this.PLACE_ORIGIN.MinimumWidth = 60;
+            this.PLACE_ORIGIN.Name = "PLACE_ORIGIN";
+            this.PLACE_ORIGIN.ReadOnly = true;
+            // 
+            // UNIT_PRICE
+            // 
+            this.UNIT_PRICE.DataPropertyName = "UNIT_PRICE";
+            this.UNIT_PRICE.HeaderText = "单价(元/吨)";
+            this.UNIT_PRICE.MinimumWidth = 80;
+            this.UNIT_PRICE.Name = "UNIT_PRICE";
+            this.UNIT_PRICE.ReadOnly = true;
+            // 
+            // TFE
+            // 
+            this.TFE.DataPropertyName = "C_TFE";
+            this.TFE.HeaderText = "TFe";
+            this.TFE.MinimumWidth = 40;
+            this.TFE.Name = "TFE";
+            this.TFE.ReadOnly = true;
+            // 
+            // C_FEO
+            // 
+            this.C_FEO.DataPropertyName = "C_FEO";
+            this.C_FEO.HeaderText = "FeO";
+            this.C_FEO.MinimumWidth = 40;
+            this.C_FEO.Name = "C_FEO";
+            this.C_FEO.ReadOnly = true;
+            // 
+            // SiO2
+            // 
+            this.SiO2.DataPropertyName = "C_SIO2";
+            this.SiO2.HeaderText = "SiO2";
+            this.SiO2.MinimumWidth = 40;
+            this.SiO2.Name = "SiO2";
+            this.SiO2.ReadOnly = true;
+            // 
+            // CaO
+            // 
+            this.CaO.DataPropertyName = "C_CAO";
+            this.CaO.HeaderText = "CaO";
+            this.CaO.MinimumWidth = 40;
+            this.CaO.Name = "CaO";
+            this.CaO.ReadOnly = true;
+            // 
+            // MgO
+            // 
+            this.MgO.DataPropertyName = "C_MGO";
+            this.MgO.HeaderText = "MgO";
+            this.MgO.MinimumWidth = 40;
+            this.MgO.Name = "MgO";
+            this.MgO.ReadOnly = true;
+            // 
+            // Al2O3
+            // 
+            this.Al2O3.DataPropertyName = "C_AL2O3";
+            this.Al2O3.HeaderText = "Al2O3";
+            this.Al2O3.MinimumWidth = 40;
+            this.Al2O3.Name = "Al2O3";
+            this.Al2O3.ReadOnly = true;
+            // 
+            // S
+            // 
+            this.S.DataPropertyName = "C_S";
+            this.S.HeaderText = "S";
+            this.S.MinimumWidth = 40;
+            this.S.Name = "S";
+            this.S.ReadOnly = true;
+            // 
+            // P
+            // 
+            this.P.DataPropertyName = "C_P";
+            this.P.HeaderText = "P";
+            this.P.MinimumWidth = 40;
+            this.P.Name = "P";
+            this.P.ReadOnly = true;
+            // 
+            // LOT
+            // 
+            this.LOT.DataPropertyName = "C_LOT";
+            this.LOT.HeaderText = "LOT";
+            this.LOT.MinimumWidth = 40;
+            this.LOT.Name = "LOT";
+            this.LOT.ReadOnly = true;
+            // 
+            // H2O
+            // 
+            this.H2O.DataPropertyName = "C_H2O";
+            this.H2O.HeaderText = "H2O";
+            this.H2O.MinimumWidth = 40;
+            this.H2O.Name = "H2O";
+            this.H2O.ReadOnly = true;
+            // 
+            // As
+            // 
+            this.As.DataPropertyName = "C_ASH";
+            this.As.HeaderText = "As";
+            this.As.MinimumWidth = 40;
+            this.As.Name = "As";
+            this.As.ReadOnly = true;
+            // 
+            // Pb
+            // 
+            this.Pb.DataPropertyName = "C_PBO";
+            this.Pb.HeaderText = "Pb";
+            this.Pb.MinimumWidth = 40;
+            this.Pb.Name = "Pb";
+            this.Pb.ReadOnly = true;
+            // 
+            // Zn
+            // 
+            this.Zn.DataPropertyName = "C_ZN";
+            this.Zn.HeaderText = "Zn";
+            this.Zn.MinimumWidth = 40;
+            this.Zn.Name = "Zn";
+            this.Zn.ReadOnly = true;
+            // 
+            // Cu
+            // 
+            this.Cu.DataPropertyName = "C_CU";
+            this.Cu.HeaderText = "Cu";
+            this.Cu.MinimumWidth = 40;
+            this.Cu.Name = "Cu";
+            this.Cu.ReadOnly = true;
+            // 
+            // K2O
+            // 
+            this.K2O.DataPropertyName = "C_K2O";
+            this.K2O.HeaderText = "K2O";
+            this.K2O.MinimumWidth = 40;
+            this.K2O.Name = "K2O";
+            this.K2O.ReadOnly = true;
+            // 
+            // Na2O
+            // 
+            this.Na2O.DataPropertyName = "C_NA2O";
+            this.Na2O.HeaderText = "Na2O";
+            this.Na2O.MinimumWidth = 40;
+            this.Na2O.Name = "Na2O";
+            this.Na2O.ReadOnly = true;
+            // 
+            // TiO2
+            // 
+            this.TiO2.DataPropertyName = "C_TIO2";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TiO2.DefaultCellStyle = dataGridViewCellStyle2;
+            this.TiO2.HeaderText = "TiO2";
+            this.TiO2.MinimumWidth = 40;
+            this.TiO2.Name = "TiO2";
+            this.TiO2.ReadOnly = true;
+            // 
             // tiekuangfenjichuxingneng
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -879,29 +902,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView d1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BATCH_NUM;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_DESC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ORE_CLASS;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PLACE_ORIGIN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TFE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn C_FEO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SiO2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CaO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MgO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Al2O3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn S;
-        private System.Windows.Forms.DataGridViewTextBoxColumn P;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LOT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn H2O;
-        private System.Windows.Forms.DataGridViewTextBoxColumn As;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pb;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Zn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn K2O;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Na2O;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TiO2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private RowMergeView rowMergeView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn number;
@@ -926,5 +926,28 @@
         private System.Windows.Forms.Label label8;
         private DevExpress.XtraEditors.SimpleButton simpleButton7;
         private DevExpress.XtraEditors.SimpleButton simpleButton6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BATCH_NUM;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MAT_DESC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ORE_CLASS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PLACE_ORIGIN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UNIT_PRICE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TFE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn C_FEO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SiO2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CaO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MgO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Al2O3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn S;
+        private System.Windows.Forms.DataGridViewTextBoxColumn P;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LOT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn H2O;
+        private System.Windows.Forms.DataGridViewTextBoxColumn As;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pb;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Zn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn K2O;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Na2O;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TiO2;
     }
 }

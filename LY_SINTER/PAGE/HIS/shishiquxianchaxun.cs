@@ -338,8 +338,8 @@ namespace LY_SINTER.PAGE.HIS
                     float hhlcw = float.Parse(dataTable1.Rows[0][12].ToString());
                     float ygzs = float.Parse(dataTable1.Rows[0][13].ToString());
 
-                    this.textBox1.Text = zcpl1.ToString();
-                    this.textBox2.Text = zcpl2.ToString();
+                    /*this.textBox1.Text = zcpl1.ToString();
+                    this.textBox2.Text = zcpl2.ToString();*/
                     this.textBox3.Text = zcwd1.ToString();
                     this.textBox4.Text = zcwd2.ToString();
                     this.textBox5.Text = zcfy1.ToString();
@@ -389,8 +389,8 @@ namespace LY_SINTER.PAGE.HIS
                         try
                         {
                             //超过上限变红，低于下限变黄
-                            string sql4 = "select ISNULL(PAR_MA_FAN_SP_MAX,0),ISNULL(PAR_MA_FAN_SP_MIN,0),ISNULL(PAR_MA_SB_FLUE_TE_MAX,0),ISNULL(PAR_MA_SB_FLUE_TE_MIN,0),ISNULL(PAR_MA_SB_FLUE_PT_MAX,0),ISNULL(PAR_MA_SB_FLUE_PT_MIN,0)," +
-                                "ISNULL(PAR_MA_SB_FLUE_FT_MAX,0),ISNULL(PAR_MA_SB_FLUE_FT_MIN,0),ISNULL(PAR_X_BTP_MAX,0),ISNULL(PAR_X_BTP_MIN,0),ISNULL(PAR_THICK_PV_MAX,0),ISNULL(PAR_THICK_PV_MIN,0),ISNULL(PAR_IG_TE_MAX,0)," +
+                            string sql4 = "select ISNULL(PAR_MA_FAN_SP_MAX,0),ISNULL(PAR_MA_FAN_SP_MIN,0),ISNULL(PAR_MA_SB_FLUE_TE_MAX,0),ISNULL(PAR_MA_SB_FLUE_TE_MIN,0),ISNULL(PAR_MA_SB_FLUE_TE_MAX_2,0),ISNULL(PAR_MA_SB_FLUE_TE_MIN_2,0),ISNULL(PAR_MA_SB_FLUE_PT_MAX,0),ISNULL(PAR_MA_SB_FLUE_PT_MIN,0)," +
+                                "ISNULL(PAR_MA_SB_FLUE_PT_MAX_2,0),ISNULL(PAR_MA_SB_FLUE_PT_MIN_2,0),ISNULL(PAR_MA_SB_FLUE_FT_MAX,0),ISNULL(PAR_MA_SB_FLUE_FT_MIN,0),ISNULL(PAR_MA_SB_FLUE_FT_MAX_2,0),ISNULL(PAR_MA_SB_FLUE_FT_MIN_2,0),ISNULL(PAR_X_BTP_MAX,0),ISNULL(PAR_X_BTP_MIN,0),ISNULL(PAR_THICK_PV_MAX,0),ISNULL(PAR_THICK_PV_MIN,0),ISNULL(PAR_IG_TE_MAX,0)," +
                                 "ISNULL(PAR_IG_TE_MIN,0),ISNULL(PAR_TOTAL_SP_W_MAX,0),ISNULL(PAR_TOTAL_SP_W_MIN,0),ISNULL(PAR_1M_FT_SP_MAX,0),ISNULL(PAR_1M_FT_SP_MIN,0),ISNULL(PAR_2M_FLOW_SP_MAX,0),ISNULL(PAR_2M_FLOW_SP_MIN,0)," +
                                 "ISNULL(PAR_BLEND_LEVEL_MAX,0),ISNULL(PAR_BLEND_LEVEL_MIN,0),ISNULL(PAR_STICK_SP_MAX,0),ISNULL(PAR_STICK_SP_MIN,0),ISNULL(PAR_SIN_MS_SP_MAX,0),ISNULL(PAR_SIN_MS_SP_MIN,0),ISNULL(PAR_RC_SPEED_SP_MAX,0),ISNULL(PAR_RC_SPEED_SP_MIN,0) from CFG_R_T_CURVE_INTERFACE_PAR";
                             DataTable dataTable4 = dBSQL.GetCommand(sql4);
@@ -400,32 +400,38 @@ namespace LY_SINTER.PAGE.HIS
                                 float zcplxx = float.Parse(dataTable4.Rows[0][1].ToString());
                                 float zcwdsx = float.Parse(dataTable4.Rows[0][2].ToString());
                                 float zcwdxx = float.Parse(dataTable4.Rows[0][3].ToString());
-                                float zcfysx = float.Parse(dataTable4.Rows[0][4].ToString());
-                                float zcfyxx = float.Parse(dataTable4.Rows[0][5].ToString());
-                                float zcflsx = float.Parse(dataTable4.Rows[0][6].ToString());
-                                float zcflxx = float.Parse(dataTable4.Rows[0][7].ToString());
-                                float zdwzsx = float.Parse(dataTable4.Rows[0][8].ToString());
-                                float zdwzxx = float.Parse(dataTable4.Rows[0][9].ToString());
-                                float blhdsx = float.Parse(dataTable4.Rows[0][10].ToString());
-                                float blhdxx = float.Parse(dataTable4.Rows[0][11].ToString());
-                                float dhwdsx = float.Parse(dataTable4.Rows[0][12].ToString());
-                                float dhwdxx = float.Parse(dataTable4.Rows[0][13].ToString());
-                                float zllsx = float.Parse(dataTable4.Rows[0][14].ToString());
-                                float zllxx = float.Parse(dataTable4.Rows[0][15].ToString());
-                                float yhjslsx = float.Parse(dataTable4.Rows[0][16].ToString());
-                                float yhjslxx = float.Parse(dataTable4.Rows[0][17].ToString());
-                                float ehjslsx = float.Parse(dataTable4.Rows[0][18].ToString());
-                                float ehjslxx = float.Parse(dataTable4.Rows[0][19].ToString());
-                                float hhlcwsx = float.Parse(dataTable4.Rows[0][20].ToString());
-                                float hhlcwxx = float.Parse(dataTable4.Rows[0][21].ToString());
-                                float ygzssx = float.Parse(dataTable4.Rows[0][22].ToString());
-                                float ygzsxx = float.Parse(dataTable4.Rows[0][23].ToString());
-                                float sjjjssx = float.Parse(dataTable4.Rows[0][24].ToString());
-                                float sjjjsxx = float.Parse(dataTable4.Rows[0][25].ToString());
-                                float hljjssx = float.Parse(dataTable4.Rows[0][26].ToString());
-                                float hljjsxx = float.Parse(dataTable4.Rows[0][27].ToString());
+                                float zcwdsx1 = float.Parse(dataTable4.Rows[0][4].ToString());
+                                float zcwdxx1 = float.Parse(dataTable4.Rows[0][5].ToString());
+                                float zcfysx = float.Parse(dataTable4.Rows[0][6].ToString());
+                                float zcfyxx = float.Parse(dataTable4.Rows[0][7].ToString());
+                                float zcfysx1 = float.Parse(dataTable4.Rows[0][8].ToString());
+                                float zcfyxx1 = float.Parse(dataTable4.Rows[0][9].ToString());
+                                float zcflsx = float.Parse(dataTable4.Rows[0][10].ToString());
+                                float zcflxx = float.Parse(dataTable4.Rows[0][11].ToString());
+                                float zcflsx1 = float.Parse(dataTable4.Rows[0][12].ToString());
+                                float zcflxx1 = float.Parse(dataTable4.Rows[0][13].ToString());
+                                float zdwzsx = float.Parse(dataTable4.Rows[0][14].ToString());
+                                float zdwzxx = float.Parse(dataTable4.Rows[0][15].ToString());
+                                float blhdsx = float.Parse(dataTable4.Rows[0][16].ToString());
+                                float blhdxx = float.Parse(dataTable4.Rows[0][17].ToString());
+                                float dhwdsx = float.Parse(dataTable4.Rows[0][18].ToString());
+                                float dhwdxx = float.Parse(dataTable4.Rows[0][19].ToString());
+                                float zllsx = float.Parse(dataTable4.Rows[0][20].ToString());
+                                float zllxx = float.Parse(dataTable4.Rows[0][21].ToString());
+                                float yhjslsx = float.Parse(dataTable4.Rows[0][22].ToString());
+                                float yhjslxx = float.Parse(dataTable4.Rows[0][23].ToString());
+                                float ehjslsx = float.Parse(dataTable4.Rows[0][24].ToString());
+                                float ehjslxx = float.Parse(dataTable4.Rows[0][25].ToString());
+                                float hhlcwsx = float.Parse(dataTable4.Rows[0][26].ToString());
+                                float hhlcwxx = float.Parse(dataTable4.Rows[0][27].ToString());
+                                float ygzssx = float.Parse(dataTable4.Rows[0][28].ToString());
+                                float ygzsxx = float.Parse(dataTable4.Rows[0][29].ToString());
+                                float sjjjssx = float.Parse(dataTable4.Rows[0][30].ToString());
+                                float sjjjsxx = float.Parse(dataTable4.Rows[0][31].ToString());
+                                float hljjssx = float.Parse(dataTable4.Rows[0][32].ToString());
+                                float hljjsxx = float.Parse(dataTable4.Rows[0][33].ToString());
 
-                                //1#主抽频率
+                                /*//1#主抽频率
                                 if (zcpl1 > zcplsx)
                                 {
                                     textBox1.BackColor = Color.Red;
@@ -444,7 +450,7 @@ namespace LY_SINTER.PAGE.HIS
                                 {
                                     textBox2.BackColor = Color.Yellow;
                                 }
-                                else textBox2.BackColor = Color.White;
+                                else textBox2.BackColor = Color.White;*/
                                 //1#主抽温度
                                 if (zcwd1 > zcwdsx)
                                 {
@@ -456,11 +462,11 @@ namespace LY_SINTER.PAGE.HIS
                                 }
                                 else textBox3.BackColor = Color.White;
                                 //2#主抽温度
-                                if (zcwd2 > zcwdsx)
+                                if (zcwd2 > zcwdsx1)
                                 {
                                     textBox4.BackColor = Color.Red;
                                 }
-                                else if (zcwd2 < zcwdxx)
+                                else if (zcwd2 < zcwdxx1)
                                 {
                                     textBox4.BackColor = Color.Yellow;
                                 }
@@ -476,11 +482,11 @@ namespace LY_SINTER.PAGE.HIS
                                 }
                                 else textBox5.BackColor = Color.White;
                                 //2#主抽负压
-                                if (zcfy2 > zcfysx)
+                                if (zcfy2 > zcfysx1)
                                 {
                                     textBox6.BackColor = Color.Red;
                                 }
-                                else if (zcfy2 < zcfyxx)
+                                else if (zcfy2 < zcfyxx1)
                                 {
                                     textBox6.BackColor = Color.Yellow;
                                 }
@@ -496,11 +502,11 @@ namespace LY_SINTER.PAGE.HIS
                                 }
                                 else textBox7.BackColor = Color.White;
                                 //2#主抽风量
-                                if (zcfl2 > zcflsx)
+                                if (zcfl2 > zcflsx1)
                                 {
                                     textBox8.BackColor = Color.Red;
                                 }
-                                else if (zcfl2 < zcflxx)
+                                else if (zcfl2 < zcflxx1)
                                 {
                                     textBox8.BackColor = Color.Yellow;
                                 }
@@ -636,6 +642,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 form_display.Activate();
             }
+            shuju();
         }
 
         //准备表数据
@@ -1257,7 +1264,7 @@ namespace LY_SINTER.PAGE.HIS
                 TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}2#主轴频率:{4}",
             };
             _myPlotModel.Series.Add(checkBox2_1);
-            plotView1.Model = _myPlotModel;
+            /*plotView1.Model = _myPlotModel;*/
             //1#主轴温度
             _myPlotMode3 = new PlotModel()
             {
@@ -2359,7 +2366,7 @@ namespace LY_SINTER.PAGE.HIS
         }
 
         //单击隐藏曲线
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        /*private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
@@ -2399,7 +2406,7 @@ namespace LY_SINTER.PAGE.HIS
             }
             catch
             { }
-        }
+        }*/
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
@@ -2759,8 +2766,8 @@ namespace LY_SINTER.PAGE.HIS
         {
             try
             {
-                this.checkBox1.Checked = true;
-                this.checkBox2.Checked = true;
+                /*this.checkBox1.Checked = true;
+                this.checkBox2.Checked = true;*/
                 this.checkBox3.Checked = true;
                 this.checkBox4.Checked = true;
                 this.checkBox5.Checked = true;
@@ -2787,8 +2794,8 @@ namespace LY_SINTER.PAGE.HIS
         {
             try
             {
-                this.checkBox1.Checked = false;
-                this.checkBox2.Checked = false;
+                /*this.checkBox1.Checked = false;
+                this.checkBox2.Checked = false;*/
                 this.checkBox3.Checked = false;
                 this.checkBox4.Checked = false;
                 this.checkBox5.Checked = false;
@@ -2827,14 +2834,14 @@ namespace LY_SINTER.PAGE.HIS
         /// </summary>
         public void tableLayoutPanel23_label()
         {
-            if (checkBox1.Checked == false && checkBox2.Checked == false)
+            /*if (checkBox1.Checked == false && checkBox2.Checked == false)
             {
                 tableLayoutPanel23.RowStyles[0].Height = 0;
             }
             else
             {
                 tableLayoutPanel23.RowStyles[0].Height = 8;
-            }
+            }*/
             if (checkBox3.Checked == false && checkBox4.Checked == false)
             {
                 tableLayoutPanel23.RowStyles[1].Height = 0;
