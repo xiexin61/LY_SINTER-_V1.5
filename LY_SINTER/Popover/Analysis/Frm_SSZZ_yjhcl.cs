@@ -24,7 +24,7 @@ namespace LY_SINTER.Popover.Analysis
             //DateTimeChoser.AddTo(textBox_end);
             DateTime start = DateTime.Now.AddYears(-1);
             DateTime end = DateTime.Now;
-            shuju(start,end);
+            shuju(start, end);
         }
 
         /// <summary> 开始时间&结束时间赋值 </summary>
@@ -34,17 +34,7 @@ namespace LY_SINTER.Popover.Analysis
             {
                 textBox_begin.Text = DateTime.Now.AddYears(-1).ToString();
                 textBox_end.Text = DateTime.Now.ToString();
-                /*Validate();
-                Update();
-                Refresh();*/
-                /*//结束时间
-                DateTime time_end = DateTime.Now;
-                //开始时间
-                DateTime time_begin = time_end.AddMonths(-1);
-
-                textBox_begin.Text = time_begin.ToString();
-                textBox_end.Text = time_end.ToString();
-                dateTimePicker1.Text = time_end.ToString();*/
+                dateTimePicker1.Text = DateTime.Now.ToString();
             }
             catch (Exception ee)
             {
@@ -90,7 +80,8 @@ namespace LY_SINTER.Popover.Analysis
                         string sql2 = "insert into MC_POPCAL_MON_PL(TIMESTAMP,POPCAL_MON,POPCAL_MON_PL,FLAG_1) values ('" + DateTime.Now + "','" + scrq + "','" + yjhcl1 + "',2)";
                         dBSQL.CommandExecuteNonQuery(sql2);
                         MessageBox.Show("插入成功！");
-                        shuju(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(dateTimePicker1.Text));
+                        shuju(Convert.ToDateTime(textBox_begin.Value), Convert.ToDateTime(textBox_end.Value));
+                        //shuju(DateTime.Now.AddYears(-1), DateTime.Now);
                     }
                 }
             }

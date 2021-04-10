@@ -134,7 +134,7 @@
             this.d3.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("SimSun", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -151,9 +151,10 @@
             this.d3.Location = new System.Drawing.Point(4, 25);
             this.d3.MultiSelect = false;
             this.d3.Name = "d3";
+            this.d3.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 9F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -161,7 +162,7 @@
             this.d3.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.d3.RowHeadersVisible = false;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("SimSun", 9F);
             this.d3.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.d3.RowTemplate.Height = 23;
             this.d3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -172,21 +173,25 @@
             // 
             this.Clomum1.HeaderText = "-0.5mm颗粒含量(%)";
             this.Clomum1.Name = "Clomum1";
+            this.Clomum1.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.HeaderText = "铁矿以粉为主";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "铁矿核粉适中";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "铁矿以核为主";
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // label1
             // 
@@ -216,7 +221,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Controls.Add(this.simpleButton3, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.simpleButton3, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -233,7 +238,7 @@
             this.simpleButton3.Appearance.Options.UseForeColor = true;
             this.simpleButton3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
-            this.simpleButton3.Location = new System.Drawing.Point(88, 3);
+            this.simpleButton3.Location = new System.Drawing.Point(3, 3);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(79, 23);
             this.simpleButton3.TabIndex = 10;
@@ -277,7 +282,7 @@
             this.d1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("SimSun", 9F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -294,9 +299,10 @@
             this.d1.Location = new System.Drawing.Point(4, 25);
             this.d1.MultiSelect = false;
             this.d1.Name = "d1";
+            this.d1.ReadOnly = true;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("SimSun", 9F);
             dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -304,7 +310,7 @@
             this.d1.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.d1.RowHeadersVisible = false;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("SimSun", 9F);
             this.d1.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.d1.RowTemplate.Height = 23;
             this.d1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -315,21 +321,25 @@
             // 
             this.id.HeaderText = "元素";
             this.id.Name = "id";
+            this.id.ReadOnly = true;
             // 
             // low
             // 
             this.low.HeaderText = "低";
             this.low.Name = "low";
+            this.low.ReadOnly = true;
             // 
             // middle
             // 
             this.middle.HeaderText = "中";
             this.middle.Name = "middle";
+            this.middle.ReadOnly = true;
             // 
             // high
             // 
             this.high.HeaderText = "高";
             this.high.Name = "high";
+            this.high.ReadOnly = true;
             // 
             // tableLayoutPanel6
             // 
@@ -357,7 +367,7 @@
             this.d2.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("SimSun", 9F);
             dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -373,9 +383,10 @@
             this.d2.Location = new System.Drawing.Point(4, 25);
             this.d2.MultiSelect = false;
             this.d2.Name = "d2";
+            this.d2.ReadOnly = true;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("SimSun", 9F);
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -383,7 +394,7 @@
             this.d2.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.d2.RowHeadersVisible = false;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("SimSun", 9F);
             this.d2.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.d2.RowTemplate.Height = 23;
             this.d2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
@@ -394,16 +405,19 @@
             // 
             this.type.HeaderText = "铁矿石类型";
             this.type.Name = "type";
+            this.type.ReadOnly = true;
             // 
             // TFeFeO
             // 
             this.TFeFeO.HeaderText = "TFe/FeO";
             this.TFeFeO.Name = "TFeFeO";
+            this.TFeFeO.ReadOnly = true;
             // 
             // TFeLOI
             // 
             this.TFeLOI.HeaderText = "TFe/LOI";
             this.TFeLOI.Name = "TFeLOI";
+            this.TFeLOI.ReadOnly = true;
             // 
             // label5
             // 

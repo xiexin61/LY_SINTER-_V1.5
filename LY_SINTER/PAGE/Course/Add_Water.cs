@@ -32,12 +32,12 @@ namespace LY_SINTER.PAGE.Course
         private LinearAxis _valueAxis5;//Y轴
         private LinearAxis _valueAxis6;//Y轴
 
-        List<DataPoint> Line1 = new List<DataPoint>();
-        List<DataPoint> Line2 = new List<DataPoint>();
-        List<DataPoint> Line3 = new List<DataPoint>();
-        List<DataPoint> Line4 = new List<DataPoint>();
-        List<DataPoint> Line5 = new List<DataPoint>();
-        List<DataPoint> Line6 = new List<DataPoint>();
+        private List<DataPoint> Line1 = new List<DataPoint>();
+        private List<DataPoint> Line2 = new List<DataPoint>();
+        private List<DataPoint> Line3 = new List<DataPoint>();
+        private List<DataPoint> Line4 = new List<DataPoint>();
+        private List<DataPoint> Line5 = new List<DataPoint>();
+        private List<DataPoint> Line6 = new List<DataPoint>();
 
         private OxyPlot.Series.LineSeries series1;//曲线
         private OxyPlot.Series.LineSeries series2;//曲线
@@ -45,9 +45,9 @@ namespace LY_SINTER.PAGE.Course
         private OxyPlot.Series.LineSeries series4;//曲线
         private OxyPlot.Series.LineSeries series5;//曲线
         private OxyPlot.Series.LineSeries series6;//曲线
-        string[] curve_name = { "A_1", "A_2", "A_3", "A_4", "A_5", "A_6" };
+        private string[] curve_name = { "A_1", "A_2", "A_3", "A_4", "A_5", "A_6" };
 
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
 
         public Add_Water()
         {
@@ -58,7 +58,6 @@ namespace LY_SINTER.PAGE.Course
             if (vLog == null)
                 vLog = new vLog(".\\log_Page\\Quality\\Add_Water\\");
 
-
             _Timer1 = new System.Timers.Timer(10000);//初始化颜色变化定时器响应事件
             _Timer1.Elapsed += (x, y) => { Timer1_Tick_1(); };//响应事件
             _Timer1.Enabled = true;
@@ -68,7 +67,6 @@ namespace LY_SINTER.PAGE.Course
             _Timer2.Elapsed += (x, y) => { Timer1_Tick_2(); };//响应事件
             _Timer2.Enabled = true;
             _Timer2.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
-
 
             Text_Par_Show();
             Img_Par_Text();
@@ -91,6 +89,7 @@ namespace LY_SINTER.PAGE.Course
                 Img_Par_Text();
             }
         }
+
         private void Timer1_Tick_2()
         {
             Action invokeAction = new Action(Timer1_Tick_2);
@@ -131,6 +130,7 @@ namespace LY_SINTER.PAGE.Course
                 vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 加水优化控制模型状态 10s
         /// </summary>
@@ -247,7 +247,6 @@ namespace LY_SINTER.PAGE.Course
                 DataTable dataTable2 = dBSQL.GetCommand(sql2);
                 if (dataTable2.Rows.Count > 0)
                 {
-
                     //总料量SP
                     this.textBox5.Text = Math.Round(double.Parse(dataTable2.Rows[0][0].ToString()), 2).ToString() + " t/h";
                     //原始含水量
@@ -258,9 +257,9 @@ namespace LY_SINTER.PAGE.Course
                     this.textBox9.Text = Math.Round(double.Parse(dataTable2.Rows[0][3].ToString()), 3).ToString() + " %";
                     //检测水分
                     this.textBox10.Text = Math.Round(double.Parse(dataTable2.Rows[0][4].ToString()), 3).ToString() + " %";
-                    //加水量 SP 
+                    //加水量 SP
                     this.textBox11.Text = Math.Round(double.Parse(dataTable2.Rows[0][5].ToString()), 2).ToString() + " t/h";
-                    //加水量 PV 
+                    //加水量 PV
                     this.textBox12.Text = Math.Round(double.Parse(dataTable2.Rows[0][6].ToString()), 2).ToString() + " t/h";
                     //目标计算水
                     this.textBox13.Text = Math.Round(double.Parse(dataTable2.Rows[0][7].ToString()), 3).ToString() + " t/h";
@@ -287,7 +286,6 @@ namespace LY_SINTER.PAGE.Course
                 }
                 else
                 {
-
                 }
                 //李涛修改 ，数据异常问题0609
                 string sql3 = "select top 1 isnull(T_TOTAL_PV_W_3S,0) from C_PLC_3S order by TIMESTAMP desc";
@@ -300,7 +298,6 @@ namespace LY_SINTER.PAGE.Course
                 }
                 else
                 {
-
                 }
 
                 string sql4 = "select top 1 isnull(PAR_T_N,0) from MC_WATERCAL_PAR order by TIMESTAMP desc";
@@ -312,9 +309,7 @@ namespace LY_SINTER.PAGE.Course
                 }
                 else
                 {
-
                 }
-
             }
             catch (Exception ee)
             {
@@ -322,6 +317,7 @@ namespace LY_SINTER.PAGE.Course
                 vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 混合机参数显示
         /// </summary>
@@ -345,7 +341,6 @@ namespace LY_SINTER.PAGE.Course
                 DataTable dataTable1 = dBSQL.GetCommand(sql1);
                 if (dataTable1.Rows.Count > 0)
                 {
-
                     this.label29.Text = "料量:" + dataTable1.Rows[0][0].ToString() + "t/h";
                     this.label31.Text = "流量SP:" + dataTable1.Rows[0][1].ToString() + "t/h";
                     this.label32.Text = "流量PV:" + dataTable1.Rows[0][2].ToString() + "t/h";
@@ -357,7 +352,6 @@ namespace LY_SINTER.PAGE.Course
                     this.label37.Text = "开度SP:" + dataTable1.Rows[0][8].ToString() + "%";
                     this.label38.Text = "开度PV:" + dataTable1.Rows[0][9].ToString() + "%";
                 }
-
 
                 string sql2 = "select top (1) WATCAL_RAW_H2O,WATCAL_RAW_H2O_B from MC_WATERCAL_RESULT order by TIMESTAMP desc";
                 ///李涛修改 0609 数据异常显示问题，参与计算的字段若为空值则为空
@@ -392,9 +386,7 @@ namespace LY_SINTER.PAGE.Course
         /// </summary>
         private void Button_Show()
         {
-
         }
-
 
         /// <summary>
         ///曲线勾选框显示数据
@@ -493,7 +485,6 @@ namespace LY_SINTER.PAGE.Course
                 checkBox5.Checked = true;
                 checkBox6.Checked = true;
                 tendency_curve_HIS(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));
-
             }
             catch (Exception ee)
             {
@@ -501,15 +492,14 @@ namespace LY_SINTER.PAGE.Course
                 vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 趋势曲线历史
         /// </summary>
         public void tendency_curve_HIS(DateTime _d1, DateTime _d2)
         {
-
             try
             {
-
                 string sql3 = "select a.TIMESTAMP,a.M_PLC_1M_WATER_SP,a.M_PLC_1M_A_WATER_PV,b.MAT_PLC_T_SP_W,b.MAT_PLC_T_PV_W,a.M_PLC_1M_FT_SP,a.M_PLC_1M_FT_PV from  C_MFI_PLC_1MIN a,C_MAT_PLC_1MIN b where convert(varchar(16),a.TIMESTAMP,121)=convert(varchar(16),b.TIMESTAMP,121) and a.TIMESTAMP between '" + _d1 + "' and '" + _d2 + "' order by a.TIMESTAMP";
                 DataTable data_curve_ls = dBSQL.GetCommand(sql3);
                 if (data_curve_ls.Rows.Count > 0)
@@ -614,8 +604,7 @@ namespace LY_SINTER.PAGE.Course
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[0],
                         ItemsSource = Line1,
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n目标水分:{4}",
-
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}目标水分:{4}",
                     };
                     if (checkBox1.Checked == true)
                     {
@@ -637,9 +626,9 @@ namespace LY_SINTER.PAGE.Course
                         Angle = 60,
                         IsZoomEnabled = true,
                         IsPanEnabled = false,
-                        Maximum = (int)(Mun1.Max() + 1),//极值
-                        Minimum = (int)(Mun1.Min() - 1),
-                        PositionTier = 1,
+                        Maximum = (int)(Mun2.Max() + 1),//极值
+                        Minimum = (int)(Mun2.Min() - 1),
+                        PositionTier = 2,
                         AxislineStyle = LineStyle.Solid,
                         AxislineColor = OxyColors.Purple,//颜色
                         MinorTicklineColor = OxyColors.Purple,//颜色
@@ -662,8 +651,7 @@ namespace LY_SINTER.PAGE.Course
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[1],//识别符
                         ItemsSource = Line2,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n实际水分:{4}",
-
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}实际水分:{4}",
                     };
                     if (checkBox2.Checked == true)
                     {
@@ -687,7 +675,7 @@ namespace LY_SINTER.PAGE.Course
                         IsPanEnabled = false,
                         Maximum = (int)(Mun3.Max() + 1),//极值
                         Minimum = (int)(Mun3.Min() - 1),
-                        PositionTier = 2,
+                        PositionTier = 3,
                         AxislineStyle = LineStyle.Solid,
                         AxislineColor = OxyColors.Green,//颜色
                         MinorTicklineColor = OxyColors.Green,//颜色
@@ -710,8 +698,7 @@ namespace LY_SINTER.PAGE.Course
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[2],//识别符
                         ItemsSource = Line3,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n总料量SP:{4}",
-
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}总料量SP:{4}",
                     };
                     if (checkBox3.Checked == true)
                     {
@@ -732,9 +719,9 @@ namespace LY_SINTER.PAGE.Course
                         Angle = 60,
                         IsZoomEnabled = true,
                         IsPanEnabled = false,
-                        Maximum = (int)(Mun3.Max() + 1),//极值
-                        Minimum = (int)(Mun3.Min() - 1),
-                        PositionTier = 2,
+                        Maximum = (int)(Mun4.Max() + 1),//极值
+                        Minimum = (int)(Mun4.Min() - 1),
+                        PositionTier = 4,
                         AxislineStyle = LineStyle.Solid,
                         AxislineColor = OxyColors.Blue,//颜色
                         MinorTicklineColor = OxyColors.Blue,//颜色
@@ -757,15 +744,13 @@ namespace LY_SINTER.PAGE.Course
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[3],//识别符
                         ItemsSource = Line4,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n总料量PV:{4}",
-
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}总料量PV:{4}",
                     };
                     if (checkBox4.Checked == true)
                     {
                         _valueAxis4.IsAxisVisible = true;
                         _myPlotModel.Series.Add(series4);
                     }
-
 
                     int x_4 = 1;//判断增长数据
                     if ((int)((Mun5.Max() - Mun5.Min()) / 5) > 0)
@@ -783,7 +768,7 @@ namespace LY_SINTER.PAGE.Course
                         IsPanEnabled = false,
                         Maximum = (int)(Mun5.Max() + 1),//极值
                         Minimum = (int)(Mun5.Min() - 1),
-                        PositionTier = 3,
+                        PositionTier = 5,
                         AxislineStyle = LineStyle.Solid,
                         AxislineColor = OxyColors.Olive,//颜色
                         MinorTicklineColor = OxyColors.Olive,//颜色
@@ -806,15 +791,13 @@ namespace LY_SINTER.PAGE.Course
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[4],//识别符
                         ItemsSource = Line5,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n加水流量SP:{4}",
-
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}加水流量SP:{4}",
                     };
                     if (checkBox5.Checked == true)
                     {
                         _valueAxis5.IsAxisVisible = true;
                         _myPlotModel.Series.Add(series5);
                     }
-
 
                     int x_5 = 1;//判断增长数据
                     if ((int)((Mun6.Max() - Mun6.Min()) / 5) > 0)
@@ -830,10 +813,10 @@ namespace LY_SINTER.PAGE.Course
                         Angle = 60,
                         IsZoomEnabled = true,
                         IsPanEnabled = false,
-                        Maximum = (int)(Mun5.Max() + 1),//极值
-                        Minimum = (int)(Mun5.Min() - 1),
+                        Maximum = (int)(Mun6.Max() + 1),//极值
+                        Minimum = (int)(Mun6.Min() - 1),
                         // PositionTier = 6,
-                        PositionTier = 3,
+                        PositionTier = 6,
                         AxislineStyle = LineStyle.Solid,
                         AxislineColor = OxyColors.Black,//颜色
                         MinorTicklineColor = OxyColors.Black,//颜色
@@ -856,8 +839,7 @@ namespace LY_SINTER.PAGE.Course
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[5],//识别符
                         ItemsSource = Line6,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n加水流量PV:{4}",
-
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}加水流量PV:{4}",
                     };
                     if (checkBox6.Checked == true)
                     {
@@ -869,7 +851,6 @@ namespace LY_SINTER.PAGE.Course
                     PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
                     curve_his.Controller = PlotController;
                 }
-
             }
             catch (Exception ee)
             {
@@ -1017,17 +998,19 @@ namespace LY_SINTER.PAGE.Course
             catch
             { }
         }
+
         public void Timer_stop()
         {
             _Timer1.Stop();
             _Timer2.Stop();
         }
+
         public void Timer_state()
         {
             _Timer1.Start();
             _Timer2.Start();
-           
         }
+
         public void _Clear()
         {
             _Timer1.Close();

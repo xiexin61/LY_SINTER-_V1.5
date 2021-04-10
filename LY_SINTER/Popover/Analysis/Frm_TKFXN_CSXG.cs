@@ -13,8 +13,9 @@ namespace LY_SINTER.Popover.Analysis
 {
     public partial class Frm_TKFXN_CSXG : Form
     {
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
         public static bool isopen = false;
+
         public Frm_TKFXN_CSXG()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace LY_SINTER.Popover.Analysis
             d2GetData();
             d3GetData();
         }
+
         private void simpleButton3_click(object sender, EventArgs e)
         {
             Frm_FKFXN_csxg2 form_display = new Frm_FKFXN_csxg2();
@@ -37,6 +39,10 @@ namespace LY_SINTER.Popover.Analysis
             d2GetData();
             d3GetData();
         }
+
+        /// <summary>
+        /// 获取d1表格数据
+        /// </summary>
         private void d1GetData()
         {
             string sql = "select top(1) PAR_TFE_RANK_LOWER,PAR_TFE_RANK_UPPER,PAR_SIO2_RANK_LOWER,PAR_SIO2_RANK_UPPER,PAR_AL2O3_RANK_LOWER,PAR_AL2O3_RANK_UPPER," +
@@ -69,6 +75,10 @@ namespace LY_SINTER.Popover.Analysis
             d1.Rows[4].Cells["low"].Value = "< " + table.Rows[0][8];
             d1.Rows[4].Cells["high"].Value = "> " + table.Rows[0][9];
         }
+
+        /// <summary>
+        /// 获取d2表格数据
+        /// </summary>
         private void d2GetData()
         {
             string sql = "select top(1) PAR_TFE_FEO_LOWER,PAR_TFE_FEO_UPPER,PAR_TFE_LOI_RANK from MC_ORECAL_ORE_BP_PAR order by TIMESTAMP desc";
@@ -90,6 +100,10 @@ namespace LY_SINTER.Popover.Analysis
             d2.Rows[3].Cells["TFeFeO"].Value = "> " + table.Rows[0][1];
             d2.Rows[3].Cells["TFeLOI"].Value = "< " + table.Rows[0][2];
         }
+
+        /// <summary>
+        /// 获取d3表格数据
+        /// </summary>
         private void d3GetData()
         {
             d3.Rows.Add();

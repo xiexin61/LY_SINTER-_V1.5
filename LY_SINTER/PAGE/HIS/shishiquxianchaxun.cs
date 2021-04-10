@@ -242,60 +242,23 @@ namespace LY_SINTER.PAGE.HIS
 
         private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
 
-        //int sjd = 4;
         public shishiquxianchaxun()
         {
             InitializeComponent();
-            //曲线控件背景颜色
-            /*lChartPlus40.LChart.BackColor = Color.White;
-            lChartPlus41.LChart.BackColor = Color.White;
-            lChartPlus42.LChart.BackColor = Color.White;
-            lChartPlus43.LChart.BackColor = Color.White;
-            lChartPlus44.LChart.BackColor = Color.White;
-            lChartPlus45.LChart.BackColor = Color.White;
-            lChartPlus46.LChart.BackColor = Color.White;
-            lChartPlus47.LChart.BackColor = Color.White;
-            lChartPlus48.LChart.BackColor = Color.White;
-            lChartPlus49.LChart.BackColor = Color.White;
-            lChartPlus49_1.LChart.BackColor = Color.White;
-            lChartPlus49_2.LChart.BackColor = Color.White;
-            lChartPlus49_3.LChart.BackColor = Color.White;
-            lChartPlus49_4.LChart.BackColor = Color.White;*/
+
             time();//最新调整时间
             shuju();//左数据项
-            //quxiandingyi();//曲线定义
-            //quxianfuzhi();//曲线赋值
-            //zhongdianweizhiquxian();//终点位置曲线赋值
-            //int sjd = int.Parse(comboBox1.Text);
+
             Task.Factory.StartNew(() =>
             {
-                /*while (true)
-                {
-                    HIS_CURVE_SS(DateTime.Now.AddHours(-12), DateTime.Now);
-                    HIS_CURVE_SS2(DateTime.Now.AddHours(-12), DateTime.Now);
-                    HIS_CURVE_SS4(DateTime.Now.AddHours(-12), DateTime.Now);
-                    Thread.Sleep(60000);
-                }*/
-                //int sjd = int.Parse(comboBox1.Text);
                 while (true)
                 {
                     shishiquxian();
                     quxian();
                     Thread.Sleep(60000);
                 }
-
-                /*for (int i = 1; i < 100; i++)
-                {
-                    da = da.AddHours(1);
-                    end = end.AddHours(1);
-                    shishiquxian();
-                    quxian();
-                    //HIS_CURVE_Test(DateTime.Now.AddDays(-i-1), DateTime.Now.AddDays(-i));
-                    Thread.Sleep(3000);
-                }*/
             });
-            //shishiquxian();
-            //quxian();
+
             timer1.Enabled = true;
             timer2.Enabled = true;
         }
@@ -329,7 +292,9 @@ namespace LY_SINTER.PAGE.HIS
             }
         }
 
-        //左数据项(1min)
+        /// <summary>
+        /// 左侧数据项(1min)
+        /// </summary>
         private void shuju()
         {
             try
@@ -373,8 +338,8 @@ namespace LY_SINTER.PAGE.HIS
                     float hhlcw = float.Parse(dataTable1.Rows[0][12].ToString());
                     float ygzs = float.Parse(dataTable1.Rows[0][13].ToString());
 
-                    this.textBox1.Text = zcpl1.ToString();
-                    this.textBox2.Text = zcpl2.ToString();
+                    /*this.textBox1.Text = zcpl1.ToString();
+                    this.textBox2.Text = zcpl2.ToString();*/
                     this.textBox3.Text = zcwd1.ToString();
                     this.textBox4.Text = zcwd2.ToString();
                     this.textBox5.Text = zcfy1.ToString();
@@ -424,8 +389,8 @@ namespace LY_SINTER.PAGE.HIS
                         try
                         {
                             //超过上限变红，低于下限变黄
-                            string sql4 = "select ISNULL(PAR_MA_FAN_SP_MAX,0),ISNULL(PAR_MA_FAN_SP_MIN,0),ISNULL(PAR_MA_SB_FLUE_TE_MAX,0),ISNULL(PAR_MA_SB_FLUE_TE_MIN,0),ISNULL(PAR_MA_SB_FLUE_PT_MAX,0),ISNULL(PAR_MA_SB_FLUE_PT_MIN,0)," +
-                                "ISNULL(PAR_MA_SB_FLUE_FT_MAX,0),ISNULL(PAR_MA_SB_FLUE_FT_MIN,0),ISNULL(PAR_X_BTP_MAX,0),ISNULL(PAR_X_BTP_MIN,0),ISNULL(PAR_THICK_PV_MAX,0),ISNULL(PAR_THICK_PV_MIN,0),ISNULL(PAR_IG_TE_MAX,0)," +
+                            string sql4 = "select ISNULL(PAR_MA_FAN_SP_MAX,0),ISNULL(PAR_MA_FAN_SP_MIN,0),ISNULL(PAR_MA_SB_FLUE_TE_MAX,0),ISNULL(PAR_MA_SB_FLUE_TE_MIN,0),ISNULL(PAR_MA_SB_FLUE_TE_MAX_2,0),ISNULL(PAR_MA_SB_FLUE_TE_MIN_2,0),ISNULL(PAR_MA_SB_FLUE_PT_MAX,0),ISNULL(PAR_MA_SB_FLUE_PT_MIN,0)," +
+                                "ISNULL(PAR_MA_SB_FLUE_PT_MAX_2,0),ISNULL(PAR_MA_SB_FLUE_PT_MIN_2,0),ISNULL(PAR_MA_SB_FLUE_FT_MAX,0),ISNULL(PAR_MA_SB_FLUE_FT_MIN,0),ISNULL(PAR_MA_SB_FLUE_FT_MAX_2,0),ISNULL(PAR_MA_SB_FLUE_FT_MIN_2,0),ISNULL(PAR_X_BTP_MAX,0),ISNULL(PAR_X_BTP_MIN,0),ISNULL(PAR_THICK_PV_MAX,0),ISNULL(PAR_THICK_PV_MIN,0),ISNULL(PAR_IG_TE_MAX,0)," +
                                 "ISNULL(PAR_IG_TE_MIN,0),ISNULL(PAR_TOTAL_SP_W_MAX,0),ISNULL(PAR_TOTAL_SP_W_MIN,0),ISNULL(PAR_1M_FT_SP_MAX,0),ISNULL(PAR_1M_FT_SP_MIN,0),ISNULL(PAR_2M_FLOW_SP_MAX,0),ISNULL(PAR_2M_FLOW_SP_MIN,0)," +
                                 "ISNULL(PAR_BLEND_LEVEL_MAX,0),ISNULL(PAR_BLEND_LEVEL_MIN,0),ISNULL(PAR_STICK_SP_MAX,0),ISNULL(PAR_STICK_SP_MIN,0),ISNULL(PAR_SIN_MS_SP_MAX,0),ISNULL(PAR_SIN_MS_SP_MIN,0),ISNULL(PAR_RC_SPEED_SP_MAX,0),ISNULL(PAR_RC_SPEED_SP_MIN,0) from CFG_R_T_CURVE_INTERFACE_PAR";
                             DataTable dataTable4 = dBSQL.GetCommand(sql4);
@@ -435,32 +400,38 @@ namespace LY_SINTER.PAGE.HIS
                                 float zcplxx = float.Parse(dataTable4.Rows[0][1].ToString());
                                 float zcwdsx = float.Parse(dataTable4.Rows[0][2].ToString());
                                 float zcwdxx = float.Parse(dataTable4.Rows[0][3].ToString());
-                                float zcfysx = float.Parse(dataTable4.Rows[0][4].ToString());
-                                float zcfyxx = float.Parse(dataTable4.Rows[0][5].ToString());
-                                float zcflsx = float.Parse(dataTable4.Rows[0][6].ToString());
-                                float zcflxx = float.Parse(dataTable4.Rows[0][7].ToString());
-                                float zdwzsx = float.Parse(dataTable4.Rows[0][8].ToString());
-                                float zdwzxx = float.Parse(dataTable4.Rows[0][9].ToString());
-                                float blhdsx = float.Parse(dataTable4.Rows[0][10].ToString());
-                                float blhdxx = float.Parse(dataTable4.Rows[0][11].ToString());
-                                float dhwdsx = float.Parse(dataTable4.Rows[0][12].ToString());
-                                float dhwdxx = float.Parse(dataTable4.Rows[0][13].ToString());
-                                float zllsx = float.Parse(dataTable4.Rows[0][14].ToString());
-                                float zllxx = float.Parse(dataTable4.Rows[0][15].ToString());
-                                float yhjslsx = float.Parse(dataTable4.Rows[0][16].ToString());
-                                float yhjslxx = float.Parse(dataTable4.Rows[0][17].ToString());
-                                float ehjslsx = float.Parse(dataTable4.Rows[0][18].ToString());
-                                float ehjslxx = float.Parse(dataTable4.Rows[0][19].ToString());
-                                float hhlcwsx = float.Parse(dataTable4.Rows[0][20].ToString());
-                                float hhlcwxx = float.Parse(dataTable4.Rows[0][21].ToString());
-                                float ygzssx = float.Parse(dataTable4.Rows[0][22].ToString());
-                                float ygzsxx = float.Parse(dataTable4.Rows[0][23].ToString());
-                                float sjjjssx = float.Parse(dataTable4.Rows[0][24].ToString());
-                                float sjjjsxx = float.Parse(dataTable4.Rows[0][25].ToString());
-                                float hljjssx = float.Parse(dataTable4.Rows[0][26].ToString());
-                                float hljjsxx = float.Parse(dataTable4.Rows[0][27].ToString());
+                                float zcwdsx1 = float.Parse(dataTable4.Rows[0][4].ToString());
+                                float zcwdxx1 = float.Parse(dataTable4.Rows[0][5].ToString());
+                                float zcfysx = float.Parse(dataTable4.Rows[0][6].ToString());
+                                float zcfyxx = float.Parse(dataTable4.Rows[0][7].ToString());
+                                float zcfysx1 = float.Parse(dataTable4.Rows[0][8].ToString());
+                                float zcfyxx1 = float.Parse(dataTable4.Rows[0][9].ToString());
+                                float zcflsx = float.Parse(dataTable4.Rows[0][10].ToString());
+                                float zcflxx = float.Parse(dataTable4.Rows[0][11].ToString());
+                                float zcflsx1 = float.Parse(dataTable4.Rows[0][12].ToString());
+                                float zcflxx1 = float.Parse(dataTable4.Rows[0][13].ToString());
+                                float zdwzsx = float.Parse(dataTable4.Rows[0][14].ToString());
+                                float zdwzxx = float.Parse(dataTable4.Rows[0][15].ToString());
+                                float blhdsx = float.Parse(dataTable4.Rows[0][16].ToString());
+                                float blhdxx = float.Parse(dataTable4.Rows[0][17].ToString());
+                                float dhwdsx = float.Parse(dataTable4.Rows[0][18].ToString());
+                                float dhwdxx = float.Parse(dataTable4.Rows[0][19].ToString());
+                                float zllsx = float.Parse(dataTable4.Rows[0][20].ToString());
+                                float zllxx = float.Parse(dataTable4.Rows[0][21].ToString());
+                                float yhjslsx = float.Parse(dataTable4.Rows[0][22].ToString());
+                                float yhjslxx = float.Parse(dataTable4.Rows[0][23].ToString());
+                                float ehjslsx = float.Parse(dataTable4.Rows[0][24].ToString());
+                                float ehjslxx = float.Parse(dataTable4.Rows[0][25].ToString());
+                                float hhlcwsx = float.Parse(dataTable4.Rows[0][26].ToString());
+                                float hhlcwxx = float.Parse(dataTable4.Rows[0][27].ToString());
+                                float ygzssx = float.Parse(dataTable4.Rows[0][28].ToString());
+                                float ygzsxx = float.Parse(dataTable4.Rows[0][29].ToString());
+                                float sjjjssx = float.Parse(dataTable4.Rows[0][30].ToString());
+                                float sjjjsxx = float.Parse(dataTable4.Rows[0][31].ToString());
+                                float hljjssx = float.Parse(dataTable4.Rows[0][32].ToString());
+                                float hljjsxx = float.Parse(dataTable4.Rows[0][33].ToString());
 
-                                //1#主抽频率
+                                /*//1#主抽频率
                                 if (zcpl1 > zcplsx)
                                 {
                                     textBox1.BackColor = Color.Red;
@@ -479,7 +450,7 @@ namespace LY_SINTER.PAGE.HIS
                                 {
                                     textBox2.BackColor = Color.Yellow;
                                 }
-                                else textBox2.BackColor = Color.White;
+                                else textBox2.BackColor = Color.White;*/
                                 //1#主抽温度
                                 if (zcwd1 > zcwdsx)
                                 {
@@ -491,11 +462,11 @@ namespace LY_SINTER.PAGE.HIS
                                 }
                                 else textBox3.BackColor = Color.White;
                                 //2#主抽温度
-                                if (zcwd2 > zcwdsx)
+                                if (zcwd2 > zcwdsx1)
                                 {
                                     textBox4.BackColor = Color.Red;
                                 }
-                                else if (zcwd2 < zcwdxx)
+                                else if (zcwd2 < zcwdxx1)
                                 {
                                     textBox4.BackColor = Color.Yellow;
                                 }
@@ -511,11 +482,11 @@ namespace LY_SINTER.PAGE.HIS
                                 }
                                 else textBox5.BackColor = Color.White;
                                 //2#主抽负压
-                                if (zcfy2 > zcfysx)
+                                if (zcfy2 > zcfysx1)
                                 {
                                     textBox6.BackColor = Color.Red;
                                 }
-                                else if (zcfy2 < zcfyxx)
+                                else if (zcfy2 < zcfyxx1)
                                 {
                                     textBox6.BackColor = Color.Yellow;
                                 }
@@ -531,11 +502,11 @@ namespace LY_SINTER.PAGE.HIS
                                 }
                                 else textBox7.BackColor = Color.White;
                                 //2#主抽风量
-                                if (zcfl2 > zcflsx)
+                                if (zcfl2 > zcflsx1)
                                 {
                                     textBox8.BackColor = Color.Red;
                                 }
-                                else if (zcfl2 < zcflxx)
+                                else if (zcfl2 < zcflxx1)
                                 {
                                     textBox8.BackColor = Color.Yellow;
                                 }
@@ -671,6 +642,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 form_display.Activate();
             }
+            shuju();
         }
 
         //准备表数据
@@ -704,7 +676,9 @@ namespace LY_SINTER.PAGE.HIS
         private List<double> Num13 = new List<double>();
         private List<double> Num14 = new List<double>();
 
-        //int sjd = int.Parse(comboBox1.Text);
+        /// <summary>
+        /// 曲线数据查询
+        /// </summary>
         public void shishiquxian()
         {
             Line1.Clear();
@@ -728,10 +702,6 @@ namespace LY_SINTER.PAGE.HIS
 
             try
             {
-                /*string a1 =comboBox1.SelectedText.ToString();
-                string b =comboBox1.SelectedValue.ToString();
-                string c=comboBox1.SelectedText.ToString();
-                int sjd = int.Parse(comboBox1.Text.ToString());*/
                 int sjd = 0;
                 try
                 {
@@ -1173,14 +1143,16 @@ namespace LY_SINTER.PAGE.HIS
             return s;
         }
 
-        //定义曲线和坐标轴
+        /// <summary>
+        /// 曲线及坐标轴赋值
+        /// </summary>
         public void quxian()
         {
             _myPlotModel = new PlotModel()
             {
-                /*Background = OxyColors.GradientActiveCaption,
-                PlotAreaBorderColor = OxyColors.GradientInactiveCaption,*/
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                Background = OxyColors.DarkGray,
+                PlotAreaBorderColor = OxyColors.DarkGray,
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
             };
             //X轴
             _dateAxis1 = new DateTimeAxis()
@@ -1212,7 +1184,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max1,
-                Minimum = min1,
+                Minimum = min1 - 1,
             };
             if (min1 == max1 && min1 == 0)
             {
@@ -1238,7 +1210,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "主轴频率",
                 ItemsSource = Line1,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n1#主轴频率:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}1#主轴频率:{4}",
             };
             _myPlotModel.Series.Add(checkBox1_1);
             //plotView1.Model = _myPlotModel;
@@ -1289,16 +1261,16 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "主轴频率",
                 ItemsSource = Line2,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n2#主轴频率:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}2#主轴频率:{4}",
             };
             _myPlotModel.Series.Add(checkBox2_1);
-            plotView1.Model = _myPlotModel;
+            /*plotView1.Model = _myPlotModel;*/
             //1#主轴温度
             _myPlotMode3 = new PlotModel()
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "1#主轴温度",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -1332,7 +1304,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max2,
-                Minimum = min2,
+                Minimum = min2 - 1,
                 //StartPosition = 0.5,
             };
             if (min2 == max2 && min2 == 0)
@@ -1359,7 +1331,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "主轴温度",
                 ItemsSource = Line3,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n1#主轴温度:{4}℃",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}1#主轴温度:{4}℃",
             };
             _myPlotMode3.Series.Add(checkBox3_1);
             /*plotView3.Model = _myPlotMode3;
@@ -1410,7 +1382,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "主轴温度",
                 ItemsSource = Line4,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n2#主轴温度:{4}℃",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}2#主轴温度:{4}℃",
             };
             _myPlotMode3.Series.Add(checkBox4_1);
             plotView2.Model = _myPlotMode3;
@@ -1419,7 +1391,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "1#主轴负压",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -1453,7 +1425,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max3,
-                Minimum = min3,
+                Minimum = min3 - 1,
                 //StartPosition = 0.5,
             };
             //_valueAxis5.Maximum = getMax((int)max3,(int)min3);
@@ -1482,7 +1454,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "主轴负压",
                 ItemsSource = Line5,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n1#主轴负压:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}1#主轴负压:{4}",
             };
             _myPlotMode5.Series.Add(checkBox5_1);
             //plotView5.Model = _myPlotMode5;
@@ -1533,7 +1505,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "主轴负压",
                 ItemsSource = Line6,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n2#主轴负压:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}2#主轴负压:{4}",
             };
             _myPlotMode5.Series.Add(checkBox6_1);
             plotView3.Model = _myPlotMode5;
@@ -1542,7 +1514,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "1#主轴风量",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -1576,7 +1548,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max4,
-                Minimum = min4,
+                Minimum = min4 - 1,
                 //StartPosition = 0.2,
             };
             if (min4 == max4 && min4 == 0)
@@ -1603,7 +1575,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "主轴风量",
                 ItemsSource = Line7,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n1#主轴风量:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}1#主轴风量:{4}",
             };
             _myPlotMode7.Series.Add(checkBox7_1);
             //plotView7.Model = _myPlotMode7;
@@ -1654,7 +1626,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "主轴风量",
                 ItemsSource = Line8,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n2#主轴风量:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}2#主轴风量:{4}",
             };
             _myPlotMode7.Series.Add(checkBox8_1);
             plotView4.Model = _myPlotMode7;
@@ -1663,7 +1635,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "终点位置",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -1697,7 +1669,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max5,
-                Minimum = min5,
+                Minimum = min5 - 1,
                 //StartPosition = 0.2,
             };
             if (min5 == max5 && min5 == 0)
@@ -1725,7 +1697,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "终点位置",
                 ItemsSource = Line9,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n终点位置:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}终点位置:{4}",
             };
             _myPlotMode9.Series.Add(checkBox9_1);
             plotView5.Model = _myPlotMode9;
@@ -1734,7 +1706,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "布料厚度",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -1768,7 +1740,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max6,
-                Minimum = min6,
+                Minimum = min6 - 1,
                 //StartPosition = 0.2,
             };
             if (min6 == max6 && min6 == 0)
@@ -1796,7 +1768,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "布料厚度",
                 ItemsSource = Line10,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n布料厚度:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}布料厚度:{4}",
             };
             _myPlotModel0.Series.Add(checkBox10_1);
             plotView6.Model = _myPlotModel0;
@@ -1805,7 +1777,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "点火温度",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -1839,7 +1811,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max7,
-                Minimum = min7,
+                Minimum = min7 - 10,
                 //StartPosition = 0.2,
             };
             if (min7 == max7 && min7 == 0)
@@ -1867,7 +1839,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "点火温度",
                 ItemsSource = Line11,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n点火温度:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}点火温度:{4}",
             };
             _myPlotModel1.Series.Add(checkBox11_1);
             plotView7.Model = _myPlotModel1;
@@ -1876,7 +1848,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "总料量",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -1910,7 +1882,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max8,
-                Minimum = min8,
+                Minimum = min8 - 10,
                 //StartPosition = 0.2,
             };
             if (min8 == max8 && min8 == 0)
@@ -1938,7 +1910,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "总料量",
                 ItemsSource = Line12,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n总料量:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}总料量:{4}",
             };
             _myPlotModel2.Series.Add(checkBox12_1);
             plotView8.Model = _myPlotModel2;
@@ -1947,7 +1919,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "一混加水",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -1981,7 +1953,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max9,
-                Minimum = min9,
+                Minimum = min9 - 1,
                 //MajorStep=10,
                 //StartPosition = 0.2,
             };
@@ -2017,7 +1989,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "一混加水",
                 ItemsSource = Line13,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n一混加水:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}一混加水:{4}",
             };
             _myPlotModel3.Series.Add(checkBox13_1);
             plotView9.Model = _myPlotModel3;
@@ -2026,7 +1998,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "一混加水",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -2060,7 +2032,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max10,
-                Minimum = min10,
+                Minimum = min10 - 1,
                 //MajorStep=1,
                 //StartPosition = 0.2,
             };
@@ -2096,7 +2068,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "二混加水",
                 ItemsSource = Line14,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n二混加水:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}二混加水:{4}",
             };
             _myPlotModel4.Series.Add(checkBox14_1);
             plotView10.Model = _myPlotModel4;
@@ -2105,7 +2077,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "混合料仓",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -2139,7 +2111,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max11,
-                Minimum = min11,
+                Minimum = min11 - 1,
                 //MajorStep=17,
             };
             if (min11 == max11 && min11 == 0)
@@ -2174,7 +2146,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "混合料仓",
                 ItemsSource = Line15,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n混合料仓:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}混合料仓:{4}",
             };
             _myPlotModel5.Series.Add(checkBox15_1);
             plotView11.Model = _myPlotModel5;
@@ -2183,7 +2155,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "圆辊转速",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -2217,7 +2189,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max12,
-                Minimum = min12,
+                Minimum = min12 - 1,
                 //MajorStep=1,
             };
             if (min12 == max12 && min12 == 0)
@@ -2245,7 +2217,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "圆辊转速",
                 ItemsSource = Line16,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n圆辊转速:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}圆辊转速:{4}",
             };
             _myPlotModel6.Series.Add(checkBox16_1);
             plotView12.Model = _myPlotModel6;
@@ -2254,7 +2226,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 0),
+                PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "烧结机机速",
                 TitleFontSize = 5,
                 TitleColor = OxyColors.White,*/
@@ -2288,7 +2260,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max13,
-                Minimum = min13,
+                Minimum = min13 - 1,
                 //MajorStep=1,
                 //StartPosition = 0.2,
             };
@@ -2306,14 +2278,6 @@ namespace LY_SINTER.PAGE.HIS
                     _valueAxis17.MajorStep = (max13 - min13) / 2;
                 }
             }
-            /*if (min13 == 0)
-            {
-                _valueAxis17.MajorStep = max13;
-            }
-            else
-            {
-                _valueAxis17.MajorStep = max13 - min13;
-            }*/
             _myPlotModel7.Axes.Add(_valueAxis17);
             checkBox17_1 = new OxyPlot.Series.LineSeries()
             {
@@ -2324,7 +2288,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "烧结机机速",
                 ItemsSource = Line17,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n烧结机机速:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}烧结机机速:{4}",
             };
             _myPlotModel7.Series.Add(checkBox17_1);
             plotView13.Model = _myPlotModel7;
@@ -2333,10 +2297,7 @@ namespace LY_SINTER.PAGE.HIS
             {
                 Background = OxyColors.DarkGray,
                 PlotAreaBorderColor = OxyColors.DarkGray,
-                PlotMargins = new OxyThickness(40, 0, 5, 10),
-                /*Title = "环冷机机速",
-                TitleFontSize = 5,
-                TitleColor = OxyColors.White,*/
+                PlotMargins = new OxyThickness(40, 10, 5, 10),
             };
             _dateAxis18 = new DateTimeAxis()
             {
@@ -2369,7 +2330,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max14,
-                Minimum = min14,
+                Minimum = min14 - 1,
                 //MajorStep=1,
                 //StartPosition = 0.2,
             };
@@ -2387,14 +2348,7 @@ namespace LY_SINTER.PAGE.HIS
                     _valueAxis18.MajorStep = (max14 - min14) / 2;
                 }
             }
-            /*f (min14 == 0)
-            {
-                _valueAxis18.MajorStep = max14;
-            }
-            else
-            {
-                _valueAxis18.MajorStep = max14 - min14;
-            }*/
+
             _myPlotModel8.Axes.Add(_valueAxis18);
             checkBox18_1 = new OxyPlot.Series.LineSeries()
             {
@@ -2405,31 +2359,27 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "环冷机机速",
                 ItemsSource = Line18,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n环冷机机速:{4}",
+                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}环冷机机速:{4}",
             };
             _myPlotModel8.Series.Add(checkBox18_1);
             plotView14.Model = _myPlotModel8;
         }
 
         //单击隐藏曲线
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        /*private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             try
             {
                 plotView1.Model = null;
                 if (checkBox1.Checked == true)
                 {
-                    //_valueAxis1.IsAxisVisible = true;
                     _myPlotModel.Series.Add(checkBox1_1);
                 }
                 if (checkBox1.Checked == false)
                 {
-                    //_valueAxis1.IsAxisVisible = false;
                     _myPlotModel.Series.Remove(checkBox1_1);
                 }
                 plotView1.Model = _myPlotModel;
-                //tableLayoutPanel23_label();
-                //lChartPlus40.ToggleCheckBoxY(sender, e, 0);
             }
             catch
             { }
@@ -2456,7 +2406,7 @@ namespace LY_SINTER.PAGE.HIS
             }
             catch
             { }
-        }
+        }*/
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
@@ -2816,8 +2766,8 @@ namespace LY_SINTER.PAGE.HIS
         {
             try
             {
-                this.checkBox1.Checked = true;
-                this.checkBox2.Checked = true;
+                /*this.checkBox1.Checked = true;
+                this.checkBox2.Checked = true;*/
                 this.checkBox3.Checked = true;
                 this.checkBox4.Checked = true;
                 this.checkBox5.Checked = true;
@@ -2844,8 +2794,8 @@ namespace LY_SINTER.PAGE.HIS
         {
             try
             {
-                this.checkBox1.Checked = false;
-                this.checkBox2.Checked = false;
+                /*this.checkBox1.Checked = false;
+                this.checkBox2.Checked = false;*/
                 this.checkBox3.Checked = false;
                 this.checkBox4.Checked = false;
                 this.checkBox5.Checked = false;
@@ -2884,14 +2834,14 @@ namespace LY_SINTER.PAGE.HIS
         /// </summary>
         public void tableLayoutPanel23_label()
         {
-            if (checkBox1.Checked == false && checkBox2.Checked == false)
+            /*if (checkBox1.Checked == false && checkBox2.Checked == false)
             {
                 tableLayoutPanel23.RowStyles[0].Height = 0;
             }
             else
             {
                 tableLayoutPanel23.RowStyles[0].Height = 8;
-            }
+            }*/
             if (checkBox3.Checked == false && checkBox4.Checked == false)
             {
                 tableLayoutPanel23.RowStyles[1].Height = 0;

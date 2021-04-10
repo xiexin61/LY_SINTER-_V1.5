@@ -57,7 +57,7 @@
             this.bottleAllUC21 = new UserControlIndex.BottleAllUC2();
             this.TextQuYangTime = new System.Windows.Forms.Label();
             this.labQuyangTime1 = new System.Windows.Forms.Label();
-            this.rbtnQuYangDian1 = new System.Windows.Forms.RadioButton();
+            //this.rbtnQuYangDian1 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -343,7 +343,7 @@
             // 
             // rbtnQuYangDian1
             // 
-            this.rbtnQuYangDian1.BackColor = System.Drawing.Color.Transparent;
+            /*this.rbtnQuYangDian1.BackColor = System.Drawing.Color.Transparent;
             this.rbtnQuYangDian1.Checked = true;
             this.rbtnQuYangDian1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbtnQuYangDian1.Location = new System.Drawing.Point(367, 602);
@@ -352,14 +352,14 @@
             this.rbtnQuYangDian1.TabIndex = 149;
             this.rbtnQuYangDian1.TabStop = true;
             this.rbtnQuYangDian1.Text = "取样点1";
-            this.rbtnQuYangDian1.UseVisualStyleBackColor = false;
-            this.rbtnQuYangDian1.Click += new System.EventHandler(this.rbtnQuYangDian_Click1);
+            this.rbtnQuYangDian1.UseVisualStyleBackColor = false;*/
+            //this.rbtnQuYangDian1.Click += new System.EventHandler(this.rbtnQuYangDian_Click1);
             // 
             // MainUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Controls.Add(this.rbtnQuYangDian1);
+            //this.Controls.Add(this.rbtnQuYangDian1);
             this.Controls.Add(this.labQuyangTime1);
             this.Controls.Add(this.TextQuYangTime);
             this.Controls.Add(this.labSJK1);
@@ -424,7 +424,7 @@
         private UserControlIndex.BottleAllUC2 bottleAllUC21;
         private System.Windows.Forms.Label TextQuYangTime;
         private System.Windows.Forms.Label labQuyangTime1;
-        private System.Windows.Forms.RadioButton rbtnQuYangDian1;
+        //private System.Windows.Forms.RadioButton rbtnQuYangDian1;
     }
 }
 

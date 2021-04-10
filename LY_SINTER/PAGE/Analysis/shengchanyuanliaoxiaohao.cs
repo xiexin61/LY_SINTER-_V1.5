@@ -27,7 +27,7 @@ namespace LY_SINTER.PAGE.Analysis
             dateTimePicker_value();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
-            DateTime d1 = DateTime.Now.AddDays(-20);
+            DateTime d1 = DateTime.Now.AddDays(-4);
             DateTime d2 = DateTime.Now;
             getData(d1, d2);
             dkdhfx(d1, d2);
@@ -66,6 +66,11 @@ namespace LY_SINTER.PAGE.Analysis
             }
         }
 
+        /// <summary>
+        /// 原料消耗表格查询
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
         public void getData(DateTime start, DateTime end)
         {
             string banci = comboBox1.Text;
@@ -114,10 +119,12 @@ namespace LY_SINTER.PAGE.Analysis
                 for (int r = 0; r < table.Rows.Count; r++)
                 {
                     //表头添加物料描述
-                    string KF_NAME = table.Rows[r]["MAT_DESC"].ToString() == "" ? "0" : table.Rows[r]["MAT_DESC"].ToString();
-                    if (dataGridView2.Columns.Contains(KF_NAME) == false)
+                    string KF_NAME = table.Rows[r]["MAT_DESC"].ToString() == "" ? "0" : table.Rows[r]["MAT_DESC"].ToString()+"(t)";
+                    string KF_NAME1 = table.Rows[r]["MAT_DESC"].ToString() == "" ? "0" : table.Rows[r]["MAT_DESC"].ToString();
+                    if (dataGridView2.Columns.Contains(KF_NAME1) == false)
                     {
-                        dataGridView2.Columns.Add(KF_NAME, KF_NAME);
+                        dataGridView2.Columns.Add(KF_NAME1, KF_NAME);
+                   
                         //d1.Columns.Add(KF_NAME);
                     }
                 }
@@ -153,6 +160,11 @@ namespace LY_SINTER.PAGE.Analysis
             }
         }
 
+        /// <summary>
+        /// 原料单耗成本查询
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
         public void dkdhfx(DateTime start, DateTime end)
         {
             List<double> y = new List<double>();
@@ -189,7 +201,6 @@ namespace LY_SINTER.PAGE.Analysis
                 MajorTickSize = 0,
                 IsZoomEnabled = false,
                 Position = AxisPosition.Bottom,
-
             };
             for (int i = 0; i < x.Count; i++)
             {
@@ -237,17 +248,25 @@ namespace LY_SINTER.PAGE.Analysis
         }
 
         private List<DataPoint> Line1 = new List<DataPoint>();
-        private List<ScatterPoint> Line2 = new List<ScatterPoint>();
+        private List<DataPoint> Line2 = new List<DataPoint>();
+
+        //private List<ScatterPoint> Line2 = new List<ScatterPoint>();
         private List<double> list1 = new List<double>();
+
         private List<double> list2 = new List<double>();
 
+        /// <summary>
+        /// 固体燃耗分析曲线查询
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
         public void gtrhfx(DateTime start, DateTime end)
         {
             Line1.Clear();
             Line2.Clear();
             list1.Clear();
             list2.Clear();
-            string sql = "select TIMESTAMP,POPCAL_H_TSC_CON,POPCAL_H_TSC_CON_LL from MC_POPCAL_RESULT_HOUR where TIMESTAMP between '" + start + "' and '" + end + "'";
+            string sql = "select TIMESTAMP,POPCAL_H_TSC_CON,POPCAL_H_TSC_CON_LL from MC_POPCAL_RESULT_HOUR where TIMESTAMP between '" + start + "' and '" + end + "' order by timestamp";
             System.Data.DataTable table = dBSQL.GetCommand(sql);
             if (table.Rows.Count > 0)
             {
@@ -256,15 +275,15 @@ namespace LY_SINTER.PAGE.Analysis
                     DataPoint line1 = new DataPoint(DateTimeAxis.ToDouble(table.Rows[i]["TIMESTAMP"]), Convert.ToDouble(table.Rows[i]["POPCAL_H_TSC_CON"]));
                     Line1.Add(line1);
                     list1.Add(Convert.ToDouble(table.Rows[i]["POPCAL_H_TSC_CON"]));
-                    ScatterPoint line2 = new ScatterPoint(DateTimeAxis.ToDouble(table.Rows[i]["TIMESTAMP"]), Convert.ToDouble(table.Rows[i]["POPCAL_H_TSC_CON_LL"]));
+                    //ScatterPoint line2 = new ScatterPoint(DateTimeAxis.ToDouble(table.Rows[i]["TIMESTAMP"]), Convert.ToDouble(table.Rows[i]["POPCAL_H_TSC_CON_LL"]));
+                    DataPoint line2 = new DataPoint(DateTimeAxis.ToDouble(table.Rows[i]["TIMESTAMP"]), Convert.ToDouble(table.Rows[i]["POPCAL_H_TSC_CON_LL"]));
                     Line2.Add(line2);
-                    list1.Add(Convert.ToDouble(table.Rows[i]["POPCAL_H_TSC_CON_LL"]));
+                    list2.Add(Convert.ToDouble(table.Rows[i]["POPCAL_H_TSC_CON_LL"]));
                 }
             }
             PlotModel plotModel = new PlotModel()
             {
-                //Title = "固体燃耗分析(kg/t)",
-                //TitleFontSize = 12,
+                PlotMargins = new OxyThickness(50, 20, 30, 10),
                 LegendOrientation = LegendOrientation.Horizontal,
                 LegendPlacement = LegendPlacement.Inside,
                 LegendPosition = LegendPosition.TopRight,
@@ -282,44 +301,73 @@ namespace LY_SINTER.PAGE.Analysis
                 StringFormat = "yyyy/MM/dd HH:mm",
             };
             plotModel.Axes.Add(dateTimeAxis);
-            LinearAxis linearAxis = new LinearAxis()
+
+            #region 曲线修改
+
+            var _valueAxis1_1 = new LinearAxis()
             {
+                Key = "理论湿基",
                 MajorGridlineStyle = LineStyle.None,
                 MinorGridlineStyle = LineStyle.None,
-                IntervalLength = 100,
-                Angle = 0,
+                IntervalLength = 80,
                 IsZoomEnabled = false,
                 IsPanEnabled = false,
-                Position = AxisPosition.Left,
+                AxislineStyle = LineStyle.Solid,
+                AxislineColor = OxyColors.LightCoral,
+                MinorTicklineColor = OxyColors.LightCoral,
+                TicklineColor = OxyColors.LightCoral,
+                TextColor = OxyColors.LightCoral,
                 FontSize = 9.0,
-
+                //IsAxisVisible = true,
                 MinorTickSize = 0,
             };
-            if (list1.Count > 0)
+            var _valueAxis1_2 = new LinearAxis()
             {
-                linearAxis.Maximum = getnMax((int)list1.Max() + 1, (int)list1.Min() - 1);
-                linearAxis.Minimum = (int)list1.Min() - 1;
-                linearAxis.MajorStep = (linearAxis.Maximum - linearAxis.Minimum) / 5;
-            }
-            plotModel.Axes.Add(linearAxis);
+                Key = "实际湿基",
+                MajorGridlineStyle = LineStyle.None,
+                MinorGridlineStyle = LineStyle.None,
+                IntervalLength = 80,
+                IsZoomEnabled = false,
+                IsPanEnabled = false,
+                AxislineStyle = LineStyle.Solid,
+                AxislineColor = OxyColors.Green,
+                MinorTicklineColor = OxyColors.Green,
+                TicklineColor = OxyColors.Green,
+                TextColor = OxyColors.Green,
+                FontSize = 9.0,
+                //IsAxisVisible = true,
+                MinorTickSize = 0,
+                PositionTier = 2,
+            };
+
+            #endregion 曲线修改
+
+            plotModel.Axes.Add(_valueAxis1_1);
+            plotModel.Axes.Add(_valueAxis1_2);
             LineSeries series = new LineSeries()
             {
-                //Title = "Wet basis of solid burnup theory",
-                Color = OxyColors.Thistle,
-                StrokeThickness = 2,
+                YAxisKey = "理论湿基",
+                Color = OxyColors.LightCoral,
+                StrokeThickness = 1,
                 MarkerSize = 3,
-                MarkerStroke = OxyColors.YellowGreen,
+                MarkerStroke = OxyColors.LightCoral,
                 MarkerType = MarkerType.None,
                 ItemsSource = Line1,
                 TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm:ss}\n理论湿基:{4}"
             };
             plotModel.Series.Add(series);
-            ScatterSeries scatterSeries = new ScatterSeries()
+            //ScatterSeries scatterSeries = new ScatterSeries()
+            LineSeries scatterSeries = new LineSeries()
             {
-                //Title = "Solid burnup actual wet basis",
+                YAxisKey = "实际湿基",
+                //MarkerType = MarkerType.Circle,
+                StrokeThickness = 1,
+                MarkerSize = 1,
+                MarkerStroke = OxyColors.Green,
                 ItemsSource = Line2,
-                TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm:ss}\n实际湿基:{4}"
+                TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm:ss}\n实际湿基:{4}",
             };
+
             plotModel.Series.Add(scatterSeries);
             plotView2.Model = plotModel;
             var PlotController = new OxyPlot.PlotController();
@@ -340,7 +388,6 @@ namespace LY_SINTER.PAGE.Analysis
         //查询按钮
         private void simpleButton2_click(object sender, EventArgs e)
         {
-
             DateTime d1 = Convert.ToDateTime(textBox_begin.Text);
             DateTime d2 = Convert.ToDateTime(textBox_end.Text);
             dataGridView2.Rows.Clear();

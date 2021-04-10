@@ -11,6 +11,7 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +36,14 @@
     <ApplicationIcon>32_LOGO.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BaseHelper.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\BaseHelper.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="DataReader.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DataReader.Framework.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -104,6 +113,10 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="ReachFramework" />
+    <Reference Include="SCZZJH, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\SCZZJH\bin\Debug\SCZZJH.dll</HintPath>
+    </Reference>
     <Reference Include="SqlSugar, Version=5.0.0.12, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\SqlSugar.dll</HintPath>
@@ -248,6 +261,24 @@
     </Compile>
     <Compile Include="PAGE\Course\Deviation_guide.Designer.cs">
       <DependentUpon>Deviation_guide.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\HIS\lishiqushiquxianchaxun1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\HIS\lishiqushiquxianchaxun1.designer.cs">
+      <DependentUpon>lishiqushiquxianchaxun1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\HIS\lishi_shujuxuanze.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PAGE\HIS\lishi_shujuxuanze.designer.cs">
+      <DependentUpon>lishi_shujuxuanze.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PAGE\HIS\MatFlowMonitor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\HIS\MatFlowMonitor.Designer.cs">
+      <DependentUpon>MatFlowMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="PAGE\HIS\Model_records.cs">
       <SubType>UserControl</SubType>
@@ -672,11 +703,29 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\Report_BDCCQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\Report_BDCCQ.Designer.cs">
+      <DependentUpon>Report_BDCCQ.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\Report_product.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Reports\Report_product.Designer.cs">
       <DependentUpon>Report_product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Report_TSTX.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\Report_TSTX.Designer.cs">
+      <DependentUpon>Report_TSTX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Report_YLCCQ.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reports\Report_YLCCQ.Designer.cs">
+      <DependentUpon>Report_YLCCQ.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Custom\Alarm.resx">
       <DependentUpon>Alarm.cs</DependentUpon>
@@ -728,6 +777,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PAGE\Course\Deviation_guide.resx">
       <DependentUpon>Deviation_guide.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\HIS\lishiqushiquxianchaxun1.resx">
+      <DependentUpon>lishiqushiquxianchaxun1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\HIS\lishi_shujuxuanze.resx">
+      <DependentUpon>lishi_shujuxuanze.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\HIS\MatFlowMonitor.resx">
+      <DependentUpon>MatFlowMonitor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PAGE\HIS\Model_records.resx">
       <DependentUpon>Model_records.cs</DependentUpon>
@@ -947,8 +1005,17 @@
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Report_BDCCQ.resx">
+      <DependentUpon>Report_BDCCQ.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\Report_product.resx">
       <DependentUpon>Report_product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Report_TSTX.resx">
+      <DependentUpon>Report_TSTX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\Report_YLCCQ.resx">
+      <DependentUpon>Report_YLCCQ.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -985,10 +1052,6 @@
       <Project>{e85d97d6-8d84-44a5-93ec-8f56afefd7e4}</Project>
       <Name>NBSJ_PICAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SCZZJH\SCZZJH.csproj">
-      <Project>{9ca4dea9-d471-457b-9328-745edf4760a6}</Project>
-      <Name>SCZZJH</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\green.png" />
@@ -1000,6 +1063,8 @@
     <Content Include="32_LOGO.ico" />
     <Content Include="Read_me.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

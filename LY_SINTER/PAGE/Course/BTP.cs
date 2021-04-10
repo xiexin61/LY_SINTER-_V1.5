@@ -21,10 +21,10 @@ namespace LY_SINTER.PAGE.Course
 {
     public partial class BTP : UserControl
     {
-        Course_MODEL _MODEL = new Course_MODEL();
+        private Course_MODEL _MODEL = new Course_MODEL();
         public vLog _vLog { get; set; }
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
-        Course_MODEL course_MODEL = new Course_MODEL();
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        private Course_MODEL course_MODEL = new Course_MODEL();
         #region
         #endregion
         #region 历史曲线
@@ -37,12 +37,12 @@ namespace LY_SINTER.PAGE.Course
         private LinearAxis _valueAxis5;//Y轴
         private LinearAxis _valueAxis6;//Y轴
 
-        List<DataPoint> Line1 = new List<DataPoint>();
-        List<DataPoint> Line2 = new List<DataPoint>();
-        List<DataPoint> Line3 = new List<DataPoint>();
-        List<DataPoint> Line4 = new List<DataPoint>();
-        List<DataPoint> Line5 = new List<DataPoint>();
-        List<DataPoint> Line6 = new List<DataPoint>();
+        private List<DataPoint> Line1 = new List<DataPoint>();
+        private List<DataPoint> Line2 = new List<DataPoint>();
+        private List<DataPoint> Line3 = new List<DataPoint>();
+        private List<DataPoint> Line4 = new List<DataPoint>();
+        private List<DataPoint> Line5 = new List<DataPoint>();
+        private List<DataPoint> Line6 = new List<DataPoint>();
 
         private OxyPlot.Series.LineSeries series1;//曲线
         private OxyPlot.Series.LineSeries series2;//曲线
@@ -50,43 +50,53 @@ namespace LY_SINTER.PAGE.Course
         private OxyPlot.Series.LineSeries series4;//曲线
         private OxyPlot.Series.LineSeries series5;//曲线
         private OxyPlot.Series.LineSeries series6;//曲线
-        string[] curve_name = { "A_1", "A_2", "A_3", "A_4", "A_5", "A_6" };//曲线标志位
+        private string[] curve_name = { "A_1", "A_2", "A_3", "A_4", "A_5", "A_6" };//曲线标志位
         #endregion
         #region 定时器声明
+
         /// <summary>
         /// 1min定时器
         /// </summary>
         public System.Timers.Timer _Timer1 { get; set; }
+
         /// <summary>
         /// 3D曲线定时器
         /// </summary>
         public System.Timers.Timer _Timer2 { get; set; }
+
         /// <summary>
         /// 3D曲线初始化
         /// </summary>
         public System.Timers.Timer _Timer3 { get; set; }
+
         #endregion
         #region 高次曲线
+
         /// <summary>
         /// 高次x坐标
         /// </summary>
-        List<string> list_x = new List<string>();
+        private List<string> list_x = new List<string>();
+
         /// <summary>
         /// 高次曲线y轴数据（点线图数据）
         /// </summary>
-        List<double> list_Y_GCQX = new List<double>();
+        private List<double> list_Y_GCQX = new List<double>();
+
         /// <summary>
         /// 高次曲线y轴数据（柱状图数据）
         /// </summary>
-        List<double> list_y_ZZT = new List<double>();
+        private List<double> list_y_ZZT = new List<double>();
+
         /// <summary>
         /// 高次曲线柱形图
         /// </summary>
-        ColumnSeries bar_chart { get; set; }
+        private ColumnSeries bar_chart { get; set; }
+
         /// <summary>
         /// 拟合次数
         /// </summary>
-        int degree = 0;
+        private int degree = 0;
+
         #endregion
         #region 实时趋势曲线声明
         private PlotModel _PlotModel;
@@ -97,12 +107,11 @@ namespace LY_SINTER.PAGE.Course
         private LinearAxis Y_Axis4;//Y轴
         private LinearAxis Y_Axis5;//Y轴
 
-        List<DataPoint> Line_1 = new List<DataPoint>();//数据源
-        List<DataPoint> Line_2 = new List<DataPoint>();//数据源
-        List<DataPoint> Line_3 = new List<DataPoint>();//数据源
-        List<DataPoint> Line_4 = new List<DataPoint>();//数据源
-        List<DataPoint> Line_5 = new List<DataPoint>();//数据源
-
+        private List<DataPoint> Line_1 = new List<DataPoint>();//数据源
+        private List<DataPoint> Line_2 = new List<DataPoint>();//数据源
+        private List<DataPoint> Line_3 = new List<DataPoint>();//数据源
+        private List<DataPoint> Line_4 = new List<DataPoint>();//数据源
+        private List<DataPoint> Line_5 = new List<DataPoint>();//数据源
 
         private OxyPlot.Series.LineSeries series_1;//曲线
         private OxyPlot.Series.LineSeries series_2;//曲线
@@ -110,14 +119,14 @@ namespace LY_SINTER.PAGE.Course
         private OxyPlot.Series.LineSeries series_4;//曲线
         private OxyPlot.Series.LineSeries series_5;//曲线
         private OxyPlot.Series.LineSeries series_6;//曲线
-        string[] curve_name_1 = { "A_1", "A_2", "A_3", "A_4", "A_5"};//曲线标志位
+        private string[] curve_name_1 = { "A_1", "A_2", "A_3", "A_4", "A_5" };//曲线标志位
 
         #endregion
+
         /// <summary>
         /// 小数位数
         /// </summary>
-        int DIS_1 = 2;
-
+        private int DIS_1 = 2;
 
         public BTP()
         {
@@ -139,8 +148,8 @@ namespace LY_SINTER.PAGE.Course
             tendency_curve_HIS(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));
             Higher_Order_Curve();//高次曲线数据绑定
             tendency_curve_Real();//趋势实时曲线
-
         }
+
         /// <summary>
         /// 趋势曲线勾选框
         /// </summary>
@@ -176,12 +185,12 @@ namespace LY_SINTER.PAGE.Course
             }
             #endregion
         }
+
         /// <summary>
         /// 定时器声明
         /// </summary>
         public void TIMER_Statement()
         {
-
             _Timer1 = new System.Timers.Timer(60000);//初始化颜色变化定时器响应事件
             _Timer1.Elapsed += (x, y) => { _Timer1_Tick(); };
             _Timer1.Enabled = true;
@@ -196,8 +205,8 @@ namespace LY_SINTER.PAGE.Course
             _Timer3.Elapsed += (x, y) => { _Timer3_Tick(); };
             _Timer3.Enabled = true;
             _Timer3.AutoReset = false;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
-
         }
+
         /// <summary>
         /// 准备数据
         /// </summary>
@@ -213,11 +222,12 @@ namespace LY_SINTER.PAGE.Course
                 DataTable dataTable_1 = dBSQL.GetCommand(sql_1);
                 degree = int.Parse(dataTable_1.Rows[0]["BTPCAL_POWER"].ToString());
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
-                _vLog.writelog("Preparations_Date方法出错" + ee.ToString(),-1);
+                _vLog.writelog("Preparations_Date方法出错" + ee.ToString(), -1);
             }
         }
+
         /// <summary>
         /// 曲线定义
         /// </summary>
@@ -238,11 +248,8 @@ namespace LY_SINTER.PAGE.Course
             {
                 string mistake = "曲线声明报错" + ee.ToString();
             }
-            
-
-            
-
         }
+
         /// <summary>
         /// 高次曲线赋值
         /// </summary>
@@ -266,12 +273,14 @@ namespace LY_SINTER.PAGE.Course
                     return;
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
-                _vLog.writelog("Higher_Order_Curve方法调用错误  "  + ee.ToString(),-1);
+                _vLog.writelog("Higher_Order_Curve方法调用错误  " + ee.ToString(), -1);
             }
         }
+
         #region 定时器响应事件
+
         private void _Timer1_Tick()
         {
             Action invokeAction = new Action(_Timer1_Tick);
@@ -288,6 +297,7 @@ namespace LY_SINTER.PAGE.Course
                 Higher_Order_Curve();//高次曲线
             }
         }
+
         private void _Timer2_Tick()//刷新3d控件
         {
             Action invokeAction = new Action(_Timer2_Tick);
@@ -300,6 +310,7 @@ namespace LY_SINTER.PAGE.Course
                 lUserControl1.LInvokeScript(1);
             }
         }
+
         private void _Timer3_Tick()//首次刷新3d控件
         {
             Action invokeAction = new Action(_Timer3_Tick);
@@ -313,7 +324,9 @@ namespace LY_SINTER.PAGE.Course
                 lUserControl1.LInvokeScript(1);
             }
         }
+
         #endregion
+
         /// <summary>
         /// 开始时间&结束时间赋值
         /// </summary>
@@ -327,6 +340,7 @@ namespace LY_SINTER.PAGE.Course
             textBox_begin.Text = time_begin.ToString();
             textBox_end.Text = time_end.ToString();
         }
+
         /// <summary>
         /// 3D曲线
         /// </summary>
@@ -351,9 +365,9 @@ namespace LY_SINTER.PAGE.Course
                 //风箱热电偶坐标
                 double[] ZLocation = new double[22];
                 //风箱热电偶坐标值差
-                 double[] RDOSize = new double[21];
+                double[] RDOSize = new double[21];
                 //风箱热电偶位置方向扩点（M）
-              //  double Step = 0.25;
+                //  double Step = 0.25;
                 double Step = 0.1;
                 //闸门方向扩点（）
                 int D_value = 2;
@@ -412,8 +426,6 @@ namespace LY_SINTER.PAGE.Course
                     RDOSize[x] = double.Parse(dataTable_x.Rows[0][x + 1].ToString()) - double.Parse(dataTable_x.Rows[0][x].ToString());
                 }
 
-
-
                 List<Point3D> _result = course_MODEL.Refresh_Data(StartZloc, EndZloc, StartFXlocation, EndFXlocation, XLocation, YLocation, ZLocation, RDOSize, dataTable_1, Step, initCount, D_value);
                 for (int x = 0; x < _result.Count; x++)
                 {
@@ -423,9 +435,7 @@ namespace LY_SINTER.PAGE.Course
                     point3.z = _result[x].z;
                     objArrayData[p] = point3;
                     p++;
-
                 }
-
 
                 //有多少个数据点
                 objArrayData[objArrayData.Length - 1] = p;
@@ -441,8 +451,8 @@ namespace LY_SINTER.PAGE.Course
                 _vLog.writelog(mistake, -1);
                 return "-1";
             }
-
         }
+
         /// <summary>
         /// 曲线查询按钮
         /// </summary>
@@ -452,6 +462,7 @@ namespace LY_SINTER.PAGE.Course
         {
             tendency_curve_HIS(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));
         }
+
         /// <summary>
         /// 趋势曲线历史
         /// </summary>
@@ -488,7 +499,7 @@ namespace LY_SINTER.PAGE.Course
                     {
                         Background = OxyColors.White,
                         Title = "历史",
-                        TitleFontSize = 7,
+                        TitleFontSize = 5,
                         TitleColor = OxyColors.White,
                         //LegendMargin = 100,
                     };
@@ -502,6 +513,7 @@ namespace LY_SINTER.PAGE.Course
                         IsPanEnabled = false,
                         AxisTickToLabelDistance = 0,
                         FontSize = 9.0,
+                        StringFormat = "yyyy/MM/dd HH:mm",
                     };
                     _myPlotModel.Axes.Add(_dateAxis);
                     for (int i = 0; i < data_curve_ls.Rows.Count; i++)
@@ -571,8 +583,7 @@ namespace LY_SINTER.PAGE.Course
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[0],
                         ItemsSource = Line1,
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n主抽温度:{4}",
-
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}主抽温度:{4}",
                     };
                     if (checkEdit6.Checked == true)
                     {
@@ -619,8 +630,7 @@ namespace LY_SINTER.PAGE.Course
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[1],//识别符
                         ItemsSource = Line2,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n透气指数:{4}",
-
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}透气指数:{4}",
                     };
                     if (checkEdit7.Checked == true)
                     {
@@ -667,8 +677,7 @@ namespace LY_SINTER.PAGE.Course
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[2],//识别符
                         ItemsSource = Line3,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n垂直烧结机速:{4}",
-
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}垂直烧结机速:{4}",
                     };
                     if (checkEdit8.Checked == true)
                     {
@@ -714,15 +723,13 @@ namespace LY_SINTER.PAGE.Course
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[3],//识别符
                         ItemsSource = Line4,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\nTRP位置:{4}",
-
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}TRP位置:{4}",
                     };
                     if (checkEdit9.Checked == true)
                     {
                         _valueAxis4.IsAxisVisible = true;
                         _myPlotModel.Series.Add(series4);
                     }
-
 
                     int x_4 = 1;//判断增长数据
                     if ((int)((Mun5.Max() - Mun5.Min()) / 5) > 0)
@@ -763,15 +770,13 @@ namespace LY_SINTER.PAGE.Course
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[4],//识别符
                         ItemsSource = Line5,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\nBRP位置:{4}",
-
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}BRP位置:{4}",
                     };
                     if (checkEdit10.Checked == true)
                     {
                         _valueAxis5.IsAxisVisible = true;
                         _myPlotModel.Series.Add(series5);
                     }
-
 
                     int x_5 = 1;//判断增长数据
                     if ((int)((Mun6.Max() - Mun6.Min()) / 5) > 0)
@@ -813,7 +818,6 @@ namespace LY_SINTER.PAGE.Course
                         YAxisKey = curve_name[5],//识别符
                         ItemsSource = Line6,//绑定数据
                         TrackerFormatString = "{0}时间:{2: MM月dd日 HH:mm:ss} BTP位置:{4}",
-
                     };
                     if (checkEdit11.Checked == true)
                     {
@@ -825,7 +829,6 @@ namespace LY_SINTER.PAGE.Course
                     PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
                     curve_his.Controller = PlotController;
                 }
-
             }
             catch (Exception ee)
             {
@@ -833,6 +836,7 @@ namespace LY_SINTER.PAGE.Course
                 _vLog.writelog(mistake, -1);
             }
         }
+
         /// <summary>
         /// 历史曲线勾选框数据
         /// </summary>
@@ -876,7 +880,6 @@ namespace LY_SINTER.PAGE.Course
                 {
                     this.checkEdit7.Text = "透气性指数:";
                 }
-
             }
             catch (Exception ee)
             {
@@ -884,12 +887,12 @@ namespace LY_SINTER.PAGE.Course
                 _vLog.writelog(mistake_1, -1);
             }
         }
+
         /// <summary>
         /// 生产实时数据
         /// </summary>
         public void Real_time()
         {
-
             #region TRP目标位置、BRP目标位置、BTP目标位置
             try
             {
@@ -914,7 +917,6 @@ namespace LY_SINTER.PAGE.Course
                 string mistake_1 = "real_time方法MC_BTPCAL_PAR表查询报错" + ee.ToString();
                 _vLog.writelog(mistake_1, -1);
             }
-
 
             #endregion
 
@@ -982,7 +984,6 @@ namespace LY_SINTER.PAGE.Course
                 }
                 else
                 {
-
                 }
             }
             catch (Exception ee)
@@ -992,7 +993,7 @@ namespace LY_SINTER.PAGE.Course
             }
             #endregion
 
-            #region 烧结机频率SP、烧结机频率PV   20210128更改数据源 
+            #region 烧结机频率SP、烧结机频率PV   20210128更改数据源
 
             try
             {
@@ -1022,7 +1023,6 @@ namespace LY_SINTER.PAGE.Course
                 DataTable data_M_PICAL_BREATH_RESULT_T2 = dBSQL.GetCommand(sql_M_PICAL_BREATH_RESULT_T2);
                 if (data_M_PICAL_BREATH_RESULT_T2.Rows.Count > 0)
                 {
-
                     this.TEXTBOX_TQXZS.Text = Math.Round(double.Parse(data_M_PICAL_BREATH_RESULT_T2.Rows[0]["PICAL_JPU"].ToString()), 2).ToString();
                 }
                 else
@@ -1036,8 +1036,8 @@ namespace LY_SINTER.PAGE.Course
                 _vLog.writelog(mistake_1, -1);
             }
             #endregion
-
         }
+
         /// <summary>
         /// 调整数据查询按钮
         /// </summary>
@@ -1055,6 +1055,7 @@ namespace LY_SINTER.PAGE.Course
                 form_display.Activate();
             }
         }
+
         /// <summary>
         /// 趋势曲线实时
         /// </summary>
@@ -1062,10 +1063,10 @@ namespace LY_SINTER.PAGE.Course
         {
             try
             {
-                 DateTime _d2 = DateTime.Now;
-               // DateTime _d2 = DateTime.Parse("2021/1/11 06:33:26");
+                DateTime _d2 = DateTime.Now;
+                // DateTime _d2 = DateTime.Parse("2021/1/11 06:33:26");
                 DateTime _d1 = _d2.AddMinutes(-60);
-              //  DateTime _d1 = DateTime.Parse("2021/1/11 05:33:26");
+                //  DateTime _d1 = DateTime.Parse("2021/1/11 05:33:26");
                 Line_1.Clear();
                 Line_2.Clear();
                 Line_3.Clear();
@@ -1095,17 +1096,18 @@ namespace LY_SINTER.PAGE.Course
                     IsPanEnabled = false,
                     AxisTickToLabelDistance = 0,
                     FontSize = 9.0,
+                    StringFormat = "yyyy/MM/dd HH:mm",
                 };
                 _PlotModel.Axes.Add(X_Axis);
 
-                Tuple<int, Dictionary<string, List<Tuple<DateTime, double>>>> _Date = _MODEL._Trend_Curve( _d1,  _d2);
+                Tuple<int, Dictionary<string, List<Tuple<DateTime, double>>>> _Date = _MODEL._Trend_Curve(_d1, _d2);
                 if (_Date != null)
                 {
                     #region
-                    for (int x = 0; x < _Date.Item1;x++)
+                    for (int x = 0; x < _Date.Item1; x++)
                     {
                         // BTP实际
-                        DataPoint _point_1 = new DataPoint(DateTimeAxis.ToDouble(_Date.Item2["BTP"][x].Item1), Math.Round( _Date.Item2["BTP"][x].Item2, DIS_1));
+                        DataPoint _point_1 = new DataPoint(DateTimeAxis.ToDouble(_Date.Item2["BTP"][x].Item1), Math.Round(_Date.Item2["BTP"][x].Item2, DIS_1));
                         Line_1.Add(_point_1);
                         Mun1.Add(_Date.Item2["BTP"][x].Item2);
                         // BTP预测
@@ -1124,7 +1126,6 @@ namespace LY_SINTER.PAGE.Course
                         DataPoint _point_5 = new DataPoint(DateTimeAxis.ToDouble(_Date.Item2["TRP"][x].Item1), Math.Round(_Date.Item2["TRP"][x].Item2, DIS_1));
                         Line_5.Add(_point_5);
                         Mun1.Add(_Date.Item2["TRP"][x].Item2);
-
                     }
                     #endregion
                     #region 绑定数据
@@ -1144,7 +1145,7 @@ namespace LY_SINTER.PAGE.Course
                         IsZoomEnabled = true,
                         IsPanEnabled = false,
                         Maximum = (int)(Mun1.Max() + 1),
-                      //  Minimum = (int)(Mun1.Min() - 1),
+                        //  Minimum = (int)(Mun1.Min() - 1),
                         Minimum = 40,
                         PositionTier = 1,
                         AxislineStyle = LineStyle.Solid,
@@ -1378,14 +1379,13 @@ namespace LY_SINTER.PAGE.Course
                     PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
                     Curve_Real.Controller = PlotController;
                     #endregion
-
                 }
                 else
                 {
-                   _vLog.writelog("tendency_curve_Real方法失败,接收_Trend_Curve方法为空", -1);
+                    _vLog.writelog("tendency_curve_Real方法失败,接收_Trend_Curve方法为空", -1);
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 _vLog.writelog("tendency_curve_Real方法失败" + ee.ToString(), -1);
             }
@@ -1397,6 +1397,7 @@ namespace LY_SINTER.PAGE.Course
             _Timer2.Enabled = true;
             _Timer3.Enabled = true;
         }
+
         /// <summary>
         /// 定时器停用
         /// </summary>
@@ -1406,6 +1407,7 @@ namespace LY_SINTER.PAGE.Course
             _Timer2.Enabled = false;
             _Timer3.Enabled = false;
         }
+
         /// <summary>
         /// 控件关闭
         /// </summary>
@@ -1526,6 +1528,7 @@ namespace LY_SINTER.PAGE.Course
             catch
             { }
         }
+
         /// <summary>
         /// 参数修改弹出框
         /// </summary>
@@ -1559,12 +1562,10 @@ namespace LY_SINTER.PAGE.Course
 
         private void checkEdit6_CheckedChanged(object sender, EventArgs e)
         {
-
         }
 
         private void checkEdit1_CheckedChanged(object sender, EventArgs e)
         {
-
         }
 
         private void checkEdit6_Click(object sender, EventArgs e)

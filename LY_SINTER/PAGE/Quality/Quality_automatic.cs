@@ -190,7 +190,6 @@ namespace LY_SINTER.PAGE.Quality
                 _myPlotModel_1 = new PlotModel()
                 {
                     Background = OxyColors.White,
-                    Title = "历史",
                     TitleFontSize = 7,
                     TitleColor = OxyColors.White,
                     //LegendMargin = 100,
@@ -285,7 +284,7 @@ namespace LY_SINTER.PAGE.Quality
                     MarkerType = MarkerType.None,
                     YAxisKey = A,
                     ItemsSource = Line1,
-                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\nR目标:{4}%",
+                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}R目标:{4}%",
                 };
                 if (checkBox1_1.Checked == true)
                 {
@@ -324,7 +323,7 @@ namespace LY_SINTER.PAGE.Quality
                     MarkerType = MarkerType.None,
                     YAxisKey = B,
                     ItemsSource = Line2,
-                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n实际配料R:{4}%",
+                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}实际配料R:{4}%",
                 };
                 if (checkBox1_2.Checked == true)
                 {
@@ -364,7 +363,7 @@ namespace LY_SINTER.PAGE.Quality
                     MarkerType = MarkerType.None,
                     YAxisKey = C,
                     ItemsSource = Line3,
-                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\nR检验值:{4}",
+                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}R检验值:{4}",
                 };
                 if (checkBox1_3.Checked == true)
                 {
@@ -404,7 +403,7 @@ namespace LY_SINTER.PAGE.Quality
                     MarkerType = MarkerType.None,
                     YAxisKey = "4",
                     ItemsSource = Line4,
-                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\nFeo目标:{4}%",
+                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}Feo目标:{4}%",
                 };
                 if (checkBox1_4.Checked == true)
                 {
@@ -448,7 +447,7 @@ namespace LY_SINTER.PAGE.Quality
                     MarkerType = MarkerType.None,
                     YAxisKey = "5",
                     ItemsSource = Line5,
-                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n烧结矿FEO检验值:{4}",
+                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}烧结矿FEO检验值:{4}",
                 };
                 if (checkBox1_5.Checked == true)
                 {
@@ -491,7 +490,7 @@ namespace LY_SINTER.PAGE.Quality
                     MarkerType = MarkerType.None,
                     YAxisKey = "6",
                     ItemsSource = Line6,
-                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\nC目标:{4}%",
+                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}C目标:{4}%",
                 };
                 if (checkBox1_6.Checked == true)
                 {
@@ -534,7 +533,7 @@ namespace LY_SINTER.PAGE.Quality
                     MarkerType = MarkerType.None,
                     YAxisKey = "7",
                     ItemsSource = Line7,
-                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n实际配料含碳:{4}%",
+                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}实际配料含碳:{4}%",
                 };
                 if (checkBox1_7.Checked == true)
                 {
@@ -574,7 +573,7 @@ namespace LY_SINTER.PAGE.Quality
                     MarkerType = MarkerType.None,
                     YAxisKey = "8",
                     ItemsSource = Line8,
-                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\nMg目标:{4}"
+                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}Mg目标:{4}"
                 };
                 if (checkBox1_8.Checked == true)
                 {
@@ -617,7 +616,7 @@ namespace LY_SINTER.PAGE.Quality
                     MarkerType = MarkerType.None,
                     YAxisKey = "9",
                     ItemsSource = Line9,
-                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n实际配料Mg:{4}",
+                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}实际配料Mg:{4}",
                 };
                 if (checkBox1_9.Checked == true)
                 {
@@ -660,7 +659,7 @@ namespace LY_SINTER.PAGE.Quality
                     MarkerType = MarkerType.None,
                     YAxisKey = "10",
                     ItemsSource = Line10,
-                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n烧结矿Mg检验值:{4}"
+                    TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}烧结矿Mg检验值:{4}"
                 };
                 if (checkBox1_10.Checked == true)
                 {

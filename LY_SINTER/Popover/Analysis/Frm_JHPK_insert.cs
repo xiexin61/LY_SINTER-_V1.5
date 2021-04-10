@@ -230,7 +230,7 @@ namespace LY_SINTER.Popover.Analysis
             else
             {
                 int weight = Convert.ToInt32(textBox4.Text);
-                string sql = "select  TOP(" + weight + ") " +
+                string sql = "select   "+
                              "AVG(isnull(C_TFE,0)) AS C_TFE ," +
                              "AVG(isnull(C_FEO,0)) AS C_FEO," +
                              "AVG(isnull(C_CAO,0)) AS C_CAO," +
@@ -261,7 +261,8 @@ namespace LY_SINTER.Popover.Analysis
                              //"AVG(isnull(C_CR,0)) AS C_CR," +
                              //"AVG(isnull(C_NI,0)) AS C_NI," +
                              "AVG(isnull(C_MNO,0)) AS C_MNO" +
-                             " FROM M_ORE_MATERIAL_ANALYSIS where L2_CODE = " + WLBM + "  group by TIMESTAMP order by TIMESTAMP desc";
+                             " FROM " +
+                             "(select TOP(" + weight + ") * from M_ORE_MATERIAL_ANALYSIS where L2_CODE = " + WLBM + " order by TIMESTAMP desc )as NET";
                 DataTable dataTable = dBSQL.GetCommand(sql);
                 dataTable.Columns.Add("MAT_NAME").SetOrdinal(0);
                 dataTable.Columns.Add("BILL_UPPER").SetOrdinal(3);

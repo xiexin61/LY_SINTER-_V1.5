@@ -15,7 +15,8 @@ namespace LY_SINTER.PAGE.Analysis
 {
     public partial class tiekuangfenjichuxingneng : UserControl
     {
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+
         public tiekuangfenjichuxingneng()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace LY_SINTER.PAGE.Analysis
             getNewTime();
             getName();
         }
+
         /// <summary>
         /// 开始时间&结束时间赋值
         /// </summary>
@@ -43,9 +45,9 @@ namespace LY_SINTER.PAGE.Analysis
             }
             catch (Exception ee)
             {
-
             }
         }
+
         //获取物料名信息
         public void getName()
         {
@@ -58,6 +60,7 @@ namespace LY_SINTER.PAGE.Analysis
             comboBox1.DisplayMember = "MAT_DESC";
             comboBox1.ValueMember = "MAT_DESC";
         }
+
         //最新调整时间
         public void getNewTime()
         {
@@ -68,8 +71,8 @@ namespace LY_SINTER.PAGE.Analysis
                 string time = table.Rows[0][0].ToString();
                 this.label8.Text = "最新调整时间:" + time;
             }
-            
         }
+
         //部分1表格数据查询
         public void table1GetData(DateTime start, DateTime end)
         {
@@ -97,8 +100,8 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 d1.Rows[i].Cells["id"].Value = i + 1;
             }
-
         }
+
         //部分2表格数据查询
         public void table2GetData(DateTime start, DateTime end)
         {
@@ -125,11 +128,11 @@ namespace LY_SINTER.PAGE.Analysis
                 rowMergeView1.Rows[i].Cells["number"].Value = i + 1;
             }
         }
+
         private void mouse_click(object sender, MouseEventArgs e)
         {
-
-
         }
+
         //参数修改按钮
         private void simpleButton4_click(object sender, EventArgs e)
         {
@@ -143,6 +146,7 @@ namespace LY_SINTER.PAGE.Analysis
                 frm_TKFXN_CSXG.Activate();
             }
         }
+
         //查询按钮
         private void simpleButton2_click(object sender, EventArgs e)
         {
@@ -151,6 +155,7 @@ namespace LY_SINTER.PAGE.Analysis
             table1GetData(time1, time2);
             table2GetData(time1, time2);
         }
+
         //删除按钮
         private void simpleButton1_click(object sender, EventArgs e)
         {
@@ -176,7 +181,6 @@ namespace LY_SINTER.PAGE.Analysis
                 }
             }
             else { return; }
-
         }
 
         //修改按钮
@@ -199,7 +203,6 @@ namespace LY_SINTER.PAGE.Analysis
             table2GetData(start, end);
         }
 
-
         private void d1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             var dgv = sender as DataGridView;
@@ -210,15 +213,12 @@ namespace LY_SINTER.PAGE.Analysis
 
                 if (rowMergeView1.Rows.Count > 0)
                 {
-
                     for (int i = 0; i < rowMergeView1.Rows.Count; i++)
                     {
                         rowMergeView1.Rows[i].Selected = false;
                     }
                     rowMergeView1.Rows[idx].Selected = true;
-
                 }
-
             }
         }
 
@@ -232,32 +232,32 @@ namespace LY_SINTER.PAGE.Analysis
 
                 if (d1.Rows.Count > 0)
                 {
-
                     for (int i = 0; i < d1.Rows.Count; i++)
                     {
                         d1.Rows[i].Selected = false;
                     }
                     d1.Rows[idx].Selected = true;
-
                 }
             }
         }
+
         public void Timer_state()
         {
-
         }
+
         public void _Clear()
         {
             this.Dispose();
             GC.SuppressFinalize(this);
         }
+
         /// <summary>
         /// 定时器停用
         /// </summary>
         public void Timer_stop()
         {
-
         }
+
         //烧结其他原料基础性能按钮
         private void simpleButton6_Click(object sender, EventArgs e)
         {
@@ -271,10 +271,19 @@ namespace LY_SINTER.PAGE.Analysis
                 form_display.Activate();
             }
         }
+
         //高炉入炉原料基础性能按钮
         private void simpleButton7_Click(object sender, EventArgs e)
         {
-
+            Frm_gaoluruluyuanliao form_display = new Frm_gaoluruluyuanliao();
+            if (Frm_gaoluruluyuanliao.isopen == false)
+            {
+                form_display.ShowDialog();
+            }
+            else
+            {
+                form_display.Activate();
+            }
         }
     }
 }

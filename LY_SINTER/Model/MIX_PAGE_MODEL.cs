@@ -13,23 +13,22 @@ namespace LY_SINTER.Model
     /// <summary>
     /// 配料模型页面调用 @LT
     /// </summary>
-    class MIX_PAGE_MODEL
+    internal class MIX_PAGE_MODEL
     {
         public vLog _vLog { get; set; }
-        DBSQL _dBSQL = new DBSQL(ConstParameters.strCon);
+        private DBSQL _dBSQL = new DBSQL(ConstParameters.strCon);
+
         public MIX_PAGE_MODEL()
         {
             _vLog = new vLog(".\\Mix_Page_Model\\");
             _vLog.connstring = DataBase.ConstParameters.strCon;
-           
         }
+
         /// <summary>
         /// 判断上下限
         /// </summary>
-        public Tuple<bool,List<float>> Judge_Val()
+        public Tuple<bool, List<float>> Judge_Val()
         {
-
-          
             var SQL_MC_MIXCAL_PAR = "SELECT PAR_BILL_FUEL_MAX,PAR_BILL_FUEL_MIN,PAR_BILL_LIMESTONE_MAX,PAR_BILL_LIMESTONE_MIN,PAR_BILL_DOLOMITE_MAX,PAR_BILL_DOLOMITE_MIN,PAR_R_A_MAX,PAR_R_A_MIN,PAR_C_A_MAX,PAR_C_A_MIN,PAR_MG_A_MAX,PAR_MG_A_MIN,PAR_R_ADJ_MAX,PAR_R_ADJ_MIN,PAR_C_ADJ_MAX,PAR_C_ADJ_MIN,PAR_MG_ADJ_MAX,PAR_MG_ADJ_MIN,PAR_SUM_MIX_MAX,PAR_SUM_MIX_MIN  FROM MC_MIXCAL_PAR WHERE TIMESTAMP = (SELECT max(TIMESTAMP) from MC_MIXCAL_PAR)";
             DataTable data_MC_MIXCAL_PAR = _dBSQL.GetCommand(SQL_MC_MIXCAL_PAR);
             if (data_MC_MIXCAL_PAR.Rows.Count > 0 && data_MC_MIXCAL_PAR != null)
@@ -93,10 +92,11 @@ namespace LY_SINTER.Model
             }
             else
             {
-                Tuple<bool, List<float>> _tuple = new Tuple<bool, List<float>>(false,new List<float>());
+                Tuple<bool, List<float>> _tuple = new Tuple<bool, List<float>>(false, new List<float>());
                 return _tuple;
             }
         }
+
         /// <summary>
         /// 计算溶剂和燃料的配比
         /// matching_signal:调整方式
@@ -111,7 +111,6 @@ namespace LY_SINTER.Model
         {
             try
             {
-             
                 string sql_cf = "select  top (1) C_Aim,C_Md,R_Aim,R_Md,MG_Aim,MG_Md from  CFG_MAT_L2_MACAL_IDT  order by TIMESTAMP desc";
                 DataTable dataTable_cf = _dBSQL.GetCommand(sql_cf);
                 if (dataTable_cf.Rows.Count > 0 && dataTable_cf != null)
@@ -206,14 +205,12 @@ namespace LY_SINTER.Model
                             }
                             _vLog.writelog(messbox, 0);
                             return true;
-
                         }
                         else
                         {
                             string mistake = "混合料中CaO已经过多 石灰石调节要求减少石灰石配比";
                             _vLog.writelog(mistake, -1);
                             return false;
-
                         }
                     }
                     else if (matching_signal == 2)
@@ -340,7 +337,6 @@ namespace LY_SINTER.Model
                             string mistake = " CptSolfuel_1方法配比输入错误或者原料成分不合适";
                             _vLog.writelog(mistake, -1);
                             return false;
-
                         }
                     }
                     else
@@ -349,8 +345,6 @@ namespace LY_SINTER.Model
                         _vLog.writelog(mistake, -1);
                         return false;
                     }
-
-
                 }
                 else
                 {
@@ -359,18 +353,13 @@ namespace LY_SINTER.Model
 
                     return false;
                 }
-
-
             }
             catch (Exception ee)
             {
                 string mistake = "CptSolfuel_1方法计算熔剂白云石燃料失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
                 return false;
-
             }
-
-
         }
 
         /// <summary>
@@ -381,25 +370,23 @@ namespace LY_SINTER.Model
         /// item4: SP
         /// </summary>
         /// <returns></returns>
-        public Tuple<float,float,float,float> TEXT_CHANGE()
+        public Tuple<float, float, float, float> TEXT_CHANGE()
         {
             try
             {
-              
                 var _SQL = "SELECT PAR_C_ADJ_ADD , PAR_R_ADJ_ADD , PAR_MG_ADJ_ADD , PAR_SP_ADJ_ADD  FROM MC_MIXCAL_PAR";
                 DataTable _data = _dBSQL.GetCommand(_SQL);
-                if(_data == null && _data.Rows.Count <= 0 )
+                if (_data == null && _data.Rows.Count <= 0)
                     return new Tuple<float, float, float, float>(0, 0, 0, 0);
                 float A1 = float.Parse(_data.Rows[0]["PAR_R_ADJ_ADD"].ToString());
                 float A2 = float.Parse(_data.Rows[0]["PAR_C_ADJ_ADD"].ToString());
                 float A3 = float.Parse(_data.Rows[0]["PAR_MG_ADJ_ADD"].ToString());
                 float A4 = float.Parse(_data.Rows[0]["PAR_SP_ADJ_ADD"].ToString());
                 return new Tuple<float, float, float, float>(A1, A2, A3, A4);
-
             }
             catch (Exception EE)
             {
-                return new Tuple<float, float, float, float>(0,0,0,0);
+                return new Tuple<float, float, float, float>(0, 0, 0, 0);
             }
         }
 
@@ -411,29 +398,28 @@ namespace LY_SINTER.Model
         /// <param name="_A"></param>
         /// <param name="_B"></param>
         /// <returns></returns>
-        public List<float> Get_MIX_PAR(string[] _A,string _B)
+        public List<float> Get_MIX_PAR(string[] _A, string _B)
         {
             try
             {
                 string _Field = "";
-                for (int x = 0; x < _A.Count();x++)
+                for (int x = 0; x < _A.Count(); x++)
                 {
                     if (x == _A.Count() - 1)
                     {
-                        _Field += _A[x] ;
+                        _Field += _A[x];
                     }
                     else
                     {
                         _Field += _A[x] + ",";
                     }
-                  
                 }
                 var _sql = "select " + _Field + " from " + _B;
                 DataTable _table = _dBSQL.GetCommand(_sql);
-                if (_table != null && _table.Rows.Count > 0 )
+                if (_table != null && _table.Rows.Count > 0)
                 {
                     List<float> _C = new List<float>();
-                    for (int x = 0; x < _table.Columns.Count;x++)
+                    for (int x = 0; x < _table.Columns.Count; x++)
                     {
                         _C.Add(float.Parse(_table.Rows[0][x].ToString()));
                     }
@@ -450,7 +436,6 @@ namespace LY_SINTER.Model
                 _vLog.writelog(mistake, -1);
                 return null;
             }
-
         }
 
         /// <summary>
@@ -461,9 +446,9 @@ namespace LY_SINTER.Model
         ///Digit_4  仓位
         ///Digit_5  实际下料量
         ///Digit_6  偏差
-        ///Digit_7  设备转速        
-        ///Digit_8  湿配比  
-        ///Digit_9  累计值  
+        ///Digit_7  设备转速
+        ///Digit_8  湿配比
+        ///Digit_9  累计值
         /// </summary>
         /// <returns></returns>
         public List<int> MIX_Digit()
@@ -475,10 +460,9 @@ namespace LY_SINTER.Model
                 if (_data.Rows.Count > 0 && _data != null)
                 {
                     List<int> _list = new List<int>();
-                    for (int x  = 0; x < _data.Columns.Count;x++)
+                    for (int x = 0; x < _data.Columns.Count; x++)
                     {
                         _list.Add(int.Parse(_data.Rows[0][x].ToString()));
-                        
                     }
                     return _list;
                 }
@@ -488,13 +472,11 @@ namespace LY_SINTER.Model
                     _vLog.writelog(mistake, -1);
                     return null;
                 }
-
-              
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 var mistake = "MIX_Digit方法失败" + ee.ToString();
-                _vLog.writelog(mistake,-1);
+                _vLog.writelog(mistake, -1);
                 return null;
             }
         }
@@ -515,7 +497,6 @@ namespace LY_SINTER.Model
                     for (int x = 0; x < _data.Columns.Count; x++)
                     {
                         _list.Add(_data.Rows[0][x].ToString());
-
                     }
                     return _list;
                 }
@@ -526,7 +507,7 @@ namespace LY_SINTER.Model
                     return null;
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 var mistake = "Switch_name方法失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
@@ -540,7 +521,7 @@ namespace LY_SINTER.Model
         /// _MODEL:特殊配比计算方式
         /// </summary>
         /// <param name="_FLAG"></param>
-        public void OVER_Storage(int _FLAG,int _MODEL)
+        public void OVER_Storage(int _FLAG, int _MODEL)
         {
             try
             {
@@ -549,7 +530,9 @@ namespace LY_SINTER.Model
                 List<float> _Value_2 = new List<float>();//设定下料量数据组（湿）
                 float _sp = 0;//总料量sp
                 string _SQL = " UPDATE M_MACAL_INTERFACE_RESULT SET ";//拼接sql语句
+
                 #region 物料编码
+
                 //物料编码数据库字段
                 string[] NAME_1_Class = {"MAT_L2_CODE_1",
                                     "MAT_L2_CODE_2",
@@ -571,14 +554,14 @@ namespace LY_SINTER.Model
                                     "MAT_L2_CODE_18",
                                     "MAT_L2_CODE_19",
                                     "MAT_L2_CODE_20"  };
-             
+
                 string sql_1 = "select L2_CODE from M_MATERIAL_BINS order by BIN_NUM asc";
                 DataTable data_1 = _dBSQL.GetCommand(sql_1);
                 if (data_1.Rows.Count > 0 && data_1 != null)
                 {
-                    for (int x = 0; x < data_1.Rows.Count;x++)
+                    for (int x = 0; x < data_1.Rows.Count; x++)
                     {
-                        _SQL += NAME_1_Class[x] + " = '"+ data_1 .Rows[x][0].ToString()+ "',";
+                        _SQL += NAME_1_Class[x] + " = '" + data_1.Rows[x][0].ToString() + "',";
                         _L2_CODE.Add(int.Parse(data_1.Rows[x][0].ToString()));
                     }
                 }
@@ -588,8 +571,11 @@ namespace LY_SINTER.Model
                     _vLog.writelog(mistake, -1);
                     return;
                 }
-                #endregion
-                #region  启停信号
+
+                #endregion 物料编码
+
+                #region 启停信号
+
                 //数据库字段
                 string[] NAME_2_Class = {"MAT_L2_STATE_1",
                                     "MAT_L2_STATE_2",
@@ -627,8 +613,11 @@ namespace LY_SINTER.Model
                     _vLog.writelog(mistake, -1);
                     return;
                 }
-                #endregion
+
+                #endregion 启停信号
+
                 #region 当前配比（干）&当前配比（干）%&湿配比百分比
+
                 //数据库字段
                 // 当前配比（干）
                 string[] NAME_3_Class = {
@@ -694,7 +683,6 @@ namespace LY_SINTER.Model
                                     "MAT_L2_PBBFB_18",
                                     "MAT_L2_PBBFB_19"};
 
-
                 string sql_3 = "select MAT_L2_DQPB,MAT_L2_DQBFB,MAT_L2_SPB from CFG_MAT_L2_SJPB_INTERFACE where MAT_L2_CH != 16 order by MAT_L2_CH asc";//15仓及16仓查询需要一个即可
                 DataTable data_3 = _dBSQL.GetCommand(sql_3);
                 if (data_3.Rows.Count > 0 && data_3 != null)
@@ -712,8 +700,11 @@ namespace LY_SINTER.Model
                     _vLog.writelog(mistake, -1);
                     return;
                 }
-                #endregion
+
+                #endregion 当前配比（干）&当前配比（干）%&湿配比百分比
+
                 #region 分仓系数 & 干下料比例&设定下料
+
                 //数据库字段
                 //分仓系数
                 string[] NAME_5_Class = {
@@ -759,7 +750,7 @@ namespace LY_SINTER.Model
                                     "MAT_L2_XLBL_18",
                                     "MAT_L2_XLBL_19",
                                     "MAT_L2_XLBL_20" };
-               
+
                 //设定下料量
                 string[] NAME_7_Class = {
                                     "MAT_L2_SDXL_1",
@@ -803,8 +794,10 @@ namespace LY_SINTER.Model
                     return;
                 }
 
-                #endregion
+                #endregion 分仓系数 & 干下料比例&设定下料
+
                 #region 当前水分
+
                 //水分当前
                 string[] NAME_8_Class = {
                                     "MAT_L2_DQSF_1",
@@ -834,7 +827,6 @@ namespace LY_SINTER.Model
                     for (int x = 0; x < data_5.Rows.Count; x++)
                     {
                         _SQL += NAME_8_Class[x] + " = '" + data_5.Rows[x][0].ToString() + "',";//当前水分
-                     
                     }
                 }
                 else
@@ -843,8 +835,11 @@ namespace LY_SINTER.Model
                     _vLog.writelog(mistake, -1);
                     return;
                 }
-                #endregion
+
+                #endregion 当前水分
+
                 #region 调整值及目标值
+
                 //水分当前
                 string[] NAME_10_Class = {
                                     "MAT_L2_MB_C",
@@ -856,9 +851,9 @@ namespace LY_SINTER.Model
                 var _sql = "";
                 if (_MODEL == 1)//调整熔剂、燃料配比
                 {
-                     _sql = "select top(1) C_Aim,C_Md,R_Aim,R_Md from CFG_MAT_L2_MACAL_IDT order by TIMESTAMP desc";   
+                    _sql = "select top(1) C_Aim,C_Md,R_Aim,R_Md from CFG_MAT_L2_MACAL_IDT order by TIMESTAMP desc";
                 }
-                else  if(_MODEL == 2)         //调整熔剂、燃料、白云石配比
+                else if (_MODEL == 2)         //调整熔剂、燃料、白云石配比
                 {
                     _sql = "select top(1) C_Aim,C_Md,R_Aim,R_Md,MG_Aim,MG_Md from CFG_MAT_L2_MACAL_IDT order by TIMESTAMP desc";
                 }
@@ -882,8 +877,11 @@ namespace LY_SINTER.Model
                     _vLog.writelog(mistake, -1);
                     return;
                 }
-                #endregion
+
+                #endregion 调整值及目标值
+
                 #region 料量
+
                 string[] NAME_11_Class = {
                                     "MAT_L2_ZGLL",//总干料量
                                     "MAT_L2_ZLL_PV",//总料量PV
@@ -891,7 +889,7 @@ namespace LY_SINTER.Model
                                     "MAT_L2_LLCL"//理论产量
                                       };
                 var sql_6 = "select top(1) MAT_L2_ZGLL,MAT_PLC_PV,MAT_L2_SP,MAT_L2_LLCL from CFG_MAT_L2_PLZL_INTERFACE order by TIMESTAMP desc";
-              
+
                 DataTable data_7 = _dBSQL.GetCommand(sql_6);
                 if (data_7.Rows.Count > 0 && data_7 != null)
                 {
@@ -907,8 +905,11 @@ namespace LY_SINTER.Model
                     _vLog.writelog(mistake, -1);
                     return;
                 }
-                #endregion
+
+                #endregion 料量
+
                 #region 开关状态
+
                 string[] NAME_12_Class = {
                                     " MAT_L2_SIGNAL_R",
                                     "MAT_L2_SIGNAL_C",
@@ -944,21 +945,28 @@ namespace LY_SINTER.Model
                     _vLog.writelog(mistake, -1);
                     return;
                 }
-                #endregion
+
+                #endregion 开关状态
+
                 #region 特殊配比百分比
+
                 #region 高返配比百分比
-                Tuple<bool, float> tuple1_1 = _Get_Matching(_L2_CODE,_Value_1,602,602,1, _sp);//干配比
+
+                Tuple<bool, float> tuple1_1 = _Get_Matching(_L2_CODE, _Value_1, 602, 602, 1, _sp);//干配比
                 if (tuple1_1.Item1)
                 {
-                    _SQL += "MAT_L2_DQ_DRY_1 =  '"+ tuple1_1 .Item2+ "', ";
+                    _SQL += "MAT_L2_DQ_DRY_1 =  '" + tuple1_1.Item2 + "', ";
                 }
                 Tuple<bool, float> tuple1_2 = _Get_Matching(_L2_CODE, _Value_2, 602, 602, 2, _sp);//湿配比
                 if (tuple1_1.Item1)
                 {
                     _SQL += "MAT_L2_PB_WET_1 =  '" + tuple1_1.Item2 + "', ";
                 }
-                #endregion
+
+                #endregion 高返配比百分比
+
                 #region 铁料配比百分比
+
                 Tuple<bool, float> tuple2_1 = _Get_Matching(_L2_CODE, _Value_1, 101, 299, 1, _sp);//干配比
                 if (tuple2_1.Item1)
                 {
@@ -969,8 +977,11 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_PB_WET_2 =  '" + tuple2_2.Item2 + "', ";
                 }
-                #endregion
+
+                #endregion 铁料配比百分比
+
                 #region 石灰石配比百分比
+
                 Tuple<bool, float> tuple3_1 = _Get_Matching(_L2_CODE, _Value_1, 403, 407, 1, _sp);//干配比
                 if (tuple3_1.Item1)
                 {
@@ -981,8 +992,11 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_PB_WET_3 =  '" + tuple3_2.Item2 + "', ";
                 }
-                #endregion
+
+                #endregion 石灰石配比百分比
+
                 #region 白云石配比百分比
+
                 Tuple<bool, float> tuple4_1 = _Get_Matching(_L2_CODE, _Value_1, 401, 402, 1, _sp);//干配比
                 if (tuple4_1.Item1)
                 {
@@ -993,8 +1007,11 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_PB_WET_4 =  '" + tuple4_2.Item2 + "', ";
                 }
-                #endregion
+
+                #endregion 白云石配比百分比
+
                 #region 生石灰配比百分比
+
                 Tuple<bool, float> tuple5_1 = _Get_Matching(_L2_CODE, _Value_1, 408, 417, 1, _sp);//干配比
                 if (tuple5_1.Item1)
                 {
@@ -1005,8 +1022,11 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_PB_WET_5 =  '" + tuple5_2.Item2 + "', ";
                 }
-                #endregion
+
+                #endregion 生石灰配比百分比
+
                 #region 燃料配比百分比
+
                 Tuple<bool, float> tuple6_1 = _Get_Matching(_L2_CODE, _Value_1, 301, 399, 1, _sp);//干配比
                 if (tuple6_1.Item1)
                 {
@@ -1017,8 +1037,11 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_PB_WET_6 =  '" + tuple6_2.Item2 + "', ";
                 }
-                #endregion
+
+                #endregion 燃料配比百分比
+
                 #region 烧返配比百分比
+
                 Tuple<bool, float> tuple7_1 = _Get_Matching(_L2_CODE, _Value_1, 601, 601, 1, _sp);//干配比
                 if (tuple7_1.Item1)
                 {
@@ -1029,8 +1052,11 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_PB_WET_7 =  '" + tuple7_2.Item2 + "', ";
                 }
-                #endregion
+
+                #endregion 烧返配比百分比
+
                 #region 除尘灰配比百分比
+
                 Tuple<bool, float> tuple8_1 = _Get_Matching(_L2_CODE, _Value_1, 501, 550, 1, _sp);//干配比
                 if (tuple8_1.Item1)
                 {
@@ -1041,15 +1067,14 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_PB_WET_8 =  '" + tuple8_2.Item2 + "', ";
                 }
-                #endregion
-                #endregion
 
+                #endregion 除尘灰配比百分比
 
+                #endregion 特殊配比百分比
 
-
-                _SQL += " TIMESTAMP = GETDATE(),MAT_L2_STATE_FLAG = "+ _FLAG+"  where MAT_L2_FLAG = 1";
+                _SQL += " TIMESTAMP = GETDATE(),MAT_L2_STATE_FLAG = " + _FLAG + "  where MAT_L2_FLAG = 1";
                 int _COUNT = _dBSQL.CommandExecuteNonQuery(_SQL);
-                if(_COUNT <= 0)
+                if (_COUNT <= 0)
                 {
                     var mistake = "OVER_Storage方法调用错误，数据库操作失败，sql:" + _SQL;
                     _vLog.writelog(mistake, -1);
@@ -1059,12 +1084,8 @@ namespace LY_SINTER.Model
             catch (Exception ee)
             {
                 var mistake = "OVER_Storage方法调用错误" + ee.ToString();
-                _vLog.writelog(mistake,-1);
-
+                _vLog.writelog(mistake, -1);
             }
-            #region 物料编码
-            
-            #endregion
         }
 
         public Dictionary<int, float> Calculate_SPB()
@@ -1082,61 +1103,60 @@ namespace LY_SINTER.Model
                 Dictionary<int, float> dictionary_LJ = new Dictionary<int, float>();
                 //获取页面消耗累计显示值
                 Dictionary<int, float> consume_accumulative = new Dictionary<int, float>();
-                    var sql1 = "select MAT_L2_SDXL,MAT_PB_ID from CFG_MAT_L2_XLK_INTERFACE order by MAT_PB_ID asc";
-                    DataTable data_1 = _dBSQL.GetCommand(sql1);
-                    if (data_1.Rows.Count <= 0 && data_1 == null)
-                        return null;
+                var sql1 = "select MAT_L2_SDXL,MAT_PB_ID from CFG_MAT_L2_XLK_INTERFACE order by MAT_PB_ID asc";
+                DataTable data_1 = _dBSQL.GetCommand(sql1);
+                if (data_1.Rows.Count <= 0 && data_1 == null)
+                    return null;
 
-                    for (int x = 0; x < data_1.Rows.Count; x++)
+                for (int x = 0; x < data_1.Rows.Count; x++)
+                {
+                    float COUNT = 0;
+                    int PB = 0;
+                    COUNT = float.Parse(data_1.Rows[x]["MAT_L2_SDXL"].ToString());
+                    practical_laying_add += COUNT;
+
+                    //配比id
+                    PB = int.Parse(data_1.Rows[x]["MAT_PB_ID"].ToString());
+                    //19个仓每个对应的配比id的实际下料量
+
+                    //根据配比id算出每个配比id对应的实际下料量和
+                    //若字典中存在相同的配比则进行累加，不存在则添加
+                    if (dictionary_SJXLL.ContainsKey(PB))
                     {
-                        float COUNT = 0;
-                        int PB = 0;
-                        COUNT = float.Parse(data_1.Rows[x]["MAT_L2_SDXL"].ToString());
-                        practical_laying_add += COUNT;
-
-                        //配比id
-                        PB = int.Parse(data_1.Rows[x]["MAT_PB_ID"].ToString());
-                        //19个仓每个对应的配比id的实际下料量
-
-                        //根据配比id算出每个配比id对应的实际下料量和
-                        //若字典中存在相同的配比则进行累加，不存在则添加
-                        if (dictionary_SJXLL.ContainsKey(PB))
-                        {
-                            dictionary_SJXLL[PB] += COUNT;
-                        }
-                        else
-                        {
-                            dictionary_SJXLL.Add(PB, COUNT);
-                        }
+                        dictionary_SJXLL[PB] += COUNT;
                     }
-                    //通过dictionary_SJXLL字典的数据计算每个配比id对应的湿配比%
-                    foreach (var a in dictionary_SJXLL)
+                    else
                     {
-                        //（每个配比id对应的设定下料量之和）/（整体的设定下料量）*100
-                        //配比id
-                        int SPB_ID = a.Key;
-                        //配比id对应的实际下料量和
-                        float SPB_XLL = a.Value;
-                        //添加逻辑判断分母是否为0，
-                        if (SPB_XLL == 0)
-                        {
-                            practical.Add(SPB_ID, 0);
-                        }
-                        else
-                        {
-                            float SPB = SPB_XLL / practical_laying_add * 100;
-                            practical.Add(SPB_ID, SPB);
-                        }
+                        dictionary_SJXLL.Add(PB, COUNT);
                     }
+                }
+                //通过dictionary_SJXLL字典的数据计算每个配比id对应的湿配比%
+                foreach (var a in dictionary_SJXLL)
+                {
+                    //（每个配比id对应的设定下料量之和）/（整体的设定下料量）*100
+                    //配比id
+                    int SPB_ID = a.Key;
+                    //配比id对应的实际下料量和
+                    float SPB_XLL = a.Value;
+                    //添加逻辑判断分母是否为0，
+                    if (SPB_XLL == 0)
+                    {
+                        practical.Add(SPB_ID, 0);
+                    }
+                    else
+                    {
+                        float SPB = SPB_XLL / practical_laying_add * 100;
+                        practical.Add(SPB_ID, SPB);
+                    }
+                }
                 return practical;
             }
             catch (Exception EE)
             {
                 var MISTAKE = "Calculate_SPB方法计算湿配比失败" + EE.ToString();
-                _vLog.writelog(MISTAKE,-1);
+                _vLog.writelog(MISTAKE, -1);
                 return null;
             }
-           
         }
 
         /// <summary>
@@ -1145,7 +1165,7 @@ namespace LY_SINTER.Model
         /// values:item1:二级编码最小值、item2:二级编码最大值;、item3:物料归属标志位
         /// </summary>
         /// <returns></returns>
-        public Dictionary<string,Tuple<int,int,int>> _DIC_L2_CODE_CONFIG()
+        public Dictionary<string, Tuple<int, int, int>> _DIC_L2_CODE_CONFIG()
         {
             try
             {
@@ -1154,18 +1174,18 @@ namespace LY_SINTER.Model
                 DataTable _data = _dBSQL.GetCommand(_sql);
                 if (_data.Rows.Count > 0 && _data != null)
                 {
-                    for (int x = 0;x < _data.Rows.Count;x++)
+                    for (int x = 0; x < _data.Rows.Count; x++)
                     {
                         //物料归属名称
                         var _name = _data.Rows[x]["M_DESC"].ToString();
                         //物料归属名称对应标志位
-                        var _flag = int.Parse( _data.Rows[x]["M_TYPE"].ToString());
+                        var _flag = int.Parse(_data.Rows[x]["M_TYPE"].ToString());
                         //物料归属二级编码最小值
                         var _L2_CODE_MIN = int.Parse(_data.Rows[x]["CODE_MIN"].ToString());
                         //物料归属二级编码最大值
-                        var _L2_CODE_MAX= int.Parse(_data.Rows[x]["CODE_MAX"].ToString());
+                        var _L2_CODE_MAX = int.Parse(_data.Rows[x]["CODE_MAX"].ToString());
                         if (!_dictionary.ContainsKey(_name))
-                            _dictionary.Add(_name,new Tuple<int, int, int>(_L2_CODE_MIN, _L2_CODE_MAX, _flag));
+                            _dictionary.Add(_name, new Tuple<int, int, int>(_L2_CODE_MIN, _L2_CODE_MAX, _flag));
                     }
                     return _dictionary;
                 }
@@ -1174,7 +1194,7 @@ namespace LY_SINTER.Model
                     return null;
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 _vLog.writelog("_DIC_L2_CODE_CONFIG方法失败" + ee.ToString(), -1);
                 return null;
@@ -1191,32 +1211,39 @@ namespace LY_SINTER.Model
         {
             try
             {
+                //混合料 101-119
+                //矿粉 120-299
+                //燃料 301-399
+                //熔剂 401-499
+                //除尘灰 501-550
+                //返矿 601-650
+
                 //燃料   301 - 399
                 //熔剂  401 - 499
-                //铁料  101 - 119,501 - 599,601 - 699，		
+                //铁料  101 - 119,501 - 599,601 - 699，
                 //矿粉  120 - 299
                 //全部  101 - 699
                 Dictionary<string, List<Tuple<int, int, int>>> _DIC = new Dictionary<string, List<Tuple<int, int, int>>>();
                 List<Tuple<int, int, int>> list_1 = new List<Tuple<int, int, int>>();
-                list_1.Add(new Tuple<int, int, int> ( 301, 399,1 ));
-                _DIC.Add("燃料", list_1);
+                list_1.Add(new Tuple<int, int, int>(101, 119, 1));
+                _DIC.Add("混合料", list_1);
                 List<Tuple<int, int, int>> list_2 = new List<Tuple<int, int, int>>();
-                list_2.Add(new Tuple<int, int, int>(401, 499, 2));
-                _DIC.Add("熔剂", list_2);
+                list_2.Add(new Tuple<int, int, int>(120, 299, 2));
+                _DIC.Add("矿粉", list_2);
                 List<Tuple<int, int, int>> list_3 = new List<Tuple<int, int, int>>();
-                list_3.Add(new Tuple<int, int, int>(101, 119, 3));
-                list_3.Add(new Tuple<int, int, int>(501, 599, 3));
-                list_3.Add(new Tuple<int, int, int>(601, 699, 3));
-                _DIC.Add("铁料", list_3);
+                list_3.Add(new Tuple<int, int, int>(301, 399, 3));
+                _DIC.Add("燃料", list_3);
                 List<Tuple<int, int, int>> list_4 = new List<Tuple<int, int, int>>();
-                list_4.Add(new Tuple<int, int, int>(120, 299, 4));
-                _DIC.Add("矿粉", list_4);
+                list_4.Add(new Tuple<int, int, int>(401, 499, 4));
+                _DIC.Add("熔剂", list_4);
                 List<Tuple<int, int, int>> list_5 = new List<Tuple<int, int, int>>();
-                list_5.Add(new Tuple<int, int, int>(101, 699, 5));
-                _DIC.Add("全部", list_5);
+                list_5.Add(new Tuple<int, int, int>(501, 550, 5));
+                _DIC.Add("除尘灰", list_5);
+                List<Tuple<int, int, int>> list_6 = new List<Tuple<int, int, int>>();
+                list_6.Add(new Tuple<int, int, int>(601, 650, 7));
+                _DIC.Add("返矿", list_6);
 
                 return _DIC;
-
             }
             catch (Exception ee)
             {
@@ -1231,13 +1258,13 @@ namespace LY_SINTER.Model
         /// return item1：是否调用;item2:   0无发生 1成分变化  2水分变化
         /// </summary>
         /// <returns></returns>
-        public Tuple<bool,int> Get_INIT_WATER()
+        public Tuple<bool, int> Get_INIT_WATER()
         {
             try
             {
                 var _sql = "select sum(ELEMENT_FLAG) as flag_1,sum(Water_Flag1) as flag_2 from M_MATERIAL_BINS";
                 DataTable _data = _dBSQL.GetCommand(_sql);
-                if (_data.Rows.Count > 0 && _data !=null)
+                if (_data.Rows.Count > 0 && _data != null)
                 {
                     if (_data.Rows[0]["flag_1"].ToString() == "0")//原料成分无变化
                     {
@@ -1268,22 +1295,22 @@ namespace LY_SINTER.Model
 
         /// <summary>
         /// 是否发生了启停信号变化
-        /// retuen item1：是否发生了启停信号变化，item2 1禁用变为启用  -1启用变为禁用 
+        /// retuen item1：是否发生了启停信号变化，item2 1禁用变为启用  -1启用变为禁用
         /// </summary>
         /// <returns></returns>
-        public Tuple<bool,int> _Signat_flag()
+        public Tuple<bool, int> _Signat_flag()
         {
             try
             {
                 DateTime time_2 = DateTime.Now;
                 DateTime time_1 = time_2.AddHours(-1);
-                var sql = "select * from TurnFlag where flag = 1 and InsertTime >= '"+time_1+ "' and InsertTime<= '" + time_2+"'";
+                var sql = "select * from TurnFlag where flag = 1 and InsertTime >= '" + time_1 + "' and InsertTime<= '" + time_2 + "'";
                 DataTable _data = _dBSQL.GetCommand(sql);
                 if (_data != null && _data.Rows.Count > 0)
                 {
                     var sql_Update = "UPDATE TurnFlag SET flag = 2,ConfirmTime = GETDATE() WHERE InsertTime >= '" + time_1 + "' and InsertTime<= '" + time_2 + "'";
                     int _count = _dBSQL.CommandExecuteNonQuery(sql_Update);
-                    if(_count > 0)
+                    if (_count > 0)
                     {
                         return new Tuple<bool, int>(true, 1);
                     }
@@ -1292,7 +1319,6 @@ namespace LY_SINTER.Model
                         _vLog.writelog("_Signat_flag方法更新标志位失败" + sql_Update, 0);
                         return new Tuple<bool, int>(false, 0);
                     }
-                    
                 }
                 else
                 {
@@ -1301,9 +1327,10 @@ namespace LY_SINTER.Model
             }
             catch
             {
-                return new Tuple<bool, int>(false,0);
+                return new Tuple<bool, int>(false, 0);
             }
         }
+
         /// <summary>
         /// 配料页面调整方式 1 计算熔剂燃料，2计算熔剂燃料白云石
         /// </summary>
@@ -1317,7 +1344,7 @@ namespace LY_SINTER.Model
                 DataTable _dataTable = _dBSQL.GetCommand(_sql);
                 if (_dataTable != null && _dataTable.Rows.Count == 1)
                 {
-                     return int.Parse(_dataTable.Rows[0]["PAR_S_BILL_STATE"].ToString());
+                    return int.Parse(_dataTable.Rows[0]["PAR_S_BILL_STATE"].ToString());
                 }
                 else
                 {
@@ -1325,7 +1352,6 @@ namespace LY_SINTER.Model
                     _vLog.writelog(mistake, -1);
                     return 1;
                 }
-
             }
             catch (Exception ee)
             {
@@ -1335,11 +1361,10 @@ namespace LY_SINTER.Model
             }
         }
 
-
         /// <summary>
         ///  初始化计算累计t\天
         /// </summary>
-        public Tuple<bool, Dictionary<int, double>>  Accumulative_account()
+        public Tuple<bool, Dictionary<int, double>> Accumulative_account()
         {
             try
             {
@@ -1398,7 +1423,7 @@ namespace LY_SINTER.Model
                     DataTable dataTable = _dBSQL.GetCommand(sql);
                     if (dataTable.Rows.Count > 0)
                     {
-                        for (int x = 0; x < dataTable.Columns.Count;x++)
+                        for (int x = 0; x < dataTable.Columns.Count; x++)
                         {
                             dictionary_LJ.Add(x + 1, Math.Round(double.Parse(dataTable.Rows[0][x].ToString()), 2));
                         }
@@ -1408,7 +1433,6 @@ namespace LY_SINTER.Model
                     {
                         return new Tuple<bool, Dictionary<int, double>>(false, null);
                     }
-
                 }
                 else
                 {
@@ -1419,9 +1443,10 @@ namespace LY_SINTER.Model
             {
                 string mistake = "Accumulative_account方法计算累计天数有误" + ee.ToString();
                 _vLog.writelog(mistake, -1);
-                return new Tuple<bool, Dictionary<int, double>>(false,null);
+                return new Tuple<bool, Dictionary<int, double>>(false, null);
             }
         }
+
         /// <summary>
         /// 设定配比最小值最大值
         /// key 种类计算出的燃料的配比最大值 ，item1：最小值 item2：最大
@@ -1432,7 +1457,7 @@ namespace LY_SINTER.Model
         ///计算出的白云石的配比最小值
         ///</summary>
         /// <returns></returns>
-        public Dictionary<int,Tuple<float, float> > _Getrule()
+        public Dictionary<int, Tuple<float, float>> _Getrule()
         {
             try
             {
@@ -1456,10 +1481,11 @@ namespace LY_SINTER.Model
             {
                 vs.Add(x);
             }
-            //总料量sp 
-           // vs.Add(1);
+            //总料量sp
+            // vs.Add(1);
             return vs;
         }
+
         /// <summary>
         /// 返回下发数据
         /// item1:是否正常
@@ -1484,8 +1510,8 @@ namespace LY_SINTER.Model
                     DataTable _table = _dBSQL.GetCommand(_sql);
                     if (_table != null & _table.Rows.Count > 0)
                     {
-                     // vs.Add(float.Parse(_table.Rows[0][0].ToString()));
-                        return new Tuple<bool, List<float>>(true,vs);
+                        // vs.Add(float.Parse(_table.Rows[0][0].ToString()));
+                        return new Tuple<bool, List<float>>(true, vs);
                     }
                     else
                     {
@@ -1499,10 +1525,10 @@ namespace LY_SINTER.Model
             }
             catch
             {
-                return new Tuple<bool, List<float>>(false,null);
+                return new Tuple<bool, List<float>>(false, null);
             }
-           
         }
+
         /// <summary>
         /// _Get_Matching获取特殊配比
         ///  _L2_CODE:二级编码数据组
@@ -1515,7 +1541,7 @@ namespace LY_SINTER.Model
         /// <param name="L2_code"></param>
         /// <param name="_flag"></param>
         /// <returns></returns>
-        public Tuple<bool,float>  _Get_Matching(List<int> _L2_CODE,List<float> _Value, int L2_code_MIN, int L2_code_MAX, int _flag,float _SP)
+        public Tuple<bool, float> _Get_Matching(List<int> _L2_CODE, List<float> _Value, int L2_code_MIN, int L2_code_MAX, int _flag, float _SP)
         {
             try
             {
@@ -1523,9 +1549,9 @@ namespace LY_SINTER.Model
                 {
                     bool flag = false;
                     float _Sum = 0;
-                    for (int x = 0; x < _L2_CODE.Count;x++)
+                    for (int x = 0; x < _L2_CODE.Count; x++)
                     {
-                        if (L2_code_MIN <=_L2_CODE[x]&& L2_code_MAX >= _L2_CODE[x])
+                        if (L2_code_MIN <= _L2_CODE[x] && L2_code_MAX >= _L2_CODE[x])
                         {
                             flag = true;
                             _Sum += _Value[x];
@@ -1539,9 +1565,8 @@ namespace LY_SINTER.Model
                     {
                         return new Tuple<bool, float>(false, 0);
                     }
-                 
                 }
-                else 
+                else
                 {
                     bool flag = false;
                     float _Sum = 0;
@@ -1563,26 +1588,25 @@ namespace LY_SINTER.Model
                         return new Tuple<bool, float>(false, 0);
                     }
                 }
-
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 _vLog.writelog("_Get_Matching错误" + ee.ToString(), -1);
                 return new Tuple<bool, float>(false, 0);
-           
             }
         }
+
         /// <summary>
         /// 获取指定中控客户端设定IP
         /// </summary>
         /// <returns></returns>
-        public Tuple<bool, string>  _Get_IpAdress()
+        public Tuple<bool, string> _Get_IpAdress()
         {
             try
             {
                 var sql = "select Adress_Ip from  MC_MIX_Digit";
                 DataTable _data = _dBSQL.GetCommand(sql);
-                if(_data.Rows.Count > 0 && _data != null)
+                if (_data.Rows.Count > 0 && _data != null)
                 {
                     return new Tuple<bool, string>(true, _data.Rows[0][0].ToString());
                 }
@@ -1596,6 +1620,7 @@ namespace LY_SINTER.Model
                 return new Tuple<bool, string>(false, "");
             }
         }
+
         /// <summary>
         /// 获取下发权限
         /// </summary>
@@ -1607,7 +1632,7 @@ namespace LY_SINTER.Model
             Tuple<bool, string> Ip_Setting = _Get_IpAdress();//获取设定Ip
             if (Ip_Setting.Item1)
             {
-                if(IP_Local.Equals(Ip_Setting.Item2))
+                if (IP_Local.Equals(Ip_Setting.Item2))
                 {
                     return true;
                 }
@@ -1621,6 +1646,7 @@ namespace LY_SINTER.Model
                 return false;
             }
         }
+
         /// <summary>
         /// insert 小数位数
         /// 返回现场实际设定下料量
@@ -1628,16 +1654,16 @@ namespace LY_SINTER.Model
         /// item2：数据（1-20仓+sp）
         /// </summary>
         /// <returns></returns>
-        public Tuple<bool,List<float>>  _Get_Values( int Digit )
+        public Tuple<bool, List<float>> _Get_Values(int Digit)
         {
             try
             {
                 var sql = "select MAT_L2_SDXL_1,MAT_L2_SDXL_2,MAT_L2_SDXL_3,MAT_L2_SDXL_4,MAT_L2_SDXL_5,MAT_L2_SDXL_6,MAT_L2_SDXL_7,MAT_L2_SDXL_8,MAT_L2_SDXL_9,MAT_L2_SDXL_10,MAT_L2_SDXL_11,MAT_L2_SDXL_12,MAT_L2_SDXL_13,MAT_L2_SDXL_14,MAT_L2_SDXL_15,MAT_L2_SDXL_16,MAT_L2_SDXL_17,MAT_L2_SDXL_18,MAT_L2_SDXL_19,MAT_L2_SDXL_20,MAT_L2_SDXL_SP from MC_MIXCAL_Baiting where TIMESTAMP = (select max(TIMESTAMP) from MC_MIXCAL_Baiting)";
                 DataTable _table = _dBSQL.GetCommand(sql);
-                if (_table != null && _table.Rows.Count > 0 )
+                if (_table != null && _table.Rows.Count > 0)
                 {
                     List<float> _a = new List<float>();
-                    for (int x = 0; x < _table.Columns.Count;x++)
+                    for (int x = 0; x < _table.Columns.Count; x++)
                     {
                         if (_table.Rows[0][x].ToString() != "")
                         {
@@ -1660,7 +1686,5 @@ namespace LY_SINTER.Model
                 return new Tuple<bool, List<float>>(false, null);
             }
         }
-
-
     }
 }
