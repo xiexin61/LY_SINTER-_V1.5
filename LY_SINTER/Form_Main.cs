@@ -949,13 +949,21 @@ namespace LY_SINTER
                         _mainUser.Timer_state();
                         return true;
                     }
-                    //if (_tabName == "生产实时曲线页面")
-                    //{
-                    //    shishiquxianchaxun _mainUser = (shishiquxianchaxun)p.Controls[0];
-                    //    _mainUser.Show();
-                    //    tabControl1.SelectedTab = p;
-                    //    //_mainUser.Timer_state();
-                    //    return true;
+                    else if (_tabName == "生产实时曲线页面")
+                    {
+                        shishiquxianchaxun _mainUser = (shishiquxianchaxun)p.Controls[0];
+                        _mainUser.Show();
+                        tabControl1.SelectedTab = p;
+                        //_mainUser.Timer_state();
+                        return true;
+                    }
+                    else if (_tabName == "料流连续监控页面")
+                    {
+                        MatFlowMonitor _mainUser = (MatFlowMonitor)p.Controls[0];
+                        _mainUser.Show();
+                        tabControl1.SelectedTab = p;
+                        return true;
+                    }
 
                     #endregion 状态监控
 
@@ -1344,17 +1352,17 @@ namespace LY_SINTER
 
                 if (_str == "料流定位监控页面")
                 {
-                    //     MainUserControl mainUser = new MainUserControl();
-                    //    MainUserControl _mainUserControl = (MainUserControl)p.Controls[0];
-                    //MainUserControl _mainUserControl = (MainUserControl)_tabControl1.SelectedTab.Controls[0];
-                    //_mainUserControl.Timer_state();
                     MainUserControl vSelected = (MainUserControl)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
                 }
-                if (_str == "生产实时曲线页面")
+                else if (_str == "生产实时曲线页面")
                 {
-                    shishiquxianchaxun _mainUserControl = (shishiquxianchaxun)_tabControl1.SelectedTab.Controls[0];
+                    shishiquxianchaxun vSelected = (shishiquxianchaxun)_tabControl1.SelectedTab.Controls[0];
                     // _mainUserControl.Timer_state();
+                }
+                else if (_str == "料流连续监控页面")
+                {
+                    MatFlowMonitor vSelected = (MatFlowMonitor)_tabControl1.SelectedTab.Controls[0];
                 }
 
                 #endregion 状态监控
@@ -1587,11 +1595,19 @@ namespace LY_SINTER
                                 this.tabControl1.Controls.Remove(p);
                                 return;
                             }
-                            if (_strname == "生产实时曲线页面")
+                            else if (_strname == "生产实时曲线页面")
                             {
                                 shishiquxianchaxun vf1 = (shishiquxianchaxun)p.Controls[0];
                                 //  vf1.Timer_stop();
                                 this.tabControl1.Controls.Remove(p);
+                                return;
+                            }
+                            else if (_strname == "料流连续监控页面")
+                            {
+                                MatFlowMonitor vf1 = (MatFlowMonitor)p.Controls[0];
+                                vf1._Clear();
+                                this.tabControl1.Controls.Remove(p);
+                                return;
                             }
 
                             #endregion 状态监控
@@ -1872,21 +1888,16 @@ namespace LY_SINTER
 
                             if (_strname == "料流定位监控页面")
                             {
-                                ////       MainUserControl mainUser = new MainUserControl();
-                                //MainUserControl _mainUserControl = (MainUserControl)p.Controls[0];
-                                //_mainUserControl.Timer_stop();
-                                ////  _mainUserControl.ControlRemoved();
-                                //this.tabControl1.Controls.Remove(p);
-
-                                //   _mainUserControl.UC_Close
                                 MainUserControl vf1 = (MainUserControl)p.Controls[0];
                                 vf1.Timer_stop();
                             }
-                            if (_strname == "生产实时曲线页面")
+                            else if (_strname == "生产实时曲线页面")
                             {
                                 shishiquxianchaxun vf1 = (shishiquxianchaxun)p.Controls[0];
-                                //  vf1.Timer_stop();
-                                this.tabControl1.Controls.Remove(p);
+                            }
+                            else if (_strname == "料流连续监控页面")
+                            {
+                                MatFlowMonitor vf1 = (MatFlowMonitor)p.Controls[0];
                             }
 
                             #endregion 状态监控
@@ -2144,9 +2155,14 @@ namespace LY_SINTER
                             MainUserControl _PAGE = (MainUserControl)p.Controls[0];
                             _PAGE._Clear();
                         }
-                        if (str == "生产实时曲线页面")
+                        else if (str == "生产实时曲线页面")
                         {
                             shishiquxianchaxun _PAGE = (shishiquxianchaxun)p.Controls[0];
+                            _PAGE._Clear();
+                        }
+                        else if (str == "料流连续监控页面")
+                        {
+                            MatFlowMonitor _PAGE = (MatFlowMonitor)p.Controls[0];
                             _PAGE._Clear();
                         }
 

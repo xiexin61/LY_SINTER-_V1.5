@@ -245,14 +245,13 @@ namespace LY_SINTER.PAGE.HIS
         public shishiquxianchaxun()
         {
             InitializeComponent();
-
-            time();//最新调整时间
             shuju();//左数据项
-
             Task.Factory.StartNew(() =>
             {
                 while (true)
                 {
+                    time();//最新调整时间
+                    shuju();//左数据项
                     shishiquxian();
                     quxian();
                     Thread.Sleep(60000);
@@ -1150,8 +1149,8 @@ namespace LY_SINTER.PAGE.HIS
         {
             _myPlotModel = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
             };
             //X轴
@@ -1268,8 +1267,8 @@ namespace LY_SINTER.PAGE.HIS
             //1#主轴温度
             _myPlotMode3 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "1#主轴温度",
                 TitleFontSize = 5,
@@ -1389,8 +1388,8 @@ namespace LY_SINTER.PAGE.HIS
             //1#主轴负压
             _myPlotMode5 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "1#主轴负压",
                 TitleFontSize = 5,
@@ -1512,8 +1511,8 @@ namespace LY_SINTER.PAGE.HIS
             //1#主轴风量
             _myPlotMode7 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "1#主轴风量",
                 TitleFontSize = 5,
@@ -1633,8 +1632,8 @@ namespace LY_SINTER.PAGE.HIS
             //终点位置
             _myPlotMode9 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "终点位置",
                 TitleFontSize = 5,
@@ -1704,8 +1703,8 @@ namespace LY_SINTER.PAGE.HIS
             //布料厚度
             _myPlotModel0 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "布料厚度",
                 TitleFontSize = 5,
@@ -1775,8 +1774,8 @@ namespace LY_SINTER.PAGE.HIS
             //点火温度
             _myPlotModel1 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "点火温度",
                 TitleFontSize = 5,
@@ -1846,8 +1845,8 @@ namespace LY_SINTER.PAGE.HIS
             //总料量
             _myPlotModel2 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "总料量",
                 TitleFontSize = 5,
@@ -1917,8 +1916,8 @@ namespace LY_SINTER.PAGE.HIS
             //一混加水
             _myPlotModel3 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "一混加水",
                 TitleFontSize = 5,
@@ -1996,8 +1995,8 @@ namespace LY_SINTER.PAGE.HIS
             //二混加水
             _myPlotModel4 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "一混加水",
                 TitleFontSize = 5,
@@ -2075,8 +2074,8 @@ namespace LY_SINTER.PAGE.HIS
             //混合料仓
             _myPlotModel5 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "混合料仓",
                 TitleFontSize = 5,
@@ -2153,8 +2152,8 @@ namespace LY_SINTER.PAGE.HIS
             //圆辊转速
             _myPlotModel6 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "圆辊转速",
                 TitleFontSize = 5,
@@ -2224,8 +2223,8 @@ namespace LY_SINTER.PAGE.HIS
             //烧结机机速
             _myPlotModel7 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 0),
                 /*Title = "烧结机机速",
                 TitleFontSize = 5,
@@ -2295,8 +2294,8 @@ namespace LY_SINTER.PAGE.HIS
             //环冷机机速
             _myPlotModel8 = new PlotModel()
             {
-                Background = OxyColors.DarkGray,
-                PlotAreaBorderColor = OxyColors.DarkGray,
+                Background = OxyColors.AliceBlue,
+                PlotAreaBorderColor = OxyColors.AliceBlue,
                 PlotMargins = new OxyThickness(40, 10, 5, 10),
             };
             _dateAxis18 = new DateTimeAxis()
@@ -2820,13 +2819,8 @@ namespace LY_SINTER.PAGE.HIS
         //下拉框事件
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //int sj = int.Parse(comboBox1.Text);
             shishiquxian();
             quxian();
-            //DateTime dt = new DateTime(2020, 10, 27, 16, 21, 0);
-            //shishiquxian(dt);
-            //quxianfuzhi();//曲线赋值
-            //zhongdianweizhiquxian();//终点位置曲线赋值
         }
 
         /// <summary>
