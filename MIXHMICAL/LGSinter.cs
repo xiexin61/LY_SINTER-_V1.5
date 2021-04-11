@@ -14,7 +14,7 @@ namespace MIXHMICAL
         //test
         //   public string _connstring = @"Data Source = 127.0.0.1;Initial Catalog = LGSJ;User Id = QM;Password = admin;Integrated Security=false;";
 
-        //   public string _connstring = @"Data Source =127.0.0.1;Initial Catalog = LGSJ;User Id = sa;Password = Yjs88291280;Integrated Security=false;";
+        // /  public string _connstring = @"Data Source =127.0.0.1;Initial Catalog = LGSJ;User Id = sa;Password = Yjs88291280;Integrated Security=false;";
         public string _connstring = DataBase.ConstParameters.strCon;
 
         private int[] L2Code = { 101, 102, 501, 601 };
