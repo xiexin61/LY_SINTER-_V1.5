@@ -291,6 +291,11 @@ namespace LY_SINTER.PAGE.Quality
         /// </summary>
         public System.Timers.Timer _Timer7 { get; set; }
 
+        /// <summary>
+        /// 非控制用户刷新数据
+        /// </summary>
+        public System.Timers.Timer _Timer8 { get; set; }
+
         #endregion 定时器声明
 
         #region 弹出框交互标志位
@@ -319,11 +324,12 @@ namespace LY_SINTER.PAGE.Quality
             if (_vLog == null)//声明日志
                 _vLog = new vLog(".\\log_Page\\Quality\\MIXHMICAL_Page\\");
             MIX_PAGE_Digit();//配置参数
-            Initialize_Plan();//添加列标题
+           
             CAL_MODE = mIX_PAGE.Initialize_CAL_MODE();//获取特殊设定配比调整方式
             MAX_MIN_VLAUES();//上下限赋值
             Button_state(CAL_MODE);//开关状态
             PBTZ_GRTDATA(0);// 初始化加载d2数据
+            Initialize_Plan();//添加列标题
             Button_Show();//权限控制
             latest_time(2);//最新下发时间
             import_R_C_MG(CAL_MODE);
@@ -334,13 +340,9 @@ namespace LY_SINTER.PAGE.Quality
             TIMER_Statement();//声明定时器
             TEXT_CHANGE_PAGE();//获取调整值每次调整数据
             FLAG_1 = true;//激活表单响应事件
+            USER_PowEr();//权限激活
 
-            this.d2.MergeColumnNames.Add("Column6");//需要合并的列名称
-            this.d2.MergeColumnNames.Add("Column7");//需要合并的列名称
-            this.d2.MergeColumnNames.Add("Column8");//需要合并的列名称
-            this.d2.MergeColumnNames.Add("Column9");//需要合并的列名称
-            this.d2.MergeColumnNames.Add("Column17");//需要合并的列名称
-            this.d2.MergeByColumnName = "Column20";//合并标志位
+           
         }
 
         /// <summary>
@@ -351,6 +353,13 @@ namespace LY_SINTER.PAGE.Quality
             this.d2.AddSpanHeader(5, 6, "烧结配比 （干）");
             this.d2.AddSpanHeader(11, 2, "水分(%)");
             this.d2.AddSpanHeader(13, 4, "下料(t/h 湿)");
+
+            this.d2.MergeColumnNames.Add("Column6");//需要合并的列名称
+            this.d2.MergeColumnNames.Add("Column7");//需要合并的列名称
+            this.d2.MergeColumnNames.Add("Column8");//需要合并的列名称
+            this.d2.MergeColumnNames.Add("Column9");//需要合并的列名称
+            this.d2.MergeColumnNames.Add("Column17");//需要合并的列名称
+            this.d2.MergeByColumnName = "Column20";//合并标志位
         }
 
         /// <summary>
@@ -1830,6 +1839,7 @@ namespace LY_SINTER.PAGE.Quality
         /// _flag = 0 初始化加载
         /// _flag = 1 更新设定配比、设定配比%
         /// _flag = 2 点击配比确认按钮更新数据
+        /// _flag = 3 非中控刷新数据
         /// </summary>
         public void PBTZ_GRTDATA(int _flag)
         {
@@ -1875,8 +1885,8 @@ namespace LY_SINTER.PAGE.Quality
                     {
                         for (int X = 0; X < d2.Rows.Count; X++)
                         {
-                            d2.Rows[X].Cells["Column6"].Value = dataTable.Rows[X]["MAT_L2_SDPB"].ToString();
-                            d2.Rows[X].Cells["Column7"].Value = dataTable.Rows[X]["MAT_L2_SDBFB"].ToString();
+                            d2.Rows[X].Cells["Column6"].Value = dataTable.Rows[X]["MAT_L2_SDPB"].ToString();//设定配比
+                            d2.Rows[X].Cells["Column7"].Value = dataTable.Rows[X]["MAT_L2_SDBFB"].ToString();//设定配比百分比
                         }
                     }
                     else if (_flag == 2)
@@ -1884,6 +1894,38 @@ namespace LY_SINTER.PAGE.Quality
                         for (int X = 0; X < d2.Rows.Count; X++)
                         {
                             //料种
+                            d2.Rows[X].Cells["Column2"].Value = dataTable.Rows[X]["WL"].ToString();
+                            //启停状态
+                            d2.Rows[X].Cells["Column4"].Value = dataTable.Rows[X]["MAT_L2_XLKZT"].ToString();
+                            //设定配比
+                            d2.Rows[X].Cells["Column6"].Value = dataTable.Rows[X]["MAT_L2_SDPB"].ToString();
+                            //设定配比%
+                            d2.Rows[X].Cells["Column7"].Value = dataTable.Rows[X]["MAT_L2_SDBFB"].ToString();
+                            //当前配比
+                            d2.Rows[X].Cells["Column8"].Value = dataTable.Rows[X]["MAT_L2_DQPB"].ToString();
+                            //当前配比%
+                            d2.Rows[X].Cells["Column9"].Value = dataTable.Rows[X]["MAT_L2_DQBFB"].ToString();
+                            //分仓系数
+                            d2.Rows[X].Cells["Column10"].Value = dataTable.Rows[X]["MAT_L2_FCXS"].ToString();
+                            //下料比例
+                            d2.Rows[X].Cells["Column11"].Value = dataTable.Rows[X]["MAT_L2_GXLBL"].ToString();
+                            //水分设定
+                            d2.Rows[X].Cells["Column12"].Value = dataTable.Rows[X]["MAT_L2_SFSD"].ToString();
+                            //水分当前
+                            d2.Rows[X].Cells["Column13"].Value = dataTable.Rows[X]["MAT_L2_SFDQ"].ToString();
+                            //设定下料量
+                            d2.Rows[X].Cells["Column14"].Value = dataTable.Rows[X]["MAT_L2_SDXL"].ToString();
+                            //湿配比
+                            d2.Rows[X].Cells["Column17"].Value = dataTable.Rows[X]["MAT_L2_SPB"].ToString();
+                        }
+                    }
+                    else if (_flag == 3)
+                    {
+                        for (int X = 0; X < d2.Rows.Count; X++)
+                        {
+                            d2.Rows[X].Cells["Column6"].Value = dataTable.Rows[X]["MAT_L2_SDPB"].ToString();//设定配比
+                            d2.Rows[X].Cells["Column7"].Value = dataTable.Rows[X]["MAT_L2_SDBFB"].ToString();//设定配比百分比
+                                                                                                             //料种
                             d2.Rows[X].Cells["Column2"].Value = dataTable.Rows[X]["WL"].ToString();
                             //启停状态
                             d2.Rows[X].Cells["Column4"].Value = dataTable.Rows[X]["MAT_L2_XLKZT"].ToString();
@@ -2531,37 +2573,57 @@ namespace LY_SINTER.PAGE.Quality
             _Timer1.Enabled = true;
             _Timer1.AutoReset = false;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
 
-            _Timer2 = new System.Timers.Timer(60000);//初始化颜色变化定时器响应事件
+            _Timer2 = new System.Timers.Timer(60000);//返矿
             _Timer2.Elapsed += (x, y) => { _Timer2_Tick(); };
             _Timer2.Enabled = false;
             _Timer2.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
 
-            _Timer3 = new System.Timers.Timer(60000);//初始化颜色变化定时器响应事件
+            _Timer3 = new System.Timers.Timer(60000);//质量
             _Timer3.Elapsed += (x, y) => { _Timer3_Tick(); };
-            _Timer3.Enabled = true;
+            _Timer3.Enabled = false;
             _Timer3.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
 
-            _Timer4 = new System.Timers.Timer(60000);//初始化颜色变化定时器响应事件
+            _Timer4 = new System.Timers.Timer(60000);//分仓系数
             _Timer4.Elapsed += (x, y) => { _Timer4_Tick(); };
-            _Timer4.Enabled = true;
+            _Timer4.Enabled = false;
             _Timer4.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
 
-            _Timer5 = new System.Timers.Timer(60000);//初始化颜色变化定时器响应事件
+            _Timer5 = new System.Timers.Timer(60000);//预测
             _Timer5.Elapsed += (x, y) => { _Timer5_Tick(); };
             _Timer5.Enabled = true;
             _Timer5.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
 
-            _Timer6 = new System.Timers.Timer(3000);//初始化颜色变化定时器响应事件
+            _Timer6 = new System.Timers.Timer(3000);//plc
             _Timer6.Elapsed += (x, y) => { _Timer6_Tick(); };
             _Timer6.Enabled = true;
             _Timer6.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
 
-            _Timer7 = new System.Timers.Timer(500);//初始化颜色变化定时器响应事件
+            _Timer7 = new System.Timers.Timer(500);//闪烁
             _Timer7.Elapsed += (x, y) => { _Timer7_Tick(); };
             _Timer7.Enabled = false;
             _Timer7.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
-        }
 
+            _Timer8 = new System.Timers.Timer(60000);//刷新数据
+            _Timer8.Elapsed += (x, y) => { _Timer8_Tick(); };
+            _Timer8.Enabled = false;
+            _Timer8.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
+        }
+        /// <summary>
+        /// 权限激活
+        /// </summary>
+        public void USER_PowEr()
+        {
+            if (FALG_Oper)
+            {
+                _Timer2.Enabled = true;//返矿
+                _Timer3.Enabled = true;//质量
+                _Timer4.Enabled = true;//分仓系数
+            }
+            else
+            {
+                _Timer8.Enabled = true;//非控制用户刷新数据
+            }
+        }
         #region 定时器响应事件
 
         /// <summary>
@@ -3019,7 +3081,9 @@ namespace LY_SINTER.PAGE.Quality
                 }
             }
         }
-
+        /// <summary>
+        /// 设定下料量颜色闪烁
+        /// </summary>
         private void _Timer7_Tick()
         {
             Action invokeAction = new Action(_Timer7_Tick);
@@ -3030,6 +3094,22 @@ namespace LY_SINTER.PAGE.Quality
             else
             {
                 Color_Big();//设定下料量颜色闪烁
+            }
+        }
+
+        /// <summary>
+        /// 非控制用户刷新数据
+        /// </summary>
+        private void _Timer8_Tick()
+        {
+            Action invokeAction = new Action(_Timer8_Tick);
+            if (this.InvokeRequired)
+            {
+                this.Invoke(invokeAction);
+            }
+            else
+            {
+                PBTZ_GRTDATA(3);
             }
         }
 

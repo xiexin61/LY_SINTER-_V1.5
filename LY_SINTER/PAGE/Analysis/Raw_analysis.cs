@@ -182,7 +182,8 @@ namespace LY_SINTER.PAGE.Analysis
                 this.comboBox1.DataSource = _data;
                 this.comboBox1.DisplayMember = "Name";
                 this.comboBox1.ValueMember = "Values";
-                this.comboBox1.SelectedIndex = 2;
+                //this.comboBox1.SelectedIndex = 2;
+                combox_3_values("混合料");
             }
             catch(Exception ee)
             {
@@ -192,16 +193,16 @@ namespace LY_SINTER.PAGE.Analysis
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            combox_3_values();
+            combox_3_values(comboBox1.Text.ToString());
         }
         /// <summary>
         /// 料名数据绑定事件
         /// </summary>
-        public void combox_3_values()
+        public void combox_3_values( string _n)
         {
             try
             {
-                string _NAME = comboBox1.Text.ToString();//物料种类归属名称
+                string _NAME = _n;//物料种类归属名称
                 if (GetDic_L2_code_CONFIG.ContainsKey(_NAME))
                 {
                     var _sql = "select L2_CODE, MAT_DESC  from M_MATERIAL_COOD where ";//拼接字符串
@@ -264,7 +265,8 @@ namespace LY_SINTER.PAGE.Analysis
         {
             try
             {
-               var _sql = "select TIMESTAMP,REOPTTIME,BATCH_NUM,L2_CODE,C_TFE,C_FEO,C_CAO,C_SIO2,C_AL2O3,C_MGO,C_S,C_P,C_C,C_MN,C_LOT,C_R,C_H2O,C_ASH,C_VOLATILES,C_TIO2,C_K2O,C_NA2O,C_PBO,C_ZNO,C_F,C_AS,C_CU,C_PB,C_ZN,C_K,C_NA,C_CR,C_NI,C_MNO from M_MATERIAL_ANALYSIS WHERE L2_CODE='" + _dic_L2_CODE_CLASS[_name] + "' and TIMESTAMP between '" + _time_begin + "' and '" + _time_end + "' order by TIMESTAMP desc";
+                ///20210410 报样时间改为插入时间
+               var _sql = "select TIMESTAMP,TIMESTAMP as REOPTTIME,BATCH_NUM,L2_CODE,C_TFE,C_FEO,C_CAO,C_SIO2,C_AL2O3,C_MGO,C_S,C_P,C_C,C_MN,C_LOT,C_R,C_H2O,C_ASH,C_VOLATILES,C_TIO2,C_K2O,C_NA2O,C_PBO,C_ZNO,C_F,C_AS,C_CU,C_PB,C_ZN,C_K,C_NA,C_CR,C_NI,C_MNO from M_MATERIAL_ANALYSIS WHERE L2_CODE='" + _dic_L2_CODE_CLASS[_name] + "' and TIMESTAMP between '" + _time_begin + "' and '" + _time_end + "' order by TIMESTAMP desc";
                 DataTable table_1 = _dBSQL.GetCommand(_sql);//参与计算数据
                 if (table_1 != null && table_1.Rows.Count > 0 )
                 {
@@ -314,7 +316,8 @@ namespace LY_SINTER.PAGE.Analysis
                         List<float> _list = new List<float>();
                         for (int y = 0; y < table_1.Rows.Count;y++)
                         {
-                            _list.Add(float.Parse(table_1.Rows[y][Get_data_name[x]].ToString() == "" ? "0": table_1.Rows[y][Get_data_name[x]].ToString()));
+                            if(table_1.Rows[y][Get_data_name[x]].ToString() != "")//剔除空值
+                               _list.Add(float.Parse(table_1.Rows[y][Get_data_name[x]].ToString() == "" ? "0": table_1.Rows[y][Get_data_name[x]].ToString()));
                         }
                         row_1[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 1, 2).ToString();//成分
                         row_2[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 2, 2).ToString();//标准偏差
@@ -649,6 +652,12 @@ namespace LY_SINTER.PAGE.Analysis
           //  _Timer1.Close();//释放定时器资源
             this.Dispose();//释放资源
             GC.Collect();//调用GC
+        }
+
+        private void comboBox3_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            data_text(comboBox3.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());
+            Curve_text(comboBox2.Text.ToString());//曲线赋值
         }
     }
 }

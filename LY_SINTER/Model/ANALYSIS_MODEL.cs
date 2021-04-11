@@ -32,9 +32,15 @@ namespace LY_SINTER.Model
             {
                 if (_A.Count > 0 )
                 {
+                    //20210410，剔除空值进行计算
                     float SUM_A = 0;//数据组和
+                    int count = 0;//满足条件个数
                     for(int x = 0; x < _A.Count; x++)
                     {
+                        //if ()
+                        //{
+
+                        //}
                         SUM_A += _A[x];
                     }
                     if (_FLAG == 1)
