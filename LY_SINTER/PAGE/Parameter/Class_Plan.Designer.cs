@@ -115,8 +115,8 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.97436F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 61.02563F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.41285F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.58716F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1173, 580);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
@@ -265,7 +265,7 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1167, 206);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1167, 187);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // label4
@@ -329,7 +329,7 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F);
             this.d1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.d1.RowTemplate.Height = 23;
-            this.d1.Size = new System.Drawing.Size(1159, 177);
+            this.d1.Size = new System.Drawing.Size(1159, 158);
             this.d1.TabIndex = 1;
             // 
             // ID
@@ -376,12 +376,12 @@
             this.tableLayoutPanel6.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.d2, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 250);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 231);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1167, 327);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1167, 346);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
             // label5
@@ -452,7 +452,7 @@
             this.d2.RowHeadersVisible = false;
             this.d2.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.d2.RowTemplate.Height = 23;
-            this.d2.Size = new System.Drawing.Size(1159, 298);
+            this.d2.Size = new System.Drawing.Size(1159, 317);
             this.d2.TabIndex = 1;
             this.d2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.d2_CellContentClick);
             // 

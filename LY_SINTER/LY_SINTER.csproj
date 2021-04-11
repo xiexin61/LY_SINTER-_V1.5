@@ -171,6 +171,7 @@
     </Compile>
     <Compile Include="Model\ANALYSIS_MODEL.cs" />
     <Compile Include="Model\Course_MODEL.cs" />
+    <Compile Include="Model\Data_Treating.cs" />
     <Compile Include="Model\GetIpAddress.cs" />
     <Compile Include="Model\Ingredient_Model.cs" />
     <Compile Include="Model\Message_Logging.cs" />

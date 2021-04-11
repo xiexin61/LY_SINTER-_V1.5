@@ -181,8 +181,8 @@ namespace LY_SINTER.Popover.Parameter
                         string _A = _Rule_Big.Item2[comboBox3.Text.ToString()];
                         //原因小类代码
                         string _B = _Rule_Loser.Item2[comboBox4.Text.ToString()];
-                        var sql = "insert into M_SIN_RUN_STOP (TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,STOP_BEGINTIME,STOP_ENDTIME,INTERVAL_TIME,FLAG,FLAG_1,SORT_BIG,SORT_LITTLE) " +
-                        "values (getdate(),'" + comboBox1.Text.ToString() + "','" + comboBox2.Text.ToString() + "','" + textBox2.Text.ToString() + "','" + textBox_begin.Value.ToString() + "','" + textBox_end.Value.ToString() + "','" + textBox1.Text.ToString() + "',2," + x + ",'" + _A + "','" + _B + "')";
+                        var sql = "insert into M_SIN_RUN_STOP (TIMESTAMP,WORK_SHIFT,WORK_TEAM,REMARK_DESC,STOP_BEGINTIME,STOP_ENDTIME,INTERVAL_TIME,FLAG,FLAG_1,SORT_BIG,SORT_LITTLE,FLAG_2) " +
+                        "values (getdate(),'" + comboBox1.Text.ToString() + "','" + comboBox2.Text.ToString() + "','" + textBox2.Text.ToString() + "','" + textBox_begin.Value.ToString() + "','" + textBox_end.Value.ToString() + "','" + textBox1.Text.ToString() + "',2," + x + ",'" + _A + "','" + _B + "',1)";
                         int _count = dBSQL.CommandExecuteNonQuery(sql);
                         _production_Records_1();
                         this.Dispose();
