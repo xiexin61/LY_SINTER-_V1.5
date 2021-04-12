@@ -26,6 +26,10 @@ namespace LY_SINTER.PAGE.Analysis
             this.rowMergeView1.AddSpanHeader(4, 8, "粒度组成%");
             getNewTime();
             getName();
+            DateTime time1 = DateTime.Now.AddMonths(-1);
+            DateTime time2 = DateTime.Now;
+            table1GetDataDefinite(time1, time2);
+            table2GetDataDefinite(time1, time2);
         }
 
         /// <summary>
@@ -72,7 +76,42 @@ namespace LY_SINTER.PAGE.Analysis
                 this.label8.Text = "最新调整时间:" + time;
             }
         }
+        //默认查询表格1
+        public void table1GetDataDefinite(DateTime start, DateTime end)
+        {
+            DataTable table = new DataTable();
+            table.Rows.Clear();
+           string sql = "select ROW_NUMBER() over (order by a.timestamp)as id,BATCH_NUM,b.MAT_DESC,ORE_CLASS,a.PLACE_ORIGIN,a.UNIT_PRICE,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S,C_P,C_LOT,C_H2O,C_ASH,C_PBO,C_ZN," +
+                "C_CU,C_K2O,C_NA2O,C_TIO2 from M_ORE_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE " +
+                "and a.TIMESTAMP between '" + start + "' and '" + end + "' order by a.timestamp";
 
+            table = dBSQL.GetCommand(sql);
+            if (table.Rows.Count > 0)
+            {
+                d1.DataSource = table;
+            }
+            for(int i = 5; i < d1.Columns.Count; i++)
+            {
+                d1.Columns[i].DefaultCellStyle.Format = "N2";
+            }
+        }
+        //默认表格2查询
+        public void table2GetDataDefinite(DateTime start, DateTime end)
+        {
+            string sql = "select ROW_NUMBER() over (order by a.timestamp)as id,BATCH_NUM,b.MAT_DESC,ORE_CLASS,GRIT_8,GRIT_5_8,GRIT_3_5,GRIT_1_3,GRIT_05_1,GRIT__025_05," +
+                "GRIT_025,GRIT_AVG,W_CAP_05,W_MOL_05,DEN_B,DEN_T,POROSITY from M_ORE_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE " +
+                "and a.TIMESTAMP between '" + start + "' and '" + end + "' order by a.timestamp";
+            DataTable table = dBSQL.GetCommand(sql);
+            if (table.Rows.Count > 0)
+            {
+                rowMergeView1.DataSource = table;
+            }
+            for (int i = 2; i < rowMergeView1.Columns.Count; i++)
+            {
+                rowMergeView1.Columns[i].DefaultCellStyle.Format = "N2";
+            }
+            //d1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader;
+        }
         //部分1表格数据查询
         public void table1GetData(DateTime start, DateTime end)
         {
@@ -81,24 +120,28 @@ namespace LY_SINTER.PAGE.Analysis
             string sql = "";
             if (comboBox1.Text == "全部")
             {
-                sql = "select BATCH_NUM,b.MAT_DESC,ORE_CLASS,a.PLACE_ORIGIN,a.UNIT_PRICE,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S,C_P,C_LOT,C_H2O,C_ASH,C_PBO,C_ZN," +
+                sql = "select ROW_NUMBER() over (order by a.timestamp)as id,BATCH_NUM,b.MAT_DESC,ORE_CLASS,a.PLACE_ORIGIN,a.UNIT_PRICE,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S,C_P,C_LOT,C_H2O,C_ASH,C_PBO,C_ZN," +
                 "C_CU,C_K2O,C_NA2O,C_TIO2 from M_ORE_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE " +
-                "and a.TIMESTAMP between '" + start + "' and '" + end + "'";
+                "and a.TIMESTAMP between '" + start + "' and '" + end + "' order by a.timestamp";
             }
             else
             {
-                sql = "select BATCH_NUM, b.MAT_DESC,ORE_CLASS,a.PLACE_ORIGIN,a.UNIT_PRICE,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S,C_P,C_LOT,C_H2O,C_ASH,C_PBO,C_ZN,C_CU," +
+                sql = "select ROW_NUMBER() over (order by a.timestamp)as id,BATCH_NUM, b.MAT_DESC,ORE_CLASS,a.PLACE_ORIGIN,a.UNIT_PRICE,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S,C_P,C_LOT,C_H2O,C_ASH,C_PBO,C_ZN,C_CU," +
                     "C_K2O,C_NA2O,C_TIO2 from M_ORE_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE and b.MAT_DESC = '" + comboBox1.Text + "' " +
-                    "and a.TIMESTAMP between '" + start + "' and '" + end + "'";
+                    "and a.TIMESTAMP between '" + start + "' and '" + end + "' order by a.timestamp";
             }
             table = dBSQL.GetCommand(sql);
             if (table.Rows.Count > 0)
             {
                 d1.DataSource = table;
             }
-            for (int i = 0; i < table.Rows.Count; i++)
+            /*for (int i = 0; i < table.Rows.Count; i++)
             {
                 d1.Rows[i].Cells["id"].Value = i + 1;
+            }*/
+            for (int i = 5; i < d1.Columns.Count; i++)
+            {
+                d1.Columns[i].DefaultCellStyle.Format = "N2";
             }
         }
 
@@ -108,25 +151,30 @@ namespace LY_SINTER.PAGE.Analysis
             string sql = "";
             if (comboBox1.Text == "全部")
             {
-                sql = "select BATCH_NUM,b.MAT_DESC,ORE_CLASS,GRIT_8,GRIT_5_8,GRIT_3_5,GRIT_1_3,GRIT_05_1,GRIT__025_05," +
+                sql = "select ROW_NUMBER() over (order by a.timestamp)as id,BATCH_NUM,b.MAT_DESC,ORE_CLASS,GRIT_8,GRIT_5_8,GRIT_3_5,GRIT_1_3,GRIT_05_1,GRIT__025_05," +
                 "GRIT_025,GRIT_AVG,W_CAP_05,W_MOL_05,DEN_B,DEN_T,POROSITY from M_ORE_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE " +
-                "and a.TIMESTAMP between '" + start + "' and '" + end + "'";
+                "and a.TIMESTAMP between '" + start + "' and '" + end + "' order by a.timestamp";
             }
             else
             {
-                sql = "select BATCH_NUM,b.MAT_DESC,ORE_CLASS,GRIT_8,GRIT_5_8,GRIT_3_5,GRIT_1_3,GRIT_05_1,GRIT__025_05,GRIT_025,GRIT_AVG,W_CAP_05,W_MOL_05,DEN_B,DEN_T," +
+                sql = "select ROW_NUMBER() over (order by a.timestamp)as id,BATCH_NUM,b.MAT_DESC,ORE_CLASS,GRIT_8,GRIT_5_8,GRIT_3_5,GRIT_1_3,GRIT_05_1,GRIT__025_05,GRIT_025,GRIT_AVG,W_CAP_05,W_MOL_05,DEN_B,DEN_T," +
                     "POROSITY from M_ORE_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE and b.MAT_DESC = '" + comboBox1.Text + "' " +
-                    "and a.TIMESTAMP between '" + start + "' and '" + end + "'";
+                    "and a.TIMESTAMP between '" + start + "' and '" + end + "' order by a.timestamp";
             }
             DataTable table = dBSQL.GetCommand(sql);
             if (table.Rows.Count > 0)
             {
                 rowMergeView1.DataSource = table;
             }
-            for (int i = 0; i < table.Rows.Count; i++)
+            /*for (int i = 0; i < table.Rows.Count; i++)
             {
                 rowMergeView1.Rows[i].Cells["number"].Value = i + 1;
+            }*/
+            for (int i = 2; i < rowMergeView1.Columns.Count; i++)
+            {
+                rowMergeView1.Columns[i].DefaultCellStyle.Format = "N2";
             }
+
         }
 
         private void mouse_click(object sender, MouseEventArgs e)
@@ -284,6 +332,18 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 form_display.Activate();
             }
+        }
+
+        private void d1_Scroll(object sender, ScrollEventArgs e)
+        {
+            rowMergeView1.FirstDisplayedScrollingRowIndex = d1.FirstDisplayedScrollingRowIndex;
+            rowMergeView1.HorizontalScrollingOffset = d1.HorizontalScrollingOffset;
+        }
+
+        private void rowMergeView1_Scroll(object sender, ScrollEventArgs e)
+        {
+            d1.FirstDisplayedScrollingRowIndex = rowMergeView1.FirstDisplayedScrollingRowIndex;
+            d1.HorizontalScrollingOffset = rowMergeView1.HorizontalScrollingOffset;
         }
     }
 }

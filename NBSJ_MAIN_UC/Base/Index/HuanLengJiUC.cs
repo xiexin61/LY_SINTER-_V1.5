@@ -58,7 +58,7 @@ namespace UserControlIndex
             Rectangle 矩形3 = new Rectangle((int)(this.Width * 0.80f), (int)0, (int)(this.Width * fontWidth*0.5), (int)(this.Height * 0.2f));
             //graphics.DrawString("入口:", Font, shuziColor, 矩形3, sf);//"入口温度"
 
-            矩形3 = new Rectangle((int)(this.Width * 0.8f), (int)0, (int)(60), (int)(30));
+            矩形3 = new Rectangle((int)(this.Width * 0.8f)+20, (int)0, (int)(70), (int)(30));
            graphics.DrawString("入口:" + rkTemp + "℃", Font, shuziColor, 矩形3, sf);//"入口温度"
             graphics.DrawImage(myBitmap3, (int)(this.Width * 0.25f), (int)-28, (int)(this.Width * 0.07f), (int)(this.Height * 0.5f));
             graphics.DrawImage(myBitmap3, (int)(this.Width * 0.45f), (int)-28, (int)(this.Width * 0.07f), (int)(this.Height * 0.5f));
@@ -134,19 +134,19 @@ namespace UserControlIndex
                 graphics.DrawString("板式给矿机", Font, Brushes.Black, 矩形4, shuziSf);
             }
 
-            矩形4 = new Rectangle((int)(this.Width * 0.8f), y3, 60, 30);
+            矩形4 = new Rectangle((int)(this.Width * 0.8f)+20, y3, 80, 30);
             graphics.DrawString("出口:" + ckTemp + "℃", Font, shuziColor, 矩形4, sf);//"出口温度"
             ////Rectangle 矩形5 = new Rectangle((int)(this.Width * 0.85f), y3 + (int)(h3 * 0.4f), (int)(this.Width * fontWidth), 30);
             Rectangle 矩形51 = new Rectangle((int)(this.Width * 0.82f-40), this.Height - 32, 60, 30);
             //graphics.DrawString("t", Font, shuziColor, 矩形51, sf);
             graphics.DrawString(gLJ_LW + "t", Font, shuziColor, 矩形51, sf);
 
-            Rectangle 矩形5 = new Rectangle((int)(this.Width * 0.82f), this.Height - 32, 60, 30);
+            Rectangle 矩形5 = new Rectangle((int)(this.Width * 0.82f)+15, this.Height - 32, 60, 30);
             ////graphics.DrawString("设定机速", Font, shuziColor, 矩形5, sf);
             //graphics.DrawString(bsgkj_Set_SPEED + "Hz", Font, shuziColor, 矩形5, sf);
             graphics.DrawString("实际频率:", Font, shuziColor, 矩形5, sf);
             //Rectangle 矩形6 = new Rectangle((int)(this.Width * 0.85f), (int)(this.Height * 0.86f), (int)(this.Width * fontWidth), 30);
-            Rectangle 矩形6 = new Rectangle((int)(this.Width * 0.82f), this.Height - 12, 60, 15);
+            Rectangle 矩形6 = new Rectangle((int)(this.Width * 0.82f)+15, this.Height - 12, 60, 15);
             //graphics.DrawString("实际机速", Font, shuziColor, 矩形6, sf);
             graphics.DrawString(bsgkj_Read_SPEED + "Hz", Font, shuziColor, 矩形6, sf);
 

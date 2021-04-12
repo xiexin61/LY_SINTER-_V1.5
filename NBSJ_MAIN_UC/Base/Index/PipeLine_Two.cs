@@ -80,7 +80,7 @@ namespace UserControlIndex
 
             this.pipeLine3.Width = (this.Width-50) / 3;
             this.pipeLine3.Height = 15;
-            this.pipeLine3.Location = new System.Drawing.Point(50, (int)(this.Height / 2.5f));
+            this.pipeLine3.Location = new System.Drawing.Point(70, (int)(this.Height / 2.5f));
 
             /*this.pipeLine4.Width = this.Width/4;
             this.pipeLine4.Location = new System.Drawing.Point(this.Width /5 , (int)(this.Height / 5f *4));*/

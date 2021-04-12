@@ -13,6 +13,7 @@ using OxyPlot.WindowsForms;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using System.Threading;
 
 namespace LY_SINTER.PAGE.Analysis
 {
@@ -29,9 +30,21 @@ namespace LY_SINTER.PAGE.Analysis
             DateTimeChoser.AddTo(textBox_end);
             time_begin_end();
             lData();
-            DateTime start = DateTime.Now.AddMonths(-1);
+            /*DateTime start = DateTime.Now.AddMonths(-1);
             DateTime end = DateTime.Now;
-            getPlotView(start, end);
+            getPlotView(start, end);*/
+            Task.Factory.StartNew(() =>
+            {
+
+                while (true)
+                {
+                    lData();
+                    DateTime start = DateTime.Now.AddMonths(-1);
+                    DateTime end = DateTime.Now;
+                    getPlotView(start, end);
+                    Thread.Sleep(60000);
+                }
+            });
         }
 
         /// <summary>

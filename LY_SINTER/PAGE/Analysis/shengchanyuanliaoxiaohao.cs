@@ -27,7 +27,7 @@ namespace LY_SINTER.PAGE.Analysis
             dateTimePicker_value();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
-            DateTime d1 = DateTime.Now.AddDays(-4);
+            DateTime d1 = DateTime.Now.AddMonths(-1);
             DateTime d2 = DateTime.Now;
             getData(d1, d2);
             dkdhfx(d1, d2);
@@ -158,6 +158,10 @@ namespace LY_SINTER.PAGE.Analysis
                     dataGridView2.Rows[0].Cells[k].Value = sum;
                 }
             }
+            for(int i = 2; i < dataGridView2.Columns.Count; i++)
+            {
+                dataGridView2.Columns[i].Width = 150;
+            }
         }
 
         /// <summary>
@@ -186,14 +190,14 @@ namespace LY_SINTER.PAGE.Analysis
                     x.Add(KF_NAME);
                     //DataPoint line = new DataPoint(Convert.ToDouble(table.Rows[r]["MAT_DESC"]), Convert.ToDouble(table.Rows[r]["UNIT_PRICE"])/ sjkcl);
                     double ylxhhj = Convert.ToDouble(dataGridView2.Rows[0].Cells[KF_NAME].Value);
-                    y.Add(ylxhhj * (Convert.ToDouble(table.Rows[r][1]) / sjkcl));
+                    y.Add(double.Parse((ylxhhj * (Convert.ToDouble(table.Rows[r][1]) / sjkcl)).ToString("0.00")));
                 }
             }
 
             PlotModel _myPlotModel = new PlotModel()
             {
-                Title = "原料单耗成本(元)",
-                TitleFontSize = 12,
+                PlotMargins = new OxyThickness(50, 20, 30, 10),
+                Background = OxyColors.White,
             };
             //X轴定义categoriesAxi
             CategoryAxis _categoryAxis = new CategoryAxis()
@@ -201,6 +205,7 @@ namespace LY_SINTER.PAGE.Analysis
                 MajorTickSize = 0,
                 IsZoomEnabled = false,
                 Position = AxisPosition.Bottom,
+                FontSize = 9.0,
             };
             for (int i = 0; i < x.Count; i++)
             {
@@ -212,18 +217,28 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 MinorTickSize = 0,
                 Key = "y",
+                FontSize = 9.0,
             };
             _myPlotModel.Axes.Add(_valueAxis);
             var _ColumnSeries = new ColumnSeries()
             {//柱状图
                 Background = OxyColors.White,
+                LabelPlacement=LabelPlacement.Inside,
+                //LabelFormatString="{0.00}",
+                TextColor=OxyColors.Black,
+                //TrackerFormatString = "{0}"
             };
             for (int i = 0; i < y.Count; i++)
             {
                 _ColumnSeries.Items.Add(new ColumnItem() { Value = y[i] });
             }
             _myPlotModel.Series.Add(_ColumnSeries);
+            _ColumnSeries.LabelPlacement = LabelPlacement.Inside;
             plotView1.Model = _myPlotModel;
+            var PlotController = new OxyPlot.PlotController();
+            PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
+
+            plotView1.Controller = PlotController;
         }
 
         public static int getnMax(int max, int min)

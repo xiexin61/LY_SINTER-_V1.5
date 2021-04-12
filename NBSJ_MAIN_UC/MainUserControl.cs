@@ -540,11 +540,12 @@ namespace NBSJ_MAIN_UC
             xStart = this.Width * edgeWidthK;
             yStart = this.Height * edgeWidthK + 25;
             this.bottleAllUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
-            this.bottleAllUC1.Size = new System.Drawing.Size((int)(this.Width * (1 - edgeWidthK * 2)), (int)(this.Height * bottle_Height_K));
+            this.bottleAllUC1.Size = new System.Drawing.Size((int)(this.Width * (1 - edgeWidthK * 2)), (int)(this.Height * bottle_Height_K)+20);
 
             //滚动条和混匀机
-            yStart = yStart + bottleAllUC1.Height;
-            panel1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
+            //yStart = yStart + bottleAllUC1.Height;
+            yStart = yStart + (int)(this.Height * bottle_Height_K);
+            panel1.Location = new System.Drawing.Point((int)xStart, (int)yStart+20);
             panel1.Size = new System.Drawing.Size((int)(this.Width * (1 - edgeWidthK * 2)), (int)(this.Height * 0.15f));
 
             pipeLine_Right1.Width = (int)(this.Width * 0.12f);
@@ -560,21 +561,21 @@ namespace NBSJ_MAIN_UC
             buLiaoQiUC1.Height = (int)(this.Height * 0.05f);
             xStart = this.Width * 0.196f;// - buLiaoQiUC1.Width / 2;
             yStart = yStart + panel1.Height - 30;
-            this.buLiaoQiUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
+            this.buLiaoQiUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart+20);
 
             //混合料槽和圆棍
             hunHeLiaoCaoYuanGunUC1.Width = (int)(this.Width * 0.15f);
             hunHeLiaoCaoYuanGunUC1.Height = (int)(this.Height * 0.11f);
             //xStart = this.Width * 0.2536231884f;
             yStart = yStart + buLiaoQiUC1.Height;
-            this.hunHeLiaoCaoYuanGunUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
+            this.hunHeLiaoCaoYuanGunUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart+20);
 
             //铺底料槽
             puDiLiaoCaoUC1.Width = (int)(this.Width * 0.041f);
             puDiLiaoCaoUC1.Height = (int)(this.Height * 0.07f);
             xStart = xStart - puDiLiaoCaoUC1.Width;
             yStart = yStart + hunHeLiaoCaoYuanGunUC1.Height - puDiLiaoCaoUC1.Height;
-            this.puDiLiaoCaoUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
+            this.puDiLiaoCaoUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart+20);
 
             this.labPuDiLiaoCaoFlow.Location = new System.Drawing.Point(this.puDiLiaoCaoUC1.Location.X - 50, (int)(this.puDiLiaoCaoUC1.Location.Y + this.puDiLiaoCaoUC1.Height * 0.7f));
 
@@ -587,12 +588,12 @@ namespace NBSJ_MAIN_UC
             xStart = this.Width * edgeWidthK * 3;
             yStart = yStart + tempFlowUC1.Height - hunHeLiaoCaoYuanGunUC1.Height - buLiaoQiUC1.Height;
             xStart = this.Width * edgeWidthK * 2;
-            this.picYantong.Location = new System.Drawing.Point((int)xStart, (int)(yStart + 40));
+            this.picYantong.Location = new System.Drawing.Point((int)xStart, (int)(yStart +65));
 
             //传送带
             xStart = this.Width * 0.07f;
             yStart = yStart + buLiaoQiUC1.Height + hunHeLiaoCaoYuanGunUC1.Height;
-            hostConveyerUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
+            hostConveyerUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart+20);
             hostConveyerUC1.Size = new System.Drawing.Size((int)(this.Width * 0.8f), (int)(this.Height * 0.1f));
 
             xStart = this.Width * 0.87f;
@@ -603,14 +604,14 @@ namespace NBSJ_MAIN_UC
 
             //图像绘制的坐标点 齿轮旁边的箭头
             PointF[] points = new PointF[8];
-            points[0] = new PointF(xStart, yStart);
-            points[1] = new PointF(xStart, yStart + widthJt);
-            points[2] = new PointF(xStart + this.Width * 0.08f, yStart + widthJt);
-            points[3] = new PointF(xStart + this.Width * 0.08f, yStart + widthJt + this.Height * 0.08f);
-            points[4] = new PointF(xStart + this.Width * 0.08f + widthJt / 2, yStart + widthJt + this.Height * 0.08f + this.Height * 0.02f);
-            points[5] = new PointF(xStart + this.Width * 0.08f + widthJt, yStart + widthJt + this.Height * 0.08f);
-            points[6] = new PointF(xStart + this.Width * 0.08f + widthJt, yStart);
-            points[7] = new PointF(xStart, yStart);
+            points[0] = new PointF(xStart, yStart+20);
+            points[1] = new PointF(xStart, yStart + widthJt+20);
+            points[2] = new PointF(xStart + this.Width * 0.08f-40, yStart + widthJt+20);
+            points[3] = new PointF(xStart + this.Width * 0.08f-40, yStart + widthJt + this.Height * 0.08f+20);
+            points[4] = new PointF(xStart + this.Width * 0.08f + widthJt / 2-40, yStart + widthJt + this.Height * 0.08f + this.Height * 0.02f+20);
+            points[5] = new PointF(xStart + this.Width * 0.08f + widthJt-40, yStart + widthJt + this.Height * 0.08f+20);
+            points[6] = new PointF(xStart + this.Width * 0.08f + widthJt-40, yStart+20);
+            points[7] = new PointF(xStart-40, yStart+20);
             path.AddPolygon(points);
 
             using (Brush brush2 = new SolidBrush(Color.FromArgb(0xcb, 0xcb, 0xcb)))
@@ -638,13 +639,14 @@ namespace NBSJ_MAIN_UC
             shaiZiUC1.Height = (int)(this.Height * 0.18f);
             xStart = this.Width / 2 - shaiZiUC1.Width / 2;
             yStart = removeDustUC1.Location.Y + removeDustUC1.Height - (int)(removeDustUC1.Height * 0.23f);
-            shaiZiUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart + 20);
+            shaiZiUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart + 40);
 
             //this.rbtnQuYangDian1.Location = new System.Drawing.Point((int)(xStart - 35), (int)(yStart + shaiZiUC1.Height * 0.6f));
             //环冷机
             huanLengJiUC1.Width = (int)(this.Width * 0.27f);
             huanLengJiUC1.Height = (int)(this.Height * 0.19f);
             xStart = shaiZiUC1.Location.X + shaiZiUC1.Width + this.Width * 0.18f;
+            //xStart = this.Width / 2 - (int)(this.Height * 0.18f) / 2;
             yStart = removeDustUC1.Location.Y + removeDustUC1.Height;
             huanLengJiUC1.Location = new System.Drawing.Point((int)xStart, (int)yStart);
 
@@ -656,7 +658,7 @@ namespace NBSJ_MAIN_UC
             yStart = shaiZiUC1.Location.Y + (int)(shaiZiUC1.Height * 0.9f);
 
             //铺底料皮带
-            this.pipeLine14.Location = new System.Drawing.Point(10, (int)(yStart) - 5);
+            this.pipeLine14.Location = new System.Drawing.Point(10, (int)(yStart) - 20);
             this.pipeLine14.Size = new System.Drawing.Size((int)(this.Width * 0.45f + 50), 15);
 
             //Z61(铺-1)皮带右侧箭头
@@ -675,8 +677,8 @@ namespace NBSJ_MAIN_UC
             point2 = new Point(3, (int)(panel1.Location.Y + panel1.Height));
             graphics.DrawLine(pen, point1, point2); //铺底料烟筒左边箭头
 
-            point1 = new Point(3, (int)(panel1.Location.Y + panel1.Height + 3));
-            point2 = new Point((int)(this.Width * 0.176f - 3), (int)(panel1.Location.Y + panel1.Height + 3));
+            point1 = new Point(3, (int)(panel1.Location.Y + panel1.Height ));
+            point2 = new Point((int)(this.Width * 0.176f - 3), (int)(panel1.Location.Y + panel1.Height ));
             //graphics.DrawLine(pen, point1, point2);
             var point3ttt000 = new Point((int)(this.Width * 0.176f - 3), (int)(panel1.Location.Y + panel1.Height + 3 + this.Height * 0.06));
             graphics.DrawLines(pen, new Point[] { point1, point2, point3ttt000 });//铺底料槽上方箭头
@@ -716,14 +718,17 @@ namespace NBSJ_MAIN_UC
             this.pipeLine16.Size = new System.Drawing.Size((int)(huanLengJiUC1.Width * 0.46f), 15);
 
             //Z71成品皮带
-            this.pipeLine11.Location = new System.Drawing.Point((int)(this.Width * 0.25f), (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y) + 40);
+            //this.pipeLine11.Location = new System.Drawing.Point((int)(this.Width * 0.25f), (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y) + 40);
+            this.pipeLine11.Location = new System.Drawing.Point((int)(this.Width * 0.25f), (int)((int)(this.Height * 0.18f) + removeDustUC1.Location.Y + removeDustUC1.Height - (int)(removeDustUC1.Height * 0.23f)) + 40);
             this.pipeLine11.Size = new System.Drawing.Size((int)(this.Width * 0.25f + this.shaiZiUC1.Width / 2), 15);
 
             //CP1成品皮带
-            this.pipeLine12.Location = new System.Drawing.Point(10, (int)(this.shaiZiUC1.Height + 10 + shaiZiUC1.Location.Y + 45));
+            //this.pipeLine12.Location = new System.Drawing.Point(10, (int)(this.shaiZiUC1.Height + 10 + shaiZiUC1.Location.Y + 45));
+            this.pipeLine12.Location = new System.Drawing.Point(10, (int)((int)(this.Height * 0.18f) + removeDustUC1.Location.Y + removeDustUC1.Height - (int)(removeDustUC1.Height * 0.23f)) + 55);
             this.pipeLine12.Size = new System.Drawing.Size((int)(this.Width * 0.25f), 15);
 
-            labSJK1.Location = new System.Drawing.Point(10 + this.pipeLine12.Width / 3, (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y + 35));
+            //labSJK1.Location = new System.Drawing.Point(10 + this.pipeLine12.Width / 3, (int)(this.shaiZiUC1.Height + shaiZiUC1.Location.Y + 35));
+            labSJK1.Location = new System.Drawing.Point(10 + this.pipeLine12.Width / 3, (int)((int)(this.Height * 0.18f) + removeDustUC1.Location.Y + removeDustUC1.Height - (int)(removeDustUC1.Height * 0.23f)) + 35);
 
             //右下筛子开始的箭头
             xStart = shaiZiUC1.Location.X + shaiZiUC1.Width;
@@ -779,9 +784,10 @@ namespace NBSJ_MAIN_UC
 
                 //labQuyangTime.Location
                 //取样1时间位置
-                labQuyangTime1.Location = new System.Drawing.Point(this.pipeLine12.Location.X + pipeLine12.Width / 2 + 400, this.pipeLine12.Location.Y - 40);
-
-                labQuyangTime.Location = new System.Drawing.Point(this.pipeLine12.Location.X + 100, this.pipeLine12.Location.Y + 22);
+                //labQuyangTime1.Location = new System.Drawing.Point(this.pipeLine12.Location.X + pipeLine12.Width / 2 + 400, this.pipeLine12.Location.Y - 40);
+                //取样点2位置
+                //labQuyangTime.Location = new System.Drawing.Point(this.pipeLine12.Location.X + 100, this.pipeLine12.Location.Y + 22);
+                labQuyangTime.Location= new System.Drawing.Point(this.rbtnQuYangDian.Location.X + 65, this.rbtnQuYangDian.Location.Y+5);
                 this.TextQuYangTime.Location = new System.Drawing.Point(this.pipeLine12.Location.X + pipeLine12.Width / 3, this.pipeLine12.Location.Y + 20);
             }
             //point1 = point2;
@@ -1351,15 +1357,15 @@ namespace NBSJ_MAIN_UC
             {
                 //Bind_comboBox1(mc_GUIDE_SAMPLING);
 
-                labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                labQuyangTime.Text = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                //labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
                 if (mc_GUIDE_SAMPLING.SAMPLE_TIME_1 <= DateTime.Now)
                 {
                     labQuyangTime.Text = "";
                 }
                 if (mc_GUIDE_SAMPLING.SAMPLE_TIME_0 <= DateTime.Now)
                 {
-                    labQuyangTime1.Text = "";
+                    //labQuyangTime1.Text = "";
                 }
             };
             this.Invoke(ShowInfo);
@@ -1467,8 +1473,8 @@ namespace NBSJ_MAIN_UC
 
                     //quyangTime = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
                     //labQuyangTime.Text = quyangTime;
-                    labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                    labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                    labQuyangTime.Text = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                    //labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
                     MessageBox.Show("换新料成功.");
                     btnHuanXinLiao.Enabled = true;
                 };
@@ -1479,8 +1485,8 @@ namespace NBSJ_MAIN_UC
                 aaa ShowInfo = delegate ()
                 {
                     // Bind_comboBox1(mc_GUIDE_SAMPLING);
-                    labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                    labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                    labQuyangTime.Text = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                    //labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
                 };
                 this.Invoke(ShowInfo);
 
@@ -1503,8 +1509,8 @@ namespace NBSJ_MAIN_UC
                 aaa ShowInfo = delegate ()
                 {
                     //Bind_comboBox1(mc_GUIDE_SAMPLING);
-                    labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                    labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                    labQuyangTime.Text = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                    //labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
                 };
                 this.Invoke(ShowInfo);
             }

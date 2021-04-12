@@ -43,10 +43,10 @@ namespace UserControlIndex
             //graphics.DrawString("温度PV:" + fireTemp, Font, Brushes.Black, new Rectangle(0, 16, (int)(this.Width), 15), this.sf);
             //graphics.DrawString("目标温度:" + tagTemp+"℃", Font, Brushes.Black, new Rectangle(0, 1, (int)(this.Width), 15), this.sf);
             //graphics.DrawString("点火温度:" + fireTemp + "℃", Font, Brushes.Black, new Rectangle(0, 16, (int)(this.Width), 15), this.sf);
-            graphics.DrawString("点火温度1: " + tagTemp + "℃", Font, Brushes.Black, new Rectangle(0, 1, (int)(this.Width), 15), this.sf);
-            graphics.DrawString("点火温度2: " + fireTemp + "℃", Font, Brushes.Black, new Rectangle(0, 16, (int)(this.Width), 15), this.sf);
-            graphics.DrawString("煤气流量 : " + coalGasFlow + "m³/h", Font, Brushes.Black, new Rectangle(0, 31, (int)(this.Width), 15), this.sf);
-            graphics.DrawString("空气流量 : " + airFlow + "m³/h", Font, Brushes.Black, new Rectangle(0, 46, (int)(this.Width), 15), this.sf);
+            graphics.DrawString("点火温度1: " + tagTemp + "℃", Font, Brushes.Black, new Rectangle(0, 21, (int)(this.Width), 15), this.sf);
+            graphics.DrawString("点火温度2: " + fireTemp + "℃", Font, Brushes.Black, new Rectangle(0, 36, (int)(this.Width), 15), this.sf);
+            graphics.DrawString("煤气流量 : " + coalGasFlow + "m³/h", Font, Brushes.Black, new Rectangle(0, 51, (int)(this.Width), 15), this.sf);
+            graphics.DrawString("空气流量 : " + airFlow + "m³/h", Font, Brushes.Black, new Rectangle(0, 66, (int)(this.Width), 15), this.sf);
             //graphics.DrawString("天然气流量: " + t_IG_NATURAL_PV_3S + "m³/h", Font, Brushes.Black, new Rectangle(0, 61, (int)(this.Width), 15), this.sf);
 
         }

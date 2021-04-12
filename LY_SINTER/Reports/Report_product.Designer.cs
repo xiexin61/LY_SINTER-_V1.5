@@ -117,6 +117,22 @@
             this.dataGridViewTextBoxColumn29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.rowMergeView3 = new RowMergeView();
+            this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BATCH_NUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.d2 = new System.Windows.Forms.DataGridView();
@@ -138,22 +154,6 @@
             this.yhj2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label4 = new System.Windows.Forms.Label();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
-            this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BATCH_NUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -963,6 +963,128 @@
             this.rowMergeView3.Size = new System.Drawing.Size(757, 143);
             this.rowMergeView3.TabIndex = 13;
             // 
+            // ClassName
+            // 
+            this.ClassName.DataPropertyName = "ClassName";
+            this.ClassName.FillWeight = 135.6699F;
+            this.ClassName.HeaderText = "班次";
+            this.ClassName.Name = "ClassName";
+            this.ClassName.ReadOnly = true;
+            // 
+            // BATCH_NUM
+            // 
+            this.BATCH_NUM.DataPropertyName = "BATCH_NUM";
+            this.BATCH_NUM.FillWeight = 96.90704F;
+            this.BATCH_NUM.HeaderText = "批号";
+            this.BATCH_NUM.Name = "BATCH_NUM";
+            this.BATCH_NUM.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "SAMPLETIME";
+            this.dataGridViewTextBoxColumn10.FillWeight = 96.90704F;
+            this.dataGridViewTextBoxColumn10.HeaderText = "取样时间";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "C_TFE";
+            this.dataGridViewTextBoxColumn11.FillWeight = 96.90704F;
+            this.dataGridViewTextBoxColumn11.HeaderText = "TFe";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.DataPropertyName = "C_FEO";
+            this.dataGridViewTextBoxColumn12.FillWeight = 96.90704F;
+            this.dataGridViewTextBoxColumn12.HeaderText = "FeO";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            this.dataGridViewTextBoxColumn12.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.DataPropertyName = "C_CAO";
+            this.dataGridViewTextBoxColumn13.FillWeight = 96.90704F;
+            this.dataGridViewTextBoxColumn13.HeaderText = "CaO";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            this.dataGridViewTextBoxColumn13.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "C_SIO2";
+            this.dataGridViewTextBoxColumn14.FillWeight = 96.90704F;
+            this.dataGridViewTextBoxColumn14.HeaderText = "SiO2";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.DataPropertyName = "C_AL2O3";
+            this.dataGridViewTextBoxColumn15.FillWeight = 96.90704F;
+            this.dataGridViewTextBoxColumn15.HeaderText = "AL2O3";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
+            this.dataGridViewTextBoxColumn15.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "C_MGO";
+            this.dataGridViewTextBoxColumn16.FillWeight = 96.90704F;
+            this.dataGridViewTextBoxColumn16.HeaderText = "MgO";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "C_S";
+            this.dataGridViewTextBoxColumn17.FillWeight = 137.098F;
+            this.dataGridViewTextBoxColumn17.HeaderText = "S";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "C_R";
+            this.Column3.HeaderText = "R";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "C_TIO2";
+            this.Column4.HeaderText = "TiO2";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "C_TI";
+            this.Column5.HeaderText = "转鼓指数";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "GRIT_25_10";
+            this.Column6.HeaderText = "25~10";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "GRIT_5_10";
+            this.Column7.HeaderText = "10~5";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "GRIT_5";
+            this.Column8.HeaderText = "~5";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -1231,128 +1353,6 @@
             this.simpleButton5.TabIndex = 11;
             this.simpleButton5.Text = "导出";
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
-            // 
-            // ClassName
-            // 
-            this.ClassName.DataPropertyName = "ClassName";
-            this.ClassName.FillWeight = 135.6699F;
-            this.ClassName.HeaderText = "班次";
-            this.ClassName.Name = "ClassName";
-            this.ClassName.ReadOnly = true;
-            // 
-            // BATCH_NUM
-            // 
-            this.BATCH_NUM.DataPropertyName = "BATCH_NUM";
-            this.BATCH_NUM.FillWeight = 96.90704F;
-            this.BATCH_NUM.HeaderText = "批号";
-            this.BATCH_NUM.Name = "BATCH_NUM";
-            this.BATCH_NUM.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            this.dataGridViewTextBoxColumn10.DataPropertyName = "SAMPLETIME";
-            this.dataGridViewTextBoxColumn10.FillWeight = 96.90704F;
-            this.dataGridViewTextBoxColumn10.HeaderText = "取样时间";
-            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            this.dataGridViewTextBoxColumn10.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            this.dataGridViewTextBoxColumn11.DataPropertyName = "C_TFE";
-            this.dataGridViewTextBoxColumn11.FillWeight = 96.90704F;
-            this.dataGridViewTextBoxColumn11.HeaderText = "TFe";
-            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            this.dataGridViewTextBoxColumn11.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            this.dataGridViewTextBoxColumn12.DataPropertyName = "C_FEO";
-            this.dataGridViewTextBoxColumn12.FillWeight = 96.90704F;
-            this.dataGridViewTextBoxColumn12.HeaderText = "FeO";
-            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            this.dataGridViewTextBoxColumn12.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            this.dataGridViewTextBoxColumn13.DataPropertyName = "C_CAO";
-            this.dataGridViewTextBoxColumn13.FillWeight = 96.90704F;
-            this.dataGridViewTextBoxColumn13.HeaderText = "CaO";
-            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            this.dataGridViewTextBoxColumn13.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            this.dataGridViewTextBoxColumn14.DataPropertyName = "C_SIO2";
-            this.dataGridViewTextBoxColumn14.FillWeight = 96.90704F;
-            this.dataGridViewTextBoxColumn14.HeaderText = "SiO2";
-            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            this.dataGridViewTextBoxColumn14.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "C_AL2O3";
-            this.dataGridViewTextBoxColumn15.FillWeight = 96.90704F;
-            this.dataGridViewTextBoxColumn15.HeaderText = "AL2O3";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            this.dataGridViewTextBoxColumn16.DataPropertyName = "C_MGO";
-            this.dataGridViewTextBoxColumn16.FillWeight = 96.90704F;
-            this.dataGridViewTextBoxColumn16.HeaderText = "MgO";
-            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            this.dataGridViewTextBoxColumn16.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            this.dataGridViewTextBoxColumn17.DataPropertyName = "C_S";
-            this.dataGridViewTextBoxColumn17.FillWeight = 137.098F;
-            this.dataGridViewTextBoxColumn17.HeaderText = "S";
-            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            this.dataGridViewTextBoxColumn17.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "C_R";
-            this.Column3.HeaderText = "R";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "C_TIO2";
-            this.Column4.HeaderText = "TiO2";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "C_TI";
-            this.Column5.HeaderText = "转鼓指数";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "GRIT_25_10";
-            this.Column6.HeaderText = "25~10";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "GRIT_5_10";
-            this.Column7.HeaderText = "10~5";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "GRIT_5";
-            this.Column8.HeaderText = "~5";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
             // 
             // Report_product
             // 

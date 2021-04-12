@@ -248,6 +248,7 @@ namespace LY_SINTER.PAGE.HIS
             shuju();//左数据项
             Task.Factory.StartNew(() =>
             {
+                time();//最新调整时间
                 while (true)
                 {
                     time();//最新调整时间
@@ -281,9 +282,10 @@ namespace LY_SINTER.PAGE.HIS
         {
             try
             {
-                string sql1 = "select top 1 TIMESTAMP from C_PLC_3S order by TIMESTAMP desc";
+                /*string sql1 = "select top 1 TIMESTAMP from C_PLC_3S order by TIMESTAMP desc";
                 DataTable dataTable1 = dBSQL.GetCommand(sql1);
-                string zxsj = dataTable1.Rows[0][0].ToString();
+                string zxsj = dataTable1.Rows[0][0].ToString();*/
+                string zxsj = DateTime.Now.ToString();
                 label3.Text = "最新调整时间:" + zxsj;
             }
             catch
@@ -1209,7 +1211,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "主轴频率",
                 ItemsSource = Line1,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}1#主轴频率:{4}",
+                TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm}1#主轴频率:{4}",
             };
             _myPlotModel.Series.Add(checkBox1_1);
             //plotView1.Model = _myPlotModel;
@@ -1260,7 +1262,7 @@ namespace LY_SINTER.PAGE.HIS
                 MarkerType = MarkerType.None,
                 YAxisKey = "主轴频率",
                 ItemsSource = Line2,
-                TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}2#主轴频率:{4}",
+                TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm}2#主轴频率:{4}",
             };
             _myPlotModel.Series.Add(checkBox2_1);
             /*plotView1.Model = _myPlotModel;*/
