@@ -1,4 +1,5 @@
-﻿using LY_SINTER.Popover.Analysis;
+﻿using LY_SINTER.Custom;
+using LY_SINTER.Popover.Analysis;
 namespace LY_SINTER.PAGE.Analysis
 {
     partial class shengchanzuzhi

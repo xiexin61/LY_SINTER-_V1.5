@@ -93,6 +93,117 @@ namespace MIXHMICAL
             return true;
         }
 
+        ////配比%计算
+
+        ///// <summary>
+        /////
+        ///// 当前配比% curpb
+        ///// mode 配比类型
+        ///// 1：设定配比,计算设定%；2：当前配比，计算当前%
+        ///// </summary>
+        //public int CalPB(int mode)
+        //{
+        //    DBSQL _mdb = new DBSQL(_connstring);
+        //    //配比计算
+        //    string sql = "select distinct peinimingcheng,peibizhi from dbo.CFG_MAT_L2_PBSD_INTERFACE";
+        //    // 执行sql语句
+        //    DataTable _dt = _mdb.GetCommand(sql);
+        //    if (mode == 1)
+        //    {
+        //        //设定配比计算
+        //        Dictionary<int, Tuple<int, float>> _Dic = new Dictionary<int, Tuple<int, float>>();
+        //        float PbSum = 0;
+        //        for (int i = 0; i < _dt.Rows.Count; i++)
+        //        {
+        //            var _r = _dt.Rows[i];
+        //            int rr = int.Parse(_r[0].ToString());
+        //            float fr = float.Parse(_r[1].ToString());
+        //            _Dic.Add(i, new Tuple<int, float>(rr, fr));//配比ID，配比值
+        //            PbSum += fr;
+        //        }
+        //        for (int i = 0; i < _dt.Rows.Count; i++)
+        //        {
+        //            Tuple<int, float> _temp = new Tuple<int, float>(_Dic[i].Item1, _Dic[i].Item2 / PbSum * 100);
+        //            _Dic.Remove(i);
+        //            _Dic.Add(i, _temp);
+        //        }
+
+        //        //更新数据库表
+        //        string sql_0 = "update CFG_MAT_L2_SJPB_INTERFACE set MAT_L2_SDBFB=";
+
+        //        for (int i = 0; i < _dt.Rows.Count; i++)
+        //        {
+        //            Tuple<int, float> _temp = new Tuple<int, float>(_Dic[i].Item1, _Dic[i].Item2);
+
+        //            string usql = "";
+        //            usql = sql_0 + _temp.Item2 + " where MAT_PB_ID=" + _temp.Item1;
+
+        //            int rs = _mdb.CommandExecuteNonQuery(usql);
+        //            if (rs > 0)
+        //            {
+        //                //插入日志表
+        //                Console.WriteLine("更新数据库表CFG_MAT_L2_SJPB_INTERFACE成功({0})", rs);
+        //            }
+        //            else
+        //            {
+        //                //插入日志表
+        //                Console.WriteLine("更新数据库表CFG_MAT_L2_SJPB_INTERFACE失败({0})", usql);
+        //                return -1;
+        //            }
+        //        }
+        //    }
+        //    else if (mode == 2)
+        //    {
+        //        //当前配比计算
+        //        Dictionary<int, Tuple<int, float, float>> _Dic = new Dictionary<int, Tuple<int, float, float>>();
+        //        float PbSum = 0;
+        //        for (int i = 0; i < _dt.Rows.Count; i++)
+        //        {
+        //            var _r = _dt.Rows[i];
+        //            int rr = int.Parse(_r[0].ToString());
+        //            float fr = float.Parse(_r[1].ToString());
+        //            _Dic.Add(i, new Tuple<int, float, float>(rr, fr, fr));//配比ID，配比值
+        //            PbSum += fr;
+        //        }
+        //        for (int i = 0; i < _dt.Rows.Count; i++)
+        //        {
+        //            Tuple<int, float, float> _temp = new Tuple<int, float, float>(_Dic[i].Item1, _Dic[i].Item2 / PbSum * 100, _Dic[i].Item3);
+        //            _Dic.Remove(i);
+        //            _Dic.Add(i, _temp);
+        //        }
+
+        //        //更新数据库表
+        //        string sql_0 = "update CFG_MAT_L2_SJPB_INTERFACE set MAT_L2_DQPB=";
+
+        //        for (int i = 0; i < _dt.Rows.Count; i++)
+        //        {
+        //            Tuple<int, float, float> _temp = new Tuple<int, float, float>(_Dic[i].Item1, _Dic[i].Item2, _Dic[i].Item3);
+
+        //            string sql_1 = sql_0 + _temp.Item3 + " ,MAT_L2_DQBFB= " + _temp.Item2 + " where MAT_PB_ID=" + _temp.Item1;
+
+        //            int rs = _mdb.CommandExecuteNonQuery(sql_1);
+        //            if (rs > 0)
+        //            {
+        //                //插入日志表
+        //                Console.WriteLine("更新数据库表CFG_MAT_L2_SJPB_INTERFACE成功({0})", rs);
+        //            }
+        //            else
+        //            {
+        //                //插入日志表
+        //                Console.WriteLine("更新数据库表CFG_MAT_L2_SJPB_INTERFACE失败({0})", sql_0);
+        //                return -2;
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        //插入日志表
+        //        Console.WriteLine("配比计算模式错误({0})", mode);
+        //        return -3;
+        //    }
+
+        //    return 1;
+        //}
         //配比%计算
 
         /// <summary>
@@ -103,11 +214,34 @@ namespace MIXHMICAL
         /// </summary>
         public int CalPB(int mode)
         {
-            DBSQL _mdb = new DBSQL(_connstring);
+            DBSQL _mdb = new DBSQL(ConstParameters.strCon);
             //配比计算
             string sql = "select distinct peinimingcheng,peibizhi from dbo.CFG_MAT_L2_PBSD_INTERFACE";
-            // 执行sql语句
+            //20200729 添加功能——计算设定配比%和启停信号进行绑定
+            string _sql_1 = "SELECT * FROM (select sum(CAST(MAT_L2_XLKZT AS INT)) AS XLK_SUM, MAT_PB_ID from " +
+                "dbo.CFG_MAT_L2_XLK_INTERFACE group by MAT_PB_ID ) W WHERE W.XLK_SUM = 0";
+            DataTable _dt_1 = _mdb.GetCommand(_sql_1);
+            if (_dt_1 == null)
+            {
+                mixlog.writelog("数据库连接错误", -1);
+                return -1;
+            }
+            bool CalCptFlag = false;//不需要特殊对待  某个P配比  对应下料口都禁用的情况
+            var _vdt_1 = _dt_1.AsEnumerable();
+            List<int> _vPbId = new List<int>();
+            if (_vdt_1.Count() > 0)
+            {
+                CalCptFlag = true;
+                foreach (var x in _vdt_1)
+                {
+                    int _vtemp = int.Parse(x[1].ToString());
+                    _vPbId.Add(_vtemp);
+                }
+            }
+            //20200729
+            // 执行sql语句//
             DataTable _dt = _mdb.GetCommand(sql);
+
             if (mode == 1)
             {
                 //设定配比计算
@@ -118,6 +252,10 @@ namespace MIXHMICAL
                     var _r = _dt.Rows[i];
                     int rr = int.Parse(_r[0].ToString());
                     float fr = float.Parse(_r[1].ToString());
+                    //20200729 修改计算设定配比逻辑
+                    if (_vPbId.Contains(rr))
+                        fr = 0;
+                    //20200729
                     _Dic.Add(i, new Tuple<int, float>(rr, fr));//配比ID，配比值
                     PbSum += fr;
                 }
@@ -139,7 +277,7 @@ namespace MIXHMICAL
                     usql = sql_0 + _temp.Item2 + " where MAT_PB_ID=" + _temp.Item1;
 
                     int rs = _mdb.CommandExecuteNonQuery(usql);
-                    if (rs > 0)
+                    if (rs >= 0)
                     {
                         //插入日志表
                         Console.WriteLine("更新数据库表CFG_MAT_L2_SJPB_INTERFACE成功({0})", rs);
@@ -162,6 +300,10 @@ namespace MIXHMICAL
                     var _r = _dt.Rows[i];
                     int rr = int.Parse(_r[0].ToString());
                     float fr = float.Parse(_r[1].ToString());
+                    //20200729 修改计算设定配比逻辑
+                    if (_vPbId.Contains(rr))
+                        fr = 0;
+                    //20200729
                     _Dic.Add(i, new Tuple<int, float, float>(rr, fr, fr));//配比ID，配比值
                     PbSum += fr;
                 }
@@ -182,7 +324,148 @@ namespace MIXHMICAL
                     string sql_1 = sql_0 + _temp.Item3 + " ,MAT_L2_DQBFB= " + _temp.Item2 + " where MAT_PB_ID=" + _temp.Item1;
 
                     int rs = _mdb.CommandExecuteNonQuery(sql_1);
-                    if (rs > 0)
+                    if (rs >= 0)
+                    {
+                        //插入日志表
+                        Console.WriteLine("更新数据库表CFG_MAT_L2_SJPB_INTERFACE成功({0})", rs);
+                    }
+                    else
+                    {
+                        //插入日志表
+                        Console.WriteLine("更新数据库表CFG_MAT_L2_SJPB_INTERFACE失败({0})", sql_0);
+                        return -2;
+                    }
+                }
+            }
+            else
+            {
+                //插入日志表
+                Console.WriteLine("配比计算模式错误({0})", mode);
+                return -3;
+            }
+
+            return 1;
+        }
+
+        /// <summary>
+        ///
+        /// 当前配比% curpb
+        /// mode 配比类型
+        /// 1：设定配比,计算设定%；2：当前配比，计算当前%（演算模式）
+        /// </summary>
+        public int CalPB_1(int mode)
+        {
+            DBSQL _mdb = new DBSQL(ConstParameters.strCon);
+            //配比计算
+            string sql = "select distinct peinimingcheng,peibizhi from dbo.CFG_MAT_L2_PBSD_INTERFACE_CalCulus";
+            //20200729 添加功能——计算设定配比%和启停信号进行绑定
+            string _sql_1 = "SELECT * FROM (select sum(CAST(MAT_L2_XLKZT AS INT)) AS XLK_SUM, MAT_PB_ID from " +
+                "dbo.CFG_MAT_L2_XLK_INTERFACE group by MAT_PB_ID ) W WHERE W.XLK_SUM = 0";
+            DataTable _dt_1 = _mdb.GetCommand(_sql_1);
+            if (_dt_1 == null)
+            {
+                mixlog.writelog("数据库连接错误", -1);
+                return -1;
+            }
+            bool CalCptFlag = false;//不需要特殊对待  某个P配比  对应下料口都禁用的情况
+            var _vdt_1 = _dt_1.AsEnumerable();
+            List<int> _vPbId = new List<int>();
+            if (_vdt_1.Count() > 0)
+            {
+                CalCptFlag = true;
+                foreach (var x in _vdt_1)
+                {
+                    int _vtemp = int.Parse(x[1].ToString());
+                    _vPbId.Add(_vtemp);
+                }
+            }
+            //20200729
+            // 执行sql语句//
+            DataTable _dt = _mdb.GetCommand(sql);
+
+            if (mode == 1)
+            {
+                //设定配比计算
+                Dictionary<int, Tuple<int, float>> _Dic = new Dictionary<int, Tuple<int, float>>();
+                float PbSum = 0;
+                for (int i = 0; i < _dt.Rows.Count; i++)
+                {
+                    var _r = _dt.Rows[i];
+                    int rr = int.Parse(_r[0].ToString());
+                    float fr = float.Parse(_r[1].ToString());
+                    //20200729 修改计算设定配比逻辑
+                    if (_vPbId.Contains(rr))
+                        fr = 0;
+                    //20200729
+                    _Dic.Add(i, new Tuple<int, float>(rr, fr));//配比ID，配比值
+                    PbSum += fr;
+                }
+                for (int i = 0; i < _dt.Rows.Count; i++)
+                {
+                    Tuple<int, float> _temp = new Tuple<int, float>(_Dic[i].Item1, _Dic[i].Item2 / PbSum * 100);
+                    _Dic.Remove(i);
+                    _Dic.Add(i, _temp);
+                }
+
+                //更新数据库表
+                string sql_0 = "update CFG_MAT_L2_SJPB_INTERFACE_CalCulus set MAT_L2_SDBFB=";
+
+                for (int i = 0; i < _dt.Rows.Count; i++)
+                {
+                    Tuple<int, float> _temp = new Tuple<int, float>(_Dic[i].Item1, _Dic[i].Item2);
+
+                    string usql = "";
+                    usql = sql_0 + _temp.Item2 + " where MAT_PB_ID=" + _temp.Item1;
+
+                    int rs = _mdb.CommandExecuteNonQuery(usql);
+                    if (rs >= 0)
+                    {
+                        //插入日志表
+                        Console.WriteLine("更新数据库表CFG_MAT_L2_SJPB_INTERFACE成功({0})", rs);
+                    }
+                    else
+                    {
+                        //插入日志表
+                        Console.WriteLine("更新数据库表CFG_MAT_L2_SJPB_INTERFACE失败({0})", usql);
+                        return -1;
+                    }
+                }
+            }
+            else if (mode == 2)
+            {
+                //当前配比计算
+                Dictionary<int, Tuple<int, float, float>> _Dic = new Dictionary<int, Tuple<int, float, float>>();
+                float PbSum = 0;
+                for (int i = 0; i < _dt.Rows.Count; i++)
+                {
+                    var _r = _dt.Rows[i];
+                    int rr = int.Parse(_r[0].ToString());
+                    float fr = float.Parse(_r[1].ToString());
+                    //20200729 修改计算设定配比逻辑
+                    if (_vPbId.Contains(rr))
+                        fr = 0;
+                    //20200729
+                    _Dic.Add(i, new Tuple<int, float, float>(rr, fr, fr));//配比ID，配比值
+                    PbSum += fr;
+                }
+                for (int i = 0; i < _dt.Rows.Count; i++)
+                {
+                    Tuple<int, float, float> _temp = new Tuple<int, float, float>(_Dic[i].Item1, _Dic[i].Item2 / PbSum * 100, _Dic[i].Item3);
+                    _Dic.Remove(i);
+                    _Dic.Add(i, _temp);
+                }
+
+                //更新数据库表
+                string sql_0 = "update CFG_MAT_L2_SJPB_INTERFACE_INTERFACE set MAT_L2_DQPB=";
+
+                for (int i = 0; i < _dt.Rows.Count; i++)
+                {
+                    Tuple<int, float, float> _temp = new Tuple<int, float, float>(_Dic[i].Item1, _Dic[i].Item2, _Dic[i].Item3);
+
+                    string sql_1 = sql_0 + _temp.Item3 + " ,MAT_L2_DQBFB= " + _temp.Item2 + " where MAT_PB_ID=" + _temp.Item1;
+
+                    int rs = _mdb.CommandExecuteNonQuery(sql_1);
+                    if (rs >= 0)
                     {
                         //插入日志表
                         Console.WriteLine("更新数据库表CFG_MAT_L2_SJPB_INTERFACE成功({0})", rs);
@@ -5626,6 +5909,249 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             return new Tuple<Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>>, Dictionary<int, float>>(_rs, noFuel);
         }
 
+        /// <summary>
+        /// 数据准备(演算模式)
+        /// </summary>
+        /// <returns>
+        /// item_1
+        /// key:0、非燃料或溶剂  1、溶剂  2、燃料
+        /// value:仓号，类别，物料二级编码，下料口，下料口启用标识，分仓系数和，成分
+        /// item_2
+        /// key:仓号(非燃料或溶剂 且 为启用状态)
+        /// value:配比值
+        /// </returns>
+        private Tuple<Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>>, Dictionary<int, float>> houseData_1()
+        {
+            //初始化数据库
+            DBSQL _mdb = new DBSQL(_connstring);
+            //返回结果
+
+            Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>> _rs = new Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>>();
+            Dictionary<int, float> noFuel = new Dictionary<int, float>();
+            //string sql_0 = "select p.canghao,p.category,b.L2_CODE,c.MAT_L2_XLK,c.MAT_L2_XLKZT,c.MAT_L2_FCXS,isnull(b.C_TFE,0) cf1,isnull(b.C_FEO,0) cf2,isnull(b.C_CAO,0) cf3,isnull(b.C_SIO2,0) cf4,isnull(b.C_AL2O3, 0) cf5,isnull(b.C_MGO, 0) cf6,isnull(b.C_S, 0) cf7,isnull(b.C_P, 0) cf8,isnull(b.C_C, 0) cf9,"
+            //                + "isnull(b.C_MN, 0) cf10,isnull(b.C_LOT,0) cf11,isnull(b.C_R, 0) cf12,isnull(b.C_H2O, 0) cf13,isnull(b.C_ASH, 0) cf14,isnull(b.C_VOLATILES, 0) cf15,isnull(b.C_TIO2, 0) cf16,isnull(b.C_K2O, 0) cf17,isnull(b.C_NA2O, 0) cf18,"
+            //                + "isnull(b.C_PBO, 0) cf19,isnull(b.C_ZNO, 0) cf20,p.peinimingcheng,p.peibizhi from dbo.CFG_MAT_L2_PBSD_INTERFACE p, dbo.M_MATERIAL_BINS b, dbo.CFG_MAT_L2_XLK_INTERFACE c where p.canghao = b.BIN_NUM_SHOW and p.canghao = c.MAT_L2_CH";// "select p.canghao,p.peinimingcheng,p.category,b.L2_CODE from dbo.CFG_MAT_L2_PBSD_INTERFACE p,dbo.M_MATERIAL_BINS b where p.canghao=b.BIN_NUM_SHOW";
+            //依次获取仓号，所属类别，二级编码，下料口号，下料口状态，分仓系数，30个成分，配比名称，配比值等数据
+            string sql_0 = "select p.canghao,p.category,b.L2_CODE,c.MAT_L2_XLK,c.MAT_L2_XLKZT,c.MAT_L2_FCXS,isnull(b.C_TFE,0) cf1,"
+           + "isnull(b.C_FEO, 0) cf2,isnull(b.C_CAO, 0) cf3,isnull(b.C_SIO2, 0) cf4,isnull(b.C_AL2O3, 0) cf5,isnull(b.C_MGO, 0) cf6,"
+           + "isnull(b.C_S, 0) cf7,isnull(b.C_P, 0) cf8,isnull(b.C_C, 0) cf9,isnull(b.C_MN, 0) cf10,isnull(b.C_LOT, 0) cf11,isnull(b.C_R, 0) cf12,"
+           + "isnull(b.C_H2O, 0) cf13,isnull(b.C_ASH, 0) cf14,isnull(b.C_VOLATILES, 0) cf15,isnull(b.C_TIO2, 0) cf16,isnull(b.C_K2O, 0) cf17,"
+           + "isnull(b.C_NA2O, 0) cf18,isnull(b.C_PBO, 0) cf19,isnull(b.C_ZNO, 0) cf20,isnull(b.C_F, 0) cf21,isnull(b.C_AS, 0) cf22,isnull(b.C_CU, 0) cf23,"
+           + "isnull(b.C_PB, 0) cf24,isnull(b.C_ZN, 0) cf25,isnull(b.C_K, 0) cf26,isnull(b.C_NA, 0) cf27,isnull(b.C_CR, 0) cf28,isnull(b.C_NI, 0) cf29,"
+           + "isnull(b.C_MNO, 0) cf30,p.peinimingcheng,p.peibizhi from dbo.CFG_MAT_L2_PBSD_INTERFACE_CalCulus p, dbo.M_MATERIAL_BINS b, dbo.CFG_MAT_L2_XLK_INTERFACE c where p.canghao = b.BIN_NUM_SHOW and p.canghao = c.MAT_L2_CH order by p.category asc";
+            DataTable _dt = _mdb.GetCommand(sql_0);
+            if (_dt == null)
+            {
+                return null;
+            }
+            else
+            {
+                var _vdt = _dt.AsEnumerable();
+                int p0 = 0, p1 = 0, p2 = 0, p3 = 0, p4 = 0, p26 = 0;
+                float p5 = 0, p27 = 0;
+
+                foreach (var x in _vdt)
+                {
+                    List<float> p7s = new List<float>();
+                    p0 = int.Parse(x[0].ToString());//仓号
+                    p1 = int.Parse(x[1].ToString());//类别:0：非熔剂、非燃料、非烧返、非白云石配比；1：熔剂配比；2：燃料配比；3：烧返配比；4：白云石配比
+                    p2 = int.Parse(x[2].ToString());//二级编码
+                    p3 = int.Parse(x[3].ToString());//下料口
+                    p4 = int.Parse(x[4].ToString());//下料口状态
+                    p5 = float.Parse(x[5].ToString());//分仓系数
+                    p26 = int.Parse(x[36].ToString());//配比ID
+                    p27 = float.Parse(x[37].ToString());//配比值
+                    for (int p = 0; p < 30; p++)
+                    {
+                        p7s.Add(float.Parse(x[p + 6].ToString()));
+                    }
+                    Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>> trs = new Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>(p0, p1, p2, p3, p4, p5, p7s, new Tuple<int, float>(p26, p27));
+                    if (_rs.ContainsKey(p1))
+                    {
+                        _rs[p1].Add(trs);
+                    }
+                    else
+                    {
+                        List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>> ltrs = new List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>();
+
+                        _rs.Add(p1, ltrs);
+
+                        _rs[p1].Add(trs);
+                    }
+                }
+            }
+
+            //查询启动状态的仓、分仓系数以及配比值
+            //string sql_1 = "select w.MAT_L2_CH,w.SumCol,w.SumCol*t.peibizhi as PbVal from (select k.MAT_L2_CH,SUM(k.MAT_L2_FCXS) as SumCol from dbo.CFG_MAT_L2_XLK_INTERFACE k " +
+            //                "where k.MAT_L2_XLKZT = 1 group by k.MAT_L2_CH) w inner join dbo.CFG_MAT_L2_PBSD_INTERFACE t  on w.MAT_L2_CH = t.canghao where t.category=0";
+
+            //查询仓号，分仓系数/分仓系数和  ,配比ID, where 下料口为启动状态=1 连接 配置值 配比名称 仓号 所属分类
+            string sql_1 = "select *  from (((select k.MAT_L2_CH, k.MAT_L2_FCXS / w.SumCol as BL from dbo.CFG_MAT_L2_XLK_INTERFACE k "
++ " inner join (select kk.MAT_PB_ID, SUM(kk.MAT_L2_FCXS) as SumCol from dbo.CFG_MAT_L2_XLK_INTERFACE kk where kk.MAT_L2_XLKZT = 1 group by kk.MAT_PB_ID) w on w.MAT_PB_ID = k.MAT_PB_ID)) g "
++ " join (select y.peibizhi, y.peinimingcheng, y.canghao,y.category from dbo.CFG_MAT_L2_PBSD_INTERFACE_CalCulus y) f on f.canghao = g.MAT_L2_CH) where category=0";
+
+            DataTable _dts = _mdb.GetCommand(sql_1);
+            if (_dts == null)
+            {
+                return null;
+            }
+            else
+            {
+                ///非燃料或者溶剂
+                ///仓号，配比值
+                ///
+                var _vdts = _dts.AsEnumerable();
+                //Dictionary<int, float> noFuel = new Dictionary<int, float>();
+                int p0 = 0;
+                float p1 = 0, p2 = 0;
+                for (int i = 0; i < _vdts.Count(); i++)
+                {
+                    p0 = int.Parse(_vdts.ElementAt(i)[0].ToString());//仓号
+                    p1 = float.Parse(_vdts.ElementAt(i)[1].ToString());// 分仓系数/分仓系数和
+                    p2 = float.Parse(_vdts.ElementAt(i)[2].ToString()); //配比ID
+                    p1 *= p2;
+
+                    if (noFuel.ContainsKey(p0))//一仓多口
+                    {
+                        //累加
+                        float _temp = noFuel[p0] + p1;
+                        noFuel.Remove(p0);
+                        noFuel.Add(p0, _temp);
+                    }
+                    else
+                    {
+                        noFuel.Add(p0, p1);
+                    }
+                }
+            }
+
+            return new Tuple<Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>>, Dictionary<int, float>>(_rs, noFuel);
+        }
+
+        private Tuple<Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>>, Dictionary<int, float>> houseDataCRM_1()
+        {
+            //初始化数据库
+            DBSQL _mdb = new DBSQL(_connstring);
+            //返回结果
+
+            Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>> _rs = new Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>>();
+            Dictionary<int, float> noFuel = new Dictionary<int, float>();
+            //string sql_0 = "select p.canghao,p.category,b.L2_CODE,c.MAT_L2_XLK,c.MAT_L2_XLKZT,c.MAT_L2_FCXS,isnull(b.C_TFE,0) cf1,isnull(b.C_FEO,0) cf2,isnull(b.C_CAO,0) cf3,isnull(b.C_SIO2,0) cf4,isnull(b.C_AL2O3, 0) cf5,isnull(b.C_MGO, 0) cf6,isnull(b.C_S, 0) cf7,isnull(b.C_P, 0) cf8,isnull(b.C_C, 0) cf9,"
+            //                + "isnull(b.C_MN, 0) cf10,isnull(b.C_LOT,0) cf11,isnull(b.C_R, 0) cf12,isnull(b.C_H2O, 0) cf13,isnull(b.C_ASH, 0) cf14,isnull(b.C_VOLATILES, 0) cf15,isnull(b.C_TIO2, 0) cf16,isnull(b.C_K2O, 0) cf17,isnull(b.C_NA2O, 0) cf18,"
+            //                + "isnull(b.C_PBO, 0) cf19,isnull(b.C_ZNO, 0) cf20,p.peinimingcheng,p.peibizhi from dbo.CFG_MAT_L2_PBSD_INTERFACE p, dbo.M_MATERIAL_BINS b, dbo.CFG_MAT_L2_XLK_INTERFACE c where p.canghao = b.BIN_NUM_SHOW and p.canghao = c.MAT_L2_CH order by p.category asc";// "select p.canghao,p.peinimingcheng,p.category,b.L2_CODE from dbo.CFG_MAT_L2_PBSD_INTERFACE p,dbo.M_MATERIAL_BINS b where p.canghao=b.BIN_NUM_SHOW";
+
+            string sql_0 = "select p.canghao,p.category,b.L2_CODE,c.MAT_L2_XLK,c.MAT_L2_XLKZT,c.MAT_L2_FCXS,isnull(b.C_TFE,0) cf1,"
+            + "isnull(b.C_FEO, 0) cf2,isnull(b.C_CAO, 0) cf3,isnull(b.C_SIO2, 0) cf4,isnull(b.C_AL2O3, 0) cf5,isnull(b.C_MGO, 0) cf6,"
+            + "isnull(b.C_S, 0) cf7,isnull(b.C_P, 0) cf8,isnull(b.C_C, 0) cf9,isnull(b.C_MN, 0) cf10,isnull(b.C_LOT, 0) cf11,isnull(b.C_R, 0) cf12,"
+            + "isnull(b.C_H2O, 0) cf13,isnull(b.C_ASH, 0) cf14,isnull(b.C_VOLATILES, 0) cf15,isnull(b.C_TIO2, 0) cf16,isnull(b.C_K2O, 0) cf17,"
+            + "isnull(b.C_NA2O, 0) cf18,isnull(b.C_PBO, 0) cf19,isnull(b.C_ZNO, 0) cf20,isnull(b.C_F, 0) cf21,isnull(b.C_AS, 0) cf22,isnull(b.C_CU, 0) cf23,"
+            + "isnull(b.C_PB, 0) cf24,isnull(b.C_ZN, 0) cf25,isnull(b.C_K, 0) cf26,isnull(b.C_NA, 0) cf27,isnull(b.C_CR, 0) cf28,isnull(b.C_NI, 0) cf29,"
+            + "isnull(b.C_MNO, 0) cf30,p.peinimingcheng   ,p.peibizhi *c.MAT_L2_XLKZT as peibizhi from dbo.CFG_MAT_L2_PBSD_INTERFACE_CalCulus p, dbo.M_MATERIAL_BINS b, dbo.CFG_MAT_L2_XLK_INTERFACE c where p.canghao = b.BIN_NUM_SHOW and p.canghao = c.MAT_L2_CH order by p.category asc";
+            //
+
+            DataTable _dt = _mdb.GetCommand(sql_0);
+            if (_dt == null)
+            {
+                return null;
+            }
+            else
+            {
+                var _vdt = _dt.AsEnumerable();
+                int p0 = 0, p1 = 0, p2 = 0, p3 = 0, p4 = 0, p26 = 0;
+                float p5 = 0, p27 = 0;
+
+                foreach (var x in _vdt)
+                {
+                    List<float> p7s = new List<float>();
+
+                    p0 = int.Parse(x[0].ToString());//仓号
+                    p1 = int.Parse(x[1].ToString());//类别:0：非熔剂、非燃料、非烧返、非白云石配比；1：熔剂配比；2：燃料配比；3：烧返配比；4：白云石配比
+                    p2 = int.Parse(x[2].ToString());//二级编码
+                    p3 = int.Parse(x[3].ToString());//下料口
+                    p4 = int.Parse(x[4].ToString());//下料口状态
+                    p5 = float.Parse(x[5].ToString());//分仓系数
+                    p26 = int.Parse(x[36].ToString());//配比ID
+                    p27 = float.Parse(x[37].ToString());//配比值
+                    p27 = float.Parse(x[37].ToString());
+                    for (int p = 0; p < 30; p++)
+                    {
+                        p7s.Add(float.Parse(x[p + 6].ToString()));
+                    }
+                    //20210204烧返配比配比值处理
+                    //if (p1 == 3)
+                    //    p27 = p27 / 2;
+
+                    // Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>> trs = new Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>(p0, p1, p2, p3, p4, p5, p7s, new Tuple<int, float>(p26, p27));
+                    //20210409 item1 索引吧仓号换位配比值
+
+                    Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>> trs = new Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>(p0, p1, p2, p3, p4, p5, p7s, new Tuple<int, float>(p26, p27));
+
+                    if (_rs.ContainsKey(p1))
+                    {
+                        _rs[p1].Add(trs);
+                    }
+                    else
+                    {
+                        List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>> ltrs = new List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>();
+
+                        _rs.Add(p1, ltrs);
+
+                        _rs[p1].Add(trs);
+                    }
+                }
+            }
+
+            //查询启动状态的仓、分仓系数以及配比值
+            //       string sql_1 = "select *  from (((select k.MAT_L2_CH, k.MAT_L2_FCXS / w.SumCol as BL from dbo.CFG_MAT_L2_XLK_INTERFACE k "
+            //+ " inner join (select kk.MAT_PB_ID, SUM(kk.MAT_L2_FCXS) as SumCol from dbo.CFG_MAT_L2_XLK_INTERFACE kk where kk.MAT_L2_XLKZT = 1 group by kk.MAT_PB_ID) w on w.MAT_PB_ID = k.MAT_PB_ID)) g "
+            //+ " join (select y.peibizhi, y.peinimingcheng, y.canghao,y.category from dbo.CFG_MAT_L2_PBSD_INTERFACE y) f on f.canghao = g.MAT_L2_CH) where category=0 or category = 3";
+
+            string sql_1 = "select *  from (((select k.MAT_L2_CH, k.MAT_L2_FCXS / w.SumCol * k.MAT_L2_XLKZT as BL from dbo.CFG_MAT_L2_XLK_INTERFACE k "
+         + " inner join (select kk.MAT_PB_ID, SUM(kk.MAT_L2_FCXS) as SumCol from dbo.CFG_MAT_L2_XLK_INTERFACE kk where kk.MAT_L2_XLKZT = 1 group by kk.MAT_PB_ID) w on w.MAT_PB_ID = k.MAT_PB_ID)) g "
+         + " join (select y.peibizhi, y.peinimingcheng, y.canghao,y.category from dbo.CFG_MAT_L2_PBSD_INTERFACE_CalCulus y) f on f.canghao = g.MAT_L2_CH) where category=0 or category = 3";
+
+            //string sql_1 = "select *  from (((select k.MAT_L2_CH, k.MAT_L2_XLKZT / w.SumCol as BL from dbo.CFG_MAT_L2_XLK_INTERFACE k "
+            //+ " inner join (select kk.MAT_PB_ID, SUM(kk.MAT_L2_FCXS) as SumCol from dbo.CFG_MAT_L2_XLK_INTERFACE kk where kk.MAT_L2_XLKZT = 1 group by kk.MAT_PB_ID) w on w.MAT_PB_ID = k.MAT_PB_ID)) g "
+            //+ " join (select y.peibizhi, y.peinimingcheng, y.canghao,y.category from dbo.CFG_MAT_L2_PBSD_INTERFACE y) f on f.canghao = g.MAT_L2_CH) where category=0 or category = 3";
+
+            DataTable _dts = _mdb.GetCommand(sql_1);
+            if (_dts == null)
+            {
+                return null;
+            }
+            else
+            {
+                ///非燃料或者溶剂
+                ///仓号，配比值
+                ///
+                var _vdts = _dts.AsEnumerable();
+                //Dictionary<int, float> noFuel = new Dictionary<int, float>();
+                int p0 = 0;
+                float p1 = 0, p2 = 0;
+                for (int i = 0; i < _vdts.Count(); i++)
+                {
+                    p0 = int.Parse(_vdts.ElementAt(i)[0].ToString());
+                    p1 = float.Parse(_vdts.ElementAt(i)[1].ToString());
+                    p2 = float.Parse(_vdts.ElementAt(i)[2].ToString());
+                    p1 *= p2;
+
+                    if (noFuel.ContainsKey(p0))//一仓多口
+                    {
+                        //累加
+                        float _temp = noFuel[p0] + p1;
+                        noFuel.Remove(p0);
+                        noFuel.Add(p0, _temp);
+                    }
+                    else
+                    {
+                        noFuel.Add(p0, p1);
+                    }
+                }
+            }
+
+            return new Tuple<Dictionary<int, List<Tuple<int, int, int, int, int, float, List<float>, Tuple<int, float>>>>, Dictionary<int, float>>(_rs, noFuel);
+        }
+
         ///// <summary>
         ///// 计算溶剂和燃料的配比
         ///// </summary>
@@ -5894,6 +6420,137 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             }
         }
 
+        //界面调用计算配比 计算溶剂和燃料的配比(演算模式)
+        public Tuple<int, float, float> CptSolfuels_1(float C_Aim, float R_Aim, float R_md, float C_md)
+        {
+            //初始化数据库
+            DBSQL _mdb = new DBSQL(_connstring);
+            //返回结果
+            Tuple<float, float> rs = new Tuple<float, float>(0, 0);
+
+            float R_Aim_md = R_Aim + R_md;//目标碱度+R调整值
+            float C_Aim_md = C_Aim + C_md;//目标含碳+C调整值
+
+            float[] FuelAly = new float[30];          //燃料加权平均成分数组--包含30个成分
+            float[] FluxAly = new float[30];          //熔剂加权平均成分数组--包含30个成分
+
+            float sumCaO = 0;           //除熔剂、燃料调整仓以外原料带入烧结矿 CaO
+            float sumSiO2 = 0;          //除熔剂、燃料调整仓以外原料带入烧结矿 SiO2
+            float sumBill = 0;          //除熔剂、燃料调整仓以外原料总配比数
+            float sumC = 0;             //除熔剂、燃料调整仓以外原料带入烧结矿 C
+            float a1 = 0;               //燃料方程系数
+            float b1 = 0;               //燃料方程系数
+            float n1 = 0;               //燃料方程系数
+            float a2 = 0;               //熔剂方程系数
+            float b2 = 0;               //熔剂方程系数
+            float n2 = 0;               //熔剂方程系数
+            float Flux_Bill = 0;        //熔剂调整仓计算配比
+            float Fuel_Bill = 0;        //燃料调整仓计算配比
+            float F_CaO = 0;            //燃料调整仓燃料有效CaO
+            float F_SiO2 = 0;           //燃料调整仓燃料有效SiO2
+            float L_CaO = 0;            //熔剂调整仓熔剂有效CaO
+            float L_SiO2 = 0;           //熔剂调整仓熔剂有效SiO2
+
+            //  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19
+            // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO, ZnO    //宁钢检化验成分排序
+            //	                                             烧损         灰分 挥发分
+
+            /*20191224先根据配比和仓号的对应关系，对每个料仓是否为燃料和熔剂进行标记,根据标记情况选出熔剂和燃料仓号*/
+            var hrs = houseData_1();
+
+            for (int i = 0; i < 30; i++)//根据选择出的熔剂和燃料仓号，求出燃料和熔剂的加权平均成分
+            {
+                //燃料加权平均成分计算  //qxg Silo[i].use
+
+                //FuelAly[i] = ((Silo[燃料1仓号 - 1].aly[i] * Silo[燃料1仓号 - 1].use * Silo[燃料1仓号 - 1].allot) + (Silo[燃料2仓号 - 1].aly[i] * Silo[燃料2仓号 - 1].use * Silo[燃料2仓号 - 1].allot)) / (Silo[燃料1仓号 - 1].use * Silo[燃料1仓号 - 1].allot + Silo[燃料2仓号 - 1].use * Silo[燃料2仓号 - 1].allot);//有几个燃料仓，加权平均计算时就用几个仓
+                //FluxAly[i] = ((Silo[熔剂1仓号 - 1].aly[i] * Silo[熔剂1仓号 - 1].use * Silo[熔剂1仓号 - 1].allot) + (Silo[熔剂2仓号 - 1].aly[i] * Silo[熔剂2仓号 - 1].use * Silo[熔剂2仓号 - 1].allot)) / (Silo[熔剂1仓号 - 1].use * Silo[熔剂1仓号 - 1].allot + Silo[熔剂2仓号 - 1].use * Silo[熔剂2仓号 - 1].allot);//有几个熔剂仓，加权平均计算时就用几个仓
+                float sumFuelChild = 0;
+                float sumFuelMother = 0;
+                float sumFluxChild = 0;
+                float sumFluxMother = 0;
+                for (int j = 0; j < hrs.Item1[2].Count; j++)
+                {
+                    //燃料
+                    sumFuelChild += hrs.Item1[2][j].Item7[i] * hrs.Item1[2][j].Item5 * hrs.Item1[2][j].Item6;//成分*下料口状态*分仓系数
+                    sumFuelMother += hrs.Item1[2][j].Item5 * hrs.Item1[2][j].Item6;//下料口状态*分仓系数
+                }
+                FuelAly[i] = sumFuelChild / sumFuelMother;
+                for (int j = 0; j < hrs.Item1[1].Count; j++)
+                {
+                    //溶剂
+                    sumFluxChild += hrs.Item1[1][j].Item7[i] * hrs.Item1[1][j].Item5 * hrs.Item1[1][j].Item6;
+                    sumFluxMother += hrs.Item1[1][j].Item5 * hrs.Item1[1][j].Item6;
+                }
+                FluxAly[i] = sumFluxChild / sumFluxMother;
+            }
+
+            //
+            foreach (var x in hrs.Item2)//仓，配比值
+            {
+                foreach (var y in hrs.Item1[0])//非溶剂或燃料仓
+                {
+                    if (y.Item1.ToString() == x.Key.ToString())
+                    {
+                        //含碳量>30% 灰分>5% 则认为是燃料的一种，计算CaO、SiO2需要考虑灰分的量
+                        if (y.Item7[8] > 30 && y.Item7[13] > 5)//单位？/////////////////////////////
+                        {
+                            //Silo[i].bill_sp：为第i个仓的设定配比，需要将多个仓共用一个配比的情况，提前按照料仓进行拆分计算；
+                            //Silo[i].use：为第i个仓的启用状态，需要对一个仓两个下料口的情况，进行单独判断；
+
+                            sumCaO += x.Value * y.Item7[2] / 100 * y.Item7[13] / 100;
+                            sumSiO2 += x.Value * y.Item7[3] / 100 * y.Item7[13] / 100;
+                            sumBill += x.Value;//除 石灰石X1,燃料X2 以外原料总配比数
+                            sumC += x.Value * y.Item7[8] / 100;
+                        }
+                        else
+                        {
+                            sumCaO += x.Value * y.Item7[2] / 100;
+                            sumSiO2 += x.Value * y.Item7[3] / 100;
+                            sumBill += x.Value;
+                            sumC += x.Value * y.Item7[8] / 100;
+                        }
+                        break;
+                    }
+                }
+            }
+
+            ////碱度调整仓原料的含碳量,工艺上不可能大于等于目标含碳量
+
+            if (FluxAly[8] / 100 - C_Aim_md / 100 > -0.01f) return new Tuple<int, float, float>(-8011, 0, 0); //碱度调整仓原料的含碳量,工艺上不可能大于等于目标含碳量；
+
+            F_CaO = FuelAly[2] / 100 * FuelAly[13] / 100;
+            F_SiO2 = FuelAly[3] / 100 * FuelAly[13] / 100;
+
+            L_CaO = FluxAly[2] / 100;
+            L_SiO2 = FluxAly[3] / 100;
+
+            //燃料配比方程
+            a1 = FluxAly[8] / 100 - C_Aim_md / 100;
+            b1 = FuelAly[8] / 100 - C_Aim_md / 100;
+            n1 = C_Aim_md / 100 * sumBill - sumC;
+
+            //灰石配比方程
+            a2 = L_CaO - L_SiO2 * R_Aim_md;
+            b2 = F_CaO - F_SiO2 * R_Aim_md;
+            n2 = sumSiO2 * R_Aim_md - sumCaO;
+
+            if (a2 * b1 - a1 * b2 == 0) return new Tuple<int, float, float>(-8012, 0, 0); //确保分母不为零，保证方程有解
+
+            Flux_Bill = (b1 * n2 - b2 * n1) / (a2 * b1 - a1 * b2);
+            Fuel_Bill = (a2 * n1 - a1 * n2) / (a2 * b1 - a1 * b2);
+
+            if ((Flux_Bill > 0) && (Fuel_Bill > 0))
+            {
+                return new Tuple<int, float, float>(0, Flux_Bill, Fuel_Bill);
+            }
+            else
+            {
+                //有小0的通常说明混合料中CaO已经过多 石灰石调节要求减少石灰石配比
+                //或者原料成分不合适
+                return new Tuple<int, float, float>(-8013, 0, 0);
+            }
+        }
+
         /// <summary>
         /// 计算溶剂、燃料、白云石的配比
         /// </summary>
@@ -5977,7 +6634,290 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             /// key:仓号(非燃料或溶剂 且 为启用状态)
             /// value:配比值
             /// </returns>
-            var hrs = houseDataCRM();
+            var hrs = houseDataCRM_1();
+
+            for (int i = 0; i < 30; i++)//根据选择出的熔剂和燃料仓号，求出燃料和熔剂的加权平均成分
+            {
+                //燃料加权平均成分计算  //qxg x.Item5
+
+                //FuelAly[i] = ((Silo[燃料1仓号 - 1].aly[i] * Silo[燃料1仓号 - 1].use * Silo[燃料1仓号 - 1].allot) + (Silo[燃料2仓号 - 1].aly[i] * Silo[燃料2仓号 - 1].use * Silo[燃料2仓号 - 1].allot)) / (Silo[燃料1仓号 - 1].use * Silo[燃料1仓号 - 1].allot + Silo[燃料2仓号 - 1].use * Silo[燃料2仓号 - 1].allot);//有几个燃料仓，加权平均计算时就用几个仓
+                //FluxAly[i] = ((Silo[熔剂1仓号 - 1].aly[i] * Silo[熔剂1仓号 - 1].use * Silo[熔剂1仓号 - 1].allot) + (Silo[熔剂2仓号 - 1].aly[i] * Silo[熔剂2仓号 - 1].use * Silo[熔剂2仓号 - 1].allot)) / (Silo[熔剂1仓号 - 1].use * Silo[熔剂1仓号 - 1].allot + Silo[熔剂2仓号 - 1].use * Silo[熔剂2仓号 - 1].allot);//有几个熔剂仓，加权平均计算时就用几个仓
+                float sumFuelChild = 0;
+                float sumFuelMother = 0;
+                float sumFluxChild = 0;
+                float sumFluxMother = 0;
+                float sumDoloChild = 0;
+                float sumDoloMother = 0;
+                //20201127  不需要求加权平均  ，  只需要找出调整仓进行计算
+
+                List<int> _class = new List<int>();
+                var __rs = LGetLastTime("MC_MIXCAL_PAR");
+                for (int w = 2; w <= 20; w++)
+                {
+                    _class.Add(int.Parse(__rs[w].ToString()));
+                }
+                int SolvTurn = 0;
+                int FuelTurn = 0;
+                int DolyTurn = 0;
+
+                SolvTurn = _class.FindIndex(x => x == 2) + 1;
+                FuelTurn = _class.FindIndex(x => x == 1) + 1;
+                DolyTurn = _class.FindIndex(x => x == 4) + 1;
+
+                for (int j = 0; j < hrs.Item1[2].Count; j++)
+                {
+                    // if (hrs.Item1[2][j].Item1 == SolvTurn)
+                    //20210409修改（考虑特殊情况。判断特殊配比是通过仓号进行判断，若出现某特殊配比在返矿下面，会出现配比id对应仓号问题，修改为按照配比id进行查询）@LT
+                    if (hrs.Item1[2][j].Rest.Item1 == SolvTurn)
+                    {
+                        sumFuelChild += hrs.Item1[2][j].Item7[i] * hrs.Item1[2][j].Item5 * hrs.Item1[2][j].Item6;
+                        //sumFuelMother += hrs.Item1[2][j].Item5 * hrs.Item1[2][j].Item6;
+                        break;
+                    }
+                }
+                FuelAly[i] = sumFuelChild;// / sumFuelMother;
+                for (int j = 0; j < hrs.Item1[1].Count; j++)
+                {
+                    // if (hrs.Item1[1][j].Item1 == FuelTurn)
+                    //20210409修改（考虑特殊情况。判断特殊配比是通过仓号进行判断，若出现某特殊配比在返矿下面，会出现配比id对应仓号问题，修改为按照配比id进行查询）@LT
+                    if (hrs.Item1[1][j].Rest.Item1 == FuelTurn)
+                    {
+                        sumFluxChild += hrs.Item1[1][j].Item7[i] * hrs.Item1[1][j].Item5 * hrs.Item1[1][j].Item6;
+                        // sumFluxMother += hrs.Item1[1][j].Item5 * hrs.Item1[1][j].Item6;
+                        break;
+                    }
+                }
+                FluxAly[i] = sumFluxChild;// / sumFluxMother;
+
+                //for (int j = 0; j < hrs.Item1[3].Count; j++)
+                //{
+                //    sumDoloChild += hrs.Item1[3][j].Item7[i] * hrs.Item1[3][j].Item5 * hrs.Item1[3][j].Item6;
+                //    sumDoloMother += hrs.Item1[3][j].Item5 * hrs.Item1[3][j].Item6;
+                //}
+                //修改类别标志位 标志位3为4（白云石）
+                for (int j = 0; j < hrs.Item1[4].Count; j++)
+                {
+                    //if (hrs.Item1[4][j].Item1 == DolyTurn)
+                    //20210409修改（考虑特殊情况。判断特殊配比是通过仓号进行判断，若出现某特殊配比在返矿下面，会出现配比id对应仓号问题，修改为按照配比id进行查询）@LT
+                    if (hrs.Item1[4][j].Rest.Item1 == DolyTurn)
+                    {
+                        sumDoloChild += hrs.Item1[4][j].Item7[i] * hrs.Item1[4][j].Item5 * hrs.Item1[4][j].Item6;
+                        // sumDoloMother += hrs.Item1[4][j].Item5 * hrs.Item1[4][j].Item6;
+                        break;
+                    }
+                }
+
+                DoloAly[i] = sumDoloChild;// / sumDoloMother;
+            }
+
+            //
+            foreach (var x in hrs.Item2)//仓，配比值
+            {
+                foreach (var y in hrs.Item1[0])//非溶剂或燃料仓
+                {
+                    if (y.Item1.ToString() == x.Key.ToString())
+                    {
+                        if (y.Item7[8] > 30 && y.Item7[13] > 5)//单位？/////////////////////////////
+                        {
+                            //Silo[i].bill_sp：为第i个仓的设定配比，需要将多个仓共用一个配比的情况，提前按照料仓进行拆分计算；
+                            //x.Item5：为第i个仓的启用状态，需要对一个仓两个下料口的情况，进行单独判断；
+
+                            sumCaO += x.Value * y.Item7[2] / 100 * y.Item7[13] / 100;
+                            sumSiO2 += x.Value * y.Item7[3] / 100 * y.Item7[13] / 100;
+                            sumBill += x.Value;//除 石灰石X1,燃料X2 以外原料总配比数
+                            sumRemnant += x.Value * y.Item7[13] / 100;
+                            sumC += x.Value * y.Item7[8] / 100;
+                            sumMgO += x.Value * y.Item7[5] / 100 * y.Item7[13] / 100;
+                        }
+                        else
+                        {
+                            sumCaO += x.Value * y.Item7[2] / 100;
+                            sumSiO2 += x.Value * y.Item7[3] / 100;
+                            sumBill += x.Value;
+                            sumRemnant += x.Value * (100 - y.Item7[10]) / 100;
+                            sumC += x.Value * y.Item7[8] / 100;
+                            sumMgO += x.Value * y.Item7[5] / 100;
+                        }
+                        break;
+                    }
+                }
+
+                //20200528 增加烧饭配比
+                foreach (var y in hrs.Item1[3])//非溶剂或燃料仓
+                {
+                    if (y.Item1.ToString() == x.Key.ToString())
+                    {
+                        if (y.Item7[8] > 30 && y.Item7[13] > 5)//单位？/////////////////////////////
+                        {
+                            //Silo[i].bill_sp：为第i个仓的设定配比，需要将多个仓共用一个配比的情况，提前按照料仓进行拆分计算；
+                            //x.Item5：为第i个仓的启用状态，需要对一个仓两个下料口的情况，进行单独判断；
+
+                            sumCaO += x.Value * y.Item7[2] / 100 * y.Item7[13] / 100;
+                            sumSiO2 += x.Value * y.Item7[3] / 100 * y.Item7[13] / 100;
+                            sumBill += x.Value;//除 石灰石X1,燃料X2 以外原料总配比数
+
+                            //20210204
+                            // sumBill += x.Value / 2;//除 石灰石X1,燃料X2 以外原料总配比数
+                            sumRemnant += x.Value * y.Item7[13] / 100;
+                            sumC += x.Value * y.Item7[8] / 100;
+                            sumMgO += x.Value * y.Item7[5] / 100 * y.Item7[13] / 100;
+                        }
+                        else
+                        {
+                            sumCaO += x.Value * y.Item7[2] / 100;
+                            sumSiO2 += x.Value * y.Item7[3] / 100;
+                            sumBill += x.Value;
+                            //20210204
+                            // sumBill += x.Value / 2;
+                            sumRemnant += x.Value * (100 - y.Item7[10]) / 100;
+                            sumC += x.Value * y.Item7[8] / 100;
+                            sumMgO += x.Value * y.Item7[5] / 100;
+                        }
+                        break;
+                    }
+                }
+            }
+
+            ////碱度调整仓原料的含碳量,工艺上不可能大于等于目标含碳量
+
+            if (FluxAly[8] / 100 - C_Aim_md / 100 > -0.01f) return new Tuple<int, float, float, float>(-9011, 0, 0, 0); //碱度调整仓原料的含碳量,工艺上不可能大于等于目标含碳量；
+
+            F_CaO = FuelAly[2] / 100 * FuelAly[13] / 100;
+            F_SiO2 = FuelAly[3] / 100 * FuelAly[13] / 100;
+            F_MgO = FuelAly[5] / 100 * FuelAly[13] / 100;
+
+            L_CaO = FluxAly[2] / 100;
+            L_SiO2 = FluxAly[3] / 100;
+            L_MgO = FluxAly[5] / 100;
+
+            D_CaO = DoloAly[2] / 100;
+            D_SiO2 = DoloAly[3] / 100;
+            D_MgO = DoloAly[5] / 100;
+            //燃料配比方程
+            a1 = FluxAly[8] / 100 - C_Aim_md / 100;
+            b1 = FuelAly[8] / 100 - C_Aim_md / 100;
+            n1 = C_Aim_md / 100 * sumBill - sumC;
+            c1 = DoloAly[8] / 100 - C_Aim_md / 100;
+            //灰石配比方程
+            a2 = L_CaO - L_SiO2 * R_Aim_md;
+            b2 = F_CaO - F_SiO2 * R_Aim_md;
+            c2 = D_CaO - D_SiO2 * R_Aim_md;
+            n2 = sumSiO2 * R_Aim_md - sumCaO;
+            // 白云石配比方程
+
+            a3 = L_MgO - Mg_Aim_md / 100 * ((100 - FluxAly[10]) / 100);
+            b3 = F_MgO - Mg_Aim_md / 100 * (FuelAly[13] / 100);
+            c3 = D_MgO - Mg_Aim_md / 100 * ((100 - DoloAly[10]) / 100);
+            n3 = Mg_Aim_md / 100 * sumRemnant - sumMgO;
+
+            if ((a2 * b1 - a1 * b2 == 0) || (b3 * a1 - b1 * a3 == 0)) return new Tuple<int, float, float, float>(-9012, 0, 0, 0); //确保分母不为零，保证方程有解
+
+            E = (c2 * a1 - c1 * a2) / (b2 * a1 - b1 * a2);
+            F = (n2 * a1 - n1 * a2) / (b2 * a1 - b1 * a2);
+            G = (c3 * a1 - c1 * a3) / (b3 * a1 - b1 * a3);
+            H = (n3 * a1 - n1 * a3) / (b3 * a1 - b1 * a3);
+            if ((G - E) == 0) return new Tuple<int, float, float, float>(-9013, 0, 0, 0); //计算配比时，分母不能为0，保证方程有解
+
+            Flux_Bill = (n1 * (G - E) - b1 * (G * F - H * E) - c1 * (H - F)) / (a1 * (G - E));
+            Fuel_Bill = (G * F - H * E) / (G - E);
+            Dolo_Bill = (H - F) / (G - E);
+
+            if ((Flux_Bill > 0) && (Fuel_Bill > 0) && (Dolo_Bill > 0))
+            {
+                return new Tuple<int, float, float, float>(0, Flux_Bill, Fuel_Bill, Dolo_Bill);
+            }
+            else
+            {
+                //配比输入错误
+                //或者原料成分不合适
+                return new Tuple<int, float, float, float>(-9014, 0, 0, 0);
+            }
+        }
+
+        /// <summary>
+        /// 计算溶剂、燃料、白云石的配比(演算模式)
+        /// </summary>
+        /// <param name="C_Aim"></param>
+        /// <param name="R_Aim"></param>
+        /// <param name="R_md"></param>
+        /// <param name="C_md"></param>
+        /// <param name="Mg_Aim"></param>
+        /// <param name="Mg_md"></param>
+        /// <returns></returns>
+        public Tuple<int, float, float, float> CptSolfuel_1(float C_Aim, float R_Aim, float R_md, float C_md, float Mg_Aim, float Mg_md)
+        {
+            //初始化数据库
+            DBSQL _mdb = new DBSQL(_connstring);
+            //返回结果
+            Tuple<float, float> rs = new Tuple<float, float>(0, 0);
+
+            float R_Aim_md = R_Aim + R_md;//目标碱度+R调整值
+            float C_Aim_md = C_Aim + C_md;//目标含碳+C调整值
+            float Mg_Aim_md = Mg_Aim + Mg_md;//目标含碳+Mg调整值
+
+            float[] FuelAly = new float[30];          //燃料加权平均成分数组--包含30个成分
+            float[] FluxAly = new float[30];          //熔剂加权平均成分数组--包含30个成分
+            float[] DoloAly = new float[30];          //白云石加权平均成分数组--包含30个成分
+
+            float sumCaO = 0;           //除熔剂、燃料调整仓以外原料带入烧结矿 CaO
+            float sumSiO2 = 0;          //除熔剂、燃料调整仓以外原料带入烧结矿 SiO2
+            float sumBill = 0;          //除熔剂、燃料调整仓以外原料总配比数
+            float sumRemnant = 0;
+            float sumC = 0;             //除熔剂、燃料调整仓以外原料带入烧结矿 C
+            float sumMgO = 0;	        //除熔剂、燃料、白云石仓以外原料带入的 MgO
+            float a1 = 0;               //燃料方程系数
+            float b1 = 0;               //燃料方程系数
+            float c1 = 0;		        //燃料方程系数
+            float n1 = 0;               //燃料方程系数
+            float a2 = 0;               //熔剂方程系数
+            float b2 = 0;               //熔剂方程系数
+            float c2 = 0;		        //燃料方程系数
+            float n2 = 0;               //熔剂方程系数
+            float a3 = 0;               //白云石方程系数
+            float b3 = 0;               //白云石方程系数
+            float c3 = 0;               //白云石方程系数
+            float n3 = 0;		        //白云石方程系数
+            float Flux_Bill = 0;        //熔剂调整仓计算配比
+            float Fuel_Bill = 0;        //燃料调整仓计算配比
+            float Dolo_Bill = 0;		//白云石调整仓计算配比
+
+            float F_CaO = 0;            //燃料调整仓燃料有效CaO
+            float F_SiO2 = 0;           //燃料调整仓燃料有效SiO2
+            float F_MgO = 0;            //燃料调整仓有效MgO
+            float L_CaO = 0;            //熔剂调整仓熔剂有效CaO
+            float L_SiO2 = 0;           //熔剂调整仓熔剂有效SiO2
+            float L_MgO = 0;            //熔剂调整仓有效MgO
+
+            float D_CaO = 0;            //白云石调整仓有效CaO
+            float D_SiO2 = 0;           //白云石调整仓有效SiO2
+            float D_MgO = 0;            //白云石调整仓有效MgO
+
+            float E = 0;                //中间量1
+            float F = 0;                //中间量2
+            float G = 0;                //中间量3
+            float H = 0;                //中间量4
+
+            //  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19
+            // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO, ZnO    //宁钢检化验成分排序
+            //	                                             烧损         灰分 挥发分
+
+            //20201127
+            /*
+             /  0,   1,   2,   3,     4,    5,  6, 7, 8, 9,  10,  11, 12,  13,  14,  15,   16,   17,  18,  19,  20, 21, 22, 23, 24, 25, 26, 27, 28,  29
+            // TFe, FeO, CaO, SiO2, Al2O3, MgO, S, P, C, Mn, LOT, R, H2O, AsH, VOL, TiO2, K2O, Na2O, PbO,  ZnO, F, As, Cu, Pb, Zn, K,  Na, Cr, Ni, MnO  //检化验成分排序
+             */
+            //20201127
+
+            /*20191224先根据配比和仓号的对应关系，对每个料仓是否为燃料和熔剂进行标记,根据标记情况选出熔剂和燃料仓号*/
+            /// <returns>
+            /// item_1
+            /// key:0、非燃料或溶剂  1、溶剂  2、燃料 3、烧返配比  4、白云石
+            /// value:仓号，类别，物料二级编码，下料口，下料口启用标识，分仓系数和，成分
+            /// item_2
+            /// key:仓号(非燃料或溶剂 且 为启用状态)
+            /// value:配比值
+            /// </returns>
+            var hrs = houseDataCRM_1();
 
             for (int i = 0; i < 30; i++)//根据选择出的熔剂和燃料仓号，求出燃料和熔剂的加权平均成分
             {

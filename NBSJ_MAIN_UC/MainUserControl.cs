@@ -1100,7 +1100,7 @@ namespace NBSJ_MAIN_UC
 
             //二混电机
             blendingUC2.IsRun = modelT_PLC_3S.T_2M_SL_3S == 1 ? true : false;
-            blendingUC2.ShuiFen = getbottleValue(modelT_PLC_3S.T_PLC_1M_WATER_SP_3S).ToString();
+            //blendingUC2.ShuiFen = getbottleValue(modelT_PLC_3S.T_PLC_1M_WATER_SP_3S).ToString();
             blendingUC2.ZhuanSu = getbottleValue(modelT_PLC_3S.T_2M_MIXER_RATE_3S).ToString();
             blendingUC2.SetJsl = getbottleValue(modelT_PLC_3S.T_2M_FLOW_SP_3S).ToString();
             blendingUC2.ReadJsl = getbottleValue(modelT_PLC_3S.T_2M_FLOW_PV_3S).ToString();

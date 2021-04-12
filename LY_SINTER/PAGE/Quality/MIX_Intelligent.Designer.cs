@@ -274,6 +274,7 @@
             this.d2.RowHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.d2.RowHeadersVisible = false;
             this.d2.RowTemplate.Height = 28;
+            this.d2.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.d2.Size = new System.Drawing.Size(1373, 525);
             this.d2.TabIndex = 3;
             this.d2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.d2_CellValueChanged);

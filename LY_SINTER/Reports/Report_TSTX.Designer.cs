@@ -1,4 +1,6 @@
-﻿namespace LY_SINTER.Reports
+﻿using LY_SINTER.Custom;
+
+namespace LY_SINTER.Reports
 {
     partial class Report_TSTX
     {

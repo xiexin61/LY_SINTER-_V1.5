@@ -81,7 +81,7 @@ namespace LY_SINTER
             InitializeComponent();
             if (_vLog == null)
                 _vLog = new vLog(".\\log_Page\\Main\\");
-            FALG_Oper = mIX_PAGE._GetIp_Jurisdiction();//获取现场权限
+            FALG_Oper = mIX_PAGE._GetIp_Jurisdiction().Item1;//获取现场权限
             Timer_Init();//定时器声明
             Show_INIT();//添加智能配料
             Navigation_INIT();//导航栏

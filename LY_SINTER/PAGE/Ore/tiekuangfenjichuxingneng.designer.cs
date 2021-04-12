@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp2.page.analyze
+﻿using LY_SINTER.Custom;
+
+namespace WindowsFormsApp2.page.analyze
 {
     partial class tiekuangfenjichuxingneng
     {

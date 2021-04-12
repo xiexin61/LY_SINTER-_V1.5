@@ -1,4 +1,6 @@
-﻿namespace LY_SINTER.Popover.Analysis
+﻿using LY_SINTER.Custom;
+
+namespace LY_SINTER.Popover.Analysis
 {
     partial class Frm_Production_state_Heap
     {
