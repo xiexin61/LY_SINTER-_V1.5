@@ -1,4 +1,6 @@
-﻿namespace LY_SINTER.PAGE.Analysis
+﻿using LY_SINTER.Custom;
+
+namespace LY_SINTER.PAGE.Analysis
 {
     partial class Production_state
     {

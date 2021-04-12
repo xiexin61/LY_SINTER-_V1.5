@@ -209,9 +209,39 @@ namespace LY_SINTER.Popover.Analysis
             }
             return dt;
         }
+        public void selectdw1(int n)
+        {
+            try
+            {
+                string name = comboBox2.Text;
+
+                string sql_name = "select L2_CODE,MAT_DESC from M_MATERIAL_COOD where MAT_DESC = '" + name + "'";
+
+                DataTable dataTable_name = dBSQL.GetCommand(sql_name);
+                int WLBM = int.Parse(dataTable_name.Rows[0]["L2_CODE"].ToString());
+                string time1 = dateTimePicker1.Value.ToString();
+                string time2 = dateTimePicker2.Value.ToString();
+                string sql = "select top("+n+") TIMESTAMP,BATCH_NUM,SAMPLETIME,REOPTTIME,C_TFE,C_FEO,C_CAO,C_SIO2,C_AL2O3,C_MGO,C_S,C_P,C_C,C_MN,C_LOT,C_R,C_H2O,C_ASH,C_VOLATILES,C_TIO2,C_K2O,C_NA2O," +
+                    "C_PBO,C_ZNO,C_F,C_AS,C_CU,C_PB,C_ZN,C_K,C_NA,C_CR,C_NI,C_MNO  from M_ORE_MATERIAL_ANALYSIS " +
+                    "where L2_CODE = " + WLBM + " order by TIMESTAMP desc";
+                DataTable dataTable = dBSQL.GetCommand(sql);
+                dataGridView1.DataSource = dataTable;
+                /*string sql1 = "select  MAT_NAME,MAT_CLASS,UNIT_PRICE,BILL_UPPER,BILL_LOWER,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S,C_P,C_LOT,C_H2O,C_AS,C_PB,C_ZN,C_CU,C_K2O," +
+                    "C_NA2O from MC_ORECAL_MAT_ANA_RECORD where MAT_NAME = '" + name + "' and TIMESTAMP <= '" + time2 + "' and TIMESTAMP >='" + time1 + "' order by TIMESTAMP desc";
+                DataTable dataTable1 = dBSQL.GetCommand(sql1);
+                dataGridView3.DataSource = dataTable1;*/
+
+            }
+            catch (Exception ee)
+            {
+
+            }
+
+        }
         //计算成分按钮，更新dataGridView3数据
         private void simpleButton2_Click(object sender, EventArgs e)
         {
+            int weight = Convert.ToInt32(textBox4.Text);
             string name = comboBox2.Text;
             string sql_name = "select L2_CODE,MAT_DESC from M_MATERIAL_COOD where MAT_DESC = '" + name + "'";
             DataTable dataTable_name = dBSQL.GetCommand(sql_name);
@@ -229,7 +259,6 @@ namespace LY_SINTER.Popover.Analysis
             }
             else
             {
-                int weight = Convert.ToInt32(textBox4.Text);
                 string sql = "select   "+
                              "AVG(isnull(C_TFE,0)) AS C_TFE ," +
                              "AVG(isnull(C_FEO,0)) AS C_FEO," +
@@ -278,6 +307,7 @@ namespace LY_SINTER.Popover.Analysis
                 dataTable.Rows[0]["UNIT_PRICE"] = dataTable2.Rows[0]["UNIT_PRICE"].ToString();
                 dataGridView3.DataSource = dataTable;
             }
+            selectdw1(weight);
         }
     }
 }

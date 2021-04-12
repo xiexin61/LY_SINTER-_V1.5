@@ -363,6 +363,271 @@ namespace LY_SINTER.Model
         }
 
         /// <summary>
+        /// 计算溶剂和燃料的配比(演算模式)
+        /// matching_signal:调整方式
+        /// RJ_MAX：碱度上限
+        /// RJ_MIN:碱度下限
+        /// RL_MAX：燃料上限
+        /// RL_MIN：燃料下限
+        /// BYS_MAX：白云石上限
+        /// BYS_MIN：白云石下限
+        /// </summary>
+        public bool CptSolfuel_2(int matching_signal, float RJ_MAX, float RJ_MIN, float RL_MAX, float RL_MIN, float BYS_MAX, float BYS_MIN)
+        {
+            try
+            {
+                string sql_cf = "select  top (1) C_Aim,C_Md,R_Aim,R_Md,MG_Aim,MG_Md from  CFG_MAT_L2_MACAL_IDT_CalCulus  order by TIMESTAMP desc";
+                DataTable dataTable_cf = _dBSQL.GetCommand(sql_cf);
+                if (dataTable_cf.Rows.Count > 0 && dataTable_cf != null)
+                {
+                    float MBHT = float.Parse(dataTable_cf.Rows[0]["C_Aim"].ToString());//目标含碳
+                    float TTZZ = float.Parse(dataTable_cf.Rows[0]["C_Md"].ToString());//碳调整值
+                    float MBJD = float.Parse(dataTable_cf.Rows[0]["R_Aim"].ToString());//目标碱度
+                    float RTZZ = float.Parse(dataTable_cf.Rows[0]["R_Md"].ToString());//碱度调整值
+                    float MBMG = float.Parse(dataTable_cf.Rows[0]["MG_Aim"].ToString());//目标MG
+                    float MGZZ = float.Parse(dataTable_cf.Rows[0]["MG_Md"].ToString());//MG调整值
+                    LGSinter HMICAL = new LGSinter();
+                    // 判断matching_signal字段的计算方式（1：调整熔剂、燃料配比；2：调整熔剂、燃料、白云石配比）
+                    if (matching_signal == 1)
+                    {
+                        string messbox = "配比调整特殊配比为调整熔剂、燃料配比方式";
+                        //****计算溶剂和燃料   0非溶剂和燃料、1溶剂、2燃料*****
+                        var result = HMICAL.CptSolfuels_1(MBHT, MBJD, RTZZ, TTZZ);
+                        if (result.Item1 >= 0)
+                        {
+                            if (result.Item2 > RJ_MAX && result.Item2 < RJ_MIN)
+                            {
+                                messbox += ",溶剂设定配比超限:" + result.Item2.ToString();
+                                _vLog.writelog(messbox, -1);
+                                return false;
+                            }
+                            if (result.Item3 > RL_MAX && result.Item3 < RL_MIN)
+                            {
+                                messbox += ",燃料设定配比超限:" + result.Item3.ToString();
+                                _vLog.writelog(messbox, -1);
+                                return false;
+                            }
+                            //***查询溶剂对应的下料口 （0：非熔剂、非燃料、非烧返、非白云石配比；1：熔剂配比；2：燃料配比；3：烧返配比；4：白云石配比）
+                            string sql_solvent = "  select b.MAT_L2_CH from CFG_MAT_L2_PBSD_INTERFACE a ,CFG_MAT_L2_SJPB_INTERFACE b where a.category = 1 and a.canghao = b.MAT_L2_CH";
+                            //***查询燃料对应的下料口
+                            string sql_fuel = "  select b.MAT_L2_CH from CFG_MAT_L2_PBSD_INTERFACE a ,CFG_MAT_L2_SJPB_INTERFACE b where a.category = 2 and a.canghao = b.MAT_L2_CH";
+                            DataTable dataTable_solvent = _dBSQL.GetCommand(sql_solvent);
+                            DataTable dataTable_fuel = _dBSQL.GetCommand(sql_fuel);
+                            for (int i = 0; i < dataTable_solvent.Rows.Count; i++)
+                            {
+                                int CH = int.Parse(dataTable_solvent.Rows[i][0].ToString());
+                                string sql_1 = "update CFG_MAT_L2_SJPB_INTERFACE_CalCulus set MAT_L2_SDPB = " + result.Item2 + " where MAT_L2_CH = " + CH + "";
+                                string sql_3 = "update CFG_MAT_L2_PBSD_INTERFACE_CalCulus set peibizhi = " + result.Item2 + " where canghao =" + CH + "";
+                                int count = _dBSQL.CommandExecuteNonQuery(sql_1);
+                                if (count > 0)
+                                {
+                                    // messbox += "，仓号:" + CH.ToString() + "溶剂设定配比：" + result.Item2.ToString();
+                                }
+                                else
+                                {
+                                    // messbox += "，仓号:" + CH.ToString() + "溶剂设定配比：" + result.Item2.ToString() + "更新CFG_MAT_L2_SJPB_INTERFACE失败" + sql_1.ToString();
+                                    // _vLog.writelog(messbox, -1);
+                                    return false;
+                                }
+                                int count_1 = _dBSQL.CommandExecuteNonQuery(sql_3);
+                                if (count_1 > 0)
+                                {
+                                }
+                                else
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "溶剂设定配比：" + result.Item2.ToString() + "更新CFG_MAT_L2_PBSD_INTERFACE失败" + sql_3.ToString();
+                                    //_vLog.writelog(messbox, -1);
+                                    return false;
+                                }
+                            }
+                            for (int i = 0; i < dataTable_fuel.Rows.Count; i++)
+                            {
+                                int CH = int.Parse(dataTable_fuel.Rows[i][0].ToString());
+                                string sql_2 = "update CFG_MAT_L2_SJPB_INTERFACE_CalCulus set MAT_L2_SDPB = " + result.Item3 + " where MAT_L2_CH = " + CH + "";
+                                string sql_4 = "update CFG_MAT_L2_PBSD_INTERFACE_CalCulus set peibizhi = " + result.Item3 + " where canghao = " + CH + "";
+                                int count = _dBSQL.CommandExecuteNonQuery(sql_2);
+
+                                if (count > 0)
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "燃料设定配比：" + result.Item3.ToString();
+                                }
+                                else
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "燃料设定配比：" + result.Item3.ToString() + "更新CFG_MAT_L2_SJPB_INTERFACE失败" + sql_2.ToString();
+                                    // _vLog.writelog(messbox, -1);
+                                    return false;
+                                }
+                                int count_1 = _dBSQL.CommandExecuteNonQuery(sql_4);
+                                if (count_1 > 0)
+                                {
+                                }
+                                else
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "燃料设定配比：" + result.Item2.ToString() + "更新CFG_MAT_L2_PBSD_INTERFACE失败" + sql_4.ToString();
+                                    _vLog.writelog(messbox, -1);
+                                    return false;
+                                }
+                            }
+                            _vLog.writelog(messbox, 0);
+                            return true;
+                        }
+                        else
+                        {
+                            string mistake = "混合料中CaO已经过多 石灰石调节要求减少石灰石配比";
+                            _vLog.writelog(mistake, -1);
+                            return false;
+                        }
+                    }
+                    else if (matching_signal == 2)
+                    {
+                        string messbox = "配比调整特殊配比为调整熔剂、燃料、白云石配比方式";
+                        var result = HMICAL.CptSolfuel_1(MBHT, MBJD, RTZZ, TTZZ, MBMG, MGZZ);
+
+                        if (result != null && result.Item1 != -9014)
+                        {
+                            if (result.Item2 > RJ_MAX && result.Item2 < RJ_MIN)
+                            {
+                                messbox += ",溶剂设定配比超限:" + result.Item2.ToString();
+                                _vLog.writelog(messbox, -1);
+                                return false;
+                            }
+                            if (result.Item3 > RL_MAX && result.Item3 < RL_MIN)
+                            {
+                                messbox += ",燃料设定配比超限:" + result.Item3.ToString();
+                                _vLog.writelog(messbox, -1);
+                                return false;
+                            }
+                            if (result.Item4 > BYS_MAX && result.Item4 < BYS_MIN)
+                            {
+                                messbox += ",白云石设定配比超限:" + result.Item4.ToString();
+                                _vLog.writelog(messbox, -1);
+                                return false;
+                            }
+                            //***查询溶剂对应的下料口
+                            string sql_solvent = "  select b.MAT_L2_CH from CFG_MAT_L2_PBSD_INTERFACE a ,CFG_MAT_L2_SJPB_INTERFACE b where a.category = 1 and a.canghao = b.MAT_L2_CH";
+                            //***查询燃料对应的下料口
+                            string sql_fuel = "  select b.MAT_L2_CH from CFG_MAT_L2_PBSD_INTERFACE a ,CFG_MAT_L2_SJPB_INTERFACE b where a.category = 2 and a.canghao = b.MAT_L2_CH";
+                            //***查询白云石对应的下料口
+                            string sql_BYS = "  select b.MAT_L2_CH from CFG_MAT_L2_PBSD_INTERFACE a ,CFG_MAT_L2_SJPB_INTERFACE b where a.category = 4 and a.canghao = b.MAT_L2_CH";
+
+                            DataTable dataTable_solvent = _dBSQL.GetCommand(sql_solvent);
+                            DataTable dataTable_fuel = _dBSQL.GetCommand(sql_fuel);
+                            DataTable dataTable_BYS = _dBSQL.GetCommand(sql_BYS);
+                            for (int i = 0; i < dataTable_solvent.Rows.Count; i++)
+                            {
+                                int CH = int.Parse(dataTable_solvent.Rows[i][0].ToString());
+                                string sql_1 = "update CFG_MAT_L2_SJPB_INTERFACE_CalCulus set MAT_L2_SDPB = " + result.Item2 + " where MAT_L2_CH = " + CH + "";
+                                string sql_3 = "update CFG_MAT_L2_PBSD_INTERFACE_CalCulus set peibizhi = " + result.Item2 + " where canghao =" + CH + "";
+                                int count = _dBSQL.CommandExecuteNonQuery(sql_1);
+                                if (count > 0)
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "溶剂设定配比：" + result.Item2.ToString();
+                                }
+                                else
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "溶剂设定配比：" + result.Item2.ToString() + "更新CFG_MAT_L2_SJPB_INTERFACE失败" + sql_1.ToString();
+                                    _vLog.writelog(messbox, -1);
+                                    return false;
+                                }
+                                int count_1 = _dBSQL.CommandExecuteNonQuery(sql_3);
+                                if (count_1 > 0)
+                                {
+                                }
+                                else
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "溶剂设定配比：" + result.Item2.ToString() + "更新CFG_MAT_L2_PBSD_INTERFACE失败" + sql_3.ToString();
+                                    _vLog.writelog(messbox, -1);
+                                    return false;
+                                }
+                            }
+                            for (int i = 0; i < dataTable_fuel.Rows.Count; i++)
+                            {
+                                int CH = int.Parse(dataTable_fuel.Rows[i][0].ToString());
+                                string sql_2 = "update CFG_MAT_L2_SJPB_INTERFACE_CalCulus set MAT_L2_SDPB = " + result.Item3 + " where MAT_L2_CH = " + CH + "";
+                                string sql_4 = "update CFG_MAT_L2_PBSD_INTERFACE_CalCulus set peibizhi = " + result.Item3 + " where canghao = " + CH + "";
+                                int count = _dBSQL.CommandExecuteNonQuery(sql_2);
+                                if (count > 0)
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "燃料设定配比：" + result.Item3.ToString();
+                                }
+                                else
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "燃料设定配比：" + result.Item3.ToString() + "更新CFG_MAT_L2_SJPB_INTERFACE失败" + sql_2.ToString();
+                                    _vLog.writelog(messbox, -1);
+                                    return false;
+                                }
+                                int count_1 = _dBSQL.CommandExecuteNonQuery(sql_4);
+                                if (count_1 > 0)
+                                {
+                                }
+                                else
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "燃料设定配比：" + result.Item3.ToString() + "更新CFG_MAT_L2_PBSD_INTERFACE失败" + sql_4.ToString();
+                                    _vLog.writelog(messbox, -1);
+                                    return false;
+                                }
+                            }
+                            for (int i = 0; i < dataTable_BYS.Rows.Count; i++)
+                            {
+                                int CH = int.Parse(dataTable_BYS.Rows[i][0].ToString());
+                                string sql_2 = "update CFG_MAT_L2_SJPB_INTERFACE_CalCulus set MAT_L2_SDPB = " + result.Item4 + " where MAT_L2_CH = " + CH + "";
+                                string sql_4 = "update CFG_MAT_L2_PBSD_INTERFACE_CalCulus set peibizhi = " + result.Item4 + " where canghao = " + CH + "";
+                                int count = _dBSQL.CommandExecuteNonQuery(sql_2);
+                                if (count > 0)
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "白云石设定配比：" + result.Item4.ToString();
+                                }
+                                else
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "白云石设定配比：" + result.Item4.ToString() + "更新CFG_MAT_L2_SJPB_INTERFACE失败" + sql_2.ToString();
+                                    _vLog.writelog(messbox, -1);
+                                    return false;
+                                }
+                                int count_1 = _dBSQL.CommandExecuteNonQuery(sql_4);
+                                if (count_1 > 0)
+                                {
+                                }
+                                else
+                                {
+                                    messbox += "，仓号:" + CH.ToString() + "白云石设定配比：" + result.Item4.ToString() + "更新CFG_MAT_L2_PBSD_INTERFACE失败" + sql_4.ToString();
+                                    _vLog.writelog(messbox, -1);
+                                    return false;
+                                }
+                            }
+                            _vLog.writelog(messbox, 0);
+                            return true;
+                        }
+                        else
+                        {
+                            string mistake = " CptSolfuel_1方法配比输入错误或者原料成分不合适";
+                            _vLog.writelog(mistake, -1);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        string mistake = " CptSolfuel_1方法MC_MIXCAL_PAR 表PAR_S_BILL_STATE字段特殊配比调整方式有误";
+                        _vLog.writelog(mistake, -1);
+                        return false;
+                    }
+                }
+                else
+                {
+                    string mistake = "CptSolfuel_1方法CFG_MAT_L2_MACAL_IDT表查询失败";
+                    _vLog.writelog(mistake, -1);
+
+                    return false;
+                }
+            }
+            catch (Exception ee)
+            {
+                string mistake = "CptSolfuel_1方法计算熔剂白云石燃料失败" + ee.ToString();
+                _vLog.writelog(mistake, -1);
+                return false;
+            }
+        }
+
+        /// <summary>
         /// 调整值变化参数
         /// item1：R
         /// item2：C
@@ -957,10 +1222,18 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_DQ_DRY_1 =  '" + tuple1_1.Item2 + "', ";
                 }
+                else
+                {
+                    _SQL += "MAT_L2_DQ_DRY_1 =  '0', ";
+                }
                 Tuple<bool, float> tuple1_2 = _Get_Matching(_L2_CODE, _Value_2, 602, 602, 2, _sp);//湿配比
                 if (tuple1_1.Item1)
                 {
                     _SQL += "MAT_L2_PB_WET_1 =  '" + tuple1_1.Item2 + "', ";
+                }
+                else
+                {
+                    _SQL += "MAT_L2_PB_WET_1 =  '0', ";
                 }
 
                 #endregion 高返配比百分比
@@ -972,25 +1245,41 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_DQ_DRY_2 =  '" + tuple2_1.Item2 + "', ";
                 }
+                else
+                {
+                    _SQL += "MAT_L2_DQ_DRY_2 =  '0', ";
+                }
                 Tuple<bool, float> tuple2_2 = _Get_Matching(_L2_CODE, _Value_2, 101, 299, 2, _sp);//湿配比
                 if (tuple2_2.Item1)
                 {
                     _SQL += "MAT_L2_PB_WET_2 =  '" + tuple2_2.Item2 + "', ";
+                }
+                else
+                {
+                    _SQL += "MAT_L2_PB_WET_2 =  '0', ";
                 }
 
                 #endregion 铁料配比百分比
 
                 #region 石灰石配比百分比
 
-                Tuple<bool, float> tuple3_1 = _Get_Matching(_L2_CODE, _Value_1, 403, 407, 1, _sp);//干配比
+                Tuple<bool, float> tuple3_1 = _Get_Matching(_L2_CODE, _Value_1, 403, 406, 1, _sp);//干配比
                 if (tuple3_1.Item1)
                 {
                     _SQL += "MAT_L2_DQ_DRY_3 =  '" + tuple3_1.Item2 + "', ";
                 }
-                Tuple<bool, float> tuple3_2 = _Get_Matching(_L2_CODE, _Value_2, 403, 407, 2, _sp);//湿配比
+                else
+                {
+                    _SQL += "MAT_L2_DQ_DRY_3 =  '0', ";
+                }
+                Tuple<bool, float> tuple3_2 = _Get_Matching(_L2_CODE, _Value_2, 403, 406, 2, _sp);//湿配比
                 if (tuple3_2.Item1)
                 {
                     _SQL += "MAT_L2_PB_WET_3 =  '" + tuple3_2.Item2 + "', ";
+                }
+                else
+                {
+                    _SQL += "MAT_L2_PB_WET_3 =  '0', ";
                 }
 
                 #endregion 石灰石配比百分比
@@ -1002,25 +1291,41 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_DQ_DRY_4 =  '" + tuple4_1.Item2 + "', ";
                 }
+                else
+                {
+                    _SQL += "MAT_L2_DQ_DRY_4 =  '0', ";
+                }
                 Tuple<bool, float> tuple4_2 = _Get_Matching(_L2_CODE, _Value_2, 401, 402, 2, _sp);//湿配比
                 if (tuple4_2.Item1)
                 {
                     _SQL += "MAT_L2_PB_WET_4 =  '" + tuple4_2.Item2 + "', ";
+                }
+                else
+                {
+                    _SQL += "MAT_L2_PB_WET_4 =  '0', ";
                 }
 
                 #endregion 白云石配比百分比
 
                 #region 生石灰配比百分比
 
-                Tuple<bool, float> tuple5_1 = _Get_Matching(_L2_CODE, _Value_1, 408, 417, 1, _sp);//干配比
+                Tuple<bool, float> tuple5_1 = _Get_Matching(_L2_CODE, _Value_1, 408, 409, 1, _sp);//干配比
                 if (tuple5_1.Item1)
                 {
                     _SQL += "MAT_L2_DQ_DRY_5 =  '" + tuple5_1.Item2 + "', ";
                 }
-                Tuple<bool, float> tuple5_2 = _Get_Matching(_L2_CODE, _Value_2, 408, 417, 2, _sp);//湿配比
+                else
+                {
+                    _SQL += "MAT_L2_DQ_DRY_5 =  '0', ";
+                }
+                Tuple<bool, float> tuple5_2 = _Get_Matching(_L2_CODE, _Value_2, 408, 409, 2, _sp);//湿配比
                 if (tuple5_2.Item1)
                 {
                     _SQL += "MAT_L2_PB_WET_5 =  '" + tuple5_2.Item2 + "', ";
+                }
+                else
+                {
+                    _SQL += "MAT_L2_PB_WET_5 =  '0', ";
                 }
 
                 #endregion 生石灰配比百分比
@@ -1032,10 +1337,18 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_DQ_DRY_6 =  '" + tuple6_1.Item2 + "', ";
                 }
+                else
+                {
+                    _SQL += "MAT_L2_DQ_DRY_6 =  '0', ";
+                }
                 Tuple<bool, float> tuple6_2 = _Get_Matching(_L2_CODE, _Value_2, 301, 399, 2, _sp);//湿配比
                 if (tuple6_2.Item1)
                 {
                     _SQL += "MAT_L2_PB_WET_6 =  '" + tuple6_2.Item2 + "', ";
+                }
+                else
+                {
+                    _SQL += "MAT_L2_PB_WET_6 =  '0', ";
                 }
 
                 #endregion 燃料配比百分比
@@ -1047,10 +1360,18 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_DQ_DRY_7 =  '" + tuple7_1.Item2 + "', ";
                 }
+                else
+                {
+                    _SQL += "MAT_L2_DQ_DRY_7 =  '0', ";
+                }
                 Tuple<bool, float> tuple7_2 = _Get_Matching(_L2_CODE, _Value_2, 601, 601, 2, _sp);//湿配比
                 if (tuple7_2.Item1)
                 {
                     _SQL += "MAT_L2_PB_WET_7 =  '" + tuple7_2.Item2 + "', ";
+                }
+                else
+                {
+                    _SQL += "MAT_L2_PB_WET_7 =  '0', ";
                 }
 
                 #endregion 烧返配比百分比
@@ -1062,10 +1383,18 @@ namespace LY_SINTER.Model
                 {
                     _SQL += "MAT_L2_DQ_DRY_8 =  '" + tuple8_1.Item2 + "', ";
                 }
+                else
+                {
+                    _SQL += "MAT_L2_DQ_DRY_8 =  '0', ";
+                }
                 Tuple<bool, float> tuple8_2 = _Get_Matching(_L2_CODE, _Value_2, 501, 550, 2, _sp);//湿配比
                 if (tuple8_2.Item1)
                 {
                     _SQL += "MAT_L2_PB_WET_8 =  '" + tuple8_2.Item2 + "', ";
+                }
+                else
+                {
+                    _SQL += "MAT_L2_PB_WET_8 =  '0', ";
                 }
 
                 #endregion 除尘灰配比百分比
@@ -1623,27 +1952,32 @@ namespace LY_SINTER.Model
 
         /// <summary>
         /// 获取下发权限
+        /// item1:现场最高权限
+        /// item2：非现场演算权限
         /// </summary>
         /// <returns></returns>
-        public bool _GetIp_Jurisdiction()
+        public Tuple<bool, bool> _GetIp_Jurisdiction()
         {
             GetIpAddress.GetApi getApi = new GetIpAddress.GetApi();
             var IP_Local = getApi.GetIp_Power();//获取本机IP
             Tuple<bool, string> Ip_Setting = _Get_IpAdress();//获取设定Ip
+            string[] _A1 = { "User_ID" };
+            List<float> _B = Get_MIX_PAR(_A1, "MC_MIX_Digit");
+            bool _A = User_Boss(int.Parse(_B[0].ToString()));
             if (Ip_Setting.Item1)
             {
                 if (IP_Local.Equals(Ip_Setting.Item2))
                 {
-                    return true;
+                    return new Tuple<bool, bool>(true, _A);
                 }
                 else
                 {
-                    return false;
+                    return new Tuple<bool, bool>(false, _A);
                 }
             }
             else
             {
-                return false;
+                return new Tuple<bool, bool>(false, _A);
             }
         }
 
@@ -1684,6 +2018,34 @@ namespace LY_SINTER.Model
             catch
             {
                 return new Tuple<bool, List<float>>(false, null);
+            }
+        }
+
+        /// <summary>
+        /// 判断用户是否支持配比调整演算功能
+        /// _D:判断用户等级是否可以进行配比演算
+        /// </summary>
+        /// <returns></returns>
+        public bool User_Boss(int _D)
+        {
+            try
+            {
+                var sql = "select * from USER_AUTHORITY where USER_NAME = '" + User_Level.User_name + "' ";
+                DataTable _data = _dBSQL.GetCommand(sql);
+                if (_data != null && _data.Rows.Count > 0)
+                {
+                    if (int.Parse(_data.Rows[0]["AUTHORITY"].ToString()) <= _D)
+                        return true;
+                    return false;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
             }
         }
     }

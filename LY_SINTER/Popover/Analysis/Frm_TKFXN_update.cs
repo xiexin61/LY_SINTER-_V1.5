@@ -33,7 +33,7 @@ namespace LY_SINTER.Popover.Analysis
             }
             string sql = "select BATCH_NUM,b.MAT_DESC,a.PLACE_ORIGIN,a.UNIT_PRICE,C_TFE,C_FEO,C_CAO,C_SIO2,C_AL2O3,C_MGO,C_S,C_P,C_LOT,C_H2O,C_AS,C_PB,C_ZN,C_CU,C_K2O," +
                 "C_NA2O,C_TIO2,GRIT_8,GRIT_5_8,GRIT_3_5,GRIT_1_3,GRIT_05_1,GRIT__025_05,GRIT_025,GRIT_AVG,W_CAP_05,W_MOL_05,DEN_B,DEN_T,POROSITY " +
-                "from M_ORE_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE and b.MAT_DESC = '" + name + "' and BATCH_NUM = " + num + "; ";
+                "from M_ORE_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE and b.MAT_DESC = '" + name + "' and BATCH_NUM = '" + num + "'; ";
             DataTable table = dBSQL.GetCommand(sql);
             for (int i = 0; i < d1.Rows.Count; i++)
             {

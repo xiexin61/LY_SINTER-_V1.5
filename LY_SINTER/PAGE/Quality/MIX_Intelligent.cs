@@ -91,6 +91,16 @@ namespace LY_SINTER.PAGE.Quality
         private int COLOR_END = 30;
 
         /// <summary>
+        /// 特殊配比闪烁功能开始
+        /// </summary>
+        private int COLOR_BEGIN_1 = 0;
+
+        /// <summary>
+        /// 特殊配比闪烁功能结束
+        /// </summary>
+        private int COLOR_END_1 = 30;
+
+        /// <summary>
         /// 人工输入配比上下限
         /// </summary>
         private Dictionary<int, float> Rule_Dic = new Dictionary<int, float>();
@@ -254,6 +264,11 @@ namespace LY_SINTER.PAGE.Quality
         /// </summary>
         private bool FALG_Oper;
 
+        /// <summary>
+        /// 非中控是否可以进行配比演算功能
+        /// </summary>
+        private bool FALG_Oper_1;
+
         #region 定时器声明
 
         /// <summary>
@@ -296,6 +311,11 @@ namespace LY_SINTER.PAGE.Quality
         /// </summary>
         public System.Timers.Timer _Timer8 { get; set; }
 
+        /// <summary>
+        /// 特殊配比颜色闪烁
+        /// </summary>
+        public System.Timers.Timer _Timer9 { get; set; }
+
         #endregion 定时器声明
 
         #region 弹出框交互标志位
@@ -324,7 +344,7 @@ namespace LY_SINTER.PAGE.Quality
             if (_vLog == null)//声明日志
                 _vLog = new vLog(".\\log_Page\\Quality\\MIXHMICAL_Page\\");
             MIX_PAGE_Digit();//配置参数
-           
+
             CAL_MODE = mIX_PAGE.Initialize_CAL_MODE();//获取特殊设定配比调整方式
             MAX_MIN_VLAUES();//上下限赋值
             Button_state(CAL_MODE);//开关状态
@@ -341,8 +361,12 @@ namespace LY_SINTER.PAGE.Quality
             TEXT_CHANGE_PAGE();//获取调整值每次调整数据
             FLAG_1 = true;//激活表单响应事件
             USER_PowEr();//权限激活
-
-           
+            this.d2.MergeColumnNames.Add("Column6");//需要合并的列名称
+            this.d2.MergeColumnNames.Add("Column7");//需要合并的列名称
+            this.d2.MergeColumnNames.Add("Column8");//需要合并的列名称
+            this.d2.MergeColumnNames.Add("Column9");//需要合并的列名称
+            this.d2.MergeColumnNames.Add("Column17");//需要合并的列名称
+            this.d2.MergeByColumnName = "Column20";//合并标志位
         }
 
         /// <summary>
@@ -353,13 +377,6 @@ namespace LY_SINTER.PAGE.Quality
             this.d2.AddSpanHeader(5, 6, "烧结配比 （干）");
             this.d2.AddSpanHeader(11, 2, "水分(%)");
             this.d2.AddSpanHeader(13, 4, "下料(t/h 湿)");
-
-            this.d2.MergeColumnNames.Add("Column6");//需要合并的列名称
-            this.d2.MergeColumnNames.Add("Column7");//需要合并的列名称
-            this.d2.MergeColumnNames.Add("Column8");//需要合并的列名称
-            this.d2.MergeColumnNames.Add("Column9");//需要合并的列名称
-            this.d2.MergeColumnNames.Add("Column17");//需要合并的列名称
-            this.d2.MergeByColumnName = "Column20";//合并标志位
         }
 
         /// <summary>
@@ -936,14 +953,18 @@ namespace LY_SINTER.PAGE.Quality
         {
             button1.Enabled = false;
             BUTTON_PBTZ();
-            if (button2.Enabled == false)
+            if (button2.Visible == false)
             {
-                BUTTON_PBQR();
-                mIX_PAGE.OVER_Storage(1, CAL_MODE);
-                latest_time(2);//最新下发时间
-                string name = "人工点击配比确认按钮";
-                logTable.Operation_Log(name, "智能配料页面", "智能配料模型");
+                if (FALG_Oper)
+                {
+                    BUTTON_PBQR();
+                    mIX_PAGE.OVER_Storage(1, CAL_MODE);
+                    latest_time(2);//最新下发时间
+                    string name = "人工点击配比确认按钮";
+                    logTable.Operation_Log(name, "智能配料页面", "智能配料模型");
+                }
             }
+            _Timer9.Enabled = true;
             //  COLOR_CHANE(8);
             button1.Enabled = true;
         }
@@ -1021,17 +1042,33 @@ namespace LY_SINTER.PAGE.Quality
                     bool f_3 = CptSolfuel_3();//调整值存库
                     if (f_3)
                     {
-                        bool f_4 = mIX_PAGE.CptSolfuel_1(CAL_MODE, RJ_MAX, RJ_MIN, RL_MAX, RL_MIN, BYS_MAX, BYS_MIN);//判断特殊成分配比
+                        bool f_4 = false;
+                        if (FALG_Oper)
+                        {
+                            f_4 = mIX_PAGE.CptSolfuel_1(CAL_MODE, RJ_MAX, RJ_MIN, RL_MAX, RL_MIN, BYS_MAX, BYS_MIN);//判断特殊成分配比
+                        }
+                        else
+                        {
+                            f_4 = mIX_PAGE.CptSolfuel_2(CAL_MODE, RJ_MAX, RJ_MIN, RL_MAX, RL_MIN, BYS_MAX, BYS_MIN);//判断特殊成分配比;
+                        }
+                        // bool f_4 = mIX_PAGE.CptSolfuel_1(CAL_MODE, RJ_MAX, RJ_MIN, RL_MAX, RL_MIN, BYS_MAX, BYS_MIN);//判断特殊成分配比
                         if (f_4)
                         {
-                            HMICAL.CalPB(1);//计算当前配比%
-                            PBTZ_GRTDATA(1);//更新设定配比&设定配比%数据
+                            if (FALG_Oper)
+                            {
+                                HMICAL.CalPB(1);//计算当前配比%
+                                PBTZ_GRTDATA(1);//更新设定配比&设定配比%数据
+                            }
+                            else
+                            {
+                                HMICAL.CalPB_1(1);//计算当前配比%
+                                PBTZ_GRTDATA_1(1);//更新设定配比&设定配比%数据
+                            }
                         }
                         else
                         {
                             MessageBox.Show("设定配比不满足");
                         }
-                       
                     }
                 }
             }
@@ -1044,13 +1081,16 @@ namespace LY_SINTER.PAGE.Quality
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            this.button2.Enabled = false;
-            BUTTON_PBQR();
-            mIX_PAGE.OVER_Storage(1, CAL_MODE);
-            latest_time(2);//最新下发时间
-            string name = "人工点击配比确认按钮";
-            logTable.Operation_Log(name, "智能配料页面", "智能配料模型");
-            this.button2.Enabled = true;
+            if (FALG_Oper)
+            {
+                this.button2.Enabled = false;
+                BUTTON_PBQR();
+                mIX_PAGE.OVER_Storage(1, CAL_MODE);
+                latest_time(2);//最新下发时间
+                string name = "人工点击配比确认按钮";
+                logTable.Operation_Log(name, "智能配料页面", "智能配料模型");
+                this.button2.Enabled = true;
+            }
         }
 
         /// <summary>
@@ -1556,6 +1596,8 @@ namespace LY_SINTER.PAGE.Quality
                                     COLOR_BEGIN = 0;//还原颜色次数
                                     _Timer7.Enabled = true;//设定下料量背景颜色变化
                                     COLOR_CHANE(1);//启停信号颜色变化
+                                    COLOR_CHANE(5);//预测成分特殊成分颜色
+                                    COLOR_CHANE(6);//预测成分特殊数据
                                 }
                             }
                         }
@@ -1623,33 +1665,66 @@ namespace LY_SINTER.PAGE.Quality
         {
             try
             {
-                for (int x = 0; x < d2.Rows.Count; x++)
+                if (FALG_Oper)
                 {
-                    //设定配比值
-                    float PB = float.Parse(d2.Rows[x].Cells["Column6"].Value.ToString());
-                    //配比id
-                    int PBID = int.Parse(d2.Rows[x].Cells["Column20"].Value.ToString());
-                    string sql_PBTZ = "update CFG_MAT_L2_SJPB_INTERFACE set MAT_L2_SDPB = " + PB + " where  MAT_PB_ID = " + PBID + "";
-                    int count = _dBSQL.CommandExecuteNonQuery(sql_PBTZ);
-                    if (count > 0)
+                    for (int x = 0; x < d2.Rows.Count; x++)
                     {
-                        string messbox = "点击配比调整按钮，更新设定配比，配比ID : + '" + PBID + "'," + "配比值为'" + PB + "'";
-                        _vLog.writelog(messbox, 0);
+                        //设定配比值
+                        float PB = float.Parse(d2.Rows[x].Cells["Column6"].Value.ToString());
+                        //配比id
+                        int PBID = int.Parse(d2.Rows[x].Cells["Column20"].Value.ToString());
+                        string sql_PBTZ = "update CFG_MAT_L2_SJPB_INTERFACE set MAT_L2_SDPB = " + PB + " where  MAT_PB_ID = " + PBID + "";
+                        int count = _dBSQL.CommandExecuteNonQuery(sql_PBTZ);
+                        if (count > 0)
+                        {
+                            string messbox = "点击配比调整按钮，更新设定配比，配比ID : + '" + PBID + "'," + "配比值为'" + PB + "'";
+                            _vLog.writelog(messbox, 0);
+                        }
+                        else
+                        {
+                            string messbox = "点击配比调整按钮，更新设定配比失败，配比ID : + '" + PBID + "'," + "配比值为'" + PB + "'";
+                            _vLog.writelog(messbox, -1);
+                        }
+                        string sql_PBTZ_1 = "update CFG_MAT_L2_PBSD_INTERFACE set peibizhi = " + PB + " where  peinimingcheng = " + PBID + "";
+                        int count1 = _dBSQL.CommandExecuteNonQuery(sql_PBTZ_1);
+                        if (count <= 0)
+                        {
+                            string messbox = "点击配比调整按钮，更新CFG_MAT_L2_PBSD_INTERFACE表设定配比失败，配比ID : + '" + PBID + "'," + "配比值为'" + PB + "'";
+                            _vLog.writelog(messbox, -1);
+                        }
                     }
-                    else
-                    {
-                        string messbox = "点击配比调整按钮，更新设定配比失败，配比ID : + '" + PBID + "'," + "配比值为'" + PB + "'";
-                        _vLog.writelog(messbox, -1);
-                    }
-                    string sql_PBTZ_1 = "update CFG_MAT_L2_PBSD_INTERFACE set peibizhi = " + PB + " where  peinimingcheng = " + PBID + "";
-                    int count1 = _dBSQL.CommandExecuteNonQuery(sql_PBTZ_1);
-                    if (count <= 0)
-                    {
-                        string messbox = "点击配比调整按钮，更新CFG_MAT_L2_PBSD_INTERFACE表设定配比失败，配比ID : + '" + PBID + "'," + "配比值为'" + PB + "'";
-                        _vLog.writelog(messbox, -1);
-                    }
+                    return true;
                 }
-                return true;
+                else
+                {
+                    for (int x = 0; x < d2.Rows.Count; x++)
+                    {
+                        //设定配比值
+                        float PB = float.Parse(d2.Rows[x].Cells["Column6"].Value.ToString());
+                        //配比id
+                        int PBID = int.Parse(d2.Rows[x].Cells["Column20"].Value.ToString());
+                        string sql_PBTZ = "update CFG_MAT_L2_SJPB_INTERFACE_CalCulus set MAT_L2_SDPB = " + PB + " where  MAT_PB_ID = " + PBID + "";
+                        int count = _dBSQL.CommandExecuteNonQuery(sql_PBTZ);
+                        if (count > 0)
+                        {
+                            // string messbox = "点击配比调整按钮，更新设定配比，配比ID : + '" + PBID + "'," + "配比值为'" + PB + "'";
+                            // _vLog.writelog(messbox, 0);
+                        }
+                        else
+                        {
+                            //string messbox = "点击配比调整按钮，更新设定配比失败，配比ID : + '" + PBID + "'," + "配比值为'" + PB + "'";
+                            // _vLog.writelog(messbox, -1);
+                        }
+                        string sql_PBTZ_1 = "update CFG_MAT_L2_PBSD_INTERFACE_CalCulus set peibizhi = " + PB + " where  peinimingcheng = " + PBID + "";
+                        int count1 = _dBSQL.CommandExecuteNonQuery(sql_PBTZ_1);
+                        if (count <= 0)
+                        {
+                            //  string messbox = "点击配比调整按钮，更新CFG_MAT_L2_PBSD_INTERFACE表设定配比失败，配比ID : + '" + PBID + "'," + "配比值为'" + PB + "'";
+                            // _vLog.writelog(messbox, -1);
+                        }
+                    }
+                    return true;
+                }
             }
             catch (Exception ee)
             {
@@ -1666,127 +1741,134 @@ namespace LY_SINTER.PAGE.Quality
         {
             try
             {
-                //数据库存储字典 key:配比id item1：下料口 item2：分仓系数
-                Dictionary<int, List<Tuple<int, double>>> FCXS_Change = new Dictionary<int, List<Tuple<int, double>>>();
-                //获取数据库中的分仓系数
-                var sql_date = " select MAT_PB_ID, MAT_L2_FCXS,MAT_L2_XLK  from CFG_MAT_L2_XLK_INTERFACE order by MAT_L2_XLK asc";
-                DataTable data_1 = _dBSQL.GetCommand(sql_date);
-                if (data_1 != null && data_1.Rows.Count > 0)
+                if (FALG_Oper)
                 {
-                    for (int x = 0; x < data_1.Rows.Count; x++)
+                    //数据库存储字典 key:配比id item1：下料口 item2：分仓系数
+                    Dictionary<int, List<Tuple<int, double>>> FCXS_Change = new Dictionary<int, List<Tuple<int, double>>>();
+                    //获取数据库中的分仓系数
+                    var sql_date = " select MAT_PB_ID, MAT_L2_FCXS,MAT_L2_XLK  from CFG_MAT_L2_XLK_INTERFACE order by MAT_L2_XLK asc";
+                    DataTable data_1 = _dBSQL.GetCommand(sql_date);
+                    if (data_1 != null && data_1.Rows.Count > 0)
                     {
-                        List<Tuple<int, double>> list_1 = new List<Tuple<int, double>>();
-                        int PBID = int.Parse(data_1.Rows[x]["MAT_PB_ID"].ToString() == "" ? "0" : data_1.Rows[x][0].ToString());
-                        double FCXS = Math.Round(double.Parse(data_1.Rows[x]["MAT_L2_FCXS"].ToString() == "" ? "0" : data_1.Rows[x][1].ToString()), 3);
-                        int xlk = int.Parse(data_1.Rows[x]["MAT_L2_XLK"].ToString() == "" ? "0" : data_1.Rows[x][0].ToString());
-                        if (FCXS_Change.ContainsKey(PBID))
+                        for (int x = 0; x < data_1.Rows.Count; x++)
                         {
-                            FCXS_Change[PBID].Add(new Tuple<int, double>(xlk, FCXS));
-                        }
-                        else
-                        {
-                            Tuple<int, double> tuple1 = new Tuple<int, double>(xlk, FCXS);
-                            list_1.Add(tuple1);
-                            FCXS_Change.Add(PBID, list_1);
-                        }
-                    }
-                    //页面存储字典
-                    Dictionary<int, List<Tuple<int, double>>> FCXS_Change_YM = new Dictionary<int, List<Tuple<int, double>>>();
-                    for (int aa = 0; aa < d2.Rows.Count; aa++)
-                    {
-                        List<Tuple<int, double>> list_1 = new List<Tuple<int, double>>();
-                        int PBID = int.Parse(d2.Rows[aa].Cells["Column20"].Value.ToString() == "" ? "0" : d2.Rows[aa].Cells["Column20"].Value.ToString());
-                        double FCXS_YM = Math.Round(double.Parse(d2.Rows[aa].Cells["Column10"].Value.ToString()), 3);
-                        int xlk = int.Parse(d2.Rows[aa].Cells["Column3"].Value.ToString() == "" ? "0" : d2.Rows[aa].Cells["Column3"].Value.ToString());
-                        if (FCXS_Change_YM.ContainsKey(PBID))
-                        {
-                            FCXS_Change_YM[PBID].Add(new Tuple<int, double>(xlk, FCXS_YM));
-                        }
-                        else
-                        {
-                            list_1.Add(new Tuple<int, double>(xlk, FCXS_YM));
-                            FCXS_Change_YM.Add(PBID, list_1);
-                        }
-                    }
-                    //分仓系数根据配比id判读是否发生变化 0未发生变化 1发生变化
-                    Dictionary<int, int> FCXS_Change_1 = new Dictionary<int, int>();
-                    for (int x = 1; x <= FCXS_Change.Count; x++)
-                    {
-                        List<Tuple<int, double>> list_1 = FCXS_Change[x];
-                        List<Tuple<int, double>> list_2 = FCXS_Change_YM[x];
-                        int aa = 0;
-                        for (int a = 0; a < list_1.Count; a++)
-                        {
-                            if (list_1[a].Item2 != list_2[a].Item2)
+                            List<Tuple<int, double>> list_1 = new List<Tuple<int, double>>();
+                            int PBID = int.Parse(data_1.Rows[x]["MAT_PB_ID"].ToString() == "" ? "0" : data_1.Rows[x][0].ToString());
+                            double FCXS = Math.Round(double.Parse(data_1.Rows[x]["MAT_L2_FCXS"].ToString() == "" ? "0" : data_1.Rows[x][1].ToString()), 3);
+                            int xlk = int.Parse(data_1.Rows[x]["MAT_L2_XLK"].ToString() == "" ? "0" : data_1.Rows[x][0].ToString());
+                            if (FCXS_Change.ContainsKey(PBID))
                             {
-                                aa = aa + 1;
-                            }
-                        }
-                        if (aa == 0)
-                        {
-                            var sql_change = "update CFG_MAT_L2_XLK_INTERFACE set MAT_PB_FALG = 0 where MAT_PB_ID = " + x + "";
-                            int count = _dBSQL.CommandExecuteNonQuery(sql_change);
-                            string text = "配比id：" + x.ToString() + "分仓系数未发生变化";
-                            if (count > 0)
-                            {
-                                text += "CFG_MAT_L2_XLK_INTERFACE表标志位修改成功,影响行数" + count.ToString();
-                                _vLog.writelog(text, 0);
+                                FCXS_Change[PBID].Add(new Tuple<int, double>(xlk, FCXS));
                             }
                             else
                             {
-                                text += "CFG_MAT_L2_XLK_INTERFACE表标志位修改失败,影响行数" + count.ToString() + "sql:" + sql_change;
-                                _vLog.writelog(text, -1);
+                                Tuple<int, double> tuple1 = new Tuple<int, double>(xlk, FCXS);
+                                list_1.Add(tuple1);
+                                FCXS_Change.Add(PBID, list_1);
                             }
                         }
-                        else
+                        //页面存储字典
+                        Dictionary<int, List<Tuple<int, double>>> FCXS_Change_YM = new Dictionary<int, List<Tuple<int, double>>>();
+                        for (int aa = 0; aa < d2.Rows.Count; aa++)
                         {
-                            #region 插入标志位
-
-                            var sql_change = "update CFG_MAT_L2_XLK_INTERFACE set MAT_PB_FALG = 1 where MAT_PB_ID = " + x + "";
-                            int count = _dBSQL.CommandExecuteNonQuery(sql_change);
-                            string text = "配比id：" + x.ToString() + "分仓系数发生变化";
-                            if (count > 0)
+                            List<Tuple<int, double>> list_1 = new List<Tuple<int, double>>();
+                            int PBID = int.Parse(d2.Rows[aa].Cells["Column20"].Value.ToString() == "" ? "0" : d2.Rows[aa].Cells["Column20"].Value.ToString());
+                            double FCXS_YM = Math.Round(double.Parse(d2.Rows[aa].Cells["Column10"].Value.ToString()), 3);
+                            int xlk = int.Parse(d2.Rows[aa].Cells["Column3"].Value.ToString() == "" ? "0" : d2.Rows[aa].Cells["Column3"].Value.ToString());
+                            if (FCXS_Change_YM.ContainsKey(PBID))
                             {
-                                text += "CFG_MAT_L2_XLK_INTERFACE表标志位修改成功,影响行数" + count.ToString();
-                                _vLog.writelog(text, 0);
+                                FCXS_Change_YM[PBID].Add(new Tuple<int, double>(xlk, FCXS_YM));
                             }
                             else
                             {
-                                text += "CFG_MAT_L2_XLK_INTERFACE表标志位修改失败,影响行数" + count.ToString() + "sql:" + sql_change;
-                                _vLog.writelog(text, -1);
+                                list_1.Add(new Tuple<int, double>(xlk, FCXS_YM));
+                                FCXS_Change_YM.Add(PBID, list_1);
                             }
-
-                            #endregion 插入标志位
-
-                            #region 更新分仓系数
-
-                            for (int x1 = 0; x1 < list_2.Count; x1++)
+                        }
+                        //分仓系数根据配比id判读是否发生变化 0未发生变化 1发生变化
+                        Dictionary<int, int> FCXS_Change_1 = new Dictionary<int, int>();
+                        for (int x = 1; x <= FCXS_Change.Count; x++)
+                        {
+                            List<Tuple<int, double>> list_1 = FCXS_Change[x];
+                            List<Tuple<int, double>> list_2 = FCXS_Change_YM[x];
+                            int aa = 0;
+                            for (int a = 0; a < list_1.Count; a++)
                             {
-                                //更新修改后的分仓系数
-                                var sql1 = "update CFG_MAT_L2_XLK_INTERFACE set MAT_L2_FCXS = " + list_2[x1].Item2 + " where MAT_L2_XLK = " + list_2[x1].Item1 + "";
-                                int count1 = _dBSQL.CommandExecuteNonQuery(sql1);
-                                if (count1 > 0)
+                                if (list_1[a].Item2 != list_2[a].Item2)
                                 {
-                                    string text1 = "下料口号：" + list_2[x1].Item1.ToString() + "修改分仓系数成功，分仓系数为:" + list_2[x1].Item2.ToString();
-                                    _vLog.writelog(text1, 0);
+                                    aa = aa + 1;
+                                }
+                            }
+                            if (aa == 0)
+                            {
+                                var sql_change = "update CFG_MAT_L2_XLK_INTERFACE set MAT_PB_FALG = 0 where MAT_PB_ID = " + x + "";
+                                int count = _dBSQL.CommandExecuteNonQuery(sql_change);
+                                string text = "配比id：" + x.ToString() + "分仓系数未发生变化";
+                                if (count > 0)
+                                {
+                                    text += "CFG_MAT_L2_XLK_INTERFACE表标志位修改成功,影响行数" + count.ToString();
+                                    _vLog.writelog(text, 0);
                                 }
                                 else
                                 {
-                                    string text1 = "数据库连接失败，下料口号：" + list_2[x1].Item1.ToString() + "修改分仓系数失败，分仓系数为:" + list_2[x1].Item2.ToString() + "   sql:" + sql1;
-                                    _vLog.writelog(text1, -1);
+                                    text += "CFG_MAT_L2_XLK_INTERFACE表标志位修改失败,影响行数" + count.ToString() + "sql:" + sql_change;
+                                    _vLog.writelog(text, -1);
                                 }
                             }
+                            else
+                            {
+                                #region 插入标志位
 
-                            #endregion 更新分仓系数
+                                var sql_change = "update CFG_MAT_L2_XLK_INTERFACE set MAT_PB_FALG = 1 where MAT_PB_ID = " + x + "";
+                                int count = _dBSQL.CommandExecuteNonQuery(sql_change);
+                                string text = "配比id：" + x.ToString() + "分仓系数发生变化";
+                                if (count > 0)
+                                {
+                                    text += "CFG_MAT_L2_XLK_INTERFACE表标志位修改成功,影响行数" + count.ToString();
+                                    _vLog.writelog(text, 0);
+                                }
+                                else
+                                {
+                                    text += "CFG_MAT_L2_XLK_INTERFACE表标志位修改失败,影响行数" + count.ToString() + "sql:" + sql_change;
+                                    _vLog.writelog(text, -1);
+                                }
+
+                                #endregion 插入标志位
+
+                                #region 更新分仓系数
+
+                                for (int x1 = 0; x1 < list_2.Count; x1++)
+                                {
+                                    //更新修改后的分仓系数
+                                    var sql1 = "update CFG_MAT_L2_XLK_INTERFACE set MAT_L2_FCXS = " + list_2[x1].Item2 + " where MAT_L2_XLK = " + list_2[x1].Item1 + "";
+                                    int count1 = _dBSQL.CommandExecuteNonQuery(sql1);
+                                    if (count1 > 0)
+                                    {
+                                        string text1 = "下料口号：" + list_2[x1].Item1.ToString() + "修改分仓系数成功，分仓系数为:" + list_2[x1].Item2.ToString();
+                                        _vLog.writelog(text1, 0);
+                                    }
+                                    else
+                                    {
+                                        string text1 = "数据库连接失败，下料口号：" + list_2[x1].Item1.ToString() + "修改分仓系数失败，分仓系数为:" + list_2[x1].Item2.ToString() + "   sql:" + sql1;
+                                        _vLog.writelog(text1, -1);
+                                    }
+                                }
+
+                                #endregion 更新分仓系数
+                            }
                         }
+                        return true;
                     }
-                    return true;
+                    else
+                    {
+                        string mess = "配比调整，判断分仓系数是否为人修改报错：查询数据库失败" + sql_date;
+                        _vLog.writelog(mess, -1);
+                        return false;
+                    }
                 }
                 else
                 {
-                    string mess = "配比调整，判断分仓系数是否为人修改报错：查询数据库失败" + sql_date;
-                    _vLog.writelog(mess, -1);
-                    return false;
+                    return true;
                 }
             }
             catch (Exception ee)
@@ -1804,26 +1886,44 @@ namespace LY_SINTER.PAGE.Quality
         {
             try
             {
-                int ID = 1;
-                float MBHT = float.Parse(this.textBox_MB_C.Text.ToString());//目标碳
-                float TTZZ = float.Parse(this.textBox_TZ_C.Text.ToString());//碳调整值
-                float MBJD = float.Parse(this.textBox_MB_R.Text.ToString());//目标碱度
-                float RTZZ = float.Parse(this.textBox_TZ_R.Text.ToString());//碱度调整值
-                float MBMG = float.Parse(this.textBox_MB_MG.Text.ToString());//目标MG
-                float MGZZ = float.Parse(this.textBox_TZ_MG.Text.ToString());//MG调整值
-                string sql = "INSERT INTO CFG_MAT_L2_MACAL_IDT (id ,C_Aim,C_Md,R_Aim,R_Md,MG_Aim, MG_Md,TIMESTAMP) VALUES ('" + ID + "','" + MBHT + "','" + TTZZ + "','" + MBJD + "','" + RTZZ + "','" + MBMG + "','" + MGZZ + "',GETDATE());";
-                int count = _dBSQL.CommandExecuteNonQuery(sql);
-                if (count > 0)
                 {
-                    string messbox = "人工输入项存库成功,目标碳:" + MBHT.ToString() + ",碳调整值:" + TTZZ.ToString() + ",目标碱度:" + MBJD.ToString() + ",碱度调整值:" + RTZZ.ToString() + ",目标MG:" + MBMG.ToString() + ",MG调整值:" + MGZZ.ToString();
-                    _vLog.writelog(messbox, 0);
-                    return true;
-                }
-                else
-                {
-                    string messbox = "人工输入项存库失败,目标碳:" + MBHT.ToString() + ",碳调整值:" + TTZZ.ToString() + ",目标碱度:" + MBJD.ToString() + ",碱度调整值:" + RTZZ.ToString() + ",目标MG:" + MBMG.ToString() + ",MG调整值:" + MGZZ.ToString() + "     sql语句" + sql.ToString();
-                    _vLog.writelog(messbox, -1);
-                    return false;
+                    int ID = 1;
+                    float MBHT = float.Parse(this.textBox_MB_C.Text.ToString());//目标碳
+                    float TTZZ = float.Parse(this.textBox_TZ_C.Text.ToString());//碳调整值
+                    float MBJD = float.Parse(this.textBox_MB_R.Text.ToString());//目标碱度
+                    float RTZZ = float.Parse(this.textBox_TZ_R.Text.ToString());//碱度调整值
+                    float MBMG = float.Parse(this.textBox_MB_MG.Text.ToString());//目标MG
+                    float MGZZ = float.Parse(this.textBox_TZ_MG.Text.ToString());//MG调整值
+                    string sql = "";
+                    if (FALG_Oper)
+                    {
+                        sql = "INSERT INTO CFG_MAT_L2_MACAL_IDT (id ,C_Aim,C_Md,R_Aim,R_Md,MG_Aim, MG_Md,TIMESTAMP) VALUES ('" + ID + "','" + MBHT + "','" + TTZZ + "','" + MBJD + "','" + RTZZ + "','" + MBMG + "','" + MGZZ + "',GETDATE());";
+                    }
+                    else
+                    {
+                        sql = "INSERT INTO CFG_MAT_L2_MACAL_IDT_CalCulus (id ,C_Aim,C_Md,R_Aim,R_Md,MG_Aim, MG_Md,TIMESTAMP) VALUES ('" + ID + "','" + MBHT + "','" + TTZZ + "','" + MBJD + "','" + RTZZ + "','" + MBMG + "','" + MGZZ + "',GETDATE());";
+                    }
+                    //  string sql = "INSERT INTO CFG_MAT_L2_MACAL_IDT (id ,C_Aim,C_Md,R_Aim,R_Md,MG_Aim, MG_Md,TIMESTAMP) VALUES ('" + ID + "','" + MBHT + "','" + TTZZ + "','" + MBJD + "','" + RTZZ + "','" + MBMG + "','" + MGZZ + "',GETDATE());";
+                    int count = _dBSQL.CommandExecuteNonQuery(sql);
+                    if (FALG_Oper)
+                    {
+                        if (count > 0)
+                        {
+                            string messbox = "人工输入项存库成功,目标碳:" + MBHT.ToString() + ",碳调整值:" + TTZZ.ToString() + ",目标碱度:" + MBJD.ToString() + ",碱度调整值:" + RTZZ.ToString() + ",目标MG:" + MBMG.ToString() + ",MG调整值:" + MGZZ.ToString();
+                            _vLog.writelog(messbox, 0);
+                            return true;
+                        }
+                        else
+                        {
+                            string messbox = "人工输入项存库失败,目标碳:" + MBHT.ToString() + ",碳调整值:" + TTZZ.ToString() + ",目标碱度:" + MBJD.ToString() + ",碱度调整值:" + RTZZ.ToString() + ",目标MG:" + MBMG.ToString() + ",MG调整值:" + MGZZ.ToString() + "     sql语句" + sql.ToString();
+                            _vLog.writelog(messbox, -1);
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 }
             }
             catch (Exception ee)
@@ -1967,6 +2067,77 @@ namespace LY_SINTER.PAGE.Quality
         }
 
         /// <summary>
+        /// 更新数据
+        /// 演算模式
+        /// _flag = 0 初始化加载
+        /// _flag = 1 更新设定配比、设定配比%
+        /// _flag = 2 点击配比确认按钮更新数据
+        /// _flag = 3 非中控刷新数据
+        /// </summary>
+        public void PBTZ_GRTDATA_1(int _flag)
+        {
+            try
+            {
+                var sql = " select " +
+                    "b.MAT_L2_CH ," +
+                    "d.MAT_DESC as WL ," +
+                    "a.MAT_L2_XLK," +
+                    "(case when a.MAT_L2_XLKZT = 0 then '禁用' when a.MAT_L2_XLKZT = 1 then '启用' end ) as MAT_L2_XLKZT," +
+                    "b.MAT_L2_CW ," +
+                    "cast(cast(b.MAT_L2_SDPB as decimal(18," + Digit_1 + ")) as VARCHAR(8)) as MAT_L2_SDPB," +
+                    "cast(b.MAT_L2_SDBFB as decimal(18," + Digit_2 + ")) as MAT_L2_SDBFB ," +
+                    "cast(cast(b.MAT_L2_DQPB as decimal(18," + Digit_1 + ")) as VARCHAR(8)) as MAT_L2_DQPB," +
+                    "cast(cast(b.MAT_L2_DQBFB as decimal(18," + Digit_2 + ")) as VARCHAR(8)) as MAT_L2_DQBFB," +
+                    "a.MAT_L2_FCXS," +
+                    "a.MAT_L2_GXLBL," +
+                    "b.MAT_L2_SFSD," +
+                    "b.MAT_L2_SFDQ," +
+                    "a.MAT_L2_SDXL," +
+                    "a.MAT_L2_SJXL," +
+                    "a.MAT_L2_PC," +
+                    "cast(cast(b.MAT_L2_SPB as decimal(18," + Digit_2 + ")) as VARCHAR(8)) as MAT_L2_SPB," +
+                    "a.MAT_L2_ZS ," +
+                    "b.MAT_PB_ID," +
+                    "e.MAT_L2_WLXH  " +
+                    "from " +
+                    "CFG_MAT_L2_XLK_INTERFACE a," +
+                    " CFG_MAT_L2_SJPB_INTERFACE_CalCulus b," +
+                    " M_MATERIAL_BINS c ," +
+                    "M_MATERIAL_COOD d ," +
+                    "CFG_MAT_L2_LJJS_INTERFACE e " +
+                    "where   a.MAT_L2_CH = b.MAT_L2_CH and  c.L2_CODE  = d.L2_CODE and c.BIN_NUM_SHOW = b.MAT_L2_CH and a.MAT_L2_CH = e.MAT_CH ORDER BY A.MAT_L2_XLK ASC";
+                DataTable dataTable = _dBSQL.GetCommand(sql);
+                if (dataTable.Rows.Count >= 0)
+                {
+                    FLAG_1 = false;
+                    if (_flag == 0)
+                    {
+                        this.d2.DataSource = dataTable;
+                    }
+                    else if (_flag == 1)
+                    {
+                        for (int X = 0; X < d2.Rows.Count; X++)
+                        {
+                            d2.Rows[X].Cells["Column6"].Value = dataTable.Rows[X]["MAT_L2_SDPB"].ToString();//设定配比
+                            d2.Rows[X].Cells["Column7"].Value = dataTable.Rows[X]["MAT_L2_SDBFB"].ToString();//设定配比百分比
+                        }
+                    }
+                    FLAG_1 = true;
+                }
+                else
+                {
+                    string mistake = "配比调整更新页面数据有误,sql:" + sql;
+                    _vLog.writelog(mistake, -1);
+                }
+            }
+            catch (Exception ee)
+            {
+                string mistake = "配比调整更新页面数据有误" + ee.ToString();
+                _vLog.writelog(mistake, -1);
+            }
+        }
+
+        /// <summary>
         /// 下发时间
         /// </summary>
         /// <param name="flag"></param>
@@ -2007,6 +2178,9 @@ namespace LY_SINTER.PAGE.Quality
         /// _FLAG = 7 特殊分仓系数背景颜色变化
         /// _FLAG = 8 特殊配比计算颜色闪烁
         /// _FLAG = 9 设定下料量背景颜色变化
+        /// _FLAG = 10 设定下料量背景颜色变化
+        /// _FLAG = 11 特殊配比颜色变化
+        /// _FLAG = 12 特殊配比颜色变化
         /// </summary>
         /// <param name="_FLAG"></param>
         public void COLOR_CHANE(int _FLAG)
@@ -2172,6 +2346,58 @@ namespace LY_SINTER.PAGE.Quality
                 {
                     this.d2.Columns["Column14"].DefaultCellStyle.BackColor = Color.Red;
                     this.d2.Columns["Column14"].DefaultCellStyle.ForeColor = Color.Yellow;
+                }
+                else if (_FLAG == 11)
+                {
+                    string sql_1 = "";
+                    if (CAL_MODE == 1)
+                    {
+                        sql_1 = " select distinct category ,canghao from CFG_MAT_L2_PBSD_INTERFACE  where category  =1 or category = 2";
+                    }
+                    else if (CAL_MODE == 2)
+                    {
+                        sql_1 = " select distinct category ,canghao from CFG_MAT_L2_PBSD_INTERFACE  where category  =1 or category = 2 or category = 4 ";
+                    }
+                    DataTable dataTable_1 = _dBSQL.GetCommand(sql_1);
+                    List<int> _a = new List<int>();
+                    for (int x = 0; x < dataTable_1.Rows.Count; x++)
+                    {
+                        _a.Add(int.Parse(dataTable_1.Rows[x]["canghao"].ToString()));
+                    }
+                    for (int xx = 0; xx < d2.Rows.Count; xx++)
+                    {
+                        if (_a.Contains(int.Parse(d2.Rows[xx].Cells["Column1"].Value.ToString())))
+                        {
+                            this.d2.Rows[xx].Cells["Column6"].Style.ForeColor = Color.Red;
+                            this.d2.Rows[xx].Cells["Column6"].Style.BackColor = Color.MediumAquamarine;
+                        }
+                    }
+                }
+                else if (_FLAG == 12)
+                {
+                    string sql_1 = "";
+                    if (CAL_MODE == 1)
+                    {
+                        sql_1 = " select distinct category ,canghao from CFG_MAT_L2_PBSD_INTERFACE  where category  =1 or category = 2";
+                    }
+                    else if (CAL_MODE == 2)
+                    {
+                        sql_1 = " select distinct category ,canghao from CFG_MAT_L2_PBSD_INTERFACE  where category  =1 or category = 2 or category = 4 ";
+                    }
+                    DataTable dataTable_1 = _dBSQL.GetCommand(sql_1);
+                    List<int> _a = new List<int>();
+                    for (int x = 0; x < dataTable_1.Rows.Count; x++)
+                    {
+                        _a.Add(int.Parse(dataTable_1.Rows[x]["canghao"].ToString()));
+                    }
+                    for (int xx = 0; xx < d2.Rows.Count; xx++)
+                    {
+                        if (_a.Contains(int.Parse(d2.Rows[xx].Cells["Column1"].Value.ToString())))
+                        {
+                            this.d2.Rows[xx].Cells["Column6"].Style.ForeColor = Color.Yellow;
+                            this.d2.Rows[xx].Cells["Column6"].Style.BackColor = Color.MediumAquamarine;
+                        }
+                    }
                 }
             }
             catch
@@ -2607,7 +2833,13 @@ namespace LY_SINTER.PAGE.Quality
             _Timer8.Elapsed += (x, y) => { _Timer8_Tick(); };
             _Timer8.Enabled = false;
             _Timer8.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
+
+            _Timer9 = new System.Timers.Timer(500);//闪烁
+            _Timer9.Elapsed += (x, y) => { _Timer9_Tick(); };
+            _Timer9.Enabled = false;
+            _Timer9.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
         }
+
         /// <summary>
         /// 权限激活
         /// </summary>
@@ -2624,6 +2856,7 @@ namespace LY_SINTER.PAGE.Quality
                 _Timer8.Enabled = true;//非控制用户刷新数据
             }
         }
+
         #region 定时器响应事件
 
         /// <summary>
@@ -3051,6 +3284,7 @@ namespace LY_SINTER.PAGE.Quality
                 try
                 {
                     Ingredient();
+                    Counter_OutPut();
                 }
                 catch (Exception ee)
                 {
@@ -3081,6 +3315,7 @@ namespace LY_SINTER.PAGE.Quality
                 }
             }
         }
+
         /// <summary>
         /// 设定下料量颜色闪烁
         /// </summary>
@@ -3110,6 +3345,22 @@ namespace LY_SINTER.PAGE.Quality
             else
             {
                 PBTZ_GRTDATA(3);
+            }
+        }
+
+        /// <summary>
+        /// 设定下料量颜色闪烁
+        /// </summary>
+        private void _Timer9_Tick()
+        {
+            Action invokeAction = new Action(_Timer9_Tick);
+            if (this.InvokeRequired)
+            {
+                this.Invoke(invokeAction);
+            }
+            else
+            {
+                Color_Car();//设定下料量颜色闪烁
             }
         }
 
@@ -3583,7 +3834,8 @@ namespace LY_SINTER.PAGE.Quality
             switch_4_open = _list_1[6];
             switch_4_close = _list_1[7];
 
-            FALG_Oper = mIX_PAGE._GetIp_Jurisdiction();//获取现场权限
+            FALG_Oper = mIX_PAGE._GetIp_Jurisdiction().Item1;//获取现场权限
+            FALG_Oper_1 = mIX_PAGE._GetIp_Jurisdiction().Item2;//获取非中控演算权限
         }
 
         /// <summary>
@@ -3824,6 +4076,38 @@ namespace LY_SINTER.PAGE.Quality
         }
 
         /// <summary>
+        /// 特殊配比颜色
+        /// </summary>
+        public void Color_Car()
+        {
+            try
+            {
+                if (COLOR_BEGIN_1 >= 0 && COLOR_BEGIN_1 < COLOR_END_1)
+                {
+                    COLOR_BEGIN_1 += 1;
+                    if (COLOR_BEGIN_1 % 2 == 0)
+                    {
+                        COLOR_CHANE(11);
+                    }
+                    else
+                    {
+                        COLOR_CHANE(12);
+                    }
+                }
+                else
+                {
+                    COLOR_CHANE(4);
+                    COLOR_BEGIN_1 = 0;
+                    _Timer9.Enabled = false;
+                }
+            }
+            catch (Exception ee)
+            {
+                var mistake = "_Timer7_Tick方法失败" + ee.ToString();
+            }
+        }
+
+        /// <summary>
         /// 定时器启用
         /// </summary>
         public void Timer_state()
@@ -3853,7 +4137,7 @@ namespace LY_SINTER.PAGE.Quality
         /// </summary>
         public void Button_Show()
         {
-            if (FALG_Oper)
+            if (FALG_Oper || FALG_Oper_1)
             {
                 simpleButton4.Enabled = true;
                 simpleButton5.Enabled = true;
@@ -3865,10 +4149,6 @@ namespace LY_SINTER.PAGE.Quality
                 simpleButton11.Enabled = true;
                 button1.Enabled = true;
                 button2.Enabled = true;
-                Check_R.Enabled = true;
-                Check_C.Enabled = true;
-                Check_MG.Enabled = true;
-                Check_FK.Enabled = true;
             }
             else
             {
@@ -3882,6 +4162,16 @@ namespace LY_SINTER.PAGE.Quality
                 simpleButton11.Enabled = false;
                 button1.Enabled = false;
                 button2.Enabled = false;
+            }
+            if (FALG_Oper)
+            {
+                Check_R.Enabled = true;
+                Check_C.Enabled = true;
+                Check_MG.Enabled = true;
+                Check_FK.Enabled = true;
+            }
+            else
+            {
                 Check_R.Enabled = false;
                 Check_C.Enabled = false;
                 Check_MG.Enabled = false;

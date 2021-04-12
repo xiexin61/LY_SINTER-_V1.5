@@ -81,7 +81,7 @@
             this.blendingUC2.MinimumSize = new System.Drawing.Size(10, 10);
             this.blendingUC2.Name = "blendingUC2";
             this.blendingUC2.SetJsl = "设定加水量";
-            this.blendingUC2.ShuiFen = "一二混目标水分";
+            //this.blendingUC2.ShuiFen = "一二混目标水分";
             this.blendingUC2.Size = new System.Drawing.Size(173, 106);
             this.blendingUC2.TabIndex = 7;
             this.blendingUC2.ZhuanSu = "转速";

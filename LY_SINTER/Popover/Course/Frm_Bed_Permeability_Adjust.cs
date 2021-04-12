@@ -20,18 +20,21 @@ namespace LY_SINTER.Popover.Course
 {
     public partial class Frm_Bed_Permeability_Adjust : Form
     {
-        NBSJ_PICAL.Console_lidu console_Lidu = new Console_lidu();
+        private NBSJ_PICAL.Console_lidu console_Lidu = new Console_lidu();
         public vLog _vLog { get; set; }
         public static bool isopen = false;
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+
         /// <summary>
         /// 柱形图数据x
         /// </summary>
-        List<string> list_name = new List<string> { "高返配比", "生石灰配比%", "烧返配比%", "混合料碱度", "混合料Mgo", "混合料固定碳", "一混后检测水分", "布料厚度", "点火段温度", "烧结机速度", "主抽废气流量和", "1#风箱温度", "1#风箱负压" };
+        private List<string> list_name = new List<string> { "高返配比", "生石灰配比%", "烧返配比%", "混合料碱度", "混合料Mgo", "混合料固定碳", "一混后检测水分", "布料厚度", "点火段温度", "烧结机速度", "主抽废气流量和", "1#风箱温度", "1#风箱负压" };
+
         /// <summary>
         /// 柱形图数据y
         /// </summary>
-        List<double> list_data = new List<double>();
+        private List<double> list_data = new List<double>();
+
         public Frm_Bed_Permeability_Adjust()
         {
             InitializeComponent();
@@ -41,9 +44,10 @@ namespace LY_SINTER.Popover.Course
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
             //设置控件背景颜色
-           
+
             curve();
         }
+
         /// <summary>
         /// 开始时间&结束时间赋值
         /// </summary>
@@ -57,6 +61,7 @@ namespace LY_SINTER.Popover.Course
             textBox_begin.Text = time_begin.ToString();
             textBox_end.Text = time_end.ToString();
         }
+
         /// <summary>
         /// 计算按钮
         /// </summary>
@@ -81,12 +86,15 @@ namespace LY_SINTER.Popover.Course
                     {
                         List<string> _A = new List<string>();
                         List<Double> _B = new List<double>();
-                        _result = console_Lidu.BEISHAO_JICHUSHUJU(count);
+                        Console_lidu console_ = new Console_lidu();
+                        _result = console_.BEISHAO_JICHUSHUJU(count);
+
                         #region 判断勾选状态
+
                         if (checkBox1.Checked == true)
                         {
                             _A.Add(checkBox1.Text.ToString());
-                            _B.Add( Math.Round(_result[0], 2) );
+                            _B.Add(Math.Round(_result[0], 2));
                         }
                         if (checkBox2.Checked == true)
                         {
@@ -149,7 +157,7 @@ namespace LY_SINTER.Popover.Course
                             _B.Add(Math.Round(_result[12], 2));
                         }
 
-                        #endregion
+                        #endregion 判断勾选状态
 
                         PlotModel _myPlotModel = new PlotModel();
                         //X轴定义
@@ -179,7 +187,6 @@ namespace LY_SINTER.Popover.Course
                         _myPlotModel.Series.Add(_ColumnSeries);
                         curve_his.Model = _myPlotModel;
 
-
                         if (list_name.Count < 1)
                         {
                             MessageBox.Show("请选择需要计算的数据");
@@ -191,15 +198,14 @@ namespace LY_SINTER.Popover.Course
                 {
                     MessageBox.Show("此时间段无数据");
                     return;
-
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 _vLog.writelog("离线计算失败" + ee.ToString(), -1);
             }
-
         }
+
         /// <summary>
         /// 全选按钮
         /// </summary>
@@ -227,7 +233,6 @@ namespace LY_SINTER.Popover.Course
             }
             else
             {
-
                 checkBox1.Checked = false;
                 checkBox2.Checked = false;
                 checkBox3.Checked = false;
@@ -242,9 +247,7 @@ namespace LY_SINTER.Popover.Course
                 checkBox12.Checked = false;
                 checkBox13.Checked = false;
                 simpleButton1.Text = "全选";
-
             }
-
         }
 
         /// <summary>
@@ -253,11 +256,11 @@ namespace LY_SINTER.Popover.Course
         public void curve()
         {
         }
+
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked == true)
             {
-
             }
         }
     }

@@ -248,6 +248,7 @@ namespace LY_SINTER.PAGE.HIS
             shuju();//左数据项
             Task.Factory.StartNew(() =>
             {
+                time();//最新调整时间
                 while (true)
                 {
                     time();//最新调整时间
@@ -281,9 +282,10 @@ namespace LY_SINTER.PAGE.HIS
         {
             try
             {
-                string sql1 = "select top 1 TIMESTAMP from C_PLC_3S order by TIMESTAMP desc";
+                /*string sql1 = "select top 1 TIMESTAMP from C_PLC_3S order by TIMESTAMP desc";
                 DataTable dataTable1 = dBSQL.GetCommand(sql1);
-                string zxsj = dataTable1.Rows[0][0].ToString();
+                string zxsj = dataTable1.Rows[0][0].ToString();*/
+                string zxsj = DateTime.Now.ToString();
                 label3.Text = "最新调整时间:" + zxsj;
             }
             catch

@@ -779,9 +779,10 @@ namespace NBSJ_MAIN_UC
 
                 //labQuyangTime.Location
                 //取样1时间位置
-                labQuyangTime1.Location = new System.Drawing.Point(this.pipeLine12.Location.X + pipeLine12.Width / 2 + 400, this.pipeLine12.Location.Y - 40);
-
-                labQuyangTime.Location = new System.Drawing.Point(this.pipeLine12.Location.X + 100, this.pipeLine12.Location.Y + 22);
+                //labQuyangTime1.Location = new System.Drawing.Point(this.pipeLine12.Location.X + pipeLine12.Width / 2 + 400, this.pipeLine12.Location.Y - 40);
+                //取样点2位置
+                //labQuyangTime.Location = new System.Drawing.Point(this.pipeLine12.Location.X + 100, this.pipeLine12.Location.Y + 22);
+                labQuyangTime.Location= new System.Drawing.Point(this.rbtnQuYangDian.Location.X + 65, this.rbtnQuYangDian.Location.Y+5);
                 this.TextQuYangTime.Location = new System.Drawing.Point(this.pipeLine12.Location.X + pipeLine12.Width / 3, this.pipeLine12.Location.Y + 20);
             }
             //point1 = point2;
@@ -1094,7 +1095,7 @@ namespace NBSJ_MAIN_UC
 
             //二混电机
             blendingUC2.IsRun = modelT_PLC_3S.T_2M_SL_3S == 1 ? true : false;
-            blendingUC2.ShuiFen = getbottleValue(modelT_PLC_3S.T_PLC_1M_WATER_SP_3S).ToString();
+            //blendingUC2.ShuiFen = getbottleValue(modelT_PLC_3S.T_PLC_1M_WATER_SP_3S).ToString();
             blendingUC2.ZhuanSu = getbottleValue(modelT_PLC_3S.T_2M_MIXER_RATE_3S).ToString();
             blendingUC2.SetJsl = getbottleValue(modelT_PLC_3S.T_2M_FLOW_SP_3S).ToString();
             blendingUC2.ReadJsl = getbottleValue(modelT_PLC_3S.T_2M_FLOW_PV_3S).ToString();
@@ -1351,15 +1352,15 @@ namespace NBSJ_MAIN_UC
             {
                 //Bind_comboBox1(mc_GUIDE_SAMPLING);
 
-                labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                labQuyangTime.Text = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                //labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
                 if (mc_GUIDE_SAMPLING.SAMPLE_TIME_1 <= DateTime.Now)
                 {
                     labQuyangTime.Text = "";
                 }
                 if (mc_GUIDE_SAMPLING.SAMPLE_TIME_0 <= DateTime.Now)
                 {
-                    labQuyangTime1.Text = "";
+                    //labQuyangTime1.Text = "";
                 }
             };
             this.Invoke(ShowInfo);
@@ -1467,8 +1468,8 @@ namespace NBSJ_MAIN_UC
 
                     //quyangTime = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
                     //labQuyangTime.Text = quyangTime;
-                    labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                    labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                    labQuyangTime.Text = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                    //labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
                     MessageBox.Show("换新料成功.");
                     btnHuanXinLiao.Enabled = true;
                 };
@@ -1479,8 +1480,8 @@ namespace NBSJ_MAIN_UC
                 aaa ShowInfo = delegate ()
                 {
                     // Bind_comboBox1(mc_GUIDE_SAMPLING);
-                    labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                    labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                    labQuyangTime.Text = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                    //labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
                 };
                 this.Invoke(ShowInfo);
 
@@ -1503,8 +1504,8 @@ namespace NBSJ_MAIN_UC
                 aaa ShowInfo = delegate ()
                 {
                     //Bind_comboBox1(mc_GUIDE_SAMPLING);
-                    labQuyangTime.Text = "取样2时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
-                    labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
+                    labQuyangTime.Text = "取样时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_1.ToString();
+                    //labQuyangTime1.Text = "取样1时间：" + mc_GUIDE_SAMPLING.SAMPLE_TIME_0.ToString();
                 };
                 this.Invoke(ShowInfo);
             }

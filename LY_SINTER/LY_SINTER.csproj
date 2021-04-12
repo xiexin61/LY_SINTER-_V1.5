@@ -347,6 +347,12 @@
     <Compile Include="PAGE\Quality\Mine_Forecast.Designer.cs">
       <DependentUpon>Mine_Forecast.cs</DependentUpon>
     </Compile>
+    <Compile Include="PAGE\Quality\MIX_Intelligent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PAGE\Quality\MIX_Intelligent.designer.cs">
+      <DependentUpon>MIX_Intelligent.cs</DependentUpon>
+    </Compile>
     <Compile Include="PAGE\Quality\Quality_automatic.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -612,12 +618,6 @@
     <Compile Include="Popover\Parameter\Untreated_popup.Designer.cs">
       <DependentUpon>Untreated_popup.cs</DependentUpon>
     </Compile>
-    <Compile Include="PAGE\Quality\MIX_Intelligent.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PAGE\Quality\MIX_Intelligent.Designer.cs">
-      <DependentUpon>MIX_Intelligent.cs</DependentUpon>
-    </Compile>
     <Compile Include="Popover\Parameter\Button_untreated.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -821,6 +821,9 @@
     <EmbeddedResource Include="PAGE\Quality\Mine_Forecast.resx">
       <DependentUpon>Mine_Forecast.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PAGE\Quality\MIX_Intelligent.resx">
+      <DependentUpon>MIX_Intelligent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PAGE\Quality\Quality_automatic.resx">
       <DependentUpon>Quality_automatic.cs</DependentUpon>
     </EmbeddedResource>
@@ -949,9 +952,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Popover\Parameter\Untreated_popup.resx">
       <DependentUpon>Untreated_popup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PAGE\Quality\MIX_Intelligent.resx">
-      <DependentUpon>MIX_Intelligent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Popover\Parameter\Button_untreated.resx">
       <DependentUpon>Button_untreated.cs</DependentUpon>

@@ -45,114 +45,121 @@ namespace LY_SINTER.PAGE.HIS
                     {
                         case "checkBox1":
                             {
-                                checkBox2.Enabled = false;
+                                checkBox2.Checked = false;
                                 checkBox2.ForeColor = Color.Gray;
-                                checkBox3.Enabled = false;
+                                checkBox3.Checked = false;
                                 checkBox3.ForeColor = Color.Gray;
-                                checkBox4.Enabled = false;
+                                checkBox4.Checked = false;
                                 checkBox4.ForeColor = Color.Gray;
-                                checkBox5.Enabled = false;
+                                checkBox5.Checked = false;
                                 checkBox5.ForeColor = Color.Gray;
-                                checkBox6.Enabled = false;
+                                checkBox6.Checked = false;
                                 checkBox6.ForeColor = Color.Gray;
-                                checkBox7.Enabled = false;
+                                checkBox7.Checked = false;
                                 checkBox7.ForeColor = Color.Gray;
+                                checkBox1.ForeColor = Color.Black;
                                 break;
                             }
                         case "checkBox2":
                             {
-                                checkBox1.Enabled = false;
+                                checkBox1.Checked = false;
                                 checkBox1.ForeColor = Color.Gray;
-                                checkBox3.Enabled = false;
+                                checkBox3.Checked = false;
                                 checkBox3.ForeColor = Color.Gray;
-                                checkBox4.Enabled = false;
+                                checkBox4.Checked = false;
                                 checkBox4.ForeColor = Color.Gray;
-                                checkBox5.Enabled = false;
+                                checkBox5.Checked = false;
                                 checkBox5.ForeColor = Color.Gray;
-                                checkBox6.Enabled = false;
+                                checkBox6.Checked = false;
                                 checkBox6.ForeColor = Color.Gray;
-                                checkBox7.Enabled = false;
+                                checkBox7.Checked = false;
                                 checkBox7.ForeColor = Color.Gray;
+                                checkBox2.ForeColor = Color.Black;
                                 break;
                             }
                         case "checkBox3":
                             {
-                                checkBox1.Enabled = false;
+                                checkBox1.Checked = false;
                                 checkBox1.ForeColor = Color.Gray;
-                                checkBox2.Enabled = false;
+                                checkBox2.Checked = false;
                                 checkBox2.ForeColor = Color.Gray;
-                                checkBox4.Enabled = false;
+                                checkBox4.Checked = false;
                                 checkBox4.ForeColor = Color.Gray;
-                                checkBox5.Enabled = false;
+                                checkBox5.Checked = false;
                                 checkBox5.ForeColor = Color.Gray;
-                                checkBox6.Enabled = false;
+                                checkBox6.Checked = false;
                                 checkBox6.ForeColor = Color.Gray;
-                                checkBox7.Enabled = false;
+                                checkBox7.Checked = false;
                                 checkBox7.ForeColor = Color.Gray;
+                                checkBox3.ForeColor = Color.Black;
                                 break;
                             }
                         case "checkBox4":
                             {
-                                checkBox1.Enabled = false;
+                                checkBox1.Checked = false;
                                 checkBox1.ForeColor = Color.Gray;
-                                checkBox2.Enabled = false;
+                                checkBox2.Checked = false;
                                 checkBox2.ForeColor = Color.Gray;
-                                checkBox3.Enabled = false;
+                                checkBox3.Checked = false;
                                 checkBox3.ForeColor = Color.Gray;
-                                checkBox5.Enabled = false;
+                                checkBox5.Checked = false;
                                 checkBox5.ForeColor = Color.Gray;
-                                checkBox6.Enabled = false;
+                                checkBox6.Checked = false;
                                 checkBox6.ForeColor = Color.Gray;
-                                checkBox7.Enabled = false;
+                                checkBox7.Checked = false;
                                 checkBox7.ForeColor = Color.Gray;
+                                checkBox4.ForeColor = Color.Black;
                                 break;
                             }
                         case "checkBox5":
                             {
-                                checkBox1.Enabled = false;
+                                checkBox1.Checked = false;
                                 checkBox1.ForeColor = Color.Gray;
-                                checkBox2.Enabled = false;
+                                checkBox2.Checked = false;
                                 checkBox2.ForeColor = Color.Gray;
-                                checkBox3.Enabled = false;
+                                checkBox3.Checked = false;
                                 checkBox3.ForeColor = Color.Gray;
-                                checkBox4.Enabled = false;
+                                checkBox4.Checked = false;
                                 checkBox4.ForeColor = Color.Gray;
-                                checkBox6.Enabled = false;
+                                checkBox6.Checked = false;
                                 checkBox6.ForeColor = Color.Gray;
-                                checkBox7.Enabled = false;
+                                checkBox7.Checked = false;
                                 checkBox7.ForeColor = Color.Gray;
+                                checkBox5.ForeColor = Color.Black;
                                 break;
                             }
                         case "checkBox6":
                             {
-                                checkBox1.Enabled = false;
+                                checkBox1.Checked = false;
                                 checkBox1.ForeColor = Color.Gray;
-                                checkBox2.Enabled = false;
+                                checkBox2.Checked = false;
                                 checkBox2.ForeColor = Color.Gray;
-                                checkBox3.Enabled = false;
+                                checkBox3.Checked = false;
                                 checkBox3.ForeColor = Color.Gray;
-                                checkBox4.Enabled = false;
+                                checkBox4.Checked = false;
                                 checkBox4.ForeColor = Color.Gray;
-                                checkBox5.Enabled = false;
+                                checkBox5.Checked = false;
                                 checkBox5.ForeColor = Color.Gray;
-                                checkBox7.Enabled = false;
+                                checkBox7.Checked = false;
                                 checkBox7.ForeColor = Color.Gray;
+                                checkBox6.ForeColor = Color.Black;
                                 break;
                             }
                         case "checkBox7":
                             {
-                                checkBox1.Enabled = false;
+                                checkBox1.Checked = false;
                                 checkBox1.ForeColor = Color.Gray;
-                                checkBox2.Enabled = false;
+                                checkBox2.Checked = false;
                                 checkBox2.ForeColor = Color.Gray;
-                                checkBox3.Enabled = false;
+                                checkBox3.Checked = false;
                                 checkBox3.ForeColor = Color.Gray;
-                                checkBox4.Enabled = false;
+                                checkBox4.Checked = false;
                                 checkBox4.ForeColor = Color.Gray;
-                                checkBox5.Enabled = false;
+                                checkBox5.Checked = false;
                                 checkBox5.ForeColor = Color.Gray;
-                                checkBox6.Enabled = false;
+                                checkBox6.Checked = false;
                                 checkBox6.ForeColor = Color.Gray;
+                                checkBox7.ForeColor = Color.Black;
                                 break;
                             }
                     }
@@ -353,137 +360,137 @@ namespace LY_SINTER.PAGE.HIS
                             }
                     }
                 }
-                else
-                {
-                    switch (checbox_name)
-                    {
-                        case "checkBox1":
-                            {
-                                dataGridView1.Rows.Clear();
-                                checkBox2.Enabled = true;
-                                checkBox2.ForeColor = Color.Black;
-                                checkBox3.Enabled = true;
-                                checkBox3.ForeColor = Color.Black;
-                                checkBox4.Enabled = true;
-                                checkBox4.ForeColor = Color.Black;
-                                checkBox5.Enabled = true;
-                                checkBox5.ForeColor = Color.Black;
-                                checkBox6.Enabled = true;
-                                checkBox6.ForeColor = Color.Black;
-                                checkBox7.Enabled = true;
-                                checkBox7.ForeColor = Color.Black;
-                                break;
-                            }
-                        case "checkBox2":
-                            {
-                                dataGridView1.Rows.Clear();
-                                dataGridView1.Rows.Clear();
-                                checkBox1.Enabled = true;
-                                checkBox1.ForeColor = Color.Black;
-                                checkBox3.Enabled = true;
-                                checkBox3.ForeColor = Color.Black;
-                                checkBox4.Enabled = true;
-                                checkBox4.ForeColor = Color.Black;
-                                checkBox5.Enabled = true;
-                                checkBox5.ForeColor = Color.Black;
-                                checkBox6.Enabled = true;
-                                checkBox6.ForeColor = Color.Black;
-                                checkBox7.Enabled = true;
-                                checkBox7.ForeColor = Color.Black;
-                                break;
-                            }
-                        case "checkBox3":
-                            {
-                                dataGridView1.Rows.Clear();
-                                dataGridView1.Rows.Clear();
-                                checkBox1.Enabled = true;
-                                checkBox1.ForeColor = Color.Black;
-                                checkBox2.Enabled = true;
-                                checkBox2.ForeColor = Color.Black;
-                                checkBox4.Enabled = true;
-                                checkBox4.ForeColor = Color.Black;
-                                checkBox5.Enabled = true;
-                                checkBox5.ForeColor = Color.Black;
-                                checkBox6.Enabled = true;
-                                checkBox6.ForeColor = Color.Black;
-                                checkBox7.Enabled = true;
-                                checkBox7.ForeColor = Color.Black;
-                                break;
-                            }
-                        case "checkBox4":
-                            {
-                                dataGridView1.Rows.Clear();
-                                dataGridView1.Rows.Clear();
-                                checkBox1.Enabled = true;
-                                checkBox1.ForeColor = Color.Black;
-                                checkBox2.Enabled = true;
-                                checkBox2.ForeColor = Color.Black;
-                                checkBox3.Enabled = true;
-                                checkBox3.ForeColor = Color.Black;
-                                checkBox5.Enabled = true;
-                                checkBox5.ForeColor = Color.Black;
-                                checkBox6.Enabled = true;
-                                checkBox6.ForeColor = Color.Black;
-                                checkBox7.Enabled = true;
-                                checkBox7.ForeColor = Color.Black;
-                                break;
-                            }
-                        case "checkBox5":
-                            {
-                                dataGridView1.Rows.Clear();
-                                dataGridView1.Rows.Clear();
-                                checkBox1.Enabled = true;
-                                checkBox1.ForeColor = Color.Black;
-                                checkBox2.Enabled = true;
-                                checkBox2.ForeColor = Color.Black;
-                                checkBox3.Enabled = true;
-                                checkBox3.ForeColor = Color.Black;
-                                checkBox4.Enabled = true;
-                                checkBox4.ForeColor = Color.Black;
-                                checkBox6.Enabled = true;
-                                checkBox6.ForeColor = Color.Black;
-                                checkBox7.Enabled = true;
-                                checkBox7.ForeColor = Color.Black;
-                                break;
-                            }
-                        case "checkBox6":
-                            {
-                                dataGridView1.Rows.Clear();
-                                dataGridView1.Rows.Clear();
-                                checkBox1.Enabled = true;
-                                checkBox1.ForeColor = Color.Black;
-                                checkBox2.Enabled = true;
-                                checkBox2.ForeColor = Color.Black;
-                                checkBox3.Enabled = true;
-                                checkBox3.ForeColor = Color.Black;
-                                checkBox4.Enabled = true;
-                                checkBox4.ForeColor = Color.Black;
-                                checkBox5.Enabled = true;
-                                checkBox5.ForeColor = Color.Black;
-                                checkBox7.Enabled = true;
-                                checkBox7.ForeColor = Color.Black;
-                                break;
-                            }
-                        case "checkBox7":
-                            {
-                                dataGridView1.Rows.Clear();
-                                dataGridView1.Rows.Clear();
-                                checkBox1.Enabled = true;
-                                checkBox1.ForeColor = Color.Black;
-                                checkBox2.Enabled = true;
-                                checkBox2.ForeColor = Color.Black;
-                                checkBox3.Enabled = true;
-                                checkBox3.ForeColor = Color.Black;
-                                checkBox4.Enabled = true;
-                                checkBox4.ForeColor = Color.Black;
-                                checkBox5.Enabled = true;
-                                checkBox5.ForeColor = Color.Black;
-                                checkBox6.Enabled = true;
-                                checkBox6.ForeColor = Color.Black;
-                                break;
-                            }
-                    }
-                }
+                //else
+                //{
+                //    switch (checbox_name)
+                //    {
+                //        case "checkBox1":
+                //            {
+                //                dataGridView1.Rows.Clear();
+                //                checkBox2.Enabled = true;
+                //                checkBox2.ForeColor = Color.Black;
+                //                checkBox3.Enabled = true;
+                //                checkBox3.ForeColor = Color.Black;
+                //                checkBox4.Enabled = true;
+                //                checkBox4.ForeColor = Color.Black;
+                //                checkBox5.Enabled = true;
+                //                checkBox5.ForeColor = Color.Black;
+                //                checkBox6.Enabled = true;
+                //                checkBox6.ForeColor = Color.Black;
+                //                checkBox7.Enabled = true;
+                //                checkBox7.ForeColor = Color.Black;
+                //                break;
+                //            }
+                //        case "checkBox2":
+                //            {
+                //                dataGridView1.Rows.Clear();
+                //                dataGridView1.Rows.Clear();
+                //                checkBox1.Enabled = true;
+                //                checkBox1.ForeColor = Color.Black;
+                //                checkBox3.Enabled = true;
+                //                checkBox3.ForeColor = Color.Black;
+                //                checkBox4.Enabled = true;
+                //                checkBox4.ForeColor = Color.Black;
+                //                checkBox5.Enabled = true;
+                //                checkBox5.ForeColor = Color.Black;
+                //                checkBox6.Enabled = true;
+                //                checkBox6.ForeColor = Color.Black;
+                //                checkBox7.Enabled = true;
+                //                checkBox7.ForeColor = Color.Black;
+                //                break;
+                //            }
+                //        case "checkBox3":
+                //            {
+                //                dataGridView1.Rows.Clear();
+                //                dataGridView1.Rows.Clear();
+                //                checkBox1.Enabled = true;
+                //                checkBox1.ForeColor = Color.Black;
+                //                checkBox2.Enabled = true;
+                //                checkBox2.ForeColor = Color.Black;
+                //                checkBox4.Enabled = true;
+                //                checkBox4.ForeColor = Color.Black;
+                //                checkBox5.Enabled = true;
+                //                checkBox5.ForeColor = Color.Black;
+                //                checkBox6.Enabled = true;
+                //                checkBox6.ForeColor = Color.Black;
+                //                checkBox7.Enabled = true;
+                //                checkBox7.ForeColor = Color.Black;
+                //                break;
+                //            }
+                //        case "checkBox4":
+                //            {
+                //                dataGridView1.Rows.Clear();
+                //                dataGridView1.Rows.Clear();
+                //                checkBox1.Enabled = true;
+                //                checkBox1.ForeColor = Color.Black;
+                //                checkBox2.Enabled = true;
+                //                checkBox2.ForeColor = Color.Black;
+                //                checkBox3.Enabled = true;
+                //                checkBox3.ForeColor = Color.Black;
+                //                checkBox5.Enabled = true;
+                //                checkBox5.ForeColor = Color.Black;
+                //                checkBox6.Enabled = true;
+                //                checkBox6.ForeColor = Color.Black;
+                //                checkBox7.Enabled = true;
+                //                checkBox7.ForeColor = Color.Black;
+                //                break;
+                //            }
+                //        case "checkBox5":
+                //            {
+                //                dataGridView1.Rows.Clear();
+                //                dataGridView1.Rows.Clear();
+                //                checkBox1.Enabled = true;
+                //                checkBox1.ForeColor = Color.Black;
+                //                checkBox2.Enabled = true;
+                //                checkBox2.ForeColor = Color.Black;
+                //                checkBox3.Enabled = true;
+                //                checkBox3.ForeColor = Color.Black;
+                //                checkBox4.Enabled = true;
+                //                checkBox4.ForeColor = Color.Black;
+                //                checkBox6.Enabled = true;
+                //                checkBox6.ForeColor = Color.Black;
+                //                checkBox7.Enabled = true;
+                //                checkBox7.ForeColor = Color.Black;
+                //                break;
+                //            }
+                //        case "checkBox6":
+                //            {
+                //                dataGridView1.Rows.Clear();
+                //                dataGridView1.Rows.Clear();
+                //                checkBox1.Enabled = true;
+                //                checkBox1.ForeColor = Color.Black;
+                //                checkBox2.Enabled = true;
+                //                checkBox2.ForeColor = Color.Black;
+                //                checkBox3.Enabled = true;
+                //                checkBox3.ForeColor = Color.Black;
+                //                checkBox4.Enabled = true;
+                //                checkBox4.ForeColor = Color.Black;
+                //                checkBox5.Enabled = true;
+                //                checkBox5.ForeColor = Color.Black;
+                //                checkBox7.Enabled = true;
+                //                checkBox7.ForeColor = Color.Black;
+                //                break;
+                //            }
+                //        case "checkBox7":
+                //            {
+                //                dataGridView1.Rows.Clear();
+                //                dataGridView1.Rows.Clear();
+                //                checkBox1.Enabled = true;
+                //                checkBox1.ForeColor = Color.Black;
+                //                checkBox2.Enabled = true;
+                //                checkBox2.ForeColor = Color.Black;
+                //                checkBox3.Enabled = true;
+                //                checkBox3.ForeColor = Color.Black;
+                //                checkBox4.Enabled = true;
+                //                checkBox4.ForeColor = Color.Black;
+                //                checkBox5.Enabled = true;
+                //                checkBox5.ForeColor = Color.Black;
+                //                checkBox6.Enabled = true;
+                //                checkBox6.ForeColor = Color.Black;
+                //                break;
+                //            }
+                //    }
+                //}
             }
             catch
             { }

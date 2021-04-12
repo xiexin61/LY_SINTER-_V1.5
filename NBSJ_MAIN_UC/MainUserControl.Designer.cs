@@ -57,7 +57,6 @@
             this.bottleAllUC21 = new UserControlIndex.BottleAllUC2();
             this.TextQuYangTime = new System.Windows.Forms.Label();
             this.labQuyangTime1 = new System.Windows.Forms.Label();
-            //this.rbtnQuYangDian1 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,7 +89,7 @@
             this.rbtnQuYangDian.Size = new System.Drawing.Size(67, 22);
             this.rbtnQuYangDian.TabIndex = 142;
             this.rbtnQuYangDian.TabStop = true;
-            this.rbtnQuYangDian.Text = "取样点2";
+            this.rbtnQuYangDian.Text = "取样点";
             this.rbtnQuYangDian.UseVisualStyleBackColor = false;
             this.rbtnQuYangDian.Click += new System.EventHandler(this.rbtnQuYangDian_Click);
             // 
@@ -166,7 +165,7 @@
             this.blendingUC2.Name = "blendingUC2";
             this.blendingUC2.ReadJsl = "加水量PV";
             this.blendingUC2.SetJsl = "设定加水量";
-            this.blendingUC2.ShuiFen = "一二混目标水分";
+            //this.blendingUC2.ShuiFen = "一二混目标水分";
             this.blendingUC2.Size = new System.Drawing.Size(199, 101);
             this.blendingUC2.TabIndex = 7;
             this.blendingUC2.TitleIndex = 1;
@@ -341,25 +340,10 @@
             this.labQuyangTime1.Size = new System.Drawing.Size(0, 12);
             this.labQuyangTime1.TabIndex = 148;
             // 
-            // rbtnQuYangDian1
-            // 
-            /*this.rbtnQuYangDian1.BackColor = System.Drawing.Color.Transparent;
-            this.rbtnQuYangDian1.Checked = true;
-            this.rbtnQuYangDian1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbtnQuYangDian1.Location = new System.Drawing.Point(367, 602);
-            this.rbtnQuYangDian1.Name = "rbtnQuYangDian1";
-            this.rbtnQuYangDian1.Size = new System.Drawing.Size(67, 22);
-            this.rbtnQuYangDian1.TabIndex = 149;
-            this.rbtnQuYangDian1.TabStop = true;
-            this.rbtnQuYangDian1.Text = "取样点1";
-            this.rbtnQuYangDian1.UseVisualStyleBackColor = false;*/
-            //this.rbtnQuYangDian1.Click += new System.EventHandler(this.rbtnQuYangDian_Click1);
-            // 
             // MainUserControl
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            //this.Controls.Add(this.rbtnQuYangDian1);
             this.Controls.Add(this.labQuyangTime1);
             this.Controls.Add(this.TextQuYangTime);
             this.Controls.Add(this.labSJK1);

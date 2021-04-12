@@ -1,4 +1,6 @@
-﻿namespace LY_SINTER.PAGE.Course
+﻿using LY_SINTER.Custom;
+
+namespace LY_SINTER.PAGE.Course
 {
     partial class Bed_Permeability
     {
