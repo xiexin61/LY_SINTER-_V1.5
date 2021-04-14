@@ -1255,7 +1255,7 @@ namespace LY_SINTER.PAGE.Quality
                 if (_data.Rows.Count > 0)
                 {
                     //15
-                    label53.Text = "分仓系数:" + Math.Round( double.Parse( _data.Rows[0][0].ToString()),3);
+                    label53.Text = "分仓系数:" + Math.Round(double.Parse(_data.Rows[0][0].ToString()), 3);
                     //16
                     label52.Text = "分仓系数:" + Math.Round(double.Parse(_data.Rows[1][0].ToString()), 3);
                 }

@@ -26,6 +26,11 @@ namespace LY_SINTER.PAGE.Analysis
         private OxyPlot.Series.LineSeries series1;//声明曲线对象
 
         /// <summary>
+        /// 初始化颜色变化定时器
+        /// </summary>
+        public System.Timers.Timer _Timer1 { get; set; }
+
+        /// <summary>
         /// 曲线数据
         /// key：下拉框名称
         /// values item1：数据 item2：时间
@@ -48,84 +53,82 @@ namespace LY_SINTER.PAGE.Analysis
         public vLog _vLog { get; set; }
         private DBSQL _dBSQL = new DBSQL(ConstParameters.strCon);
 
-        private string[] _datatable_name =  {"ID","DL_FLAG",
-"MAT_NAME",
-"MIXEDTIME",
-"SAMPLETIME",
-"REOPTTIME",
-"BATCH_NUM",
-"HEAP_NUM",
-"SHIFT_FLAG",
-"TFE",
-"FEO",
-"CAO",
-"SIO2",
-"AL2O3",
-"MGO",
-"S",
-"P2O5",
-"R",
-"K2O",
-"NA2O",
-"PB",
-"ZN",
-"MNO",
-"TIO2",
-"AS",
-"CU",
-"K",
-"V2O5",
-"C_AL2O3_SIO2",
-"C_MGO_AL2O3",
-"C_TOTAL",
-"C_TI",
-"RI",
-"RDI_0_5",
-"RDI_3_15",
-"RDI_6_3",
-"SCRENING",
-"GRIT_5",
-"GRIT_5_10",
-"GRIT_10_16",
-"GRIT_16_25",
-"GRIT_25_40",
-"GRIT_40",
-"PATCL_AV",
-"GRIT_10",
-"GRIT_10_40",
-"FLAG_R_005",
-"FLAG_R_008",
-"FLAG_FEO_1",
-"FLAG_MGO_015",
-"FLAG_GRIT_10",
-"FLAG_TOL_CON",
-"R_AIM",
-"FeO_AIM",
-"MgO_AIM",
-"GRIT_10_AIM",
-"TOL_CON_AIM"
+        private string[] _datatable_name =  {"ID","BATCH_NUM"  ,
+"MIXEDTIME"   ,
+"SAMPLETIME"  ,
+"TIMESTAMP"   ,
+"SHIFT_FLAG"  ,
+"C_TFE"   ,
+"C_FEO"   ,
+"C_CAO"   ,
+"C_SIO2"  ,
+"C_AL2O3" ,
+"C_MGO"   ,
+"C_S" ,
+"C_P2O5"  ,
+"C_R" ,
+"C_K2O"   ,
+"C_NA2O"  ,
+"C_PB"    ,
+"C_ZN"    ,
+"C_MNO"   ,
+"C_TIO2"  ,
+"C_AS"    ,
+"C_CU"    ,
+"C_K" ,
+"C_V2O5"  ,
+"C_AL2O3_SIO2"    ,
+"C_MGO_AL2O3" ,
+"C_TI"    ,
+"RI"  ,
+"RDI_0_5" ,
+"RDI_3_15"    ,
+"RDI_6_3" ,
+"SCRENING"    ,
+"GRIT_5"  ,
+"GRIT_5_10"   ,
+"GRIT_10_16"  ,
+"GRIT_16_25"  ,
+"GRIT_25_40"  ,
+"GRIT_40" ,
+"PATCL_AV"    ,
+"GRIT_10" ,
+"GRIT_10_40"  ,
+"FLAG_R_003"  ,
+"FLAG_R_005"  ,
+"FLAG_R_008"  ,
+"FLAG_FEO_06" ,
+"FLAG_FEO_1"  ,
+"FLAG_MGO_015"    ,
+"FLAG_GRIT_10"    ,
+"R_AIM"   ,
+"FeO_AIM" ,
+"MgO_AIM" ,
+"GRIT_10_AIM" ,
  };
 
-        private string[] _combox_name = {"TFE",
-"FEO",
-"CAO",
-"SIO2",
-"AI2O3",
-"MGO",
-"S",
-"P2O5",
-"R",
-"K2O",
-"NA2O",
-"PB",
-"ZN",
-"MNO",
-"TIO2",
-"AS",
-"CU",
-"K",
-"V205"
+        private string[] _combox_name = {"C_TFE",
+"C_FEO",
+"C_CAO",
+"C_SIO2",
+"C_AI2O3",
+"C_MGO",
+"C_S",
+"C_P2O5",
+"C_R",
+"C_K2O",
+"C_NA2O",
+"C_PB",
+"C_ZN",
+"C_MNO",
+"C_TIO2",
+"C_AS",
+"C_CU",
+"C_K",
+"C_V205"
  };
+
+        private Dictionary<string, string> _v = new Dictionary<string, string>();
 
         public Ripe_analysis()
         {
@@ -139,10 +142,14 @@ namespace LY_SINTER.PAGE.Analysis
             Comboc_2_Value();//成分下拉框赋值
             Time_Now();//调整时间
             data_show("3#烧结机", textBox_begin.Text.ToString(), textBox_end.Text.ToString());//表单查询
-            comboBox_values();//成分下拉框赋值
-            Curve_text(comboBox2.Text.ToString());//曲线绑定数据源
+                                                                                           //   comboBox_values();//成分下拉框赋值
+
             Curve_Bar();//烧结矿成分稳定率柱形图
             Curve_Bar_1();//标准偏差柱形图
+            _Timer1 = new System.Timers.Timer(500);//初始化颜色变化定时器响应事件
+            _Timer1.Elapsed += (x, y) => { _Timer1_Tick(); };
+            _Timer1.Enabled = true;
+            _Timer1.AutoReset = false;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
         }
 
         /// <summary>
@@ -212,28 +219,39 @@ namespace LY_SINTER.PAGE.Analysis
             "MgO",
             "S",
             "P",
-            "C",
-            "Mn",
-            "烧损",
             "碱度(R)",
-            "H2O",
-            "灰分",
-            "挥发分",
-            "TiO2",
             "K2O",
             "Na2O",
             "PbO",
-            "ZnO",
-            "F",
+            "Zn",
+            "TIO2",
             "As",
             "Cu",
-            "Pb",
-            "Zn",
             "K",
-            "Na",
-            "Cr",
-            "Ni",
             "MNO" };
+            List<string> list1 = new List<string>{"C_TFE",
+"C_FEO",
+"C_CAO",
+"C_SIO2",
+"C_AI2O3",
+"C_MGO",
+"C_S",
+"C_P2O5",
+"C_R",
+"C_K2O",
+"C_NA2O",
+"C_PB",
+"C_ZN",
+"C_TIO2",
+"C_AS",
+"C_CU",
+"C_K",
+"C_MNO",
+ };
+            for (int x = 0; x < list.Count; x++)
+            {
+                _v.Add(list[x], list1[x]);
+            }
             for (int x = 0; x < list.Count; x++)
             {
                 DataRow row = table.NewRow();
@@ -257,7 +275,9 @@ namespace LY_SINTER.PAGE.Analysis
         {
             try
             {
-                var _sql = "select  (CASE WHEN DL_FLAG = '1' THEN '1#烧结机' WHEN DL_FLAG = '2' THEN '2#烧结机' WHEN DL_FLAG = '3' THEN '3#烧结机' else '未知' end) AS DL_FLAG,MAT_NAME,MIXEDTIME,SAMPLETIME,REOPTTIME,BATCH_NUM,HEAP_NUM,SAMPLE_TEST_NUM,SHIFT_FLAG,C_TFE as TFE,C_FEO as FEO,C_CAO as CAO,C_SIO2 as SIO2,C_AL2O3 as AL2O3,C_MGO as MGO,C_S as S,C_P2O5 as P2O5,C_R as R,C_K2O as K2O,C_NA2O as NA2O,C_PB as PB,C_ZN as ZN,C_MNO as MNO,C_TIO2 as TIO2,C_AS as 'AS',C_CU as CU,C_K as K,C_V2O5 as V2O5,C_AL2O3_SIO2,C_MGO_AL2O3,C_TOTAL,C_TI,RI,RDI_0_5,RDI_3_15,RDI_6_3,SCRENING,GRIT_5,GRIT_5_10,GRIT_10_16,GRIT_16_25,GRIT_25_40,GRIT_40,PATCL_AV,GRIT_10,GRIT_10_40,FLAG_R_005,FLAG_R_008,FLAG_FEO_06,FLAG_FEO_1,FLAG_MGO_015,FLAG_GRIT_10,FLAG_TOL_CON,R_AIM,FeO_AIM,MgO_AIM,GRIT_10_AIM,TOL_CON_AIM,TIMESTAMP from MC_NUMCAL_INTERFACE_6";
+                //var _sql = "select  (CASE WHEN DL_FLAG = '1' THEN '1#烧结机' WHEN DL_FLAG = '2' THEN '2#烧结机' WHEN DL_FLAG = '3' THEN '3#烧结机' else '未知' end) AS DL_FLAG,MAT_NAME,MIXEDTIME,SAMPLETIME,REOPTTIME,BATCH_NUM,HEAP_NUM,SAMPLE_TEST_NUM,SHIFT_FLAG,C_TFE as TFE,C_FEO as FEO,C_CAO as CAO,C_SIO2 as SIO2,C_AL2O3 as AL2O3,C_MGO as MGO,C_S as S,C_P2O5 as P2O5,C_R as R,C_K2O as K2O,C_NA2O as NA2O,C_PB as PB,C_ZN as ZN,C_MNO as MNO,C_TIO2 as TIO2,C_AS as 'AS',C_CU as CU,C_K as K,C_V2O5 as V2O5,C_AL2O3_SIO2,C_MGO_AL2O3,C_TOTAL,C_TI,RI,RDI_0_5,RDI_3_15,RDI_6_3,SCRENING,GRIT_5,GRIT_5_10,GRIT_10_16,GRIT_16_25,GRIT_25_40,GRIT_40,PATCL_AV,GRIT_10,GRIT_10_40,FLAG_R_005,FLAG_R_008,FLAG_FEO_06,FLAG_FEO_1,FLAG_MGO_015,FLAG_GRIT_10,FLAG_TOL_CON,R_AIM,FeO_AIM,MgO_AIM,GRIT_10_AIM,TOL_CON_AIM,TIMESTAMP from MC_NUMCAL_INTERFACE_6";\
+                var _sql = "select  BATCH_NUM	,MIXEDTIME	,SAMPLETIME	,TIMESTAMP	,SHIFT_FLAG	,C_TFE	,C_FEO	,C_CAO	,C_SIO2	,C_AL2O3	,C_MGO	,C_S	,C_P2O5	,C_R	,C_K2O	,C_NA2O	,C_PB	,C_ZN	,C_MNO	,C_TIO2,C_AS,C_CU	,C_K	,C_V2O5	,C_AL2O3_SIO2	,C_MGO_AL2O3	,C_TI	,RI	,RDI_0_5	,RDI_3_15	,RDI_6_3	,SCRENING	,GRIT_5	,GRIT_5_10	,GRIT_10_16,GRIT_16_25,GRIT_25_40,GRIT_40,PATCL_AV,GRIT_10	,GRIT_10_40	,FLAG_R_003	,FLAG_R_005	,FLAG_R_008	,FLAG_FEO_06	,FLAG_FEO_1	,FLAG_MGO_015	,FLAG_GRIT_10,R_AIM,FeO_AIM,MgO_AIM,GRIT_10_AIM from MC_NUMCAL_INTERFACE_6 ";
+
                 if (_name == "1#烧结机")
                 {
                     _sql += " where DL_FLAG = 1 and TIMESTAMP >= '" + _time_begin + "' and TIMESTAMP <= '" + _time_end + "' order by TIMESTAMP asc";
@@ -295,7 +315,7 @@ namespace LY_SINTER.PAGE.Analysis
                     row_3[0] = "最大值";
                     row_4[0] = "最小值";
                     row_5[0] = "极差";
-                    for (int x = 1; x < 9; x++)
+                    for (int x = 1; x < 6; x++)
                     {
                         row_1[_datatable_name[x]] = "-";
                         row_2[_datatable_name[x]] = "-";
@@ -303,7 +323,7 @@ namespace LY_SINTER.PAGE.Analysis
                         row_4[_datatable_name[x]] = "-";
                         row_5[_datatable_name[x]] = "-";
                     }
-                    for (int x = 9; x < _data.Columns.Count; x++)
+                    for (int x = 6; x < _data.Columns.Count; x++)
                     {
                         List<float> _list = new List<float>();
                         for (int y = 0; y < _table.Rows.Count; y++)
@@ -332,7 +352,7 @@ namespace LY_SINTER.PAGE.Analysis
                     for (int x = 0; x < _table.Rows.Count; x++)
                     {
                         DataRow row_now = _data.NewRow();
-                        row_now["ID"] = x.ToString();
+                        row_now["ID"] = (x + 1).ToString();
                         for (int y = 1; y < _datatable_name.Count(); y++)
                         {
                             row_now[_datatable_name[y]] = _table.Rows[x][_datatable_name[y]].ToString();
@@ -360,6 +380,22 @@ namespace LY_SINTER.PAGE.Analysis
             catch (Exception ee)
             {
                 _vLog.writelog("data_show方法失败" + ee.ToString(), -1);
+            }
+        }
+
+        /// <summary>
+        /// 初始化颜色变化定时器响应事件
+        /// </summary>
+        private void _Timer1_Tick()
+        {
+            Action invokeAction = new Action(_Timer1_Tick);
+            if (this.InvokeRequired)
+            {
+                this.Invoke(invokeAction);
+            }
+            else
+            {
+                Curve_text(_v[comboBox2.Text.ToString()]);//曲线绑定数据源
             }
         }
 
@@ -675,6 +711,7 @@ namespace LY_SINTER.PAGE.Analysis
                     MajorTickSize = 0,
                     IsZoomEnabled = false,
                     Position = AxisPosition.Bottom,
+                    GapWidth = 3
                 };
                 for (int i = 0; i < _Bar_1.Count(); i++)
                 {
@@ -686,6 +723,7 @@ namespace LY_SINTER.PAGE.Analysis
                 {
                     MinorTickSize = 0,
                     Key = "y",
+                    Maximum = 100
                 };
                 _myPlotModel.Axes.Add(_valueAxis);
                 var _ColumnSeries = new ColumnSeries();
@@ -723,6 +761,7 @@ namespace LY_SINTER.PAGE.Analysis
                     MajorTickSize = 0,
                     IsZoomEnabled = false,
                     Position = AxisPosition.Bottom,
+                    GapWidth = 3
                 };
                 for (int i = 0; i < _Bar_2.Count(); i++)
                 {
@@ -734,6 +773,8 @@ namespace LY_SINTER.PAGE.Analysis
                 {
                     MinorTickSize = 0,
                     Key = "y",
+                    Minimum = 0,
+                    Maximum = 1
                 };
                 _myPlotModel.Axes.Add(_valueAxis);
                 var _ColumnSeries = new ColumnSeries();
@@ -742,14 +783,14 @@ namespace LY_SINTER.PAGE.Analysis
                 if (this.dataGridView1.Rows.Count > 5)
                 {
                     // string[] _Bar_2 = { "σTFe", "σFeO", "σCaO", "σSiO2", "σMgO", "σR", "σAl2O3" };//标准偏差曲线
-
-                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column9"].Value.ToString())));//TFe
-                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column10"].Value.ToString())));//FeO
-                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column11"].Value.ToString())));//CaO
-                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column12"].Value.ToString())));//SiO2
-                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column14"].Value.ToString())));//MgO
-                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column17"].Value.ToString())));//R
-                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column13"].Value.ToString())));//Al2O3
+                    string a = this.dataGridView1.Rows[1].Cells["Column9"].Value.ToString();
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column9"].Value.ToString()), 2));//TFe
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column10"].Value.ToString()), 2));//FeO
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column11"].Value.ToString()), 2));//CaO
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column12"].Value.ToString()), 2));//SiO2
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column14"].Value.ToString()), 2));//MgO
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column6"].Value.ToString()), 2));//R
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[1].Cells["Column13"].Value.ToString()), 2));//Al2O3
                 }
                 else
                 {
@@ -776,7 +817,7 @@ namespace LY_SINTER.PAGE.Analysis
 
         private void comboBox2_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            Curve_text(comboBox2.Text.ToString());
+            _Timer1.Enabled = true;
         }
     }
 }

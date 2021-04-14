@@ -316,6 +316,11 @@ namespace LY_SINTER.PAGE.Quality
         /// </summary>
         public System.Timers.Timer _Timer9 { get; set; }
 
+        /// <summary>
+        /// 页面调用sp——pv计算
+        /// </summary>
+        public System.Timers.Timer _Timer10 { get; set; }
+
         #endregion 定时器声明
 
         #region 弹出框交互标志位
@@ -1590,14 +1595,13 @@ namespace LY_SINTER.PAGE.Quality
                                     Issue_SDXLL();//下发
                                     PBTZ_GRTDATA(2);//页面刷新
 
-                                    SP_PV();//计算设定值
-                                    Ingredient();//更新设定值
-                                                 //  COLOR_CHANE(9);//设定下料量背景颜色变化
+                                    //  SP_PV();//计算设定值
+                                    // Ingredient();//更新设定值
+                                    //  COLOR_CHANE(9);//设定下料量背景颜色变化
                                     COLOR_BEGIN = 0;//还原颜色次数
                                     _Timer7.Enabled = true;//设定下料量背景颜色变化
                                     COLOR_CHANE(1);//启停信号颜色变化
-                                    COLOR_CHANE(5);//预测成分特殊成分颜色
-                                    COLOR_CHANE(6);//预测成分特殊数据
+                                    _Timer10.Enabled = true;
                                 }
                             }
                         }
@@ -2460,7 +2464,7 @@ namespace LY_SINTER.PAGE.Quality
         {
             try
             {
-                string sql_MC_MIXCAL_RESULT_1MIN = "select  SINCAL_DRY_MIX_SP,ISNULL(SINCAL_OUTPUT_PV,0) AS SINCAL_OUTPUT_PV from MC_MIXCAL_RESULT_1MIN ORDER BY TIMESTAMP DESC ";
+                string sql_MC_MIXCAL_RESULT_1MIN = "select top(1)  SINCAL_DRY_MIX_SP,ISNULL(SINCAL_OUTPUT_PV,0) AS SINCAL_OUTPUT_PV from MC_MIXCAL_RESULT_1MIN ORDER BY TIMESTAMP DESC ";
                 DataTable data_MC_MIXCAL_RESULT_1MIN = _dBSQL.GetCommand(sql_MC_MIXCAL_RESULT_1MIN);
                 if (data_MC_MIXCAL_RESULT_1MIN.Rows.Count > 0 && data_MC_MIXCAL_RESULT_1MIN != null)
                 {
@@ -2837,7 +2841,12 @@ namespace LY_SINTER.PAGE.Quality
             _Timer9 = new System.Timers.Timer(500);//闪烁
             _Timer9.Elapsed += (x, y) => { _Timer9_Tick(); };
             _Timer9.Enabled = false;
-            _Timer9.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
+            _Timer9.AutoReset = false;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
+
+            _Timer10 = new System.Timers.Timer(1000);//闪烁
+            _Timer10.Elapsed += (x, y) => { _Timer10_Tick(); };
+            _Timer10.Enabled = false;
+            _Timer10.AutoReset = false;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
         }
 
         /// <summary>
@@ -3211,11 +3220,12 @@ namespace LY_SINTER.PAGE.Quality
                                                         }
                                                         Issue_SDXLL();//下发
                                                         PBTZ_GRTDATA(2);//页面刷新
-                                                        SP_PV();//计算成分
+                                                                        //   SP_PV();//计算成分
                                                         mIX_PAGE.OVER_Storage(4, CAL_MODE);//整体存库
                                                         PBTZ_GRTDATA(2);//更新页面数据
                                                         COLOR_BEGIN = 0;//还原颜色次数
                                                         _Timer7.Enabled = true;//设定下料量背景颜色变化
+                                                        _Timer10.Enabled = true;
                                                         DateTime dateTime = DateTime.Now;
                                                         string name = "烧返仓调整分仓系数";
                                                         string incident = "智能配料页面";
@@ -3285,6 +3295,8 @@ namespace LY_SINTER.PAGE.Quality
                 {
                     Ingredient();
                     Counter_OutPut();
+                    COLOR_CHANE(5);
+                    COLOR_CHANE(6);
                 }
                 catch (Exception ee)
                 {
@@ -3364,6 +3376,24 @@ namespace LY_SINTER.PAGE.Quality
             }
         }
 
+        /// <summary>
+        /// 计算sp
+        /// </summary>
+        private void _Timer10_Tick()
+        {
+            Action invokeAction = new Action(_Timer10_Tick);
+            if (this.InvokeRequired)
+            {
+                this.Invoke(invokeAction);
+            }
+            else
+            {
+                SP_PV();//设定下料量
+                COLOR_CHANE(5);//预测成分特殊成分颜色
+                COLOR_CHANE(6);//预测成分特殊数据
+            }
+        }
+
         #endregion 定时器响应事件
 
         /// <summary>
@@ -3430,9 +3460,9 @@ namespace LY_SINTER.PAGE.Quality
         }
 
         /// <summary>
-        /// 计算成分sp_pv_L3
+        /// 计算成分sp_pv_L3(存库)
         /// </summary>
-        public void SP_PV()
+        public void SP_PV_1()
         {
             try
             {
@@ -3532,6 +3562,184 @@ namespace LY_SINTER.PAGE.Quality
                 var MISTAKE = "调用SP_PV（）方法失败" + EE.ToString();
                 _vLog.writelog(MISTAKE, -1);
             }
+        }
+
+        /// <summary>
+        /// 不存库
+        /// </summary>
+        public void SP_PV()
+        {
+            ///20200813 计算一次设定下料量后需要计算一次sp&pv，自动调用
+            try
+            {
+                string[] col_name = { "explain", "time", "TFE", "FEO", "CAO", "SIO2", "AL2O3", "MGO", "C", "R", "S", "P", "MN", "K2O", "NA2O", "a_s", "CU", "PB", "ZN", "K", "TIO2" };
+                DataTable _table = new DataTable();
+                for (int x = 0; x < col_name.Count(); x++)
+                {
+                    _table.Columns.Add(col_name[x]);
+                }
+
+                //1、SP
+                var _Sp = HMICAL.CalculateSinterBySP();
+
+                if (_Sp.Item1 != 0)
+                {
+                    //  HMICAL.mixlog.writelog("设定成分计算错误", -1);
+                }
+
+                //2、PV
+                var _Pv = HMICAL.CalculateSinterByPV();
+                if (_Pv.Item1 != 0)
+                {
+                    // HMICAL.mixlog.writelog("实际成分计算错误", -1);
+                }
+                //3、新增插入数据  20200322
+
+                var _NewAddData = HMICAL.ModifyData();
+
+                if (!_NewAddData.Item1)
+                {
+                    //HMICAL.mixlog.writelog("新增模型数据获取失败,表M_MACAL_INTERFACE_RESULT", -1);
+                }
+
+                #region 20210304只展示不存库，保证1h 60条数据
+
+                #region 设定值
+
+                //string[] col_name = { "explain", "time", "TFE", "FEO", "CAO", "SIO2", "AL2O3", "MGO", "C", "R", "S", "P", "MN", "K2O", "NA2O", "a_s", "CU", "PB", "ZN", "K", "TIO2" };
+
+                DataRow row_1 = _table.NewRow();
+                row_1["explain"] = "设定值";
+                row_1["time"] = DateTime.Now.ToString();
+                row_1["TFE"] = Math.Round(_Sp.Item2[0], 3);
+                row_1["FEO"] = Math.Round(_Sp.Item2[1], 3);
+                row_1["CAO"] = Math.Round(_Sp.Item2[2], 3);
+                row_1["SIO2"] = Math.Round(_Sp.Item2[3], 3);
+                row_1["AL2O3"] = Math.Round(_Sp.Item2[4], 3);
+                row_1["MGO"] = Math.Round(_Sp.Item2[5], 3);
+                row_1["C"] = Math.Round(_Sp.Item2[34], 3);
+                row_1["R"] = Math.Round(_Sp.Item2[9], 3);
+                row_1["S"] = Math.Round(_Sp.Item2[6], 4);
+                row_1["P"] = Math.Round(_Sp.Item2[7], 4);
+                row_1["MN"] = Math.Round(_Sp.Item2[8], 4);
+                row_1["K2O"] = Math.Round(_Sp.Item2[11], 4);
+                row_1["NA2O"] = Math.Round(_Sp.Item2[12], 4);
+                row_1["a_s"] = Math.Round(_Sp.Item2[16], 4);
+                row_1["CU"] = Math.Round(_Sp.Item2[17], 4);
+                row_1["PB"] = Math.Round(_Sp.Item2[18], 4);
+                row_1["ZN"] = Math.Round(_Sp.Item2[19], 4);
+                row_1["K"] = Math.Round(_Sp.Item2[20], 4);
+                row_1["TIO2"] = Math.Round(_Sp.Item2[10], 4);
+                _table.Rows.Add(row_1);
+
+                #endregion 设定值
+
+                #region 实际值
+
+                DataRow row_2 = _table.NewRow();
+                row_2["explain"] = "实际值";
+                row_2["time"] = DateTime.Now.ToString();
+                row_2["TFE"] = Math.Round(_Pv.Item2[0], 3);
+                row_2["FEO"] = Math.Round(_Pv.Item2[1], 3);
+                row_2["CAO"] = Math.Round(_Pv.Item2[2], 3);
+                row_2["SIO2"] = Math.Round(_Pv.Item2[3], 3);
+                row_2["AL2O3"] = Math.Round(_Pv.Item2[4], 3);
+                row_2["MGO"] = Math.Round(_Pv.Item2[5], 3);
+                row_2["C"] = Math.Round(_Pv.Item2[34], 3);
+                row_2["R"] = Math.Round(_Pv.Item2[9], 3);
+                row_2["S"] = Math.Round(_Pv.Item2[6], 4);
+                row_2["P"] = Math.Round(_Pv.Item2[7], 4);
+                row_2["MN"] = Math.Round(_Pv.Item2[8], 4);
+                row_2["K2O"] = Math.Round(_Pv.Item2[11], 4);
+                row_2["NA2O"] = Math.Round(_Pv.Item2[12], 4);
+                row_2["a_s"] = Math.Round(_Pv.Item2[16], 4);
+                row_2["CU"] = Math.Round(_Pv.Item2[17], 4);
+                row_2["PB"] = Math.Round(_Pv.Item2[18], 4);
+                row_2["ZN"] = Math.Round(_Pv.Item2[19], 4);
+                row_2["K"] = Math.Round(_Pv.Item2[20], 4);
+                row_2["TIO2"] = Math.Round(_Pv.Item2[10], 4);
+                _table.Rows.Add(row_2);
+
+                #region 检化验
+
+                string sql_JCZ = "  select top (1) TIMESTAMP AS TIME,C_TFE AS TFE,C_FEO AS FEO,C_CAO AS CAO, C_SIO2 as SIO2, C_AL2O3 as AL2O3,C_MGO as MGO," +
+                    " NULL AS C,C_R as R," +
+                    "C_S as S,C_P2O5 AS P,C_MNO AS MN,C_K2O AS K2O,C_NA2O AS NA2O,C_AS AS a_s ,C_CU AS CU ,C_PB AS PB , C_ZN AS ZN, C_K AS K,C_TIO2 AS TIO2  from M_SINTER_ANALYSIS   where SUBSTRING(BATCH_NUM,1,3) = 'SP1'  AND (C_TFE <> 0 OR C_FEO <> 0 OR C_CAO <> 0 OR C_SIO2 <> 0 OR C_AL2O3 <> 0 OR  C_MGO <> 0) order by SAMPLETIME desc";
+
+                DataTable dt_JCZ = _dBSQL.GetCommand(sql_JCZ);
+                if (dt_JCZ.Rows.Count > 0)
+                {
+                    DataRow row_3 = _table.NewRow();
+                    row_3["explain"] = "检验值";
+                    row_3["time"] = dt_JCZ.Rows[0]["TIME"].ToString();
+                    row_3["TFE"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["TFE"].ToString()), 3);
+                    row_3["FEO"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["FEO"].ToString()), 3);
+                    row_3["CAO"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["CAO"].ToString()), 3);
+                    row_3["SIO2"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["SIO2"].ToString()), 3);
+                    row_3["AL2O3"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["AL2O3"].ToString()), 3);
+                    row_3["MGO"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["MGO"].ToString()), 3);
+                    //   row_3["C"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["C"].ToString()), 3);
+                    row_3["R"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["R"].ToString()), 3);
+                    row_3["S"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["S"].ToString()), 4);
+                    row_3["P"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["P"].ToString()), 4);
+                    row_3["MN"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["MN"].ToString()), 4);
+                    row_3["K2O"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["K2O"].ToString()), 4);
+                    row_3["NA2O"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["NA2O"].ToString()), 4);
+                    row_3["a_s"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["a_s"].ToString()), 4);
+                    row_3["CU"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["CU"].ToString()), 4);
+                    row_3["PB"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["PB"].ToString()), 4);
+                    row_3["ZN"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["ZN"].ToString()), 4);
+                    row_3["K"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["K"].ToString()), 4);
+                    row_3["TIO2"] = Math.Round(float.Parse(dt_JCZ.Rows[0]["TIO2"].ToString()), 4);
+                    _table.Rows.Add(row_3);
+                    //  dt_JCZ.Rows[0]["explain"] = "检验值";
+                }
+
+                #endregion 检化验
+
+                if (_table.Rows.Count > 0)
+                {
+                    this.d1.DataSource = _table;
+                    //总干料量
+                    // double ZGLL = Math.Round( double.Parse(data_MC_MIXCAL_RESULT_1MIN.Rows[0]["SINCAL_DRY_MIX_SP"].ToString()),2));
+                    this.textBox_ZGLL.Text = _Sp.Item2[39].ToString();
+                    //理论产量
+                    //  double LLCL = Math.Round(double.Parse(data_MC_MIXCAL_RESULT_1MIN.Rows[0]["SINCAL_OUTPUT_PV"].ToString()) * 60, 2);
+                    this.textBox_LLCL.Text = Math.Round(_Sp.Item2[40] * 60, 2).ToString();
+                }
+
+                #endregion 实际值
+
+                #endregion 20210304只展示不存库，保证1h 60条数据
+            }
+            catch (Exception ee)
+            {
+                string mistake = "成分1min计算失败" + ee.ToString();
+                _vLog.writelog(mistake, -1);
+            }
+
+            //try
+            //{
+            //    #region 总干料量、理论产量 MC_MIXCAL_RESULT_1MIN，SINCAL_DRY_MIX_SP；MC_MIXCAL_RESULT_1MIN，SINCAL_OUTPUT_PV *60
+            //    string sql_MC_MIXCAL_RESULT_1MIN = "select  ISNULL(SINCAL_DRY_MIX_SP,0) AS SINCAL_DRY_MIX_SP,ISNULL(SINCAL_OUTPUT_PV,0) AS SINCAL_OUTPUT_PV from MC_MIXCAL_RESULT_1MIN where TIMESTAMP = (select max(TIMESTAMP) from MC_MIXCAL_RESULT_1MIN) ";
+            //    DataTable data_MC_MIXCAL_RESULT_1MIN = dBSQL.GetCommand(sql_MC_MIXCAL_RESULT_1MIN);
+            //    if (data_MC_MIXCAL_RESULT_1MIN.Rows.Count > 0)
+            //    {
+            //        //总干料量
+            //        // double ZGLL = Math.Round( double.Parse(data_MC_MIXCAL_RESULT_1MIN.Rows[0]["SINCAL_DRY_MIX_SP"].ToString()),2));
+            //        this.textBox_ZGLL.Text = data_MC_MIXCAL_RESULT_1MIN.Rows[0]["SINCAL_DRY_MIX_SP"].ToString();
+            //        //理论产量
+            //        double LLCL = Math.Round(double.Parse(data_MC_MIXCAL_RESULT_1MIN.Rows[0]["SINCAL_OUTPUT_PV"].ToString()) * 60, 2);
+            //        this.textBox_LLCL.Text = LLCL.ToString();
+
+            //    }
+            //    #endregion
+            //}
+            //catch (Exception ee)
+            //{
+            //    string mistake = "更新总干料量、理论产量失败" + ee.ToString();
+            //    vLog.writelog(mistake, -1);
+            //}
         }
 
         #region 按钮调整值赋值

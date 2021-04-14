@@ -211,7 +211,26 @@ namespace LY_SINTER.PAGE.Quality
                 //Y轴
 
                 DBSQL dBSQL1 = new DBSQL(ConstParameters.strCon);
-                string sql1 = "select TIMESTAMP,SINCAL_R_A_CURVE,SINCAL_SIN_SP_R_CURVE,C_R_CURVE,SINCAL_MG_A_CURVE,SINCAL_SIN_SP_MGO_CURVE,C_MGO_CURVE,PAR_AIM_FEO_CURVE,C_FEO_CURVE,SINCAL_C_A_CURVE,SINCAL_MIX_SP_C_CURVE,SINCAL_BFES_ORE_BILL_DRY_CURVE,SINCAL_FUEL_BILL_DRY_CURVE,SINCAL_BRUN_DRY_CURVE,SINCAL_SIN_SP_FEO_CURVE,SINCAL_MIX_SP_LOT_CURVE,SINCAL_NON_FUEL_SP_C_CURVE,BTPCAL_OUT_X_AVG_BTP_CURVE,SIN_PLC_MA_SB_1_FLUE_TE_CURVE,SIN_PLC_MA_SB_2_FLUE_TE_CURVE  from C_MAT_L2_RCAL_CUR_MIN where TIMESTAMP >= '" + time_BIGIN + "' and TIMESTAMP <= '" + time_END + "' order by TIMESTAMP";
+                string sql1 = "select TIMESTAMP," +
+                    "isnull(SINCAL_R_A_CURVE,0) as SINCAL_R_A_CURVE," +
+                    "isnull(SINCAL_SIN_SP_R_CURVE,0) as SINCAL_SIN_SP_R_CURVE," +
+                    "isnull(C_R_CURVE,0) as C_R_CURVE," +
+                    "isnull(SINCAL_MG_A_CURVE,0) as SINCAL_MG_A_CURVE," +
+                    "isnull(SINCAL_SIN_SP_MGO_CURVE,0) as SINCAL_SIN_SP_MGO_CURVE," +
+                    "isnull(C_MGO_CURVE,0) as C_MGO_CURVE," +
+                    "isnull(PAR_AIM_FEO_CURVE,0) as PAR_AIM_FEO_CURVE," +
+                    "isnull(C_FEO_CURVE,0) as C_FEO_CURVE," +
+                    "isnull(SINCAL_C_A_CURVE,0) as SINCAL_C_A_CURVE," +
+                    "isnull(SINCAL_MIX_SP_C_CURVE,0) as SINCAL_MIX_SP_C_CURVE," +
+                    "isnull(SINCAL_BFES_ORE_BILL_DRY_CURVE,0) as SINCAL_BFES_ORE_BILL_DRY_CURVE," +
+                    "isnull(SINCAL_FUEL_BILL_DRY_CURVE,0) as SINCAL_FUEL_BILL_DRY_CURVE," +
+                    "isnull(SINCAL_BRUN_DRY_CURVE,0) as SINCAL_BRUN_DRY_CURVE," +
+                    "isnull(SINCAL_SIN_SP_FEO_CURVE,0) as SINCAL_SIN_SP_FEO_CURVE," +
+                    "isnull(SINCAL_MIX_SP_LOT_CURVE,0) as SINCAL_MIX_SP_LOT_CURVE," +
+                    "isnull(SINCAL_NON_FUEL_SP_C_CURVE,0) as SINCAL_NON_FUEL_SP_C_CURVE," +
+                    "isnull(BTPCAL_OUT_X_AVG_BTP_CURVE,0) as BTPCAL_OUT_X_AVG_BTP_CURVE," +
+                    "isnull(SIN_PLC_MA_SB_1_FLUE_TE_CURVE,0) as SIN_PLC_MA_SB_1_FLUE_TE_CURVE," +
+                    "isnull(SIN_PLC_MA_SB_2_FLUE_TE_CURVE,0) as SIN_PLC_MA_SB_2_FLUE_TE_CURVE  from C_MAT_L2_RCAL_CUR_MIN where TIMESTAMP >= '" + time_BIGIN + "' and TIMESTAMP <= '" + time_END + "' order by TIMESTAMP";
                 DataTable table1 = dBSQL1.GetCommand(sql1);
 
                 for (int i = 0; i < table1.Rows.Count; i++)
@@ -1002,15 +1021,15 @@ namespace LY_SINTER.PAGE.Quality
                     _valueAxis1.MajorStep = 1;*/
                     int max = (int)Mun1.Max() + 1;
                     int min = ((int)Mun1.Min()) > 0 ? ((int)Mun1.Min() - 1) : 0; ;
-                    _valueAxis1.Maximum = getMax(max, min);
-                    _valueAxis1.Minimum = min;
+                    _valueAxis1.Maximum = 4;
+                    _valueAxis1.Minimum = 1;
                     if (min == 0)
                     {
-                        _valueAxis1.MajorStep = getMax(max, min);
+                        _valueAxis1.MajorStep = 1;
                     }
                     else
                     {
-                        _valueAxis1.MajorStep = min;
+                        _valueAxis1.MajorStep = 1;
                     }
                 }
 
@@ -1063,15 +1082,15 @@ namespace LY_SINTER.PAGE.Quality
                     _valueAxis2.MajorStep = 1;*/
                     int max = (int)Mun2.Max() + 1;
                     int min = ((int)Mun2.Min()) > 0 ? ((int)Mun2.Min() - 1) : 0; ;
-                    _valueAxis2.Maximum = getMax(max, min);
-                    _valueAxis2.Minimum = min;
+                    _valueAxis2.Maximum = 4;
+                    _valueAxis2.Minimum = 1;
                     if (min == 0)
                     {
-                        _valueAxis2.MajorStep = getMax(max, min);
+                        _valueAxis2.MajorStep = 1;
                     }
                     else
                     {
-                        _valueAxis2.MajorStep = min;
+                        _valueAxis2.MajorStep = 1;
                     }
                 }
                 _myPlotModel.Axes.Add(_valueAxis2);
@@ -1122,15 +1141,15 @@ namespace LY_SINTER.PAGE.Quality
                     _valueAxis3.MajorStep = 1;*/
                     int max = (int)Mun3.Max() + 1;
                     int min = ((int)Mun3.Min()) > 0 ? ((int)Mun3.Min() - 1) : 0; ;
-                    _valueAxis3.Maximum = getMax(max, min);
-                    _valueAxis3.Minimum = min;
+                    _valueAxis3.Maximum = 4;
+                    _valueAxis3.Minimum = 1;
                     if (min == 0)
                     {
-                        _valueAxis3.MajorStep = getMax(max, min);
+                        _valueAxis3.MajorStep = 1;
                     }
                     else
                     {
-                        _valueAxis3.MajorStep = min;
+                        _valueAxis3.MajorStep = 1;
                     }
                 }
                 _myPlotModel.Axes.Add(_valueAxis3);

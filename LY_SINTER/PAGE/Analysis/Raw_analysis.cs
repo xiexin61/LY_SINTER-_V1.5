@@ -22,26 +22,31 @@ namespace LY_SINTER.PAGE.Analysis
         /// <summary>
         /// 小数位数
         /// </summary>
-        int Digit = 3;
-        DBSQL _dBSQL = new DBSQL(ConstParameters.strCon);
+        private int Digit = 2;
+
+        private DBSQL _dBSQL = new DBSQL(ConstParameters.strCon);
+
         /// <summary>
         ///存放物料种类规则
         ///key:物料描述
         /// values:item1:二级编码最小值、item2:二级编码最大值;、item3:物料归属标志位
         /// </summary>
-        Dictionary<string, List<Tuple<int, int, int>>> GetDic_L2_code_CONFIG = new Dictionary<string, List<Tuple<int, int, int>>>();
+        private Dictionary<string, List<Tuple<int, int, int>>> GetDic_L2_code_CONFIG = new Dictionary<string, List<Tuple<int, int, int>>>();
+
         /// <summary>
         /// 物料及二级编码对应关系
         /// key:物料描述
         /// values：二级编码
         /// </summary>
-        Dictionary<String, int> _dic_L2_CODE_CLASS = new Dictionary<string, int>();
-        MIX_PAGE_MODEL mIX_PAGE = new MIX_PAGE_MODEL();//配料页面方法
-        ANALYSIS_MODEL aNALYSIS_MODEL = new ANALYSIS_MODEL();//数据分析页面模型
+        private Dictionary<String, int> _dic_L2_CODE_CLASS = new Dictionary<string, int>();
+
+        private MIX_PAGE_MODEL mIX_PAGE = new MIX_PAGE_MODEL();//配料页面方法
+        private ANALYSIS_MODEL aNALYSIS_MODEL = new ANALYSIS_MODEL();//数据分析页面模型
+
         /// <summary>
         /// 数据库字段
         /// </summary>
-        string[] Get_data_name = {"ID","REOPTTIME",
+        private string[] Get_data_name = {"ID","REOPTTIME",
                                     "BATCH_NUM",
                                     "L2_CODE",
                                     "C_TFE",
@@ -75,10 +80,11 @@ namespace LY_SINTER.PAGE.Analysis
                                     "C_NI",
                                     "C_MNO"
                                      };
+
         /// <summary>
         /// 曲线下拉框选项赋值
         /// </summary>
-        string[] _get_combox_values =
+        private string[] _get_combox_values =
         {
  "TFe",
 "FeO",
@@ -111,20 +117,26 @@ namespace LY_SINTER.PAGE.Analysis
 "Ni",
 "MNO"
 };
+
         #region 曲线声明
+
         private PlotModel _myPlotModel;//曲线容器声明
         private DateTimeAxis _dateAxis;//X轴 若存在多x轴则声明多个
         private LinearAxis _valueAxis1;//Y轴 若存在多y轴则声明多个
-        List<DataPoint> Line1 = new List<DataPoint>();//曲线数据容器
+        private List<DataPoint> Line1 = new List<DataPoint>();//曲线数据容器
         private OxyPlot.Series.LineSeries series1;//声明曲线对象
+
         /// <summary>
         /// 曲线数据
         /// key：下拉框名称
         /// values item1：数据 item2：时间
         /// </summary>
-        Dictionary<string, List<Tuple<double, DateTime>>> _Dic_curve = new Dictionary<string, List<Tuple<double, DateTime>>>();
-        #endregion
+        private Dictionary<string, List<Tuple<double, DateTime>>> _Dic_curve = new Dictionary<string, List<Tuple<double, DateTime>>>();
+
+        #endregion 曲线声明
+
         public vLog _vLog { get; set; }
+
         public Raw_analysis()
         {
             InitializeComponent();
@@ -134,11 +146,12 @@ namespace LY_SINTER.PAGE.Analysis
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
             Combox_1_date();//物料类别下拉框绑定
-           // combox_3_values();
+                            // combox_3_values();
             data_text("混匀矿", textBox_begin.Text.ToString(), textBox_end.Text.ToString());
             _combox2_values();
-            Curve_text(comboBox2.Text.ToString());
+            Curve_text("TFe");
         }
+
         /// <summary>
         /// 开始时间&结束时间赋值
         /// </summary>
@@ -156,9 +169,10 @@ namespace LY_SINTER.PAGE.Analysis
             }
             catch (Exception ee)
             {
-                _vLog.writelog("dateTimePicker_value方法失败"+ee.ToString(),-1);
+                _vLog.writelog("dateTimePicker_value方法失败" + ee.ToString(), -1);
             }
         }
+
         /// <summary>
         /// 物料类别下拉框绑定
         /// </summary>
@@ -171,7 +185,7 @@ namespace LY_SINTER.PAGE.Analysis
                 _data.Columns.Add("Name");
                 _data.Columns.Add("Values");
                 int X = 0;
-                foreach(var x in GetDic_L2_code_CONFIG)
+                foreach (var x in GetDic_L2_code_CONFIG)
                 {
                     DataRow row_now = _data.NewRow();
                     row_now["Name"] = x.Key;
@@ -185,9 +199,9 @@ namespace LY_SINTER.PAGE.Analysis
                 //this.comboBox1.SelectedIndex = 2;
                 combox_3_values("混合料");
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
-                _vLog.writelog("Combox_1_date方法失败" + ee.ToString(),-1);
+                _vLog.writelog("Combox_1_date方法失败" + ee.ToString(), -1);
             }
         }
 
@@ -195,10 +209,11 @@ namespace LY_SINTER.PAGE.Analysis
         {
             combox_3_values(comboBox1.Text.ToString());
         }
+
         /// <summary>
         /// 料名数据绑定事件
         /// </summary>
-        public void combox_3_values( string _n)
+        public void combox_3_values(string _n)
         {
             try
             {
@@ -217,7 +232,6 @@ namespace LY_SINTER.PAGE.Analysis
                         {
                             _sql += " or L2_CODE between " + _list[x].Item1 + " and " + _list[x].Item2 + "";
                         }
-
                     }
                     _sql += " order by  L2_CODE asc";
                     DataTable data_Value = new DataTable();
@@ -247,7 +261,6 @@ namespace LY_SINTER.PAGE.Analysis
                         string _n1 = comboBox3.Text.ToString();
                     }
                 }
-
             }
             catch (Exception ee)
             {
@@ -261,14 +274,14 @@ namespace LY_SINTER.PAGE.Analysis
         /// _time_begin 开始时间
         /// _time_end 结束时间
         /// </summary>
-        public void data_text(string _name,string _time_begin,string _time_end)
+        public void data_text(string _name, string _time_begin, string _time_end)
         {
             try
             {
                 ///20210410 报样时间改为插入时间
-               var _sql = "select TIMESTAMP,TIMESTAMP as REOPTTIME,BATCH_NUM,L2_CODE,C_TFE,C_FEO,C_CAO,C_SIO2,C_AL2O3,C_MGO,C_S,C_P,C_C,C_MN,C_LOT,C_R,C_H2O,C_ASH,C_VOLATILES,C_TIO2,C_K2O,C_NA2O,C_PBO,C_ZNO,C_F,C_AS,C_CU,C_PB,C_ZN,C_K,C_NA,C_CR,C_NI,C_MNO from M_MATERIAL_ANALYSIS WHERE L2_CODE='" + _dic_L2_CODE_CLASS[_name] + "' and TIMESTAMP between '" + _time_begin + "' and '" + _time_end + "' order by TIMESTAMP desc";
+                var _sql = "select TIMESTAMP,TIMESTAMP as REOPTTIME,BATCH_NUM,L2_CODE,C_TFE,C_FEO,C_CAO,C_SIO2,C_AL2O3,C_MGO,C_S,C_P,C_C,C_MN,C_LOT,C_R,C_H2O,C_ASH,C_VOLATILES,C_TIO2,C_K2O,C_NA2O,C_PBO,C_ZNO,C_F,C_AS,C_CU,C_PB,C_ZN,C_K,C_NA,C_CR,C_NI,C_MNO from M_MATERIAL_ANALYSIS WHERE L2_CODE='" + _dic_L2_CODE_CLASS[_name] + "' and TIMESTAMP between '" + _time_begin + "' and '" + _time_end + "' order by TIMESTAMP desc";
                 DataTable table_1 = _dBSQL.GetCommand(_sql);//参与计算数据
-                if (table_1 != null && table_1.Rows.Count > 0 )
+                if (table_1 != null && table_1.Rows.Count > 0)
                 {
                     DataTable _table = new DataTable();//表单数据源
                     for (int x = 0; x < Get_data_name.Count(); x++)
@@ -293,7 +306,7 @@ namespace LY_SINTER.PAGE.Analysis
                     row_3[Get_data_name[1]] = "-";//报样时间
                     row_3[Get_data_name[2]] = "-";//物料名
                     row_3[Get_data_name[3]] = "-";//试样号
-                     //最小值
+                                                  //最小值
                     DataRow row_4 = _table.NewRow();
                     row_4[Get_data_name[0]] = "最小值";//序号
                     row_4[Get_data_name[1]] = "-";//报样时间
@@ -311,19 +324,19 @@ namespace LY_SINTER.PAGE.Analysis
                     row_6[Get_data_name[1]] = "-";//报样时间
                     row_6[Get_data_name[2]] = "-";//物料名
                     row_6[Get_data_name[3]] = "-";//试样号
-                    for (int x = 4;x < Get_data_name.Count();x++)
+                    for (int x = 4; x < Get_data_name.Count(); x++)
                     {
                         List<float> _list = new List<float>();
-                        for (int y = 0; y < table_1.Rows.Count;y++)
+                        for (int y = 0; y < table_1.Rows.Count; y++)
                         {
-                            if(table_1.Rows[y][Get_data_name[x]].ToString() != "")//剔除空值
-                               _list.Add(float.Parse(table_1.Rows[y][Get_data_name[x]].ToString() == "" ? "0": table_1.Rows[y][Get_data_name[x]].ToString()));
+                            if (table_1.Rows[y][Get_data_name[x]].ToString() != "")//剔除空值
+                                _list.Add(float.Parse(table_1.Rows[y][Get_data_name[x]].ToString() == "" ? "0" : table_1.Rows[y][Get_data_name[x]].ToString()));
                         }
-                        row_1[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 1,3).ToString();//成分
-                        row_2[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 2,3).ToString();//标准偏差
-                        row_3[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 3,3).ToString();//最大值
-                        row_4[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 4,3).ToString();//最小值
-                        row_5[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 5,3).ToString();//极值
+                        row_1[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 1, 2).ToString();//成分
+                        row_2[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 2, 2).ToString();//标准偏差
+                        row_3[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 3, 2).ToString();//最大值
+                        row_4[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 4, 2).ToString();//最小值
+                        row_5[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 5, 2).ToString();//极值
                     }
                     _table.Rows.Add(row_1);
                     _table.Rows.Add(row_2);
@@ -332,11 +345,11 @@ namespace LY_SINTER.PAGE.Analysis
                     _table.Rows.Add(row_5);
                     //拼接基础数据
                     _Dic_curve.Clear();
-                    for (int x = 0; x < table_1.Rows.Count;x++)
+                    for (int x = 0; x < table_1.Rows.Count; x++)
                     {
                         DataRow row_now = _table.NewRow();
                         row_now["ID"] = x + 1;
-                        for(int y = 1; y < Get_data_name.Count(); y++)
+                        for (int y = 1; y < Get_data_name.Count(); y++)
                         {
                             ///数据列
                             if (y > 3)
@@ -347,20 +360,16 @@ namespace LY_SINTER.PAGE.Analysis
                                 }
                                 else
                                 {
-                                    row_now[Get_data_name[y]] = Math.Round(double.Parse( table_1.Rows[x][Get_data_name[y]].ToString()), Digit);
-                                    //row_now[Get_data_name[y]] = double.Parse(table_1.Rows[x][Get_data_name[y]].ToString());
-                                } 
+                                    row_now[Get_data_name[y]] = Math.Round(double.Parse(table_1.Rows[x][Get_data_name[y]].ToString()), Digit);
+                                }
                                 if (_Dic_curve.ContainsKey(Get_data_name[y]))
                                 {
-                                    _Dic_curve[Get_data_name[y]].Add(new Tuple<double, DateTime>(Math.Round( float.Parse(table_1.Rows[x][Get_data_name[y]].ToString() == "" ? "0" : table_1.Rows[x][Get_data_name[y]].ToString()), Digit), DateTime.Parse(table_1.Rows[x]["TIMESTAMP"].ToString())));
-
-                                    //_Dic_curve[Get_data_name[y]].Add(new Tuple<double, DateTime>( float.Parse(table_1.Rows[x][Get_data_name[y]].ToString() == "" ? "0" : table_1.Rows[x][Get_data_name[y]].ToString()), DateTime.Parse(table_1.Rows[x]["TIMESTAMP"].ToString())));
+                                    _Dic_curve[Get_data_name[y]].Add(new Tuple<double, DateTime>(Math.Round(float.Parse(table_1.Rows[x][Get_data_name[y]].ToString() == "" ? "0" : table_1.Rows[x][Get_data_name[y]].ToString()), Digit), DateTime.Parse(table_1.Rows[x]["TIMESTAMP"].ToString())));
                                 }
                                 else
                                 {
                                     List<Tuple<double, DateTime>> _list = new List<Tuple<double, DateTime>>();
-                                    _list.Add(new Tuple<double, DateTime>(Math.Round( float.Parse(table_1.Rows[x][Get_data_name[y]].ToString() == "" ? "0" : table_1.Rows[x][Get_data_name[y]].ToString()), Digit), DateTime.Parse(table_1.Rows[x]["TIMESTAMP"].ToString())));
-                                    //_list.Add(new Tuple<double, DateTime>( float.Parse(table_1.Rows[x][Get_data_name[y]].ToString() == "" ? "0" : table_1.Rows[x][Get_data_name[y]].ToString()), DateTime.Parse(table_1.Rows[x]["TIMESTAMP"].ToString())));
+                                    _list.Add(new Tuple<double, DateTime>(Math.Round(float.Parse(table_1.Rows[x][Get_data_name[y]].ToString() == "" ? "0" : table_1.Rows[x][Get_data_name[y]].ToString()), Digit), DateTime.Parse(table_1.Rows[x]["TIMESTAMP"].ToString())));
                                     _Dic_curve.Add(Get_data_name[y], _list);
                                 }
                             }
@@ -369,18 +378,18 @@ namespace LY_SINTER.PAGE.Analysis
                             {
                                 row_now[Get_data_name[y]] = table_1.Rows[x][Get_data_name[y]].ToString();
                             }
-                            
                         }
                         _table.Rows.Add(row_now);
                     }
                     dataGridView1.DataSource = _table;
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
-                _vLog.writelog("data_text方法失败" + ee.ToString(),-1);
+                _vLog.writelog("data_text方法失败" + ee.ToString(), -1);
             }
         }
+
         /// <summary>
         /// 导出按钮
         /// </summary>
@@ -402,7 +411,7 @@ namespace LY_SINTER.PAGE.Analysis
                 string columnTitle = "";
                 try
                 {
-                    //写入列标题    
+                    //写入列标题
                     for (int i = 0; i < dataGridView1.ColumnCount; i++)
                     {
                         if (i > 0)
@@ -413,7 +422,7 @@ namespace LY_SINTER.PAGE.Analysis
                     }
                     sw.WriteLine(columnTitle);
 
-                    //写入列内容    
+                    //写入列内容
                     for (int j = 0; j < dataGridView1.Rows.Count; j++)
                     {
                         string columnValue = "";
@@ -450,6 +459,7 @@ namespace LY_SINTER.PAGE.Analysis
             data_text(comboBox3.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());
             Curve_text(comboBox2.Text.ToString());//曲线赋值
         }
+
         /// <summary>
         /// 成分下拉框绑定
         /// </summary>
@@ -458,18 +468,19 @@ namespace LY_SINTER.PAGE.Analysis
             DataTable _data = new DataTable();
             _data.Columns.Add("Name");
             _data.Columns.Add("Values");
-            for(int x = 0; x < _get_combox_values.Count(); x++)
+            for (int x = 0; x < _get_combox_values.Count(); x++)
             {
                 DataRow row_now = _data.NewRow();
                 row_now["Name"] = _get_combox_values[x];
-                row_now["Values"] = x+1;
+                row_now["Values"] = x + 1;
                 _data.Rows.Add(row_now);
             }
             this.comboBox2.DataSource = _data;
             this.comboBox2.DisplayMember = "Name";
             this.comboBox2.ValueMember = "Values";
-            this.comboBox2.SelectedIndex = 1;
+            this.comboBox2.SelectedIndex = 0;
         }
+
         /// <summary>
         /// 曲线数据绑定
         /// _name成分名称
@@ -480,10 +491,11 @@ namespace LY_SINTER.PAGE.Analysis
             try
             {
                 #region 字符转换
+
                 string _name_1 = "";
                 if (_name == "TFe")
                     _name_1 = "C_TFE";
-                else if(_name == "FeO")
+                else if (_name == "FeO")
                     _name_1 = "C_FEO";
                 else if (_name == "CaO")
                     _name_1 = "C_CAO";
@@ -541,7 +553,8 @@ namespace LY_SINTER.PAGE.Analysis
                     _name_1 = "C_NI";
                 else if (_name == "MNO")
                     _name_1 = "C_MNO";
-                #endregion
+
+                #endregion 字符转换
 
                 if (_Dic_curve.ContainsKey(_name_1))//判断是否存在key值
                 {
@@ -634,26 +647,29 @@ namespace LY_SINTER.PAGE.Analysis
         {
             Curve_text(comboBox2.Text.ToString());
         }
+
         /// <summary>
         /// 定时器启用
         /// </summary>
         public void Timer_state()
         {
-           // _Timer1.Enabled = true;
+            // _Timer1.Enabled = true;
         }
+
         /// <summary>
         /// 定时器停用
         /// </summary>
         public void Timer_stop()
         {
-           // _Timer1.Enabled = false;
+            // _Timer1.Enabled = false;
         }
+
         /// <summary>
         /// 控件关闭
         /// </summary>
         public void _Clear()
         {
-          //  _Timer1.Close();//释放定时器资源
+            //  _Timer1.Close();//释放定时器资源
             this.Dispose();//释放资源
             GC.Collect();//调用GC
         }
