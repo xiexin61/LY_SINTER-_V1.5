@@ -262,6 +262,7 @@ namespace LY_SINTER.PAGE.Course
                     MajorTickSize = 0,
                     IsZoomEnabled = false,
                     Position = AxisPosition.Bottom,
+                    GapWidth = 3
                 };
                 for (int i = 0; i < xvalDt.Count(); i++)
                 {
@@ -343,6 +344,7 @@ namespace LY_SINTER.PAGE.Course
                 MajorTickSize = 0,
                 IsZoomEnabled = false,
                 Position = AxisPosition.Bottom,
+                GapWidth = 3
             };
             for (int i = 0; i < xvalDt1.Count(); i++)
             {
@@ -394,6 +396,7 @@ namespace LY_SINTER.PAGE.Course
                 MajorTickSize = 0,
                 IsZoomEnabled = false,
                 Position = AxisPosition.Bottom,
+                GapWidth = 3
             };
             for (int i = 0; i < xvalDt1.Count(); i++)
             {
@@ -794,7 +797,7 @@ namespace LY_SINTER.PAGE.Course
         {
             try
             {
-                Check_All();
+                //    Check_All();
                 tendency_curve_HIS(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));
             }
             catch (Exception ee)
