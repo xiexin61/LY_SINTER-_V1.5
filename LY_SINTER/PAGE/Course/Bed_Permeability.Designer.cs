@@ -105,24 +105,25 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.798995F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.201F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1268, 796);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1262, 72);
             this.tableLayoutPanel2.TabIndex = 1;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
@@ -134,7 +135,7 @@ namespace LY_SINTER.PAGE.Course
             this.label1.Font = new System.Drawing.Font("SimSun", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1256, 33);
+            this.label1.Size = new System.Drawing.Size(1236, 35);
             this.label1.TabIndex = 0;
             this.label1.Text = "料 层 透 气 性 分 析 模 型";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -165,11 +166,11 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel3.Controls.Add(this.textBox_begin, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.textBox_end, 4, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 36);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 38);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1256, 33);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1236, 31);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // simpleButton3
@@ -182,7 +183,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
             this.simpleButton3.Location = new System.Drawing.Point(606, 3);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(79, 27);
+            this.simpleButton3.Size = new System.Drawing.Size(79, 25);
             this.simpleButton3.TabIndex = 10;
             this.simpleButton3.Text = "实时";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
@@ -197,7 +198,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
             this.simpleButton2.Location = new System.Drawing.Point(521, 3);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(79, 27);
+            this.simpleButton2.Size = new System.Drawing.Size(79, 25);
             this.simpleButton2.TabIndex = 9;
             this.simpleButton2.Text = "查询";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
@@ -207,7 +208,7 @@ namespace LY_SINTER.PAGE.Course
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("SimSun", 9F);
-            this.label3.Location = new System.Drawing.Point(135, 10);
+            this.label3.Location = new System.Drawing.Point(135, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 4;
@@ -219,7 +220,7 @@ namespace LY_SINTER.PAGE.Course
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("SimSun", 9F);
-            this.label4.Location = new System.Drawing.Point(329, 10);
+            this.label4.Location = new System.Drawing.Point(329, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 6;
@@ -234,7 +235,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(691, 3);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(79, 27);
+            this.simpleButton1.Size = new System.Drawing.Size(79, 25);
             this.simpleButton1.TabIndex = 14;
             this.simpleButton1.Text = "导出";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click_1);
@@ -247,7 +248,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton4.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.Image")));
             this.simpleButton4.Location = new System.Drawing.Point(3, 3);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(124, 27);
+            this.simpleButton4.Size = new System.Drawing.Size(124, 25);
             this.simpleButton4.TabIndex = 3;
             this.simpleButton4.Text = "参数查询修改";
             this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
@@ -257,9 +258,9 @@ namespace LY_SINTER.PAGE.Course
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Right;
             this.label2.Font = new System.Drawing.Font("SimSun", 9F);
-            this.label2.Location = new System.Drawing.Point(1176, 0);
+            this.label2.Location = new System.Drawing.Point(1156, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 33);
+            this.label2.Size = new System.Drawing.Size(77, 31);
             this.label2.TabIndex = 2;
             this.label2.Text = "最新调整时间";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -267,7 +268,7 @@ namespace LY_SINTER.PAGE.Course
             // textBox_begin
             // 
             this.textBox_begin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_begin.Location = new System.Drawing.Point(197, 6);
+            this.textBox_begin.Location = new System.Drawing.Point(197, 5);
             this.textBox_begin.Name = "textBox_begin";
             this.textBox_begin.Size = new System.Drawing.Size(124, 21);
             this.textBox_begin.TabIndex = 17;
@@ -275,7 +276,7 @@ namespace LY_SINTER.PAGE.Course
             // textBox_end
             // 
             this.textBox_end.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_end.Location = new System.Drawing.Point(391, 6);
+            this.textBox_end.Location = new System.Drawing.Point(391, 5);
             this.textBox_end.Name = "textBox_end";
             this.textBox_end.Size = new System.Drawing.Size(124, 21);
             this.textBox_end.TabIndex = 18;

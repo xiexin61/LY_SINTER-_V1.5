@@ -131,10 +131,7 @@ namespace LY_SINTER.PAGE.Quality
                     _myPlotModel_His = new PlotModel()
                     {
                         Background = OxyColors.White,
-                        Title = "历史",
-                        TitleFontSize = 7,
-                        TitleColor = OxyColors.White,
-                        //LegendMargin = 100,
+                       // PlotMargins = new OxyThickness(40, 10, 5, 0),
                     };
                     //X轴
                     _dateAxis_His = new DateTimeAxis()
@@ -205,7 +202,7 @@ namespace LY_SINTER.PAGE.Quality
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[0],
                         ItemsSource = Line1_His,
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss} 目标仓位:{4}",
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm} 目标仓位:{4}",
                     };
                     if (check_mbcw.Checked)
                     {
@@ -249,7 +246,7 @@ namespace LY_SINTER.PAGE.Quality
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[1],//识别符
                         ItemsSource = Line2_His,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss} 综合仓位:{4}",
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm} 综合仓位:{4}",
                     };
                     if (check_zhcw.Checked)
                     {
@@ -294,7 +291,7 @@ namespace LY_SINTER.PAGE.Quality
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[2],//识别符
                         ItemsSource = Line3_His,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss} 返矿配比:{4}",
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm} 返矿配比:{4}",
                     };
                     if (check_sfpb.Checked)
                     {
@@ -339,7 +336,7 @@ namespace LY_SINTER.PAGE.Quality
                         MarkerType = MarkerType.None,
                         YAxisKey = curve_name[3],//识别符
                         ItemsSource = Line4_His,//绑定数据
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n燃料配比:{4}",
+                        TrackerFormatString = "{0}\n时间:{2:MM-dd HH:mm} 燃料配比:{4}",
                     };
                     if (check_rlpb.Checked)
                     {
@@ -626,6 +623,8 @@ namespace LY_SINTER.PAGE.Quality
                         Line1.Add(_line1);
                         Line2.Add(_line2);
                     }
+                    check_zcll.Text = "总出料量:" + _value.Item2[0].ToString("0.00") + "t";
+                    check_cwbh.Text = "仓位变化:" + _value.Item3[0].ToString("0.00") + "t";
                     max1 = (int)_value.Item2.Max();
                     min1 = (int)_value.Item2.Min();
                     max2 = (int)_value.Item3.Max();
@@ -633,8 +632,7 @@ namespace LY_SINTER.PAGE.Quality
                     _myPlotModel = new PlotModel()//定义容器
                     {
                         Background = OxyColors.White,
-                        TitleFontSize = 7,
-                        TitleColor = OxyColors.White,
+                        PlotMargins = new OxyThickness(40, 20, 20, 10),
                     };
                     _dateAxis = new DateTimeAxis()//x轴
                     {
@@ -706,7 +704,7 @@ namespace LY_SINTER.PAGE.Quality
                         MarkerType = MarkerType.Circle,
                         YAxisKey = "A",
                         ItemsSource = Line1,
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}  总出料量:{4}t",
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm}\n总出料量:{4}t",
                     };
                     if (check_zcll.Checked == true)
                     {
@@ -750,7 +748,7 @@ namespace LY_SINTER.PAGE.Quality
                         MarkerType = MarkerType.Circle,
                         YAxisKey = "B",
                         ItemsSource = Line2,
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss} 仓位变化:{4}t",
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm}\n仓位变化:{4}t",
                     };
                     if (check_cwbh.Checked == true)
                     {

@@ -13,9 +13,10 @@ namespace LY_SINTER.Popover.Analysis
 {
     public partial class Frm_QTYL_update : Form
     {
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
-        string BATCH_NUM = "", MAT_DESC = "";
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        private string BATCH_NUM = "", MAT_DESC = "";
         public static bool isopen = false;
+
         public Frm_QTYL_update(string num, string name)
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace LY_SINTER.Popover.Analysis
             MAT_DESC = name;
             getData(num, name);
         }
+
         public void getData(string num, string name)
         {
             while (d1.Rows.Count < 42)
@@ -31,7 +33,7 @@ namespace LY_SINTER.Popover.Analysis
             }
             string sql = "select BATCH_NUM,b.MAT_DESC,a.PLACE_ORIGIN,a.UNIT_PRICE,C_TFE,C_FEO,C_SIO2,C_CAO,C_MGO,C_AL2O3,C_S,C_P,C_C,C_LOT,C_MN,C_R,C_H2O,C_ASH," +
                     "C_VOLATILES,C_TIO2,C_K2O,C_NA2O,C_PBO,C_ZNO,C_F,C_AS,C_CU,C_PB,C_ZN,C_K,C_NA,C_CR,C_NI,C_MNO,GRIT_8,GRIT_5_8,GRIT_3_5,GRIT_1_3,GRIT_0_1,GRIT_AVG,GRIT_C_03_U,GRIT_C_03_D " +
-                "from M_OTH_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE and b.MAT_DESC = '" + name + "' and BATCH_NUM = " + num + "; ";
+                "from M_OTH_MATERIAL_ANALYSIS a, M_MATERIAL_COOD b where a.L2_CODE = b.L2_CODE and b.MAT_DESC = '" + name + "' and BATCH_NUM = '" + num + "'; ";
             DataTable table = dBSQL.GetCommand(sql);
             for (int i = 0; i < d1.Rows.Count; i++)
             {
@@ -89,6 +91,7 @@ namespace LY_SINTER.Popover.Analysis
                 d1.Rows[i].Cells["after"].Style.ForeColor = Color.Red;
             }
         }
+
         //保存按钮，更新数据库
         private void simpleButton2_click(object sender, EventArgs e)
         {
@@ -212,7 +215,7 @@ namespace LY_SINTER.Popover.Analysis
             }
             if (d1.Rows[33].Cells["after"].Value.ToString() != "")
             {
-                sql += "MNO=" + d1.Rows[33].Cells["after"].Value + ",";
+                sql += "C_MNO=" + d1.Rows[33].Cells["after"].Value + ",";
             }
             if (d1.Rows[34].Cells["after"].Value.ToString() != "")
             {

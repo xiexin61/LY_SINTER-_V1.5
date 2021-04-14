@@ -78,14 +78,14 @@ namespace LY_SINTER.PAGE.Analysis
             DataTable d1 = new DataTable();
             if (banci == "全部")
             {
-                sql = "select TIMESTAMP,POP_CLASS,MAT_DESC,MAT_VALUE from MC_POPCAL_CONSUME where TIMESTAMP between '" + start + "' and '" + end + "'";
+                sql = "select TIMESTAMP,POP_CLASS,MAT_DESC,MAT_VALUE from MC_POPCAL_CONSUME where TIMESTAMP between '" + start + "' and '" + end + "' order by timestamp desc";
                 row = "select count(distinct(TIMESTAMP)) from MC_POPCAL_CONSUME where TIMESTAMP between '" + start + "' and '" + end + "';";
                 sql1 = "select distinct(TIMESTAMP),POP_CLASS from MC_POPCAL_CONSUME where TIMESTAMP between '" + start + "' and '" + end + "'";
                 qx = "select MAT_DESC,isnull(UNIT_PRICE,0) from M_MATERIAL_COOD where L2_CODE in(select L2_CODE from MC_POPCAL_CONSUME) and TIMESTAMP between '" + start + "' and '" + end + "'";
             }
             else
             {
-                sql = "select TIMESTAMP,POP_CLASS,MAT_DESC,MAT_VALUE from MC_POPCAL_CONSUME where TIMESTAMP between '" + start + "' and '" + end + "' and POP_CLASS='" + banci + "'";
+                sql = "select TIMESTAMP,POP_CLASS,MAT_DESC,MAT_VALUE from MC_POPCAL_CONSUME where TIMESTAMP between '" + start + "' and '" + end + "' and POP_CLASS='" + banci + "' order by timestamp desc";
                 row = "select count(distinct(TIMESTAMP)) from MC_POPCAL_CONSUME where TIMESTAMP between '" + start + "' and '" + end + "' and POP_CLASS='" + banci + "';";
                 sql1 = "select distinct(TIMESTAMP),POP_CLASS from MC_POPCAL_CONSUME where TIMESTAMP between '" + start + "' and '" + end + "' and POP_CLASS='" + banci + "'";
                 qx = "select MAT_DESC,isnull(UNIT_PRICE,0) from M_MATERIAL_COOD where L2_CODE in(select L2_CODE from MC_POPCAL_CONSUME where POP_CLASS='" + banci + "') and TIMESTAMP between '" + start + "' and '" + end + "'";
@@ -119,12 +119,12 @@ namespace LY_SINTER.PAGE.Analysis
                 for (int r = 0; r < table.Rows.Count; r++)
                 {
                     //表头添加物料描述
-                    string KF_NAME = table.Rows[r]["MAT_DESC"].ToString() == "" ? "0" : table.Rows[r]["MAT_DESC"].ToString()+"(t)";
+                    string KF_NAME = table.Rows[r]["MAT_DESC"].ToString() == "" ? "0" : table.Rows[r]["MAT_DESC"].ToString() + "(t)";
                     string KF_NAME1 = table.Rows[r]["MAT_DESC"].ToString() == "" ? "0" : table.Rows[r]["MAT_DESC"].ToString();
                     if (dataGridView2.Columns.Contains(KF_NAME1) == false)
                     {
                         dataGridView2.Columns.Add(KF_NAME1, KF_NAME);
-                   
+
                         //d1.Columns.Add(KF_NAME);
                     }
                 }
@@ -158,7 +158,7 @@ namespace LY_SINTER.PAGE.Analysis
                     dataGridView2.Rows[0].Cells[k].Value = sum;
                 }
             }
-            for(int i = 2; i < dataGridView2.Columns.Count; i++)
+            for (int i = 2; i < dataGridView2.Columns.Count; i++)
             {
                 dataGridView2.Columns[i].Width = 150;
             }
@@ -218,7 +218,7 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 MinorTickSize = 0,
                 Key = "y",
-                FontSize = 9.0,      
+                FontSize = 9.0,
             };
             _myPlotModel.Axes.Add(_valueAxis);
             var _ColumnSeries = new ColumnSeries()
