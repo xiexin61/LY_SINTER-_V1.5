@@ -47,6 +47,8 @@ namespace LY_SINTER.PAGE.Analysis
 
         private string[] _Bar_2 = { "σTFe", "σFeO", "σCaO", "σSiO2", "σMgO", "σR", "σAl2O3" };//标准偏差曲线
 
+        private string[] _Bar_3 = { "<5mm", "5-10mm", "10-16mm", "16-25mm", "25-40mm", ">40mm" };//粒度组成
+
         #endregion 柱形图声明
 
         private ANALYSIS_MODEL aNALYSIS_MODEL = new ANALYSIS_MODEL();
@@ -146,6 +148,7 @@ namespace LY_SINTER.PAGE.Analysis
 
             Curve_Bar();//烧结矿成分稳定率柱形图
             Curve_Bar_1();//标准偏差柱形图
+            Curve_Bar_2();//粒度
             _Timer1 = new System.Timers.Timer(500);//初始化颜色变化定时器响应事件
             _Timer1.Elapsed += (x, y) => { _Timer1_Tick(); };
             _Timer1.Enabled = true;
@@ -396,6 +399,7 @@ namespace LY_SINTER.PAGE.Analysis
             else
             {
                 Curve_text(_v[comboBox2.Text.ToString()]);//曲线绑定数据源
+                this.dataGridView1.Rows[4].Frozen = true;
             }
         }
 
@@ -410,6 +414,8 @@ namespace LY_SINTER.PAGE.Analysis
             Curve_text(comboBox2.Text.ToString());//曲线赋值
             Curve_Bar();//烧结矿成分稳定率柱形图
             Curve_Bar_1();//标准偏差柱形图
+            Curve_Bar_2();
+            _Timer1.Enabled = true;
         }
 
         /// <summary>
@@ -421,6 +427,7 @@ namespace LY_SINTER.PAGE.Analysis
         {
             dateTimePicker_value();//时间还原
             data_show(comboBox1.Text.ToString(), textBox_begin.Text.ToString(), textBox_end.Text.ToString());//表单数据查询
+            _Timer1.Enabled = true;
         }
 
         /// <summary>
@@ -727,7 +734,7 @@ namespace LY_SINTER.PAGE.Analysis
                 _myPlotModel.Axes.Add(_valueAxis);
                 var _ColumnSeries = new ColumnSeries();
                 List<double> _Value_Bar_1 = new List<double>();
-                var _sql = "select count(TIMESTAMP) as _Count, sum(FLAG_R_005) as FLAG_R_005,sum(FLAG_R_008) as FLAG_R_008,sum(FLAG_FEO_1) as FLAG_FEO_1,sum(FLAG_MGO_015) as FLAG_MGO_015 from MC_NUMCAL_INTERFACE_6 where DL_FLAG=3 and TIMESTAMP between '" + textBox_begin.Text.ToString() + "' and '" + textBox_end.Text.ToString() + "'";
+                var _sql = "select count(TIMESTAMP) as _Count, sum(FLAG_R_005) as FLAG_R_005,sum(FLAG_R_008) as FLAG_R_008,sum(FLAG_FEO_1) as FLAG_FEO_1,sum(FLAG_MGO_015) as FLAG_MGO_015 from MC_NUMCAL_INTERFACE_6 where DL_FLAG=3 and FLAG_R_005 is not null and TIMESTAMP between '" + textBox_begin.Text.ToString() + "' and '" + textBox_end.Text.ToString() + "'";
                 DataTable _data = _dBSQL.GetCommand(_sql);
                 if (_data.Rows.Count > 0 && _data != null)
                 {
@@ -741,11 +748,78 @@ namespace LY_SINTER.PAGE.Analysis
                     _ColumnSeries.Items.Add(new ColumnItem() { Value = _Value_Bar_1[i] });
                 }
                 _myPlotModel.Series.Add(_ColumnSeries);
-                plotView2.Model = _myPlotModel;
+                plotView4.Model = _myPlotModel;
             }
             catch (Exception ee)
             {
                 _vLog.writelog("Curve_Bar方法调用失败" + ee.ToString(), -1);
+            }
+        }
+
+        /// <summary>
+        /// 粒度组成
+        /// </summary>
+        public void Curve_Bar_2()
+        {
+            try
+            {
+                PlotModel _myPlotMode2 = new PlotModel();
+                //X轴定义
+                CategoryAxis _categoryAxis = new CategoryAxis()
+                {
+                    MajorTickSize = 0,
+                    IsZoomEnabled = false,
+                    Position = AxisPosition.Bottom,
+                    GapWidth = 3
+                };
+                for (int i = 0; i < _Bar_3.Count(); i++)
+                {
+                    _categoryAxis.Labels.Add(_Bar_3[i]);     //添加x坐标
+                }
+                _myPlotMode2.Axes.Add(_categoryAxis);
+                //Y轴定义
+                LinearAxis _valueAxis = new LinearAxis()
+                {
+                    MinorTickSize = 0,
+                    Key = "y",
+                    Minimum = 0,
+                    Maximum = 1
+                };
+                _myPlotMode2.Axes.Add(_valueAxis);
+                var _ColumnSeries = new ColumnSeries();
+                List<double> _Value_Bar_1 = new List<double>();
+
+                if (this.dataGridView1.Rows.Count > 5)
+                {
+                    // string[] _Bar_2 = { "σTFe", "σFeO", "σCaO", "σSiO2", "σMgO", "σR", "σAl2O3" };//标准偏差曲线
+                    //string a = this.dataGridView1.Rows[1].Cells["Column9"].Value.ToString();
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[0].Cells["Column37"].Value.ToString()), 2));//TFe
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[0].Cells["Column38"].Value.ToString()), 2));//FeO
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[0].Cells["Column39"].Value.ToString()), 2));//CaO
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[0].Cells["Column40"].Value.ToString()), 2));//SiO2
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[0].Cells["Column41"].Value.ToString()), 2));//MgO
+                    _Value_Bar_1.Add(Math.Round(double.Parse(this.dataGridView1.Rows[0].Cells["Column42"].Value.ToString()), 2));//R
+                }
+                else
+                {
+                    _Value_Bar_1.Add(0);
+                    _Value_Bar_1.Add(0);
+                    _Value_Bar_1.Add(0);
+                    _Value_Bar_1.Add(0);
+                    _Value_Bar_1.Add(0);
+                    _Value_Bar_1.Add(0);
+                    // _Value_Bar_1.Add(0);
+                }
+                for (int i = 0; i < _Value_Bar_1.Count; i++)
+                {
+                    _ColumnSeries.Items.Add(new ColumnItem() { Value = _Value_Bar_1[i] });
+                }
+                _myPlotMode2.Series.Add(_ColumnSeries);
+                plotView3.Model = _myPlotMode2;
+            }
+            catch (Exception ee)
+            {
+                _vLog.writelog("Curve_Bar_1方法失败" + ee.ToString(), -1);
             }
         }
 
@@ -806,7 +880,7 @@ namespace LY_SINTER.PAGE.Analysis
                     _ColumnSeries.Items.Add(new ColumnItem() { Value = _Value_Bar_1[i] });
                 }
                 _myPlotModel.Series.Add(_ColumnSeries);
-                plotView3.Model = _myPlotModel;
+                plotView2.Model = _myPlotModel;
             }
             catch (Exception ee)
             {

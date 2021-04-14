@@ -1,0 +1,13 @@
+
+2021/4/14 22:36:12.487     ERROR  数据查询失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.Custom.Alarm.data() 位置 C:\Users\dell\Desktop\LT\LY_SINTER _V2.1\LY_SINTER\Custom\Alarm.cs:行号 50
+
+2021/4/14 22:36:12.513     ERROR  数据查询失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.Custom.Alarm.data() 位置 C:\Users\dell\Desktop\LT\LY_SINTER _V2.1\LY_SINTER\Custom\Alarm.cs:行号 55
+
+2021/4/14 22:36:39.161     ERROR  数据查询失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.Custom.Alarm.data() 位置 C:\Users\dell\Desktop\LT\LY_SINTER _V2.1\LY_SINTER\Custom\Alarm.cs:行号 55
+
+2021/4/14 22:36:43.790     ERROR  数据查询失败System.NullReferenceException: 未将对象引用设置到对象的实例。
+   在 LY_SINTER.Custom.Alarm.data() 位置 C:\Users\dell\Desktop\LT\LY_SINTER _V2.1\LY_SINTER\Custom\Alarm.cs:行号 55
+
