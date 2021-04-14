@@ -22,7 +22,7 @@ namespace LY_SINTER.PAGE.Analysis
         /// <summary>
         /// 小数位数
         /// </summary>
-        int Digit = 2;
+        int Digit = 3;
         DBSQL _dBSQL = new DBSQL(ConstParameters.strCon);
         /// <summary>
         ///存放物料种类规则
@@ -319,11 +319,11 @@ namespace LY_SINTER.PAGE.Analysis
                             if(table_1.Rows[y][Get_data_name[x]].ToString() != "")//剔除空值
                                _list.Add(float.Parse(table_1.Rows[y][Get_data_name[x]].ToString() == "" ? "0": table_1.Rows[y][Get_data_name[x]].ToString()));
                         }
-                        row_1[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 1, 2).ToString();//成分
-                        row_2[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 2, 2).ToString();//标准偏差
-                        row_3[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 3, 2).ToString();//最大值
-                        row_4[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 4, 2).ToString();//最小值
-                        row_5[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 5, 2).ToString();//极值
+                        row_1[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 1,3).ToString();//成分
+                        row_2[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 2,3).ToString();//标准偏差
+                        row_3[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 3,3).ToString();//最大值
+                        row_4[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 4,3).ToString();//最小值
+                        row_5[Get_data_name[x]] = aNALYSIS_MODEL.Computer_MODEL(_list, 5,3).ToString();//极值
                     }
                     _table.Rows.Add(row_1);
                     _table.Rows.Add(row_2);
@@ -348,15 +348,19 @@ namespace LY_SINTER.PAGE.Analysis
                                 else
                                 {
                                     row_now[Get_data_name[y]] = Math.Round(double.Parse( table_1.Rows[x][Get_data_name[y]].ToString()), Digit);
-                                }
+                                    //row_now[Get_data_name[y]] = double.Parse(table_1.Rows[x][Get_data_name[y]].ToString());
+                                } 
                                 if (_Dic_curve.ContainsKey(Get_data_name[y]))
                                 {
                                     _Dic_curve[Get_data_name[y]].Add(new Tuple<double, DateTime>(Math.Round( float.Parse(table_1.Rows[x][Get_data_name[y]].ToString() == "" ? "0" : table_1.Rows[x][Get_data_name[y]].ToString()), Digit), DateTime.Parse(table_1.Rows[x]["TIMESTAMP"].ToString())));
+
+                                    //_Dic_curve[Get_data_name[y]].Add(new Tuple<double, DateTime>( float.Parse(table_1.Rows[x][Get_data_name[y]].ToString() == "" ? "0" : table_1.Rows[x][Get_data_name[y]].ToString()), DateTime.Parse(table_1.Rows[x]["TIMESTAMP"].ToString())));
                                 }
                                 else
                                 {
                                     List<Tuple<double, DateTime>> _list = new List<Tuple<double, DateTime>>();
                                     _list.Add(new Tuple<double, DateTime>(Math.Round( float.Parse(table_1.Rows[x][Get_data_name[y]].ToString() == "" ? "0" : table_1.Rows[x][Get_data_name[y]].ToString()), Digit), DateTime.Parse(table_1.Rows[x]["TIMESTAMP"].ToString())));
+                                    //_list.Add(new Tuple<double, DateTime>( float.Parse(table_1.Rows[x][Get_data_name[y]].ToString() == "" ? "0" : table_1.Rows[x][Get_data_name[y]].ToString()), DateTime.Parse(table_1.Rows[x]["TIMESTAMP"].ToString())));
                                     _Dic_curve.Add(Get_data_name[y], _list);
                                 }
                             }

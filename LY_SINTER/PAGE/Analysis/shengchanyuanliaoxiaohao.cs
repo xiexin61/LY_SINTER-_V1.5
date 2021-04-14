@@ -206,6 +206,7 @@ namespace LY_SINTER.PAGE.Analysis
                 IsZoomEnabled = false,
                 Position = AxisPosition.Bottom,
                 FontSize = 9.0,
+                //GapWidth=30,//柱子间隔宽度
             };
             for (int i = 0; i < x.Count; i++)
             {
@@ -217,15 +218,16 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 MinorTickSize = 0,
                 Key = "y",
-                FontSize = 9.0,
+                FontSize = 9.0,      
             };
             _myPlotModel.Axes.Add(_valueAxis);
             var _ColumnSeries = new ColumnSeries()
             {//柱状图
                 Background = OxyColors.White,
-                LabelPlacement=LabelPlacement.Inside,
+                LabelPlacement = LabelPlacement.Inside,
                 //LabelFormatString="{0.00}",
-                TextColor=OxyColors.Black,
+                TextColor = OxyColors.Black,
+                //StrokeThickness = 6,
                 //TrackerFormatString = "{0}"
             };
             for (int i = 0; i < y.Count; i++)

@@ -59,9 +59,6 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.d1 = new RowMergeView();
-            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.curve_his = new OxyPlot.WindowsForms.PlotView();
-            this.label5 = new System.Windows.Forms.Label();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +78,9 @@ namespace LY_SINTER.PAGE.Course
             this.Column17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column18 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column19 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.curve_his = new OxyPlot.WindowsForms.PlotView();
+            this.label5 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -105,8 +105,8 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.968177F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.03182F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.798995F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.201F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1268, 796);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -122,8 +122,8 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1262, 65);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1262, 72);
             this.tableLayoutPanel2.TabIndex = 1;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
@@ -131,12 +131,12 @@ namespace LY_SINTER.PAGE.Course
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Font = new System.Drawing.Font("SimSun", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1256, 30);
+            this.label1.Size = new System.Drawing.Size(1256, 33);
             this.label1.TabIndex = 0;
-            this.label1.Text = "结 料 层 透 气 性 分 析 模 型";
+            this.label1.Text = "料 层 透 气 性 分 析 模 型";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel3
@@ -165,11 +165,11 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel3.Controls.Add(this.textBox_begin, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.textBox_end, 4, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 33);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 36);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1256, 29);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1256, 33);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // simpleButton3
@@ -182,7 +182,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
             this.simpleButton3.Location = new System.Drawing.Point(606, 3);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(79, 23);
+            this.simpleButton3.Size = new System.Drawing.Size(79, 27);
             this.simpleButton3.TabIndex = 10;
             this.simpleButton3.Text = "实时";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
@@ -197,7 +197,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
             this.simpleButton2.Location = new System.Drawing.Point(521, 3);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(79, 23);
+            this.simpleButton2.Size = new System.Drawing.Size(79, 27);
             this.simpleButton2.TabIndex = 9;
             this.simpleButton2.Text = "查询";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
@@ -206,8 +206,8 @@ namespace LY_SINTER.PAGE.Course
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F);
-            this.label3.Location = new System.Drawing.Point(135, 8);
+            this.label3.Font = new System.Drawing.Font("SimSun", 9F);
+            this.label3.Location = new System.Drawing.Point(135, 10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 4;
@@ -218,8 +218,8 @@ namespace LY_SINTER.PAGE.Course
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("宋体", 9F);
-            this.label4.Location = new System.Drawing.Point(329, 8);
+            this.label4.Font = new System.Drawing.Font("SimSun", 9F);
+            this.label4.Location = new System.Drawing.Point(329, 10);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 6;
@@ -234,7 +234,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(691, 3);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(79, 23);
+            this.simpleButton1.Size = new System.Drawing.Size(79, 27);
             this.simpleButton1.TabIndex = 14;
             this.simpleButton1.Text = "导出";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click_1);
@@ -247,7 +247,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton4.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.Image")));
             this.simpleButton4.Location = new System.Drawing.Point(3, 3);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(124, 23);
+            this.simpleButton4.Size = new System.Drawing.Size(124, 27);
             this.simpleButton4.TabIndex = 3;
             this.simpleButton4.Text = "参数查询修改";
             this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
@@ -256,10 +256,10 @@ namespace LY_SINTER.PAGE.Course
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Font = new System.Drawing.Font("宋体", 9F);
+            this.label2.Font = new System.Drawing.Font("SimSun", 9F);
             this.label2.Location = new System.Drawing.Point(1176, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 29);
+            this.label2.Size = new System.Drawing.Size(77, 33);
             this.label2.TabIndex = 2;
             this.label2.Text = "最新调整时间";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -267,7 +267,7 @@ namespace LY_SINTER.PAGE.Course
             // textBox_begin
             // 
             this.textBox_begin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_begin.Location = new System.Drawing.Point(197, 4);
+            this.textBox_begin.Location = new System.Drawing.Point(197, 6);
             this.textBox_begin.Name = "textBox_begin";
             this.textBox_begin.Size = new System.Drawing.Size(124, 21);
             this.textBox_begin.TabIndex = 17;
@@ -275,7 +275,7 @@ namespace LY_SINTER.PAGE.Course
             // textBox_end
             // 
             this.textBox_end.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_end.Location = new System.Drawing.Point(391, 4);
+            this.textBox_end.Location = new System.Drawing.Point(391, 6);
             this.textBox_end.Name = "textBox_end";
             this.textBox_end.Size = new System.Drawing.Size(124, 21);
             this.textBox_end.TabIndex = 18;
@@ -288,13 +288,13 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 74);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 81);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.80925F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.42857F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.85714F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1262, 719);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1262, 712);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // tableLayoutPanel7
@@ -305,12 +305,12 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel7.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 478);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 474);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1256, 238);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1256, 235);
             this.tableLayoutPanel7.TabIndex = 6;
             // 
             // label7
@@ -338,7 +338,7 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(1248, 209);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1248, 206);
             this.tableLayoutPanel8.TabIndex = 6;
             // 
             // tableLayoutPanel9
@@ -377,7 +377,7 @@ namespace LY_SINTER.PAGE.Course
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 38);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1242, 168);
+            this.panel4.Size = new System.Drawing.Size(1242, 165);
             this.panel4.TabIndex = 1;
             // 
             // chart_xgx
@@ -391,7 +391,7 @@ namespace LY_SINTER.PAGE.Course
             this.chart_xgx.LPageSize = 10;
             this.chart_xgx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chart_xgx.Name = "chart_xgx";
-            this.chart_xgx.Size = new System.Drawing.Size(1242, 168);
+            this.chart_xgx.Size = new System.Drawing.Size(1242, 165);
             this.chart_xgx.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -402,12 +402,12 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel6.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.d1, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 152);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 151);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1256, 320);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1256, 317);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // label6
@@ -429,7 +429,7 @@ namespace LY_SINTER.PAGE.Course
             this.d1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("SimSun", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -458,7 +458,7 @@ namespace LY_SINTER.PAGE.Course
             this.Column19});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -473,7 +473,7 @@ namespace LY_SINTER.PAGE.Course
             this.d1.Name = "d1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -482,55 +482,12 @@ namespace LY_SINTER.PAGE.Course
             this.d1.RowHeadersVisible = false;
             this.d1.RowHeadersWidth = 60;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("SimSun", 9F);
             this.d1.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.d1.RowTemplate.Height = 23;
-            this.d1.Size = new System.Drawing.Size(1248, 291);
+            this.d1.Size = new System.Drawing.Size(1248, 288);
             this.d1.TabIndex = 6;
             this.d1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.d1_Scroll);
-            // 
-            // tableLayoutPanel5
-            // 
-            this.tableLayoutPanel5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Controls.Add(this.curve_his, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
-            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1256, 143);
-            this.tableLayoutPanel5.TabIndex = 0;
-            // 
-            // curve_his
-            // 
-            this.curve_his.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.curve_his.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.curve_his.Location = new System.Drawing.Point(4, 25);
-            this.curve_his.Name = "curve_his";
-            this.curve_his.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.curve_his.Size = new System.Drawing.Size(1248, 114);
-            this.curve_his.TabIndex = 22;
-            this.curve_his.Text = "plotView5";
-            this.curve_his.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
-            this.curve_his.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
-            this.curve_his.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Location = new System.Drawing.Point(4, 1);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(1248, 20);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "料层透气性趋势";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Column1
             // 
@@ -713,6 +670,49 @@ namespace LY_SINTER.PAGE.Course
             this.Column19.HeaderText = "主抽负压(KPa)";
             this.Column19.Name = "Column19";
             this.Column19.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // tableLayoutPanel5
+            // 
+            this.tableLayoutPanel5.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.tableLayoutPanel5.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.curve_his, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.label5, 0, 0);
+            this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1256, 142);
+            this.tableLayoutPanel5.TabIndex = 0;
+            // 
+            // curve_his
+            // 
+            this.curve_his.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.curve_his.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.curve_his.Location = new System.Drawing.Point(4, 25);
+            this.curve_his.Name = "curve_his";
+            this.curve_his.PanCursor = System.Windows.Forms.Cursors.Hand;
+            this.curve_his.Size = new System.Drawing.Size(1248, 113);
+            this.curve_his.TabIndex = 22;
+            this.curve_his.Text = "plotView5";
+            this.curve_his.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
+            this.curve_his.ZoomRectangleCursor = System.Windows.Forms.Cursors.SizeNWSE;
+            this.curve_his.ZoomVerticalCursor = System.Windows.Forms.Cursors.SizeNS;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Location = new System.Drawing.Point(4, 1);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(1248, 20);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "料层透气性趋势";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Bed_Permeability
             // 

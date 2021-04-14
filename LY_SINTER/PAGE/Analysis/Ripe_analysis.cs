@@ -596,6 +596,7 @@ namespace LY_SINTER.PAGE.Analysis
                         IsPanEnabled = false,
                         AxisTickToLabelDistance = 0,
                         FontSize = 9.0,
+                        StringFormat = "yyyy/MM/dd HH:mm",
                     };
                     _myPlotModel.Axes.Add(_dateAxis);//添加x轴
 
@@ -619,8 +620,8 @@ namespace LY_SINTER.PAGE.Analysis
                         Angle = 60,
                         IsZoomEnabled = true,
                         IsPanEnabled = false,
-                        Maximum = (int)(Mun1.Max() + 1),//极值
-                        Minimum = (int)(Mun1.Min() - 1),//极值
+                        Maximum = (int)(Mun1.Max() + 10),//极值
+                        Minimum = (int)(Mun1.Min() - 5),//极值
                         PositionTier = 1,
                         AxislineStyle = LineStyle.Solid,
                         AxislineColor = OxyColors.Red,//颜色

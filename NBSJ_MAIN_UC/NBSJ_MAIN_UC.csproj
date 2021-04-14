@@ -87,6 +87,12 @@
     <Compile Include="ADODB.cs" />
     <Compile Include="Base\Index\AbstractBottle.cs" />
     <Compile Include="Base\Index\AbstractPipeLine.cs" />
+    <Compile Include="Base\Index\BlendingUC2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Base\Index\BlendingUC2.designer.cs">
+      <DependentUpon>BlendingUC2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Base\Index\FormDaoTui.cs">
       <SubType>Form</SubType>
     </Compile>

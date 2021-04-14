@@ -30,7 +30,7 @@ namespace LY_SINTER.Model
         /// Table_Cache_ColKEy：临时缓存表排序关键字
         /// FALG:1：通过触发器清空临时表，2：通过方法清空临时表
         /// </summary>
-        /// <param name="Col_Key"></param>
+        /// <param name="Col_Key">操作表检索关键字段</param>
         /// <param name="Table"></param>
         /// <param name="Date_key"></param>
         /// <param name="Table_CaChe"></param>

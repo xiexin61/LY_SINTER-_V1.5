@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_shaojieqitayuanliaojcxn));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -63,6 +63,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
@@ -80,10 +88,10 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.d1 = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.d1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BATCH_NUM = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MAT_DESC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,8 +140,8 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.d1)).BeginInit();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -210,7 +218,7 @@
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("宋体", 9F);
+            this.label5.Font = new System.Drawing.Font("SimSun", 9F);
             this.label5.Location = new System.Drawing.Point(8, 8);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 12);
@@ -222,7 +230,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("宋体", 9F);
+            this.label7.Font = new System.Drawing.Font("SimSun", 9F);
             this.label7.Location = new System.Drawing.Point(154, 8);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 12);
@@ -264,7 +272,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F);
+            this.label3.Font = new System.Drawing.Font("SimSun", 9F);
             this.label3.Location = new System.Drawing.Point(303, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
@@ -276,7 +284,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 9F);
+            this.label2.Font = new System.Drawing.Font("SimSun", 9F);
             this.label2.Location = new System.Drawing.Point(494, 8);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
@@ -313,7 +321,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label6.Font = new System.Drawing.Font("宋体", 9F);
+            this.label6.Font = new System.Drawing.Font("SimSun", 9F);
             this.label6.Location = new System.Drawing.Point(1343, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 29);
@@ -372,44 +380,6 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1423, 661);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(4, 1);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(1415, 20);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "原料化学性能";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1429, 25);
-            this.tableLayoutPanel3.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1423, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "烧 结 其 他 原 料 基 础 性 能";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // d1
             // 
             this.d1.AllowUserToAddRows = false;
@@ -421,7 +391,7 @@
             this.d1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 9F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -474,34 +444,72 @@
             this.GRIT_AVG,
             this.GRIT_C_03_U,
             this.GRIT_C_03_D});
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("宋体", 9F);
-            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.d1.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle41.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle41.Font = new System.Drawing.Font("SimSun", 9F);
+            dataGridViewCellStyle41.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.d1.DefaultCellStyle = dataGridViewCellStyle41;
             this.d1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.d1.EnableHeadersVisualStyles = false;
             this.d1.Location = new System.Drawing.Point(4, 25);
             this.d1.Name = "d1";
             this.d1.ReadOnly = true;
-            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle34.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d1.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle42.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle42.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle42.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d1.RowHeadersDefaultCellStyle = dataGridViewCellStyle42;
             this.d1.RowHeadersVisible = false;
             this.d1.RowHeadersWidth = 47;
-            this.d1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.d1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.d1.RowTemplate.Height = 23;
             this.d1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.d1.Size = new System.Drawing.Size(1415, 632);
             this.d1.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Location = new System.Drawing.Point(4, 1);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(1415, 20);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "原料化学性能";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 1;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1429, 25);
+            this.tableLayoutPanel3.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("SimSun", 18F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1423, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "烧 结 其 他 原 料 基 础 性 能";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // id
             // 
@@ -647,7 +655,7 @@
             // 
             this.dataGridViewTextBoxColumn47.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewTextBoxColumn47.DataPropertyName = "C_S";
-            dataGridViewCellStyle9.Format = "N3";
+            dataGridViewCellStyle9.Format = "N4";
             this.dataGridViewTextBoxColumn47.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewTextBoxColumn47.HeaderText = "S";
             this.dataGridViewTextBoxColumn47.Name = "dataGridViewTextBoxColumn47";
@@ -659,7 +667,7 @@
             // 
             this.dataGridViewTextBoxColumn48.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewTextBoxColumn48.DataPropertyName = "C_P";
-            dataGridViewCellStyle10.Format = "N3";
+            dataGridViewCellStyle10.Format = "N4";
             this.dataGridViewTextBoxColumn48.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTextBoxColumn48.HeaderText = "P";
             this.dataGridViewTextBoxColumn48.Name = "dataGridViewTextBoxColumn48";
@@ -719,7 +727,7 @@
             // 
             this.dataGridViewTextBoxColumn53.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dataGridViewTextBoxColumn53.DataPropertyName = "C_H2O";
-            dataGridViewCellStyle15.Format = "N4";
+            dataGridViewCellStyle15.Format = "N3";
             this.dataGridViewTextBoxColumn53.DefaultCellStyle = dataGridViewCellStyle15;
             this.dataGridViewTextBoxColumn53.HeaderText = "H2O";
             this.dataGridViewTextBoxColumn53.Name = "dataGridViewTextBoxColumn53";
@@ -934,6 +942,8 @@
             // GRIT_8
             // 
             this.GRIT_8.DataPropertyName = "GRIT_8";
+            dataGridViewCellStyle33.Format = "N3";
+            this.GRIT_8.DefaultCellStyle = dataGridViewCellStyle33;
             this.GRIT_8.HeaderText = "熔剂粒度 +8mm";
             this.GRIT_8.Name = "GRIT_8";
             this.GRIT_8.ReadOnly = true;
@@ -942,6 +952,8 @@
             // GRIT_5_8
             // 
             this.GRIT_5_8.DataPropertyName = "GRIT_5_8";
+            dataGridViewCellStyle34.Format = "N3";
+            this.GRIT_5_8.DefaultCellStyle = dataGridViewCellStyle34;
             this.GRIT_5_8.HeaderText = "熔剂粒度 5-8mm";
             this.GRIT_5_8.Name = "GRIT_5_8";
             this.GRIT_5_8.ReadOnly = true;
@@ -950,6 +962,8 @@
             // GRIT_3_5
             // 
             this.GRIT_3_5.DataPropertyName = "GRIT_3_5";
+            dataGridViewCellStyle35.Format = "N3";
+            this.GRIT_3_5.DefaultCellStyle = dataGridViewCellStyle35;
             this.GRIT_3_5.HeaderText = "熔剂粒度 3-5mm";
             this.GRIT_3_5.Name = "GRIT_3_5";
             this.GRIT_3_5.ReadOnly = true;
@@ -958,6 +972,8 @@
             // GRIT_1_3
             // 
             this.GRIT_1_3.DataPropertyName = "GRIT_1_3";
+            dataGridViewCellStyle36.Format = "N3";
+            this.GRIT_1_3.DefaultCellStyle = dataGridViewCellStyle36;
             this.GRIT_1_3.HeaderText = "熔剂粒度 1-3mm";
             this.GRIT_1_3.Name = "GRIT_1_3";
             this.GRIT_1_3.ReadOnly = true;
@@ -966,6 +982,8 @@
             // GRIT_0_1
             // 
             this.GRIT_0_1.DataPropertyName = "GRIT_0_1";
+            dataGridViewCellStyle37.Format = "N3";
+            this.GRIT_0_1.DefaultCellStyle = dataGridViewCellStyle37;
             this.GRIT_0_1.HeaderText = "熔剂粒度 0-1mm";
             this.GRIT_0_1.Name = "GRIT_0_1";
             this.GRIT_0_1.ReadOnly = true;
@@ -974,6 +992,8 @@
             // GRIT_AVG
             // 
             this.GRIT_AVG.DataPropertyName = "GRIT_AVG";
+            dataGridViewCellStyle38.Format = "N3";
+            this.GRIT_AVG.DefaultCellStyle = dataGridViewCellStyle38;
             this.GRIT_AVG.HeaderText = "平均粒度 /mm";
             this.GRIT_AVG.Name = "GRIT_AVG";
             this.GRIT_AVG.ReadOnly = true;
@@ -982,6 +1002,8 @@
             // GRIT_C_03_U
             // 
             this.GRIT_C_03_U.DataPropertyName = "GRIT_C_03_U";
+            dataGridViewCellStyle39.Format = "N3";
+            this.GRIT_C_03_U.DefaultCellStyle = dataGridViewCellStyle39;
             this.GRIT_C_03_U.HeaderText = "焦粉粒度 >3mm";
             this.GRIT_C_03_U.Name = "GRIT_C_03_U";
             this.GRIT_C_03_U.ReadOnly = true;
@@ -990,6 +1012,8 @@
             // GRIT_C_03_D
             // 
             this.GRIT_C_03_D.DataPropertyName = "GRIT_C_03_D";
+            dataGridViewCellStyle40.Format = "N3";
+            this.GRIT_C_03_D.DefaultCellStyle = dataGridViewCellStyle40;
             this.GRIT_C_03_D.HeaderText = "焦粉粒度 <3mm";
             this.GRIT_C_03_D.Name = "GRIT_C_03_D";
             this.GRIT_C_03_D.ReadOnly = true;
@@ -1010,9 +1034,9 @@
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.d1)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.d1)).EndInit();
             this.ResumeLayout(false);
 
         }

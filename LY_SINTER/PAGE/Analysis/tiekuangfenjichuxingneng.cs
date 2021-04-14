@@ -30,6 +30,7 @@ namespace LY_SINTER.PAGE.Analysis
             DateTime time2 = DateTime.Now;
             table1GetDataDefinite(time1, time2);
             table2GetDataDefinite(time1, time2);
+            d1.Columns["BATCH_NUM"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
         }
 
         /// <summary>
@@ -90,10 +91,10 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 d1.DataSource = table;
             }
-            for(int i = 5; i < d1.Columns.Count; i++)
+            /*for(int i = 5; i < d1.Columns.Count; i++)
             {
                 d1.Columns[i].DefaultCellStyle.Format = "N2";
-            }
+            }*/
         }
         //默认表格2查询
         public void table2GetDataDefinite(DateTime start, DateTime end)
@@ -106,10 +107,10 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 rowMergeView1.DataSource = table;
             }
-            for (int i = 2; i < rowMergeView1.Columns.Count; i++)
+            /*for (int i = 2; i < rowMergeView1.Columns.Count; i++)
             {
                 rowMergeView1.Columns[i].DefaultCellStyle.Format = "N2";
-            }
+            }*/
             //d1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCellsExceptHeader;
         }
         //部分1表格数据查询
@@ -139,10 +140,10 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 d1.Rows[i].Cells["id"].Value = i + 1;
             }*/
-            for (int i = 5; i < d1.Columns.Count; i++)
+            /*for (int i = 5; i < d1.Columns.Count; i++)
             {
                 d1.Columns[i].DefaultCellStyle.Format = "N2";
-            }
+            }*/
         }
 
         //部分2表格数据查询
@@ -170,10 +171,10 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 rowMergeView1.Rows[i].Cells["number"].Value = i + 1;
             }*/
-            for (int i = 2; i < rowMergeView1.Columns.Count; i++)
+            /*for (int i = 2; i < rowMergeView1.Columns.Count; i++)
             {
                 rowMergeView1.Columns[i].DefaultCellStyle.Format = "N2";
-            }
+            }*/
 
         }
 

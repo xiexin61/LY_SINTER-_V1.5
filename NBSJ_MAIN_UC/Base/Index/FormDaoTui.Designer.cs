@@ -466,7 +466,7 @@
             this.groupControl9.Name = "groupControl9";
             this.groupControl9.Size = new System.Drawing.Size(861, 70);
             this.groupControl9.TabIndex = 15;
-            this.groupControl9.Text = "取样点1信息";
+            this.groupControl9.Text = "筛分信息";
             // 
             // gridControl9
             // 
@@ -515,7 +515,7 @@
             this.groupControl1.Name = "groupControl1";
             this.groupControl1.Size = new System.Drawing.Size(861, 70);
             this.groupControl1.TabIndex = 16;
-            this.groupControl1.Text = "取样点2信息";
+            this.groupControl1.Text = "取样点信息";
             // 
             // gridControl1
             // 

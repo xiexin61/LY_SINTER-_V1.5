@@ -19,6 +19,95 @@ namespace LY_SINTER.Model
             _vLog.connstring = DataBase.ConstParameters.strCon;
         }
         /// <summary>
+        /// 20210414没有小数位数限制
+        /// 通过传入的数据组计算数据，
+        /// _A = :计算数据组
+        /// _FLAG ：1平均值  2标准偏差，3最大值，4最小值，5极差
+        /// </summary>
+        /// <param name="_FLAG"></param>
+        /// <returns></returns>
+        public double Computer_MODEL_1(List<float> _A, int _FLAG)
+        {
+            try
+            {
+                if (_A.Count > 0)
+                {
+                    //20210410，剔除空值进行计算
+                    float SUM_A = 0;//数据组和
+                    int count = 0;//满足条件个数
+                    for (int x = 0; x < _A.Count; x++)
+                    {
+                        //if ()
+                        //{
+
+                        //}
+                        SUM_A += _A[x];
+                    }
+                    if (_FLAG == 1)
+                    {
+                        return SUM_A / _A.Count;
+                    }
+                    else if (_FLAG == 2)
+                    {
+                        float _A_AVG = SUM_A / _A.Count;
+                        double _A_1 = 0;
+                        int COUNT = -1;
+                        for (int x = 0; x < _A.Count; x++)
+                        {
+                            _A_1 += Math.Pow(_A[x] - _A_AVG, 2);
+                            COUNT = COUNT + 1;
+                        }
+                        return Math.Sqrt(_A_1 / COUNT);
+                    }
+                    else if (_FLAG == 3)
+                    {
+                        float _GETMIN = _A[0];
+                        for (int x = 1; x < _A.Count; x++)
+                        {
+                            if (_GETMIN < _A[x])
+                                _GETMIN = _A[x];
+                        }
+                        return _GETMIN;
+                    }
+                    else if (_FLAG == 4)
+                    {
+                        float _GETMax = _A[0];
+                        for (int x = 1; x < _A.Count; x++)
+                        {
+                            if (_GETMax > _A[x])
+                                _GETMax = _A[x];
+                        }
+                        return _GETMax;
+                    }
+                    else if (_FLAG == 5)
+                    {
+                        float _GETMIN = _A[0];
+                        float _GETMax = _A[0];
+                        for (int x = 1; x < _A.Count; x++)
+                        {
+                            if (_GETMIN < _A[x])
+                                _GETMIN = _A[x];
+                            if (_GETMax > _A[x])
+                                _GETMax = _A[x];
+                        }
+                        return _GETMax - _GETMIN;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+        /// <summary>
         /// 通过传入的数据组计算数据，
         /// _A = :计算数据组
         /// _FLAG ：1平均值  2标准偏差，3最大值，4最小值，5极差

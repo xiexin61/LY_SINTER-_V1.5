@@ -184,11 +184,11 @@ namespace UserControlIndex
                     break;
 
                 case 13:
-                    desc = "取样点1";
+                    desc = "筛分";
                     break;
 
                 case 14:
-                    desc = "取样点2";
+                    desc = "取样点";
                     break;
             }
 
