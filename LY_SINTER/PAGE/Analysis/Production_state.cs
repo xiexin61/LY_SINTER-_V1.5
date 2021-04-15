@@ -44,7 +44,9 @@ namespace LY_SINTER.PAGE.Analysis
             time_begin_end();
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
-         
+            label2.Text = "最新调整时间:" + DateTime.Now.ToString();
+
+
             SHOW_D1();//d1数据刷新
             SHOW_D2();//d2数据刷新
             d1_col();//二级表头

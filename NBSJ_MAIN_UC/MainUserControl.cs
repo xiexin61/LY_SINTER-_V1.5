@@ -1167,16 +1167,16 @@ namespace NBSJ_MAIN_UC
             {
                 hostConveyerUC1.IsStop();
             }
-            hostConveyerUC1.HText = string.Format("{0}布料厚度:{1}mm;       实际机速:{2}m/min;       BTP位置:{3}m;    BTP温度:{4}℃;", "", modelT_PLC_3S.C_THICK_PV_3S, modelT_PLC_3S.T_SIN_MS_PV_3S, MICAL_BU_C_LOCAT_BTP, MICAL_BU_C_BTP_TE);
+            hostConveyerUC1.HText = string.Format("{0}布料厚度:{1}mm;       实际机速:{2}m/min;       BTP位置:{3}m;    BTP温度:{4}℃;", "", modelT_PLC_3S.C_THICK_PV_3S is null?600: modelT_PLC_3S.C_THICK_PV_3S, modelT_PLC_3S.T_SIN_MS_PV_3S, MICAL_BU_C_LOCAT_BTP, MICAL_BU_C_BTP_TE);
 
             //主抽1风机
             removeDustUC1.IsRun = modelT_PLC_3S.T_FAN_1_SL_3S == 1 ? true : false;
             removeDustUC1.IsRun2 = modelT_PLC_3S.T_FAN_2_SL_3S == 1 ? true : false;
-            removeDustUC1.FlowValue = string.Format("流量{0}m³/h", getbottleValue(modelT_PLC_3S.T_MA_SB_1_FLUE_FT_3S));
+            removeDustUC1.FlowValue = string.Format("流量{0}m³/min", getbottleValue(modelT_PLC_3S.T_MA_SB_1_FLUE_FT_3S));
             removeDustUC1.TempValue = string.Format("温度{0}℃", getbottleValue(modelT_PLC_3S.T_MA_SB_1_FLUE_TE_3S));
             removeDustUC1.KPaValue = string.Format("负压{0}KPa", getbottleValue(modelT_PLC_3S.T_MA_SB_1_FLUE_PT_3S));
 
-            removeDustUC1.FlowValue2 = string.Format("流量{0}m³/h", getbottleValue(modelT_PLC_3S.T_MA_SB_2_FLUE_FT_3S));
+            removeDustUC1.FlowValue2 = string.Format("流量{0}m³/min", getbottleValue(modelT_PLC_3S.T_MA_SB_2_FLUE_FT_3S));
             removeDustUC1.TempValue2 = string.Format("温度{0}℃", getbottleValue(modelT_PLC_3S.T_MA_SB_2_FLUE_TE_3S));
             removeDustUC1.KPaValue2 = string.Format("负压{0}KPa", getbottleValue(modelT_PLC_3S.T_MA_SB_2_FLUE_PT_3S));
             removeDustUC1.InvalidateNew();

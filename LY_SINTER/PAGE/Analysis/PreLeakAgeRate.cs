@@ -383,12 +383,12 @@ namespace LY_SINTER.PAGE.Analysis
                 series4.StrokeThickness = 1;
                 series5.StrokeThickness = 1;
                 series6.StrokeThickness = 1;
-                series1.TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm}3#风箱含氧量:{4}%";
-                series2.TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm}6#风箱含氧量:{4}%";
-                series3.TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm}9#风箱含氧量:{4}%";
-                series4.TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm}12#风箱含氧量:{4}%";
-                series5.TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm}15#风箱含氧量:{4}%";
-                series6.TrackerFormatString = "{0}\n时间:{2:yyyy/MM/dd HH:mm}18#风箱含氧量:{4}%";
+                series1.TrackerFormatString = "{0}\n{2:MM/dd HH:mm} 3#含氧量:{4}%";
+                series2.TrackerFormatString = "{0}\n{2:MM/dd HH:mm} 6#含氧量:{4}%";
+                series3.TrackerFormatString = "{0}\n{2:MM/dd HH:mm} 9#含氧量:{4}%";
+                series4.TrackerFormatString = "{0}\n{2:MM/dd HH:mm} 12#含氧量:{4}%";
+                series5.TrackerFormatString = "{0}\n{2:MM/dd HH:mm} 15#含氧量:{4}%";
+                series6.TrackerFormatString = "{0}\n{2:MM/dd HH:mm} 18#含氧量:{4}%";
 
                 PlotModel1.Axes.Add(_dateAxis1);
                 _dateAxis1.IsAxisVisible = false;
@@ -416,6 +416,15 @@ namespace LY_SINTER.PAGE.Analysis
                 plotView5.Model = PlotModel4;
                 plotView6.Model = PlotModel5;
                 plotView7.Model = PlotModel6;
+                var PlotController = new OxyPlot.PlotController();
+                PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
+                plotView2.Controller = PlotController;
+                plotView3.Controller = PlotController;
+                plotView4.Controller = PlotController;
+                plotView5.Controller = PlotController;
+                plotView6.Controller = PlotController;
+                plotView7.Controller = PlotController;
+
             }
             string sql2 = "select TIMESTAMP,SIN_PLC_MA_OUT_1_FLUE_O2,SIN_PLC_MA_OUT_2_FLUE_O2 from C_SIN_PLC_1MIN where TIMESTAMP >= '" + start + "' and TIMESTAMP <= '" + end + "'";
             DataTable table2 = dBSQL.GetCommand(sql2);
@@ -430,12 +439,12 @@ namespace LY_SINTER.PAGE.Analysis
                 }
                 var PlotModel7 = new PlotModel()
                 {
-                    PlotMargins = new OxyThickness(20, 10, 0, 0),
+                    PlotMargins = new OxyThickness(20, 20, 0, 0),
                     PlotAreaBorderThickness = new OxyThickness(0),
                 };
                 var PlotModel8 = new PlotModel()
                 {
-                    PlotMargins = new OxyThickness(20, 10, 0, 10),
+                    PlotMargins = new OxyThickness(20, 20, 0, 10),
                     PlotAreaBorderThickness = new OxyThickness(0),
                 };
                 var _dateAxis7 = new DateTimeAxis()
@@ -517,13 +526,17 @@ namespace LY_SINTER.PAGE.Analysis
                 series8.ItemsSource = Line8;
                 series7.StrokeThickness = 1;
                 series8.StrokeThickness = 1;
-                series7.TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}1号除尘器:{4}%";
-                series8.TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}2号除尘器:{4}%";
+                series7.TrackerFormatString = "{0}\n{2:HH:mm} 1号除尘器:{4}%";
+                series8.TrackerFormatString = "{0}\n{2:HH:mm} 2号除尘器:{4}%";
                 PlotModel7.Series.Add(series7);
                 PlotModel8.Series.Add(series8);
 
                 plotView8.Model = PlotModel7;
                 plotView9.Model = PlotModel8;
+                var PlotController = new OxyPlot.PlotController();
+                PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
+                plotView8.Controller = PlotController;
+                plotView9.Controller = PlotController;
             }
         }
 

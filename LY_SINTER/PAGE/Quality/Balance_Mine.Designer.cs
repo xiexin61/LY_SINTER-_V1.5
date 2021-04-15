@@ -203,8 +203,8 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.700834F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.65554F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.674144F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.59386F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.51508F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1518, 847);
             this.tableLayoutPanel1.TabIndex = 1;
@@ -218,11 +218,12 @@
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.79105F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.20895F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1512, 67);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1512, 62);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -295,11 +296,11 @@
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel8, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel16, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 76);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 68);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1512, 423);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1512, 431);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -317,7 +318,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.91859F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.08141F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(347, 415);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(347, 423);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // label3
@@ -353,7 +354,7 @@
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(339, 114);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(339, 117);
             this.tableLayoutPanel7.TabIndex = 1;
             // 
             // label20
@@ -373,7 +374,7 @@
             this.label21.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label21.Location = new System.Drawing.Point(10, 88);
+            this.label21.Location = new System.Drawing.Point(10, 90);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(63, 14);
             this.label21.TabIndex = 1;
@@ -385,7 +386,7 @@
             this.label22.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label22.Location = new System.Drawing.Point(10, 50);
+            this.label22.Location = new System.Drawing.Point(10, 51);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(63, 14);
             this.label22.TabIndex = 2;
@@ -412,7 +413,7 @@
             this.label50.AutoSize = true;
             this.label50.BackColor = System.Drawing.SystemColors.Menu;
             this.label50.Font = new System.Drawing.Font("SimSun", 12F);
-            this.label50.Location = new System.Drawing.Point(86, 49);
+            this.label50.Location = new System.Drawing.Point(86, 50);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(250, 16);
             this.label50.TabIndex = 4;
@@ -425,7 +426,7 @@
             this.label51.AutoSize = true;
             this.label51.BackColor = System.Drawing.SystemColors.Menu;
             this.label51.Font = new System.Drawing.Font("SimSun", 12F);
-            this.label51.Location = new System.Drawing.Point(86, 87);
+            this.label51.Location = new System.Drawing.Point(86, 89);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(250, 16);
             this.label51.TabIndex = 5;
@@ -472,7 +473,7 @@
             this.tableLayoutPanel10.Controls.Add(this.label5, 1, 0);
             this.tableLayoutPanel10.Controls.Add(this.textBox1, 1, 1);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(4, 146);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(4, 149);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 10;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
@@ -485,7 +486,7 @@
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(339, 265);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(339, 270);
             this.tableLayoutPanel10.TabIndex = 2;
             // 
             // textBox15
@@ -494,7 +495,7 @@
             this.textBox15.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox15.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox15.Location = new System.Drawing.Point(234, 237);
+            this.textBox15.Location = new System.Drawing.Point(234, 246);
             this.textBox15.Name = "textBox15";
             this.textBox15.ReadOnly = true;
             this.textBox15.Size = new System.Drawing.Size(102, 19);
@@ -507,7 +508,7 @@
             this.textBox14.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox14.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox14.Location = new System.Drawing.Point(121, 237);
+            this.textBox14.Location = new System.Drawing.Point(121, 246);
             this.textBox14.Name = "textBox14";
             this.textBox14.ReadOnly = true;
             this.textBox14.Size = new System.Drawing.Size(102, 19);
@@ -520,7 +521,7 @@
             this.textBox13.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox13.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox13.Location = new System.Drawing.Point(8, 237);
+            this.textBox13.Location = new System.Drawing.Point(8, 246);
             this.textBox13.Name = "textBox13";
             this.textBox13.ReadOnly = true;
             this.textBox13.Size = new System.Drawing.Size(102, 19);
@@ -534,9 +535,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label19.Location = new System.Drawing.Point(234, 208);
+            this.label19.Location = new System.Drawing.Point(234, 216);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(102, 26);
+            this.label19.Size = new System.Drawing.Size(102, 27);
             this.label19.TabIndex = 26;
             this.label19.Text = "仓位下限 ";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -548,9 +549,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label18.Location = new System.Drawing.Point(121, 208);
+            this.label18.Location = new System.Drawing.Point(121, 216);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(102, 26);
+            this.label18.Size = new System.Drawing.Size(102, 27);
             this.label18.TabIndex = 25;
             this.label18.Text = "仓位上限 ";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -562,9 +563,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label17.Location = new System.Drawing.Point(8, 208);
+            this.label17.Location = new System.Drawing.Point(8, 216);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(102, 26);
+            this.label17.Size = new System.Drawing.Size(102, 27);
             this.label17.TabIndex = 24;
             this.label17.Text = "仓位死区 ";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -575,7 +576,7 @@
             this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox12.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox12.Location = new System.Drawing.Point(234, 185);
+            this.textBox12.Location = new System.Drawing.Point(234, 192);
             this.textBox12.Name = "textBox12";
             this.textBox12.ReadOnly = true;
             this.textBox12.Size = new System.Drawing.Size(102, 19);
@@ -588,7 +589,7 @@
             this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox11.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox11.Location = new System.Drawing.Point(121, 185);
+            this.textBox11.Location = new System.Drawing.Point(121, 192);
             this.textBox11.Name = "textBox11";
             this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(102, 19);
@@ -601,7 +602,7 @@
             this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox10.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox10.Location = new System.Drawing.Point(8, 185);
+            this.textBox10.Location = new System.Drawing.Point(8, 192);
             this.textBox10.Name = "textBox10";
             this.textBox10.ReadOnly = true;
             this.textBox10.Size = new System.Drawing.Size(102, 19);
@@ -615,9 +616,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label16.Location = new System.Drawing.Point(234, 156);
+            this.label16.Location = new System.Drawing.Point(234, 162);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(102, 26);
+            this.label16.Size = new System.Drawing.Size(102, 27);
             this.label16.TabIndex = 20;
             this.label16.Text = "超时延时周期 min";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -629,9 +630,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label15.Location = new System.Drawing.Point(121, 156);
+            this.label15.Location = new System.Drawing.Point(121, 162);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(102, 26);
+            this.label15.Size = new System.Drawing.Size(102, 27);
             this.label15.TabIndex = 19;
             this.label15.Text = "下料比例周期";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -643,9 +644,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label14.Location = new System.Drawing.Point(8, 156);
+            this.label14.Location = new System.Drawing.Point(8, 162);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(102, 26);
+            this.label14.Size = new System.Drawing.Size(102, 27);
             this.label14.TabIndex = 18;
             this.label14.Text = "调整周期 min";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -656,7 +657,7 @@
             this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox9.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox9.Location = new System.Drawing.Point(234, 133);
+            this.textBox9.Location = new System.Drawing.Point(234, 138);
             this.textBox9.Name = "textBox9";
             this.textBox9.ReadOnly = true;
             this.textBox9.Size = new System.Drawing.Size(102, 19);
@@ -669,7 +670,7 @@
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox8.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox8.Location = new System.Drawing.Point(121, 133);
+            this.textBox8.Location = new System.Drawing.Point(121, 138);
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(102, 19);
@@ -682,7 +683,7 @@
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox7.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox7.Location = new System.Drawing.Point(8, 133);
+            this.textBox7.Location = new System.Drawing.Point(8, 138);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(102, 19);
@@ -696,9 +697,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label13.Location = new System.Drawing.Point(234, 104);
+            this.label13.Location = new System.Drawing.Point(234, 108);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(102, 26);
+            this.label13.Size = new System.Drawing.Size(102, 27);
             this.label13.TabIndex = 14;
             this.label13.Text = "16#下料比例";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -710,9 +711,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label12.Location = new System.Drawing.Point(121, 104);
+            this.label12.Location = new System.Drawing.Point(121, 108);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(102, 26);
+            this.label12.Size = new System.Drawing.Size(102, 27);
             this.label12.TabIndex = 13;
             this.label12.Text = "15#下料比例";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -724,9 +725,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label11.Location = new System.Drawing.Point(8, 104);
+            this.label11.Location = new System.Drawing.Point(8, 108);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(102, 26);
+            this.label11.Size = new System.Drawing.Size(102, 27);
             this.label11.TabIndex = 12;
             this.label11.Text = "调整后配比";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -737,7 +738,7 @@
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox6.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox6.Location = new System.Drawing.Point(234, 81);
+            this.textBox6.Location = new System.Drawing.Point(234, 84);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(102, 19);
@@ -750,7 +751,7 @@
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox5.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox5.Location = new System.Drawing.Point(121, 81);
+            this.textBox5.Location = new System.Drawing.Point(121, 84);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(102, 19);
@@ -763,7 +764,7 @@
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox4.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox4.Location = new System.Drawing.Point(8, 81);
+            this.textBox4.Location = new System.Drawing.Point(8, 84);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(102, 19);
@@ -777,9 +778,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label10.Location = new System.Drawing.Point(234, 52);
+            this.label10.Location = new System.Drawing.Point(234, 54);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 26);
+            this.label10.Size = new System.Drawing.Size(102, 27);
             this.label10.TabIndex = 8;
             this.label10.Text = "调整前配比";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -791,9 +792,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label9.Location = new System.Drawing.Point(121, 52);
+            this.label9.Location = new System.Drawing.Point(121, 54);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 26);
+            this.label9.Size = new System.Drawing.Size(102, 27);
             this.label9.TabIndex = 7;
             this.label9.Text = "配比调整量";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -805,9 +806,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label8.Location = new System.Drawing.Point(8, 52);
+            this.label8.Location = new System.Drawing.Point(8, 54);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(102, 26);
+            this.label8.Size = new System.Drawing.Size(102, 27);
             this.label8.TabIndex = 6;
             this.label8.Text = "偏差变化 ";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -818,7 +819,7 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox3.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox3.Location = new System.Drawing.Point(234, 29);
+            this.textBox3.Location = new System.Drawing.Point(234, 30);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(102, 19);
@@ -831,7 +832,7 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox2.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox2.Location = new System.Drawing.Point(121, 29);
+            this.textBox2.Location = new System.Drawing.Point(121, 30);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(102, 19);
@@ -847,7 +848,7 @@
             this.label7.Font = new System.Drawing.Font("SimSun", 10F);
             this.label7.Location = new System.Drawing.Point(234, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(102, 26);
+            this.label7.Size = new System.Drawing.Size(102, 27);
             this.label7.TabIndex = 2;
             this.label7.Text = "仓位偏差 ";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -861,7 +862,7 @@
             this.label6.Font = new System.Drawing.Font("SimSun", 10F);
             this.label6.Location = new System.Drawing.Point(121, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 26);
+            this.label6.Size = new System.Drawing.Size(102, 27);
             this.label6.TabIndex = 1;
             this.label6.Text = "目标仓位 ";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -875,7 +876,7 @@
             this.label5.Font = new System.Drawing.Font("SimSun", 10F);
             this.label5.Location = new System.Drawing.Point(8, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 26);
+            this.label5.Size = new System.Drawing.Size(102, 27);
             this.label5.TabIndex = 0;
             this.label5.Text = "综合仓位 ";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -887,7 +888,7 @@
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Font = new System.Drawing.Font("SimSun", 12F);
             this.textBox1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBox1.Location = new System.Drawing.Point(8, 29);
+            this.textBox1.Location = new System.Drawing.Point(8, 30);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(102, 19);
@@ -910,7 +911,7 @@
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30.21065F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 69.78935F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(702, 415);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(702, 423);
             this.tableLayoutPanel8.TabIndex = 1;
             // 
             // tableLayoutPanel13
@@ -921,22 +922,22 @@
             this.tableLayoutPanel13.Controls.Add(this.plotView1, 0, 1);
             this.tableLayoutPanel13.Controls.Add(this.tableLayoutPanel15, 0, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(4, 144);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(4, 146);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 2;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.85897F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.14103F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(694, 267);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(694, 273);
             this.tableLayoutPanel13.TabIndex = 3;
             // 
             // plotView1
             // 
             this.plotView1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.plotView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.plotView1.Location = new System.Drawing.Point(3, 34);
+            this.plotView1.Location = new System.Drawing.Point(3, 35);
             this.plotView1.Name = "plotView1";
             this.plotView1.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.plotView1.Size = new System.Drawing.Size(688, 230);
+            this.plotView1.Size = new System.Drawing.Size(688, 235);
             this.plotView1.TabIndex = 21;
             this.plotView1.Text = "plotView1";
             this.plotView1.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;
@@ -961,7 +962,7 @@
             this.tableLayoutPanel15.RowCount = 1;
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel15.Size = new System.Drawing.Size(688, 25);
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(688, 26);
             this.tableLayoutPanel15.TabIndex = 2;
             // 
             // check_zcll
@@ -973,7 +974,7 @@
             this.check_zcll.ForeColor = System.Drawing.Color.Red;
             this.check_zcll.Location = new System.Drawing.Point(3, 3);
             this.check_zcll.Name = "check_zcll";
-            this.check_zcll.Size = new System.Drawing.Size(108, 19);
+            this.check_zcll.Size = new System.Drawing.Size(108, 20);
             this.check_zcll.TabIndex = 0;
             this.check_zcll.Text = "总出料量:t";
             this.check_zcll.UseVisualStyleBackColor = true;
@@ -988,7 +989,7 @@
             this.check_cwbh.ForeColor = System.Drawing.Color.Purple;
             this.check_cwbh.Location = new System.Drawing.Point(117, 3);
             this.check_cwbh.Name = "check_cwbh";
-            this.check_cwbh.Size = new System.Drawing.Size(108, 19);
+            this.check_cwbh.Size = new System.Drawing.Size(108, 20);
             this.check_cwbh.TabIndex = 1;
             this.check_cwbh.Text = "仓位变化:t";
             this.check_cwbh.UseVisualStyleBackColor = true;
@@ -1072,7 +1073,7 @@
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 10F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(694, 112);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(694, 114);
             this.tableLayoutPanel9.TabIndex = 1;
             // 
             // textBox42
@@ -1081,7 +1082,7 @@
             this.textBox42.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox42.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox42.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox42.Location = new System.Drawing.Point(645, 83);
+            this.textBox42.Location = new System.Drawing.Point(645, 85);
             this.textBox42.Name = "textBox42";
             this.textBox42.ReadOnly = true;
             this.textBox42.Size = new System.Drawing.Size(46, 19);
@@ -1094,7 +1095,7 @@
             this.textBox41.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox41.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox41.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox41.Location = new System.Drawing.Point(595, 83);
+            this.textBox41.Location = new System.Drawing.Point(595, 85);
             this.textBox41.Name = "textBox41";
             this.textBox41.ReadOnly = true;
             this.textBox41.Size = new System.Drawing.Size(44, 19);
@@ -1107,7 +1108,7 @@
             this.textBox40.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox40.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox40.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox40.Location = new System.Drawing.Point(545, 83);
+            this.textBox40.Location = new System.Drawing.Point(545, 85);
             this.textBox40.Name = "textBox40";
             this.textBox40.ReadOnly = true;
             this.textBox40.Size = new System.Drawing.Size(44, 19);
@@ -1120,7 +1121,7 @@
             this.textBox39.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox39.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox39.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox39.Location = new System.Drawing.Point(495, 83);
+            this.textBox39.Location = new System.Drawing.Point(495, 85);
             this.textBox39.Name = "textBox39";
             this.textBox39.ReadOnly = true;
             this.textBox39.Size = new System.Drawing.Size(44, 19);
@@ -1133,7 +1134,7 @@
             this.textBox38.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox38.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox38.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox38.Location = new System.Drawing.Point(445, 83);
+            this.textBox38.Location = new System.Drawing.Point(445, 85);
             this.textBox38.Name = "textBox38";
             this.textBox38.ReadOnly = true;
             this.textBox38.Size = new System.Drawing.Size(44, 19);
@@ -1146,7 +1147,7 @@
             this.textBox37.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox37.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox37.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox37.Location = new System.Drawing.Point(395, 83);
+            this.textBox37.Location = new System.Drawing.Point(395, 85);
             this.textBox37.Name = "textBox37";
             this.textBox37.ReadOnly = true;
             this.textBox37.Size = new System.Drawing.Size(44, 19);
@@ -1159,7 +1160,7 @@
             this.textBox36.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox36.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox36.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox36.Location = new System.Drawing.Point(345, 83);
+            this.textBox36.Location = new System.Drawing.Point(345, 85);
             this.textBox36.Name = "textBox36";
             this.textBox36.ReadOnly = true;
             this.textBox36.Size = new System.Drawing.Size(44, 19);
@@ -1172,7 +1173,7 @@
             this.textBox35.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox35.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox35.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox35.Location = new System.Drawing.Point(295, 83);
+            this.textBox35.Location = new System.Drawing.Point(295, 85);
             this.textBox35.Name = "textBox35";
             this.textBox35.ReadOnly = true;
             this.textBox35.Size = new System.Drawing.Size(44, 19);
@@ -1185,7 +1186,7 @@
             this.textBox34.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox34.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox34.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox34.Location = new System.Drawing.Point(245, 83);
+            this.textBox34.Location = new System.Drawing.Point(245, 85);
             this.textBox34.Name = "textBox34";
             this.textBox34.ReadOnly = true;
             this.textBox34.Size = new System.Drawing.Size(44, 19);
@@ -1198,7 +1199,7 @@
             this.textBox33.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox33.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox33.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox33.Location = new System.Drawing.Point(195, 83);
+            this.textBox33.Location = new System.Drawing.Point(195, 85);
             this.textBox33.Name = "textBox33";
             this.textBox33.ReadOnly = true;
             this.textBox33.Size = new System.Drawing.Size(44, 19);
@@ -1211,7 +1212,7 @@
             this.textBox32.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox32.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox32.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox32.Location = new System.Drawing.Point(145, 83);
+            this.textBox32.Location = new System.Drawing.Point(145, 85);
             this.textBox32.Name = "textBox32";
             this.textBox32.ReadOnly = true;
             this.textBox32.Size = new System.Drawing.Size(44, 19);
@@ -1224,7 +1225,7 @@
             this.textBox31.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox31.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox31.Location = new System.Drawing.Point(95, 83);
+            this.textBox31.Location = new System.Drawing.Point(95, 85);
             this.textBox31.Name = "textBox31";
             this.textBox31.ReadOnly = true;
             this.textBox31.Size = new System.Drawing.Size(44, 19);
@@ -1237,7 +1238,7 @@
             this.textBox30.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox30.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox30.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox30.Location = new System.Drawing.Point(645, 43);
+            this.textBox30.Location = new System.Drawing.Point(645, 44);
             this.textBox30.Name = "textBox30";
             this.textBox30.ReadOnly = true;
             this.textBox30.Size = new System.Drawing.Size(46, 19);
@@ -1250,7 +1251,7 @@
             this.textBox29.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox29.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox29.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox29.Location = new System.Drawing.Point(595, 43);
+            this.textBox29.Location = new System.Drawing.Point(595, 44);
             this.textBox29.Name = "textBox29";
             this.textBox29.ReadOnly = true;
             this.textBox29.Size = new System.Drawing.Size(44, 19);
@@ -1263,7 +1264,7 @@
             this.textBox28.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox28.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox28.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox28.Location = new System.Drawing.Point(545, 43);
+            this.textBox28.Location = new System.Drawing.Point(545, 44);
             this.textBox28.Name = "textBox28";
             this.textBox28.ReadOnly = true;
             this.textBox28.Size = new System.Drawing.Size(44, 19);
@@ -1276,7 +1277,7 @@
             this.textBox27.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox27.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox27.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox27.Location = new System.Drawing.Point(495, 43);
+            this.textBox27.Location = new System.Drawing.Point(495, 44);
             this.textBox27.Name = "textBox27";
             this.textBox27.ReadOnly = true;
             this.textBox27.Size = new System.Drawing.Size(44, 19);
@@ -1289,7 +1290,7 @@
             this.textBox26.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox26.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox26.Location = new System.Drawing.Point(445, 43);
+            this.textBox26.Location = new System.Drawing.Point(445, 44);
             this.textBox26.Name = "textBox26";
             this.textBox26.ReadOnly = true;
             this.textBox26.Size = new System.Drawing.Size(44, 19);
@@ -1302,7 +1303,7 @@
             this.textBox25.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox25.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox25.Location = new System.Drawing.Point(395, 43);
+            this.textBox25.Location = new System.Drawing.Point(395, 44);
             this.textBox25.Name = "textBox25";
             this.textBox25.ReadOnly = true;
             this.textBox25.Size = new System.Drawing.Size(44, 19);
@@ -1315,7 +1316,7 @@
             this.textBox24.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox24.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox24.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox24.Location = new System.Drawing.Point(345, 43);
+            this.textBox24.Location = new System.Drawing.Point(345, 44);
             this.textBox24.Name = "textBox24";
             this.textBox24.ReadOnly = true;
             this.textBox24.Size = new System.Drawing.Size(44, 19);
@@ -1328,7 +1329,7 @@
             this.textBox23.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox23.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox23.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox23.Location = new System.Drawing.Point(295, 43);
+            this.textBox23.Location = new System.Drawing.Point(295, 44);
             this.textBox23.Name = "textBox23";
             this.textBox23.ReadOnly = true;
             this.textBox23.Size = new System.Drawing.Size(44, 19);
@@ -1341,7 +1342,7 @@
             this.textBox22.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox22.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox22.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox22.Location = new System.Drawing.Point(245, 43);
+            this.textBox22.Location = new System.Drawing.Point(245, 44);
             this.textBox22.Name = "textBox22";
             this.textBox22.ReadOnly = true;
             this.textBox22.Size = new System.Drawing.Size(44, 19);
@@ -1354,7 +1355,7 @@
             this.textBox21.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox21.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox21.Location = new System.Drawing.Point(195, 43);
+            this.textBox21.Location = new System.Drawing.Point(195, 44);
             this.textBox21.Name = "textBox21";
             this.textBox21.ReadOnly = true;
             this.textBox21.Size = new System.Drawing.Size(44, 19);
@@ -1367,7 +1368,7 @@
             this.textBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox20.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox20.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox20.Location = new System.Drawing.Point(145, 43);
+            this.textBox20.Location = new System.Drawing.Point(145, 44);
             this.textBox20.Name = "textBox20";
             this.textBox20.ReadOnly = true;
             this.textBox20.Size = new System.Drawing.Size(44, 19);
@@ -1379,9 +1380,9 @@
             this.label39.AutoSize = true;
             this.label39.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label39.Font = new System.Drawing.Font("SimSun", 12F);
-            this.label39.Location = new System.Drawing.Point(3, 40);
+            this.label39.Location = new System.Drawing.Point(3, 41);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(86, 30);
+            this.label39.Size = new System.Drawing.Size(86, 31);
             this.label39.TabIndex = 13;
             this.label39.Text = "总出料量 t";
             this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1525,7 +1526,7 @@
             this.label26.Font = new System.Drawing.Font("SimSun", 12F);
             this.label26.Location = new System.Drawing.Point(3, 5);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(86, 30);
+            this.label26.Size = new System.Drawing.Size(86, 31);
             this.label26.TabIndex = 0;
             this.label26.Text = "时间段 h";
             // 
@@ -1534,7 +1535,7 @@
             this.label40.AutoSize = true;
             this.label40.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label40.Font = new System.Drawing.Font("SimSun", 12F);
-            this.label40.Location = new System.Drawing.Point(3, 80);
+            this.label40.Location = new System.Drawing.Point(3, 82);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(86, 32);
             this.label40.TabIndex = 14;
@@ -1547,7 +1548,7 @@
             this.textBox19.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox19.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox19.Font = new System.Drawing.Font("SimSun", 12F);
-            this.textBox19.Location = new System.Drawing.Point(95, 43);
+            this.textBox19.Location = new System.Drawing.Point(95, 44);
             this.textBox19.Name = "textBox19";
             this.textBox19.ReadOnly = true;
             this.textBox19.Size = new System.Drawing.Size(44, 19);
@@ -1582,7 +1583,7 @@
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.9215F));
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.92492F));
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.15358F));
-            this.tableLayoutPanel16.Size = new System.Drawing.Size(441, 415);
+            this.tableLayoutPanel16.Size = new System.Drawing.Size(441, 423);
             this.tableLayoutPanel16.TabIndex = 2;
             // 
             // tableLayoutPanel17
@@ -1599,14 +1600,14 @@
             this.tableLayoutPanel17.Controls.Add(this.tableLayoutPanel20, 0, 2);
             this.tableLayoutPanel17.Controls.Add(this.tableLayoutPanel21, 1, 2);
             this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(78, 48);
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(78, 49);
             this.tableLayoutPanel17.Name = "tableLayoutPanel17";
             this.tableLayoutPanel17.RowCount = 4;
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 17.72152F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.868421F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.52632F));
             this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.22159F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(284, 217);
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(284, 222);
             this.tableLayoutPanel17.TabIndex = 0;
             // 
             // label41
@@ -1615,9 +1616,9 @@
             this.label41.BackColor = System.Drawing.Color.Transparent;
             this.label41.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label41.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label41.Location = new System.Drawing.Point(3, 38);
+            this.label41.Location = new System.Drawing.Point(3, 39);
             this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(136, 21);
+            this.label41.Size = new System.Drawing.Size(136, 22);
             this.label41.TabIndex = 0;
             this.label41.Text = "354t";
             this.label41.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1627,7 +1628,7 @@
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.BackColor = System.Drawing.Color.Transparent;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(200, 194);
+            this.button2.Location = new System.Drawing.Point(200, 199);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(25, 10);
             this.button2.TabIndex = 3;
@@ -1639,7 +1640,7 @@
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(58, 194);
+            this.button1.Location = new System.Drawing.Point(58, 199);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(25, 10);
             this.button1.TabIndex = 2;
@@ -1654,9 +1655,9 @@
             this.label42.AutoSize = true;
             this.label42.BackColor = System.Drawing.Color.Transparent;
             this.label42.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label42.Location = new System.Drawing.Point(145, 38);
+            this.label42.Location = new System.Drawing.Point(145, 39);
             this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(136, 21);
+            this.label42.Size = new System.Drawing.Size(136, 22);
             this.label42.TabIndex = 1;
             this.label42.Text = "132t";
             this.label42.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1668,12 +1669,12 @@
             this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel20.Controls.Add(this.tableLayoutPanel22, 0, 0);
             this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel20.Location = new System.Drawing.Point(3, 62);
+            this.tableLayoutPanel20.Location = new System.Drawing.Point(3, 64);
             this.tableLayoutPanel20.Name = "tableLayoutPanel20";
             this.tableLayoutPanel20.RowCount = 2;
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.19048F));
             this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.80952F));
-            this.tableLayoutPanel20.Size = new System.Drawing.Size(136, 126);
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(136, 129);
             this.tableLayoutPanel20.TabIndex = 4;
             // 
             // tableLayoutPanel22
@@ -1688,7 +1689,7 @@
             this.tableLayoutPanel22.Name = "tableLayoutPanel22";
             this.tableLayoutPanel22.RowCount = 1;
             this.tableLayoutPanel22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel22.Size = new System.Drawing.Size(130, 90);
+            this.tableLayoutPanel22.Size = new System.Drawing.Size(130, 92);
             this.tableLayoutPanel22.TabIndex = 0;
             // 
             // verticalProgressBar1
@@ -1696,7 +1697,7 @@
             this.verticalProgressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.verticalProgressBar1.Location = new System.Drawing.Point(51, 3);
             this.verticalProgressBar1.Name = "verticalProgressBar1";
-            this.verticalProgressBar1.Size = new System.Drawing.Size(26, 84);
+            this.verticalProgressBar1.Size = new System.Drawing.Size(26, 86);
             this.verticalProgressBar1.TabIndex = 0;
             // 
             // tableLayoutPanel21
@@ -1707,12 +1708,12 @@
             this.tableLayoutPanel21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel21.Controls.Add(this.tableLayoutPanel23, 0, 0);
             this.tableLayoutPanel21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel21.Location = new System.Drawing.Point(145, 62);
+            this.tableLayoutPanel21.Location = new System.Drawing.Point(145, 64);
             this.tableLayoutPanel21.Name = "tableLayoutPanel21";
             this.tableLayoutPanel21.RowCount = 2;
             this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.38095F));
             this.tableLayoutPanel21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.61905F));
-            this.tableLayoutPanel21.Size = new System.Drawing.Size(136, 126);
+            this.tableLayoutPanel21.Size = new System.Drawing.Size(136, 129);
             this.tableLayoutPanel21.TabIndex = 5;
             // 
             // tableLayoutPanel23
@@ -1727,7 +1728,7 @@
             this.tableLayoutPanel23.Name = "tableLayoutPanel23";
             this.tableLayoutPanel23.RowCount = 1;
             this.tableLayoutPanel23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel23.Size = new System.Drawing.Size(130, 91);
+            this.tableLayoutPanel23.Size = new System.Drawing.Size(130, 93);
             this.tableLayoutPanel23.TabIndex = 0;
             // 
             // verticalProgressBar2
@@ -1735,7 +1736,7 @@
             this.verticalProgressBar2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.verticalProgressBar2.Location = new System.Drawing.Point(51, 3);
             this.verticalProgressBar2.Name = "verticalProgressBar2";
-            this.verticalProgressBar2.Size = new System.Drawing.Size(26, 85);
+            this.verticalProgressBar2.Size = new System.Drawing.Size(26, 87);
             this.verticalProgressBar2.TabIndex = 0;
             // 
             // tableLayoutPanel18
@@ -1751,7 +1752,7 @@
             this.tableLayoutPanel18.RowCount = 1;
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
-            this.tableLayoutPanel18.Size = new System.Drawing.Size(284, 39);
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(284, 40);
             this.tableLayoutPanel18.TabIndex = 1;
             // 
             // label43
@@ -1763,7 +1764,7 @@
             this.label43.Font = new System.Drawing.Font("SimSun", 12F);
             this.label43.Location = new System.Drawing.Point(3, 0);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(136, 39);
+            this.label43.Size = new System.Drawing.Size(136, 40);
             this.label43.TabIndex = 0;
             this.label43.Text = "15#烧返矿仓";
             this.label43.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1777,7 +1778,7 @@
             this.label44.Font = new System.Drawing.Font("SimSun", 12F);
             this.label44.Location = new System.Drawing.Point(145, 0);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(136, 39);
+            this.label44.Size = new System.Drawing.Size(136, 40);
             this.label44.TabIndex = 1;
             this.label44.Text = "16#烧返矿仓";
             this.label44.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1796,7 +1797,7 @@
             this.tableLayoutPanel19.Controls.Add(this.pictureBox2, 1, 0);
             this.tableLayoutPanel19.Controls.Add(this.label46, 1, 1);
             this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(78, 271);
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(78, 277);
             this.tableLayoutPanel19.Name = "tableLayoutPanel19";
             this.tableLayoutPanel19.RowCount = 4;
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.10487F));
@@ -1804,7 +1805,7 @@
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.29838F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.29837F));
             this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(284, 141);
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(284, 143);
             this.tableLayoutPanel19.TabIndex = 2;
             // 
             // label53
@@ -1812,9 +1813,9 @@
             this.label53.AutoSize = true;
             this.label53.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label53.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label53.Location = new System.Drawing.Point(3, 113);
+            this.label53.Location = new System.Drawing.Point(3, 116);
             this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(136, 28);
+            this.label53.Size = new System.Drawing.Size(136, 27);
             this.label53.TabIndex = 9;
             this.label53.Text = "分仓系数";
             this.label53.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1824,9 +1825,9 @@
             this.label52.AutoSize = true;
             this.label52.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label52.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label52.Location = new System.Drawing.Point(145, 113);
+            this.label52.Location = new System.Drawing.Point(145, 116);
             this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(136, 28);
+            this.label52.Size = new System.Drawing.Size(136, 27);
             this.label52.TabIndex = 8;
             this.label52.Text = "分仓系数";
             this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1836,9 +1837,9 @@
             this.label48.AutoSize = true;
             this.label48.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label48.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label48.Location = new System.Drawing.Point(145, 88);
+            this.label48.Location = new System.Drawing.Point(145, 90);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(136, 25);
+            this.label48.Size = new System.Drawing.Size(136, 26);
             this.label48.TabIndex = 5;
             this.label48.Text = "下料量PV：56 t/h";
             this.label48.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1848,9 +1849,9 @@
             this.label47.AutoSize = true;
             this.label47.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label47.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label47.Location = new System.Drawing.Point(3, 88);
+            this.label47.Location = new System.Drawing.Point(3, 90);
             this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(136, 25);
+            this.label47.Size = new System.Drawing.Size(136, 26);
             this.label47.TabIndex = 4;
             this.label47.Text = "下料量PV：56 t/h";
             this.label47.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1861,7 +1862,7 @@
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(136, 57);
+            this.pictureBox1.Size = new System.Drawing.Size(136, 58);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -1871,9 +1872,9 @@
             this.label45.AutoSize = true;
             this.label45.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label45.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label45.Location = new System.Drawing.Point(3, 63);
+            this.label45.Location = new System.Drawing.Point(3, 64);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(136, 25);
+            this.label45.Size = new System.Drawing.Size(136, 26);
             this.label45.TabIndex = 0;
             this.label45.Text = "下料量SP：56 t/h";
             this.label45.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1884,7 +1885,7 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(145, 3);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(136, 57);
+            this.pictureBox2.Size = new System.Drawing.Size(136, 58);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
@@ -1894,9 +1895,9 @@
             this.label46.AutoSize = true;
             this.label46.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label46.Font = new System.Drawing.Font("SimSun", 10F);
-            this.label46.Location = new System.Drawing.Point(145, 63);
+            this.label46.Location = new System.Drawing.Point(145, 64);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(136, 25);
+            this.label46.Size = new System.Drawing.Size(136, 26);
             this.label46.TabIndex = 1;
             this.label46.Text = "下料量SP：0 t/h";
             this.label46.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -108,7 +108,7 @@ namespace LY_SINTER.PAGE.Course
             time();
             xzmxx();
             shuju();
-            tendency_curve_HIS(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));
+            tendency_curve_HIS(DateTime.Now.AddMonths(-1), DateTime.Now);
 
             _Timer1 = new System.Timers.Timer(60000);//初始化颜色变化定时器响应事件
             _Timer1.Elapsed += (x, y) => { Timer1_Tick_1(); };//响应事件
@@ -262,7 +262,7 @@ namespace LY_SINTER.PAGE.Course
                     MajorTickSize = 0,
                     IsZoomEnabled = false,
                     Position = AxisPosition.Bottom,
-                    GapWidth = 3
+                    //GapWidth = 50,
                 };
                 for (int i = 0; i < xvalDt.Count(); i++)
                 {
@@ -274,6 +274,10 @@ namespace LY_SINTER.PAGE.Course
                 {
                     MinorTickSize = 0,
                     Key = "y",
+                    Maximum = 900,
+                    Minimum = 0,
+                    MajorStep=300,
+
                 };
                 _myPlotModel_1.Axes.Add(_valueAxis);
                 //设定厚度
@@ -849,6 +853,7 @@ namespace LY_SINTER.PAGE.Course
                         IsPanEnabled = false,
                         AxisTickToLabelDistance = 0,
                         FontSize = 9.0,
+                        StringFormat= "yyyy-MM-dd HH:mm:ss"
                     };
                     _myPlotModel.Axes.Add(_dateAxis);
                     for (int i = 0; i < data_curve_ls.Rows.Count; i++)
@@ -1327,7 +1332,7 @@ namespace LY_SINTER.PAGE.Course
             //结束时间
             DateTime time_end = DateTime.Now;
             //开始时间
-            DateTime time_begin = time_end.AddDays(-1);
+            DateTime time_begin = time_end.AddMonths(-1);
 
             textBox_begin.Text = time_begin.ToString();
             textBox_end.Text = time_end.ToString();

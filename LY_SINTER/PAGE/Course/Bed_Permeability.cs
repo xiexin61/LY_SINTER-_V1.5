@@ -89,6 +89,7 @@ namespace LY_SINTER.PAGE.Course
             time_new();
             //  curve_initial();
             // curve_text();
+            //2021413
             tendency_curve_HIS(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));
             date_now();
             real_time_xgx();
@@ -575,23 +576,20 @@ namespace LY_SINTER.PAGE.Course
         /// </summary>
         public void tendency_curve_HIS(DateTime _d1, DateTime _d2)
         {
+            Line1.Clear();
 
             try
             {
-
                 string sql_M_PICAL_BREATH_RESULT_HIS = "select TIMESTAMP,PICAL_JPU from M_PICAL_BREATH_RESULT where TIMESTAMP >='" + _d1 + "' and TIMESTAMP <= '" + _d2 + "' order by TIMESTAMP asc";
                 DataTable data_curve_ls = dBSQL.GetCommand(sql_M_PICAL_BREATH_RESULT_HIS);
                 if (data_curve_ls.Rows.Count > 0)
                 {
-                    Line1.Clear();
+                    
                     List<double> Mun1 = new List<double>();
                     //定义model
                     _myPlotModel = new PlotModel()
                     {
                         Background = OxyColors.White,
-                        Title = "历史",
-                        TitleFontSize = 7,
-                        TitleColor = OxyColors.White,
                         //LegendMargin = 100,
                     };
                     //X轴
@@ -604,14 +602,15 @@ namespace LY_SINTER.PAGE.Course
                         IsPanEnabled = false,
                         AxisTickToLabelDistance = 0,
                         FontSize = 9.0,
+                        StringFormat = "yyyy/MM/dd HH:mm",
                     };
                     _myPlotModel.Axes.Add(_dateAxis);
                     for (int i = 0; i < data_curve_ls.Rows.Count; i++)
                     {
-                        DataPoint line1 = new DataPoint(DateTimeAxis.ToDouble(data_curve_ls.Rows[i]["TIMESTAMP"]), Convert.ToDouble(data_curve_ls.Rows[i]["PICAL_JPU"]));
+                        DataPoint line1 = new DataPoint(DateTimeAxis.ToDouble(data_curve_ls.Rows[i]["TIMESTAMP"]), Convert.ToDouble(data_curve_ls.Rows[i][1]));
                         Line1.Add(line1);
-                        Mun1.Add(Convert.ToDouble(data_curve_ls.Rows[i]["PICAL_JPU"]));
-                             }
+                        Mun1.Add(Convert.ToDouble(data_curve_ls.Rows[i][1]));
+                    }
 
                     int x = 1;
                     if ((int)((Mun1.Max() - Mun1.Min()) / 5) > 0)
@@ -624,10 +623,10 @@ namespace LY_SINTER.PAGE.Course
                         MajorGridlineStyle = LineStyle.None,
                         MinorGridlineStyle = LineStyle.None,
                         IntervalLength = 80,
-                        Angle = 60,
+                        //Angle = 60,
                         IsZoomEnabled = true,
                         IsPanEnabled = false,
-                        Maximum = (int)(Mun1.Max() + 1),
+                        Maximum = (int)(Mun1.Max() + 5),
                         Minimum = (int)(Mun1.Min() - 1),
                         PositionTier = 1,
                         AxislineStyle = LineStyle.Solid,
@@ -647,12 +646,14 @@ namespace LY_SINTER.PAGE.Course
                     {
                         Color = OxyColors.Red,
                         StrokeThickness = 1,
-                        MarkerSize = 3,
+                        MarkerSize = 1,
                         MarkerStroke = OxyColors.Red,
-                        MarkerType = MarkerType.None,
+                        MarkerType = MarkerType.Circle,
+                        //MarkerStrokeThickness=1,
                         YAxisKey = "A",
                         ItemsSource = Line1,
-                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}\n透气指数:{4}",
+                        //TrackerFormatString = "{0}\n时间:{2:yyyy-MM-dd HH:mm}透气指数:{4}",
+                        TrackerFormatString = "{0}\n时间:{2:HH:mm:ss}透气指数:{4}",
                     };
                         _valueAxis1.IsAxisVisible = true;
                         _myPlotModel.Series.Add(series1);

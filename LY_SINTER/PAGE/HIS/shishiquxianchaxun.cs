@@ -300,66 +300,14 @@ namespace LY_SINTER.PAGE.HIS
         {
             try
             {
-                string sql1 = "select top 1 ISNULL(T_PLC_MA_FAN_1_SP_3S,0),ISNULL(T_PLC_MA_FAN_2_SP_3S,0),ISNULL(T_MA_SB_1_FLUE_TE_3S,0),ISNULL(T_MA_SB_2_FLUE_TE_3S,0),ISNULL(T_MA_SB_1_FLUE_PT_3S,0),ISNULL(T_MA_SB_2_FLUE_PT_3S,0)," +
-                    "ISNULL(T_MA_SB_1_FLUE_FT_3S,0),ISNULL(T_MA_SB_2_FLUE_FT_3S,0),ISNULL(C_THICK_PV_3S,0),ISNULL(T_TOTAL_SP_W_3S,0),ISNULL(T_1M_FT_SP_3S,0),ISNULL(T_2M_FLOW_SP_3S,0),ISNULL(T_BLEND_LEVEL_3S,0)," +
-                    "ISNULL(T_STICK_SP_3S,0),ISNULL(T_SIN_MS_SP_3S,0),ISNULL(T_RC_SPEED_SP_3S,0),isnull(T_IG_01_TE_3S,0),isnull(T_IG_02_TE_3S,0),isnull(T_IG_03_TE_3S,0) from C_PLC_3S order by TIMESTAMP desc";
+                string sql1 = "select top 1 ISNULL(T_RC_SPEED_SP_3S,0),isnull(T_IG_01_TE_3S,0),isnull(T_IG_02_TE_3S,0),isnull(T_IG_03_TE_3S,0) from C_PLC_3S order by TIMESTAMP desc";
                 DataTable dataTable1 = dBSQL.GetCommand(sql1);
                 if (dataTable1.Rows.Count > 0)
                 {
-                    float sjjjs = 0;
-                    float hljjs = 0;
-                    //       实时曲线：烧结机机速：改为C_MFI_PLC_1MIN表，F_PLC_SIN_SPEED_PV字段；
-                    //环冷机机速：改为C_CFP_PLC_1MIN表，CFP_PLC_RC_SPEED_PV字段；（曲线查询能否改为
-                    var sql_1 = "select top(1) F_PLC_SIN_SPEED_PV from C_MFI_PLC_1MIN order by TIMESTAMP desc";
-                    DataTable table_1 = dBSQL.GetCommand(sql_1);
-                    if (table_1.Rows.Count > 0)
-                    {
-                        sjjjs = float.Parse(table_1.Rows[0][0].ToString());
-                    }
-                    var sql_2 = "select CFP_PLC_RC_SPEED_PV from C_CFP_PLC_1MIN order by TIMESTAMP desc";
-                    DataTable table_2 = dBSQL.GetCommand(sql_2);
-                    if (table_2.Rows.Count > 0)
-                    {
-                        hljjs = float.Parse(table_2.Rows[0][0].ToString());
-                    }
-                    float zcpl1 = float.Parse(dataTable1.Rows[0][0].ToString());
-                    float zcpl2 = float.Parse(dataTable1.Rows[0][1].ToString());
-                    float zcwd1 = float.Parse(dataTable1.Rows[0][2].ToString());
-                    float zcwd2 = float.Parse(dataTable1.Rows[0][3].ToString());
-                    float zcfy1 = float.Parse(dataTable1.Rows[0][4].ToString());
-                    float zcfy2 = float.Parse(dataTable1.Rows[0][5].ToString());
-                    float zcfl1 = float.Parse(dataTable1.Rows[0][6].ToString());
-                    float zcfl2 = float.Parse(dataTable1.Rows[0][7].ToString());
-                    //布料厚度
-                    float blhd = float.Parse(dataTable1.Rows[0][8].ToString());
-                    //总料量
-                    float zll = float.Parse(dataTable1.Rows[0][9].ToString());
-                    float yhjsl = float.Parse(dataTable1.Rows[0][10].ToString());
-                    float ehjsl = float.Parse(dataTable1.Rows[0][11].ToString());
-                    float hhlcw = float.Parse(dataTable1.Rows[0][12].ToString());
-                    float ygzs = float.Parse(dataTable1.Rows[0][13].ToString());
-
-                    /*this.textBox1.Text = zcpl1.ToString();
-                    this.textBox2.Text = zcpl2.ToString();*/
-                    this.textBox3.Text = zcwd1.ToString();
-                    this.textBox4.Text = zcwd2.ToString();
-                    this.textBox5.Text = zcfy1.ToString();
-                    this.textBox6.Text = zcfy2.ToString();
-                    this.textBox7.Text = zcfl1.ToString();
-                    this.textBox8.Text = zcfl2.ToString();
-                    this.textBox9.Text = blhd.ToString();
-                    this.textBox11.Text = zll.ToString();
-                    this.textBox12.Text = yhjsl.ToString();
-                    this.textBox13.Text = ehjsl.ToString();
-                    this.textBox14.Text = hhlcw.ToString();
-                    this.textBox15.Text = ygzs.ToString();
-                    this.textBox16.Text = sjjjs.ToString();
-                    this.textBox17.Text = hljjs.ToString();
-
                     //点火温度
-                    float dhwd1 = float.Parse(dataTable1.Rows[0][16].ToString());
-                    float dhwd2 = float.Parse(dataTable1.Rows[0][17].ToString());
-                    float dhwd3 = float.Parse(dataTable1.Rows[0][18].ToString());
+                    float dhwd1 = float.Parse(dataTable1.Rows[0][1].ToString());
+                    float dhwd2 = float.Parse(dataTable1.Rows[0][2].ToString());
+                    float dhwd3 = float.Parse(dataTable1.Rows[0][3].ToString());
                     float a = 0;
                     int b = 0;
                     if (dhwd1 > 800 && dhwd1 < 1400)
@@ -380,6 +328,66 @@ namespace LY_SINTER.PAGE.HIS
                     float c = 0;
                     c = float.Parse((a / b).ToString());
                     this.textBox10.Text = c.ToString();
+                    float sjjjs = 0;
+                    float hljjs = 0;
+                    //       实时曲线：烧结机机速：改为C_MFI_PLC_1MIN表，F_PLC_SIN_SPEED_PV字段；
+                    //环冷机机速：改为C_CFP_PLC_1MIN表，CFP_PLC_RC_SPEED_PV字段；（曲线查询能否改为
+                    var sql_1 = "select top(1) F_PLC_SIN_SPEED_PV from C_MFI_PLC_1MIN order by TIMESTAMP desc";
+                    DataTable table_1 = dBSQL.GetCommand(sql_1);
+                    if (table_1.Rows.Count > 0)
+                    {
+                        sjjjs = float.Parse(table_1.Rows[0][0].ToString());
+                    }
+                    var sql_2 = "select CFP_PLC_RC_SPEED_PV from C_CFP_PLC_1MIN order by TIMESTAMP desc";
+                    DataTable table_2 = dBSQL.GetCommand(sql_2);
+                    if (table_2.Rows.Count > 0)
+                    {
+                        hljjs = float.Parse(table_2.Rows[0][0].ToString());
+                    }
+                    string SIN = "select top(1) timestamp,SIN_PLC_MA_SB_1_FLUE_TE,SIN_PLC_MA_SB_2_FLUE_TE,SIN_PLC_MA_SB_1_FLUE_PT,SIN_PLC_MA_SB_2_FLUE_PT,SIN_PLC_MA_SB_1_FLUE_FT,SIN_PLC_MA_SB_2_FLUE_FT " +
+                    " from C_SIN_PLC_1MIN order by TIMESTAMP desc";
+                    DataTable SINTable = dBSQL.GetCommand(SIN);
+                    
+                    /*float zcpl1 = float.Parse(dataTable1.Rows[0][0].ToString());
+                    float zcpl2 = float.Parse(dataTable1.Rows[0][1].ToString());*/
+                    float zcwd1 = float.Parse(SINTable.Rows[0][1].ToString());
+                    float zcwd2 = float.Parse(SINTable.Rows[0][2].ToString());
+                    float zcfy1 = float.Parse(SINTable.Rows[0][3].ToString());
+                    float zcfy2 = float.Parse(SINTable.Rows[0][4].ToString());
+                    float zcfl1 = float.Parse(SINTable.Rows[0][5].ToString());
+                    float zcfl2 = float.Parse(SINTable.Rows[0][6].ToString());
+                    string MFI = "select top(1) timestamp,F_PLC_THICK_PV,M_PLC_1M_FT_SP,M_PLC_2M_FT_SP,F_PLC_BLEND_LEVEL,F_PLC_STICK_SP " +
+                                " from C_MFI_PLC_1MIN order by TIMESTAMP desc";
+                    DataTable MFITable = dBSQL.GetCommand(MFI);
+                    //布料厚度
+                    float blhd = float.Parse(MFITable.Rows[0][1].ToString());
+                    string MAT = "select top(1) timestamp,MAT_PLC_T_SP_W from C_MAT_PLC_1MIN order by TIMESTAMP desc";
+                    DataTable MATTable = dBSQL.GetCommand(MAT);
+                    //总料量
+                    float zll = float.Parse(MATTable.Rows[0][1].ToString());
+                    float yhjsl = float.Parse(MFITable.Rows[0][2].ToString());
+                    float ehjsl = float.Parse(MFITable.Rows[0][3].ToString());
+                    float hhlcw = float.Parse(MFITable.Rows[0][4].ToString());
+                    float ygzs = float.Parse(MFITable.Rows[0][5].ToString());
+
+                    /*this.textBox1.Text = zcpl1.ToString();
+                    this.textBox2.Text = zcpl2.ToString();*/
+                    this.textBox3.Text = zcwd1.ToString();
+                    this.textBox4.Text = zcwd2.ToString();
+                    this.textBox5.Text = zcfy1.ToString();
+                    this.textBox6.Text = zcfy2.ToString();
+                    this.textBox7.Text = zcfl1.ToString();
+                    this.textBox8.Text = zcfl2.ToString();
+                    this.textBox9.Text = blhd.ToString();
+                    this.textBox11.Text = zll.ToString();
+                    this.textBox12.Text = yhjsl.ToString();
+                    this.textBox13.Text = ehjsl.ToString();
+                    this.textBox14.Text = hhlcw.ToString();
+                    this.textBox15.Text = ygzs.ToString();
+                    this.textBox16.Text = sjjjs.ToString();
+                    this.textBox17.Text = hljjs.ToString();
+
+                    
                     //终点位置
                     string sql2 = "select top 1 ISNULL(BTPCAL_OUT_TOTAL_AVG_X_BTP,0) from MC_BTPCAL_result_1min order by TIMESTAMP desc";
                     DataTable dataTable2 = dBSQL.GetCommand(sql2);
@@ -631,6 +639,8 @@ namespace LY_SINTER.PAGE.HIS
             }
         }
 
+        
+
         //量程设定按钮
         private void simpleButton3_Click(object sender, EventArgs e)
         {
@@ -721,17 +731,26 @@ namespace LY_SINTER.PAGE.HIS
                     var xx = e.InnerException.Message;
                 }
                 int shujugeshu = sjd * 60;
-                string sql1 = "select TIMESTAMP, T_PLC_MA_FAN_1_SP_3S,T_PLC_MA_FAN_2_SP_3S,T_MA_SB_1_FLUE_TE_3S,T_MA_SB_2_FLUE_TE_3S,T_MA_SB_1_FLUE_PT_3S,T_MA_SB_2_FLUE_PT_3S," +
+                /*string sql1 = "select TIMESTAMP, T_PLC_MA_FAN_1_SP_3S,T_PLC_MA_FAN_2_SP_3S,T_MA_SB_1_FLUE_TE_3S,T_MA_SB_2_FLUE_TE_3S,T_MA_SB_1_FLUE_PT_3S,T_MA_SB_2_FLUE_PT_3S," +
                                 "T_MA_SB_1_FLUE_FT_3S,T_MA_SB_2_FLUE_FT_3S,C_THICK_PV_3S,T_TOTAL_SP_W_3S,T_1M_FT_SP_3S,T_2M_FLOW_SP_3S,T_BLEND_LEVEL_3S,T_STICK_SP_3S,T_SIN_MS_SP_3S,T_RC_SPEED_SP_3S" +
                                 " from C_PLC_3S where TIMESTAMP between '" + DateTime.Now.AddHours(-sjd) + "' and '" + DateTime.Now + "' order by TIMESTAMP";
-                DataTable dataTable1 = dBSQL.GetCommand(sql1);
-                if (dataTable1.Rows.Count > 0)
+                DataTable dataTable1 = dBSQL.GetCommand(sql1);*/
+
+                string SIN = "select timestamp,SIN_PLC_MA_SB_1_FLUE_TE,SIN_PLC_MA_SB_2_FLUE_TE,SIN_PLC_MA_SB_1_FLUE_PT,SIN_PLC_MA_SB_2_FLUE_PT,SIN_PLC_MA_SB_1_FLUE_FT,SIN_PLC_MA_SB_2_FLUE_FT " +
+                    " from C_SIN_PLC_1MIN where TIMESTAMP between '" + DateTime.Now.AddHours(-sjd) + "' and '" + DateTime.Now + "' order by TIMESTAMP";
+                DataTable SINTable = dBSQL.GetCommand(SIN);
+
+                
+
+                
+
+                if (SINTable.Rows.Count > 0)
                 {
-                    for (int a = 0; a < dataTable1.Rows.Count; a++)
+                    for (int a = 0; a < SINTable.Rows.Count; a++)
                     {
-                        string sj = dataTable1.Rows[a][0].ToString();
+                        string sj = SINTable.Rows[a][0].ToString();
                         shijian.Add(sj);
-                        DataPoint line1 = new DataPoint();
+                        /*DataPoint line1 = new DataPoint();
                         if (dataTable1.Rows[a][1].ToString() != "")
                         {
                             double zcpl_1 = double.Parse(dataTable1.Rows[a][1].ToString());
@@ -745,9 +764,9 @@ namespace LY_SINTER.PAGE.HIS
                             line1 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line1 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][1]));
-                        Line1.Add(line1);
+                        Line1.Add(line1);*/
                         //Num1.Add(Convert.ToDouble(dataTable1.Rows[a][1]));
-                        DataPoint line2 = new DataPoint();
+                        /*DataPoint line2 = new DataPoint();
                         if (dataTable1.Rows[a][2].ToString() != "")
                         {
                             double zcpl_2 = double.Parse(dataTable1.Rows[a][2].ToString());
@@ -761,202 +780,217 @@ namespace LY_SINTER.PAGE.HIS
                             line2 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line2 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][2]));
-                        Line2.Add(line2);
+                        Line2.Add(line2);*/
 
                         DataPoint line3 = new DataPoint();
-                        if (dataTable1.Rows[a][3].ToString() != "")
+                        if (SINTable.Rows[a][1].ToString() != "")
                         {
-                            double zcwd_1 = double.Parse(dataTable1.Rows[a][3].ToString());
+                            double zcwd_1 = double.Parse(SINTable.Rows[a][1].ToString());
                             zcwd1.Add(zcwd_1);
-                            line3 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][3]));
-                            Num2.Add(Convert.ToDouble(dataTable1.Rows[a][3]));
+                            line3 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), Convert.ToDouble(SINTable.Rows[a][1]));
+                            Num2.Add(Convert.ToDouble(SINTable.Rows[a][1]));
                         }
                         else
                         {
                             zcwd1.Add(double.NaN);
-                            line3 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
+                            line3 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line3 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][3]));
                         Line3.Add(line3);
 
                         DataPoint line4 = new DataPoint();
-                        if (dataTable1.Rows[a][4].ToString() != "")
+                        if (SINTable.Rows[a][2].ToString() != "")
                         {
-                            double zcwd_2 = double.Parse(dataTable1.Rows[a][4].ToString());
+                            double zcwd_2 = double.Parse(SINTable.Rows[a][2].ToString());
                             zcwd2.Add(zcwd_2);
-                            line4 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][4]));
-                            Num2.Add(Convert.ToDouble(dataTable1.Rows[a][4]));
+                            line4 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), Convert.ToDouble(SINTable.Rows[a][2]));
+                            Num2.Add(Convert.ToDouble(SINTable.Rows[a][2]));
                         }
                         else
                         {
                             zcwd2.Add(double.NaN);
-                            line4 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
+                            line4 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line4 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][4]));
                         Line4.Add(line4);
 
                         DataPoint line5 = new DataPoint();
-                        if (dataTable1.Rows[a][5].ToString() != "")
+                        if (SINTable.Rows[a][3].ToString() != "")
                         {
-                            double zcfy_1 = double.Parse(dataTable1.Rows[a][5].ToString());
+                            double zcfy_1 = double.Parse(SINTable.Rows[a][3].ToString());
                             zcfy1.Add(zcfy_1);
-                            line5 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][5]));
-                            Num3.Add(Convert.ToDouble(dataTable1.Rows[a][5]));
+                            line5 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), Convert.ToDouble(SINTable.Rows[a][3]));
+                            Num3.Add(Convert.ToDouble(SINTable.Rows[a][3]));
                         }
                         else
                         {
                             zcfy1.Add(double.NaN);
-                            line5 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
+                            line5 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line5 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][5]));
                         Line5.Add(line5);
 
                         DataPoint line6 = new DataPoint();
-                        if (dataTable1.Rows[a][6].ToString() != "")
+                        if (SINTable.Rows[a][4].ToString() != "")
                         {
-                            double zcfy_2 = double.Parse(dataTable1.Rows[a][6].ToString());
+                            double zcfy_2 = double.Parse(SINTable.Rows[a][4].ToString());
                             zcfy2.Add(zcfy_2);
-                            line6 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][6]));
-                            Num3.Add(Convert.ToDouble(dataTable1.Rows[a][6]));
+                            line6 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), Convert.ToDouble(SINTable.Rows[a][4]));
+                            Num3.Add(Convert.ToDouble(SINTable.Rows[a][4]));
                         }
                         else
                         {
                             zcfy2.Add(double.NaN);
-                            line6 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
+                            line6 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line6 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][6]));
                         Line6.Add(line6);
 
                         DataPoint line7 = new DataPoint();
-                        if (dataTable1.Rows[a][7].ToString() != "")
+                        if (SINTable.Rows[a][5].ToString() != "")
                         {
-                            double zcfl_1 = double.Parse(dataTable1.Rows[a][7].ToString());
+                            double zcfl_1 = double.Parse(SINTable.Rows[a][5].ToString());
                             zcfl1.Add(zcfl_1);
-                            line7 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][7]));
-                            Num4.Add(Convert.ToDouble(dataTable1.Rows[a][7]));
+                            line7 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), Convert.ToDouble(SINTable.Rows[a][5]));
+                            Num4.Add(Convert.ToDouble(SINTable.Rows[a][5]));
                         }
                         else
                         {
                             zcfl1.Add(double.NaN);
-                            line7 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
+                            line7 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line7 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][7]));
                         Line7.Add(line7);
-
+                        //主抽风量2
                         DataPoint line8 = new DataPoint();
-                        if (dataTable1.Rows[a][8].ToString() != "")
+                        if (SINTable.Rows[a][6].ToString() != "")
                         {
-                            double zcfl_2 = double.Parse(dataTable1.Rows[a][8].ToString());
+                            double zcfl_2 = double.Parse(SINTable.Rows[a][6].ToString());
                             zcfl2.Add(zcfl_2);
-                            line8 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][8]));
-                            Num4.Add(Convert.ToDouble(dataTable1.Rows[a][8]));
+                            line8 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), Convert.ToDouble(SINTable.Rows[a][6]));
+                            Num4.Add(Convert.ToDouble(SINTable.Rows[a][6]));
                         }
                         else
                         {
                             zcfl2.Add(double.NaN);
-                            line8 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
+                            line8 = new DataPoint(DateTimeAxis.ToDouble(SINTable.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line8 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][8]));
                         Line8.Add(line8);
+                    }
+                }
 
+                string MFI = "select timestamp,F_PLC_THICK_PV,M_PLC_1M_FT_SP,M_PLC_2M_FT_SP,F_PLC_BLEND_LEVEL,F_PLC_STICK_SP,F_PLC_SIN_SPEED_SP " +
+                    " from C_MFI_PLC_1MIN where TIMESTAMP between '" + DateTime.Now.AddHours(-sjd) + "' and '" + DateTime.Now + "' order by TIMESTAMP";
+                DataTable MFITable = dBSQL.GetCommand(MFI);
+                if (MFITable.Rows.Count > 0)
+                {
+                    for (int a = 0; a < MFITable.Rows.Count; a++)
+                    {
                         DataPoint line10 = new DataPoint();
-                        if (dataTable1.Rows[a][9].ToString() != "")
+                        if (MFITable.Rows[a][1].ToString() != "")
                         {
-                            double blhd_1 = double.Parse(dataTable1.Rows[a][9].ToString());
+                            double blhd_1 = double.Parse(MFITable.Rows[a][1].ToString());
                             blhd.Add(blhd_1);
-                            line10 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][9]));
-                            Num6.Add(Convert.ToDouble(dataTable1.Rows[a][9]));
+                            line10 = new DataPoint(DateTimeAxis.ToDouble(MFITable.Rows[a][0]), Convert.ToDouble(MFITable.Rows[a][1]));
+                            Num6.Add(Convert.ToDouble(MFITable.Rows[a][1]));
                         }
                         else
                         {
                             blhd.Add(double.NaN);
-                            line10 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
+                            line10 = new DataPoint(DateTimeAxis.ToDouble(MFITable.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line10 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][9]));
                         Line10.Add(line10);
 
-                        DataPoint line12 = new DataPoint();
-                        if (dataTable1.Rows[a][10].ToString() != "")
-                        {
-                            double zll_1 = double.Parse(dataTable1.Rows[a][10].ToString());
-                            zll.Add(zll_1);
-                            line12 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][10]));
-                            Num8.Add(Convert.ToDouble(dataTable1.Rows[a][10]));
-                        }
-                        else
-                        {
-                            zll.Add(double.NaN);
-                            line12 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
-                        }
-                        //DataPoint line12 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][10]));
-                        Line12.Add(line12);
-
                         DataPoint line13 = new DataPoint();
-                        if (dataTable1.Rows[a][11].ToString() != "")
+                        if (MFITable.Rows[a][2].ToString() != "")
                         {
-                            double yhjsl_1 = double.Parse(dataTable1.Rows[a][11].ToString());
+                            double yhjsl_1 = double.Parse(MFITable.Rows[a][2].ToString());
                             yhjsl.Add(yhjsl_1);
-                            line13 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][11]));
-                            Num9.Add(Convert.ToDouble(dataTable1.Rows[a][11]));
+                            line13 = new DataPoint(DateTimeAxis.ToDouble(MFITable.Rows[a][0]), Convert.ToDouble(MFITable.Rows[a][2]));
+                            Num9.Add(Convert.ToDouble(MFITable.Rows[a][2]));
                         }
                         else
                         {
                             yhjsl.Add(double.NaN);
-                            line13 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
+                            line13 = new DataPoint(DateTimeAxis.ToDouble(MFITable.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line13 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][11]));
                         Line13.Add(line13);
-
                         DataPoint line14 = new DataPoint();
-                        if (dataTable1.Rows[a][12].ToString() != "")
+                        if (MFITable.Rows[a][3].ToString() != "")
                         {
-                            double ehjsl_1 = double.Parse(dataTable1.Rows[a][12].ToString());
+                            double ehjsl_1 = double.Parse(MFITable.Rows[a][3].ToString());
                             ehjsl.Add(ehjsl_1);
-                            line14 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][12]));
-                            Num10.Add(Convert.ToDouble(dataTable1.Rows[a][12]));
+                            line14 = new DataPoint(DateTimeAxis.ToDouble(MFITable.Rows[a][0]), Convert.ToDouble(MFITable.Rows[a][3]));
+                            Num10.Add(Convert.ToDouble(MFITable.Rows[a][3]));
                         }
                         else
                         {
                             ehjsl.Add(double.NaN);
-                            line14 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
+                            line14 = new DataPoint(DateTimeAxis.ToDouble(MFITable.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line14 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][12]));
                         Line14.Add(line14);
-
                         DataPoint line15 = new DataPoint();
-                        if (dataTable1.Rows[a][13].ToString() != "")
+                        if (MFITable.Rows[a][4].ToString() != "")
                         {
-                            double hhlcw_1 = double.Parse(dataTable1.Rows[a][13].ToString());
+                            double hhlcw_1 = double.Parse(MFITable.Rows[a][4].ToString());
                             hhlcw.Add(hhlcw_1);
-                            line15 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][13]));
-                            Num11.Add(Convert.ToDouble(dataTable1.Rows[a][13]));
+                            line15 = new DataPoint(DateTimeAxis.ToDouble(MFITable.Rows[a][0]), Convert.ToDouble(MFITable.Rows[a][4]));
+                            Num11.Add(Convert.ToDouble(MFITable.Rows[a][4]));
                         }
                         else
                         {
                             hhlcw.Add(double.NaN);
-                            line15 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
+                            line15 = new DataPoint(DateTimeAxis.ToDouble(MFITable.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line15 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][13]));
                         Line15.Add(line15);
-
                         max11 = (int)Num11.Max() + 1;
                         min11 = (int)Num11.Min();
                         DataPoint line16 = new DataPoint();
-                        if (dataTable1.Rows[a][14].ToString() != "")
+                        if (MFITable.Rows[a][5].ToString() != "")
                         {
-                            double ygzs_1 = double.Parse(dataTable1.Rows[a][14].ToString());
+                            double ygzs_1 = double.Parse(MFITable.Rows[a][5].ToString());
                             ygzs.Add(ygzs_1);
-                            line16 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][14]));
-                            Num12.Add(Convert.ToDouble(dataTable1.Rows[a][14]));
+                            line16 = new DataPoint(DateTimeAxis.ToDouble(MFITable.Rows[a][0]), Convert.ToDouble(MFITable.Rows[a][5]));
+                            Num12.Add(Convert.ToDouble(MFITable.Rows[a][5]));
                         }
                         else
                         {
                             ygzs.Add(double.NaN);
-                            line16 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), double.NaN);
+                            line16 = new DataPoint(DateTimeAxis.ToDouble(MFITable.Rows[a][0]), double.NaN);
                         }
                         //DataPoint line16 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][14]));
                         Line16.Add(line16);
+
                     }
+                }
+                string MAT = "select timestamp,MAT_PLC_T_SP_W from C_MAT_PLC_1MIN where TIMESTAMP between '" + DateTime.Now.AddHours(-sjd) + "' and '" + DateTime.Now + "' order by TIMESTAMP";
+                DataTable MATTable = dBSQL.GetCommand(MAT);
+                if (MATTable.Rows.Count > 0)
+                {
+                    for(int a = 0; a < MATTable.Rows.Count; a++)
+                    {
+                        DataPoint line12 = new DataPoint();
+                        if (MATTable.Rows[a][1].ToString() != "")
+                        {
+                            double zll_1 = double.Parse(MATTable.Rows[a][1].ToString());
+                            zll.Add(zll_1);
+                            line12 = new DataPoint(DateTimeAxis.ToDouble(MATTable.Rows[a][0]), Convert.ToDouble(MATTable.Rows[a][1]));
+                            Num8.Add(Convert.ToDouble(MATTable.Rows[a][1]));
+                        }
+                        else
+                        {
+                            zll.Add(double.NaN);
+                            line12 = new DataPoint(DateTimeAxis.ToDouble(MATTable.Rows[a][0]), double.NaN);
+                        }
+                        //DataPoint line12 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[a][0]), Convert.ToDouble(dataTable1.Rows[a][10]));
+                        Line12.Add(line12);
+                    }
+                }
 
                     //烧结机机速
                     var sql_2 = "select TIMESTAMP, F_PLC_SIN_SPEED_PV from C_MFI_PLC_1MIN where TIMESTAMP between '" + DateTime.Now.AddHours(-sjd) + "' and '" + DateTime.Now + "' order by TIMESTAMP";
@@ -1039,7 +1073,7 @@ namespace LY_SINTER.PAGE.HIS
                         }
                         //c = float.Parse((a / b).ToString());
                         dhwd.Add(c);
-                        DataPoint line11 = new DataPoint(DateTimeAxis.ToDouble(dataTable1.Rows[i]["TIMESTAMP"]), Convert.ToDouble(c));
+                        DataPoint line11 = new DataPoint(DateTimeAxis.ToDouble(dataTable6.Rows[i]["TIMESTAMP"]), Convert.ToDouble(c));
                         Line11.Add(line11);
 
                         Num7.Add(c);
@@ -1095,8 +1129,8 @@ namespace LY_SINTER.PAGE.HIS
                     min13 = (Num13.Count == 0) ? 0 : (int)Num13.Min() - 1;
                     max14 = (Num14.Count == 0) ? 0 : (int)Num14.Max() + 1;
                     min14 = (Num14.Count == 0) ? 0 : (int)Num14.Min() - 1;
-                }
-                else
+                
+                /*else
                 {
                     string sj = DateTime.Now.ToString();
                     shijian.Add(sj);
@@ -1117,7 +1151,7 @@ namespace LY_SINTER.PAGE.HIS
                     ygzs.Add(0);
                     sjjs.Add(0);
                     hljs.Add(0);
-                }
+                }*/
             }
             catch
             { }
@@ -1883,7 +1917,7 @@ namespace LY_SINTER.PAGE.HIS
                 IsAxisVisible = true,
                 MinorTickSize = 0,
                 Maximum = max8,
-                Minimum = min8 - 10,
+                Minimum = min8,
                 //StartPosition = 0.2,
             };
             if (min8 == max8 && min8 == 0)

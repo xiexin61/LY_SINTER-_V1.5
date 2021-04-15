@@ -40,7 +40,7 @@
             this.labS_2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pipeLine_Two1 = new UserControlIndex.PipeLine_Two();
-            this.blendingUC2 = new UserControlIndex.BlendingUC();
+            this.blendingUC2 = new UserControlIndex.BlendingUC2();
             this.pipeLine_Text1 = new UserControlIndex.PipeLine_Text();
             this.blendingUC1 = new UserControlIndex.BlendingUC();
             this.pipeLine_Right1 = new UserControlIndex.PipeLine_Right();
@@ -380,7 +380,7 @@
         private UserControlIndex.BottleAllUC bottleAllUC1;
         private System.Windows.Forms.Panel panel1;
         private UserControlIndex.PipeLine_Two pipeLine_Two1;
-        private UserControlIndex.BlendingUC blendingUC2;
+        private UserControlIndex.BlendingUC2 blendingUC2;
         private UserControlIndex.PipeLine_Text pipeLine_Text1;
         private UserControlIndex.BlendingUC blendingUC1;
         private UserControlIndex.PipeLine_Right pipeLine_Right1;
