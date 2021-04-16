@@ -6634,7 +6634,7 @@ PAR_T：MC_SINCAL_C_R_PAR表，PAR_T字段;)
             /// key:仓号(非燃料或溶剂 且 为启用状态)
             /// value:配比值
             /// </returns>
-            var hrs = houseDataCRM_1();
+            var hrs = houseDataCRM();
 
             for (int i = 0; i < 30; i++)//根据选择出的熔剂和燃料仓号，求出燃料和熔剂的加权平均成分
             {
