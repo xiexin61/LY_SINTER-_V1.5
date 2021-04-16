@@ -17,10 +17,11 @@ namespace LY_SINTER.PAGE.Parameter
     public partial class Ingredient_Protect : UserControl
     {
         public System.Timers.Timer _Timer1 { get; set; }
-        DBSQL _dBSQL = new DBSQL(ConstParameters.strCon);
+        private DBSQL _dBSQL = new DBSQL(ConstParameters.strCon);
         public static Ingredient_auto _Auto;
 
         public vLog _vLog { get; set; }
+
         public Ingredient_Protect()
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace LY_SINTER.PAGE.Parameter
             _Timer1.Enabled = true;
             _Timer1.AutoReset = true;////每到指定时间Elapsed事件是触发一次（false），还是一直触发（true）
         }
+
         private void _Timer1_Tick()
         {
             Action invokeAction = new Action(_Timer1_Tick);
@@ -47,6 +49,7 @@ namespace LY_SINTER.PAGE.Parameter
                 Button_color();
             }
         }
+
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             protect_add form_display = new protect_add();
@@ -60,6 +63,7 @@ namespace LY_SINTER.PAGE.Parameter
                 form_display.Activate();
             }
         }
+
         /// <summary>
         /// 初始化显示数据赋值
         /// </summary>
@@ -77,8 +81,8 @@ namespace LY_SINTER.PAGE.Parameter
                 string mistake = "原料保护页面初始化显示数据失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
             }
-
         }
+
         /// <summary>
         /// 物料归属分类
         /// </summary>
@@ -93,19 +97,20 @@ namespace LY_SINTER.PAGE.Parameter
                 dr["value"] = 9;
                 dr["CODE_MIN"] = 101;
                 dr["CODE_MAX"] = 800;
-                dataTable.Rows.Add(dr);
+                dataTable.Rows.InsertAt(dr, 0);
+                //dataTable.Rows.Add(dr);
                 this.comboBox1.DataSource = dataTable;
                 this.comboBox1.DisplayMember = "name";
                 this.comboBox1.ValueMember = "value";
-                this.comboBox1.SelectedIndex = 9;
+                this.comboBox1.SelectedIndex = 0;
             }
             catch (Exception ee)
             {
                 var mistake = "原料保护页面识别物料归属分类识别失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
             }
-
         }
+
         /// <summary>
         /// 删除按钮
         /// </summary>
@@ -127,29 +132,28 @@ namespace LY_SINTER.PAGE.Parameter
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
             try
             {
                 if (dataGridView1.Columns[e.ColumnIndex].Name == "button" && e.RowIndex >= 0)
                 {
                     string _name = dataGridView1.Rows[e.RowIndex].Cells["button"].Value.ToString();
-                        if (_name == "保存")
+                    if (_name == "保存")
+                    {
+                        List<float> list = new List<float>();
+                        DateTime date = DateTime.Now;
+                        int L2_CODE = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
+                        dataGridView1.Rows[e.RowIndex].Cells["button"].Value = "修改";
+                        for (int x = 0; x < dataGridView1.ColumnCount; x++)
                         {
-                            List<float> list = new List<float>();
-                            DateTime date = DateTime.Now;
-                            int L2_CODE = int.Parse(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
-                            dataGridView1.Rows[e.RowIndex].Cells["button"].Value = "修改";
-                            for (int x = 0; x < dataGridView1.ColumnCount; x++)
+                            if (x > 4)
                             {
-                                if (x > 4)
-                                {
-                                    dataGridView1.Rows[e.RowIndex].Cells[x].ReadOnly = true;
-                                    dataGridView1.Rows[e.RowIndex].Cells[x].Style.ForeColor = Color.Black; ;
-                               // string a = dataGridView1.Rows[e.RowIndex].Cells[x].Value.ToString();
-                                    if(x > 7)
+                                dataGridView1.Rows[e.RowIndex].Cells[x].ReadOnly = true;
+                                dataGridView1.Rows[e.RowIndex].Cells[x].Style.ForeColor = Color.Black; ;
+                                // string a = dataGridView1.Rows[e.RowIndex].Cells[x].Value.ToString();
+                                if (x > 7)
                                     list.Add(float.Parse(dataGridView1.Rows[e.RowIndex].Cells[x].Value.ToString()));
-                                }
                             }
+                        }
                         //    //物料描述修改
                         //    dataGridView1.Rows[e.RowIndex].Cells[5].ReadOnly = true;
                         //    dataGridView1.Rows[e.RowIndex].Cells[5].Style.ForeColor = Color.Black; ;
@@ -160,10 +164,6 @@ namespace LY_SINTER.PAGE.Parameter
                         string WLMS = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
                         string CD = dataGridView1.Rows[e.RowIndex].Cells["Column68"].Value.ToString();//产地
                         string DJ = dataGridView1.Rows[e.RowIndex].Cells["Column67"].Value.ToString() == "" ? "null" : dataGridView1.Rows[e.RowIndex].Cells["Column67"].Value.ToString();//单价
-
-
-
-
 
                         string sql_update = "update M_MATERIAL_COOD set C_TFE_UP = " + list[0] + ",C_TFE_LOWER = " + list[1] + "," +
                                 "C_FEO_UP =" + list[2] + ",C_FEO_LOWER  =" + list[3] + ",C_CAO_UP =" + list[4] + "," +
@@ -184,20 +184,20 @@ namespace LY_SINTER.PAGE.Parameter
                                 "C_NA_UP= " + list[50] + ",C_NA_LOWER= " + list[51] + ",C_CR_UP= " + list[52] + "," +
                                 "C_CR_LOWER= " + list[53] + ",C_NI_UP= " + list[54] + ",C_NI_LOWER= " + list[55] + "," +
                                 "C_MNO_UP= " + list[56] + ",C_MNO_LOWER= " + list[57] + " ,TIMESTAMP = getdate()    where L2_CODE = " + L2_CODE + "";
-                            string SQL_UPDATE_WLMS = "UPDATE M_MATERIAL_COOD set MAT_DESC = '" + WLMS + "',UNIT_PRICE = "+ DJ + ",PLACE_ORIGIN = '"+ CD+"' where L2_CODE = " + L2_CODE + "";
+                        string SQL_UPDATE_WLMS = "UPDATE M_MATERIAL_COOD set MAT_DESC = '" + WLMS + "',UNIT_PRICE = " + DJ + ",PLACE_ORIGIN = '" + CD + "' where L2_CODE = " + L2_CODE + "";
 
-                            //20201110 添加修改M_IRON_MATERIAL_CLASS表物料描述
-                            var sql = "update M_IRON_MATERIAL_CLASS set MAT_DESC = '" + WLMS + "'  where L2_CODE = " + L2_CODE + "";
-                            //20201117 添加修改MC_NUMCAL_INTERFACE_1表物料描述
-                            var sq2 = "update MC_NUMCAL_INTERFACE_1 set MAT_DESC = '" + WLMS + "'  where L2_CODE = " + L2_CODE + "";
-                            //20201117 添加修改MC_NUMCAL_INTERFACE_1_PRE表物料描述
-                            var sq3 = "update MC_NUMCAL_INTERFACE_1_PRE set MAT_DESC = '" + WLMS + "'  where L2_CODE = " + L2_CODE + "";
-                            //20201117 添加修改MC_NUMCAL_INTERFACE_2表物料描述
-                            var sq4 = "update MC_NUMCAL_INTERFACE_2 set MAT_DESC = '" + WLMS + "'  where L2_CODE = " + L2_CODE + "";
-                            //20201117 添加修改MC_NUMCAL_INTERFACE_4表物料描述
-                            var sq5 = "update MC_NUMCAL_INTERFACE_4 set MAT_DESC = '" + WLMS + "'  where L2_CODE = " + L2_CODE + "";
-                            try
-                            {
+                        //20201110 添加修改M_IRON_MATERIAL_CLASS表物料描述
+                        var sql = "update M_IRON_MATERIAL_CLASS set MAT_DESC = '" + WLMS + "'  where L2_CODE = " + L2_CODE + "";
+                        //20201117 添加修改MC_NUMCAL_INTERFACE_1表物料描述
+                        var sq2 = "update MC_NUMCAL_INTERFACE_1 set MAT_DESC = '" + WLMS + "'  where L2_CODE = " + L2_CODE + "";
+                        //20201117 添加修改MC_NUMCAL_INTERFACE_1_PRE表物料描述
+                        var sq3 = "update MC_NUMCAL_INTERFACE_1_PRE set MAT_DESC = '" + WLMS + "'  where L2_CODE = " + L2_CODE + "";
+                        //20201117 添加修改MC_NUMCAL_INTERFACE_2表物料描述
+                        var sq4 = "update MC_NUMCAL_INTERFACE_2 set MAT_DESC = '" + WLMS + "'  where L2_CODE = " + L2_CODE + "";
+                        //20201117 添加修改MC_NUMCAL_INTERFACE_4表物料描述
+                        var sq5 = "update MC_NUMCAL_INTERFACE_4 set MAT_DESC = '" + WLMS + "'  where L2_CODE = " + L2_CODE + "";
+                        try
+                        {
                             _dBSQL.CommandExecuteNonQuery(sql_update);
                             _dBSQL.CommandExecuteNonQuery(SQL_UPDATE_WLMS);
                             //_dBSQL.CommandExecuteNonQuery(sql);
@@ -205,31 +205,27 @@ namespace LY_SINTER.PAGE.Parameter
                             //_dBSQL.CommandExecuteNonQuery(sq3);
                             //_dBSQL.CommandExecuteNonQuery(sq4);
                             //_dBSQL.CommandExecuteNonQuery(sq5);
-                                MessageBox.Show("操作成功");
-                            }
-                            catch
-                            {
-
-                            }
-
+                            MessageBox.Show("操作成功");
                         }
-                        else if (_name == "修改")
+                        catch
                         {
-                        dataGridView1.Rows[e.RowIndex].Cells["button"].Value = "保存";
-                            for (int x = 0; x < dataGridView1.ColumnCount; x++)
-                            {
-                                if (x > 4)
-                                {
-                                    dataGridView1.Rows[e.RowIndex].Cells[x].ReadOnly = false;
-                                    dataGridView1.Rows[e.RowIndex].Cells[x].Style.ForeColor = Color.Red; ;
-                                }
-                            }
-                            //dataGridView1.Rows[e.RowIndex].Cells[5].ReadOnly = false;
-                            //dataGridView1.Rows[e.RowIndex].Cells[5].Style.ForeColor = Color.Red; ;
-
                         }
-
                     }
+                    else if (_name == "修改")
+                    {
+                        dataGridView1.Rows[e.RowIndex].Cells["button"].Value = "保存";
+                        for (int x = 0; x < dataGridView1.ColumnCount; x++)
+                        {
+                            if (x > 4)
+                            {
+                                dataGridView1.Rows[e.RowIndex].Cells[x].ReadOnly = false;
+                                dataGridView1.Rows[e.RowIndex].Cells[x].Style.ForeColor = Color.Red; ;
+                            }
+                        }
+                        //dataGridView1.Rows[e.RowIndex].Cells[5].ReadOnly = false;
+                        //dataGridView1.Rows[e.RowIndex].Cells[5].Style.ForeColor = Color.Red; ;
+                    }
+                }
             }
             catch (Exception ee)
             {
@@ -259,7 +255,6 @@ namespace LY_SINTER.PAGE.Parameter
                     DataTable dataTable_2 = _dBSQL.GetCommand(sql_2);
                     // dataGridView1.DataSource = null;
                     dataGridView1.DataSource = dataTable_2;
-
                 }
             }
             catch (Exception ee)
@@ -271,7 +266,6 @@ namespace LY_SINTER.PAGE.Parameter
 
         private void simpleButton8_Click(object sender, EventArgs e)
         {
-           
         }
 
         private void simpleButton6_Click(object sender, EventArgs e)
@@ -290,7 +284,7 @@ namespace LY_SINTER.PAGE.Parameter
                 string columnTitle = "";
                 try
                 {
-                    //写入列标题    
+                    //写入列标题
                     for (int i = 0; i < dataGridView1.ColumnCount; i++)
                     {
                         if (i > 0)
@@ -301,7 +295,7 @@ namespace LY_SINTER.PAGE.Parameter
                     }
                     sw.WriteLine(columnTitle);
 
-                    //写入列内容    
+                    //写入列内容
                     for (int j = 0; j < dataGridView1.Rows.Count; j++)
                     {
                         string columnValue = "";
@@ -332,6 +326,7 @@ namespace LY_SINTER.PAGE.Parameter
                 }
             }
         }
+
         /// <summary>
         /// 最新调整时间
         /// </summary>
@@ -348,8 +343,8 @@ namespace LY_SINTER.PAGE.Parameter
                 var mistake = "原料保护页面最新调整时间查询失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
             }
-
         }
+
         /// <summary>
         /// 未处理新料弹出框
         /// </summary>
@@ -357,7 +352,6 @@ namespace LY_SINTER.PAGE.Parameter
         /// <param name="e"></param>
         private void simpleButton7_Click(object sender, EventArgs e)
         {
-
             Button_untreated form_display = new Button_untreated();
 
             if (Button_untreated.isopen == false)
@@ -370,6 +364,7 @@ namespace LY_SINTER.PAGE.Parameter
                 form_display.Activate();
             }
         }
+
         /// <summary>
         /// 周期查询原料新成分弹出框
         /// _flag =1 :通过判断M_MATERIAL_ANALYSIS表数据查询新成分
@@ -382,6 +377,7 @@ namespace LY_SINTER.PAGE.Parameter
                 if (_flag == 1)
                 {
                     #region 原料保护弹出框
+
                     string sql_M_MATERIAL_ANALYSIS_FLAG = "select REOPTTIME,L3_CODE from M_MATERIAL_ANALYSIS where FLAG = 1";
                     DataTable data_M_MATERIAL_ANALYSIS_FLAG = _dBSQL.GetCommand(sql_M_MATERIAL_ANALYSIS_FLAG);
                     if (data_M_MATERIAL_ANALYSIS_FLAG.Rows.Count > 0)
@@ -395,22 +391,21 @@ namespace LY_SINTER.PAGE.Parameter
                         {
                             _Auto.Activate();
                         }
-                        
                     }
-                    #endregion
+
+                    #endregion 原料保护弹出框
                 }
                 else if (_flag == 2)
                 {
-
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 var mistake = "Pop_show方法失败" + ee.ToString();
                 _vLog.writelog(mistake, -1);
             }
-            
         }
+
         /// <summary>
         /// 定时刷新，未处理新原料按钮颜色
         /// </summary>
@@ -429,15 +424,13 @@ namespace LY_SINTER.PAGE.Parameter
                     this.simpleButton7.Appearance.BackColor = Color.Green;
                 }
             }
-            catch(Exception EE)
+            catch (Exception EE)
             {
                 var MSITAKE = "Button_color方法失败" + EE.ToString();
                 _vLog.writelog(MSITAKE, -1);
             }
-
-
-
         }
+
         /// <summary>
         /// 定时器启用
         /// </summary>
@@ -445,6 +438,7 @@ namespace LY_SINTER.PAGE.Parameter
         {
             _Timer1.Enabled = true;
         }
+
         /// <summary>
         /// 定时器停用
         /// </summary>
@@ -452,6 +446,7 @@ namespace LY_SINTER.PAGE.Parameter
         {
             _Timer1.Enabled = false;
         }
+
         /// <summary>
         /// 控件关闭
         /// </summary>

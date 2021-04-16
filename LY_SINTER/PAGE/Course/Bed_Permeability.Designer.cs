@@ -35,6 +35,7 @@ namespace LY_SINTER.PAGE.Course
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -124,7 +125,7 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1262, 72);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1262, 64);
             this.tableLayoutPanel2.TabIndex = 1;
             this.tableLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel2_Paint);
             // 
@@ -170,7 +171,7 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1236, 31);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1236, 29);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // simpleButton3
@@ -183,7 +184,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton3.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.Image")));
             this.simpleButton3.Location = new System.Drawing.Point(606, 3);
             this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(79, 25);
+            this.simpleButton3.Size = new System.Drawing.Size(79, 23);
             this.simpleButton3.TabIndex = 10;
             this.simpleButton3.Text = "实时";
             this.simpleButton3.Click += new System.EventHandler(this.simpleButton3_Click);
@@ -198,7 +199,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton2.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.Image")));
             this.simpleButton2.Location = new System.Drawing.Point(521, 3);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(79, 25);
+            this.simpleButton2.Size = new System.Drawing.Size(79, 23);
             this.simpleButton2.TabIndex = 9;
             this.simpleButton2.Text = "查询";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
@@ -208,7 +209,7 @@ namespace LY_SINTER.PAGE.Course
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("SimSun", 9F);
-            this.label3.Location = new System.Drawing.Point(135, 9);
+            this.label3.Location = new System.Drawing.Point(135, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 12);
             this.label3.TabIndex = 4;
@@ -220,7 +221,7 @@ namespace LY_SINTER.PAGE.Course
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("SimSun", 9F);
-            this.label4.Location = new System.Drawing.Point(329, 9);
+            this.label4.Location = new System.Drawing.Point(329, 8);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 6;
@@ -235,7 +236,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(691, 3);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(79, 25);
+            this.simpleButton1.Size = new System.Drawing.Size(79, 23);
             this.simpleButton1.TabIndex = 14;
             this.simpleButton1.Text = "导出";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click_1);
@@ -248,7 +249,7 @@ namespace LY_SINTER.PAGE.Course
             this.simpleButton4.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton4.Image")));
             this.simpleButton4.Location = new System.Drawing.Point(3, 3);
             this.simpleButton4.Name = "simpleButton4";
-            this.simpleButton4.Size = new System.Drawing.Size(124, 25);
+            this.simpleButton4.Size = new System.Drawing.Size(124, 23);
             this.simpleButton4.TabIndex = 3;
             this.simpleButton4.Text = "参数查询修改";
             this.simpleButton4.Click += new System.EventHandler(this.simpleButton4_Click);
@@ -260,7 +261,7 @@ namespace LY_SINTER.PAGE.Course
             this.label2.Font = new System.Drawing.Font("SimSun", 9F);
             this.label2.Location = new System.Drawing.Point(1156, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 31);
+            this.label2.Size = new System.Drawing.Size(77, 29);
             this.label2.TabIndex = 2;
             this.label2.Text = "最新调整时间";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -268,7 +269,7 @@ namespace LY_SINTER.PAGE.Course
             // textBox_begin
             // 
             this.textBox_begin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_begin.Location = new System.Drawing.Point(197, 5);
+            this.textBox_begin.Location = new System.Drawing.Point(197, 4);
             this.textBox_begin.Name = "textBox_begin";
             this.textBox_begin.Size = new System.Drawing.Size(124, 21);
             this.textBox_begin.TabIndex = 17;
@@ -276,7 +277,7 @@ namespace LY_SINTER.PAGE.Course
             // textBox_end
             // 
             this.textBox_end.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox_end.Location = new System.Drawing.Point(391, 5);
+            this.textBox_end.Location = new System.Drawing.Point(391, 4);
             this.textBox_end.Name = "textBox_end";
             this.textBox_end.Size = new System.Drawing.Size(124, 21);
             this.textBox_end.TabIndex = 18;
@@ -289,13 +290,13 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 81);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 73);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20.80925F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45.42857F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.85714F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1262, 712);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1262, 720);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // tableLayoutPanel7
@@ -306,12 +307,12 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel7.Controls.Add(this.label7, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel8, 0, 1);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 474);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 478);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 2;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1256, 235);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1256, 239);
             this.tableLayoutPanel7.TabIndex = 6;
             // 
             // label7
@@ -339,7 +340,7 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(1248, 206);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1248, 210);
             this.tableLayoutPanel8.TabIndex = 6;
             // 
             // tableLayoutPanel9
@@ -378,7 +379,7 @@ namespace LY_SINTER.PAGE.Course
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(3, 38);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1242, 165);
+            this.panel4.Size = new System.Drawing.Size(1242, 169);
             this.panel4.TabIndex = 1;
             // 
             // chart_xgx
@@ -392,7 +393,7 @@ namespace LY_SINTER.PAGE.Course
             this.chart_xgx.LPageSize = 10;
             this.chart_xgx.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.chart_xgx.Name = "chart_xgx";
-            this.chart_xgx.Size = new System.Drawing.Size(1242, 165);
+            this.chart_xgx.Size = new System.Drawing.Size(1242, 169);
             this.chart_xgx.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -403,12 +404,12 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel6.Controls.Add(this.label6, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.d1, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 151);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 152);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1256, 317);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1256, 320);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // label6
@@ -426,16 +427,18 @@ namespace LY_SINTER.PAGE.Course
             // d1
             // 
             this.d1.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
+            this.d1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.d1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.d1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("SimSun", 9F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.d1.ColumnHeadersHeight = 60;
             this.d1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -457,14 +460,14 @@ namespace LY_SINTER.PAGE.Course
             this.Column17,
             this.Column18,
             this.Column19});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.d1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.d1.DefaultCellStyle = dataGridViewCellStyle3;
             this.d1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.d1.EnableHeadersVisualStyles = false;
             this.d1.Location = new System.Drawing.Point(4, 25);
@@ -472,21 +475,21 @@ namespace LY_SINTER.PAGE.Course
             this.d1.MergeByColumnName = "";
             this.d1.MergeColumnNames = ((System.Collections.Generic.List<string>)(resources.GetObject("d1.MergeColumnNames")));
             this.d1.Name = "d1";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.d1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.d1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.d1.RowHeadersVisible = false;
             this.d1.RowHeadersWidth = 60;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("SimSun", 9F);
-            this.d1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("SimSun", 9F);
+            this.d1.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.d1.RowTemplate.Height = 23;
-            this.d1.Size = new System.Drawing.Size(1248, 288);
+            this.d1.Size = new System.Drawing.Size(1248, 291);
             this.d1.TabIndex = 6;
             this.d1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.d1_Scroll);
             // 
@@ -686,7 +689,7 @@ namespace LY_SINTER.PAGE.Course
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1256, 142);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1256, 143);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // curve_his
@@ -696,7 +699,7 @@ namespace LY_SINTER.PAGE.Course
             this.curve_his.Location = new System.Drawing.Point(4, 25);
             this.curve_his.Name = "curve_his";
             this.curve_his.PanCursor = System.Windows.Forms.Cursors.Hand;
-            this.curve_his.Size = new System.Drawing.Size(1248, 113);
+            this.curve_his.Size = new System.Drawing.Size(1248, 114);
             this.curve_his.TabIndex = 22;
             this.curve_his.Text = "plotView5";
             this.curve_his.ZoomHorizontalCursor = System.Windows.Forms.Cursors.SizeWE;

@@ -14,6 +14,7 @@ using LY_SINTER.Model;
 using OxyPlot.Axes;
 using OxyPlot;
 using LY_SINTER.Popover.Quality;
+using OxyPlot.Series;
 
 namespace LY_SINTER.PAGE.Quality
 {
@@ -68,6 +69,7 @@ namespace LY_SINTER.PAGE.Quality
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
             fines_change();//返矿变化状况
+            //fines_changeTest();//测试时间作为x轴，柱状图测试
             _Timer1 = new System.Timers.Timer(60000);//初始化颜色变化定时器响应事件
             _Timer1.Elapsed += (x, y) => { Timer1_Tick_1(); };//响应事件
             _Timer1.Enabled = true;
@@ -131,7 +133,7 @@ namespace LY_SINTER.PAGE.Quality
                     _myPlotModel_His = new PlotModel()
                     {
                         Background = OxyColors.White,
-                       // PlotMargins = new OxyThickness(40, 10, 5, 0),
+                        // PlotMargins = new OxyThickness(40, 10, 5, 0),
                     };
                     //X轴
                     _dateAxis_His = new DateTimeAxis()
@@ -623,8 +625,8 @@ namespace LY_SINTER.PAGE.Quality
                         Line1.Add(_line1);
                         Line2.Add(_line2);
                     }
-                    check_zcll.Text = "总出料量:" + _value.Item2[0].ToString("0.00") + "t";
-                    check_cwbh.Text = "仓位变化:" + _value.Item3[0].ToString("0.00") + "t";
+                    check_zcll.Text = "总出料量(t):" + _value.Item2[0].ToString("0.00");
+                    check_cwbh.Text = "仓位变化(t):" + _value.Item3[0].ToString("0.00");
                     max1 = (int)_value.Item2.Max();
                     min1 = (int)_value.Item2.Min();
                     max2 = (int)_value.Item3.Max();
@@ -774,6 +776,177 @@ namespace LY_SINTER.PAGE.Quality
             }
         }
 
+        public void fines_changeTest()
+        {
+            try
+            {
+                Tuple<bool, List<double>, List<double>, List<string>> _value = _quality._Get_Mine_Change();
+                if (_value.Item1)
+                {
+                    //总出料量 1h
+                    textBox30.Text = _value.Item2[0].ToString();
+                    //总出料量 2h
+                    textBox29.Text = _value.Item2[1].ToString();
+                    //总出料量 3h
+                    textBox28.Text = _value.Item2[2].ToString();
+                    //总出料量 4h
+                    textBox27.Text = _value.Item2[3].ToString();
+                    //总出料量 5h
+                    textBox26.Text = _value.Item2[4].ToString();
+                    //总出料量 6h
+                    textBox25.Text = _value.Item2[5].ToString();
+                    //总出料量 7h
+                    textBox24.Text = _value.Item2[6].ToString();
+                    //总出料量 8h
+                    textBox23.Text = _value.Item2[7].ToString();
+                    //总出料量 9h
+                    textBox22.Text = _value.Item2[8].ToString();
+                    //总出料量 10h
+                    textBox21.Text = _value.Item2[9].ToString();
+                    //总出料量 11h
+                    textBox20.Text = _value.Item2[10].ToString();
+                    //总出料量 12h
+                    textBox19.Text = _value.Item2[11].ToString();
+
+                    //仓位变化 1h
+                    textBox42.Text = _value.Item3[0].ToString();
+                    //仓位变化 2h
+                    textBox41.Text = _value.Item3[1].ToString();
+                    //仓位变化 3h
+                    textBox40.Text = _value.Item3[2].ToString();
+                    //仓位变化 4h
+                    textBox39.Text = _value.Item3[3].ToString();
+                    //仓位变化 5h
+                    textBox38.Text = _value.Item3[4].ToString();
+                    //仓位变化 6h
+                    textBox37.Text = _value.Item3[5].ToString();
+                    //仓位变化 7h
+                    textBox36.Text = _value.Item3[6].ToString();
+                    //仓位变化 8h
+                    textBox35.Text = _value.Item3[7].ToString();
+                    //仓位变化 9h
+                    textBox34.Text = _value.Item3[8].ToString();
+                    //仓位变化 10h
+                    textBox33.Text = _value.Item3[9].ToString();
+                    //仓位变化 11h
+                    textBox32.Text = _value.Item3[10].ToString();
+                    //仓位变化 12h
+                    textBox31.Text = _value.Item3[11].ToString();
+                    //时间time_name
+                    List<DateTime> time_name = new List<DateTime>();
+                    for (int x = _value.Item4.Count; x > 0; x--)
+                    {
+                        time_name.Add(DateTime.Parse(_value.Item4[x - 1]));
+                    }
+
+                    label27.Text = time_name[0].ToString("HH:mm");
+                    label28.Text = time_name[1].ToString("HH:mm");
+                    label29.Text = time_name[2].ToString("HH:mm");
+                    label30.Text = time_name[3].ToString("HH:mm");
+                    label31.Text = time_name[4].ToString("HH:mm");
+                    label32.Text = time_name[5].ToString("HH:mm");
+                    label33.Text = time_name[6].ToString("HH:mm");
+                    label34.Text = time_name[7].ToString("HH:mm");
+                    label35.Text = time_name[8].ToString("HH:mm");
+                    label36.Text = time_name[9].ToString("HH:mm");
+                    label37.Text = time_name[10].ToString("HH:mm");
+                    label38.Text = time_name[11].ToString("HH:mm");
+                    DataPoint _line1 = new DataPoint();
+                    DataPoint _line2 = new DataPoint();
+                    Line1.Clear();
+                    Line2.Clear();
+                    for (int i = 11; i >= 0; i--)
+                    {
+                        _line1 = new DataPoint(DateTimeAxis.ToDouble(time_name[11 - i]), Convert.ToDouble(_value.Item2[i]));//总出料量
+                        _line2 = new DataPoint(DateTimeAxis.ToDouble(time_name[11 - i]), Convert.ToDouble(_value.Item3[i]));//仓位变化
+                        Line1.Add(_line1);
+                        Line2.Add(_line2);
+                    }
+                    check_zcll.Text = "总出料量:" + _value.Item2[0].ToString("0.00") + "t";
+                    check_cwbh.Text = "仓位变化:" + _value.Item3[0].ToString("0.00") + "t";
+                    max1 = (int)_value.Item2.Max();
+                    min1 = (int)_value.Item2.Min();
+                    max2 = (int)_value.Item3.Max();
+                    min2 = (int)_value.Item3.Min();
+                    _myPlotModel = new PlotModel()//定义容器
+                    {
+                        Background = OxyColors.White,
+                        PlotMargins = new OxyThickness(40, 20, 20, 10),
+                    };
+                    //X轴定义categoriesAxi
+                    CategoryAxis _categoryAxis = new CategoryAxis()
+                    {
+                        MajorTickSize = 0,
+                        IsZoomEnabled = false,
+                        Position = AxisPosition.Bottom,
+                        FontSize = 9.0,
+                    };
+                    //x轴添加数据
+                    for (int i = 0; i < time_name.Count; i++)
+                    {
+                        _categoryAxis.Labels.Add(time_name[i].ToString());
+                    }
+                    _myPlotModel.Axes.Add(_categoryAxis);//添加x轴
+                    _valueAxis1 = new LinearAxis()//添加y轴
+                    {
+                        MajorGridlineStyle = LineStyle.None,
+                        MinorGridlineStyle = LineStyle.None,
+                        IntervalLength = 80,
+                        IsZoomEnabled = false,
+                        IsPanEnabled = false,
+                        PositionTier = 1,
+                        AxislineStyle = LineStyle.Solid,
+                        AxislineColor = OxyColors.Red,
+                        MinorTicklineColor = OxyColors.Red,
+                        TicklineColor = OxyColors.Red,
+                        TextColor = OxyColors.Red,
+                        FontSize = 9.0,
+                        IsAxisVisible = true,
+                        MinorTickSize = 0,
+                    };
+                    _myPlotModel.Axes.Add(_valueAxis1);
+
+                    var _ColumnSeries = new ColumnSeries()
+                    {//柱状图
+                        Background = OxyColors.White,
+                        LabelPlacement = LabelPlacement.Inside,
+                        TextColor = OxyColors.Black,
+                    };
+                    //添加数据项
+                    for (int i = 0; i < _value.Item2.Count; i++)
+                    {
+                        _ColumnSeries.Items.Add(new ColumnItem() { Value = _value.Item2[i] });
+                    }
+
+                    _myPlotModel.Series.Add(_ColumnSeries);
+
+                    //控制柱子的颜色
+                    for (int i = 0; i < _value.Item2.Count; i++)
+                    {
+                        if (_value.Item2[i] < 50)
+                        {
+                            _ColumnSeries.Items[i].Color = OxyColors.Red;
+                        }
+                    }
+                    plotView1.Model = _myPlotModel;
+                    var PlotController = new OxyPlot.PlotController();
+                    PlotController.BindMouseEnter(PlotCommands.HoverPointsOnlyTrack);
+                    plotView1.Controller = PlotController;
+                }
+                else
+                {
+                    vLog.writelog("Quality_Model模型方法_Get_Mine_Change计算错误", -1);
+                    return;
+                }
+            }
+            catch (Exception ee)
+            {
+                string mistake = "返矿变化状况报错" + ee.ToString();
+                vLog.writelog(mistake, -1);
+                return;
+            }
+        }
+
         /// <summary>
         /// 定时刷新勾选框数据
         /// </summary>
@@ -785,15 +958,15 @@ namespace LY_SINTER.PAGE.Quality
                 DataTable dataTable_1 = dBSQL.GetCommand(SQL);
                 if (dataTable_1.Rows.Count > 0 && dataTable_1 != null)
                 {
-                    check_mbcw.Text = "目标仓位 t:" + dataTable_1.Rows[0]["PAR_W_AIM"].ToString();
-                    check_zhcw.Text = "综合仓位 t:" + dataTable_1.Rows[0]["PAR_C_AIM"].ToString();
+                    check_mbcw.Text = "目标仓位(t):" + dataTable_1.Rows[0]["PAR_W_AIM"].ToString();
+                    check_zhcw.Text = "综合仓位(t):" + dataTable_1.Rows[0]["PAR_C_AIM"].ToString();
                     check_sfpb.Text = "返矿配比:" + dataTable_1.Rows[0]["MAT_L2_DQ_DRY_7"].ToString();
                     check_rlpb.Text = "燃料配比:" + dataTable_1.Rows[0]["MAT_L2_DQ_DRY_6"].ToString();
                 }
                 else
                 {
-                    check_mbcw.Text = "目标仓位 t: 0";
-                    check_zhcw.Text = "综合仓位 t: 0";
+                    check_mbcw.Text = "目标仓位(t): 0";
+                    check_zhcw.Text = "综合仓位(t): 0";
                     check_sfpb.Text = "返矿配比: 0";
                     check_rlpb.Text = "燃料配比: 0";
                 }

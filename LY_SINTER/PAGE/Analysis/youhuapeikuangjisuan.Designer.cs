@@ -419,7 +419,7 @@
             // 
             this.tableLayoutPanel10.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel10.ColumnCount = 1;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 357F));
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 358F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel12, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.tableLayoutPanel13, 0, 1);
@@ -446,7 +446,7 @@
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
-            this.tableLayoutPanel12.Size = new System.Drawing.Size(351, 60);
+            this.tableLayoutPanel12.Size = new System.Drawing.Size(352, 60);
             this.tableLayoutPanel12.TabIndex = 29;
             // 
             // tableLayoutPanel14
@@ -464,7 +464,7 @@
             this.tableLayoutPanel14.RowCount = 2;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel14.Size = new System.Drawing.Size(224, 52);
+            this.tableLayoutPanel14.Size = new System.Drawing.Size(225, 52);
             this.tableLayoutPanel14.TabIndex = 0;
             // 
             // label11
@@ -475,7 +475,7 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(110, 26);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(111, 26);
+            this.label11.Size = new System.Drawing.Size(112, 26);
             this.label11.TabIndex = 21;
             this.label11.Text = "0";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -496,7 +496,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(110, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 26);
+            this.label2.Size = new System.Drawing.Size(112, 26);
             this.label2.TabIndex = 18;
             this.label2.Text = "预计烧结矿产量t";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -521,7 +521,7 @@
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel15.Controls.Add(this.simpleButton9, 0, 1);
             this.tableLayoutPanel15.Controls.Add(this.simpleButton8, 0, 0);
-            this.tableLayoutPanel15.Location = new System.Drawing.Point(232, 1);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(233, 1);
             this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 2;
@@ -574,7 +574,7 @@
             this.tableLayoutPanel13.RowCount = 2;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(351, 45);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(352, 45);
             this.tableLayoutPanel13.TabIndex = 30;
             // 
             // label15
@@ -583,9 +583,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(235, 22);
+            this.label15.Location = new System.Drawing.Point(237, 22);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(113, 23);
+            this.label15.Size = new System.Drawing.Size(112, 23);
             this.label15.TabIndex = 24;
             this.label15.Text = "0";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -596,9 +596,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(131, 22);
+            this.label14.Location = new System.Drawing.Point(132, 22);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(98, 23);
+            this.label14.Size = new System.Drawing.Size(99, 23);
             this.label14.TabIndex = 23;
             this.label14.Text = "0";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -611,7 +611,7 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(3, 22);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(122, 23);
+            this.label12.Size = new System.Drawing.Size(123, 23);
             this.label12.TabIndex = 22;
             this.label12.Text = "0";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -622,9 +622,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(235, 0);
+            this.label9.Location = new System.Drawing.Point(237, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(113, 22);
+            this.label9.Size = new System.Drawing.Size(112, 22);
             this.label9.TabIndex = 20;
             this.label9.Text = "其他成本 元";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -635,9 +635,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(131, 0);
+            this.label7.Location = new System.Drawing.Point(132, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 22);
+            this.label7.Size = new System.Drawing.Size(99, 22);
             this.label7.TabIndex = 19;
             this.label7.Text = "原料成本 元/t";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -650,7 +650,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 22);
+            this.label3.Size = new System.Drawing.Size(123, 22);
             this.label3.TabIndex = 18;
             this.label3.Text = "烧结矿总成本 元/t";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

@@ -148,6 +148,15 @@ namespace LY_SINTER.PAGE.Course
             tendency_curve_HIS(Convert.ToDateTime(textBox_begin.Text), Convert.ToDateTime(textBox_end.Text));
             Higher_Order_Curve();//高次曲线数据绑定
             tendency_curve_Real();//趋势实时曲线
+            getNewTime();
+        }
+
+        /// <summary>
+        /// 获取最新时间
+        /// </summary>
+        public void getNewTime()
+        {
+            this.label6.Text = "最新调整时间：" + DateTime.Now.ToString();
         }
 
         /// <summary>
@@ -290,6 +299,7 @@ namespace LY_SINTER.PAGE.Course
             }
             else
             {
+                getNewTime();
                 Check_text_His();//历史曲线勾选框数据
                 Check_text_Real();//趋势曲线勾选框
                 Real_time();//生产实时数据

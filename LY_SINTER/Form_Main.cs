@@ -571,7 +571,7 @@ namespace LY_SINTER
                     tabControl1.SelectedTab = tpg;
                     tabControl1.SelectedTab.ToolTipText = "双击关闭页签";
                 }
-                else if (str == "铁矿粉基础性能")
+                else if (str == "配矿原料基础性能")
                 {
                     TabPage tpg = new TabPage(str);
                     tiekuangfenjichuxingneng _PAGE = new tiekuangfenjichuxingneng();
@@ -1035,7 +1035,7 @@ namespace LY_SINTER
                         _PAGE.Timer_state();
                         return true;
                     }
-                    else if (_tabName == "铁矿粉基础性能")
+                    else if (_tabName == "配矿原料基础性能")
                     {
                         tiekuangfenjichuxingneng _PAGE = (tiekuangfenjichuxingneng)p.Controls[0];
                         _PAGE.Show();
@@ -1409,7 +1409,7 @@ namespace LY_SINTER
                     shengchanyuanliaoxiaohao vSelected = (shengchanyuanliaoxiaohao)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
                 }
-                else if (_str == "铁矿粉基础性能")
+                else if (_str == "配矿原料基础性能")
                 {
                     tiekuangfenjichuxingneng vSelected = (tiekuangfenjichuxingneng)_tabControl1.SelectedTab.Controls[0];
                     vSelected.Timer_state();
@@ -1662,7 +1662,7 @@ namespace LY_SINTER
                                 this.tabControl1.Controls.Remove(p);
                                 return;
                             }
-                            else if (_strname == "铁矿粉基础性能")
+                            else if (_strname == "配矿原料基础性能")
                             {
                                 tiekuangfenjichuxingneng vf1 = (tiekuangfenjichuxingneng)p.Controls[0];
                                 vf1._Clear();
@@ -1942,7 +1942,7 @@ namespace LY_SINTER
                                 shengchanyuanliaoxiaohao vf1 = (shengchanyuanliaoxiaohao)p.Controls[0];
                                 vf1.Timer_stop();
                             }
-                            else if (_strname == "铁矿粉基础性能")
+                            else if (_strname == "配矿原料基础性能")
                             {
                                 tiekuangfenjichuxingneng vf1 = (tiekuangfenjichuxingneng)p.Controls[0];
                                 vf1.Timer_stop();
@@ -2201,7 +2201,7 @@ namespace LY_SINTER
                             shengchanyuanliaoxiaohao _PAGE = (shengchanyuanliaoxiaohao)p.Controls[0];
                             _PAGE._Clear();
                         }
-                        else if (str == "铁矿粉基础性能")
+                        else if (str == "配矿原料基础性能")
                         {
                             tiekuangfenjichuxingneng _PAGE = (tiekuangfenjichuxingneng)p.Controls[0];
                             _PAGE._Clear();

@@ -425,9 +425,8 @@ namespace LY_SINTER.PAGE.Analysis
                     L_ana_c.Add(ana_c);
                 }
             }
+
             #endregion 部分3数据,只传入勾选的成分即可
-
-
 
             float Total_mat_wet = float.Parse(textBox2.Text.ToString() == "" ? "0" : textBox2.Text.ToString());
 

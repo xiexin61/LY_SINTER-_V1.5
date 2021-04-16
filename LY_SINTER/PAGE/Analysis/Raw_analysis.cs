@@ -44,6 +44,31 @@ namespace LY_SINTER.PAGE.Analysis
         private ANALYSIS_MODEL aNALYSIS_MODEL = new ANALYSIS_MODEL();//数据分析页面模型
 
         /// <summary>
+        /// 最新调整时间
+        /// </summary>
+        public void Time_Now()
+        {
+            /*try
+            {
+                string sql1 = "select top (1) TIMESTAMP from MC_NUMCAL_INTERFACE_6 order by TIMESTAMP desc";
+                DataTable dataTable1 = _dBSQL.GetCommand(sql1);
+                if (dataTable1.Rows.Count > 0)
+                {
+                    label2.Text = "最新调整时间:" + dataTable1.Rows[0][0].ToString();
+                }
+                else
+                {
+                    label2.Text = "";
+                }
+            }
+            catch (Exception ee)
+            {
+                _vLog.writelog("Time_Now方法失败" + ee.ToString(), -1);
+            }*/
+            //label2.Text = "最新调整时间：" + DateTime.Now.ToString();
+        }
+
+        /// <summary>
         /// 数据库字段
         /// </summary>
         private string[] Get_data_name = {"ID","REOPTTIME",
@@ -146,7 +171,8 @@ namespace LY_SINTER.PAGE.Analysis
             DateTimeChoser.AddTo(textBox_begin);
             DateTimeChoser.AddTo(textBox_end);
             Combox_1_date();//物料类别下拉框绑定
-                            // combox_3_values();
+            Time_Now();
+
             data_text("混匀矿", textBox_begin.Text.ToString(), textBox_end.Text.ToString());
             _combox2_values();
             Curve_text("TFe");

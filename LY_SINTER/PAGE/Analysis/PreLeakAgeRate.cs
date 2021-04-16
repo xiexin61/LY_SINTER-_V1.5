@@ -35,11 +35,10 @@ namespace LY_SINTER.PAGE.Analysis
             getPlotView(start, end);*/
             Task.Factory.StartNew(() =>
             {
-
                 while (true)
                 {
                     lData();
-                    DateTime start = DateTime.Now.AddMonths(-1);
+                    DateTime start = DateTime.Now.AddDays(-7);
                     DateTime end = DateTime.Now;
                     getPlotView(start, end);
                     Thread.Sleep(60000);
@@ -53,7 +52,7 @@ namespace LY_SINTER.PAGE.Analysis
         public void time_begin_end()
         {
             DateTime time_end = DateTime.Now;
-            DateTime time_begin = time_end.AddMonths(-1);
+            DateTime time_begin = time_end.AddDays(-7);
             textBox_begin.Text = time_begin.ToString();
             textBox_end.Text = time_end.ToString();
         }
@@ -424,7 +423,6 @@ namespace LY_SINTER.PAGE.Analysis
                 plotView5.Controller = PlotController;
                 plotView6.Controller = PlotController;
                 plotView7.Controller = PlotController;
-
             }
             string sql2 = "select TIMESTAMP,SIN_PLC_MA_OUT_1_FLUE_O2,SIN_PLC_MA_OUT_2_FLUE_O2 from C_SIN_PLC_1MIN where TIMESTAMP >= '" + start + "' and TIMESTAMP <= '" + end + "'";
             DataTable table2 = dBSQL.GetCommand(sql2);
@@ -551,7 +549,7 @@ namespace LY_SINTER.PAGE.Analysis
         //实时按钮
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-            DateTime start = DateTime.Now.AddMonths(-1);
+            DateTime start = DateTime.Now.AddDays(-7);
             DateTime end = DateTime.Now;
             getPlotView(start, end);
         }

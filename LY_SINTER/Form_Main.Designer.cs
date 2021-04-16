@@ -65,11 +65,11 @@
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 5;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.00098F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090999F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 84.78575F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.64302F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 17F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.213269F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5.26598F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1174, 625);
             this.tableLayoutPanel2.TabIndex = 3;
             // 
@@ -83,11 +83,11 @@
             this.tableLayoutPanel3.Controls.Add(this.tabControl1, 2, 0);
             this.tableLayoutPanel3.Controls.Add(this.simpleButton2, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 79);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 73);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1168, 495);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1168, 500);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // navBarControl1
@@ -96,13 +96,13 @@
             this.navBarControl1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.navBarControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.navBarControl1.Font = new System.Drawing.Font("宋体", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.navBarControl1.Font = new System.Drawing.Font("SimSun", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.navBarControl1.Location = new System.Drawing.Point(3, 3);
             this.navBarControl1.LookAndFeel.SkinName = "Office 2010 Black";
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 109;
             this.navBarControl1.PaintStyleKind = DevExpress.XtraNavBar.NavBarViewKind.ExplorerBar;
-            this.navBarControl1.Size = new System.Drawing.Size(109, 489);
+            this.navBarControl1.Size = new System.Drawing.Size(109, 494);
             this.navBarControl1.StoreDefaultPaintStyleName = true;
             this.navBarControl1.TabIndex = 7;
             this.navBarControl1.Text = "navBarControl1";
@@ -115,7 +115,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.ShowToolTips = true;
-            this.tabControl1.Size = new System.Drawing.Size(1035, 489);
+            this.tabControl1.Size = new System.Drawing.Size(1035, 494);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.WhenSelected);
             this.tabControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseDoubleClick);
@@ -130,7 +130,7 @@
             this.simpleButton2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.simpleButton2.Location = new System.Drawing.Point(118, 3);
             this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(6, 489);
+            this.simpleButton2.Size = new System.Drawing.Size(6, 494);
             this.simpleButton2.TabIndex = 6;
             this.simpleButton2.Text = "≡";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
@@ -146,7 +146,7 @@
             this.simpleButton3.Appearance.Options.UseForeColor = true;
             this.simpleButton3.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.simpleButton3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton3.Location = new System.Drawing.Point(3, 62);
+            this.simpleButton3.Location = new System.Drawing.Point(3, 56);
             this.simpleButton3.Name = "simpleButton3";
             this.simpleButton3.Size = new System.Drawing.Size(1168, 11);
             this.simpleButton3.TabIndex = 7;
@@ -164,7 +164,7 @@
             this.simpleButton1.Appearance.Options.UseForeColor = true;
             this.simpleButton1.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.simpleButton1.Location = new System.Drawing.Point(3, 580);
+            this.simpleButton1.Location = new System.Drawing.Point(3, 579);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(1168, 11);
             this.simpleButton1.TabIndex = 8;
@@ -179,7 +179,7 @@
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -193,7 +193,7 @@
             this.PERSON});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -201,11 +201,11 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 597);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 596);
             this.dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -213,7 +213,7 @@
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1168, 25);
+            this.dataGridView1.Size = new System.Drawing.Size(1168, 26);
             this.dataGridView1.TabIndex = 9;
             // 
             // TIME
@@ -245,7 +245,7 @@
             this.alarm1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.alarm1.Location = new System.Drawing.Point(3, 3);
             this.alarm1.Name = "alarm1";
-            this.alarm1.Size = new System.Drawing.Size(1168, 53);
+            this.alarm1.Size = new System.Drawing.Size(1168, 47);
             this.alarm1.TabIndex = 10;
             vLog1.connstring = null;
             vLog1.logBasePath = ".\\log_Page\\Prompt_Message_Page\\";

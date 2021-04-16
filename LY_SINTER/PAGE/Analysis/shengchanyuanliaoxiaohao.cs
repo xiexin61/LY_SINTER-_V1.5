@@ -206,7 +206,6 @@ namespace LY_SINTER.PAGE.Analysis
                 IsZoomEnabled = false,
                 Position = AxisPosition.Bottom,
                 FontSize = 9.0,
-                //GapWidth=30,//柱子间隔宽度
             };
             for (int i = 0; i < x.Count; i++)
             {
@@ -225,6 +224,7 @@ namespace LY_SINTER.PAGE.Analysis
             {//柱状图
                 Background = OxyColors.White,
                 LabelPlacement = LabelPlacement.Inside,
+                //FillColor = OxyColors.Red,
                 //LabelFormatString="{0.00}",
                 TextColor = OxyColors.Black,
                 //StrokeThickness = 6,
@@ -234,6 +234,14 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 _ColumnSeries.Items.Add(new ColumnItem() { Value = y[i] });
             }
+            /*控制柱子的颜色
+             * for (int i = 0; i < y.Count; i++)
+            {
+                if (y[i] < 1000)
+                {
+                    _ColumnSeries.Items[i].Color = OxyColors.Blue;
+                }
+            }*/
             _myPlotModel.Series.Add(_ColumnSeries);
             _ColumnSeries.LabelPlacement = LabelPlacement.Inside;
             plotView1.Model = _myPlotModel;

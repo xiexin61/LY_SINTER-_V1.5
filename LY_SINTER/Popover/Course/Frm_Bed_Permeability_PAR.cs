@@ -18,19 +18,23 @@ namespace LY_SINTER.Popover.Course
     {
         public vLog _vLog { get; set; }
         public static bool isopen = false;
-        DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+        private DBSQL dBSQL = new DBSQL(ConstParameters.strCon);
+
         /// <summary>
         /// 参数表
         /// </summary>
-        String biaoming = "";
+        private String biaoming = "";
+
         /// <summary>
         /// 参数说明表
         /// </summary>
-        String biaoming1 = "";
+        private String biaoming1 = "";
+
         /// <summary>
         /// 参数历史表
         /// </summary>
-        String biaoming2 = "";
+        private String biaoming2 = "";
+
         public Frm_Bed_Permeability_PAR()
         {
             InitializeComponent();
@@ -42,12 +46,14 @@ namespace LY_SINTER.Popover.Course
             DATE_NAME();
             comboBox1_SelectedIndexChanged();
         }
+
         public void DATE_NAME()
         {
             biaoming = "M_PICAL_PAR";
             biaoming1 = "M_PICAL_PAR_DESC";
             biaoming2 = "M_PICAL_PAR_CHANGE";
         }
+
         /// <summary>
         /// 开始时间-结束时间赋值
         /// </summary>
@@ -57,8 +63,8 @@ namespace LY_SINTER.Popover.Course
             DateTime time_begin = time_end.AddDays(-1);
             textBox_begin.Text = time_begin.ToString();
             textBox_end.Text = time_end.ToString();
-
         }
+
         //主体按下拉框查询
         private void comboBox1_SelectedIndexChanged() //object sender, EventArgs e
         {
@@ -66,12 +72,12 @@ namespace LY_SINTER.Popover.Course
             select1();
             select2();
         }
+
         //实时数据初始化
         private void select1()
         {
             try
             {
-
                 //查询出数据行数
                 string sql2 = "SELECT COUNT(NAME) FROM " + biaoming1 + " where state = '1'";
                 DataTable dataTable2 = dBSQL.GetCommand(sql2);
@@ -102,17 +108,16 @@ namespace LY_SINTER.Popover.Course
                         this.dataGridView1.Rows[i].Cells[2].ReadOnly = true;
                         this.dataGridView1.Rows[i].Cells[3].ReadOnly = true;
                         this.dataGridView1.Rows[i].Cells[4].ReadOnly = true;
-
                     }
                 }
                 else MessageBox.Show("没有数据！");
-
             }
             catch (Exception ee)
             {
                 _vLog.writelog("select1方法报错" + ee.ToString(), -1);
             }
         }
+
         //历史数据初始化
         private void select2()
         {
@@ -141,7 +146,6 @@ namespace LY_SINTER.Popover.Course
                     {
                         text += name_ye[x];
                     }
-
                 }
                 string sql = "select top (20) " + text + " from " + biaoming2 + " order by TIMESTAMP desc";
                 DataTable data_text = dBSQL.GetCommand(sql);
@@ -163,19 +167,13 @@ namespace LY_SINTER.Popover.Course
                     data_select2.Rows.Add(data);
                 }
 
-
-
                 dataGridView2.DataSource = data_select2;
             }
             catch
             {
-
             }
-
-
-
-
         }
+
         /// <summary>
         /// 更新数据库操作
         /// </summary>
@@ -195,10 +193,8 @@ namespace LY_SINTER.Popover.Course
                 //修改
                 for (int i = 0; i < dataGridView1.RowCount; i++)
                 {
-
                     string sql1 = "update " + biaoming + " SET " + dataGridView1.Rows[i].Cells[4].Value + "='" + dataGridView1.Rows[i].Cells[2].Value + "'";
                     dBSQL.CommandExecuteNonQuery(sql1);
-
 
                     string sql3 = "update " + biaoming1 + " SET column_def='" + dataGridView1.Rows[i].Cells[1].Value + "',unit='" + dataGridView1.Rows[i].Cells[3].Value + "' where name='" + dataGridView1.Rows[i].Cells[4].Value + "'";
                     dBSQL.CommandExecuteNonQuery(sql3);
@@ -212,9 +208,9 @@ namespace LY_SINTER.Popover.Course
             }
             catch (Exception ee)
             {
-
             }
         }
+
         /// <summary>
         /// 实时数据导入按钮
         /// </summary>
@@ -222,7 +218,6 @@ namespace LY_SINTER.Popover.Course
         /// <param name="e"></param>
         private void simpleButton5_Click(object sender, EventArgs e)
         {
-
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.Filter = "Execl files (*.xls)|*.xls";
             dlg.FilterIndex = 0;
@@ -237,7 +232,7 @@ namespace LY_SINTER.Popover.Course
                 string columnTitle = "";
                 try
                 {
-                    //写入列标题    
+                    //写入列标题
                     for (int i = 0; i < dataGridView1.ColumnCount; i++)
                     {
                         if (i > 0)
@@ -248,7 +243,7 @@ namespace LY_SINTER.Popover.Course
                     }
                     sw.WriteLine(columnTitle);
 
-                    //写入列内容    
+                    //写入列内容
                     for (int j = 0; j < dataGridView1.Rows.Count; j++)
                     {
                         string columnValue = "";
@@ -278,8 +273,8 @@ namespace LY_SINTER.Popover.Course
                     myStream.Close();
                 }
             }
-
         }
+
         /// <summary>
         /// 修改按钮
         /// </summary>
@@ -287,7 +282,6 @@ namespace LY_SINTER.Popover.Course
         /// <param name="e"></param>
         private void simpleButton4_Click(object sender, EventArgs e)
         {
-
             if (simpleButton4.Text == "修改")
             {
                 //设置为只读
@@ -323,8 +317,8 @@ namespace LY_SINTER.Popover.Course
 
                 return;
             }
-
         }
+
         /// <summary>
         /// 历史数据查询按钮
         /// </summary>
@@ -360,7 +354,6 @@ namespace LY_SINTER.Popover.Course
                 {
                     text += name_ye[x];
                 }
-
             }
             string sql = "select  " + text + " from " + biaoming2 + " where TIMESTAMP >='" + d1 + "' and TIMESTAMP <='" + d2 + "' order by TIMESTAMP desc";
             DataTable data_text = dBSQL.GetCommand(sql);
@@ -368,7 +361,6 @@ namespace LY_SINTER.Popover.Course
             {
                 data_select2.Columns.Add(col.ToString());
             }
-
 
             for (int x = 0; x < data_text.Rows.Count; x++)
             {
@@ -382,8 +374,8 @@ namespace LY_SINTER.Popover.Course
                 data_select2.Rows.Add(data);
             }
             dataGridView2.DataSource = data_select2;
-
         }
+
         /// <summary>
         /// 历史数据实时按钮
         /// </summary>
@@ -394,6 +386,7 @@ namespace LY_SINTER.Popover.Course
             DATE_NAME();
             select2();
         }
+
         /// <summary>
         /// 实时数据刷新按钮
         /// </summary>
@@ -407,7 +400,6 @@ namespace LY_SINTER.Popover.Course
 
         private void simpleButton3_Click(object sender, EventArgs e)
         {
-
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.Filter = "Execl files (*.xls)|*.xls";
             dlg.FilterIndex = 0;
@@ -422,7 +414,7 @@ namespace LY_SINTER.Popover.Course
                 string columnTitle = "";
                 try
                 {
-                    //写入列标题    
+                    //写入列标题
                     for (int i = 0; i < dataGridView2.ColumnCount; i++)
                     {
                         if (i > 0)
@@ -433,7 +425,7 @@ namespace LY_SINTER.Popover.Course
                     }
                     sw.WriteLine(columnTitle);
 
-                    //写入列内容    
+                    //写入列内容
                     for (int j = 0; j < dataGridView2.Rows.Count; j++)
                     {
                         string columnValue = "";

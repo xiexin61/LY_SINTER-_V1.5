@@ -395,6 +395,7 @@
             this.textBox8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox8.Location = new System.Drawing.Point(68, 560);
             this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(42, 21);
             this.textBox8.TabIndex = 28;
             // 
@@ -403,6 +404,7 @@
             this.textBox7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox7.Location = new System.Drawing.Point(68, 483);
             this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(42, 21);
             this.textBox7.TabIndex = 27;
             // 
@@ -411,6 +413,7 @@
             this.textBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox6.Location = new System.Drawing.Point(68, 407);
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(42, 21);
             this.textBox6.TabIndex = 26;
             // 
@@ -419,6 +422,7 @@
             this.textBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox5.Location = new System.Drawing.Point(68, 331);
             this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(42, 21);
             this.textBox5.TabIndex = 25;
             // 
@@ -427,6 +431,7 @@
             this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox4.Location = new System.Drawing.Point(68, 255);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(42, 21);
             this.textBox4.TabIndex = 24;
             // 
@@ -435,6 +440,7 @@
             this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox3.Location = new System.Drawing.Point(68, 179);
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(42, 21);
             this.textBox3.TabIndex = 23;
             // 
@@ -443,6 +449,7 @@
             this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox2.Location = new System.Drawing.Point(68, 103);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(42, 21);
             this.textBox2.TabIndex = 22;
             // 
@@ -451,6 +458,7 @@
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox1.Location = new System.Drawing.Point(68, 27);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(42, 21);
             this.textBox1.TabIndex = 21;
             // 

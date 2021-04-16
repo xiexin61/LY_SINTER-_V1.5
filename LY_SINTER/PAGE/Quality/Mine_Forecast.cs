@@ -267,22 +267,22 @@ namespace LY_SINTER.PAGE.Quality
                     string sql3 = "select  " +
                     "ROW_NUMBER() OVER(ORDER BY TIMESTAMP desc) AS ID," +
                     "TIMESTAMP," +
-                    "cast(SINCAL_SIN_PV_TFE as decimal(18,2)) AS TFE," +
-                    "cast(SINCAL_SIN_PV_CAO as decimal(18,2)) AS CAO," +
-                    "cast(SINCAL_SIN_PV_SIO2 as decimal(18,2)) AS SIO2," +
-                    "cast(SINCAL_SIN_PV_AL2O3 as decimal(18,2)) AS AL2O3," +
-                    "cast(SINCAL_SIN_PV_MGO as decimal(18,2)) AS MGO," +
-                    "cast(SINCAL_SIN_PV_S as decimal(18,2)) AS S," +
-                    "cast(SINCAL_SIN_PV_P as decimal(18,2)) AS P," +
-                    "cast(SINCAL_SIN_PV_R as decimal(18,2)) AS R," +
-                    "cast(SINCAL_SIN_PV_TIO2 as decimal(18,2)) AS TIO2," +
-                    "cast(SINCAL_SIN_PV_K2O as decimal(18,2)) AS K2O," +
-                    "cast(SINCAL_SIN_PV_NA2O as decimal(18,2)) AS NA2O," +
-                    "cast(SINCAL_SIN_PV_CU as decimal(18,2)) AS CU," +
-                    "cast(SINCAL_SIN_PV_PB as decimal(18,2)) AS PB," +
-                    "cast(SINCAL_SIN_PV_ZN as decimal(18,2)) AS ZN," +
-                    "cast(SINCAL_SIN_PV_K as decimal(18,2)) AS K," +
-                    "cast(SINCAL_SIN_PV_MNO as decimal(18,2)) AS MNO    " +
+                    "cast(SINCAL_SIN_PV_TFE as decimal(18,3)) AS TFE," +
+                    "cast(SINCAL_SIN_PV_CAO as decimal(18,3)) AS CAO," +
+                    "cast(SINCAL_SIN_PV_SIO2 as decimal(18,3)) AS SIO2," +
+                    "cast(SINCAL_SIN_PV_AL2O3 as decimal(18,3)) AS AL2O3," +
+                    "cast(SINCAL_SIN_PV_MGO as decimal(18,3)) AS MGO," +
+                    "cast(SINCAL_SIN_PV_S as decimal(18,4)) AS S," +
+                    "cast(SINCAL_SIN_PV_P as decimal(18,4)) AS P," +
+                    "cast(SINCAL_SIN_PV_R as decimal(18,3)) AS R," +
+                    "cast(SINCAL_SIN_PV_TIO2 as decimal(18,4)) AS TIO2," +
+                    "cast(SINCAL_SIN_PV_K2O as decimal(18,4)) AS K2O," +
+                    "cast(SINCAL_SIN_PV_NA2O as decimal(18,4)) AS NA2O," +
+                    "cast(SINCAL_SIN_PV_CU as decimal(18,4)) AS CU," +
+                    "cast(SINCAL_SIN_PV_PB as decimal(18,4)) AS PB," +
+                    "cast(SINCAL_SIN_PV_ZN as decimal(18,4)) AS ZN," +
+                    "cast(SINCAL_SIN_PV_K as decimal(18,4)) AS K," +
+                    "cast(SINCAL_SIN_PV_MNO as decimal(18,4)) AS MNO    " +
                     "from MC_MIXCAL_RESULT_1MIN where TIMESTAMP between '" + d1 + "' and '" + d2 + "' order by TIMESTAMP desc";
                     DataTable dataTable3 = dBSQL.GetCommand(sql3);
                     if (dataTable3.Rows.Count > 0)
@@ -295,22 +295,22 @@ namespace LY_SINTER.PAGE.Quality
                     string sql3 = "select " +
                        "ROW_NUMBER() OVER(ORDER BY TIMESTAMP desc) AS ID" +
                        "TIMESTAMP," +
-                       "cast(C_TFE as decimal(18,2)) AS TFE," +
-                       "cast(C_CAO as decimal(18,2)) AS CAO," +
-                       "cast(C_SIO2 as decimal(18,2)) AS SIO2," +
-                       "cast(C_AL2O3 as decimal(18,2)) AS AL2O3," +
-                       "cast(C_MGO as decimal(18,2)) AS MGO," +
-                       "cast(C_S as decimal(18,2)) AS S," +
-                       "cast(C_P2O5 as decimal(18,2)) AS P," +
-                       "cast(C_R as decimal(18,2)) AS R," +
-                       "cast(C_TIO2 as decimal(18,2)) AS TIO2," +
-                       "cast(C_K2O as decimal(18,2)) AS K2O," +
-                       "cast(C_NA2O as decimal(18,2)) AS NA2O," +
-                       "cast(C_CU as decimal(18,2)) AS CU," +
-                       "cast(C_PB as decimal(18,2)) AS PB," +
-                       "cast(C_ZN as decimal(18,2)) AS ZN," +
-                       "cast(C_K as decimal(18,2)) AS K," +
-                       "cast(C_MNO as decimal(18,2)) AS MNO    " +
+                       "cast(C_TFE as decimal(18,3)) AS TFE," +
+                       "cast(C_CAO as decimal(18,3)) AS CAO," +
+                       "cast(C_SIO2 as decimal(18,3)) AS SIO2," +
+                       "cast(C_AL2O3 as decimal(18,3)) AS AL2O3," +
+                       "cast(C_MGO as decimal(18,3)) AS MGO," +
+                       "cast(C_S as decimal(18,4)) AS S," +
+                       "cast(C_P2O5 as decimal(18,4)) AS P," +
+                       "cast(C_R as decimal(18,3)) AS R," +
+                       "cast(C_TIO2 as decimal(18,4)) AS TIO2," +
+                       "cast(C_K2O as decimal(18,4)) AS K2O," +
+                       "cast(C_NA2O as decimal(18,4)) AS NA2O," +
+                       "cast(C_CU as decimal(18,4)) AS CU," +
+                       "cast(C_PB as decimal(18,4)) AS PB," +
+                       "cast(C_ZN as decimal(18,4)) AS ZN," +
+                       "cast(C_K as decimal(18,4)) AS K," +
+                       "cast(C_MNO as decimal(18,4)) AS MNO    " +
                        "from MC_PRE_SINTER_ANA_RESULT where TIMESTAMP between '" + d1 + "' and '" + d2 + "' order by TIMESTAMP desc";
                     DataTable dataTable3 = dBSQL.GetCommand(sql3);
                     if (dataTable3.Rows.Count > 0)
@@ -345,22 +345,22 @@ namespace LY_SINTER.PAGE.Quality
                     string sql3 = "select top(20) " +
                     "ROW_NUMBER() OVER(ORDER BY TIMESTAMP desc) AS ID," +
                     "TIMESTAMP," +
-                    "cast(SINCAL_SIN_PV_TFE as decimal(18,2)) AS TFE," +
-                    "cast(SINCAL_SIN_PV_CAO as decimal(18,2)) AS CAO," +
-                    "cast(SINCAL_SIN_PV_SIO2 as decimal(18,2)) AS SIO2," +
-                    "cast(SINCAL_SIN_PV_AL2O3 as decimal(18,2)) AS AL2O3," +
-                    "cast(SINCAL_SIN_PV_MGO as decimal(18,2)) AS MGO," +
-                    "cast(SINCAL_SIN_PV_S as decimal(18,2)) AS S," +
-                    "cast(SINCAL_SIN_PV_P as decimal(18,2)) AS P," +
-                    "cast(SINCAL_SIN_PV_R as decimal(18,2)) AS R," +
-                    "cast(SINCAL_SIN_PV_TIO2 as decimal(18,2)) AS TIO2," +
-                    "cast(SINCAL_SIN_PV_K2O as decimal(18,2)) AS K2O," +
-                    "cast(SINCAL_SIN_PV_NA2O as decimal(18,2)) AS NA2O," +
-                    "cast(SINCAL_SIN_PV_CU as decimal(18,2)) AS CU," +
-                    "cast(SINCAL_SIN_PV_PB as decimal(18,2)) AS PB," +
-                    "cast(SINCAL_SIN_PV_ZN as decimal(18,2)) AS ZN," +
-                    "cast(SINCAL_SIN_PV_K as decimal(18,2)) AS K," +
-                    "cast(SINCAL_SIN_PV_MNO as decimal(18,2)) AS MNO    " +
+                    "cast(SINCAL_SIN_PV_TFE as decimal(18,3)) AS TFE," +
+                    "cast(SINCAL_SIN_PV_CAO as decimal(18,3)) AS CAO," +
+                    "cast(SINCAL_SIN_PV_SIO2 as decimal(18,3)) AS SIO2," +
+                    "cast(SINCAL_SIN_PV_AL2O3 as decimal(18,3)) AS AL2O3," +
+                    "cast(SINCAL_SIN_PV_MGO as decimal(18,3)) AS MGO," +
+                    "cast(SINCAL_SIN_PV_S as decimal(18,4)) AS S," +
+                    "cast(SINCAL_SIN_PV_P as decimal(18,4)) AS P," +
+                    "cast(SINCAL_SIN_PV_R as decimal(18,3)) AS R," +
+                    "cast(SINCAL_SIN_PV_TIO2 as decimal(18,4)) AS TIO2," +
+                    "cast(SINCAL_SIN_PV_K2O as decimal(18,4)) AS K2O," +
+                    "cast(SINCAL_SIN_PV_NA2O as decimal(18,4)) AS NA2O," +
+                    "cast(SINCAL_SIN_PV_CU as decimal(18,4)) AS CU," +
+                    "cast(SINCAL_SIN_PV_PB as decimal(18,4)) AS PB," +
+                    "cast(SINCAL_SIN_PV_ZN as decimal(18,4)) AS ZN," +
+                    "cast(SINCAL_SIN_PV_K as decimal(18,4)) AS K," +
+                    "cast(SINCAL_SIN_PV_MNO as decimal(18,4)) AS MNO    " +
                     "from MC_MIXCAL_RESULT_1MIN  order by TIMESTAMP desc";
                     DataTable dataTable3 = dBSQL.GetCommand(sql3);
                     if (dataTable3.Rows.Count > 0)
@@ -373,22 +373,22 @@ namespace LY_SINTER.PAGE.Quality
                     string sql3 = "select top(20) " +
                        "ROW_NUMBER() OVER(ORDER BY TIMESTAMP desc) AS ID" +
                        "TIMESTAMP," +
-                       "cast(C_TFE as decimal(18,2)) AS TFE," +
-                       "cast(C_CAO as decimal(18,2)) AS CAO," +
-                       "cast(C_SIO2 as decimal(18,2)) AS SIO2," +
-                       "cast(C_AL2O3 as decimal(18,2)) AS AL2O3," +
-                       "cast(C_MGO as decimal(18,2)) AS MGO," +
-                       "cast(C_S as decimal(18,2)) AS S," +
-                       "cast(C_P2O5 as decimal(18,2)) AS P," +
-                       "cast(C_R as decimal(18,2)) AS R," +
-                       "cast(C_TIO2 as decimal(18,2)) AS TIO2," +
-                       "cast(C_K2O as decimal(18,2)) AS K2O," +
-                       "cast(C_NA2O as decimal(18,2)) AS NA2O," +
-                       "cast(C_CU as decimal(18,2)) AS CU," +
-                       "cast(C_PB as decimal(18,2)) AS PB," +
-                       "cast(C_ZN as decimal(18,2)) AS ZN," +
-                       "cast(C_K as decimal(18,2)) AS K," +
-                       "cast(C_MNO as decimal(18,2)) AS MNO    " +
+                       "cast(C_TFE as decimal(18,3)) AS TFE," +
+                       "cast(C_CAO as decimal(18,3)) AS CAO," +
+                       "cast(C_SIO2 as decimal(18,3)) AS SIO2," +
+                       "cast(C_AL2O3 as decimal(18,3)) AS AL2O3," +
+                       "cast(C_MGO as decimal(18,3)) AS MGO," +
+                       "cast(C_S as decimal(18,4)) AS S," +
+                       "cast(C_P2O5 as decimal(18,4)) AS P," +
+                       "cast(C_R as decimal(18,3)) AS R," +
+                       "cast(C_TIO2 as decimal(18,4)) AS TIO2," +
+                       "cast(C_K2O as decimal(18,4)) AS K2O," +
+                       "cast(C_NA2O as decimal(18,4)) AS NA2O," +
+                       "cast(C_CU as decimal(18,4)) AS CU," +
+                       "cast(C_PB as decimal(18,4)) AS PB," +
+                       "cast(C_ZN as decimal(18,4)) AS ZN," +
+                       "cast(C_K as decimal(18,4)) AS K," +
+                       "cast(C_MNO as decimal(18,4)) AS MNO    " +
                        "from MC_PRE_SINTER_ANA_RESULT  order by TIMESTAMP desc";
                     DataTable dataTable3 = dBSQL.GetCommand(sql3);
                     if (dataTable3.Rows.Count > 0)

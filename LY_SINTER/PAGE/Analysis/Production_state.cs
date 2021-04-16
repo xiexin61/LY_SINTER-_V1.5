@@ -18,9 +18,10 @@ namespace LY_SINTER.PAGE.Analysis
     public partial class Production_state : UserControl
     {
         public vLog _vLog { get; set; }
-        DBSQL _dBSQL = new DBSQL(ConstParameters.strCon);
-        ANALYSIS_MODEL aNALYSIS = new ANALYSIS_MODEL();//数据分析模型
-        string[] col_name = new string[] //d1数据使用部分
+        private DBSQL _dBSQL = new DBSQL(ConstParameters.strCon);
+        private ANALYSIS_MODEL aNALYSIS = new ANALYSIS_MODEL();//数据分析模型
+
+        private string[] col_name = new string[] //d1数据使用部分
                  {
                 "NAME","SINTER_COST_TOT", "R_COUNT", "R_TZ", "R_TRU", "SSH_PB",
                 "SSH_TZ", "C_FEO", "FUEL_PB", "FUEL_TZ",
@@ -36,6 +37,7 @@ namespace LY_SINTER.PAGE.Analysis
                 "COLD_FAN_NUM", "MA_HZ_D", "MA_HZ_X", "MA_CURT_D",
                 "MA_CURT_X"
                 };
+
         public Production_state()
         {
             InitializeComponent();
@@ -46,11 +48,11 @@ namespace LY_SINTER.PAGE.Analysis
             DateTimeChoser.AddTo(textBox_end);
             label2.Text = "最新调整时间:" + DateTime.Now.ToString();
 
-
             SHOW_D1();//d1数据刷新
             SHOW_D2();//d2数据刷新
             d1_col();//二级表头
         }
+
         /// <summary>
         /// 开始时间-结束时间赋值
         /// </summary>
@@ -61,6 +63,7 @@ namespace LY_SINTER.PAGE.Analysis
             textBox_begin.Text = time_begin.ToString();
             textBox_end.Text = time_end.ToString();
         }
+
         /// <summary>
         /// 二级标题
         /// </summary>
@@ -69,6 +72,7 @@ namespace LY_SINTER.PAGE.Analysis
             try
             {
                 #region 添加列说明
+
                 //d1
                 this.d1.AddSpanHeader(2, 13, "质量");
                 this.d1.AddSpanHeader(27, 2, "BTP温度");
@@ -86,14 +90,15 @@ namespace LY_SINTER.PAGE.Analysis
                 this.d2.AddSpanHeader(33, 3, "大烟道负压");
                 this.d2.AddSpanHeader(40, 3, "主排频率");
                 this.d2.AddSpanHeader(43, 3, "主排电流");
-                #endregion
+
+                #endregion 添加列说明
             }
             catch (Exception ee)
             {
-                _vLog.writelog("d1_col方法错误" + ee.ToString(),-1);
+                _vLog.writelog("d1_col方法错误" + ee.ToString(), -1);
             }
-           
         }
+
         /// <summary>
         /// 刷新表头
         /// </summary>
@@ -105,12 +110,12 @@ namespace LY_SINTER.PAGE.Analysis
             {
                 d1.ReDrawHead();
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 _vLog.writelog("d1_Scroll方法错误" + ee.ToString(), -1);
             }
-          
         }
+
         /// <summary>
         /// 页面初始化
         /// </summary>
@@ -137,7 +142,7 @@ namespace LY_SINTER.PAGE.Analysis
                 TIME_MON += DateTime.Now.Year.ToString();
                 TIME_MON += "-" + DateTime.Now.Month.ToString();
                 TIME_MON += "-" + "01 00:00:00 ";
-                //昨日开始时间 
+                //昨日开始时间
                 string TIME_OLD_BEGIN = "";
                 DateTime time_old = time_now.AddDays(-1);
                 TIME_OLD_BEGIN = time_old.Year.ToString();
@@ -152,6 +157,7 @@ namespace LY_SINTER.PAGE.Analysis
                 TIME_OLD_END += " 23:59:59";
 
                 #region 一烧当前生产状态信息
+
                 //d1使用数据源
                 DataTable data_1 = new DataTable();
 
@@ -161,6 +167,7 @@ namespace LY_SINTER.PAGE.Analysis
                 }
 
                 #region R、生石灰、燃料调整值 MC_NUMCAL_INTERFACE_10
+
                 string sql_MC_NUMCAL_INTERFACE_10 = "select top (1) " +
                     "isnull(R_COMP_TOT,0) as R_COMP_TOT," +
                     "isnull(R_COMP_YSD,0) as R_COMP_YSD," +
@@ -176,8 +183,11 @@ namespace LY_SINTER.PAGE.Analysis
                     "isnull(FUEL_PB_COMP_CURSFT,0) as FUEL_PB_COMP_CURSFT   " +
                     "from MC_NUMCAL_INTERFACE_10 where TIMESTAMP >= '" + time_TZ + "' and  TIMESTAMP < '" + time_now + "' order by TIMESTAMP desc ";
                 DataTable data_MC_NUMCAL_INTERFACE_10 = _dBSQL.GetCommand(sql_MC_NUMCAL_INTERFACE_10);
-                #endregion
+
+                #endregion R、生石灰、燃料调整值 MC_NUMCAL_INTERFACE_10
+
                 #region 目标
+
                 DataRow row_1 = data_1.NewRow();
                 row_1["NAME"] = "目标";
                 string SQL_MC_NUMCAL_INTERFACE_10_TARGET = "select top (1) " +
@@ -239,11 +249,13 @@ namespace LY_SINTER.PAGE.Analysis
                         }
                         row_1[_YM_INDEX] = dataTable_NUMCAL_INTERFACE_10_TARGET.Rows[0][x].ToString();
                     }
-
                 }
                 data_1.Rows.Add(row_1);
-                #endregion
+
+                #endregion 目标
+
                 #region 累计实际
+
                 DataRow row_2 = data_1.NewRow();
                 row_2["NAME"] = "累计实际";
                 //查询MC_NUMCAL_INTERFACE_10_MONTH表最新的时间，通过比较数据库的时间和系统时间进行对比，若系统时间和数据库时间的偏差在5min则视为正常数据，或无数据
@@ -305,11 +317,9 @@ namespace LY_SINTER.PAGE.Analysis
                         }
                         row_2[_YM_INDEX] = dataTable_LJ_MC_NUMCAL_INTERFACE_10_MONTH.Rows[0][x].ToString();
                     }
-
                 }
                 else
                 {
-
                 }
                 //调整值
                 if (data_MC_NUMCAL_INTERFACE_10.Rows.Count > 0)
@@ -317,11 +327,13 @@ namespace LY_SINTER.PAGE.Analysis
                     row_2["R_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["R_COMP_TOT"].ToString();
                     row_2["SSH_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["SSH_PB_COMP_TOT"].ToString();
                     row_2["FUEL_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["FUEL_PB_COMP_TOT"].ToString();
-
                 }
                 data_1.Rows.Add(row_2);
-                #endregion
+
+                #endregion 累计实际
+
                 #region 昨日
+
                 DataRow row_3 = data_1.NewRow();
                 row_3["NAME"] = "昨日";
                 string SQL_ZR_MC_NUMCAL_INTERFACE_10_DAY = "select top (1) " +
@@ -382,22 +394,22 @@ namespace LY_SINTER.PAGE.Analysis
                         }
                         row_3[_YM_INDEX] = dataTable_ZR_MC_NUMCAL_INTERFACE_10_DAY.Rows[0][x].ToString();
                     }
-
                 }
                 else
                 {
-
                 }
                 if (data_MC_NUMCAL_INTERFACE_10.Rows.Count > 0)
                 {
                     row_3["R_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["R_COMP_YSD"].ToString();
                     row_3["SSH_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["SSH_PB_COMP_YSD"].ToString();
                     row_3["FUEL_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["FUEL_PB_COMP_YSD"].ToString();
-
                 }
                 data_1.Rows.Add(row_3);
-                #endregion
+
+                #endregion 昨日
+
                 #region 上班
+
                 DataRow row_4 = data_1.NewRow();
                 row_4["NAME"] = "上班";
                 string SQL_SB_MC_NUMCAL_INTERFACE_10_CLASS = "select top (1) " +
@@ -458,22 +470,22 @@ namespace LY_SINTER.PAGE.Analysis
                         }
                         row_4[_YM_INDEX] = dataTable_SB_MC_NUMCAL_INTERFACE_10_CLASS.Rows[0][x].ToString();
                     }
-
                 }
                 else
                 {
-
                 }
                 if (data_MC_NUMCAL_INTERFACE_10.Rows.Count > 0)
                 {
                     row_4["R_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["R_COMP_LASTSFT"].ToString();
                     row_4["SSH_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["SSH_PB_COMP_LASTSFT"].ToString();
                     row_4["FUEL_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["FUEL_PB_COMP_LASTSFT"].ToString();
-
                 }
                 data_1.Rows.Add(row_4);
-                #endregion
+
+                #endregion 上班
+
                 #region 本班
+
                 DataRow row_5 = data_1.NewRow();
                 row_5["NAME"] = "本班";
                 string SQL_BB_MC_NUMCAL_INTERFACE_10_CLASS = "select top (1) " +
@@ -534,29 +546,30 @@ namespace LY_SINTER.PAGE.Analysis
                         }
                         row_5[_YM_INDEX] = dataTable_BB_MC_NUMCAL_INTERFACE_10_CLASS.Rows[0][x].ToString();
                     }
-
                 }
                 else
                 {
-
                 }
                 if (data_MC_NUMCAL_INTERFACE_10.Rows.Count > 0)
                 {
                     row_5["R_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["R_COMP_CURSFT"].ToString();
                     row_5["SSH_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["SSH_PB_COMP_CURSFT"].ToString();
                     row_5["FUEL_TZ"] = data_MC_NUMCAL_INTERFACE_10.Rows[0]["FUEL_PB_COMP_CURSFT"].ToString();
-
                 }
                 data_1.Rows.Add(row_5);
-                #endregion
+
+                #endregion 本班
+
                 this.d1.DataSource = data_1;
-                #endregion
+
+                #endregion 一烧当前生产状态信息
             }
             catch (Exception ee)
             {
-                _vLog.writelog("SHOW_D1方法错误" + ee.ToString(),-1);
+                _vLog.writelog("SHOW_D1方法错误" + ee.ToString(), -1);
             }
         }
+
         /// <summary>
         /// d2数据设置
         /// </summary>
@@ -629,7 +642,6 @@ namespace LY_SINTER.PAGE.Analysis
                 date_day += "年" + date.Month.ToString();
                 date_day += "月" + date.Day.ToString() + "日";
 
-
                 //通过系统时间获取的小时数去判断需要显示多少条数据，截至到0点为止，页面最多展示24条数据，排列顺序为倒序
                 int HOUR = date.Hour;
                 HOUR = HOUR + 1;
@@ -678,27 +690,24 @@ namespace LY_SINTER.PAGE.Analysis
                     DataTable table = _dBSQL.GetCommand(sql_MC_NUMCAL_INTERFACE_10);
                     if (table.Rows.Count > 0)
                     {
-
                         int _YM_INDEX = 2;
                         for (int x = 0; x < table.Columns.Count; x++)
                         {
-
                             data[_YM_INDEX] = table.Rows[0][x].ToString();
                             _YM_INDEX = _YM_INDEX + 1;
                         }
-
                     }
 
                     data_2.Rows.Add(data);
                 }
                 d2.DataSource = data_2;
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
                 _vLog.writelog("SHOW_D2方法错误" + ee.ToString(), -1);
             }
-            
         }
+
         /// <summary>
         /// 参数修改弹出框
         /// </summary>
@@ -716,6 +725,7 @@ namespace LY_SINTER.PAGE.Analysis
                 form_display.Activate();
             }
         }
+
         /// <summary>
         /// 班生产弹出框
         /// </summary>
@@ -733,6 +743,7 @@ namespace LY_SINTER.PAGE.Analysis
                 form_display.Activate();
             }
         }
+
         /// <summary>
         /// 堆生产弹出框
         /// </summary>
@@ -750,6 +761,7 @@ namespace LY_SINTER.PAGE.Analysis
                 form_display.Activate();
             }
         }
+
         /// <summary>
         /// 查询
         /// </summary>
@@ -878,18 +890,15 @@ namespace LY_SINTER.PAGE.Analysis
                     int _YM_INDEX = 2;
                     for (int x = 0; x < table.Columns.Count; x++)
                     {
-
                         data[_YM_INDEX] = table.Rows[0][x].ToString();
                         _YM_INDEX = _YM_INDEX + 1;
                     }
                     table_MC_NUMCAL_INTERFACE_10.Rows.Add(data);
                 }
-
-
-
             }
             d2.DataSource = table_MC_NUMCAL_INTERFACE_10;
         }
+
         /// <summary>
         /// 实时
         /// </summary>
@@ -897,7 +906,6 @@ namespace LY_SINTER.PAGE.Analysis
         /// <param name="e"></param>
         private void simpleButton6_Click(object sender, EventArgs e)
         {
-
         }
 
         private void d2_Scroll(object sender, ScrollEventArgs e)
@@ -917,26 +925,29 @@ namespace LY_SINTER.PAGE.Analysis
         /// </summary>
         public void Timer_state()
         {
-          // _Timer1.Enabled = true;
+            // _Timer1.Enabled = true;
         }
+
         /// <summary>
         /// 定时器停用
         /// </summary>
         public void Timer_stop()
         {
-           // _Timer1.Enabled = false;
+            // _Timer1.Enabled = false;
         }
+
         /// <summary>
         /// 控件关闭
         /// </summary>
         public void _Clear()
         {
-          //  _Timer1.Close();//释放定时器资源
+            //  _Timer1.Close();//释放定时器资源
             this.Dispose();//释放资源
             GC.Collect();//调用GC
         }
+
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

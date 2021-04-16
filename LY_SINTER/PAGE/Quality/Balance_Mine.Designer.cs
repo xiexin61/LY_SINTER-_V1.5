@@ -237,11 +237,11 @@
             this.tableLayoutPanel5.Controls.Add(this.simpleButton5, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.simpleButton4, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 31);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 28);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1506, 33);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1506, 31);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // simpleButton5
@@ -255,7 +255,7 @@
             this.simpleButton5.Location = new System.Drawing.Point(143, 3);
             this.simpleButton5.LookAndFeel.SkinMaskColor = System.Drawing.Color.White;
             this.simpleButton5.Name = "simpleButton5";
-            this.simpleButton5.Size = new System.Drawing.Size(112, 27);
+            this.simpleButton5.Size = new System.Drawing.Size(112, 25);
             this.simpleButton5.TabIndex = 4;
             this.simpleButton5.Text = "调整数据查询";
             this.simpleButton5.Click += new System.EventHandler(this.simpleButton5_Click);
@@ -280,7 +280,7 @@
             this.label1.Font = new System.Drawing.Font("SimSun", 18F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1506, 28);
+            this.label1.Size = new System.Drawing.Size(1506, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "返 矿 平 衡 控 制 模 型";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -961,7 +961,7 @@
             this.tableLayoutPanel15.Name = "tableLayoutPanel15";
             this.tableLayoutPanel15.RowCount = 1;
             this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel15.Size = new System.Drawing.Size(688, 26);
             this.tableLayoutPanel15.TabIndex = 2;
             // 
@@ -976,7 +976,7 @@
             this.check_zcll.Name = "check_zcll";
             this.check_zcll.Size = new System.Drawing.Size(108, 20);
             this.check_zcll.TabIndex = 0;
-            this.check_zcll.Text = "总出料量:t";
+            this.check_zcll.Text = "总出料量(t):";
             this.check_zcll.UseVisualStyleBackColor = true;
             this.check_zcll.CheckedChanged += new System.EventHandler(this.check_zcll_CheckedChanged);
             // 
@@ -991,7 +991,7 @@
             this.check_cwbh.Name = "check_cwbh";
             this.check_cwbh.Size = new System.Drawing.Size(108, 20);
             this.check_cwbh.TabIndex = 1;
-            this.check_cwbh.Text = "仓位变化:t";
+            this.check_cwbh.Text = "仓位变化(t):";
             this.check_cwbh.UseVisualStyleBackColor = true;
             this.check_cwbh.CheckedChanged += new System.EventHandler(this.check_cwbh_CheckedChanged);
             // 
@@ -1751,7 +1751,7 @@
             this.tableLayoutPanel18.Name = "tableLayoutPanel18";
             this.tableLayoutPanel18.RowCount = 1;
             this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel18.Size = new System.Drawing.Size(284, 40);
             this.tableLayoutPanel18.TabIndex = 1;
             // 
@@ -2031,17 +2031,17 @@
             // 
             // tableLayoutPanel14
             // 
-            this.tableLayoutPanel14.ColumnCount = 6;
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2.664412F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.458442F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.458442F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.458442F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.458442F));
-            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.50182F));
-            this.tableLayoutPanel14.Controls.Add(this.check_mbcw, 1, 0);
-            this.tableLayoutPanel14.Controls.Add(this.check_zhcw, 2, 0);
-            this.tableLayoutPanel14.Controls.Add(this.check_sfpb, 3, 0);
-            this.tableLayoutPanel14.Controls.Add(this.check_rlpb, 4, 0);
+            this.tableLayoutPanel14.ColumnCount = 5;
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.689979F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.689979F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.689979F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.689979F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 65.24008F));
+            this.tableLayoutPanel14.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel14.Controls.Add(this.check_mbcw, 0, 0);
+            this.tableLayoutPanel14.Controls.Add(this.check_zhcw, 1, 0);
+            this.tableLayoutPanel14.Controls.Add(this.check_sfpb, 2, 0);
+            this.tableLayoutPanel14.Controls.Add(this.check_rlpb, 3, 0);
             this.tableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel14.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel14.Name = "tableLayoutPanel14";
@@ -2057,7 +2057,7 @@
             this.check_mbcw.Checked = true;
             this.check_mbcw.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_mbcw.ForeColor = System.Drawing.Color.Red;
-            this.check_mbcw.Location = new System.Drawing.Point(60, 6);
+            this.check_mbcw.Location = new System.Drawing.Point(23, 6);
             this.check_mbcw.Name = "check_mbcw";
             this.check_mbcw.Size = new System.Drawing.Size(84, 16);
             this.check_mbcw.TabIndex = 0;
@@ -2072,7 +2072,7 @@
             this.check_zhcw.Checked = true;
             this.check_zhcw.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_zhcw.ForeColor = System.Drawing.Color.Purple;
-            this.check_zhcw.Location = new System.Drawing.Point(186, 6);
+            this.check_zhcw.Location = new System.Drawing.Point(153, 6);
             this.check_zhcw.Name = "check_zhcw";
             this.check_zhcw.Size = new System.Drawing.Size(84, 16);
             this.check_zhcw.TabIndex = 1;
@@ -2087,7 +2087,7 @@
             this.check_sfpb.Checked = true;
             this.check_sfpb.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_sfpb.ForeColor = System.Drawing.Color.Green;
-            this.check_sfpb.Location = new System.Drawing.Point(318, 6);
+            this.check_sfpb.Location = new System.Drawing.Point(289, 6);
             this.check_sfpb.Name = "check_sfpb";
             this.check_sfpb.Size = new System.Drawing.Size(72, 16);
             this.check_sfpb.TabIndex = 2;
@@ -2102,7 +2102,7 @@
             this.check_rlpb.Checked = true;
             this.check_rlpb.CheckState = System.Windows.Forms.CheckState.Checked;
             this.check_rlpb.ForeColor = System.Drawing.Color.Blue;
-            this.check_rlpb.Location = new System.Drawing.Point(444, 6);
+            this.check_rlpb.Location = new System.Drawing.Point(419, 6);
             this.check_rlpb.Name = "check_rlpb";
             this.check_rlpb.Size = new System.Drawing.Size(72, 16);
             this.check_rlpb.TabIndex = 3;

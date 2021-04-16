@@ -51,6 +51,7 @@
             this.simpleButton4 = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton5 = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.chart_GCFC = new WF.LChartPlus();
             this.lUserControl1 = new LWebBrowser.LUserControl();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -107,7 +108,7 @@
             this.checkEdit5 = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.chart_GCFC = new WF.LChartPlus();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
@@ -366,12 +367,13 @@
             // 
             // tableLayoutPanel13
             // 
-            this.tableLayoutPanel13.ColumnCount = 4;
+            this.tableLayoutPanel13.ColumnCount = 5;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 119F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Controls.Add(this.label6, 5, 0);
             this.tableLayoutPanel13.Controls.Add(this.simpleButton3, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.simpleButton4, 1, 0);
             this.tableLayoutPanel13.Controls.Add(this.simpleButton5, 2, 0);
@@ -441,6 +443,20 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1094, 363);
             this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // chart_GCFC
+            // 
+            this.chart_GCFC.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chart_GCFC.IsPage = false;
+            this.chart_GCFC.LActDatas = null;
+            this.chart_GCFC.LCurPage = 1;
+            this.chart_GCFC.Location = new System.Drawing.Point(549, 3);
+            this.chart_GCFC.LPageNum = 0;
+            this.chart_GCFC.LPageSize = 10;
+            this.chart_GCFC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chart_GCFC.Name = "chart_GCFC";
+            this.chart_GCFC.Size = new System.Drawing.Size(542, 194);
+            this.chart_GCFC.TabIndex = 15;
             // 
             // lUserControl1
             // 
@@ -538,7 +554,7 @@
             this.TEXTBOX_BTP_FXH.AutoSize = true;
             this.TEXTBOX_BTP_FXH.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_BTP_FXH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_BTP_FXH.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_BTP_FXH.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_BTP_FXH.Location = new System.Drawing.Point(459, 105);
             this.TEXTBOX_BTP_FXH.Name = "TEXTBOX_BTP_FXH";
             this.TEXTBOX_BTP_FXH.Size = new System.Drawing.Size(71, 27);
@@ -551,7 +567,7 @@
             this.TEXTBOX_FJPL_2.AutoSize = true;
             this.TEXTBOX_FJPL_2.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_FJPL_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_FJPL_2.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_FJPL_2.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_FJPL_2.Location = new System.Drawing.Point(383, 105);
             this.TEXTBOX_FJPL_2.Name = "TEXTBOX_FJPL_2";
             this.TEXTBOX_FJPL_2.Size = new System.Drawing.Size(70, 27);
@@ -564,7 +580,7 @@
             this.TEXTBOX_ZCWD_1.AutoSize = true;
             this.TEXTBOX_ZCWD_1.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_ZCWD_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_ZCWD_1.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_ZCWD_1.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_ZCWD_1.Location = new System.Drawing.Point(307, 105);
             this.TEXTBOX_ZCWD_1.Name = "TEXTBOX_ZCWD_1";
             this.TEXTBOX_ZCWD_1.Size = new System.Drawing.Size(70, 27);
@@ -577,7 +593,7 @@
             this.TEXTBOX_CZSJSD.AutoSize = true;
             this.TEXTBOX_CZSJSD.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_CZSJSD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_CZSJSD.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_CZSJSD.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_CZSJSD.Location = new System.Drawing.Point(231, 105);
             this.TEXTBOX_CZSJSD.Name = "TEXTBOX_CZSJSD";
             this.TEXTBOX_CZSJSD.Size = new System.Drawing.Size(70, 27);
@@ -590,7 +606,7 @@
             this.TEXTBOX_BTP_WD.AutoSize = true;
             this.TEXTBOX_BTP_WD.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_BTP_WD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_BTP_WD.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_BTP_WD.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_BTP_WD.Location = new System.Drawing.Point(155, 105);
             this.TEXTBOX_BTP_WD.Name = "TEXTBOX_BTP_WD";
             this.TEXTBOX_BTP_WD.Size = new System.Drawing.Size(70, 27);
@@ -603,7 +619,7 @@
             this.TEXTBOX_BTP_SJ.AutoSize = true;
             this.TEXTBOX_BTP_SJ.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_BTP_SJ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_BTP_SJ.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_BTP_SJ.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_BTP_SJ.Location = new System.Drawing.Point(79, 105);
             this.TEXTBOX_BTP_SJ.Name = "TEXTBOX_BTP_SJ";
             this.TEXTBOX_BTP_SJ.Size = new System.Drawing.Size(70, 27);
@@ -616,7 +632,7 @@
             this.TEXTBOX_BTP_MB.AutoSize = true;
             this.TEXTBOX_BTP_MB.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_BTP_MB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_BTP_MB.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_BTP_MB.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_BTP_MB.Location = new System.Drawing.Point(3, 105);
             this.TEXTBOX_BTP_MB.Name = "TEXTBOX_BTP_MB";
             this.TEXTBOX_BTP_MB.Size = new System.Drawing.Size(70, 27);
@@ -629,7 +645,7 @@
             this.TEXTBOX_BRP_FXH.AutoSize = true;
             this.TEXTBOX_BRP_FXH.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_BRP_FXH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_BRP_FXH.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_BRP_FXH.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_BRP_FXH.Location = new System.Drawing.Point(459, 62);
             this.TEXTBOX_BRP_FXH.Name = "TEXTBOX_BRP_FXH";
             this.TEXTBOX_BRP_FXH.Size = new System.Drawing.Size(71, 25);
@@ -642,7 +658,7 @@
             this.TEXTBOX_FJPL_1.AutoSize = true;
             this.TEXTBOX_FJPL_1.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_FJPL_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_FJPL_1.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_FJPL_1.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_FJPL_1.Location = new System.Drawing.Point(383, 62);
             this.TEXTBOX_FJPL_1.Name = "TEXTBOX_FJPL_1";
             this.TEXTBOX_FJPL_1.Size = new System.Drawing.Size(70, 25);
@@ -655,7 +671,7 @@
             this.TEXTBOX_JS_PV.AutoSize = true;
             this.TEXTBOX_JS_PV.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_JS_PV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_JS_PV.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_JS_PV.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_JS_PV.Location = new System.Drawing.Point(307, 62);
             this.TEXTBOX_JS_PV.Name = "TEXTBOX_JS_PV";
             this.TEXTBOX_JS_PV.Size = new System.Drawing.Size(70, 25);
@@ -668,7 +684,7 @@
             this.TEXTBOX_TQXZS.AutoSize = true;
             this.TEXTBOX_TQXZS.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_TQXZS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_TQXZS.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_TQXZS.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_TQXZS.Location = new System.Drawing.Point(231, 62);
             this.TEXTBOX_TQXZS.Name = "TEXTBOX_TQXZS";
             this.TEXTBOX_TQXZS.Size = new System.Drawing.Size(70, 25);
@@ -681,7 +697,7 @@
             this.TEXTBOX_BRP_WD.AutoSize = true;
             this.TEXTBOX_BRP_WD.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_BRP_WD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_BRP_WD.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_BRP_WD.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_BRP_WD.Location = new System.Drawing.Point(155, 62);
             this.TEXTBOX_BRP_WD.Name = "TEXTBOX_BRP_WD";
             this.TEXTBOX_BRP_WD.Size = new System.Drawing.Size(70, 25);
@@ -694,7 +710,7 @@
             this.TEXTBOX_BRP_SJ.AutoSize = true;
             this.TEXTBOX_BRP_SJ.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_BRP_SJ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_BRP_SJ.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_BRP_SJ.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_BRP_SJ.Location = new System.Drawing.Point(79, 62);
             this.TEXTBOX_BRP_SJ.Name = "TEXTBOX_BRP_SJ";
             this.TEXTBOX_BRP_SJ.Size = new System.Drawing.Size(70, 25);
@@ -707,7 +723,7 @@
             this.TEXTBOX_BRP_MB.AutoSize = true;
             this.TEXTBOX_BRP_MB.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_BRP_MB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_BRP_MB.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_BRP_MB.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_BRP_MB.Location = new System.Drawing.Point(3, 62);
             this.TEXTBOX_BRP_MB.Name = "TEXTBOX_BRP_MB";
             this.TEXTBOX_BRP_MB.Size = new System.Drawing.Size(70, 25);
@@ -720,7 +736,7 @@
             this.TEXTBOX_TRP_FXH.AutoSize = true;
             this.TEXTBOX_TRP_FXH.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_TRP_FXH.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_TRP_FXH.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_TRP_FXH.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_TRP_FXH.Location = new System.Drawing.Point(459, 19);
             this.TEXTBOX_TRP_FXH.Name = "TEXTBOX_TRP_FXH";
             this.TEXTBOX_TRP_FXH.Size = new System.Drawing.Size(71, 25);
@@ -733,7 +749,7 @@
             this.TEXTBOX_ZCWD_2.AutoSize = true;
             this.TEXTBOX_ZCWD_2.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_ZCWD_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_ZCWD_2.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_ZCWD_2.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_ZCWD_2.Location = new System.Drawing.Point(383, 19);
             this.TEXTBOX_ZCWD_2.Name = "TEXTBOX_ZCWD_2";
             this.TEXTBOX_ZCWD_2.Size = new System.Drawing.Size(70, 25);
@@ -746,7 +762,7 @@
             this.TEXTBOX_JS_SP.AutoSize = true;
             this.TEXTBOX_JS_SP.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_JS_SP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_JS_SP.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_JS_SP.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_JS_SP.Location = new System.Drawing.Point(307, 19);
             this.TEXTBOX_JS_SP.Name = "TEXTBOX_JS_SP";
             this.TEXTBOX_JS_SP.Size = new System.Drawing.Size(70, 25);
@@ -759,7 +775,7 @@
             this.TEXTBOX_LCHD.AutoSize = true;
             this.TEXTBOX_LCHD.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_LCHD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_LCHD.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_LCHD.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_LCHD.Location = new System.Drawing.Point(231, 19);
             this.TEXTBOX_LCHD.Name = "TEXTBOX_LCHD";
             this.TEXTBOX_LCHD.Size = new System.Drawing.Size(70, 25);
@@ -772,7 +788,7 @@
             this.TEXTBOX_TRP_WD.AutoSize = true;
             this.TEXTBOX_TRP_WD.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_TRP_WD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_TRP_WD.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_TRP_WD.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_TRP_WD.Location = new System.Drawing.Point(155, 19);
             this.TEXTBOX_TRP_WD.Name = "TEXTBOX_TRP_WD";
             this.TEXTBOX_TRP_WD.Size = new System.Drawing.Size(70, 25);
@@ -785,7 +801,7 @@
             this.TEXTBOX_TRP_SJ.AutoSize = true;
             this.TEXTBOX_TRP_SJ.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_TRP_SJ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_TRP_SJ.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_TRP_SJ.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_TRP_SJ.Location = new System.Drawing.Point(79, 19);
             this.TEXTBOX_TRP_SJ.Name = "TEXTBOX_TRP_SJ";
             this.TEXTBOX_TRP_SJ.Size = new System.Drawing.Size(70, 25);
@@ -1083,7 +1099,7 @@
             this.TEXTBOX_TRP_MB.AutoSize = true;
             this.TEXTBOX_TRP_MB.BackColor = System.Drawing.SystemColors.Control;
             this.TEXTBOX_TRP_MB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TEXTBOX_TRP_MB.Font = new System.Drawing.Font("宋体", 10F);
+            this.TEXTBOX_TRP_MB.Font = new System.Drawing.Font("SimSun", 10F);
             this.TEXTBOX_TRP_MB.Location = new System.Drawing.Point(3, 19);
             this.TEXTBOX_TRP_MB.Name = "TEXTBOX_TRP_MB";
             this.TEXTBOX_TRP_MB.Size = new System.Drawing.Size(70, 25);
@@ -1245,7 +1261,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label27.Font = new System.Drawing.Font("宋体", 18F, System.Drawing.FontStyle.Bold);
+            this.label27.Font = new System.Drawing.Font("SimSun", 18F, System.Drawing.FontStyle.Bold);
             this.label27.Location = new System.Drawing.Point(3, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(1094, 35);
@@ -1253,19 +1269,18 @@
             this.label27.Text = "烧 结 终 点 预 测 模 型";
             this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // chart_GCFC
+            // label6
             // 
-            this.chart_GCFC.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chart_GCFC.IsPage = false;
-            this.chart_GCFC.LActDatas = null;
-            this.chart_GCFC.LCurPage = 1;
-            this.chart_GCFC.Location = new System.Drawing.Point(549, 3);
-            this.chart_GCFC.LPageNum = 0;
-            this.chart_GCFC.LPageSize = 10;
-            this.chart_GCFC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.chart_GCFC.Name = "chart_GCFC";
-            this.chart_GCFC.Size = new System.Drawing.Size(542, 194);
-            this.chart_GCFC.TabIndex = 15;
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("SimSun", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(1008, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(83, 29);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "最新调整时间:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BTP
             // 
@@ -1282,6 +1297,7 @@
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel10.PerformLayout();
             this.tableLayoutPanel13.ResumeLayout(false);
+            this.tableLayoutPanel13.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
@@ -1376,5 +1392,6 @@
         private System.Windows.Forms.Label TEXTBOX_TQXZS;
         private System.Windows.Forms.Label TEXTBOX_BRP_WD;
         private WF.LChartPlus chart_GCFC;
+        private System.Windows.Forms.Label label6;
     }
 }
